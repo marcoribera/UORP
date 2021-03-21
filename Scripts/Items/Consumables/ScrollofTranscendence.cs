@@ -44,7 +44,7 @@ namespace Server.Items
         public string Account { get; set; }
 
         public ScrollOfTranscendence()
-            : this(SkillName.Alchemy, 0.0)
+            : this(SkillName.Alquimia, 0.0)
         {
         }
 		

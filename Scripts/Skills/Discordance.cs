@@ -37,7 +37,7 @@ namespace Server.SkillHandlers
 
 		public static void Initialize()
 		{
-			SkillInfo.Table[(int)SkillName.Discordance].Callback = OnUse;
+			SkillInfo.Table[(int)SkillName.Caos].Callback = OnUse;
 		}
 
 		public static TimeSpan OnUse(Mobile m)
@@ -96,7 +96,7 @@ namespace Server.SkillHandlers
                 else
                 {
                     int range = (int)targ.GetDistanceToSqrt(from);
-                    int maxRange = BaseInstrument.GetBardRange(from, SkillName.Discordance);
+                    int maxRange = BaseInstrument.GetBardRange(from, SkillName.Caos);
                     Map targetMap = targ.Map;
 
                     if (targ is BaseMount && ((BaseMount)targ).Rider != null)
@@ -140,7 +140,7 @@ namespace Server.SkillHandlers
 			private readonly BaseInstrument m_Instrument;
 
 			public DiscordanceTarget(Mobile from, BaseInstrument inst)
-				: base(BaseInstrument.GetBardRange(from, SkillName.Discordance), false, TargetFlags.None)
+				: base(BaseInstrument.GetBardRange(from, SkillName.Caos), false, TargetFlags.None)
 			{
 				m_Instrument = inst;
 			}
@@ -170,7 +170,7 @@ namespace Server.SkillHandlers
 					else if (!targ.Player || (from is BaseCreature && ((BaseCreature)from).CanDiscord) || (Core.EJ && targ.Player && from.Player && CanDiscordPVP(from)))
 					{
 						double diff = m_Instrument.GetDifficultyFor(targ) - 10.0;
-						double music = from.Skills[SkillName.Musicianship].Value;
+						double music = from.Skills[SkillName.Tocar].Value;
 
                         if (from is BaseCreature)
                             music = 120.0;
@@ -184,7 +184,7 @@ namespace Server.SkillHandlers
 
                         if (from is PlayerMobile)
                         {
-                            masteryBonus = Spells.SkillMasteries.BardSpell.GetMasteryBonus((PlayerMobile)from, SkillName.Discordance);
+                            masteryBonus = Spells.SkillMasteries.BardSpell.GetMasteryBonus((PlayerMobile)from, SkillName.Caos);
                         }
 
                         if (masteryBonus > 0)
@@ -198,7 +198,7 @@ namespace Server.SkillHandlers
 							m_Instrument.PlayInstrumentBadly(from);
 							m_Instrument.ConsumeUse(from);
 						}
-						else if (from.CheckTargetSkill(SkillName.Discordance, target, diff - 25.0, diff + 25.0))
+						else if (from.CheckTargetSkill(SkillName.Caos, target, diff - 25.0, diff + 25.0))
 						{
 							from.SendLocalizedMessage(1049539); // You play the song surpressing your targets strength
 
@@ -212,7 +212,7 @@ namespace Server.SkillHandlers
 
                             if (Core.EJ && targ.Player && from.Player)
                             {
-                                info = new DiscordanceInfo(from, targ, 0, null, true, from.Skills.CurrentMastery == SkillName.Discordance ? 6 : 4);
+                                info = new DiscordanceInfo(from, targ, 0, null, true, from.Skills.CurrentMastery == SkillName.Caos ? 6 : 4);
                                 from.DoHarmful(targ);
                             }
                             else
@@ -223,7 +223,7 @@ namespace Server.SkillHandlers
 
                                 if (Core.AOS)
                                 {
-                                    double discord = from.Skills[SkillName.Discordance].Value;
+                                    double discord = from.Skills[SkillName.Caos].Value;
 
                                     effect = (int)Math.Max(-28.0, (discord / -4.0));
 
@@ -250,7 +250,7 @@ namespace Server.SkillHandlers
                                 }
                                 else
                                 {
-                                    effect = (int)(from.Skills[SkillName.Discordance].Value / -5.0);
+                                    effect = (int)(from.Skills[SkillName.Caos].Value / -5.0);
                                     scalar = effect * 0.01;
 
                                     mods.Add(new StatMod(StatType.Str, "DiscordanceStr", (int)(targ.RawStr * scalar), TimeSpan.Zero));
@@ -290,7 +290,7 @@ namespace Server.SkillHandlers
 						else
 						{
                             if (from is BaseCreature && PetTrainingHelper.Enabled)
-                                from.CheckSkill(SkillName.Discordance, 0, from.Skills[SkillName.Discordance].Cap);
+                                from.CheckSkill(SkillName.Caos, 0, from.Skills[SkillName.Caos].Cap);
 
 							from.SendLocalizedMessage(1049540); // You attempt to disrupt your target, but fail.
 

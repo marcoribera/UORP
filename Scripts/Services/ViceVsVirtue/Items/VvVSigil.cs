@@ -104,7 +104,7 @@ namespace Server.Engines.VvV
             if (!ViceVsVirtueSystem.IsVvV(m))
                 return false;
 
-            return Utility.Random(100) <= m.Skills[SkillName.DetectHidden].Value;
+            return Utility.Random(100) <= m.Skills[SkillName.Percepcao].Value;
         }
 
         public virtual void OnRevealed(Mobile m)
@@ -116,7 +116,7 @@ namespace Server.Engines.VvV
         {
             if (m.InRange(this.Location, 4))
             {
-                int skill = (int)m.Skills[SkillName.DetectHidden].Value;
+                int skill = (int)m.Skills[SkillName.Percepcao].Value;
 
                 if (skill >= 80 && Utility.Random(300) < skill)
                     return true;

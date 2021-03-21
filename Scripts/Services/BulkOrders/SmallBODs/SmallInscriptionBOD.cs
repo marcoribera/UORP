@@ -64,7 +64,7 @@ namespace Server.Engines.BulkOrders
         {
             SmallBulkEntry[] entries;
 
-            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Inscribe);
+            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Erudicao);
 
             entries = SmallBulkEntry.InscriptionSmalls;
 

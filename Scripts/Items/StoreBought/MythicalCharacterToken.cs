@@ -308,13 +308,13 @@ namespace Server.Items
                         return false;
                 }
 
-                if (skill == SkillName.Spellweaving && !User.Spellweaving)
+                if (skill == SkillName.Feiticaria && !User.Spellweaving)
                     return false;
 
-                if (skill == SkillName.Throwing && User.Race != Race.Gargoyle)
+                if (skill == SkillName.Atirar && User.Race != Race.Gargoyle)
                     return false;
 
-                if (skill == SkillName.Archery && User.Race == Race.Gargoyle)
+                if (skill == SkillName.Atirar && User.Race == Race.Gargoyle)
                     return false;
 
                 return true;

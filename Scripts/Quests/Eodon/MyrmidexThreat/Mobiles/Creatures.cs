@@ -49,10 +49,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 80, 90);
             SetResistance(ResistanceType.Energy, 60, 70);
 
-            SetSkill(SkillName.Wrestling, 110, 120);
-            SetSkill(SkillName.Tactics, 120, 130);
-            SetSkill(SkillName.MagicResist, 120, 130);
-            SetSkill(SkillName.Anatomy, 0, 10);
+            SetSkill(SkillName.Briga, 110, 120);
+            SetSkill(SkillName.Anatomia, 120, 130);
+            SetSkill(SkillName.ResistenciaMagica, 120, 130);
+            SetSkill(SkillName.Anatomia, 0, 10);
 
             _NextCombo1 = DateTime.UtcNow;
             _NextCombo2 = DateTime.UtcNow;
@@ -460,10 +460,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 60);
             SetResistance(ResistanceType.Energy, 70, 80);
 
-            SetSkill(SkillName.Wrestling, 110, 120);
-            SetSkill(SkillName.Tactics, 110, 120);
-            SetSkill(SkillName.MagicResist, 120, 130);
-            SetSkill(SkillName.Anatomy, 40, 60);
+            SetSkill(SkillName.Briga, 110, 120);
+            SetSkill(SkillName.Anatomia, 110, 120);
+            SetSkill(SkillName.ResistenciaMagica, 120, 130);
+            SetSkill(SkillName.Anatomia, 40, 60);
 
             _NextMastery = DateTime.UtcNow;
             _NextSpecial = DateTime.UtcNow;
@@ -731,15 +731,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 70, 80);
             SetResistance(ResistanceType.Energy, 100);
 
-            SetSkill(SkillName.Wrestling, 100);
-            SetSkill(SkillName.Tactics, 100);
-            SetSkill(SkillName.MagicResist, 100);
-            SetSkill(SkillName.DetectHidden, 100.0);
-            SetSkill(SkillName.Magery, 100.0);
-            SetSkill(SkillName.EvalInt, 100.0);
-            SetSkill(SkillName.Meditation, 100.0);
-            SetSkill(SkillName.Focus, 100.0);
-            SetSkill(SkillName.Spellweaving, 100.0);
+            SetSkill(SkillName.Briga, 100);
+            SetSkill(SkillName.Anatomia, 100);
+            SetSkill(SkillName.ResistenciaMagica, 100);
+            SetSkill(SkillName.Percepcao, 100.0);
+            SetSkill(SkillName.Arcanismo, 100.0);
+            SetSkill(SkillName.PoderMagico, 100.0);
+            SetSkill(SkillName.PreparoFisico, 100.0);
+            SetSkill(SkillName.Feiticaria, 100.0);
 
             SetAreaEffect(AreaEffect.AuraOfEnergy);
         }

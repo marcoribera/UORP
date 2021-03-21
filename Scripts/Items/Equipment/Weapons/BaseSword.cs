@@ -19,7 +19,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Swords;
+                return SkillName.Cortante;
             }
         }
         public override WeaponType DefType

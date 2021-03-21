@@ -243,11 +243,10 @@ namespace Server.Engines.Quests
         [Constructable]
         public Dermott() : base("Dermott", "the Weaver")
         {
-            SetSkill(SkillName.Magery, 60.0, 90.0);
-            SetSkill(SkillName.EvalInt, 60.0, 90.0);
-            SetSkill(SkillName.MagicResist, 60.0, 90.0);
-            SetSkill(SkillName.Wrestling, 60.0, 90.0);
-            SetSkill(SkillName.Meditation, 60.0, 90.0);
+            SetSkill(SkillName.Arcanismo, 60.0, 90.0);
+            SetSkill(SkillName.PoderMagico, 60.0, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 60.0, 90.0);
+            SetSkill(SkillName.Briga, 60.0, 90.0);
         }
 
         public Dermott(Serial serial)

@@ -719,7 +719,7 @@ namespace Server.Items
 
             double ingotsNeeded = 36 * (100 - Durability);
 
-            ingotsNeeded -= ((double)from.Skills[SkillName.Blacksmith].Value / 200.0) * ingotsNeeded;
+            ingotsNeeded -= ((double)from.Skills[SkillName.Ferraria].Value / 200.0) * ingotsNeeded;
 
             double min = ingotsNeeded / 10;
             double ingots1 = pack.GetAmount(typeof(IronIngot));

@@ -262,8 +262,8 @@ namespace Server.Items
         {
             Hue = 2591;
 
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 10);
-            SkillBonuses.SetValues(1, SkillName.Meditation, 10);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 10);
+            SkillBonuses.SetValues(1, SkillName.PreparoFisico, 10);
             Attributes.RegenHits = 5;
             Attributes.RegenMana = 3;
             Attributes.SpellDamage = 20;
@@ -298,12 +298,12 @@ namespace Server.Items
 
         public static SkillName[] Skills =
         {
-            SkillName.Necromancy,
-            SkillName.Magery,
+            SkillName.Necromancia,
+            SkillName.Arcanismo,
             SkillName.Bushido,
-            SkillName.Chivalry,
+            SkillName.Ordem,
             SkillName.Ninjitsu,
-            SkillName.Mysticism
+            SkillName.Misticismo
         };
 
         public KatalkotlsRing(Serial serial)

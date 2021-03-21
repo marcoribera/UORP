@@ -429,14 +429,14 @@ namespace Server.Mobiles
                 var profile = PetTrainingHelper.GetAbilityProfile(creature);
 
                 if ((profile != null && profile.HasAbility(MagicalAbility.Poisoning)) || 0.2 > Utility.RandomDouble())
-                    creature.CheckSkill(SkillName.Poisoning, 0, creature.Skills[SkillName.Poisoning].Cap);
+                    creature.CheckSkill(SkillName.Envenenamento, 0, creature.Skills[SkillName.Envenenamento].Cap);
             }
         }
 
         public Poison GetPoison(BaseCreature bc)
         {
             int level = 0;
-            double total = bc.Skills[SkillName.Poisoning].Value;
+            double total = bc.Skills[SkillName.Envenenamento].Value;
 
             if (total >= 100)
                 level = 4;

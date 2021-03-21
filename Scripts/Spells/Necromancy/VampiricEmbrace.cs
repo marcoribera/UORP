@@ -85,7 +85,7 @@ namespace Server.Spells.Necromancy
 
             BuffInfo.AddBuff(Caster, new BuffInfo(BuffIcon.VampiricEmbrace, 1028812, 1153768, String.Format("{0}\t{1}\t{2}\t{3}", "20", "15", "3", "25")));
 
-			if (Caster.Skills.Necromancy.Value > 99.0)
+			if (Caster.Skills.Necromancia.Value > 99.0)
                 BuffInfo.AddBuff(Caster, new BuffInfo(BuffIcon.PoisonImmunity, 1153785, 1153814));
 
             m.ResetStatTimers();

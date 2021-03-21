@@ -77,7 +77,7 @@ namespace Server.Spells.Mysticism
 
                             double stamSap = (damage / 3);
                             double manaSap = (damage / 3);
-                            double mod = m.Skills[SkillName.MagicResist].Value - ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 2);
+                            double mod = m.Skills[SkillName.ResistenciaMagica].Value - ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 2);
 
                             if (mod > 0)
                             {

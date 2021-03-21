@@ -67,7 +67,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Tailoring;
+                return SkillName.Costura;
             }
         }
 

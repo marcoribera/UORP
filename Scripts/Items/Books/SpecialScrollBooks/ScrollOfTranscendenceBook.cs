@@ -52,13 +52,13 @@ namespace Server.Items
         {
             _SkillInfo = new Dictionary<SkillCat, List<SkillName>>();
 
-            _SkillInfo[SkillCat.Miscellaneous] = new List<SkillName>() { SkillName.ArmsLore, SkillName.Begging, SkillName.Camping, SkillName.Cartography, SkillName.Forensics, SkillName.ItemID, SkillName.TasteID};
-            _SkillInfo[SkillCat.Combat] = new List<SkillName>() { SkillName.Anatomy, SkillName.Archery, SkillName.Fencing, SkillName.Focus, SkillName.Healing, SkillName.Macing, SkillName.Parry, SkillName.Swords, SkillName.Tactics, SkillName.Throwing, SkillName.Wrestling };
-            _SkillInfo[SkillCat.TradeSkills] = new List<SkillName>() { SkillName.Alchemy, SkillName.Blacksmith, SkillName.Fletching, SkillName.Carpentry, SkillName.Cooking, SkillName.Inscribe, SkillName.Lumberjacking, SkillName.Mining, SkillName.Tailoring, SkillName.Tinkering };
-            _SkillInfo[SkillCat.Magic] = new List<SkillName>() { SkillName.Bushido, SkillName.Chivalry, SkillName.EvalInt, SkillName.Imbuing, SkillName.Magery, SkillName.Meditation, SkillName.Mysticism, SkillName.Necromancy, SkillName.Ninjitsu, SkillName.MagicResist, SkillName.Spellweaving, SkillName.SpiritSpeak };
-            _SkillInfo[SkillCat.Wilderness] = new List<SkillName>() { SkillName.AnimalLore, SkillName.AnimalTaming, SkillName.Fishing, SkillName.Herding, SkillName.Tracking, SkillName.Veterinary };
-            _SkillInfo[SkillCat.Thievery] = new List<SkillName>() { SkillName.DetectHidden, SkillName.Hiding, SkillName.Lockpicking, SkillName.Poisoning, SkillName.RemoveTrap, SkillName.Snooping, SkillName.Stealing, SkillName.Stealth };
-            _SkillInfo[SkillCat.Bard] = new List<SkillName>() { SkillName.Discordance, SkillName.Musicianship, SkillName.Peacemaking, SkillName.Provocation };
+            _SkillInfo[SkillCat.Miscellaneous] = new List<SkillName>() { SkillName.ConhecimentoArmas, SkillName.Carisma, SkillName.Sobrevivencia, SkillName.Erudicao, SkillName.Percepcao, SkillName.Erudicao, SkillName.Alquimia};
+            _SkillInfo[SkillCat.Combat] = new List<SkillName>() { SkillName.Anatomia, SkillName.Atirar, SkillName.Perfurante, SkillName.PreparoFisico, SkillName.Medicina, SkillName.Contusivo, SkillName.Bloqueio, SkillName.Cortante, SkillName.Anatomia, SkillName.Atirar, SkillName.Briga };
+            _SkillInfo[SkillCat.TradeSkills] = new List<SkillName>() { SkillName.Alquimia, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Carpintaria, SkillName.Culinaria, SkillName.Erudicao, SkillName.Extracao, SkillName.Extracao, SkillName.Costura, SkillName.Mecanica };
+            _SkillInfo[SkillCat.Magic] = new List<SkillName>() { SkillName.Bushido, SkillName.Ordem, SkillName.PoderMagico, SkillName.ImbuirMagica, SkillName.Arcanismo, SkillName.Misticismo, SkillName.Necromancia, SkillName.Ninjitsu, SkillName.ResistenciaMagica, SkillName.Feiticaria, SkillName.PoderMagico };
+            _SkillInfo[SkillCat.Wilderness] = new List<SkillName>() { SkillName.Adestramento, SkillName.Adestramento, SkillName.Sobrevivencia, SkillName.Adestramento, SkillName.Sobrevivencia, SkillName.Veterinaria };
+            _SkillInfo[SkillCat.Thievery] = new List<SkillName>() { SkillName.Percepcao, SkillName.Furtividade, SkillName.Mecanica, SkillName.Envenenamento, SkillName.Mecanica, SkillName.Prestidigitacao, SkillName.Prestidigitacao, SkillName.Furtividade };
+            _SkillInfo[SkillCat.Bard] = new List<SkillName>() { SkillName.Caos, SkillName.Tocar, SkillName.Pacificar, SkillName.Provocacao };
 
             _ValueInfo = new Dictionary<int, double>();
 

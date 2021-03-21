@@ -117,7 +117,7 @@ namespace Server.Spells.Necromancy
                 m_Table[m] = t;
 
                 //Calculations for the buff bar
-                double spiritlevel = Caster.Skills[SkillName.SpiritSpeak].Value / 10;
+                double spiritlevel = Caster.Skills[SkillName.PoderMagico].Value / 10;
                 if (spiritlevel < 4)
                     spiritlevel = 4;
                 int d_MinDamage = (int)(4.0 * strength);
@@ -176,7 +176,7 @@ namespace Server.Spells.Necromancy
                 m_Target = target;
                 m_From = from;
 
-                double spiritLevel = from.Skills[SkillName.SpiritSpeak].Value / 10;
+                double spiritLevel = from.Skills[SkillName.PoderMagico].Value / 10;
 
                 m_MinBaseDamage = (spiritLevel - 2) * strength;
                 m_MaxBaseDamage = (spiritLevel + 1) * strength;

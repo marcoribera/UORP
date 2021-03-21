@@ -43,7 +43,7 @@ namespace Server.Engines.CreatureStealing
             if (!CheckLocation(thief, from))
                 return;
 
-            double stealing = thief.Skills.Stealing.Value;
+            double stealing = thief.Skills.Prestidigitacao.Value;
 
             if (stealing < 100)
                 return;
@@ -79,7 +79,7 @@ namespace Server.Engines.CreatureStealing
             if (0.05 > Utility.RandomDouble())
             {
                 double tempSkill = Utility.RandomMinMax(80, 110);
-                double realSkill = thief.Skills[SkillName.Stealing].Value;
+                double realSkill = thief.Skills[SkillName.Prestidigitacao].Value;
 
                 if (realSkill > tempSkill)
                     tempSkill = realSkill;

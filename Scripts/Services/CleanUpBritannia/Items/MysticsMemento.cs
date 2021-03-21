@@ -12,7 +12,7 @@ namespace Server.Items
             : base(0x2F5B)
         {
             this.Hue = 1912;
-            this.SkillBonuses.SetValues(0, SkillName.Focus, 10.0);
+            this.SkillBonuses.SetValues(0, SkillName.PreparoFisico, 10.0);
             this.Attributes.RegenMana = 1;
             this.Attributes.LowerRegCost = 10;
             this.Attributes.SpellDamage = 5;

@@ -64,7 +64,7 @@ namespace Server.Engines.Craft
 
     public class DefBlacksmithy : CraftSystem
     {
-        public override SkillName MainSkill { get { return SkillName.Blacksmith; } }
+        public override SkillName MainSkill { get { return SkillName.Ferraria; } }
 
         public override int GumpTitleNumber
         {
@@ -782,7 +782,7 @@ namespace Server.Engines.Craft
             if (Core.SE)
             {
                 index = AddCraft(typeof(Tessen), 1011084, 1030222, 85.0, 135.0, typeof(IronIngot), 1044036, 16, 1044037);
-                AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+                AddSkill(index, SkillName.Costura, 50.0, 55.0);
                 AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             }
@@ -826,7 +826,7 @@ namespace Server.Engines.Craft
                 index = AddCraft(typeof(GargishMaul), 1011084, 1097498, 19.4, 69.4, typeof(IronIngot), 1044036, 10, 1044037);
 
                 index = AddCraft(typeof(GargishTessen), 1011084, 1097508, 85.0, 135.0, typeof(IronIngot), 1044036, 16, 1044037);
-                AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+                AddSkill(index, SkillName.Costura, 50.0, 55.0);
                 AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
                 index = AddCraft(typeof(DiscMace), 1011084, 1095366, 70.0, 120.0, typeof(IronIngot), 1044036, 20, 1044037);               
@@ -868,11 +868,11 @@ namespace Server.Engines.Craft
 
                 index = AddCraft(typeof(LightShipCannonDeed), 1116354, 1095790, 65.0, 120.0, typeof(IronIngot), 1044036, 900, 1044037);
                 AddRes(index, typeof(Board), 1044041, 50, 1044351);
-                AddSkill(index, SkillName.Carpentry, 65.0, 100.0);
+                AddSkill(index, SkillName.Carpintaria, 65.0, 100.0);
 
                 index = AddCraft(typeof(HeavyShipCannonDeed), 1116354, 1095794, 70.0, 120.0, typeof(IronIngot), 1044036, 1800, 1044037);
                 AddRes(index, typeof(Board), 1044041, 75, 1044351);
-                AddSkill(index, SkillName.Carpentry, 70.0, 100.0);
+                AddSkill(index, SkillName.Carpintaria, 70.0, 100.0);
             }
 
             #endregion

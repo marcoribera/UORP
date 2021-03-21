@@ -295,7 +295,7 @@ namespace Server.Mobiles
 				m_Mobile.PlaySound(0x22F);
 				m_Mobile.Hidden = true;
 
-				m_Mobile.UseSkill(SkillName.Stealth);
+				m_Mobile.UseSkill(SkillName.Furtividade);
 			}
 		}
 

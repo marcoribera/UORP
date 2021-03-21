@@ -34,7 +34,7 @@ namespace Server.Items
             : base()
         {
             LootType = LootType.Blessed;
-            SkillBonuses.SetValues(0, SkillName.Mining, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Extracao, 10.0);
             UsesRemaining = 20;
 
             _Instances.Add(this);

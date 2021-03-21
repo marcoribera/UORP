@@ -19,8 +19,8 @@ namespace Server.Spells.SkillMasteries
             );
  
         public override int RequiredMana { get { return 30; } }
-        public override SkillName CastSkill { get { return SkillName.Fencing; } }
-		public override SkillName DamageSkill { get { return SkillName.Tactics; } }
+        public override SkillName CastSkill { get { return SkillName.Perfurante; } }
+		public override SkillName DamageSkill { get { return SkillName.Anatomia; } }
 
         private int _DefenseMod;
 

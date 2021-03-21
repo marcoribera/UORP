@@ -131,7 +131,7 @@ namespace Server.Gumps
             AddHtmlLocalized(210, 60, 212, 70, 1153748, false, false); // <center>Use the Directional Controls to</center>
             AddHtmlLocalized(210, 75, 212, 85, Trap.GumpDescription, false, false);
 
-            if (Trap.CanDecipher && User.Skills[SkillName.Lockpicking].Base >= 100)
+            if (Trap.CanDecipher && User.Skills[SkillName.Mecanica].Base >= 100)
             {
                 AddHtmlLocalized(405, 355, 150, 32, 1153750, false, false); // Attempt to Decipher the Circuit Path
                 AddButton(365, 355, 4005, 4005, 5, GumpButtonType.Reply, 0);

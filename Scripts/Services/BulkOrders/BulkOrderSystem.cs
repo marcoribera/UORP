@@ -293,14 +293,14 @@ namespace Server.Engines.BulkOrders
             switch (type)
             {
                 default:
-                case BODType.Smith: return SkillName.Blacksmith;
-                case BODType.Tailor: return SkillName.Tailoring;
-                case BODType.Alchemy: return SkillName.Alchemy;
-                case BODType.Inscription: return SkillName.Inscribe;
-                case BODType.Tinkering: return SkillName.Tinkering;
-                case BODType.Cooking: return SkillName.Cooking;
-                case BODType.Fletching: return SkillName.Fletching;
-                case BODType.Carpentry: return SkillName.Carpentry;
+                case BODType.Smith: return SkillName.Ferraria;
+                case BODType.Tailor: return SkillName.Costura;
+                case BODType.Alchemy: return SkillName.Alquimia;
+                case BODType.Inscription: return SkillName.Erudicao;
+                case BODType.Tinkering: return SkillName.Mecanica;
+                case BODType.Cooking: return SkillName.Culinaria;
+                case BODType.Fletching: return SkillName.Carpintaria;
+                case BODType.Carpentry: return SkillName.Carpintaria;
             }
         }
 

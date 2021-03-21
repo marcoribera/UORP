@@ -55,7 +55,7 @@ namespace Server.Engines.Harvest
             fish.MaxRespawn = TimeSpan.FromMinutes(20.0);
 
             // Skill checking is done on the Fishing skill
-            fish.Skill = SkillName.Fishing;
+            fish.Skill = SkillName.Sobrevivencia;
 
             // Set the list of harvestable tiles
             fish.Tiles = m_WaterTiles;
@@ -229,7 +229,7 @@ namespace Server.Engines.Harvest
                         if (from.Map != sp.Map)
                             from.SendLocalizedMessage(1150861); //Charybdis have never been seen in these waters, try somewhere else.
 
-                        else if (pole.BaitType == typeof(Charydbis) && from.Skills[SkillName.Fishing].Value >= 100)
+                        else if (pole.BaitType == typeof(Charydbis) && from.Skills[SkillName.Sobrevivencia].Value >= 100)
                         {
                             if (sp.Charydbis == null && !sp.HasSpawned && sp.CurrentLocation.Contains(loc))
                             {
@@ -262,8 +262,8 @@ namespace Server.Engines.Harvest
             bool deepWater = IsDeepWater(loc, map);
             bool junkproof = HasTypeHook(tool, HookType.JunkProof); 
 
-            double skillBase = from.Skills[SkillName.Fishing].Base;
-            double skillValue = from.Skills[SkillName.Fishing].Value;
+            double skillBase = from.Skills[SkillName.Sobrevivencia].Base;
+            double skillValue = from.Skills[SkillName.Sobrevivencia].Value;
 
             var table = Siege.SiegeShard ? m_SiegeMutateTable : m_MutateTable;
 
@@ -1011,7 +1011,7 @@ namespace Server.Engines.Harvest
                 {
                     def.SendMessageTo(from, def.FailMessage);
 
-                    double skill = (double)from.Skills[SkillName.Fishing].Value / 50;
+                    double skill = (double)from.Skills[SkillName.Sobrevivencia].Value / 50;
 
                     if (0.5 / skill > Utility.RandomDouble())
                         OnToolUsed(from, tool, false);
@@ -1028,7 +1028,7 @@ namespace Server.Engines.Harvest
         public override bool CheckHarvestSkill(Map map, Point3D loc, Mobile from, HarvestResource res, HarvestDefinition def)
         {
             bool deepWater = IsDeepWater(loc, map);
-            double value = from.Skills[SkillName.Fishing].Value;
+            double value = from.Skills[SkillName.Sobrevivencia].Value;
 
             if (deepWater && value < 75.0) // can't fish here yet
                 return from.Skills[def.Skill].Value >= res.ReqSkill;
@@ -1043,8 +1043,8 @@ namespace Server.Engines.Harvest
         {
             Type newType = null;
 
-            double skillBase = from.Skills[SkillName.Fishing].Base;
-            double skillValue = Math.Min(120.0, from.Skills[SkillName.Fishing].Value);
+            double skillBase = from.Skills[SkillName.Sobrevivencia].Base;
+            double skillValue = Math.Min(120.0, from.Skills[SkillName.Sobrevivencia].Value);
 
             //Same method as mutate entries
             for (int i = 0; i < m_LavaMutateTable.Length; ++i)

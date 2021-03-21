@@ -77,7 +77,7 @@ namespace Server.Engines.Quests
         public TheInnerWarriorQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Focus, 50, "Old Haven Training", 1077697, 1077698));
+            this.AddObjective(new ApprenticeObjective(SkillName.PreparoFisico, 50, "Old Haven Training", 1077697, 1077698));
 			
             // 1077697 You feel much more attuned to yourself. Your ability to improve Focus skill is enhanced in this area.
             // 1077698 You feel like you don't even know yourself anymore! Your Focus learning potential is no longer enhanced.
@@ -96,7 +96,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Focus.Base < 50;
+                return this.Owner.Skills.PreparoFisico.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -137,12 +137,12 @@ namespace Server.Engines.Quests
         public SarsmeaSmythe()
             : base("Sarsmea Smythe", "The Focus Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public SarsmeaSmythe(Serial serial)

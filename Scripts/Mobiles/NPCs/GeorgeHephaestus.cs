@@ -74,10 +74,10 @@ namespace Server.Engines.Quests
         public ItsHammerTimeQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Blacksmith, 50, "Gorge's Shop", 1077733, 1077734));		 
+            this.AddObjective(new ApprenticeObjective(SkillName.Ferraria, 50, "Gorge's Shop", 1077733, 1077734));		 
 			
-            // 1077733 By using George’s forge and anvil, he is able to give you advice as you create blacksmithing items. This helps you hone your Blacksmithing skill a bit faster than normal.
-            // 1077734 You’re not using George’s forge and anvil any longer, and he cannot give you advice. Your Blacksmithing learning potential is no longer enhanced. 
+            // 1077733 By using Georgeâ€™s forge and anvil, he is able to give you advice as you create blacksmithing items. This helps you hone your Blacksmithing skill a bit faster than normal.
+            // 1077734 Youâ€™re not using Georgeâ€™s forge and anvil any longer, and he cannot give you advice. Your Blacksmithing learning potential is no longer enhanced. 
 		  
             this.AddReward(new BaseReward(typeof(HammerOfHephaestus), 1077740));
         }
@@ -93,7 +93,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Blacksmith.Base < 50;
+                return this.Owner.Skills.Ferraria.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -139,13 +139,13 @@ namespace Server.Engines.Quests
         public GeorgeHephaestus()
             : base("George Hephaestus", "The Blacksmith Instructor")
         { 
-            this.SetSkill(SkillName.ArmsLore, 120.0, 120.0);
-            this.SetSkill(SkillName.Blacksmith, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Tinkering, 120.0, 120.0);
-            this.SetSkill(SkillName.Mining, 120.0, 120.0);
+            this.SetSkill(SkillName.ConhecimentoArmas, 120.0, 120.0);
+            this.SetSkill(SkillName.Ferraria, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.Mecanica, 120.0, 120.0);
+            this.SetSkill(SkillName.Extracao, 120.0, 120.0);
         }
 		
         public GeorgeHephaestus(Serial serial)

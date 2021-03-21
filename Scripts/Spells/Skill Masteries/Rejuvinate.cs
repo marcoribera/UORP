@@ -26,8 +26,8 @@ namespace Server.Spells.SkillMasteries
 
         public int RequiredTithing { get { return 100; } }
 
-        public override SkillName CastSkill { get { return SkillName.Chivalry; } }
-        public override SkillName DamageSkill { get { return SkillName.Chivalry; } }
+        public override SkillName CastSkill { get { return SkillName.Ordem; } }
+        public override SkillName DamageSkill { get { return SkillName.Ordem; } }
 
         public RejuvinateSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

@@ -25,12 +25,12 @@ namespace Server.Factions
 
             this.VirtualArmor = 8;
 
-            this.SetSkill(SkillName.Fencing, 80.0, 90.0);
-            this.SetSkill(SkillName.Wrestling, 80.0, 90.0);
-            this.SetSkill(SkillName.Tactics, 80.0, 90.0);
-            this.SetSkill(SkillName.MagicResist, 80.0, 90.0);
-            this.SetSkill(SkillName.Healing, 80.0, 90.0);
-            this.SetSkill(SkillName.Anatomy, 80.0, 90.0);
+            this.SetSkill(SkillName.Perfurante, 80.0, 90.0);
+            this.SetSkill(SkillName.Briga, 80.0, 90.0);
+            this.SetSkill(SkillName.Anatomia, 80.0, 90.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 80.0, 90.0);
+            this.SetSkill(SkillName.Medicina, 80.0, 90.0);
+            this.SetSkill(SkillName.Anatomia, 80.0, 90.0);
 
             this.AddItem(new StuddedChest());
             this.AddItem(new StuddedLegs());

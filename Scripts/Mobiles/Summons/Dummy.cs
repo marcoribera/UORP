@@ -24,8 +24,8 @@ namespace Server.Mobiles
             this.Body = 400 + Utility.Random(2);
             this.Hue = Utility.RandomSkinHue();
 
-            this.Skills[SkillName.DetectHidden].Base = 100;
-            this.Skills[SkillName.MagicResist].Base = 120;
+            this.Skills[SkillName.Percepcao].Base = 100;
+            this.Skills[SkillName.ResistenciaMagica].Base = 120;
 
             this.Team = Utility.Random(3);
 

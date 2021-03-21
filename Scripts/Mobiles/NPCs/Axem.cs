@@ -167,8 +167,7 @@ namespace Server.Engines.Quests
         public Axem()
             : base("Axem", "the Curator")
         {
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Axem(Serial serial)

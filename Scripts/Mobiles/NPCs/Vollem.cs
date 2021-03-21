@@ -32,11 +32,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 30, 40);
             SetResistance(ResistanceType.Energy, 20, 30);
 
-            SetSkill(SkillName.MagicResist, 90.4, 97.8);
-            SetSkill(SkillName.Tactics, 99.0, 99.5);
-            SetSkill(SkillName.Wrestling, 84.2, 87.7);
-            SetSkill(SkillName.EvalInt, 21.9, 43.3);
-            SetSkill(SkillName.Magery, 25.6, 38.6);
+            SetSkill(SkillName.ResistenciaMagica, 90.4, 97.8);
+            SetSkill(SkillName.Anatomia, 99.0, 99.5);
+            SetSkill(SkillName.Briga, 84.2, 87.7);
+            SetSkill(SkillName.PoderMagico, 21.9, 43.3);
+            SetSkill(SkillName.Arcanismo, 25.6, 38.6);
 
             ControlSlots = 2;
 

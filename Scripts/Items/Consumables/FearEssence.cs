@@ -99,7 +99,7 @@ namespace Server.Items
             {
                 if (mobile != from && from.CanBeHarmful(mobile, false))
                 {
-                    double chance = (double)(((4 * mobile.Skills[SkillName.MagicResist].Value) + 150) / 700);
+                    double chance = (double)(((4 * mobile.Skills[SkillName.ResistenciaMagica].Value) + 150) / 700);
 
                     if (chance < Utility.RandomDouble())
                     {

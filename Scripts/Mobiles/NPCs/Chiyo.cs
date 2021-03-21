@@ -70,7 +70,7 @@ namespace Server.Engines.Quests
         public BecomingOneWithTheShadowsQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Hiding, 50, "Haven Dojo", 1078166, 1078167));
+            this.AddObjective(new ApprenticeObjective(SkillName.Furtividade, 50, "Haven Dojo", 1078166, 1078167));
 			
             // 1078166 You feel you can easily slip into the shadows here. Your ability to hide is enhanced in this area.
             // 1078167 You feel it is more difficult to hide here. Your ability to hide is no longer enhanced.
@@ -89,7 +89,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Hiding.Base < 50;
+                return this.Owner.Skills.Furtividade.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -130,12 +130,12 @@ namespace Server.Engines.Quests
         public Chiyo()
             : base("Chiyo", "The Hiding Instructor")
         { 
-            this.SetSkill(SkillName.Hiding, 120.0, 120.0);
-            this.SetSkill(SkillName.Tracking, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Fencing, 120.0, 120.0);
-            this.SetSkill(SkillName.Stealth, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
+            this.SetSkill(SkillName.Sobrevivencia, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Perfurante, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
             this.SetSkill(SkillName.Ninjitsu, 120.0, 120.0);
         }
 		

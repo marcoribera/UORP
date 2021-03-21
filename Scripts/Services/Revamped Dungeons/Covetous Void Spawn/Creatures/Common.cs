@@ -17,9 +17,9 @@ namespace Server.Mobiles
 
             SetDamage(5, 7);
 
-            SetSkill(SkillName.MagicResist, 50, 65);
-            SetSkill(SkillName.Tactics, 70, 100);
-            SetSkill(SkillName.Wrestling, 60, 90);
+            SetSkill(SkillName.ResistenciaMagica, 50, 65);
+            SetSkill(SkillName.Anatomia, 70, 100);
+            SetSkill(SkillName.Briga, 60, 90);
 		}
 
         public override void GenerateLoot()
@@ -65,9 +65,9 @@ namespace Server.Mobiles
 
             SetDamage(5, 10);
 
-            SetSkill(SkillName.Wrestling, 10, 20);
-            SetSkill(SkillName.Tactics, 10, 20);
-            SetSkill(SkillName.MagicResist, 25, 40);
+            SetSkill(SkillName.Briga, 10, 20);
+            SetSkill(SkillName.Anatomia, 10, 20);
+            SetSkill(SkillName.ResistenciaMagica, 25, 40);
 		}
 
         public override void GenerateLoot()
@@ -110,9 +110,9 @@ namespace Server.Mobiles
 
             SetDamage(7, 12);
 
-            SetSkill(SkillName.MagicResist, 30, 40);
-            SetSkill(SkillName.Tactics, 40, 60);
-            SetSkill(SkillName.Wrestling, 40, 60);
+            SetSkill(SkillName.ResistenciaMagica, 30, 40);
+            SetSkill(SkillName.Anatomia, 40, 60);
+            SetSkill(SkillName.Briga, 40, 60);
 		}
 
         public override void GenerateLoot()
@@ -154,12 +154,11 @@ namespace Server.Mobiles
 
             SetDamage(5, 10);
 
-            SetSkill(SkillName.MagicResist, 60, 80);
-            SetSkill(SkillName.Tactics, 50, 70);
-            SetSkill(SkillName.Wrestling, 50, 70);
-            SetSkill(SkillName.Magery, 50, 70);
-            SetSkill(SkillName.EvalInt, 50, 70);
-            SetSkill(SkillName.Meditation, 50, 100);
+            SetSkill(SkillName.ResistenciaMagica, 60, 80);
+            SetSkill(SkillName.Anatomia, 50, 70);
+            SetSkill(SkillName.Briga, 50, 70);
+            SetSkill(SkillName.Arcanismo, 50, 70);
+            SetSkill(SkillName.PoderMagico, 50, 70);
 		}
 
         public override void GenerateLoot()

@@ -100,7 +100,7 @@ namespace Server.Engines.BulkOrders
 
             if (entries.Length > 0)
             {
-                double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Blacksmith);
+                double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Ferraria);
                 int amountMax;
 
                 if (theirSkill >= 70.1)

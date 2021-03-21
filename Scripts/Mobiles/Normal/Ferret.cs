@@ -36,9 +36,9 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 21, 25);
             this.SetResistance(ResistanceType.Energy, 20, 25);
 
-            this.SetSkill(SkillName.MagicResist, 4.0);
-            this.SetSkill(SkillName.Tactics, 4.0);
-            this.SetSkill(SkillName.Wrestling, 4.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 4.0);
+            this.SetSkill(SkillName.Anatomia, 4.0);
+            this.SetSkill(SkillName.Briga, 4.0);
 
             this.Tamable = true;
             this.ControlSlots = 1;

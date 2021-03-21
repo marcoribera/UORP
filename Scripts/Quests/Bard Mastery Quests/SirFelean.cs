@@ -37,7 +37,7 @@ namespace Server.Engines.Quests
             if (Owner == null)
                 return false;
 
-            if (Owner.Skills[SkillName.Musicianship].Base < 90 || Owner.Skills[SkillName.Peacemaking].Base < 90)
+            if (Owner.Skills[SkillName.Tocar].Base < 90 || Owner.Skills[SkillName.Pacificar].Base < 90)
             {
                 Owner.SendLocalizedMessage(1115703); // Your skills in this focus area are less than the required master level. (90 minimum)
                 return false;
@@ -59,9 +59,9 @@ namespace Server.Engines.Quests
         {
             base.GiveRewards();
 
-            MasteryInfo.LearnMastery(Owner, SkillName.Peacemaking, 3);
+            MasteryInfo.LearnMastery(Owner, SkillName.Pacificar, 3);
 
-            SkillMasterySpell.SetActiveMastery(Owner, SkillName.Peacemaking);
+            SkillMasterySpell.SetActiveMastery(Owner, SkillName.Pacificar);
         }
 
         public override void Serialize(GenericWriter writer)

@@ -94,7 +94,7 @@ namespace Server.Items
 
         public int GetChargesFor(Mobile m)
         {
-            int v = (int)(m.Skills[SkillName.Tailoring].Value / 5);
+            int v = (int)(m.Skills[SkillName.Costura].Value / 5);
 
             if (v < 16)
                 return 16;
@@ -159,7 +159,7 @@ namespace Server.Items
                         Consume();
                     }
                 }
-                else if (from.Skills[SkillName.Tailoring].Value >= 60.0)
+                else if (from.Skills[SkillName.Costura].Value >= 60.0)
                 {
                     bool isExceptional = false;
 

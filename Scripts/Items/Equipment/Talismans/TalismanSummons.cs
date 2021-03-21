@@ -234,9 +234,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 40, 50);
             SetResistance(ResistanceType.Energy, 30, 35);
 
-            SetSkill(SkillName.MagicResist, 70.0);
-            SetSkill(SkillName.Tactics, 90.0);
-            SetSkill(SkillName.Wrestling, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 70.0);
+            SetSkill(SkillName.Anatomia, 90.0);
+            SetSkill(SkillName.Briga, 90.0);
 		}
 
 		public SummonedAntLion(Serial serial)
@@ -283,9 +283,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.MagicResist, 125.1, 140.0);
-            SetSkill(SkillName.Tactics, 90.1, 100.0);
-            SetSkill(SkillName.Wrestling, 90.1, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 125.1, 140.0);
+            SetSkill(SkillName.Anatomia, 90.1, 100.0);
+            SetSkill(SkillName.Briga, 90.1, 100.0);
 		}
 
 		public SummonedArcticOgreLord(Serial serial)
@@ -332,11 +332,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 40, 60);
             SetResistance(ResistanceType.Energy, 40, 60);
 
-            SetSkill(SkillName.EvalInt, 80.1, 90.0);
-            SetSkill(SkillName.Magery, 80.1, 90.0);
-            SetSkill(SkillName.MagicResist, 80.1, 100.0);
-            SetSkill(SkillName.Tactics, 70.1, 90.0);
-            SetSkill(SkillName.Wrestling, 50.1, 55.0);
+            SetSkill(SkillName.PoderMagico, 80.1, 90.0);
+            SetSkill(SkillName.Arcanismo, 80.1, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 80.1, 100.0);
+            SetSkill(SkillName.Anatomia, 70.1, 90.0);
+            SetSkill(SkillName.Briga, 50.1, 55.0);
 		}
 
 		public SummonedBakeKitsune(Serial serial)
@@ -383,9 +383,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 15, 25);
             SetResistance(ResistanceType.Energy, 15, 25);
 
-            SetSkill(SkillName.MagicResist, 75.1, 100.0);
-            SetSkill(SkillName.Tactics, 55.1, 80.0);
-            SetSkill(SkillName.Wrestling, 55.1, 75.0);
+            SetSkill(SkillName.ResistenciaMagica, 75.1, 100.0);
+            SetSkill(SkillName.Anatomia, 55.1, 80.0);
+            SetSkill(SkillName.Briga, 55.1, 75.0);
 		}
 
 		public SummonedBogling(Serial serial)
@@ -430,9 +430,9 @@ namespace Server.Mobiles
 
             SetResistance(ResistanceType.Physical, 5, 10);
 
-            SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            SetSkill(SkillName.Tactics, 40.1, 60.0);
-            SetSkill(SkillName.Wrestling, 40.1, 60.0);
+            SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            SetSkill(SkillName.Anatomia, 40.1, 60.0);
+            SetSkill(SkillName.Briga, 40.1, 60.0);
 		}
 
 		public SummonedBullFrog(Serial serial)
@@ -476,9 +476,9 @@ namespace Server.Mobiles
 
             SetResistance(ResistanceType.Physical, 1, 5);
 
-            SetSkill(SkillName.MagicResist, 4.0);
-            SetSkill(SkillName.Tactics, 5.0);
-            SetSkill(SkillName.Wrestling, 5.0);
+            SetSkill(SkillName.ResistenciaMagica, 4.0);
+            SetSkill(SkillName.Anatomia, 5.0);
+            SetSkill(SkillName.Briga, 5.0);
 		}
 
 		public SummonedChicken(Serial serial)
@@ -524,9 +524,9 @@ namespace Server.Mobiles
 
             SetResistance(ResistanceType.Physical, 5, 15);
 
-            SetSkill(SkillName.MagicResist, 5.5);
-            SetSkill(SkillName.Tactics, 5.5);
-            SetSkill(SkillName.Wrestling, 5.5);
+            SetSkill(SkillName.ResistenciaMagica, 5.5);
+            SetSkill(SkillName.Anatomia, 5.5);
+            SetSkill(SkillName.Briga, 5.5);
 		}
 
 		public SummonedCow(Serial serial)
@@ -571,9 +571,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 60);
             SetResistance(ResistanceType.Energy, 30, 40);
 
-            SetSkill(SkillName.MagicResist, 75.1, 85.0);
-            SetSkill(SkillName.Tactics, 70.1, 80.0);
-            SetSkill(SkillName.Wrestling, 80.1, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 75.1, 85.0);
+            SetSkill(SkillName.Anatomia, 70.1, 80.0);
+            SetSkill(SkillName.Briga, 80.1, 90.0);
 		}
 
 		public SummonedDoppleganger(Serial serial)
@@ -622,9 +622,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 20, 30);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            SetSkill(SkillName.Tactics, 35.1, 50.0);
-            SetSkill(SkillName.Wrestling, 50.1, 65.0);
+            SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            SetSkill(SkillName.Anatomia, 35.1, 50.0);
+            SetSkill(SkillName.Briga, 50.1, 65.0);
 		}
 
 		public SummonedFrostSpider(Serial serial)
@@ -668,9 +668,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Physical, 20, 25);
             SetResistance(ResistanceType.Cold, 5, 10);
 
-            SetSkill(SkillName.MagicResist, 26.8, 44.5);
-            SetSkill(SkillName.Tactics, 29.8, 47.5);
-            SetSkill(SkillName.Wrestling, 29.8, 47.5);
+            SetSkill(SkillName.ResistenciaMagica, 26.8, 44.5);
+            SetSkill(SkillName.Anatomia, 29.8, 47.5);
+            SetSkill(SkillName.Briga, 29.8, 47.5);
 		}
 
 		public SummonedGreatHart(Serial serial)
@@ -720,9 +720,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 30, 40);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.MagicResist, 25.3, 70.0);
-            SetSkill(SkillName.Tactics, 65.1, 70.0);
-            SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 25.3, 70.0);
+            SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            SetSkill(SkillName.Briga, 60.1, 80.0);
 		}
 
 		public SummonedLavaSerpent(Serial serial)
@@ -813,10 +813,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 25, 35);
             SetResistance(ResistanceType.Energy, 25, 35);
 
-            SetSkill(SkillName.Macing, 90.1, 100.0);
-            SetSkill(SkillName.MagicResist, 125.1, 140.0);
-            SetSkill(SkillName.Tactics, 90.1, 100.0);
-            SetSkill(SkillName.Wrestling, 90.1, 100.0);
+            SetSkill(SkillName.Contusivo, 90.1, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 125.1, 140.0);
+            SetSkill(SkillName.Anatomia, 90.1, 100.0);
+            SetSkill(SkillName.Briga, 90.1, 100.0);
 		}
 
 		public SummonedOrcBrute(Serial serial)
@@ -864,9 +864,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Cold, 10, 15);
             SetResistance(ResistanceType.Poison, 5, 10);
 
-            SetSkill(SkillName.MagicResist, 15.1, 30.0);
-            SetSkill(SkillName.Tactics, 50.1, 65.0);
-            SetSkill(SkillName.Wrestling, 50.1, 65.0);
+            SetSkill(SkillName.ResistenciaMagica, 15.1, 30.0);
+            SetSkill(SkillName.Anatomia, 50.1, 65.0);
+            SetSkill(SkillName.Briga, 50.1, 65.0);
 		}
 
 		public SummonedPanther(Serial serial)
@@ -910,9 +910,9 @@ namespace Server.Mobiles
 
             SetResistance(ResistanceType.Physical, 5, 10);
 
-            SetSkill(SkillName.MagicResist, 5.0);
-            SetSkill(SkillName.Tactics, 6.0);
-            SetSkill(SkillName.Wrestling, 5.0);
+            SetSkill(SkillName.ResistenciaMagica, 5.0);
+            SetSkill(SkillName.Anatomia, 6.0);
+            SetSkill(SkillName.Briga, 5.0);
 		}
 
 		public SummonedSheep(Serial serial)
@@ -960,9 +960,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 20, 30);
             SetResistance(ResistanceType.Energy, 30, 40);
 
-            SetSkill(SkillName.MagicResist, 65.1, 80.0);
-            SetSkill(SkillName.Tactics, 85.1, 100.0);
-            SetSkill(SkillName.Wrestling, 85.1, 95.0);
+            SetSkill(SkillName.ResistenciaMagica, 65.1, 80.0);
+            SetSkill(SkillName.Anatomia, 85.1, 100.0);
+            SetSkill(SkillName.Briga, 85.1, 95.0);
 		}
 
 		public SummonedSkeletalKnight(Serial serial)
@@ -1005,9 +1005,9 @@ namespace Server.Mobiles
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetSkill(SkillName.MagicResist, 200.0);
-            SetSkill(SkillName.Tactics, 5.0);
-            SetSkill(SkillName.Wrestling, 5.0);
+            SetSkill(SkillName.ResistenciaMagica, 200.0);
+            SetSkill(SkillName.Anatomia, 5.0);
+            SetSkill(SkillName.Briga, 5.0);
 
 			Timer.DelayCall(TimeSpan.FromMinutes(30.0), BeginTunnel);
 		}
@@ -1074,9 +1074,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 30, 40);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.MagicResist, 70.1, 95.0);
-            SetSkill(SkillName.Tactics, 45.1, 70.0);
-            SetSkill(SkillName.Wrestling, 50.1, 70.0);
+            SetSkill(SkillName.ResistenciaMagica, 70.1, 95.0);
+            SetSkill(SkillName.Anatomia, 45.1, 70.0);
+            SetSkill(SkillName.Briga, 50.1, 70.0);
 		}
 
 		public SummonedWailingBanshee(Serial serial)

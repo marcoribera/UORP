@@ -45,7 +45,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Carpentry;
+                return SkillName.Carpintaria;
             }
         }
 
@@ -157,18 +157,18 @@ namespace Server.Engines.Craft
                 AddRes(index, typeof(BlankScroll), 1044377, 10, 1044378);
 
                 index = AddCraft(typeof(ShojiScreen), 1044294, 1029423, 80.0, 105.0, typeof(Board), 1044041, 75, 1044351);
-                AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+                AddSkill(index, SkillName.Costura, 50.0, 55.0);
                 AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
                 index = AddCraft(typeof(BambooScreen), 1044294, 1029428, 80.0, 105.0, typeof(Board), 1044041, 75, 1044351);
-                AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+                AddSkill(index, SkillName.Costura, 50.0, 55.0);
                 AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
             }
 
             if (Core.AOS)	//Duplicate Entries to preserve ordering depending on era
             {
                 index = AddCraft(typeof(FishingPole), 1044294, 1023519, 68.4, 93.4, typeof(Board), 1044041, 5, 1044351); //This is in the categor of Other during AoS
-                AddSkill(index, SkillName.Tailoring, 40.0, 45.0);
+                AddSkill(index, SkillName.Costura, 40.0, 45.0);
                 AddRes(index, typeof(Cloth), 1044286, 5, 1044287);
             }
 
@@ -223,7 +223,7 @@ namespace Server.Engines.Craft
             if (Core.SA)
             {
                 index = AddCraft(typeof(GargishBanner), 1044294, 1095312, 94.7, 115.0, typeof(Board), 1044041, 50, 1044351);
-                AddSkill(index, SkillName.Tailoring, 75.0, 105.0);
+                AddSkill(index, SkillName.Costura, 75.0, 105.0);
                 AddRes(index, typeof(Cloth), 1044286, 50, 1044287);
 
                 index = AddCraft(typeof(Incubator), 1044294, 1112479, 90.0, 115.0, typeof(Board), 1044041, 100, 1044351);
@@ -231,7 +231,7 @@ namespace Server.Engines.Craft
                 index = AddCraft(typeof(ChickenCoop), 1044294, 1112570, 90.0, 115.0, typeof(Board), 1044041, 150, 1044351);
 
                 index = AddCraft(typeof(ExodusSummoningAlter), 1044294, 1153502, 95.0, 120.0, typeof(Board), 1044041, 100, 1044351);
-                AddSkill(index, SkillName.Magery, 75.0, 120.0);
+                AddSkill(index, SkillName.Arcanismo, 75.0, 120.0);
                 AddRes(index, typeof(Granite), 1044607, 10, 1044253);
                 AddRes(index, typeof(SmallPieceofBlackrock), 1150016, 10, 1044253);
                 AddRes(index, typeof(NexusCore), 1153501, 1, 1044253);                
@@ -306,7 +306,7 @@ namespace Server.Engines.Craft
             }
 
             index = AddCraft(typeof(UpholsteredChairDeed), 1044291, 1154173, 70.0, 110.0, typeof(Board), 1044041, 40, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 12, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
             #endregion
@@ -570,68 +570,68 @@ namespace Server.Engines.Craft
 
             // Instruments
             index = AddCraft(typeof(LapHarp), 1044293, 1023762, 63.1, 88.1, typeof(Board), 1044041, 20, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             index = AddCraft(typeof(Harp), 1044293, 1023761, 78.9, 103.9, typeof(Board), 1044041, 35, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 15, 1044287);
 
             index = AddCraft(typeof(Drums), 1044293, 1023740, 57.8, 82.8, typeof(Board), 1044041, 20, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             index = AddCraft(typeof(Lute), 1044293, 1023763, 68.4, 93.4, typeof(Board), 1044041, 25, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             index = AddCraft(typeof(Tambourine), 1044293, 1023741, 57.8, 82.8, typeof(Board), 1044041, 15, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             index = AddCraft(typeof(TambourineTassel), 1044293, 1044320, 57.8, 82.8, typeof(Board), 1044041, 15, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 15, 1044287);
 
             if (Core.SE)
             {
                 index = AddCraft(typeof(BambooFlute), 1044293, 1030247, 80.0, 105.0, typeof(Board), 1044041, 15, 1044351);
-                AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+                AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             }
 
             if (Core.SA)
             {
                 index = AddCraft(typeof(AudChar), 1044293, 1095315, 78.9, 103.9, typeof(Board), 1044041, 35, 1044351);
-                AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+                AddSkill(index, SkillName.Tocar, 45.0, 50.0);
                 AddRes(index, typeof(Granite), 1044514, 3, 1044513);
 
                 index = AddCraft(typeof(SnakeCharmerFlute), 1044293, 1112174, 80.0, 105.0, typeof(Board), 1044041, 15, 1044351);
-                AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+                AddSkill(index, SkillName.Tocar, 45.0, 50.0);
                 AddRes(index, typeof(LuminescentFungi), 1073475, 3, 1044253);
             }
 
             index = AddCraft(typeof(CelloDeed), 1044293, 1098390, 75.0, 105.0, typeof(Board), 1044041, 15, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(Cloth), 1044286, 5, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(WallMountedBellSouthDeed), 1044293, 1154162, 75.0, 105.0, typeof(Board), 1044041, 50, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(IronIngot), 1044036, 50, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(WallMountedBellEastDeed), 1044293, 1154163, 75.0, 105.0, typeof(Board), 1044041, 50, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(IronIngot), 1044036, 50, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(TrumpetDeed), 1044293, 1098388, 85.0, 105.0, typeof(Board), 1044041, 10, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(IronIngot), 1044036, 15, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(CowBellDeed), 1044293, 1098418, 85.0, 105.0, typeof(Board), 1044041, 10, 1044351);
-            AddSkill(index, SkillName.Musicianship, 45.0, 50.0);
+            AddSkill(index, SkillName.Tocar, 45.0, 50.0);
             AddRes(index, typeof(IronIngot), 1044036, 15, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
@@ -655,13 +655,13 @@ namespace Server.Engines.Craft
                 ForceNonExceptional(index);
 
 				index = AddCraft(typeof(TallElvenBedSouthDeed), 1044290, 1072858, 94.7, 119.7, typeof(Board), 1044041, 200, 1044351);
-                AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+                AddSkill(index, SkillName.Costura, 75.0, 80.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
                 AddRecipe(index, (int)CarpRecipes.TallElvenBedSouth);
                 ForceNonExceptional(index);
 
                 index = AddCraft(typeof(TallElvenBedEastDeed), 1044290, 1072859, 94.7, 119.7, typeof(Board), 1044041, 200, 1044351);
-                AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+                AddSkill(index, SkillName.Costura, 75.0, 80.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
                 AddRecipe(index, (int)CarpRecipes.TallElvenBedEast);
                 ForceNonExceptional(index);
@@ -693,19 +693,19 @@ namespace Server.Engines.Craft
             #endregion
 
             index = AddCraft(typeof(SmallBedSouthDeed), 1044290, 1044321, 94.7, 119.8, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
             index = AddCraft(typeof(SmallBedEastDeed), 1044290, 1044322, 94.7, 119.8, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
             index = AddCraft(typeof(LargeBedSouthDeed), 1044290, 1044323, 94.7, 119.8, typeof(Board), 1044041, 150, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 150, 1044287);
 
             index = AddCraft(typeof(LargeBedEastDeed), 1044290, 1044324, 94.7, 119.8, typeof(Board), 1044041, 150, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 150, 1044287);
 
             AddCraft(typeof(DartBoardSouthDeed), 1044290, 1044325, 15.7, 40.7, typeof(Board), 1044041, 5, 1044351);
@@ -713,11 +713,11 @@ namespace Server.Engines.Craft
             AddCraft(typeof(BallotBoxDeed), 1044290, 1044327, 47.3, 72.3, typeof(Board), 1044041, 5, 1044351);
 
             index = AddCraft(typeof(PentagramDeed), 1044290, 1044328, 100.0, 125.0, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Magery, 75.0, 80.0);
+            AddSkill(index, SkillName.Arcanismo, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 40, 1044037);
 
             index = AddCraft(typeof(AbbatoirDeed), 1044290, 1044329, 100.0, 125.0, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Magery, 50.0, 55.0);
+            AddSkill(index, SkillName.Arcanismo, 50.0, 55.0);
             AddRes(index, typeof(IronIngot), 1044036, 40, 1044037);
 
             if (Core.SA)
@@ -754,62 +754,62 @@ namespace Server.Engines.Craft
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyLoveseatSouthDeed), 1044290, 1154137, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 24, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyLoveseatEastDeed), 1044290, 1154138, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 24, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyCouchSouthDeed), 1044290, 1154139, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyCouchEastDeed), 1044290, 1154140, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(PlushLoveseatSouthDeed), 1044290, 1154135, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 24, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(PlushLoveseatEastDeed), 1044290, 1154136, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 24, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(PlantTapestrySouthDeed), 1044290, 1154146, 85.0, 110.0, typeof(Board), 1044041, 12, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 50, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(PlantTapestryEastDeed), 1044290, 1154147, 85.0, 110.0, typeof(Board), 1044041, 12, 1044351);
-            AddSkill(index, SkillName.Tailoring, 75.0, 80.0);
+            AddSkill(index, SkillName.Costura, 75.0, 80.0);
             AddRes(index, typeof(Cloth), 1044286, 50, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(MetalTableSouthDeed), 1044290, 1154154, 80.0, 105.0, typeof(Board), 1044041, 20, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 15, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(MetalTableEastDeed), 1044290, 1154155, 80.0, 105.0, typeof(Board), 1044041, 20, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 15, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(LongMetalTableSouthDeed), 1044290, 1154164, 80.0, 105.0, typeof(Board), 1044041, 40, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 30, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(LongMetalTableEastDeed), 1044290, 1154165, 80.0, 105.0, typeof(Board), 1044041, 40, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 30, 1044037);
             SetNeededThemePack(index, ThemePack.Kings);
 
@@ -826,52 +826,52 @@ namespace Server.Engines.Craft
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(SmallDisplayCaseSouthDeed), 1044290, 1155842, 95.0, 120.0, typeof(Board), 1044041, 40, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 10, 1044037);
 
             index = AddCraft(typeof(SmallDisplayCaseEastDeed), 1044290, 1155843, 95.0, 120.0, typeof(Board), 1044041, 40, 1044351);
-            AddSkill(index, SkillName.Tinkering, 75.0, 80.0);
+            AddSkill(index, SkillName.Mecanica, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 10, 1044037);
 
             index = AddCraft(typeof(FancyLoveseatNorthDeed), 1044290, 1156560, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyLoveseatWestDeed), 1044290, 1156561, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyCouchNorthDeed), 1044290, 1156582, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             index = AddCraft(typeof(FancyCouchWestDeed), 1044290, 1156583, 70.0, 120.0, typeof(Board), 1044041, 80, 1044351);
-            AddSkill(index, SkillName.Tailoring, 55.0, 60.0);
+            AddSkill(index, SkillName.Costura, 55.0, 60.0);
             AddRes(index, typeof(Cloth), 1044286, 48, 1044287);
             SetNeededThemePack(index, ThemePack.Kings);
 
             // Tailoring and Cooking
             index = AddCraft(typeof(DressformFront), 1044298, 1044339, 63.1, 88.1, typeof(Board), 1044041, 25, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             index = AddCraft(typeof(DressformSide), 1044298, 1044340, 63.1, 88.1, typeof(Board), 1044041, 25, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 10, 1044287);
 
             #region Mondain's Legacy
             if (Core.ML)
             {
                 index = AddCraft(typeof(ElvenSpinningwheelEastDeed), 1044298, 1073393, 75.0, 100.0, typeof(Board), 1044041, 60, 1044351);
-                AddSkill(index, SkillName.Tailoring, 65.0, 85.0);
+                AddSkill(index, SkillName.Costura, 65.0, 85.0);
                 AddRes(index, typeof(Cloth), 1044286, 40, 1044287);
                 ForceNonExceptional(index);
 
                 index = AddCraft(typeof(ElvenSpinningwheelSouthDeed), 1044298, 1072878, 75.0, 100.0, typeof(Board), 1044041, 60, 1044351);
-                AddSkill(index, SkillName.Tailoring, 65.0, 85.0);
+                AddSkill(index, SkillName.Costura, 65.0, 85.0);
                 AddRes(index, typeof(Cloth), 1044286, 40, 1044287);
                 ForceNonExceptional(index);
 
@@ -884,35 +884,35 @@ namespace Server.Engines.Craft
             #endregion
 
             index = AddCraft(typeof(SpinningwheelEastDeed), 1044298, 1044341, 73.6, 98.6, typeof(Board), 1044041, 75, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 25, 1044287);
 
             index = AddCraft(typeof(SpinningwheelSouthDeed), 1044298, 1044342, 73.6, 98.6, typeof(Board), 1044041, 75, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 25, 1044287);
 
             index = AddCraft(typeof(LoomEastDeed), 1044298, 1044343, 84.2, 109.2, typeof(Board), 1044041, 85, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 25, 1044287);
 
             index = AddCraft(typeof(LoomSouthDeed), 1044298, 1044344, 84.2, 109.2, typeof(Board), 1044041, 85, 1044351);
-            AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
+            AddSkill(index, SkillName.Costura, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 25, 1044287);            
 
             index = AddCraft(typeof(StoneOvenEastDeed), 1044298, 1044345, 68.4, 93.4, typeof(Board), 1044041, 85, 1044351);
-            AddSkill(index, SkillName.Tinkering, 50.0, 55.0);
+            AddSkill(index, SkillName.Mecanica, 50.0, 55.0);
             AddRes(index, typeof(IronIngot), 1044036, 125, 1044037);
 
             index = AddCraft(typeof(StoneOvenSouthDeed), 1044298, 1044346, 68.4, 93.4, typeof(Board), 1044041, 85, 1044351);
-            AddSkill(index, SkillName.Tinkering, 50.0, 55.0);
+            AddSkill(index, SkillName.Mecanica, 50.0, 55.0);
             AddRes(index, typeof(IronIngot), 1044036, 125, 1044037);
 
             index = AddCraft(typeof(FlourMillEastDeed), 1044298, 1044347, 94.7, 119.7, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Tinkering, 50.0, 55.0);
+            AddSkill(index, SkillName.Mecanica, 50.0, 55.0);
             AddRes(index, typeof(IronIngot), 1044036, 50, 1044037);
 
             index = AddCraft(typeof(FlourMillSouthDeed), 1044298, 1044348, 94.7, 119.7, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.Tinkering, 50.0, 55.0);
+            AddSkill(index, SkillName.Mecanica, 50.0, 55.0);
             AddRes(index, typeof(IronIngot), 1044036, 50, 1044037);
 
             AddCraft(typeof(WaterTroughEastDeed), 1044298, 1044349, 94.7, 119.7, typeof(Board), 1044041, 150, 1044351);
@@ -931,7 +931,7 @@ namespace Server.Engines.Craft
             if (Core.SA)
             {
                 index = AddCraft(typeof(SoulForgeDeed), 1111809, 1095827, 100.0, 200.0, typeof(Board), 1044041, 150, 1044351);
-                AddSkill(index, SkillName.Imbuing, 75.0, 80.0);
+                AddSkill(index, SkillName.ImbuirMagica, 75.0, 80.0);
                 AddRes(index, typeof(IronIngot), 1044036, 150, 1044037);
                 AddRes(index, typeof(RelicFragment), 1031699, 1, 1044253);
                 ForceNonExceptional(index);
@@ -939,40 +939,40 @@ namespace Server.Engines.Craft
             #endregion
 
             index = AddCraft(typeof(SmallForgeDeed), 1111809, 1044330, 73.6, 98.6, typeof(Board), 1044041, 5, 1044351);
-            AddSkill(index, SkillName.Blacksmith, 75.0, 80.0);
+            AddSkill(index, SkillName.Ferraria, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 75, 1044037);
 
             index = AddCraft(typeof(LargeForgeEastDeed), 1111809, 1044331, 78.9, 103.9, typeof(Board), 1044041, 5, 1044351);
-            AddSkill(index, SkillName.Blacksmith, 80.0, 85.0);
+            AddSkill(index, SkillName.Ferraria, 80.0, 85.0);
             AddRes(index, typeof(IronIngot), 1044036, 100, 1044037);
 
             index = AddCraft(typeof(LargeForgeSouthDeed), 1111809, 1044332, 78.9, 103.9, typeof(Board), 1044041, 5, 1044351);
-            AddSkill(index, SkillName.Blacksmith, 80.0, 85.0);
+            AddSkill(index, SkillName.Ferraria, 80.0, 85.0);
             AddRes(index, typeof(IronIngot), 1044036, 100, 1044037);
 
             index = AddCraft(typeof(AnvilEastDeed), 1111809, 1044333, 73.6, 98.6, typeof(Board), 1044041, 5, 1044351);
-            AddSkill(index, SkillName.Blacksmith, 75.0, 80.0);
+            AddSkill(index, SkillName.Ferraria, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 150, 1044037);
 
             index = AddCraft(typeof(AnvilSouthDeed), 1111809, 1044334, 73.6, 98.6, typeof(Board), 1044041, 5, 1044351);
-            AddSkill(index, SkillName.Blacksmith, 75.0, 80.0);
+            AddSkill(index, SkillName.Ferraria, 75.0, 80.0);
             AddRes(index, typeof(IronIngot), 1044036, 150, 1044037);
 
             // Training
             index = AddCraft(typeof(TrainingDummyEastDeed), 1044297, 1044335, 68.4, 93.4, typeof(Board), 1044041, 55, 1044351);
-            AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+            AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
             index = AddCraft(typeof(TrainingDummySouthDeed), 1044297, 1044336, 68.4, 93.4, typeof(Board), 1044041, 55, 1044351);
-            AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+            AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
             index = AddCraft(typeof(PickpocketDipEastDeed), 1044297, 1044337, 73.6, 98.6, typeof(Board), 1044041, 65, 1044351);
-            AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+            AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
             index = AddCraft(typeof(PickpocketDipSouthDeed), 1044297, 1044338, 73.6, 98.6, typeof(Board), 1044041, 65, 1044351);
-            AddSkill(index, SkillName.Tailoring, 50.0, 55.0);
+            AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
             MarkOption = true;

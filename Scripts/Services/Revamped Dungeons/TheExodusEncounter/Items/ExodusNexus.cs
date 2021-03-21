@@ -415,7 +415,7 @@ namespace Server.Items
                     this.AddImage(119 + 40 * nextNode.X, 143 + 40 * nextNode.Y, 0x939);
                 }
 
-                if (from.Skills.Lockpicking.Value >= 65.0)
+                if (from.Skills.Mecanica.Value >= 65.0)
                 {
                     this.AddButton(365, 350, 0xFA6, 0xFA7, 5, GumpButtonType.Reply, 0);
                     this.AddHtmlLocalized(405, 345, 140, 40, 1153750, false, false); // Attempt to Decipher the Circuit Path
@@ -448,7 +448,7 @@ namespace Server.Items
 
                 if (info.ButtonID == 5) // Attempt to Decipher
                 {
-                    double lockpicking = this.m_From.Skills.Lockpicking.Value;
+                    double lockpicking = this.m_From.Skills.Mecanica.Value;
 
                     if (lockpicking < 65.0)
                         return;

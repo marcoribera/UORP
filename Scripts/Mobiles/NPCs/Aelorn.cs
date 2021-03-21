@@ -70,7 +70,7 @@ namespace Server.Engines.Quests
         public CleansingOldHavenQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Chivalry, 50, "Old Haven Training", 1077720, 1077721));
+            this.AddObjective(new ApprenticeObjective(SkillName.Ordem, 50, "Old Haven Training", 1077720, 1077721));
 			
             // 1077720 Your Chivalry potential is greatly enhanced while questing in this area.
             // 1077721 You are not in the quest area for Apprentice Paladin. Your Chivalry potential is not enhanced here.
@@ -89,7 +89,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Chivalry.Base < 50;
+                return this.Owner.Skills.Ordem.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -142,13 +142,12 @@ namespace Server.Engines.Quests
         public Aelorn()
             : base("Aelorn", "The Chivalry Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
-            this.SetSkill(SkillName.Chivalry, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
+            this.SetSkill(SkillName.Ordem, 120.0, 120.0);
         }
 		
         public Aelorn(Serial serial)

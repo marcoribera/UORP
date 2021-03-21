@@ -7,11 +7,11 @@ namespace Server.Mobiles
 {
 	public class MysticAI : MageAI
 	{
-		public override SkillName CastSkill { get { return SkillName.Mysticism; } }
+		public override SkillName CastSkill { get { return SkillName.Misticismo; } }
 
 		public override bool UsesMagery
 		{
-			get { return m_Mobile.Skills[SkillName.Magery].Base >= 20.0 && !m_Mobile.Controlled; }
+			get { return m_Mobile.Skills[SkillName.Arcanismo].Base >= 20.0 && !m_Mobile.Controlled; }
 		}
 
 		public MysticAI(BaseCreature m)

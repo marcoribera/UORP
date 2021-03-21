@@ -16,7 +16,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Forensics].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Percepcao].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
@@ -38,7 +38,7 @@ namespace Server.SkillHandlers
 
             protected override void OnTarget(Mobile from, object target)
             {
-                double skill = from.Skills[SkillName.Forensics].Value;
+                double skill = from.Skills[SkillName.Percepcao].Value;
                 double minSkill = 30.0;
 
                 if (target is Corpse)
@@ -49,7 +49,7 @@ namespace Server.SkillHandlers
                         return;
                     }
 
-                    if (from.CheckTargetSkill(SkillName.Forensics, target, minSkill, 55.0))
+                    if (from.CheckTargetSkill(SkillName.Percepcao, target, minSkill, 55.0))
                     {
                         Corpse c = (Corpse)target;
 
@@ -91,7 +91,7 @@ namespace Server.SkillHandlers
                     {
                         from.SendLocalizedMessage(501003);//You notice nothing unusual.
                     }
-                    else if (from.CheckTargetSkill(SkillName.Forensics, target, 36.0, 100.0))
+                    else if (from.CheckTargetSkill(SkillName.Percepcao, target, 36.0, 100.0))
                     {
                         if (target is PlayerMobile && ((PlayerMobile)target).NpcGuild == NpcGuild.ThievesGuild)
                         {
@@ -113,7 +113,7 @@ namespace Server.SkillHandlers
                     {
                         from.SendLocalizedMessage(501003); //You notice nothing unusual.
                     }
-                    else if (from.CheckTargetSkill(SkillName.Forensics, target, 41.0, 100.0))
+                    else if (from.CheckTargetSkill(SkillName.Percepcao, target, 41.0, 100.0))
                     {
                         ILockpickable p = (ILockpickable)target;
 
@@ -152,11 +152,11 @@ namespace Server.SkillHandlers
                         if (honestySocket.HonestyOwner == null)
                             Server.Services.Virtues.HonestyVirtue.AssignOwner(honestySocket);
 
-                        if (from.CheckTargetSkill(SkillName.Forensics, target, 41.0, 100.0))
+                        if (from.CheckTargetSkill(SkillName.Percepcao, target, 41.0, 100.0))
                         {
                             string region = honestySocket.HonestyRegion == null ? "an unknown place" : honestySocket.HonestyRegion;
 
-                            if (from.Skills.Forensics.Value >= 61.0)
+                            if (from.Skills.Percepcao.Value >= 61.0)
                             {
                                 from.SendLocalizedMessage(1151521, String.Format("{0}\t{1}", honestySocket.HonestyOwner.Name, region)); // This item belongs to ~1_val~ who lives in ~2_val~.
                             }

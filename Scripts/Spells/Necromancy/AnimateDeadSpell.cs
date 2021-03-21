@@ -326,8 +326,8 @@ namespace Server.Spells.Necromancy
             if (owner == null)
                 return;
 
-            double necromancy = caster.Skills[SkillName.Necromancy].Value;
-            double spiritSpeak = caster.Skills[SkillName.SpiritSpeak].Value;
+            double necromancy = caster.Skills[SkillName.Necromancia].Value;
+            double spiritSpeak = caster.Skills[SkillName.PoderMagico].Value;
 
             int casterAbility = 0;
 

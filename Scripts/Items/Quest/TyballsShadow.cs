@@ -35,10 +35,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 70);
             SetResistance(ResistanceType.Energy, 70);
 
-            SetSkill(SkillName.Magery, 100.0);
-            SetSkill(SkillName.MagicResist, 120.0);
-            SetSkill(SkillName.Tactics, 100.0);
-            SetSkill(SkillName.Wrestling, 100.0);
+            SetSkill(SkillName.Arcanismo, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 120.0);
+            SetSkill(SkillName.Anatomia, 100.0);
+            SetSkill(SkillName.Briga, 100.0);
 
             SetWearable(new ShroudOfTheCondemned(), -1, 0.1);
 

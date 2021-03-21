@@ -20,8 +20,8 @@ namespace Server.Spells.SkillMasteries
         public override int RequiredMana { get { return 25; } }
         public override bool PartyEffects { get { return true; } }
 
-        public override SkillName CastSkill { get { return SkillName.Archery; } }
-        public override SkillName DamageSkill { get { return SkillName.Tactics; } }
+        public override SkillName CastSkill { get { return SkillName.Atirar; } }
+        public override SkillName DamageSkill { get { return SkillName.Anatomia; } }
 
         private int _HCIBonus;
         private int _SSIBonus;

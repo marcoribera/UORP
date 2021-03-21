@@ -101,7 +101,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Throwing;
+                return SkillName.Atirar;
             }
         }
 
@@ -117,7 +117,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Throwing;
+                return SkillName.Atirar;
             }
         }
 

@@ -13,7 +13,7 @@ namespace Server.Items
 
         [Constructable]
         public StatCapScroll(int value)
-            : base(SkillName.Alchemy, value)
+            : base(SkillName.Alquimia, value)
         {
             Hue = 0x481;
         }

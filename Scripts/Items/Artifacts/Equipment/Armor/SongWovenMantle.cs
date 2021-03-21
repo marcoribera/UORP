@@ -9,7 +9,7 @@ namespace Server.Items
         public SongWovenMantle()
         {
             Hue = 0x493;
-            SkillBonuses.SetValues(0, SkillName.Musicianship, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Tocar, 10.0);
 
             Attributes.Luck = 100;
             Attributes.DefendChance = 5;

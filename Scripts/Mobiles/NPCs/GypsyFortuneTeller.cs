@@ -10,7 +10,7 @@ namespace Server.Mobiles
 		public GypsyFortuneTeller()
 		{
 			Title = "the fortune teller";
-			SetSkill(SkillName.Begging, 64.0, 100.0);
+			SetSkill(SkillName.Carisma, 64.0, 100.0);
 		}
 
 		public GypsyFortuneTeller(Serial serial)

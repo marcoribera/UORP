@@ -8,7 +8,7 @@ namespace Server.Items
         [Constructable]
         public Runesabre()
         {
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 5.0);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 5.0);
             WeaponAttributes.MageWeapon = -29;
         }
 

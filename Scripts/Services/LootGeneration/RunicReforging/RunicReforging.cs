@@ -1615,7 +1615,7 @@ namespace Server.Items
 
             if (skillbonuses == null)
             {
-                return SkillName.Alchemy;
+                return SkillName.Alquimia;
             }
 
             SkillName[] possibleSkills = m_Skills;
@@ -1629,8 +1629,8 @@ namespace Server.Items
                 found = false;
                 sk = possibleSkills[Utility.Random(possibleSkills.Length)];
 
-                if ((item is GargishRing || item is GargishBracelet) && sk == SkillName.Archery)
-                    sk = SkillName.Throwing;
+                if ((item is GargishRing || item is GargishBracelet) && sk == SkillName.Atirar)
+                    sk = SkillName.Atirar;
 
                 for (int i = 0; !found && i < 5; ++i)
                     found = (skillbonuses.GetValues(i, out check, out bonus) && check == sk);
@@ -1743,32 +1743,31 @@ namespace Server.Items
 
         private static readonly SkillName[] m_Skills = new SkillName[]
         {
-            SkillName.Swords,
-            SkillName.Fencing,
-            SkillName.Macing,
-            SkillName.Archery,
-            SkillName.Wrestling,
-            SkillName.Parry,
-            SkillName.Tactics,
-            SkillName.Anatomy,
-            SkillName.Healing,
-            SkillName.Magery,
-            SkillName.Meditation,
-            SkillName.EvalInt,
-            SkillName.MagicResist,
-            SkillName.AnimalTaming,
-            SkillName.AnimalLore,
-            SkillName.Veterinary,
-            SkillName.Musicianship,
-            SkillName.Provocation,
-            SkillName.Discordance,
-            SkillName.Peacemaking,
-            SkillName.Chivalry,
-            SkillName.Focus,
-            SkillName.Necromancy,
-            SkillName.Stealing,
-            SkillName.Stealth,
-            SkillName.SpiritSpeak,
+            SkillName.Cortante,
+            SkillName.Perfurante,
+            SkillName.Contusivo,
+            SkillName.Atirar,
+            SkillName.Briga,
+            SkillName.Bloqueio,
+            SkillName.Anatomia,
+            SkillName.Anatomia,
+            SkillName.Medicina,
+            SkillName.Arcanismo,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica,
+            SkillName.Adestramento,
+            SkillName.Adestramento,
+            SkillName.Veterinaria,
+            SkillName.Tocar,
+            SkillName.Provocacao,
+            SkillName.Caos,
+            SkillName.Pacificar,
+            SkillName.Ordem,
+            SkillName.PreparoFisico,
+            SkillName.Necromancia,
+            SkillName.Prestidigitacao,
+            SkillName.Furtividade,
+            SkillName.PoderMagico,
             SkillName.Bushido,
             SkillName.Ninjitsu
         };

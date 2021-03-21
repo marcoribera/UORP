@@ -36,14 +36,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 40, 50);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.Wrestling, 90.1, 100.0);
-            SetSkill(SkillName.Tactics, 90.1, 100.0);
-            SetSkill(SkillName.MagicResist, 100.5, 150.0);
-            SetSkill(SkillName.Magery, 95.5, 100.0);
-            SetSkill(SkillName.Anatomy, 25.1, 50.0);
-            SetSkill(SkillName.EvalInt, 90.1, 100.0);
-            SetSkill(SkillName.Meditation, 95.1, 120.0);
-			SetSkill(SkillName.DetectHidden, 100.0);
+            SetSkill(SkillName.Briga, 90.1, 100.0);
+            SetSkill(SkillName.Anatomia, 90.1, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 100.5, 150.0);
+            SetSkill(SkillName.Arcanismo, 95.5, 100.0);
+            SetSkill(SkillName.Anatomia, 25.1, 50.0);
+            SetSkill(SkillName.PoderMagico, 90.1, 100.0);
+			SetSkill(SkillName.Percepcao, 100.0);
 
             Fame = 15000;
             Karma = 0;

@@ -7,11 +7,11 @@ namespace Server.Items
 		public override bool IsArtifact { get { return true; } }
         private static readonly SkillName[] m_PossibleBonusSkills = new SkillName[]
         {
-            SkillName.Archery,
-            SkillName.Healing,
-            SkillName.MagicResist,
-            SkillName.Peacemaking,
-            SkillName.Chivalry,
+            SkillName.Atirar,
+            SkillName.Medicina,
+            SkillName.ResistenciaMagica,
+            SkillName.Pacificar,
+            SkillName.Ordem,
             SkillName.Ninjitsu
         };
         [Constructable]

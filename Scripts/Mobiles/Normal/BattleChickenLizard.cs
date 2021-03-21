@@ -25,9 +25,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Physical, 15, 20);
             SetResistance(ResistanceType.Fire, 5, 15);
 
-            SetSkill(SkillName.MagicResist, 30.0, 53.0);
-            SetSkill(SkillName.Tactics, 50.0, 62.0);
-            SetSkill(SkillName.Wrestling, 50.0, 62.0);
+            SetSkill(SkillName.ResistenciaMagica, 30.0, 53.0);
+            SetSkill(SkillName.Anatomia, 50.0, 62.0);
+            SetSkill(SkillName.Briga, 50.0, 62.0);
 
             Tamable = true;
             ControlSlots = 1;

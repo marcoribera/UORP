@@ -52,10 +52,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 25, 35);
             this.SetResistance(ResistanceType.Energy, 25, 35);
 
-            this.SetSkill(SkillName.Fencing, 90.1, 100.0);
-            this.SetSkill(SkillName.Tactics, 90.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 80.1, 90.0);
-            this.SetSkill(SkillName.Anatomy, 90.1, 100.0);
+            this.SetSkill(SkillName.Perfurante, 90.1, 100.0);
+            this.SetSkill(SkillName.Anatomia, 90.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 80.1, 90.0);
+            this.SetSkill(SkillName.Anatomia, 90.1, 100.0);
 
             this.Fame = 5000;
             this.Karma = -1000;

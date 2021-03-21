@@ -32,15 +32,15 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 10, 20);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Anatomy, 125.0);
-            this.SetSkill(SkillName.Fencing, 46.0, 77.5);
-            this.SetSkill(SkillName.Macing, 35.0, 57.5);
-            this.SetSkill(SkillName.Poisoning, 60.0, 82.5);
-            this.SetSkill(SkillName.DetectHidden, 100);
-            this.SetSkill(SkillName.MagicResist, 83.5, 92.5);
-            this.SetSkill(SkillName.Swords, 125.0);
-            this.SetSkill(SkillName.Tactics, 125.0);
-            this.SetSkill(SkillName.Lumberjacking, 125.0);
+            this.SetSkill(SkillName.Anatomia, 125.0);
+            this.SetSkill(SkillName.Perfurante, 46.0, 77.5);
+            this.SetSkill(SkillName.Contusivo, 35.0, 57.5);
+            this.SetSkill(SkillName.Envenenamento, 60.0, 82.5);
+            this.SetSkill(SkillName.Percepcao, 100);
+            this.SetSkill(SkillName.ResistenciaMagica, 83.5, 92.5);
+            this.SetSkill(SkillName.Cortante, 125.0);
+            this.SetSkill(SkillName.Anatomia, 125.0);
+            this.SetSkill(SkillName.Extracao, 125.0);
 
             this.Fame = 5000;
             this.Karma = -5000;
@@ -129,7 +129,7 @@ namespace Server.Mobiles
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {
 
-            if (this.UseSkill(SkillName.DetectHidden))
+            if (this.UseSkill(SkillName.Percepcao))
                 m.RevealingAction();
             base.OnMovement(m, oldLocation);
 

@@ -100,7 +100,7 @@ namespace Server.Engines.VvV
             if (!ViceVsVirtueSystem.IsVvV(m) || ItemID != VvVTrap.HiddenID)
                 return false;
 
-            return Utility.Random(100) <= m.Skills[SkillName.DetectHidden].Value;
+            return Utility.Random(100) <= m.Skills[SkillName.Percepcao].Value;
         }
 
         public void OnRevealed(Mobile m)
@@ -129,7 +129,7 @@ namespace Server.Engines.VvV
         {
             if (m.InRange(this.Location, 6))
             {
-                int skill = (int)m.Skills[SkillName.DetectHidden].Value;
+                int skill = (int)m.Skills[SkillName.Percepcao].Value;
 
                 if (skill >= 80 && Utility.Random(600) < skill)
                     this.PrivateOverheadMessage(Server.Network.MessageType.Regular, 0x21, 500813, m.NetState); // [trapped]

@@ -36,9 +36,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 69, 75);
             SetResistance(ResistanceType.Energy, 26, 27);
 
-            SetSkill(SkillName.MagicResist, 35.0);
-            SetSkill(SkillName.Tactics, 100.0);
-            SetSkill(SkillName.Wrestling, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 35.0);
+            SetSkill(SkillName.Anatomia, 100.0);
+            SetSkill(SkillName.Briga, 100.0);
 
             SetSpecialAbility(SpecialAbility.Anemia);
         }

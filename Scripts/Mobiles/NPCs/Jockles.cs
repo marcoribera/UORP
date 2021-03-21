@@ -78,7 +78,7 @@ namespace Server.Engines.Quests
         public TheWayOfTheBladeQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Swords, 50, "Old Haven Training", 1077659, 1077660));
+            this.AddObjective(new ApprenticeObjective(SkillName.Cortante, 50, "Old Haven Training", 1077659, 1077660));
 			
             // 1077659 You feel much more attuned to your blade. Your ability to hone your Swordsmanship skill is enhanced in this area.
             // 1077660 You feel less attuned to your blade. Your Swordsmanship learning potential is no longer enhanced.
@@ -97,7 +97,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Swords.Base < 50;
+                return this.Owner.Skills.Cortante.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -138,12 +138,12 @@ namespace Server.Engines.Quests
         public Jockles()
             : base("Jockles", "The Swordsmanship Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public Jockles(Serial serial)

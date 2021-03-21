@@ -11,8 +11,8 @@ namespace Server.Mobiles
         public Glassblower()
             : base("the alchemist")
         {
-            this.SetSkill(SkillName.Alchemy, 85.0, 100.0);
-            this.SetSkill(SkillName.TasteID, 85.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 85.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 85.0, 100.0);
         }
 
         public Glassblower(Serial serial)

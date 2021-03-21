@@ -9,7 +9,7 @@ namespace Server.Engines.Quests
         public Aernya()
             : base("Aernya", "the mistress of admissions")
         { 
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Aernya(Serial serial)

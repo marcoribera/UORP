@@ -10,7 +10,7 @@ namespace Server.SkillHandlers
         private static readonly Hashtable m_UseTable = new Hashtable();
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Inscribe].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Erudicao].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
@@ -142,7 +142,7 @@ namespace Server.SkillHandlers
                     from.SendLocalizedMessage(501621); // Someone else is inscribing that item.
                 else
                 {
-                    if (from.CheckTargetSkill(SkillName.Inscribe, bookDst, 0, 50))
+                    if (from.CheckTargetSkill(SkillName.Erudicao, bookDst, 0, 50))
                     {
                         Inscribe.Copy(this.m_BookSrc, bookDst);
 

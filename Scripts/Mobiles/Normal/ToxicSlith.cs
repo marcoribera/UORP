@@ -29,10 +29,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100, 100);
             SetResistance(ResistanceType.Energy, 5, 7);
 
-            SetSkill(SkillName.MagicResist, 95.4, 98.3);
-            SetSkill(SkillName.Tactics, 85.5, 90.9);
-            SetSkill(SkillName.Wrestling, 90.4, 95.1);
-            SetSkill(SkillName.Poisoning, 90.0, 110.0);
+            SetSkill(SkillName.ResistenciaMagica, 95.4, 98.3);
+            SetSkill(SkillName.Anatomia, 85.5, 90.9);
+            SetSkill(SkillName.Briga, 90.4, 95.1);
+            SetSkill(SkillName.Envenenamento, 90.0, 110.0);
 
             SetSpecialAbility(SpecialAbility.DragonBreath);
         }

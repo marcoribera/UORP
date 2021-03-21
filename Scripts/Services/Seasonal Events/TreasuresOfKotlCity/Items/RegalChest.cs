@@ -117,7 +117,7 @@ namespace Server.Engines.TreasuresOfKotlCity
 
         public virtual bool CheckReveal(Mobile m)
         {
-            return m.CheckTargetSkill(SkillName.DetectHidden, this, 80.0, 100.0);
+            return m.CheckTargetSkill(SkillName.Percepcao, this, 80.0, 100.0);
         }
 
         public virtual void OnRevealed(Mobile m)
@@ -129,7 +129,7 @@ namespace Server.Engines.TreasuresOfKotlCity
         {
             if (m.InRange(this.Location, 4))
             {
-                int skill = (int)m.Skills[SkillName.DetectHidden].Value;
+                int skill = (int)m.Skills[SkillName.Percepcao].Value;
 
                 if (skill >= 80 && Utility.Random(300) < skill)
                     return true;

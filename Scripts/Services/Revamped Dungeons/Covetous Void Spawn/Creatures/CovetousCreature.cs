@@ -62,18 +62,17 @@ using Server.Items;
             Level = level;
             VoidSpawn = voidspawn;
 
-            SetSkill(SkillName.MagicResist, SkillStart);
-            SetSkill(SkillName.Tactics, SkillStart);
-            SetSkill(SkillName.Wrestling, SkillStart);
-            SetSkill(SkillName.Anatomy, SkillStart);
+            SetSkill(SkillName.ResistenciaMagica, SkillStart);
+            SetSkill(SkillName.Anatomia, SkillStart);
+            SetSkill(SkillName.Briga, SkillStart);
+            SetSkill(SkillName.Anatomia, SkillStart);
 
             switch (ai)
             {
                 default: break;
                 case AIType.AI_Mage:
-                    SetSkill(SkillName.Magery, SkillStart);
-                    SetSkill(SkillName.EvalInt, SkillStart);
-                    SetSkill(SkillName.Meditation, SkillStart);
+                    SetSkill(SkillName.Arcanismo, SkillStart);
+                    SetSkill(SkillName.PoderMagico, SkillStart);
                     break;
             }
 

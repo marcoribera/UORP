@@ -29,9 +29,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 17);
             SetResistance(ResistanceType.Energy, 30);
 
-            SetSkill(SkillName.Anatomy, 78.5);
-            SetSkill(SkillName.MagicResist, 82.5);
-            SetSkill(SkillName.Tactics, 65.3);
+            SetSkill(SkillName.Anatomia, 78.5);
+            SetSkill(SkillName.ResistenciaMagica, 82.5);
+            SetSkill(SkillName.Anatomia, 65.3);
 
             AddItem(new Bow());
             PackItem(new Arrow(Utility.RandomMinMax(60, 80)));

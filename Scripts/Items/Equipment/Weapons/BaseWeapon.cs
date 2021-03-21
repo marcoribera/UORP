@@ -276,7 +276,7 @@ namespace Server.Items
 		public virtual int DefMaxRange { get { return 1; } }
 		public virtual int DefHitSound { get { return 0; } }
 		public virtual int DefMissSound { get { return 0; } }
-		public virtual SkillName DefSkill { get { return SkillName.Swords; } }
+		public virtual SkillName DefSkill { get { return SkillName.Cortante; } }
 		public virtual WeaponType DefType { get { return WeaponType.Slashing; } }
 		public virtual WeaponAnimation DefAnimation { get { return WeaponAnimation.Slash1H; } }
 
@@ -320,7 +320,7 @@ namespace Server.Items
 		public override int PoisonResistance { get { return m_AosWeaponAttributes.ResistPoisonBonus; } }
 		public override int EnergyResistance { get { return m_AosWeaponAttributes.ResistEnergyBonus; } }
 
-		public virtual SkillName AccuracySkill { get { return SkillName.Tactics; } }
+		public virtual SkillName AccuracySkill { get { return SkillName.Anatomia; } }
 
         public override double DefaultWeight
         {
@@ -1180,7 +1180,7 @@ namespace Server.Items
 					m_MageMod.Remove();
 				}
 
-                m_MageMod = new DefaultSkillMod(SkillName.Magery, true, -30 + m_AosWeaponAttributes.MageWeapon);
+                m_MageMod = new DefaultSkillMod(SkillName.Arcanismo, true, -30 + m_AosWeaponAttributes.MageWeapon);
 				from.AddSkillMod(m_MageMod);
 			}
 
@@ -1323,7 +1323,7 @@ namespace Server.Items
             if (Enhancement.GetValue(from, ExtendedWeaponAttribute.MysticWeapon) > value)
                 value = Enhancement.GetValue(from, ExtendedWeaponAttribute.MysticWeapon);
 
-            m_MysticMod = new DefaultSkillMod(SkillName.Mysticism, true, -30 + value);
+            m_MysticMod = new DefaultSkillMod(SkillName.Misticismo, true, -30 + value);
             from.AddSkillMod(m_MysticMod);
         }
 
@@ -1342,30 +1342,30 @@ namespace Server.Items
 
 			if (checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0)
 			{
-				double swrd = m.Skills[SkillName.Swords].Value;
-				double fenc = m.Skills[SkillName.Fencing].Value;
-				double mcng = m.Skills[SkillName.Macing].Value;
+				double swrd = m.Skills[SkillName.Cortante].Value;
+				double fenc = m.Skills[SkillName.Perfurante].Value;
+				double mcng = m.Skills[SkillName.Contusivo].Value;
 				double val;
 
-				sk = SkillName.Swords;
+				sk = SkillName.Cortante;
 				val = swrd;
 
 				if (fenc > val)
 				{
-					sk = SkillName.Fencing;
+					sk = SkillName.Perfurante;
 					val = fenc;
 				}
 				if (mcng > val)
 				{
-					sk = SkillName.Macing;
+					sk = SkillName.Contusivo;
 					val = mcng;
 				}
 			}
 			else if (m_AosWeaponAttributes.MageWeapon != 0)
 			{
-				if (m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value)
+				if (m.Skills[SkillName.Arcanismo].Value > m.Skills[Skill].Value)
 				{
-					sk = SkillName.Magery;
+					sk = SkillName.Arcanismo;
 				}
 				else
 				{
@@ -1374,9 +1374,9 @@ namespace Server.Items
 			}
             else if (m_ExtendedWeaponAttributes.MysticWeapon != 0 || Enhancement.GetValue(m, ExtendedWeaponAttribute.MysticWeapon) > 0)
             {
-                if (m.Skills[SkillName.Mysticism].Value > m.Skills[Skill].Value)
+                if (m.Skills[SkillName.Misticismo].Value > m.Skills[Skill].Value)
                 {
-                    sk = SkillName.Mysticism;
+                    sk = SkillName.Misticismo;
                 }
                 else
                 {
@@ -1387,10 +1387,10 @@ namespace Server.Items
             {
                 sk = Skill;
 
-                if (sk != SkillName.Wrestling && !m.Player && !m.Body.IsHuman &&
-                    m.Skills[SkillName.Wrestling].Value > m.Skills[sk].Value)
+                if (sk != SkillName.Briga && !m.Player && !m.Body.IsHuman &&
+                    m.Skills[SkillName.Briga].Value > m.Skills[sk].Value)
                 {
-                    sk = SkillName.Wrestling;
+                    sk = SkillName.Briga;
                 }
             }
 
@@ -1496,7 +1496,7 @@ namespace Server.Items
                     //Distance malas
                     if (attacker.InRange(defender, 1))	//Close Quarters
                     {
-                        chance -= (.12 - (double)Math.Min(12, (attacker.Skills[SkillName.Throwing].Value + (double)attacker.RawDex) / 20) / 10);
+                        chance -= (.12 - (double)Math.Min(12, (attacker.Skills[SkillName.Atirar].Value + (double)attacker.RawDex) / 20) / 10);
                     }
                     else if (attacker.GetDistanceToSqrt(defender) < ((BaseThrown)atkWeapon).MinThrowRange) 	//too close
                     {
@@ -1508,7 +1508,7 @@ namespace Server.Items
 
                     if (shield != null)
                     {
-                        double malus = Math.Min(90, 1200 / Math.Max(1.0, attacker.Skills[SkillName.Parry].Value));
+                        double malus = Math.Min(90, 1200 / Math.Max(1.0, attacker.Skills[SkillName.Bloqueio].Value));
 
                         chance = chance - (chance * (malus / 100));
                     }
@@ -1520,7 +1520,7 @@ namespace Server.Items
 
                     if (shield != null)
                     {
-                        double malus = Math.Min(90, 1200 / Math.Max(1.0, defender.Skills[SkillName.Parry].Value));
+                        double malus = Math.Min(90, 1200 / Math.Max(1.0, defender.Skills[SkillName.Bloqueio].Value));
 
                         chance = chance + (chance * (malus / 100));
                     }
@@ -1532,8 +1532,8 @@ namespace Server.Items
                 chance = 0.02;
             }
 
-            if (Core.AOS && m_AosWeaponAttributes.MageWeapon > 0 && attacker.Skills[SkillName.Magery].Value > atkSkill.Value)
-                return attacker.CheckSkill(SkillName.Magery, chance);
+            if (Core.AOS && m_AosWeaponAttributes.MageWeapon > 0 && attacker.Skills[SkillName.Arcanismo].Value > atkSkill.Value)
+                return attacker.CheckSkill(SkillName.Arcanismo, chance);
 
 			return attacker.CheckSkill(atkSkill.SkillName, chance);
 		}
@@ -1762,7 +1762,7 @@ namespace Server.Items
 
 			BaseShield shield = defender.FindItemOnLayer(Layer.TwoHanded) as BaseShield;
 
-			double parry = defender.Skills[SkillName.Parry].Value;
+			double parry = defender.Skills[SkillName.Bloqueio].Value;
 			double bushidoNonRacial = defender.Skills[SkillName.Bushido].NonRacialValue;
 			double bushido = defender.Skills[SkillName.Bushido].Value;
 
@@ -1797,7 +1797,7 @@ namespace Server.Items
 					chance = chance * (20 + defender.Dex) / 100;
 				}
 
-                bool success = defender.CheckSkill(SkillName.Parry, chance);
+                bool success = defender.CheckSkill(SkillName.Bloqueio, chance);
 
                 if (shield != null && Core.EJ && success)
                 {
@@ -1849,7 +1849,7 @@ namespace Server.Items
 
 				if (chance > aosChance)
 				{
-                    success = defender.CheckSkill(SkillName.Parry, chance);
+                    success = defender.CheckSkill(SkillName.Bloqueio, chance);
 				}
 				else
 				{
@@ -1877,7 +1877,7 @@ namespace Server.Items
 
 			if (defender.Player || defender.Body.IsHuman || (defender is BaseCreature && 
                                                             ((BaseCreature)defender).Controlled &&
-                                                            defender.Skills[SkillName.Wrestling].Base >= 100))
+                                                            defender.Skills[SkillName.Briga].Base >= 100))
 			{
 				blocked = CheckParry(defender);
                 BaseWeapon weapon = defender.Weapon as BaseWeapon;
@@ -1931,7 +1931,7 @@ namespace Server.Items
                         #region Stygian Abyss
                         if (shield.ArmorAttributes.ReactiveParalyze > 0 && 30 > Utility.Random(100))
                         {
-                            int secs = (int)Math.Max(1, Math.Max(8, defender.Skills[SkillName.EvalInt].Value / 10) - attacker.Skills[SkillName.MagicResist].Value / 10);
+                            int secs = (int)Math.Max(1, Math.Max(8, defender.Skills[SkillName.PoderMagico].Value / 10) - attacker.Skills[SkillName.ResistenciaMagica].Value / 10);
 
                             attacker.Paralyze(TimeSpan.FromSeconds(secs));
                             attacker.PlaySound(0x204);
@@ -1945,7 +1945,7 @@ namespace Server.Items
                     #region Stygian Abyss
                     else if (weapon != null && weapon.Layer == Layer.TwoHanded && weapon.WeaponAttributes.ReactiveParalyze > 0 && 30 > Utility.Random(100))
                     {
-                        int secs = (int)Math.Max(1, Math.Max(8, defender.Skills[SkillName.EvalInt].Value / 10) - attacker.Skills[SkillName.MagicResist].Value / 10);
+                        int secs = (int)Math.Max(1, Math.Max(8, defender.Skills[SkillName.PoderMagico].Value / 10) - attacker.Skills[SkillName.ResistenciaMagica].Value / 10);
 
                         attacker.Paralyze(TimeSpan.FromSeconds(secs));
                         attacker.PlaySound(0x204);
@@ -3059,12 +3059,12 @@ namespace Server.Items
             int damage = Utility.Dice(dice, sides, bonus) * 100;
             int damageBonus = 0;
 
-            int inscribeSkill = attacker.Skills[SkillName.Inscribe].Fixed;
+            int inscribeSkill = attacker.Skills[SkillName.Erudicao].Fixed;
             int inscribeBonus = (inscribeSkill + (1000 * (inscribeSkill / 1000))) / 200;
 
             damageBonus += inscribeBonus;
             damageBonus += attacker.Int / 10;
-            damageBonus += SpellHelper.GetSpellDamageBonus(attacker, defender, SkillName.Magery, attacker is PlayerMobile && defender is PlayerMobile);
+            damageBonus += SpellHelper.GetSpellDamageBonus(attacker, defender, SkillName.Arcanismo, attacker is PlayerMobile && defender is PlayerMobile);
             damage = AOS.Scale(damage, 100 + damageBonus);
 
             if (defender != null && Feint.Registry.ContainsKey(defender) && Feint.Registry[defender].Enemy == attacker)
@@ -3769,14 +3769,14 @@ namespace Server.Items
 		{
 			if (checkSkills)
 			{
-				attacker.CheckSkill(SkillName.Tactics, 0.0, attacker.Skills[SkillName.Tactics].Cap);
+				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check tactics for gain
-				attacker.CheckSkill(SkillName.Anatomy, 0.0, attacker.Skills[SkillName.Anatomy].Cap);
+				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check Anatomy for gain
 
 				if (Type == WeaponType.Axe)
 				{
-					attacker.CheckSkill(SkillName.Lumberjacking, 0.0, 100.0); // Passively check Lumberjacking for gain
+					attacker.CheckSkill(SkillName.Extracao, 0.0, 100.0); // Passively check Lumberjacking for gain
 				}
 			}
 
@@ -3786,9 +3786,9 @@ namespace Server.Items
             * No caps apply.
             */
 			double strengthBonus = GetBonus(attacker.Str, 0.300, 100.0, 5.00);
-			double anatomyBonus = GetBonus(attacker.Skills[SkillName.Anatomy].Value, 0.500, 100.0, 5.00);
-			double tacticsBonus = GetBonus(attacker.Skills[SkillName.Tactics].Value, 0.625, 100.0, 6.25);
-			double lumberBonus = GetBonus(attacker.Skills[SkillName.Lumberjacking].Value, 0.200, 100.0, 10.00);
+			double anatomyBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.500, 100.0, 5.00);
+			double tacticsBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.625, 100.0, 6.25);
+			double lumberBonus = GetBonus(attacker.Skills[SkillName.Extracao].Value, 0.200, 100.0, 10.00);
 
 			if (Type != WeaponType.Axe)
 			{
@@ -3826,14 +3826,14 @@ namespace Server.Items
 		{
 			if (checkSkills)
 			{
-				attacker.CheckSkill(SkillName.Tactics, 0.0, attacker.Skills[SkillName.Tactics].Cap);
+				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check tactics for gain
-				attacker.CheckSkill(SkillName.Anatomy, 0.0, attacker.Skills[SkillName.Anatomy].Cap);
+				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check Anatomy for gain
 
 				if (Type == WeaponType.Axe)
 				{
-					attacker.CheckSkill(SkillName.Lumberjacking, 0.0, 100.0); // Passively check Lumberjacking for gain
+					attacker.CheckSkill(SkillName.Extracao, 0.0, 100.0); // Passively check Lumberjacking for gain
 				}
 			}
 
@@ -3842,7 +3842,7 @@ namespace Server.Items
             * :  50.0 = unchanged
             * : 100.0 = 50% bonus
             */
-			damage += (damage * ((attacker.Skills[SkillName.Tactics].Value - 50.0) / 100.0));
+			damage += (damage * ((attacker.Skills[SkillName.Anatomia].Value - 50.0) / 100.0));
 
 			/* Compute strength modifier
             * : 1% bonus for every 5 strength
@@ -3853,7 +3853,7 @@ namespace Server.Items
             * : 1% bonus for every 5 points of anatomy
             * : +10% bonus at Grandmaster or higher
             */
-			double anatomyValue = attacker.Skills[SkillName.Anatomy].Value;
+			double anatomyValue = attacker.Skills[SkillName.Anatomia].Value;
 			modifiers += ((anatomyValue / 5.0) / 100.0);
 
 			if (anatomyValue >= 100.0)
@@ -3868,7 +3868,7 @@ namespace Server.Items
 
 			if (Type == WeaponType.Axe)
 			{
-				double lumberValue = attacker.Skills[SkillName.Lumberjacking].Value;
+				double lumberValue = attacker.Skills[SkillName.Extracao].Value;
 			    lumberValue = (lumberValue/5.0)/100.0;
 			    if (lumberValue > 0.2)
 			        lumberValue = 0.2;
@@ -4875,7 +4875,7 @@ namespace Server.Items
 						if (Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 &&
 							Parent is Mobile)
 						{
-							m_MageMod = new DefaultSkillMod(SkillName.Magery, true, -30 + m_AosWeaponAttributes.MageWeapon);
+							m_MageMod = new DefaultSkillMod(SkillName.Arcanismo, true, -30 + m_AosWeaponAttributes.MageWeapon);
 							((Mobile)Parent).AddSkillMod(m_MageMod);
 						}
 
@@ -4948,7 +4948,7 @@ namespace Server.Items
 
                         if (Core.TOL && m_ExtendedWeaponAttributes.MysticWeapon != 0 && m_ExtendedWeaponAttributes.MysticWeapon != 30 && Parent is Mobile)
                         {
-                            m_MysticMod = new DefaultSkillMod(SkillName.Mysticism, true, -30 + m_ExtendedWeaponAttributes.MysticWeapon);
+                            m_MysticMod = new DefaultSkillMod(SkillName.Misticismo, true, -30 + m_ExtendedWeaponAttributes.MysticWeapon);
                             ((Mobile)Parent).AddSkillMod(m_MysticMod);
                         }
 
@@ -6154,21 +6154,21 @@ namespace Server.Items
 			{
 				switch (Skill)
 				{
-					case SkillName.Swords:
+					case SkillName.Cortante:
 						list.Add(1061172);
 						break; // skill required: swordsmanship
-					case SkillName.Macing:
+					case SkillName.Contusivo:
 						list.Add(1061173);
 						break; // skill required: mace fighting
-					case SkillName.Fencing:
+					case SkillName.Perfurante:
 						list.Add(1061174);
 						break; // skill required: fencing
-					case SkillName.Archery:
+					case SkillName.Atirar:
 						list.Add(1061175);
 						break; // skill required: archery
-                    case SkillName.Throwing:
-                        list.Add(1112075); // skill required: throwing
-                        break;
+                    //case SkillName.Atirar:
+                    //    list.Add(1112075); // skill required: throwing
+                    //    break;
                 }
 			}
 
@@ -6369,8 +6369,8 @@ namespace Server.Items
 				{
                     double div = Siege.SiegeShard ? 12.5 : 20;
 
-					Attributes.WeaponDamage += (int)(from.Skills.ArmsLore.Value / div);
-					from.CheckSkill(SkillName.ArmsLore, 0, 100);
+					Attributes.WeaponDamage += (int)(from.Skills.ConhecimentoArmas.Value / div);
+					from.CheckSkill(SkillName.ConhecimentoArmas, 0, 100);
 				}
 			}
 			else if (tool is BaseRunicTool)

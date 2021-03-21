@@ -120,11 +120,11 @@ namespace Server.Items
                 return;
             }
 
-            if (from.Skills[SkillName.Lockpicking].Value < lockpickable.RequiredSkill - SkillBonus)
+            if (from.Skills[SkillName.Mecanica].Value < lockpickable.RequiredSkill - SkillBonus)
             {
                 /*
                 // Do some training to gain skills
-                from.CheckSkill( SkillName.Lockpicking, 0, lockpickable.LockLevel );*/
+                from.CheckSkill( SkillName.Mecanica, 0, lockpickable.LockLevel );*/
                 // The LockLevel is higher thant the LockPicking of the player
                 item.SendLocalizedMessageTo(from, 502072); // You don't see how that lock can be manipulated.
                 return;
@@ -139,7 +139,7 @@ namespace Server.Items
                 maxlevel -= SkillBonus; //regulars subtract the bonus from the max level
             }
 
-            if (this is MasterSkeletonKey || from.CheckTargetSkill(SkillName.Lockpicking, lockpickable, minLevel, maxlevel))
+            if (this is MasterSkeletonKey || from.CheckTargetSkill(SkillName.Mecanica, lockpickable, minLevel, maxlevel))
             {
                 // Success! Pick the lock!
                 OnUse();

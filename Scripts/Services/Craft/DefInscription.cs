@@ -15,7 +15,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Inscribe;
+                return SkillName.Erudicao;
             }
         }
 

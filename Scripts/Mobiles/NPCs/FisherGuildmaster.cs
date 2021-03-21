@@ -8,7 +8,7 @@ namespace Server.Mobiles
         public FisherGuildmaster()
             : base("fisher")
         {
-            this.SetSkill(SkillName.Fishing, 80.0, 100.0);
+            this.SetSkill(SkillName.Sobrevivencia, 80.0, 100.0);
         }
 
         public FisherGuildmaster(Serial serial)

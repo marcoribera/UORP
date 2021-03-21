@@ -70,7 +70,7 @@ namespace Server.Spells.Spellweaving
 
                 List<Mobile> Arcanists = GetArcanists();
 
-                TimeSpan duration = TimeSpan.FromHours(Math.Max(1, (int)(Caster.Skills.Spellweaving.Value / 24)));
+                TimeSpan duration = TimeSpan.FromHours(Math.Max(1, (int)(Caster.Skills.Feiticaria.Value / 24)));
 
                 duration += TimeSpan.FromHours(Math.Min(6, Arcanists.Count));
 
@@ -95,7 +95,7 @@ namespace Server.Spells.Spellweaving
 
         private static int GetStrength(Mobile m)
         {
-            return m.Skills.CurrentMastery == SkillName.Spellweaving ? MasteryInfo.GetMasteryLevel(m, SkillName.Spellweaving) : 1;
+            return m.Skills.CurrentMastery == SkillName.Feiticaria ? MasteryInfo.GetMasteryLevel(m, SkillName.Feiticaria) : 1;
         }
 
         private static bool IsValidLocation(Point3D location, Map map)
@@ -149,7 +149,7 @@ namespace Server.Spells.Spellweaving
             IPooledEnumerable eable = Caster.GetMobilesInRange(1);
             foreach (Mobile m in eable)	//Range verified as 1
             {
-                if (m != Caster && m is PlayerMobile && Caster.CanBeBeneficial(m, false) && Math.Abs(Caster.Skills.Spellweaving.Value - m.Skills.Spellweaving.Value) <= 20 && !(m is Clone))
+                if (m != Caster && m is PlayerMobile && Caster.CanBeBeneficial(m, false) && Math.Abs(Caster.Skills.Feiticaria.Value - m.Skills.Feiticaria.Value) <= 20 && !(m is Clone))
                 {
                     weavers.Add(m);
                 }

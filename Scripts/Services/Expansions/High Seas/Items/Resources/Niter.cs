@@ -80,12 +80,12 @@ namespace Server.Items
             Mobile from = (Mobile)os[0];
             Item tool = (Item)os[1];
 
-            if (from != null && from.CheckSkill(SkillName.Mining, 60.0, 100.0))
+            if (from != null && from.CheckSkill(SkillName.Extracao, 60.0, 100.0))
             {
                 Container pack = from.Backpack;
                 int count = 1;
 
-                if (from.Skills[SkillName.Mining].Value > 100 && Utility.RandomBool())
+                if (from.Skills[SkillName.Extracao].Value > 100 && Utility.RandomBool())
                     count++;
 
                 from.SendLocalizedMessage(1149924, count.ToString()); //You extract ~1_COUNT~ saltpeter from the niter deposit.

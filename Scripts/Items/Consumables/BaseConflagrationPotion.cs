@@ -275,7 +275,7 @@ namespace Server.Items
                 if (m_From == null)
                     return;
 
-                int alchemySkill = m_From.Skills.Alchemy.Fixed;
+                int alchemySkill = m_From.Skills.Alquimia.Fixed;
                 int alchemyBonus = alchemySkill / 125 + alchemySkill / 250 ;
 
                 m_MinDamage = Scale(m_From, m_MinDamage + alchemyBonus);

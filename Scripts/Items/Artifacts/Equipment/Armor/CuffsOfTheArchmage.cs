@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public CuffsOfTheArchmage()
         {
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 15.0);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 15.0);
             Attributes.BonusMana = 5;
             Attributes.RegenMana = 4;
             Attributes.SpellDamage = 20;
@@ -53,7 +53,7 @@ namespace Server.Items
         [Constructable]
         public GargishCuffsOfTheArchmage()
         {
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 15.0);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 15.0);
             Attributes.BonusMana = 5;
             Attributes.RegenMana = 4;
             Attributes.SpellDamage = 20;

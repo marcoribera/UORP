@@ -28,9 +28,9 @@ namespace Server.Engines.Quests.Samurai
             SetResistance(ResistanceType.Physical, 15, 20);
             SetResistance(ResistanceType.Fire, 8, 12);
 
-            SetSkill(SkillName.Wrestling, 35.0, 39.0);
-            SetSkill(SkillName.Tactics, 5.0, 15.0);
-            SetSkill(SkillName.MagicResist, 10.0);
+            SetSkill(SkillName.Briga, 35.0, 39.0);
+            SetSkill(SkillName.Anatomia, 5.0, 15.0);
+            SetSkill(SkillName.ResistenciaMagica, 10.0);
 
             Fame = 200;
             Karma = -200;

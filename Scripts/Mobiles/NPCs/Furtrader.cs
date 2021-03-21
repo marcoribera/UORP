@@ -10,11 +10,11 @@ namespace Server.Mobiles
         public Furtrader()
             : base("the furtrader")
         {
-            this.SetSkill(SkillName.Camping, 55.0, 78.0);
-            //SetSkill( SkillName.Alchemy, 60.0, 83.0 );
-            this.SetSkill(SkillName.AnimalLore, 85.0, 100.0);
-            this.SetSkill(SkillName.Cooking, 45.0, 68.0);
-            this.SetSkill(SkillName.Tracking, 36.0, 68.0);
+            this.SetSkill(SkillName.Sobrevivencia, 55.0, 78.0);
+            //SetSkill( SkillName.Alquimia, 60.0, 83.0 );
+            this.SetSkill(SkillName.Adestramento, 85.0, 100.0);
+            this.SetSkill(SkillName.Culinaria, 45.0, 68.0);
+            this.SetSkill(SkillName.Sobrevivencia, 36.0, 68.0);
         }
 
         public Furtrader(Serial serial)

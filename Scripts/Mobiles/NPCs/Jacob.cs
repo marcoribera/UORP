@@ -81,7 +81,7 @@ namespace Server.Engines.Quests
         public TheDeluciansLostMineQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Mining, 50, "Haven Mountains", 1077751, 1077752));
+            this.AddObjective(new ApprenticeObjective(SkillName.Extracao, 50, "Haven Mountains", 1077751, 1077752));
 			
             // 1077751 You can almost smell the ore in the rocks here! Your ability to improve your Mining skill is enhanced in this area.
             // 1077752 So many rocks, so little ore… Your potential to increase your Mining skill is no longer enhanced.
@@ -100,7 +100,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Mining.Base < 50;
+                return this.Owner.Skills.Extracao.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -141,13 +141,13 @@ namespace Server.Engines.Quests
         public Jacob()
             : base("Jacob Waltzt", "The Miner Instructor")
         { 
-            this.SetSkill(SkillName.ArmsLore, 120.0, 120.0);
-            this.SetSkill(SkillName.Blacksmith, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Tinkering, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Mining, 120.0, 120.0);
+            this.SetSkill(SkillName.ConhecimentoArmas, 120.0, 120.0);
+            this.SetSkill(SkillName.Ferraria, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Mecanica, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.Extracao, 120.0, 120.0);
         }
 		
         public Jacob(Serial serial)

@@ -44,7 +44,7 @@ namespace Server.Spells.Eighth
         {
             if (this.CheckSequence())
             { 
-                TimeSpan duration = TimeSpan.FromSeconds((2 * this.Caster.Skills.Magery.Fixed) / 5);
+                TimeSpan duration = TimeSpan.FromSeconds((2 * this.Caster.Skills.Arcanismo.Fixed) / 5);
 
                 if (Core.AOS)  /* Why two diff daemons? TODO: solve this */
                 {

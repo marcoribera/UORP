@@ -187,9 +187,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Caelas()
             : base("Elder Caelas", "the wise")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Caelas(Serial serial)

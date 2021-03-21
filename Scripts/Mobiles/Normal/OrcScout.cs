@@ -36,17 +36,17 @@ namespace Server.Mobiles
 			SetResistance(ResistanceType.Poison, 15, 20);
 			SetResistance(ResistanceType.Energy, 25, 30);
 
-			SetSkill(SkillName.MagicResist, 50.1, 75.0);
-			SetSkill(SkillName.Tactics, 55.1, 80.0);
+			SetSkill(SkillName.ResistenciaMagica, 50.1, 75.0);
+			SetSkill(SkillName.Anatomia, 55.1, 80.0);
 
-			SetSkill(SkillName.Fencing, 50.1, 70.0);
-			SetSkill(SkillName.Archery, 80.1, 120.0);
-			SetSkill(SkillName.Parry, 40.1, 60.0);
-			SetSkill(SkillName.Healing, 80.1, 100.0);
-			SetSkill(SkillName.Anatomy, 50.1, 90.0);
-			SetSkill(SkillName.DetectHidden, 100.1, 120.0);
-			SetSkill(SkillName.Hiding, 100.0, 120.0);
-			SetSkill(SkillName.Stealth, 80.1, 120.0);
+			SetSkill(SkillName.Perfurante, 50.1, 70.0);
+			SetSkill(SkillName.Atirar, 80.1, 120.0);
+			SetSkill(SkillName.Bloqueio, 40.1, 60.0);
+			SetSkill(SkillName.Medicina, 80.1, 100.0);
+			SetSkill(SkillName.Anatomia, 50.1, 90.0);
+			SetSkill(SkillName.Percepcao, 100.1, 120.0);
+			SetSkill(SkillName.Furtividade, 100.0, 120.0);
+			SetSkill(SkillName.Furtividade, 80.1, 120.0);
 
 			Fame = 1500;
 			Karma = -1500;
@@ -152,7 +152,7 @@ namespace Server.Mobiles
 
 			if (m != null)
 			{
-				if (Core.TickCount >= NextSkillTime && UseSkill(SkillName.DetectHidden))
+				if (Core.TickCount >= NextSkillTime && UseSkill(SkillName.Percepcao))
 				{
 					Target targ = Target;
 

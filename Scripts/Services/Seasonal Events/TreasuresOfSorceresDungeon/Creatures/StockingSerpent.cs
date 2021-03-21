@@ -34,11 +34,11 @@ namespace Server.Engines.SorcerersDungeon
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 60, 70);
 
-            SetSkill(SkillName.Anatomy, 115, 120);
-            SetSkill(SkillName.Poisoning, 120);
-            SetSkill(SkillName.MagicResist, 115, 120);
-            SetSkill(SkillName.Tactics, 100.0);
-            SetSkill(SkillName.Wrestling, 120, 130);
+            SetSkill(SkillName.Anatomia, 115, 120);
+            SetSkill(SkillName.Envenenamento, 120);
+            SetSkill(SkillName.ResistenciaMagica, 115, 120);
+            SetSkill(SkillName.Anatomia, 100.0);
+            SetSkill(SkillName.Briga, 120, 130);
 
             Fame = 12000;
             Karma = -12000;

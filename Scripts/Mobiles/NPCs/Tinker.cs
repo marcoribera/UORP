@@ -14,9 +14,9 @@ namespace Server.Mobiles
         public Tinker()
             : base("the tinker")
         {
-            SetSkill(SkillName.Lockpicking, 60.0, 83.0);
-            SetSkill(SkillName.RemoveTrap, 75.0, 98.0);
-            SetSkill(SkillName.Tinkering, 64.0, 100.0);
+            SetSkill(SkillName.Mecanica, 60.0, 83.0);
+            SetSkill(SkillName.Mecanica, 75.0, 98.0);
+            SetSkill(SkillName.Mecanica, 64.0, 100.0);
         }
 
         public Tinker(Serial serial)
@@ -53,7 +53,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Tinkering].Base > 0;
+            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Mecanica].Base > 0;
         }
 
         public override void OnSuccessfulBulkOrderReceive(Mobile from)

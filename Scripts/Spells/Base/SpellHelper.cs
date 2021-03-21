@@ -67,29 +67,29 @@ namespace Server.Spells
         #region Spell Focus and SDI Calculations
         private static SkillName[] _Schools =
         {
-            SkillName.Magery,
-            SkillName.AnimalTaming,
-            SkillName.Musicianship,
-            SkillName.Mysticism,
-            SkillName.Spellweaving,
-            SkillName.Chivalry,
-            SkillName.Necromancy,
+            SkillName.Arcanismo,
+            SkillName.Adestramento,
+            SkillName.Tocar,
+            SkillName.Misticismo,
+            SkillName.Feiticaria,
+            SkillName.Ordem,
+            SkillName.Necromancia,
             SkillName.Bushido,
             SkillName.Ninjitsu
         };
 
         private static SkillName[] _TOLSchools =
         {
-            SkillName.Magery,
-            SkillName.AnimalTaming,
-            SkillName.Musicianship,
-            SkillName.Mysticism,
-            SkillName.Spellweaving,
-            SkillName.Chivalry,
-            SkillName.Necromancy,
+            SkillName.Arcanismo,
+            SkillName.Adestramento,
+            SkillName.Tocar,
+            SkillName.Misticismo,
+            SkillName.Feiticaria,
+            SkillName.Ordem,
+            SkillName.Necromancia,
             SkillName.Bushido,
             SkillName.Ninjitsu,
-            SkillName.Parry
+            SkillName.Bloqueio
         };
 
         public static bool HasSpellFocus(Mobile m, SkillName focus)
@@ -414,7 +414,7 @@ namespace Server.Spells
         {
             if (Core.AOS)
             {
-                int span = (((6 * caster.Skills.EvalInt.Fixed) / 50) + 1);
+                int span = (((6 * caster.Skills.PoderMagico.Fixed) / 50) + 1);
 
                 if (caster.Spell is CurseSpell && Spells.SkillMasteries.ResilienceSpell.UnderEffects(target))
                     span /= 2;
@@ -422,7 +422,7 @@ namespace Server.Spells
                 return TimeSpan.FromSeconds(span);
             }
 
-            return TimeSpan.FromSeconds(caster.Skills[SkillName.Magery].Value * 1.2);
+            return TimeSpan.FromSeconds(caster.Skills[SkillName.Arcanismo].Value * 1.2);
         }
 
         public static int GetCurseOffset(Mobile m, StatType type)
@@ -440,11 +440,11 @@ namespace Server.Spells
 
             if (curse)
             {
-                double resistFixed = target.Skills.MagicResist.Fixed - (EvilOmenSpell.GetResistMalus(target) * 10);
-                percent = 8 + (caster.Skills.EvalInt.Fixed / 100) - (resistFixed / 100);
+                double resistFixed = target.Skills.ResistenciaMagica.Fixed - (EvilOmenSpell.GetResistMalus(target) * 10);
+                percent = 8 + (caster.Skills.PoderMagico.Fixed / 100) - (resistFixed / 100);
             }
             else
-                percent = 1 + (caster.Skills.EvalInt.Fixed / 100);
+                percent = 1 + (caster.Skills.PoderMagico.Fixed / 100);
 
             percent *= 0.01;
 
@@ -460,11 +460,11 @@ namespace Server.Spells
             {
                 if (!blockSkill)
                 {
-                    //caster.CheckSkill(SkillName.EvalInt, 0.0, 120.0);
+                    //caster.CheckSkill(SkillName.PoderMagico, 0.0, 120.0);
                     // This is handled in Spell.cs
 
                     if (curse)
-                        target.CheckSkill(SkillName.MagicResist, 0.0, 120.0);
+                        target.CheckSkill(SkillName.ResistenciaMagica, 0.0, 120.0);
                 }
 
                 double percent = GetOffsetScalar(caster, target, curse);
@@ -480,7 +480,7 @@ namespace Server.Spells
                 }
             }
 
-            return 1 + (int)(caster.Skills[SkillName.Magery].Value * 0.1);
+            return 1 + (int)(caster.Skills[SkillName.Arcanismo].Value * 0.1);
         }
 
         public static Guild GetGuildFor(Mobile m)
@@ -679,7 +679,7 @@ namespace Server.Spells
             1, 1
         };
 
-        public static void Summon(BaseCreature creature, Mobile caster, int sound, TimeSpan duration, bool scaleDuration, bool scaleStats, bool summoned = true, SkillName useSkill = SkillName.Magery)
+        public static void Summon(BaseCreature creature, Mobile caster, int sound, TimeSpan duration, bool scaleDuration, bool scaleStats, bool summoned = true, SkillName useSkill = SkillName.Arcanismo)
         {
             Map map = caster.Map;
 

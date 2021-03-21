@@ -13,11 +13,11 @@ namespace Server.Items
         public TreatiseonAlchemyTalisman()
             : base(0x2F58)
         { 
-            Skill = TalismanSkill.Alchemy;
+            Skill = TalismanSkill.Alquimia;
             SuccessBonus = GetRandomSuccessful();
             Blessed = GetRandomBlessed();		
             Attributes.EnhancePotions = 15;			
-            SkillBonuses.SetValues(0, SkillName.Magery, 5.0);
+            SkillBonuses.SetValues(0, SkillName.Arcanismo, 5.0);
         }
 
         public TreatiseonAlchemyTalisman(Serial serial)
@@ -85,7 +85,7 @@ namespace Server.Items
             : base(0x2F5A)
         { 
             Blessed = GetRandomBlessed();			
-            Skill = TalismanSkill.Inscription;
+            Skill = TalismanSkill.Erudicao;
             SuccessBonus = GetRandomSuccessful();			
             ExceptionalBonus = GetRandomExceptional();			
             Attributes.BonusInt = 5;			
@@ -121,8 +121,8 @@ namespace Server.Items
             : base(0x2F5B)
         { 
             Blessed = GetRandomBlessed();			
-            SkillBonuses.SetValues(0, SkillName.SpiritSpeak, 3.0);
-            SkillBonuses.SetValues(1, SkillName.EvalInt, 5.0);			
+            SkillBonuses.SetValues(0, SkillName.PoderMagico, 3.0);
+            SkillBonuses.SetValues(1, SkillName.PoderMagico, 5.0);			
             Removal = TalismanRemoval.Ward;
             MaxChargeTime = 1200;
         }
@@ -158,8 +158,8 @@ namespace Server.Items
             Blessed = GetRandomBlessed();	
             Protection = GetRandomProtection();
             Summoner = new TalismanAttribute(typeof(SummonedOrcBrute), 0, 1072414);		
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 5.0);
-            SkillBonuses.SetValues(1, SkillName.Anatomy, 7.0);			
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 5.0);
+            SkillBonuses.SetValues(1, SkillName.Anatomia, 7.0);			
             MaxChargeTime = 1800;
         }
 
@@ -194,8 +194,8 @@ namespace Server.Items
         { 
             Blessed = GetRandomBlessed();	
             Slayer = TalismanSlayerName.Bird;			
-            SkillBonuses.SetValues(0, SkillName.AnimalTaming, 5.0);
-            SkillBonuses.SetValues(1, SkillName.AnimalLore, 5.0);		
+            SkillBonuses.SetValues(0, SkillName.Adestramento, 5.0);
+            SkillBonuses.SetValues(1, SkillName.Adestramento, 5.0);		
             MaxChargeTime = 1800;
         }
 
@@ -229,8 +229,8 @@ namespace Server.Items
         { 
             Blessed = GetRandomBlessed();	
             Protection = GetRandomProtection();		
-            SkillBonuses.SetValues(0, SkillName.Provocation, 5.0);
-            SkillBonuses.SetValues(1, SkillName.Musicianship, 5.0);			
+            SkillBonuses.SetValues(0, SkillName.Provocacao, 5.0);
+            SkillBonuses.SetValues(1, SkillName.Tocar, 5.0);			
             Removal = TalismanRemoval.Curse;
             MaxChargeTime = 1200;		
         }

@@ -14,9 +14,9 @@ namespace Server.Mobiles
             this.AddItem(new GnarledStaff());
             //AddItem( new GargishRobe(5) );
 
-            this.SetSkill(SkillName.Camping, 80.0, 100.0);
-            this.SetSkill(SkillName.Forensics, 80.0, 100.0);
-            this.SetSkill(SkillName.SpiritSpeak, 80.0, 100.0);
+            this.SetSkill(SkillName.Sobrevivencia, 80.0, 100.0);
+            this.SetSkill(SkillName.Percepcao, 80.0, 100.0);
+            this.SetSkill(SkillName.PoderMagico, 80.0, 100.0);
         }
 
         public GargishWanderingHealer(Serial serial)
@@ -43,12 +43,12 @@ namespace Server.Mobiles
             if (!base.CheckTeach(skill, from))
                 return false;
 
-            return (skill == SkillName.Anatomy) ||
-                   (skill == SkillName.Camping) ||
-                   (skill == SkillName.Forensics) ||
-                   (skill == SkillName.Healing) ||
-                   (skill == SkillName.SpiritSpeak) ||
-                   (skill == SkillName.Mysticism);
+            return (skill == SkillName.Anatomia) ||
+                   (skill == SkillName.Sobrevivencia) ||
+                   (skill == SkillName.Percepcao) ||
+                   (skill == SkillName.Medicina) ||
+                   (skill == SkillName.PoderMagico) ||
+                   (skill == SkillName.Misticismo);
         }
 
         public override bool CheckResurrect(Mobile m)

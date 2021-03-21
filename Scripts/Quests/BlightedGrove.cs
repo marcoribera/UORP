@@ -425,7 +425,7 @@ namespace Server.Engines.Quests
 
         public override void OnCompleted()
         {
-            if (this.Owner.Skills.Blacksmith.Value >= 45.0)
+            if (this.Owner.Skills.Ferraria.Value >= 45.0)
             {
                 this.Owner.AcquireRecipe((int)Server.Engines.Craft.SmithRecipes.BoneMachete);
                 this.Owner.SendLocalizedMessage(1075006); // You have learned how to smith a bone handled machete!

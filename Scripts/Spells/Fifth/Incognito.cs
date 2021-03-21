@@ -124,7 +124,7 @@ namespace Server.Spells.Fifth
 
                     StopTimer(this.Caster);
 
-                    int timeVal = ((6 * this.Caster.Skills.Magery.Fixed) / 50) + 1;
+                    int timeVal = ((6 * this.Caster.Skills.Arcanismo.Fixed) / 50) + 1;
 
                     if (timeVal > 144)
                         timeVal = 144;
@@ -157,7 +157,7 @@ namespace Server.Spells.Fifth
                 this.m_Owner = owner;
 
                 /*
-                int val = ((6 * owner.Skills.Magery.Fixed) / 50) + 1;
+                int val = ((6 * owner.Skills.Arcanismo.Fixed) / 50) + 1;
 
                 if ( val > 144 )
                 val = 144;

@@ -278,9 +278,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Ahie()
             : base("Ahie", "the cloth weaver")
-        { 
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Ahie(Serial serial)

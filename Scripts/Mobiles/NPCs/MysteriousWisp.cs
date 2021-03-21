@@ -74,11 +74,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 5, 10);
             SetResistance(ResistanceType.Energy, 50, 70);
 
-            SetSkill(SkillName.EvalInt, 80.0);
-            SetSkill(SkillName.Magery, 80.0);
-            SetSkill(SkillName.MagicResist, 80.0);
-            SetSkill(SkillName.Tactics, 80.0);
-            SetSkill(SkillName.Wrestling, 80.0);
+            SetSkill(SkillName.PoderMagico, 80.0);
+            SetSkill(SkillName.Arcanismo, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 80.0);
+            SetSkill(SkillName.Anatomia, 80.0);
+            SetSkill(SkillName.Briga, 80.0);
 
             if (Backpack != null)
                 Backpack.Delete();

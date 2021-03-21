@@ -31,7 +31,7 @@ namespace Server.Items
                 return;
             }
 
-            if (from.Skills[SkillName.Tinkering].Value < 60.0)
+            if (from.Skills[SkillName.Mecanica].Value < 60.0)
             {
                 from.SendLocalizedMessage(1071943); // You must be a Journeyman or higher Tinker to construct a golem.
                 return;
@@ -92,7 +92,7 @@ namespace Server.Items
         {
             double scalar;
 
-            double skill = m.Skills[SkillName.Tinkering].Value;
+            double skill = m.Skills[SkillName.Mecanica].Value;
 
             if (skill >= 100.0)
                 scalar = 1.0;

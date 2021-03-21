@@ -108,7 +108,7 @@ namespace Server.Spells.Chivalry
         {
             if (m_Table.ContainsKey(m))
             {
-                return m.Skills[SkillName.Chivalry].Value >= 120.0 && m.Karma >= 10000 ? 20 : 10;
+                return m.Skills[SkillName.Ordem].Value >= 120.0 && m.Karma >= 10000 ? 20 : 10;
             }
 
             return 0;
@@ -118,7 +118,7 @@ namespace Server.Spells.Chivalry
         {
             if (m_Table.ContainsKey(m))
             {
-                return m.Skills[SkillName.Chivalry].Value >= 120.0 && m.Karma >= 10000 ? 15 : 10;
+                return m.Skills[SkillName.Ordem].Value >= 120.0 && m.Karma >= 10000 ? 15 : 10;
             }
 
             return 0;
@@ -128,7 +128,7 @@ namespace Server.Spells.Chivalry
         {
             if (m_Table.ContainsKey(m))
             {
-                return m.Skills[SkillName.Chivalry].Value >= 120.0 && m.Karma >= 10000 ? 15 : 10;
+                return m.Skills[SkillName.Ordem].Value >= 120.0 && m.Karma >= 10000 ? 15 : 10;
             }
 
             return 0;
@@ -138,7 +138,7 @@ namespace Server.Spells.Chivalry
         {
             if (m_Table.ContainsKey(m))
             {
-                return m.Skills[SkillName.Chivalry].Value >= 120.0 && m.Karma >= 10000 ? 10 : 20;
+                return m.Skills[SkillName.Ordem].Value >= 120.0 && m.Karma >= 10000 ? 10 : 20;
             }
 
             return 0;

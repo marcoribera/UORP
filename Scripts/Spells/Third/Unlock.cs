@@ -84,7 +84,7 @@ namespace Server.Spells.Third
 
                             if (cont is TreasureMapChest && TreasureMapInfo.NewSystem)
                             {
-                                level = (int)from.Skills[SkillName.Magery].Value;
+                                level = (int)from.Skills[SkillName.Arcanismo].Value;
 
                                 switch (((TreasureMapChest)cont).Level)
                                 {
@@ -96,7 +96,7 @@ namespace Server.Spells.Third
                             }
                             else
                             {
-                                level = (int)(from.Skills[SkillName.Magery].Value * 0.8) - 4;
+                                level = (int)(from.Skills[SkillName.Arcanismo].Value * 0.8) - 4;
                                 reqSkill = cont.RequiredSkill;
                             }
    

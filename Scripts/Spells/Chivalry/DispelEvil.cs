@@ -82,7 +82,7 @@ namespace Server.Spells.Chivalry
                Caster.FixedParticles(0x37C4, 1, 25, 9922, 14, 3, EffectLayer.Head);
 
                 int dispelSkill = ComputePowerValue(2);
-                double chiv = Caster.Skills.Chivalry.Value;
+                double chiv = Caster.Skills.Ordem.Value;
 
                 foreach (var m in AcquireIndirectTargets(Caster.Location, 8).OfType<Mobile>())
                 {
@@ -127,7 +127,7 @@ namespace Server.Spells.Chivalry
                     if (context != null && context.Spell is NecromancerSpell)	//Trees are not evil!	TODO: OSI confirm?
                     {
                         // transformed ..
-                        double drainChance = 0.5 * (this.Caster.Skills.Chivalry.Value / Math.Max(m.Skills.Necromancy.Value, 1));
+                        double drainChance = 0.5 * (this.Caster.Skills.Ordem.Value / Math.Max(m.Skills.Necromancia.Value, 1));
 
                         if (drainChance > Utility.RandomDouble())
                         {

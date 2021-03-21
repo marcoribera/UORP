@@ -43,13 +43,13 @@ namespace Server.Mobiles
 
             this.SetDamage(5, 10);
 
-            this.SetSkill(SkillName.Tactics, 35, 57);
-            this.SetSkill(SkillName.Magery, 22, 22);
-            this.SetSkill(SkillName.Swords, 45, 67);
-            this.SetSkill(SkillName.Archery, 36, 67);
-            this.SetSkill(SkillName.Parry, 45, 60);
-            this.SetSkill(SkillName.Musicianship, 66.0, 97.5);
-            this.SetSkill(SkillName.Peacemaking, 65.0, 87.5);
+            this.SetSkill(SkillName.Anatomia, 35, 57);
+            this.SetSkill(SkillName.Arcanismo, 22, 22);
+            this.SetSkill(SkillName.Cortante, 45, 67);
+            this.SetSkill(SkillName.Atirar, 36, 67);
+            this.SetSkill(SkillName.Bloqueio, 45, 60);
+            this.SetSkill(SkillName.Tocar, 66.0, 97.5);
+            this.SetSkill(SkillName.Pacificar, 65.0, 87.5);
 
             this.Fame = 100;
             this.Karma = 100;

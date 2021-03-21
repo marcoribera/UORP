@@ -255,7 +255,7 @@ namespace Server.Spells.Ninjitsu
 
 			if (entry.StealthBonus)
 			{
-				mod = new DefaultSkillMod(SkillName.Stealth, true, 20.0);
+				mod = new DefaultSkillMod(SkillName.Furtividade, true, 20.0);
 				mod.ObeyCap = true;
 				m.AddSkillMod(mod);
 			}
@@ -264,7 +264,7 @@ namespace Server.Spells.Ninjitsu
 
 			if (entry.StealingBonus)
 			{
-				stealingMod = new DefaultSkillMod(SkillName.Stealing, true, 10.0);
+				stealingMod = new DefaultSkillMod(SkillName.Prestidigitacao, true, 10.0);
 				stealingMod.ObeyCap = true;
 				m.AddSkillMod(stealingMod);
 			}

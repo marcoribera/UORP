@@ -83,7 +83,7 @@ namespace Server.Engines.Quests
         public ScribingArcaneKnowledgeQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Inscribe, 50, "Haven Library", 1077493, 1077587));
+            this.AddObjective(new ApprenticeObjective(SkillName.Erudicao, 50, "Haven Library", 1077493, 1077587));
 			
             // 1077493 Your Inscription potential is greatly enhanced while questing in this area.
             // 1077587 You are not in the quest area for Apprentice Scribe. Your Inscription potential is not enhanced here.
@@ -102,7 +102,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Inscribe.Base < 50;
+                return this.Owner.Skills.Erudicao.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -143,12 +143,11 @@ namespace Server.Engines.Quests
         public Jillian()
             : base("Jillian", "The Inscription Instructor")
         { 
-            this.SetSkill(SkillName.EvalInt, 120.0, 120.0);
-            this.SetSkill(SkillName.Inscribe, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
+            this.SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            this.SetSkill(SkillName.Erudicao, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
         }
 		
         public Jillian(Serial serial)

@@ -9,8 +9,7 @@ namespace Server.Engines.Quests
         public Synaeva()
             : base("Synaeva", "the arcanist")
         { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Synaeva(Serial serial)

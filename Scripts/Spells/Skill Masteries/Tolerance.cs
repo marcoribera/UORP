@@ -18,7 +18,7 @@ namespace Server.Spells.SkillMasteries
             );
  
         public override int RequiredMana{ get { return 20; } }
-        public override SkillName CastSkill { get { return SkillName.Poisoning; } }
+        public override SkillName CastSkill { get { return SkillName.Envenenamento; } }
  
         public ToleranceSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -64,7 +64,7 @@ namespace Server.Spells.SkillMasteries
 			
 			if(spell != null)
 			{
-				double stamCost = (m.Skills[spell.CastSkill].Base + ((MasteryInfo.GetMasteryLevel(m, SkillName.Poisoning) * 30) + 10)) / 2;
+				double stamCost = (m.Skills[spell.CastSkill].Base + ((MasteryInfo.GetMasteryLevel(m, SkillName.Envenenamento) * 30) + 10)) / 2;
 				
 				stamCost /= 4;
 				stamCost = Math.Max(18, (25 - stamCost) + 18);

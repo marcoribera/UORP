@@ -9,15 +9,15 @@ namespace Server.Mobiles
         public ThiefGuildmaster()
             : base("thief")
         {
-            this.SetSkill(SkillName.DetectHidden, 75.0, 98.0);
-            this.SetSkill(SkillName.Hiding, 65.0, 88.0);
-            this.SetSkill(SkillName.Lockpicking, 85.0, 100.0);
-            this.SetSkill(SkillName.Snooping, 90.0, 100.0);
-            this.SetSkill(SkillName.Poisoning, 60.0, 83.0);
-            this.SetSkill(SkillName.Stealing, 90.0, 100.0);
-            this.SetSkill(SkillName.Fencing, 75.0, 98.0);
-            this.SetSkill(SkillName.Stealth, 85.0, 100.0);
-            this.SetSkill(SkillName.RemoveTrap, 85.0, 100.0);
+            this.SetSkill(SkillName.Percepcao, 75.0, 98.0);
+            this.SetSkill(SkillName.Furtividade, 65.0, 88.0);
+            this.SetSkill(SkillName.Mecanica, 85.0, 100.0);
+            this.SetSkill(SkillName.Prestidigitacao, 90.0, 100.0);
+            this.SetSkill(SkillName.Envenenamento, 60.0, 83.0);
+            this.SetSkill(SkillName.Prestidigitacao, 90.0, 100.0);
+            this.SetSkill(SkillName.Perfurante, 75.0, 98.0);
+            this.SetSkill(SkillName.Furtividade, 85.0, 100.0);
+            this.SetSkill(SkillName.Mecanica, 85.0, 100.0);
         }
 
         public ThiefGuildmaster(Serial serial)
@@ -68,7 +68,7 @@ namespace Server.Mobiles
                 this.SayTo(pm, 501050); // This guild is for cunning thieves, not oafish cutthroats.
                 return false;
             }
-            else if (pm.Skills[SkillName.Stealing].Base < 60.0 && !Siege.SiegeShard)
+            else if (pm.Skills[SkillName.Prestidigitacao].Base < 60.0 && !Siege.SiegeShard)
             {
                 this.SayTo(pm, 501051); // You must be at least a journeyman pickpocket to join this elite organization.
                 return false;

@@ -10,7 +10,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.ArmsLore].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.ConhecimentoArmas].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
@@ -35,7 +35,7 @@ namespace Server.SkillHandlers
             {
                 if (targeted is BaseWeapon)
                 {
-                    if (from.CheckTargetSkill(SkillName.ArmsLore, targeted, 0, 100))
+                    if (from.CheckTargetSkill(SkillName.ConhecimentoArmas, targeted, 0, 100))
                     {
                         BaseWeapon weap = (BaseWeapon)targeted;
 
@@ -96,7 +96,7 @@ namespace Server.SkillHandlers
                 }
                 else if (targeted is BaseArmor)
                 {
-                    if (from.CheckTargetSkill(SkillName.ArmsLore, targeted, 0, 100))
+                    if (from.CheckTargetSkill(SkillName.ConhecimentoArmas, targeted, 0, 100))
                     {
                         BaseArmor arm = (BaseArmor)targeted;
 
@@ -141,7 +141,7 @@ namespace Server.SkillHandlers
                 {
                     SwampDragon pet = (SwampDragon)targeted;
 
-                    if (from.CheckTargetSkill(SkillName.ArmsLore, targeted, 0, 100))
+                    if (from.CheckTargetSkill(SkillName.ConhecimentoArmas, targeted, 0, 100))
                     {
                         int perc = (4 * pet.BardingHP) / pet.BardingMaxHP;
 

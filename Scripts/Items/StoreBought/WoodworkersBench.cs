@@ -72,7 +72,7 @@ namespace Server.Items
                 _Table = new Dictionary<Mobile, Tuple<bool, DateTime, SkillMod>>();
             }
 
-            var mod = new DefaultSkillMod(SkillName.Carpentry, true, 5.0);
+            var mod = new DefaultSkillMod(SkillName.Carpintaria, true, 5.0);
             mod.ObeyCap = false;
             m.AddSkillMod(mod);
 
@@ -88,7 +88,7 @@ namespace Server.Items
 
         public static bool HasBonus(Mobile m, SkillName skill)
         {
-            return skill == SkillName.Carpentry && HasBonus(m);
+            return skill == SkillName.Carpintaria && HasBonus(m);
         }
 
         public static bool HasBonus(Mobile m)

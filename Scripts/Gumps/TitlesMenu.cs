@@ -517,7 +517,7 @@ namespace Server.Gumps
                         index++;
                         CheckPage(ref index, ref page);
 
-                        if ((SkillName)sk.Info.SkillID == User.Skills.CurrentMastery && User.Skills.CurrentMastery != SkillName.Alchemy)
+                        if ((SkillName)sk.Info.SkillID == User.Skills.CurrentMastery && User.Skills.CurrentMastery != SkillName.Alquimia)
                         {
                             AddHtml(260, 70 + (index * 22), 160, 16, Color("#FFFFFF", MasteryInfo.GetTitle(User)), false, false);
                             AddCallbackButton(225, 70 + (index * 22), 4005, 4007, 999999, GumpButtonType.Reply, 0, b =>

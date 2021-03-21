@@ -23,7 +23,7 @@ namespace Server.Mobiles
 {
 	public class MageAI : BaseAI
 	{
-		public virtual SkillName CastSkill { get { return SkillName.Magery; } }
+		public virtual SkillName CastSkill { get { return SkillName.Arcanismo; } }
 		public virtual bool UsesMagery { get { return true; } }
         public virtual double HealChance { get { return .25; } }
 
@@ -101,12 +101,11 @@ namespace Server.Mobiles
 
 		public override bool DoActionWander()
 		{
-			if (SmartAI && m_Mobile.Skills[SkillName.Meditation].Base > 0 && m_Mobile.Mana < m_Mobile.ManaMax &&
-				!m_Mobile.Meditating)
+			if (SmartAI && m_Mobile.Skills[SkillName.Arcanismo].Base > 0 && m_Mobile.Mana < m_Mobile.ManaMax && !m_Mobile.Meditating) //Marcknight Fazer verificar a maior skill de conhecimento mágico no lugar de Meditaçao  (no lugar ddo atual arcanismo)
 			{
 				m_Mobile.DebugSay("I am going to meditate");
 
-				m_Mobile.UseSkill(SkillName.Meditation);
+				m_Mobile.UseSkill(SkillName.Arcanismo); //Marcknight: Selecionar a skill de conhecimento magico mais alta
 				return true;
 			}
 
@@ -178,8 +177,8 @@ namespace Server.Mobiles
 				}
 			}
 
-			if (!Core.AOS && SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[SkillName.Wrestling].Value >= 80.0 &&
-				m_Mobile.Skills[SkillName.Anatomy].Value >= 80.0)
+			if (!Core.AOS && SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[SkillName.Briga].Value >= 80.0 &&
+				m_Mobile.Skills[SkillName.Anatomia].Value >= 80.0)
 				EventSink.InvokeStunRequest(new StunRequestEventArgs(m_Mobile));
 
 			if (!m_Mobile.InRange(c, m_Mobile.RangePerception))
@@ -884,7 +883,7 @@ namespace Server.Mobiles
 							{
 								m_Mobile.DebugSay("I am going to meditate");
 
-								m_Mobile.UseSkill(SkillName.Meditation);
+								m_Mobile.UseSkill(SkillName.Arcanismo); //Marcknight Testar a skill de conhecimento mágico mais ata
 							}
 							else if (!c.Poisoned)
 							{
@@ -920,7 +919,7 @@ namespace Server.Mobiles
         /// <returns></returns>
         public virtual int GetMaxCircle()
 		{
-			return (int)((m_Mobile.Skills[SkillName.Magery].Value + 20.0) / (100.0 / 7.0));
+			return (int)((m_Mobile.Skills[SkillName.Arcanismo].Value + 20.0) / (100.0 / 7.0));
 		}
 
 		private readonly int[] m_ManaTable = {4, 6, 9, 11, 14, 20, 40, 50};
@@ -935,7 +934,7 @@ namespace Server.Mobiles
 			var skill = (100.0 / 7.0) * circle;
 
 			return m_Mobile.Mana >= m_ManaTable[circle - 1] &&
-				   (Core.SA || m_Mobile.Skills[SkillName.Magery].Value >= skill - 20);
+				   (Core.SA || m_Mobile.Skills[SkillName.Arcanismo].Value >= skill - 20);
 		}
 
 		public virtual Spell GetRandomDamageSpell()
@@ -1071,7 +1070,7 @@ namespace Server.Mobiles
 		public virtual Spell GetRandomFieldSpell()
 		{
 			// I left this here if someone wants field spells
-			/*bool pois = m_Mobile.Skills[SkillName.Poisoning].Value >= 80.0 || m_Mobile.HitPoison == Poison.Greater || m_Mobile.HitPoison == Poison.Lethal;
+			/*bool pois = m_Mobile.Skills[SkillName.Envenenamento].Value >= 80.0 || m_Mobile.HitPoison == Poison.Greater || m_Mobile.HitPoison == Poison.Lethal;
 
 			if (pois && CheckCanCastMagery(5))
 				return new PoisonFieldSpell(m_Mobile, null);

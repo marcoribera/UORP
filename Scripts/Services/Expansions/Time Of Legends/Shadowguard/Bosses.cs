@@ -390,12 +390,11 @@ namespace Server.Engines.Shadowguard
 			
 			SetDamageType(ResistanceType.Physical, 100);
 			
-			SetSkill( SkillName.Wrestling, 220.0, 240.0 );
-			SetSkill( SkillName.Tactics, 110.0, 125.0 );
-			SetSkill( SkillName.MagicResist,  120.0 , 140.0);
-			SetSkill( SkillName.Magery, 120.0 );
-			SetSkill( SkillName.EvalInt, 150.0 );
-			SetSkill( SkillName.Meditation, 120.0 );
+			SetSkill( SkillName.Briga, 220.0, 240.0 );
+			SetSkill( SkillName.Anatomia, 110.0, 125.0 );
+			SetSkill( SkillName.ResistenciaMagica,  120.0 , 140.0);
+			SetSkill( SkillName.Arcanismo, 120.0 );
+			SetSkill( SkillName.PoderMagico, 150.0 );
 			
 			SetResistance(ResistanceType.Physical, 65, 70);
 			SetResistance(ResistanceType.Fire, 65, 70);
@@ -634,17 +633,16 @@ namespace Server.Engines.Shadowguard
             SetDamageType(ResistanceType.Poison, 20);
             SetDamageType(ResistanceType.Energy, 20);
 
-            SetSkill(SkillName.Wrestling, 120.0);
-            SetSkill(SkillName.Tactics, 100.0);
-            SetSkill(SkillName.MagicResist, 150.0);
-            SetSkill(SkillName.Magery, 100.0);
-            SetSkill(SkillName.EvalInt, 100.0);
-            SetSkill(SkillName.Meditation, 120.0);
-            SetSkill(SkillName.Necromancy, 120.0);
-            SetSkill(SkillName.SpiritSpeak, 120.0);
+            SetSkill(SkillName.Briga, 120.0);
+            SetSkill(SkillName.Anatomia, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 150.0);
+            SetSkill(SkillName.Arcanismo, 100.0);
+            SetSkill(SkillName.PoderMagico, 100.0);
+            SetSkill(SkillName.Necromancia, 120.0);
+            SetSkill(SkillName.PoderMagico, 120.0);
 
-            SetSkill(SkillName.Musicianship, 120.0);
-            SetSkill(SkillName.Discordance, 80.0);
+            SetSkill(SkillName.Tocar, 120.0);
+            SetSkill(SkillName.Caos, 80.0);
 
             SetResistance(ResistanceType.Physical, 30);
             SetResistance(ResistanceType.Fire, 30);
@@ -728,12 +726,11 @@ namespace Server.Engines.Shadowguard
 			SetDamageType(ResistanceType.Physical, 50);
 			SetDamageType(ResistanceType.Energy, 50);
 			
-			SetSkill( SkillName.Wrestling, 120.0, 130.0 );
-			SetSkill( SkillName.Tactics, 115.0, 130.0 );
-			SetSkill( SkillName.MagicResist,  150.0, 200.0 );
-			SetSkill( SkillName.Magery, 135.0, 150.0 );
-			SetSkill( SkillName.EvalInt, 130.0, 150.0 );
-			SetSkill( SkillName.Meditation, 0.0 );
+			SetSkill( SkillName.Briga, 120.0, 130.0 );
+			SetSkill( SkillName.Anatomia, 115.0, 130.0 );
+			SetSkill( SkillName.ResistenciaMagica,  150.0, 200.0 );
+			SetSkill( SkillName.Arcanismo, 135.0, 150.0 );
+			SetSkill( SkillName.PoderMagico, 130.0, 150.0 );
 			
 			SetResistance(ResistanceType.Physical, 60, 85);
 			SetResistance(ResistanceType.Fire, 70, 90);
@@ -943,11 +940,11 @@ namespace Server.Engines.Shadowguard
 			
 			SetDamageType(ResistanceType.Physical, 100);
 			
-			SetSkill( SkillName.Wrestling, 150.0 );
-			SetSkill( SkillName.Archery, 150.0 );
-			SetSkill( SkillName.Anatomy, 100.0 );
-            SetSkill(SkillName.Tactics, 125.0);
-			SetSkill( SkillName.MagicResist,  110.0 );
+			SetSkill( SkillName.Briga, 150.0 );
+			SetSkill( SkillName.Atirar, 150.0 );
+			SetSkill( SkillName.Anatomia, 100.0 );
+            SetSkill(SkillName.Anatomia, 125.0);
+			SetSkill( SkillName.ResistenciaMagica,  110.0 );
 			
 			SetResistance(ResistanceType.Physical, 60, 70);
 			SetResistance(ResistanceType.Fire, 20, 30);

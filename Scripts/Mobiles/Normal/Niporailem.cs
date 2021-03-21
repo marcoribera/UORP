@@ -48,15 +48,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 31, 49);
 
-            SetSkill(SkillName.Wrestling, 68.8, 85.0);
-            SetSkill(SkillName.Tactics, 56.1, 90.0);
-            SetSkill(SkillName.MagicResist, 87.7, 93.5);
+            SetSkill(SkillName.Briga, 68.8, 85.0);
+            SetSkill(SkillName.Anatomia, 56.1, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 87.7, 93.5);
 
-            SetSkill(SkillName.EvalInt, 90.0, 100.0);
-            SetSkill(SkillName.Meditation, 20.0, 30.0);
-            SetSkill(SkillName.Necromancy, 120.0);
-            SetSkill(SkillName.SpiritSpeak, 120.0);
-            SetSkill(SkillName.Focus, 30.0, 40.0);
+            SetSkill(SkillName.PoderMagico, 90.0, 100.0);
+            SetSkill(SkillName.Necromancia, 120.0);
+            SetSkill(SkillName.PoderMagico, 120.0);
+            SetSkill(SkillName.PreparoFisico, 30.0, 40.0);
 
             PackNecroReg(12, 24); /// Stratics didn't specify
 

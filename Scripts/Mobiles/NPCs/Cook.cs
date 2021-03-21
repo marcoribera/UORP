@@ -11,8 +11,8 @@ namespace Server.Mobiles
         public Cook()
             : base("the cook")
         {
-            this.SetSkill(SkillName.Cooking, 90.0, 100.0);
-            this.SetSkill(SkillName.TasteID, 75.0, 98.0);
+            this.SetSkill(SkillName.Culinaria, 90.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 75.0, 98.0);
         }
 
         public Cook(Serial serial)
@@ -59,7 +59,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Cooking].Base > 0;
+            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Culinaria].Base > 0;
         }
 
         public override void OnSuccessfulBulkOrderReceive(Mobile from)

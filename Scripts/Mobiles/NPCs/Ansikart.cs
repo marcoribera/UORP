@@ -9,8 +9,8 @@ namespace Server.Engines.Quests
         public Ansikart()
             : base("Ansikart", "the Artificer")
         {
-            SetSkill(SkillName.ItemID, 60.0, 83.0);
-            SetSkill(SkillName.Imbuing, 60.0, 83.0);
+            SetSkill(SkillName.Erudicao, 60.0, 83.0);
+            SetSkill(SkillName.ImbuirMagica, 60.0, 83.0);
         }
 
         public Ansikart(Serial serial)

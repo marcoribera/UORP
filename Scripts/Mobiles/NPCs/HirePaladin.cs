@@ -51,14 +51,14 @@ namespace Server.Mobiles
 
             SetDamage(10, 23);
 
-            SetSkill(SkillName.Swords, 66.0, 97.5);
-            SetSkill(SkillName.Anatomy, 65.0, 87.5);
-            SetSkill(SkillName.MagicResist, 25.0, 47.5);
-            SetSkill(SkillName.Healing, 65.0, 87.5);
-            SetSkill(SkillName.Tactics, 65.0, 87.5);
-            SetSkill(SkillName.Wrestling, 15.0, 37.5);
-            SetSkill(SkillName.Parry, 45.0, 60.5);
-            SetSkill(SkillName.Chivalry, 85, 100);
+            SetSkill(SkillName.Cortante, 66.0, 97.5);
+            SetSkill(SkillName.Anatomia, 65.0, 87.5);
+            SetSkill(SkillName.ResistenciaMagica, 25.0, 47.5);
+            SetSkill(SkillName.Medicina, 65.0, 87.5);
+            SetSkill(SkillName.Anatomia, 65.0, 87.5);
+            SetSkill(SkillName.Briga, 15.0, 37.5);
+            SetSkill(SkillName.Bloqueio, 45.0, 60.5);
+            SetSkill(SkillName.Ordem, 85, 100);
 
             Fame = 100;
             Karma = 250;

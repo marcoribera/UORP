@@ -11,8 +11,8 @@ namespace Server.Mobiles
         public Scribe()
             : base("the scribe")
         {
-            this.SetSkill(SkillName.EvalInt, 60.0, 83.0);
-            this.SetSkill(SkillName.Inscribe, 90.0, 100.0);
+            this.SetSkill(SkillName.PoderMagico, 60.0, 83.0);
+            this.SetSkill(SkillName.Erudicao, 90.0, 100.0);
         }
 
         public Scribe(Serial serial)
@@ -63,7 +63,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Inscribe].Base > 0;
+            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Erudicao].Base > 0;
         }
 
         public override void OnSuccessfulBulkOrderReceive(Mobile from)

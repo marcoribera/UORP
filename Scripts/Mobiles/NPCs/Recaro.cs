@@ -74,7 +74,7 @@ namespace Server.Engines.Quests
         public EnGuardeQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Fencing, 50, "Old Haven Training", 1078188, 1078189));	
+            this.AddObjective(new ApprenticeObjective(SkillName.Perfurante, 50, "Old Haven Training", 1078188, 1078189));	
 			
             // 1078188 You feel more dexterous and quick witted while practicing combat here. Your ability to raise your Fencing skill is enhanced in this area.
             // 1078189 You feel less dexterous here. Your Fencing learning potential is no longer enhanced.
@@ -93,7 +93,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Fencing.Base < 50;
+                return this.Owner.Skills.Perfurante.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -134,12 +134,12 @@ namespace Server.Engines.Quests
         public Recaro()
             : base("Recaro", "The Fencer Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Fencing, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Perfurante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public Recaro(Serial serial)

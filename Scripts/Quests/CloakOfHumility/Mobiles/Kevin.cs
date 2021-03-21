@@ -15,7 +15,7 @@ namespace Server.Mobiles
         public Kevin()
             : base("Kevin", "the butcher")
         {
-            SetSkill(SkillName.Anatomy, 45.0, 68.0);
+            SetSkill(SkillName.Anatomia, 45.0, 68.0);
         }
 
         public override void InitSBInfo()

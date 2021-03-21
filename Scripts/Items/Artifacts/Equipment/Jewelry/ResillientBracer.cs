@@ -9,7 +9,7 @@ namespace Server.Items
         public ResilientBracer()
         {
             Hue = 0x488;
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 15.0);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 15.0);
             Attributes.BonusHits = 5;
             Attributes.RegenHits = 2;
             Attributes.DefendChance = 10;

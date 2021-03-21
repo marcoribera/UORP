@@ -135,7 +135,7 @@ namespace Server.Spells.Mysticism
 
                 BuffInfo.RemoveBuff(target, BuffIcon.Sleep);
 
-                double immduration = target.Skills[SkillName.MagicResist].Value / 10;
+                double immduration = target.Skills[SkillName.ResistenciaMagica].Value / 10;
 
                 m_ImmunityList.Add(target);
                 Timer.DelayCall(TimeSpan.FromSeconds(immduration), new TimerStateCallback(RemoveImmunity_Callback), target);

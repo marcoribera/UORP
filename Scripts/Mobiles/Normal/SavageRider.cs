@@ -22,13 +22,13 @@ namespace Server.Mobiles
 
             this.SetDamageType(ResistanceType.Physical, 100);
 
-            this.SetSkill(SkillName.Fencing, 72.5, 95.0);
-            this.SetSkill(SkillName.Healing, 60.3, 90.0);
-            this.SetSkill(SkillName.Macing, 72.5, 95.0);
-            this.SetSkill(SkillName.Poisoning, 60.0, 82.5);
-            this.SetSkill(SkillName.MagicResist, 72.5, 95.0);
-            this.SetSkill(SkillName.Swords, 72.5, 95.0);
-            this.SetSkill(SkillName.Tactics, 72.5, 95.0);
+            this.SetSkill(SkillName.Perfurante, 72.5, 95.0);
+            this.SetSkill(SkillName.Medicina, 60.3, 90.0);
+            this.SetSkill(SkillName.Contusivo, 72.5, 95.0);
+            this.SetSkill(SkillName.Envenenamento, 60.0, 82.5);
+            this.SetSkill(SkillName.ResistenciaMagica, 72.5, 95.0);
+            this.SetSkill(SkillName.Cortante, 72.5, 95.0);
+            this.SetSkill(SkillName.Anatomia, 72.5, 95.0);
 
             this.Fame = 1000;
             this.Karma = -1000;

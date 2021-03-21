@@ -29,7 +29,7 @@ namespace Server.Spells.Spellweaving
         {
             if (this.CheckSequence())
             {
-                TimeSpan duration = TimeSpan.FromMinutes(this.Caster.Skills.Spellweaving.Value / 24 + this.FocusLevel * 2);
+                TimeSpan duration = TimeSpan.FromMinutes(this.Caster.Skills.Feiticaria.Value / 24 + this.FocusLevel * 2);
                 int summons = Math.Min(1 + this.FocusLevel, this.Caster.FollowersMax - this.Caster.Followers);
 
                 for (int i = 0; i < summons; i++)

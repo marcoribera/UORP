@@ -498,7 +498,7 @@ namespace Server.Items
 
             private void CheckSkill(Mobile from)
             {
-                if (m_Skill.SkillName == SkillName.AnimalTaming)
+                if (m_Skill.SkillName == SkillName.Adestramento)
                 {
                     PlayerMobile owner = from as PlayerMobile;
 

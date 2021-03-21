@@ -69,7 +69,7 @@ namespace Server.Spells.First
                 * 15 + (Inscription/20) Physcial bonus
                 * -5 Elemental
                 * The reactive armor spell has an indefinite duration, becoming active when cast, and deactivated when re-cast. 
-                * Reactive Armor, Protection, and Magic Reflection will stay onóeven after logging out, even after dyingóuntil you ìturn them offî by casting them again. 
+                * Reactive Armor, Protection, and Magic Reflection will stay on‚Äîeven after logging out, even after dying‚Äîuntil you ‚Äúturn them off‚Äù by casting them again. 
                 * (+20 physical -5 elemental at 100 Inscription)
                 */
                 if (this.CheckSequence())
@@ -85,7 +85,7 @@ namespace Server.Spells.First
 
                         mods = new ResistanceMod[5]
                         {
-                            new ResistanceMod(ResistanceType.Physical, 15 + (int)(targ.Skills[SkillName.Inscribe].Value / 20)),
+                            new ResistanceMod(ResistanceType.Physical, 15 + (int)(targ.Skills[SkillName.Erudicao].Value / 20)),
                             new ResistanceMod(ResistanceType.Fire, -5),
                             new ResistanceMod(ResistanceType.Cold, -5),
                             new ResistanceMod(ResistanceType.Poison, -5),
@@ -97,7 +97,7 @@ namespace Server.Spells.First
                         for (int i = 0; i < mods.Length; ++i)
                             targ.AddResistanceMod(mods[i]);
 
-                        int physresist = 15 + (int)(targ.Skills[SkillName.Inscribe].Value / 20);
+                        int physresist = 15 + (int)(targ.Skills[SkillName.Erudicao].Value / 20);
                         string args = String.Format("{0}\t{1}\t{2}\t{3}\t{4}", physresist, 5, 5, 5, 5);
 
                         BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.ReactiveArmor, 1075812, 1075813, args.ToString()));
@@ -132,8 +132,8 @@ namespace Server.Spells.First
                 {
                     if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                     {
-                        int value = (int)(this.Caster.Skills[SkillName.Magery].Value + this.Caster.Skills[SkillName.Meditation].Value + this.Caster.Skills[SkillName.Inscribe].Value);
-                        value /= 3;
+                        int value = (int)(this.Caster.Skills[SkillName.Arcanismo].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
+                        value /= 2;
 
                         if (value < 0)
                             value = 1;

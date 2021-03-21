@@ -50,12 +50,12 @@ namespace Server.Items
 
         public static SkillName[] Skills =
 		{
-			SkillName.Archery,
-			SkillName.Fencing,
-			SkillName.Macing,
-			SkillName.Swords,
-			SkillName.Throwing,
-			SkillName.Wrestling
+			SkillName.Atirar,
+			SkillName.Perfurante,
+			SkillName.Contusivo,
+			SkillName.Cortante,
+			SkillName.Atirar,
+			SkillName.Briga
 		};
 
         public SterlingSilverRing(Serial serial)

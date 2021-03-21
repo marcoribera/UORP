@@ -116,10 +116,10 @@ namespace Server.Spells.Bushido
                 mods.Add(new ResistanceMod(ResistanceType.Poison, -40));
                 mods.Add(new ResistanceMod(ResistanceType.Energy, -40));
 
-                double resSpells = attacker.Skills[SkillName.MagicResist].Value;
+                double resSpells = attacker.Skills[SkillName.ResistenciaMagica].Value;
 
                 if (resSpells > 0.0)
-                    mods.Add(new DefaultSkillMod(SkillName.MagicResist, true, -resSpells));
+                    mods.Add(new DefaultSkillMod(SkillName.ResistenciaMagica, true, -resSpells));
 
                 info = new HonorableExecutionInfo(attacker, mods);
                 info.m_Timer = Timer.DelayCall(TimeSpan.FromSeconds(7.0), new TimerStateCallback(EndEffect), info);

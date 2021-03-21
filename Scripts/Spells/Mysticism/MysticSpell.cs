@@ -34,15 +34,15 @@ namespace Server.Spells.Mysticism
             max = avg + ChanceOffset;
         }
 
-        public override SkillName CastSkill { get { return SkillName.Mysticism; } }
+        public override SkillName CastSkill { get { return SkillName.Misticismo; } }
 
         public override SkillName DamageSkill
         {
             get
             {
-                if (Caster.Skills[SkillName.Imbuing].Value >= Caster.Skills[SkillName.Focus].Value)
-                    return SkillName.Imbuing;
-                return SkillName.Focus;
+                if (Caster.Skills[SkillName.ImbuirMagica].Value >= Caster.Skills[SkillName.PreparoFisico].Value)
+                    return SkillName.ImbuirMagica;
+                return SkillName.PreparoFisico;
             }
         }
 
@@ -101,8 +101,8 @@ namespace Server.Spells.Mysticism
             int maxSkill = circle * 10;
             maxSkill += (circle / 6) * 25;
 
-            if (target.Skills[SkillName.MagicResist].Value < maxSkill)
-                target.CheckSkill(SkillName.MagicResist, 0.0, target.Skills[SkillName.MagicResist].Cap);
+            if (target.Skills[SkillName.ResistenciaMagica].Value < maxSkill)
+                target.CheckSkill(SkillName.ResistenciaMagica, 0.0, target.Skills[SkillName.ResistenciaMagica].Cap);
 
             return (n >= Utility.RandomDouble());
         }
@@ -123,12 +123,12 @@ namespace Server.Spells.Mysticism
 
         public static double GetBaseSkill(Mobile m)
         {
-            return m.Skills[SkillName.Mysticism].Value;
+            return m.Skills[SkillName.Misticismo].Value;
         }
 
         public static double GetBoostSkill(Mobile m)
         {
-            return Math.Max(m.Skills[SkillName.Imbuing].Value, m.Skills[SkillName.Focus].Value);
+            return Math.Max(m.Skills[SkillName.ImbuirMagica].Value, m.Skills[SkillName.PreparoFisico].Value);
         }
     }
 }

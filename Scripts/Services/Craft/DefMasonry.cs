@@ -16,7 +16,7 @@ namespace Server.Engines.Craft
         { 
             get
             {
-                return SkillName.Carpentry;
+                return SkillName.Carpintaria;
             }
         }
 
@@ -64,7 +64,7 @@ namespace Server.Engines.Craft
                 return 1044038; // You have worn out your tool!
             else if (tool is Item && !BaseTool.CheckTool((Item)tool, from))
                 return 1048146; // If you have a tool equipped, you must use that tool.
-            else if (!(from is PlayerMobile && ((PlayerMobile)from).Masonry && from.Skills[SkillName.Carpentry].Base >= 100.0))
+            else if (!(from is PlayerMobile && ((PlayerMobile)from).Masonry && from.Skills[SkillName.Carpintaria].Base >= 100.0))
                 return 1044633; // You havent learned stonecraft.
             else if (!tool.CheckAccessible(from, ref num))
                 return num; // The tool must be on your person to use.
@@ -178,19 +178,19 @@ namespace Server.Engines.Craft
             if (Core.SA)
             {
                 int index = AddCraft(typeof(LargeGargoyleBedSouthDeed), 1044290, 1111761, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
-                AddSkill(index, SkillName.Tailoring, 70.0, 75.0);
+                AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
                 index = AddCraft(typeof(LargeGargoyleBedEastDeed), 1044290, 1111762, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
-                AddSkill(index, SkillName.Tailoring, 70.0, 75.0);
+                AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
                 index = AddCraft(typeof(GargishCotEastDeed), 1044290, 1111921, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
-                AddSkill(index, SkillName.Tailoring, 70.0, 75.0);
+                AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
                 index = AddCraft(typeof(GargishCotSouthDeed), 1044290, 1111920, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
-                AddSkill(index, SkillName.Tailoring, 70.0, 75.0);
+                AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
             }
 

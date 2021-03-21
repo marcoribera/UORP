@@ -7,7 +7,7 @@ namespace Server.Mobiles
 {
 	public class NecroAI : MageAI
 	{
-		public override SkillName CastSkill { get { return SkillName.Necromancy; } }
+		public override SkillName CastSkill { get { return SkillName.Necromancia; } }
 		public override bool UsesMagery { get { return false; } }
 
 		public NecroAI(BaseCreature m)
@@ -99,7 +99,7 @@ namespace Server.Mobiles
 
 		public override Spell GetHealSpell()
 		{
-			m_Mobile.UseSkill(SkillName.SpiritSpeak);
+			m_Mobile.UseSkill(SkillName.PoderMagico);
 
 			return null;
 		}

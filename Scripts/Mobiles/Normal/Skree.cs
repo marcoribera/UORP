@@ -30,14 +30,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 25, 40);
 
-            SetSkill(SkillName.EvalInt, 90.6, 115.0);
-            SetSkill(SkillName.Magery, 90.2, 114.2);
-            SetSkill(SkillName.Meditation, 65.3, 75.0);
-            SetSkill(SkillName.MagicResist, 75.1, 90.0);
-            SetSkill(SkillName.Tactics, 20.2, 24.7);
-            SetSkill(SkillName.Wrestling, 101.9, 117.9);
-            SetSkill(SkillName.Mysticism, 80, 105.0);
-            SetSkill(SkillName.Parry, 75, 85);
+            SetSkill(SkillName.PoderMagico, 90.6, 115.0);
+            SetSkill(SkillName.Arcanismo, 90.2, 114.2);
+            SetSkill(SkillName.ResistenciaMagica, 75.1, 90.0);
+            SetSkill(SkillName.Anatomia, 20.2, 24.7);
+            SetSkill(SkillName.Briga, 101.9, 117.9);
+            SetSkill(SkillName.Misticismo, 80, 105.0);
+            SetSkill(SkillName.Bloqueio, 75, 85);
 
             Tamable = true;
             ControlSlots = 4;

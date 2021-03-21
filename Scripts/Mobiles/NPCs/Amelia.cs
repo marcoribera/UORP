@@ -40,7 +40,7 @@ namespace Server.Engines.Quests
             }
         }
 		
-        /* I’m disappointed that you aren’t interested in learning more about Tinkering. It’s really such a useful skill!<br><br>
+        /* Iâ€™m disappointed that you arenâ€™t interested in learning more about Tinkering. Itâ€™s really such a useful skill!<br><br>
         *Amelia smiles*<br><br>At least you know where to find me if you change your mind, since I rarely spend time outside 
         of this shop. */
         public override object Refuse
@@ -80,10 +80,10 @@ namespace Server.Engines.Quests
         public TheRightToolForTheJobQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Tinkering, 50, "Springs And Things Workshop", 1077742, 1077743));
+            this.AddObjective(new ApprenticeObjective(SkillName.Mecanica, 50, "Springs And Things Workshop", 1077742, 1077743));
 			
-            // 1077742 By tinkering inside of Amelia’s workshop, she is able to give you advice. This helps you hone your Tinkering skill faster than normal.
-            // 1077743 Since you’ve left Amelia’s workshop, she cannot give you advice. Your Tinkering learning potential is no longer enhanced.
+            // 1077742 By tinkering inside of Ameliaâ€™s workshop, she is able to give you advice. This helps you hone your Tinkering skill faster than normal.
+            // 1077743 Since youâ€™ve left Ameliaâ€™s workshop, she cannot give you advice. Your Tinkering learning potential is no longer enhanced.
 			
             this.AddReward(new BaseReward(typeof(AmeliasToolbox), 1077749));
         }
@@ -99,7 +99,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Tinkering.Base < 50;
+                return this.Owner.Skills.Mecanica.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -145,13 +145,13 @@ namespace Server.Engines.Quests
         public Amelia()
             : base("Amelia Youngstone", "The Tinkering Instructor")
         { 
-            this.SetSkill(SkillName.ArmsLore, 120.0, 120.0);
-            this.SetSkill(SkillName.Blacksmith, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Tinkering, 120.0, 120.0);
-            this.SetSkill(SkillName.Mining, 120.0, 120.0);
+            this.SetSkill(SkillName.ConhecimentoArmas, 120.0, 120.0);
+            this.SetSkill(SkillName.Ferraria, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.Mecanica, 120.0, 120.0);
+            this.SetSkill(SkillName.Extracao, 120.0, 120.0);
         }
 		
         public Amelia(Serial serial)

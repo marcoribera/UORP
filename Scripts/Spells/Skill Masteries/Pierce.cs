@@ -16,7 +16,7 @@ namespace Server.Spells.SkillMasteries
         public override int BaseMana { get { return 20; } }
         public override double RequiredSkill { get { return 90.0; } }
 
-        public override SkillName MoveSkill { get { return SkillName.Fencing; } }
+        public override SkillName MoveSkill { get { return SkillName.Perfurante; } }
         public override TextDefinition AbilityMessage { get { return new TextDefinition(1155991); } } // You ready yourself to pierce your opponent!
 
         private Dictionary<Mobile, Timer> _Table;
@@ -61,7 +61,7 @@ namespace Server.Spells.SkillMasteries
 
             if (weapon != null && (_Table == null || !_Table.ContainsKey(attacker)))
             {
-                int toDrain = (int)(attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Tactics].Value + (MasteryInfo.GetMasteryLevel(attacker, SkillName.Fencing) * 40) / 3);
+                int toDrain = (int)(attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Anatomia].Value + (MasteryInfo.GetMasteryLevel(attacker, SkillName.Perfurante) * 40) / 3);
                 toDrain /= 3;
 
                 Server.Timer t;

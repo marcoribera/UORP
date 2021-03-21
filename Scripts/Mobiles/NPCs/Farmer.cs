@@ -10,9 +10,9 @@ namespace Server.Mobiles
         public Farmer()
             : base("the farmer")
         {
-            this.SetSkill(SkillName.Lumberjacking, 36.0, 68.0);
-            this.SetSkill(SkillName.TasteID, 36.0, 68.0);
-            this.SetSkill(SkillName.Cooking, 36.0, 68.0);
+            this.SetSkill(SkillName.Extracao, 36.0, 68.0);
+            this.SetSkill(SkillName.Alquimia, 36.0, 68.0);
+            this.SetSkill(SkillName.Culinaria, 36.0, 68.0);
         }
 
         public Farmer(Serial serial)

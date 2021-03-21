@@ -29,9 +29,9 @@ namespace Server.Engines.Quests.Samurai
             this.SetResistance(ResistanceType.Physical, 15);
             this.SetResistance(ResistanceType.Fire, 5, 10);
 
-            this.SetSkill(SkillName.MagicResist, 10.0);
-            this.SetSkill(SkillName.Tactics, 0.0, 5.0);
-            this.SetSkill(SkillName.Wrestling, 20.0, 30.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 10.0);
+            this.SetSkill(SkillName.Anatomia, 0.0, 5.0);
+            this.SetSkill(SkillName.Briga, 20.0, 30.0);
         }
 
         public InjuredWolf(Serial serial)

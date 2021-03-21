@@ -34,12 +34,11 @@ namespace Server.Mobiles
 
             SetDamage(10, 23);
 
-            SetSkill(SkillName.EvalInt, 100.0, 125);
-            SetSkill(SkillName.Magery, 100, 125);
-            SetSkill(SkillName.Meditation, 100, 125);
-            SetSkill(SkillName.MagicResist, 100, 125);
-            SetSkill(SkillName.Tactics, 100, 125);
-            SetSkill(SkillName.Macing, 100, 125);
+            SetSkill(SkillName.PoderMagico, 100.0, 125);
+            SetSkill(SkillName.Arcanismo, 100, 125);
+            SetSkill(SkillName.ResistenciaMagica, 100, 125);
+            SetSkill(SkillName.Anatomia, 100, 125);
+            SetSkill(SkillName.Contusivo, 100, 125);
 
             Fame = 100;
             Karma = 100;

@@ -104,7 +104,7 @@ namespace Server.Items
 
         public virtual SkillName GetSecondarySkill(Mobile from)
         {
-            return SkillName.Tactics;
+            return SkillName.Anatomia;
         }
 
         public virtual int CalculateMana(Mobile from)
@@ -156,7 +156,7 @@ namespace Server.Items
 
             double reqSkill = GetRequiredSkill(from);
             double reqSecondarySkill = GetRequiredSecondarySkill(from);
-            SkillName secondarySkill = Core.TOL ? GetSecondarySkill(from) : SkillName.Tactics;
+            SkillName secondarySkill = Core.TOL ? GetSecondarySkill(from) : SkillName.Anatomia;
 
             if (Core.ML && from.Skills[secondarySkill].Base < reqSecondarySkill)
             {
@@ -178,7 +178,7 @@ namespace Server.Items
                 return true;
 
             /* <UBWS> */
-            if (weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Swords].Base >= reqSkill || from.Skills[SkillName.Macing].Base >= reqSkill || from.Skills[SkillName.Fencing].Base >= reqSkill))
+            if (weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Cortante].Base >= reqSkill || from.Skills[SkillName.Contusivo].Base >= reqSkill || from.Skills[SkillName.Perfurante].Base >= reqSkill))
                 return true;
             /* </UBWS> */
 
@@ -204,7 +204,7 @@ namespace Server.Items
                 case SkillName.Bushido:
                 case SkillName.Ninjitsu: return 1063347;
                     // You need ~1_SKILL_REQUIREMENT~ Bushido or Ninjitsu skill to perform that attack!
-                case SkillName.Poisoning: return 1060184;
+                case SkillName.Envenenamento: return 1060184;
                     // You lack the required poisoning to perform that attack
             }
         }
@@ -216,10 +216,10 @@ namespace Server.Items
 
         public virtual double GetSkillTotal(Mobile from)
         {
-            return GetSkill(from, SkillName.Swords) + GetSkill(from, SkillName.Macing) +
-                   GetSkill(from, SkillName.Fencing) + GetSkill(from, SkillName.Archery) + GetSkill(from, SkillName.Parry) +
-                   GetSkill(from, SkillName.Lumberjacking) + GetSkill(from, SkillName.Stealth) + GetSkill(from, SkillName.Throwing) +
-                   GetSkill(from, SkillName.Poisoning) + GetSkill(from, SkillName.Bushido) + GetSkill(from, SkillName.Ninjitsu);
+            return GetSkill(from, SkillName.Cortante) + GetSkill(from, SkillName.Contusivo) +
+                   GetSkill(from, SkillName.Perfurante) + GetSkill(from, SkillName.Atirar) + GetSkill(from, SkillName.Bloqueio) +
+                   GetSkill(from, SkillName.Extracao) + GetSkill(from, SkillName.Furtividade) + GetSkill(from, SkillName.Atirar) +
+                   GetSkill(from, SkillName.Envenenamento) + GetSkill(from, SkillName.Bushido) + GetSkill(from, SkillName.Ninjitsu);
         }
 
         public virtual double GetSkill(Mobile from, SkillName skillName)

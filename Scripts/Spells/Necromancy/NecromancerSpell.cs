@@ -16,14 +16,14 @@ namespace Server.Spells.Necromancy
         {
             get
             {
-                return SkillName.Necromancy;
+                return SkillName.Necromancia;
             }
         }
         public override SkillName DamageSkill
         {
             get
             {
-                return SkillName.SpiritSpeak;
+                return SkillName.PoderMagico;
             }
         }
         //public override int CastDelayBase{ get{ return base.CastDelayBase; } } // Reference, 3

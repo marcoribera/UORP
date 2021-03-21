@@ -58,18 +58,17 @@ namespace Server.Mobiles
             if (magery)
             {
                 ChangeAIType(AIType.AI_Mage);
-                SetSkill(SkillName.Magery, 100.0, 120.0);
-                SetSkill(SkillName.EvalInt, 100.0, 120.0);
-                SetSkill(SkillName.Meditation, 100.0, 120.0);
-                SetSkill(SkillName.MagicResist, 100.0, 120.0);
+                SetSkill(SkillName.Arcanismo, 100.0, 120.0);
+                SetSkill(SkillName.PoderMagico, 100.0, 120.0);
+                SetSkill(SkillName.ResistenciaMagica, 100.0, 120.0);
             }
 
-            SetSkill(SkillName.Archery, 100.0, 120.0);
-            SetSkill(SkillName.Chivalry, 100.0, 120.0);
-            SetSkill(SkillName.Focus, 100.0, 120.0);
-            SetSkill(SkillName.Tactics, 100.0, 120.0);
-            SetSkill(SkillName.Wrestling, 100.0, 120.0);
-            SetSkill(SkillName.Anatomy, 100.0, 120.0);
+            SetSkill(SkillName.Atirar, 100.0, 120.0);
+            SetSkill(SkillName.Ordem, 100.0, 120.0);
+            SetSkill(SkillName.PreparoFisico, 100.0, 120.0);
+            SetSkill(SkillName.Anatomia, 100.0, 120.0);
+            SetSkill(SkillName.Briga, 100.0, 120.0);
+            SetSkill(SkillName.Anatomia, 100.0, 120.0);
 
             SetDamageType(ResistanceType.Physical, 70);
             SetResistance(ResistanceType.Physical, 45, 55);

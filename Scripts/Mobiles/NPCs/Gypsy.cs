@@ -13,10 +13,10 @@ namespace Server.Mobiles
 
             SpeechHue = Utility.RandomDyedHue();
 
-			SetSkill(SkillName.Begging, 64.0, 100.0);
-            SetSkill(SkillName.Cooking, 65, 88);
-            SetSkill(SkillName.Snooping, 65, 88);
-            SetSkill(SkillName.Stealing, 65, 88);
+			SetSkill(SkillName.Carisma, 64.0, 100.0);
+            SetSkill(SkillName.Culinaria, 65, 88);
+            SetSkill(SkillName.Prestidigitacao, 65, 88);
+            SetSkill(SkillName.Prestidigitacao, 65, 88);
 
             Hue = Utility.RandomSkinHue();
 

@@ -21,16 +21,16 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.RemoveTrap].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Mecanica].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
         {
-            if (!Core.EJ && m.Skills[SkillName.Lockpicking].Value < 50)
+            if (!Core.EJ && m.Skills[SkillName.Mecanica].Value < 50)
             {
                 m.SendLocalizedMessage(502366); // You do not know enough about locks.  Become better at picking locks.
             }
-            else if (!Core.EJ && m.Skills[SkillName.DetectHidden].Value < 50)
+            else if (!Core.EJ && m.Skills[SkillName.Percepcao].Value < 50)
             {
                 m.SendLocalizedMessage(502367); // You are not perceptive enough.  Become better at detect hidden.
             }
@@ -108,7 +108,7 @@ namespace Server.SkillHandlers
                     {
                         from.PlaySound(0x241);
 
-                        if (from.CheckTargetSkill(SkillName.RemoveTrap, targ, targ.TrapPower, targ.TrapPower + 10))
+                        if (from.CheckTargetSkill(SkillName.Mecanica, targ, targ.TrapPower, targ.TrapPower + 10))
                         {
                             targ.TrapPower = 0;
                             targ.TrapLevel = 0;
@@ -145,7 +145,7 @@ namespace Server.SkillHandlers
                     }
                     else
                     {
-                        if ((Core.ML && isOwner) || (from.CheckTargetSkill(SkillName.RemoveTrap, trap, 80.0, 100.0) && from.CheckTargetSkill(SkillName.Tinkering, trap, 80.0, 100.0)))
+                        if ((Core.ML && isOwner) || (from.CheckTargetSkill(SkillName.Mecanica, trap, 80.0, 100.0) && from.CheckTargetSkill(SkillName.Mecanica, trap, 80.0, 100.0)))
                         {
                             from.PrivateOverheadMessage(MessageType.Regular, trap.MessageHue, trap.DisarmMessage, from.NetState);
 
@@ -178,7 +178,7 @@ namespace Server.SkillHandlers
                     }
                     else
                     {
-                        if (from == trap.Owner || ((from.Skills[SkillName.RemoveTrap].Value - 80.0) / 20.0) > Utility.RandomDouble())
+                        if (from == trap.Owner || ((from.Skills[SkillName.Mecanica].Value - 80.0) / 20.0) > Utility.RandomDouble())
                         {
                             VvVTrapKit kit = new VvVTrapKit(trap.TrapType);
                             trap.Delete();
@@ -260,7 +260,7 @@ namespace Server.SkillHandlers
                 _Table = new Dictionary<Mobile, RemoveTrapTimer>();
             }
 
-            _Table[from] = new RemoveTrapTimer(from, chest, from.Skills[SkillName.RemoveTrap].Value >= 100);
+            _Table[from] = new RemoveTrapTimer(from, chest, from.Skills[SkillName.Mecanica].Value >= 100);
         }
 
         public static void EndChestDisarmTimer(Mobile from)
@@ -363,7 +363,7 @@ namespace Server.SkillHandlers
                 }
                 else
                 {
-                    if (From.CheckTargetSkill(SkillName.RemoveTrap, Chest, 80, 120 + (Chest.Level * 10)))
+                    if (From.CheckTargetSkill(SkillName.Mecanica, Chest, 80, 120 + (Chest.Level * 10)))
                     {
                         DisarmTrap();
                     }
@@ -379,9 +379,9 @@ namespace Server.SkillHandlers
             {
                 From.RevealingAction();
 
-                var min = (double)Math.Ceiling(From.Skills[SkillName.RemoveTrap].Value * .75);
+                var min = (double)Math.Ceiling(From.Skills[SkillName.Mecanica].Value * .75);
 
-                if (From.CheckTargetSkill(SkillName.RemoveTrap, Chest, min, min > 50 ? min + 50 : 100))
+                if (From.CheckTargetSkill(SkillName.Mecanica, Chest, min, min > 50 ? min + 50 : 100))
                 {
                     DisarmTrap();
                     RemoveTrap.EndChestDisarmTimer(From);

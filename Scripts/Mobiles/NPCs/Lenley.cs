@@ -79,10 +79,10 @@ namespace Server.Engines.Quests
             SetResistance(ResistanceType.Poison, 10, 20);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.MagicResist, 35.1, 60.0);
-            SetSkill(SkillName.Tactics, 50.1, 75.0);
-            SetSkill(SkillName.Wrestling, 50.1, 75.0);
-            SetSkill(SkillName.Hiding, 75.0);
+            SetSkill(SkillName.ResistenciaMagica, 35.1, 60.0);
+            SetSkill(SkillName.Anatomia, 50.1, 75.0);
+            SetSkill(SkillName.Briga, 50.1, 75.0);
+            SetSkill(SkillName.Furtividade, 75.0);
 
             Fame = 1500;
             Karma = 1500;

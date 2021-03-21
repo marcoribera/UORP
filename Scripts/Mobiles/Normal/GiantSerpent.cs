@@ -35,10 +35,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 70, 90);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Poisoning, 70.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            this.SetSkill(SkillName.Tactics, 65.1, 70.0);
-            this.SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            this.SetSkill(SkillName.Envenenamento, 70.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            this.SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            this.SetSkill(SkillName.Briga, 60.1, 80.0);
 
             this.Fame = 2500;
             this.Karma = -2500;
@@ -182,10 +182,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 70, 90);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Poisoning, 70.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            this.SetSkill(SkillName.Tactics, 65.1, 70.0);
-            this.SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            this.SetSkill(SkillName.Envenenamento, 70.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            this.SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            this.SetSkill(SkillName.Briga, 60.1, 80.0);
 
             this.Fame = 2500;
             this.Karma = -2500;
@@ -307,10 +307,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 70, 90);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Poisoning, 70.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            this.SetSkill(SkillName.Tactics, 65.1, 70.0);
-            this.SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            this.SetSkill(SkillName.Envenenamento, 70.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            this.SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            this.SetSkill(SkillName.Briga, 60.1, 80.0);
 
             this.Fame = 2500;
             this.Karma = -2500;
@@ -432,10 +432,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 70, 90);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Poisoning, 70.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            this.SetSkill(SkillName.Tactics, 65.1, 70.0);
-            this.SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            this.SetSkill(SkillName.Envenenamento, 70.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            this.SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            this.SetSkill(SkillName.Briga, 60.1, 80.0);
 
             this.Fame = 2500;
             this.Karma = -2500;
@@ -557,10 +557,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 70, 90);
             this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            this.SetSkill(SkillName.Poisoning, 70.1, 100.0);
-            this.SetSkill(SkillName.MagicResist, 25.1, 40.0);
-            this.SetSkill(SkillName.Tactics, 65.1, 70.0);
-            this.SetSkill(SkillName.Wrestling, 60.1, 80.0);
+            this.SetSkill(SkillName.Envenenamento, 70.1, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.1, 40.0);
+            this.SetSkill(SkillName.Anatomia, 65.1, 70.0);
+            this.SetSkill(SkillName.Briga, 60.1, 80.0);
 
             this.Fame = 2500;
             this.Karma = -2500;

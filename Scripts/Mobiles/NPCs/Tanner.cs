@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Tanner()
             : base("the tanner")
         {
-            this.SetSkill(SkillName.Tailoring, 36.0, 68.0);
+            this.SetSkill(SkillName.Costura, 36.0, 68.0);
         }
 
         public Tanner(Serial serial)
@@ -39,7 +39,7 @@ namespace Server.Mobiles
 
         public override bool ValidateBought(Mobile buyer, Item item)
         {
-            if (item is Server.Items.TaxidermyKit && buyer.Skills[SkillName.Carpentry].Value < 90.1)
+            if (item is Server.Items.TaxidermyKit && buyer.Skills[SkillName.Carpintaria].Value < 90.1)
             {
                 this.SayTo(buyer, 1042603, 0x3B2); // You would not understand how to use the kit.
                 return false;

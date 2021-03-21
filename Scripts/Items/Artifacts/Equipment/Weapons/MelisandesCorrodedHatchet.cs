@@ -9,7 +9,7 @@ namespace Server.Items
         public MelisandesCorrodedHatchet()
         {
             Hue = 0x494;
-            SkillBonuses.SetValues(0, SkillName.Lumberjacking, 5.0);
+            SkillBonuses.SetValues(0, SkillName.Extracao, 5.0);
             Attributes.SpellChanneling = 1;
             Attributes.WeaponSpeed = 15;
             Attributes.WeaponDamage = -50;

@@ -51,12 +51,12 @@ namespace Server.Mobiles
 
 		public virtual double ScaleByNecromancy(double v)
 		{
-			return m_Mobile.Skills[SkillName.Necromancy].Value * v * 0.01;
+			return m_Mobile.Skills[SkillName.Necromancia].Value * v * 0.01;
 		}
 
 		public virtual double ScaleByMagery(double v)
 		{
-			return m_Mobile.Skills[SkillName.Magery].Value * v * 0.01;
+			return m_Mobile.Skills[SkillName.Arcanismo].Value * v * 0.01;
 		}
 
 		public override bool DoActionWander()
@@ -73,8 +73,8 @@ namespace Server.Mobiles
 			{
 				m_Mobile.DebugSay("I am going to meditate");
 
-				m_Mobile.UseSkill(SkillName.Meditation);
-			}
+				m_Mobile.UseSkill(SkillName.Arcanismo); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+            }
 			else
 			{
 				m_Mobile.DebugSay("I am wandering");
@@ -170,8 +170,8 @@ namespace Server.Mobiles
 
 		public virtual Spell GetRandomCurseSpell()
 		{
-			var necro = (int)((m_Mobile.Skills[SkillName.Necromancy].Value + 50.0) / (100.0 / 7.0));
-			var mage = (int)((m_Mobile.Skills[SkillName.Magery].Value + 50.0) / (100.0 / 7.0));
+			var necro = (int)((m_Mobile.Skills[SkillName.Necromancia].Value + 50.0) / (100.0 / 7.0));
+			var mage = (int)((m_Mobile.Skills[SkillName.Arcanismo].Value + 50.0) / (100.0 / 7.0));
 
 			if (mage < 1)
 				mage = 1;
@@ -179,7 +179,7 @@ namespace Server.Mobiles
 			if (necro < 1)
 				necro = 1;
 
-			if (m_Mobile.Skills[SkillName.Necromancy].Value > 30 && Utility.Random(necro) > Utility.Random(mage))
+			if (m_Mobile.Skills[SkillName.Necromancia].Value > 30 && Utility.Random(necro) > Utility.Random(mage))
 			{
 				switch (Utility.Random(necro - 5))
 				{
@@ -213,7 +213,7 @@ namespace Server.Mobiles
 		{
 			if (Utility.RandomBool())
 			{
-				if (m_Mobile.Skills[SkillName.Magery].Value >= 80.0)
+				if (m_Mobile.Skills[SkillName.Arcanismo].Value >= 80.0)
 					return new ManaVampireSpell(m_Mobile, null);
 			}
 
@@ -241,7 +241,7 @@ namespace Server.Mobiles
 			}
 
 			var mob = c as Mobile;
-			var damage = ((m_Mobile.Skills[SkillName.SpiritSpeak].Value - mob.Skills[SkillName.MagicResist].Value) / 10) +
+			var damage = ((m_Mobile.Skills[SkillName.PoderMagico].Value - mob.Skills[SkillName.ResistenciaMagica].Value) / 10) +
 						 (mob.Player ? 18 : 30);
 
 			if (damage > c.Hits)
@@ -280,7 +280,7 @@ namespace Server.Mobiles
 				{
 					m_Mobile.DebugSay("Attempting to paralyze");
 
-					if (m_Mobile.Skills[SkillName.Magery].Value > 50.0)
+					if (m_Mobile.Skills[SkillName.Arcanismo].Value > 50.0)
 						spell = new ParalyzeSpell(m_Mobile, null);
 
 					break;
@@ -296,7 +296,7 @@ namespace Server.Mobiles
 				{
 					m_Mobile.DebugSay("Attempting to blood oath");
 
-					if (m_Mobile.Skills[SkillName.Necromancy].Value > 30 && BloodOathSpell.GetBloodOath(mob) != m_Mobile)
+					if (m_Mobile.Skills[SkillName.Necromancia].Value > 30 && BloodOathSpell.GetBloodOath(mob) != m_Mobile)
 						spell = new BloodOathSpell(m_Mobile, null);
 
 					break;
@@ -340,8 +340,8 @@ namespace Server.Mobiles
 				}
 			}
 
-			if (!m_Mobile.StunReady && m_Mobile.Skills[SkillName.Wrestling].Value >= 80.0 &&
-				m_Mobile.Skills[SkillName.Anatomy].Value >= 80.0)
+			if (!m_Mobile.StunReady && m_Mobile.Skills[SkillName.Briga].Value >= 80.0 &&
+				m_Mobile.Skills[SkillName.Anatomia].Value >= 80.0)
 				EventSink.InvokeStunRequest(new StunRequestEventArgs(m_Mobile));
 
 			if (!m_Mobile.InRange(c, m_Mobile.RangePerception))
@@ -667,7 +667,7 @@ namespace Server.Mobiles
 			else
 				delay = Math.Sqrt(600 - m_Mobile.Int);
 
-			m_Mobile.UseSkill(SkillName.SpiritSpeak);
+			m_Mobile.UseSkill(SkillName.PoderMagico);
 
 			m_NextHealTime = DateTime.UtcNow + TimeSpan.FromSeconds(delay);
 

@@ -19,7 +19,7 @@ namespace Server.Mobiles
         {
             InitStats(31, 41, 51);
 
-            SetSkill(SkillName.Mining, 36, 68);
+            SetSkill(SkillName.Extracao, 36, 68);
 
             SpeechHue = Utility.RandomDyedHue();
             Hue = Utility.RandomSkinHue();

@@ -11,7 +11,7 @@ namespace Server.Items
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.ItemID].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Erudicao].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile from)
@@ -42,7 +42,7 @@ namespace Server.Items
                     return;
                 }
                 
-                if (!from.CheckTargetSkill(SkillName.ItemID, o, 0, 100))
+                if (!from.CheckTargetSkill(SkillName.Erudicao, o, 0, 100))
                 {
                     from.PrivateOverheadMessage(MessageType.Emote, 0x3B2, 1041352, from.NetState); // You have no idea how much it might be worth.
                     return;
@@ -93,7 +93,7 @@ namespace Server.Items
                         {
                             int weight = Imbuing.GetTotalWeight(item, -1, false, true);
                             string imbIngred = null;
-                            double skill = from.Skills[SkillName.Imbuing].Base;
+                            double skill = from.Skills[SkillName.ImbuirMagica].Base;
                             bool badSkill = false;
 
                             if (!Imbuing.CanUnravelItem(from, item, false))
@@ -144,7 +144,7 @@ namespace Server.Items
                 }
                 else if (o is Item)
                 {
-                    if (from.CheckTargetSkill(SkillName.ItemID, o, 0, 100))
+                    if (from.CheckTargetSkill(SkillName.Erudicao, o, 0, 100))
                     {
                         if (o is BaseWeapon)
                             ((BaseWeapon)o).Identified = true;

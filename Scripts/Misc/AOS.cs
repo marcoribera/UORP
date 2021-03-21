@@ -245,7 +245,7 @@ namespace Server
 
                     if (Core.ML && m is BaseCreature)
                     {
-                        from.Damage((int)(originalDamage * (1 - (((from.Skills.MagicResist.Value * .5) + 10) / 100))), m);
+                        from.Damage((int)(originalDamage * (1 - (((from.Skills.ResistenciaMagica.Value * .5) + 10) / 100))), m);
                     }
                     else
                     {
@@ -304,7 +304,7 @@ namespace Server
                 if (Utility.Random(100) < chance)
                 {
                     m.RevealingAction();
-                    m.NextSkillTime = Core.TickCount + (12000 - ((int)m.Skills[SkillName.Hiding].Value) * 100);
+                    m.NextSkillTime = Core.TickCount + (12000 - ((int)m.Skills[SkillName.Furtividade].Value) * 100);
                 }
             }
 
@@ -428,7 +428,7 @@ namespace Server
             {
                 if (context.Type == typeof(WraithFormSpell))
                 {
-                    int manaLeech = AOS.Scale(damageGiven, Math.Min(target.Mana, (int)from.Skills.SpiritSpeak.Value / 5)); // Wraith form gives 5-20% mana leech
+                    int manaLeech = AOS.Scale(damageGiven, Math.Min(target.Mana, (int)from.Skills.PoderMagico.Value / 5)); // Wraith form gives 5-20% mana leech
 
                     if (manaLeech != 0)
                     {
@@ -2372,11 +2372,11 @@ namespace Server
         {
             switch (skill)
             {
-                case SkillName.EvalInt:
+                case SkillName.PoderMagico:
                     return 1002070; // Evaluate Intelligence
-                case SkillName.Forensics:
+                case SkillName.Percepcao:
                     return 1002078; // Forensic Evaluation
-                case SkillName.Lockpicking:
+                case SkillName.Mecanica:
                     return 1002097; // Lockpicking
                 default:
                     return 1044060 + (int)skill;
@@ -2558,7 +2558,7 @@ namespace Server
                     }
                 }
             }
-            if (!m.CanBeginAction(typeof(PolymorphSpell)) && m.Skills[SkillName.Magery].Value < 66.1)
+            if (!m.CanBeginAction(typeof(PolymorphSpell)) && m.Skills[SkillName.Arcanismo].Value < 66.1)
             {
                 m.BodyMod = 0;
                 m.HueMod = -1;
@@ -2567,7 +2567,7 @@ namespace Server
                 BaseArmor.ValidateMobile(m);
                 BaseClothing.ValidateMobile(m);
             }
-            if (!m.CanBeginAction(typeof(IncognitoSpell)) && m.Skills[SkillName.Magery].Value < 38.1)
+            if (!m.CanBeginAction(typeof(IncognitoSpell)) && m.Skills[SkillName.Arcanismo].Value < 38.1)
             {
                 if (m is PlayerMobile)
                     ((PlayerMobile)m).SetHairMods(-1, -1);

@@ -34,16 +34,16 @@ namespace Server.Mobiles
 
             this.SetDamage(10, 23);
 
-            this.SetSkill(SkillName.Stealing, 66.0, 97.5);
-            this.SetSkill(SkillName.Peacemaking, 65.0, 87.5);
-            this.SetSkill(SkillName.MagicResist, 25.0, 47.5);
-            this.SetSkill(SkillName.Healing, 65.0, 87.5);
-            this.SetSkill(SkillName.Tactics, 65.0, 87.5);
-            this.SetSkill(SkillName.Fencing, 65.0, 87.5);
-            this.SetSkill(SkillName.Parry, 45.0, 60.5);
-            this.SetSkill(SkillName.Lockpicking, 65, 87);
-            this.SetSkill(SkillName.Hiding, 65, 87);
-            this.SetSkill(SkillName.Snooping, 65, 87);	
+            this.SetSkill(SkillName.Prestidigitacao, 66.0, 97.5);
+            this.SetSkill(SkillName.Pacificar, 65.0, 87.5);
+            this.SetSkill(SkillName.ResistenciaMagica, 25.0, 47.5);
+            this.SetSkill(SkillName.Medicina, 65.0, 87.5);
+            this.SetSkill(SkillName.Anatomia, 65.0, 87.5);
+            this.SetSkill(SkillName.Perfurante, 65.0, 87.5);
+            this.SetSkill(SkillName.Bloqueio, 45.0, 60.5);
+            this.SetSkill(SkillName.Mecanica, 65, 87);
+            this.SetSkill(SkillName.Furtividade, 65, 87);
+            this.SetSkill(SkillName.Prestidigitacao, 65, 87);	
             this.Fame = 100;
             this.Karma = 0;
 

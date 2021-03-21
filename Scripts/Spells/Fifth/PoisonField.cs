@@ -74,7 +74,7 @@ namespace Server.Spells.Fifth
                 int itemID = eastToWest ? 0x3915 : 0x3922;
 
                 Point3D pnt = new Point3D(p);
-                TimeSpan duration = TimeSpan.FromSeconds(3 + (Caster.Skills.Magery.Fixed / 25));
+                TimeSpan duration = TimeSpan.FromSeconds(3 + (Caster.Skills.Arcanismo.Fixed / 25));
 
                 if (SpellHelper.CheckField(pnt, Caster.Map))
                     new InternalItem(itemID, pnt, Caster, Caster.Map, duration);
@@ -194,7 +194,7 @@ namespace Server.Spells.Fifth
 
                 if (Core.AOS)
                 {
-                    int total = (m_Caster.Skills.Magery.Fixed + m_Caster.Skills.Poisoning.Fixed) / 2;
+                    int total = (m_Caster.Skills.Arcanismo.Fixed + m_Caster.Skills.Envenenamento.Fixed) / 2;
 
                     if (total >= 1000)
                         p = Poison.Deadly;

@@ -14,14 +14,14 @@ namespace Server.Mobiles
 		public IronWorker()
 			: base("the iron worker")
 		{
-			SetSkill(SkillName.Begging, 64.0, 100.0);
-			SetSkill(SkillName.ArmsLore, 36.0, 68.0);
-			SetSkill(SkillName.Blacksmith, 65.0, 88.0);
-			SetSkill(SkillName.Fencing, 60.0, 83.0);
-			SetSkill(SkillName.Macing, 61.0, 93.0);
-			SetSkill(SkillName.Swords, 60.0, 83.0);
-			SetSkill(SkillName.Tactics, 60.0, 83.0);
-			SetSkill(SkillName.Parry, 61.0, 93.0);
+			SetSkill(SkillName.Carisma, 64.0, 100.0);
+			SetSkill(SkillName.ConhecimentoArmas, 36.0, 68.0);
+			SetSkill(SkillName.Ferraria, 65.0, 88.0);
+			SetSkill(SkillName.Perfurante, 60.0, 83.0);
+			SetSkill(SkillName.Contusivo, 61.0, 93.0);
+			SetSkill(SkillName.Cortante, 60.0, 83.0);
+			SetSkill(SkillName.Anatomia, 60.0, 83.0);
+			SetSkill(SkillName.Bloqueio, 61.0, 93.0);
 		}
 
 		public IronWorker(Serial serial)

@@ -40,14 +40,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 10, 20);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.Anatomy, 125.0);
-            SetSkill(SkillName.Fencing, 46.0, 77.5);
-            SetSkill(SkillName.Macing, 35.0, 57.5);
-            SetSkill(SkillName.Poisoning, 60.0, 82.5);
-            SetSkill(SkillName.MagicResist, 83.5, 92.5);
-            SetSkill(SkillName.Swords, 125.0);
-            SetSkill(SkillName.Tactics, 125.0);
-            SetSkill(SkillName.Lumberjacking, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Perfurante, 46.0, 77.5);
+            SetSkill(SkillName.Contusivo, 35.0, 57.5);
+            SetSkill(SkillName.Envenenamento, 60.0, 82.5);
+            SetSkill(SkillName.ResistenciaMagica, 83.5, 92.5);
+            SetSkill(SkillName.Cortante, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Extracao, 125.0);
 
             Fame = 5000;
             Karma = -5000;

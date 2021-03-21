@@ -22,9 +22,9 @@ namespace Server.Spells.SkillMasteries
         public override bool BlocksMovement { get { return false; } }
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(1.0); } }
 
-        public override SkillName CastSkill { get { return SkillName.Parry; } }
+        public override SkillName CastSkill { get { return SkillName.Bloqueio; } }
 
-        public double Multiplier { get { return (Caster.Skills[GetBestSkill()].Value + Caster.Skills[SkillName.Parry].Value + (GetMasteryLevel() * 40)) / 360; } }
+        public double Multiplier { get { return (Caster.Skills[GetBestSkill()].Value + Caster.Skills[SkillName.Bloqueio].Value + (GetMasteryLevel() * 40)) / 360; } }
 
         public ShieldBashSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -126,27 +126,27 @@ namespace Server.Spells.SkillMasteries
 
         private SkillName GetBestSkill()
         {
-            double swrd = Caster.Skills[SkillName.Swords].Value;
-            double fenc = Caster.Skills[SkillName.Fencing].Value;
-            double mcng = Caster.Skills[SkillName.Macing].Value;
-            double wres = Caster.Skills[SkillName.Wrestling].Value;
+            double swrd = Caster.Skills[SkillName.Cortante].Value;
+            double fenc = Caster.Skills[SkillName.Perfurante].Value;
+            double mcng = Caster.Skills[SkillName.Contusivo].Value;
+            double wres = Caster.Skills[SkillName.Briga].Value;
 
-            SkillName sk = SkillName.Swords;
+            SkillName sk = SkillName.Cortante;
             double val = swrd;
 
             if (fenc > val)
             {
-                sk = SkillName.Fencing;
+                sk = SkillName.Perfurante;
                 val = fenc;
             }
             if (mcng > val)
             {
-                sk = SkillName.Macing;
+                sk = SkillName.Contusivo;
                 val = mcng;
             }
             if (wres > val)
             {
-                sk = SkillName.Wrestling;
+                sk = SkillName.Briga;
             }
 
             return sk;

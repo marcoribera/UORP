@@ -9,7 +9,7 @@ namespace Server.Engines.Quests
         public Canir()
             : base("Canir", "the thaumaturgist")
         { 
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Canir(Serial serial)

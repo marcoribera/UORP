@@ -144,7 +144,7 @@ namespace Server.Spells.Bushido
             if (m.Skills.Bushido.Value > 60)
                 seconds += (m.Skills.Bushido.Value - 60) / 20;
 
-            if (m.Skills.Anatomy.Value >= 100.0 && m.Skills.Tactics.Value >= 100.0 && m.Skills.Bushido.Value > 100.0)	//Bushido being HIGHER than 100 for bonus is intended
+            if (m.Skills.Anatomia.Value >= 100.0 && m.Skills.Anatomia.Value >= 100.0 && m.Skills.Bushido.Value > 100.0)	//Bushido being HIGHER than 100 for bonus is intended
                 seconds++;
 
             return TimeSpan.FromSeconds((int)seconds);
@@ -168,7 +168,7 @@ namespace Server.Spells.Bushido
             if (m.Skills.Bushido.Value >= 60)
                 bonus += (((m.Skills.Bushido.Value - 60) * .004) + 0.16);
 
-            if (m.Skills.Anatomy.Value >= 100 && m.Skills.Tactics.Value >= 100 && m.Skills.Bushido.Value > 100) //Bushido being HIGHER than 100 for bonus is intended
+            if (m.Skills.Anatomia.Value >= 100 && m.Skills.Anatomia.Value >= 100 && m.Skills.Bushido.Value > 100) //Bushido being HIGHER than 100 for bonus is intended
                 bonus += 0.10;
 
             return 1.0 + bonus;

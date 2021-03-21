@@ -9,8 +9,7 @@ namespace Server.Engines.Quests
         public Waelian()
             : base("Waelian", "the trinket weaver")
         { 
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Waelian(Serial serial)

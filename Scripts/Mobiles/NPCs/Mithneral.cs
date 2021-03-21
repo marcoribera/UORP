@@ -72,7 +72,7 @@ namespace Server.Engines.Quests
         public ScholarlyTaskQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.EvalInt, 50, "Old Haven Training", 1077491, 1077585));
+            this.AddObjective(new ApprenticeObjective(SkillName.PoderMagico, 50, "Old Haven Training", 1077491, 1077585));
 			
             // 1077491 Your Evaluating Intelligence potential is greatly enhanced while questing in this area.
             // 1077585 You are not in the quest area for Apprentice Scholar. Your Evaluating Intelligence potential is not enhanced here.
@@ -91,7 +91,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.EvalInt.Base < 50;
+                return this.Owner.Skills.PoderMagico.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -132,12 +132,11 @@ namespace Server.Engines.Quests
         public Mithneral()
             : base("Mithneral", "The Evaluating Intelligence Instructor")
         { 
-            this.SetSkill(SkillName.EvalInt, 120.0, 120.0);
-            this.SetSkill(SkillName.Inscribe, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
+            this.SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            this.SetSkill(SkillName.Erudicao, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
         }
 		
         public Mithneral(Serial serial)

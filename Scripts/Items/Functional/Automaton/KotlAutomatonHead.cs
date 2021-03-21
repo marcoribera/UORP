@@ -29,7 +29,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            int skill = (int)from.Skills[SkillName.Tinkering].Base;
+            int skill = (int)from.Skills[SkillName.Mecanica].Base;
 
             if (skill < 100.0)
             {

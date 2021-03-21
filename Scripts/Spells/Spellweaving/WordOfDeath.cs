@@ -67,8 +67,8 @@ namespace Server.Spells.Spellweaving
                 }
                 else
                 {
-                    int minDamage = (int)this.Caster.Skills.Spellweaving.Value / 5;
-                    int maxDamage = (int)this.Caster.Skills.Spellweaving.Value / 3;
+                    int minDamage = (int)this.Caster.Skills.Feiticaria.Value / 5;
+                    int maxDamage = (int)this.Caster.Skills.Feiticaria.Value / 3;
                     damage = Utility.RandomMinMax(minDamage, maxDamage);
                 }
 

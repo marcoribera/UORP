@@ -31,7 +31,7 @@ namespace Server.Items
         public override int DefMissSound { get { return 0x23A; } }
         public override int InitMinHits { get { return 30; } }
         public override int InitMaxHits { get { return 60; } }
-        public override SkillName DefSkill { get { return SkillName.Fencing; } }
+        public override SkillName DefSkill { get { return SkillName.Perfurante; } }
         public override WeaponType DefType { get { return WeaponType.Piercing; } }
         public override WeaponAnimation DefAnimation { get { return WeaponAnimation.Pierce1H; } }
 

@@ -45,9 +45,9 @@ namespace Server.Mobiles
 
             this.SetDamage(10, 23);
 
-            this.SetSkill(SkillName.Tactics, 5, 27);
-            this.SetSkill(SkillName.Wrestling, 5, 5);
-            this.SetSkill(SkillName.Swords, 5, 27);
+            this.SetSkill(SkillName.Anatomia, 5, 27);
+            this.SetSkill(SkillName.Briga, 5, 5);
+            this.SetSkill(SkillName.Cortante, 5, 27);
 
             this.Fame = 0;
             this.Karma = 0;

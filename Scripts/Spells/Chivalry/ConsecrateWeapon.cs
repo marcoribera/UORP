@@ -79,11 +79,11 @@ namespace Server.Spells.Chivalry
 
                 switch ( weapon.Skill )
                 {
-                    case SkillName.Macing:
+                    case SkillName.Contusivo:
                         itemID = 0xFB4;
                         soundID = 0x232;
                         break;
-                    case SkillName.Archery:
+                    case SkillName.Atirar:
                         itemID = 0x13B1;
                         soundID = 0x145;
                         break;
@@ -182,12 +182,12 @@ namespace Server.Spells.Chivalry
         {
             get
             {
-                if (!Core.SA || Owner.Skills.Chivalry.Value >= 80)
+                if (!Core.SA || Owner.Skills.Ordem.Value >= 80)
                 {
                     return 100;
                 }
 
-                return (int)Owner.Skills.Chivalry.Value;
+                return (int)Owner.Skills.Ordem.Value;
             }
         }
 
@@ -197,7 +197,7 @@ namespace Server.Spells.Chivalry
             {
                 if (Core.SA)
                 {
-                    double value = Owner.Skills.Chivalry.Value;
+                    double value = Owner.Skills.Ordem.Value;
 
                     if (value >= 90)
                     {

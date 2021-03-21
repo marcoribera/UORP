@@ -9,7 +9,7 @@ namespace Server.Items
         public TalonBite()
         {
             Hue = 0x47E;
-            SkillBonuses.SetValues(0, SkillName.Tactics, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Anatomia, 10.0);
             Attributes.BonusDex = 8;
             Attributes.WeaponSpeed = 20;
             Attributes.WeaponDamage = 35;

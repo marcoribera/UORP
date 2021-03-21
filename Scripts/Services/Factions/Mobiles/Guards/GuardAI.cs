@@ -269,7 +269,7 @@ namespace Server.Factions
 
 		public Spell RandomOffenseSpell()
 		{
-			int maxCircle = (int)((m_Guard.Skills.Magery.Value + 20.0) / (100.0 / 7.0));
+			int maxCircle = (int)((m_Guard.Skills.Arcanismo.Value + 20.0) / (100.0 / 7.0));
 
 			if (maxCircle < 1)
 			{
@@ -659,7 +659,7 @@ namespace Server.Factions
 				m_Guard.Warmode = false;
 			}
 
-			if ((IsDamaged || IsPoisoned) && m_Guard.Skills.Healing.Base > 20.0)
+			if ((IsDamaged || IsPoisoned) && m_Guard.Skills.Medicina.Base > 20.0)
 			{
 				TimeSpan ts = TimeUntilBandage;
 

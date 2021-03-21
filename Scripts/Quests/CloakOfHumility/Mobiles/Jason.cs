@@ -12,10 +12,10 @@ namespace Server.Mobiles
 
         public override bool CheckTeach(SkillName skill, Mobile from)
         {
-            return (skill == SkillName.Forensics)
-                || (skill == SkillName.Healing)
-                || (skill == SkillName.SpiritSpeak)
-                || (skill == SkillName.Swords);
+            return (skill == SkillName.Percepcao)
+                || (skill == SkillName.Medicina)
+                || (skill == SkillName.PoderMagico)
+                || (skill == SkillName.Cortante);
         }
 
         public override void InitSBInfo()
@@ -27,9 +27,9 @@ namespace Server.Mobiles
         public Jason()
             : base("Jason", "the Healer")
         {
-            SetSkill(SkillName.Forensics, 80.0, 100.0);
-            SetSkill(SkillName.SpiritSpeak, 80.0, 100.0);
-            SetSkill(SkillName.Swords, 80.0, 100.0);
+            SetSkill(SkillName.Percepcao, 80.0, 100.0);
+            SetSkill(SkillName.PoderMagico, 80.0, 100.0);
+            SetSkill(SkillName.Cortante, 80.0, 100.0);
         }
 
         public Jason(Serial serial)

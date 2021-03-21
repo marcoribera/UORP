@@ -77,7 +77,7 @@ namespace Server.Engines.Quests
         public TheArtOfWarQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Tactics, 50, "Old Haven Training", 1077668, 1077669));
+            this.AddObjective(new ApprenticeObjective(SkillName.Anatomia, 50, "Old Haven Training", 1077668, 1077669));
 			
             // 1077668 You feel like practicing combat here would really help you learn to fight better. Your ability to raise your Tactics skill is enhanced in this area.
             // 1077669 You feel less able to absorb the lessons of combat. Your Tactics learning potential is no longer enhanced.
@@ -96,7 +96,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Tactics.Base < 50;
+                return this.Owner.Skills.Anatomia.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -137,12 +137,12 @@ namespace Server.Engines.Quests
         public AldenArmstrong()
             : base("Alden Armstrong", "The Tactics Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public AldenArmstrong(Serial serial)

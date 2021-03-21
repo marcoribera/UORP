@@ -212,12 +212,12 @@ namespace Server.Engines.Quests
         public Neil()
             : base("Neil", "the iron worker")
         { 
-            this.SetSkill(SkillName.Blacksmith, 65.0, 88.0);
-            this.SetSkill(SkillName.Fencing, 45.0, 68.0);
-            this.SetSkill(SkillName.Macing, 45.0, 68.0);
-            this.SetSkill(SkillName.Swords, 45.0, 68.0);
-            this.SetSkill(SkillName.Tactics, 36.0, 68.0);
-            this.SetSkill(SkillName.Parry, 61.0, 93.0);
+            this.SetSkill(SkillName.Ferraria, 65.0, 88.0);
+            this.SetSkill(SkillName.Perfurante, 45.0, 68.0);
+            this.SetSkill(SkillName.Contusivo, 45.0, 68.0);
+            this.SetSkill(SkillName.Cortante, 45.0, 68.0);
+            this.SetSkill(SkillName.Anatomia, 36.0, 68.0);
+            this.SetSkill(SkillName.Bloqueio, 61.0, 93.0);
         }
 
         public Neil(Serial serial)

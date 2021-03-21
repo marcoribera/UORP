@@ -54,7 +54,7 @@ namespace Server.Items
             if (!m.InRange(Location, 3))
                 return false;
 
-            return m.Skills[SkillName.DetectHidden].Value >= 98.0;
+            return m.Skills[SkillName.Percepcao].Value >= 98.0;
         }
 
         public virtual void OnRevealed(Mobile m)
@@ -67,7 +67,7 @@ namespace Server.Items
         {
             if (m.InRange(this.Location, 4))
             {
-                int skill = (int)m.Skills[SkillName.DetectHidden].Value;
+                int skill = (int)m.Skills[SkillName.Percepcao].Value;
 
                 if (skill >= 80 && Utility.Random(300) < skill)
                     return true;
@@ -223,7 +223,7 @@ namespace Server.Items
 
         public override void OnEnter(Mobile m)
         {
-            if (!m_Chest.Visible && m is PlayerMobile && m.Skills[SkillName.DetectHidden].Value >= 98.0)
+            if (!m_Chest.Visible && m is PlayerMobile && m.Skills[SkillName.Percepcao].Value >= 98.0)
             {
                 m.SendLocalizedMessage(1153493); // Your keen senses detect something hidden in the area...
             }

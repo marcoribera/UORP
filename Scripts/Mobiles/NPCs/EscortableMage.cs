@@ -10,11 +10,10 @@ namespace Server.Mobiles
         {
             this.Title = "the mage";
 
-            this.SetSkill(SkillName.EvalInt, 80.0, 100.0);
-            this.SetSkill(SkillName.Inscribe, 80.0, 100.0);
-            this.SetSkill(SkillName.Magery, 80.0, 100.0);
-            this.SetSkill(SkillName.Meditation, 80.0, 100.0);
-            this.SetSkill(SkillName.MagicResist, 80.0, 100.0);
+            this.SetSkill(SkillName.PoderMagico, 80.0, 100.0);
+            this.SetSkill(SkillName.Erudicao, 80.0, 100.0);
+            this.SetSkill(SkillName.Arcanismo, 80.0, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 80.0, 100.0);
         }
 
         public EscortableMage(Serial serial)

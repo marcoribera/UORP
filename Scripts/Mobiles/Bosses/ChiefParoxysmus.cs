@@ -30,11 +30,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 50, 60);
 			
-            SetSkill(SkillName.Wrestling, 120.0);
-            SetSkill(SkillName.Tactics, 120.0);
-            SetSkill(SkillName.MagicResist, 120.0);
-            SetSkill(SkillName.Anatomy, 120.0);
-            SetSkill(SkillName.Poisoning, 120.0);
+            SetSkill(SkillName.Briga, 120.0);
+            SetSkill(SkillName.Anatomia, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 120.0);
+            SetSkill(SkillName.Anatomia, 120.0);
+            SetSkill(SkillName.Envenenamento, 120.0);
 
             PackResources(8);
             PackTalismans(5);

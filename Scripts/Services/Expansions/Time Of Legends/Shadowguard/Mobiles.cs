@@ -31,10 +31,10 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 10, 20);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.Anatomy, 125.0);
-            SetSkill(SkillName.MagicResist, 83.5, 92.5);
-            SetSkill(SkillName.Wrestling, 125.0);
-            SetSkill(SkillName.Tactics, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.ResistenciaMagica, 83.5, 92.5);
+            SetSkill(SkillName.Briga, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
 
             Fame = 1000;
             Karma = -1000;
@@ -102,12 +102,12 @@ namespace Server.Engines.Shadowguard
 
             SetHits(10000);
 
-            SetSkill(SkillName.Fencing, 120.0);
-            SetSkill(SkillName.Macing, 120.0);
-            SetSkill(SkillName.MagicResist, 120.0);
-            SetSkill(SkillName.Swords, 120.0);
-            SetSkill(SkillName.Tactics, 120.0);
-            SetSkill(SkillName.Wrestling, 120.0);
+            SetSkill(SkillName.Perfurante, 120.0);
+            SetSkill(SkillName.Contusivo, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 120.0);
+            SetSkill(SkillName.Cortante, 120.0);
+            SetSkill(SkillName.Anatomia, 120.0);
+            SetSkill(SkillName.Briga, 120.0);
 
             Fame = 15000;
             Karma = -15000;
@@ -212,12 +212,12 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 70, 80);
             SetResistance(ResistanceType.Energy, 40, 60);
 
-            SetSkill(SkillName.Wrestling, 95.0, 110.0);
-            SetSkill(SkillName.Tactics, 95.0, 110.0);
-            SetSkill(SkillName.Magery, 95.0, 110.0);
-            SetSkill(SkillName.EvalInt, 95.0, 110.0);
-            SetSkill(SkillName.Parry, 95.0, 110.0);
-            SetSkill(SkillName.DetectHidden, 63.0);
+            SetSkill(SkillName.Briga, 95.0, 110.0);
+            SetSkill(SkillName.Anatomia, 95.0, 110.0);
+            SetSkill(SkillName.Arcanismo, 95.0, 110.0);
+            SetSkill(SkillName.PoderMagico, 95.0, 110.0);
+            SetSkill(SkillName.Bloqueio, 95.0, 110.0);
+            SetSkill(SkillName.Percepcao, 63.0);
         }
 
         public HurricaneElemental(Serial serial)
@@ -254,12 +254,12 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 3);
             SetResistance(ResistanceType.Energy, 2);
 
-            SetSkill(SkillName.MagicResist, 40.1, 55.0);
-            SetSkill(SkillName.Tactics, 65.1, 90.0);
-            SetSkill(SkillName.Wrestling, 65.1, 105.0);
-            SetSkill(SkillName.Poisoning, 100.0);
-            SetSkill(SkillName.DetectHidden, 40.0, 45.0);
-            SetSkill(SkillName.Parry, 55.0, 60.0);
+            SetSkill(SkillName.ResistenciaMagica, 40.1, 55.0);
+            SetSkill(SkillName.Anatomia, 65.1, 90.0);
+            SetSkill(SkillName.Briga, 65.1, 105.0);
+            SetSkill(SkillName.Envenenamento, 100.0);
+            SetSkill(SkillName.Percepcao, 40.0, 45.0);
+            SetSkill(SkillName.Bloqueio, 55.0, 60.0);
 
             SetWeaponAbility(WeaponAbility.Dismount);
             SetWeaponAbility(WeaponAbility.ForceOfNature);
@@ -338,14 +338,14 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 10, 20);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.Anatomy, 125.0);
-            SetSkill(SkillName.Fencing, 46.0, 77.5);
-            SetSkill(SkillName.Macing, 35.0, 57.5);
-            SetSkill(SkillName.Poisoning, 60.0, 82.5);
-            SetSkill(SkillName.MagicResist, 83.5, 92.5);
-            SetSkill(SkillName.Swords, 125.0);
-            SetSkill(SkillName.Tactics, 125.0);
-            SetSkill(SkillName.Lumberjacking, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Perfurante, 46.0, 77.5);
+            SetSkill(SkillName.Contusivo, 35.0, 57.5);
+            SetSkill(SkillName.Envenenamento, 60.0, 82.5);
+            SetSkill(SkillName.ResistenciaMagica, 83.5, 92.5);
+            SetSkill(SkillName.Cortante, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Extracao, 125.0);
 
             var helm = new CloseHelm();
             helm.Hue = 0x96D;
@@ -428,11 +428,11 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 90, 100);
             SetResistance(ResistanceType.Energy, 70, 80);
 
-            SetSkill(SkillName.MagicResist, 65.0, 80.0);
-            SetSkill(SkillName.Tactics, 65.0, 90.0);
-            SetSkill(SkillName.Wrestling, 110.0, 130.0);
-            SetSkill(SkillName.DetectHidden, 50.6);
-            SetSkill(SkillName.Parry, 65.0, 75.0);
+            SetSkill(SkillName.ResistenciaMagica, 65.0, 80.0);
+            SetSkill(SkillName.Anatomia, 65.0, 90.0);
+            SetSkill(SkillName.Briga, 110.0, 130.0);
+            SetSkill(SkillName.Percepcao, 50.6);
+            SetSkill(SkillName.Bloqueio, 65.0, 75.0);
 
             SetWeaponAbility(WeaponAbility.DoubleStrike);
             SetWeaponAbility(WeaponAbility.TalonStrike);
@@ -484,13 +484,13 @@ namespace Server.Engines.Shadowguard
 
             SetDamage(29, 38);
 
-            SetSkill(SkillName.EvalInt, 110.0, 145.0);
-            SetSkill(SkillName.Magery, 110.0, 145.0);
-            SetSkill(SkillName.MagicResist, 110.0, 150.0);
-            SetSkill(SkillName.Tactics, 110.0, 155.0);
-            SetSkill(SkillName.Wrestling, 115.0, 155.0);
-            SetSkill(SkillName.DetectHidden, 120.0);
-            SetSkill(SkillName.Parry, 120.0);
+            SetSkill(SkillName.PoderMagico, 110.0, 145.0);
+            SetSkill(SkillName.Arcanismo, 110.0, 145.0);
+            SetSkill(SkillName.ResistenciaMagica, 110.0, 150.0);
+            SetSkill(SkillName.Anatomia, 110.0, 155.0);
+            SetSkill(SkillName.Briga, 115.0, 155.0);
+            SetSkill(SkillName.Percepcao, 120.0);
+            SetSkill(SkillName.Bloqueio, 120.0);
         }
 
         public override double TeleportChance { get { return 0; } }
@@ -657,17 +657,16 @@ namespace Server.Engines.Shadowguard
             SetResistance(ResistanceType.Poison, 10, 20);
             SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.Magery, 125.0);
-            SetSkill(SkillName.EvalInt, 125.0);
-            SetSkill(SkillName.Meditation, 125.0);
-            SetSkill(SkillName.Anatomy, 125.0);
-            SetSkill(SkillName.Fencing, 46.0, 77.5);
-            SetSkill(SkillName.Macing, 35.0, 57.5);
-            SetSkill(SkillName.Poisoning, 60.0, 82.5);
-            SetSkill(SkillName.MagicResist, 83.5, 92.5);
-            SetSkill(SkillName.Swords, 125.0);
-            SetSkill(SkillName.Tactics, 125.0);
-            SetSkill(SkillName.Lumberjacking, 125.0);
+            SetSkill(SkillName.Arcanismo, 125.0);
+            SetSkill(SkillName.PoderMagico, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Perfurante, 46.0, 77.5);
+            SetSkill(SkillName.Contusivo, 35.0, 57.5);
+            SetSkill(SkillName.Envenenamento, 60.0, 82.5);
+            SetSkill(SkillName.ResistenciaMagica, 83.5, 92.5);
+            SetSkill(SkillName.Cortante, 125.0);
+            SetSkill(SkillName.Anatomia, 125.0);
+            SetSkill(SkillName.Extracao, 125.0);
 
             SetWearable(new Cloak(), 1157);
             SetWearable(new Boots(), 1175);

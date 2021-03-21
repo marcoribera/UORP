@@ -22,11 +22,11 @@ namespace Server.Mobiles
 
             this.SetDamage(7, 11);
 
-            this.SetSkill(SkillName.EvalInt, 55.1, 70.0);
-            this.SetSkill(SkillName.Magery, 55.1, 70.0);
-            this.SetSkill(SkillName.MagicResist, 55.1, 70.0);
-            this.SetSkill(SkillName.Tactics, 45.1, 60.0);
-            this.SetSkill(SkillName.Wrestling, 45.1, 55.0);
+            this.SetSkill(SkillName.PoderMagico, 55.1, 70.0);
+            this.SetSkill(SkillName.Arcanismo, 55.1, 70.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 55.1, 70.0);
+            this.SetSkill(SkillName.Anatomia, 45.1, 60.0);
+            this.SetSkill(SkillName.Briga, 45.1, 55.0);
 
             this.Fame = 4000;
             this.Karma = -4000;

@@ -48,7 +48,7 @@ namespace Server.Spells.Mysticism
             }
             else if (SpellHelper.CheckTown(p, Caster) && CheckSequence())
             {
-                double baseskill = Caster.Skills[SkillName.Mysticism].Value;
+                double baseskill = Caster.Skills[SkillName.Misticismo].Value;
                 double boostskill = GetBoostSkill(Caster);
 
                 int level = (int)(baseskill + boostskill);

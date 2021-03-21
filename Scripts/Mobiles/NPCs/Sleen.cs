@@ -181,7 +181,7 @@ namespace Server.Engines.Quests
                 return 1074722;
             }
         }
-        /* Do you have it?  *gasp* What a tooth!  Here … I must get right to work. */
+        /* Do you have it?  *gasp* What a tooth!  Here â€¦ I must get right to work. */
         public override object Complete
         {
             get
@@ -215,8 +215,7 @@ namespace Server.Engines.Quests
         public Sleen()
             : base("Sleen", "the trinket weaver")
         { 
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Sleen(Serial serial)

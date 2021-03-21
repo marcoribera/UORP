@@ -31,7 +31,7 @@ namespace Server.Items
         public override int InitMinHits { get { return 60; } }
         public override int InitMaxHits { get { return 60; } }
         public override int AosStrengthReq { get { return 15; } }
-        public override SkillName DefSkill { get { return SkillName.Fencing; } }
+        public override SkillName DefSkill { get { return SkillName.Perfurante; } }
         public override float MlSpeed { get { return 2.00f; } }
         public override int AosMinDamage { get { return 10; } }
         public override int AosMaxDamage { get { return 12; } }

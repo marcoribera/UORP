@@ -10,8 +10,8 @@ namespace Server.Mobiles
         public Provisioner()
             : base("the provisioner")
         {
-            this.SetSkill(SkillName.Camping, 45.0, 68.0);
-            this.SetSkill(SkillName.Tactics, 45.0, 68.0);
+            this.SetSkill(SkillName.Sobrevivencia, 45.0, 68.0);
+            this.SetSkill(SkillName.Anatomia, 45.0, 68.0);
         }
 
         public Provisioner(Serial serial)

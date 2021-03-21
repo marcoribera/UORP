@@ -25,39 +25,39 @@ namespace Server.Items
             if (f.IsDefault)
                 return true;
             
-            if (f.Skill == 1 && recipe.Skill != RecipeSkillName.Blacksmith )
+            if (f.Skill == 1 && recipe.Skill != RecipeSkillName.Ferraria )
             {
                 return false;
             }
-            else if (f.Skill == 2 && recipe.Skill != RecipeSkillName.Tailoring)
+            else if (f.Skill == 2 && recipe.Skill != RecipeSkillName.Costura)
             {
                 return false;
             }
-            else if (f.Skill == 3 && recipe.Skill != RecipeSkillName.Fletching)
+            else if (f.Skill == 3 && recipe.Skill != RecipeSkillName.Carpintaria)
             {
                 return false;
             }
-            else if (f.Skill == 4 && recipe.Skill != RecipeSkillName.Carpentry && recipe.Skill != RecipeSkillName.Masonry)
+            else if (f.Skill == 4 && recipe.Skill != RecipeSkillName.Carpintaria && recipe.Skill != RecipeSkillName.Masonry)
             {
                 return false;
             }
-            else if (f.Skill == 5 && recipe.Skill != RecipeSkillName.Inscription)
+            else if (f.Skill == 5 && recipe.Skill != RecipeSkillName.Erudicao)
             {
                 return false;
             }
-            else if (f.Skill == 6 && recipe.Skill != RecipeSkillName.Cooking)
+            else if (f.Skill == 6 && recipe.Skill != RecipeSkillName.Culinaria)
             {
                 return false;
             }
-            else if (f.Skill == 7 && recipe.Skill != RecipeSkillName.Alchemy)
+            else if (f.Skill == 7 && recipe.Skill != RecipeSkillName.Alquimia)
             {
                 return false;
             }
-            else if (f.Skill == 8 && recipe.Skill != RecipeSkillName.Tinkering)
+            else if (f.Skill == 8 && recipe.Skill != RecipeSkillName.Mecanica)
             {
                 return false;
             }
-            else if (f.Skill == 9 && recipe.Skill != RecipeSkillName.Cartography)
+            else if (f.Skill == 9 && recipe.Skill != RecipeSkillName.Erudicao)
             {
                 return false;
             }
@@ -182,25 +182,25 @@ namespace Server.Items
             switch (skill)
             {
                 default:
-                case RecipeSkillName.Alchemy:
+                case RecipeSkillName.Alquimia:
                     return 1002000;
-                case RecipeSkillName.Blacksmith:
+                case RecipeSkillName.Ferraria:
                     return 1150187;
-                case RecipeSkillName.Carpentry:
+                case RecipeSkillName.Carpintaria:
                     return 1002054;
-                case RecipeSkillName.Cartography:
+                case RecipeSkillName.Erudicao:
                     return 1002057;
-                case RecipeSkillName.Cooking:
+                case RecipeSkillName.Culinaria:
                     return 1002063;
-                case RecipeSkillName.Fletching:
-                    return 1044068;
-                case RecipeSkillName.Inscription:
-                    return 1002090;
+                //case RecipeSkillName.Carpintaria:
+                //    return 1044068;
+                //case RecipeSkillName.Erudicao:
+                //    return 1002090;
                 case RecipeSkillName.Masonry:
                     return 1072392;
-                case RecipeSkillName.Tailoring:
+                case RecipeSkillName.Costura:
                     return 1150188;
-                case RecipeSkillName.Tinkering:
+                case RecipeSkillName.Mecanica:
                     return 1002162;
             }
         }

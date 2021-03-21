@@ -49,9 +49,9 @@ namespace Server.Mobiles
         public ShimmeringFerret()
             : base()
         {
-            this.SetSkill(SkillName.MagicResist, 100.0);
-            this.SetSkill(SkillName.Tactics, 100.0);
-            this.SetSkill(SkillName.Wrestling, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 100.0);
+            this.SetSkill(SkillName.Anatomia, 100.0);
+            this.SetSkill(SkillName.Briga, 100.0);
         }
 
         public ShimmeringFerret(Serial serial)

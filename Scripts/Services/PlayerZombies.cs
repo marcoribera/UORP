@@ -230,9 +230,9 @@ namespace Server.Engines.Events
             this.SetResistance(ResistanceType.Cold, 50);
             this.SetResistance(ResistanceType.Poison, 50);
 
-            this.SetSkill(SkillName.MagicResist, 65.1, 80.0);
-            this.SetSkill(SkillName.Tactics, 95.1, 100);
-            this.SetSkill(SkillName.Wrestling, 85.1, 95);
+            this.SetSkill(SkillName.ResistenciaMagica, 65.1, 80.0);
+            this.SetSkill(SkillName.Anatomia, 95.1, 100);
+            this.SetSkill(SkillName.Briga, 85.1, 95);
 
             this.Fame = 1000;
             this.Karma = -1000;

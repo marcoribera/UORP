@@ -247,7 +247,7 @@ namespace Server.Items
                 by += 18;
             }
 
-            if (User.Skills[SkillName.Magery].Value >= 66.0)
+            if (User.Skills[SkillName.Arcanismo].Value >= 66.0)
             {
                 AddHtmlLocalized(280, hy, 128, 18, 1015214, false, false); // Gate Travel
                 AddButton(264, by, 2103, 2103, 6, GumpButtonType.Reply, 0);

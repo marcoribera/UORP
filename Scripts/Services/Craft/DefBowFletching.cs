@@ -31,7 +31,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Fletching;
+                return SkillName.Carpintaria;
             }
         }
 

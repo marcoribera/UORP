@@ -80,7 +80,7 @@ namespace Server.Spells.Fourth
                 {
                     Effects.PlaySound(p, this.Caster.Map, 0x299);
 
-                    int val = (int)(this.Caster.Skills[SkillName.Magery].Value / 10.0 + 1);
+                    int val = (int)(this.Caster.Skills[SkillName.Arcanismo].Value / 10.0 + 1);
 
                     if (targets.Count > 0)
                     {
@@ -134,7 +134,7 @@ namespace Server.Spells.Fourth
             public InternalTimer(Mobile target, Mobile caster)
                 : base(TimeSpan.FromSeconds(0))
             {
-                double time = caster.Skills[SkillName.Magery].Value * 1.2;
+                double time = caster.Skills[SkillName.Arcanismo].Value * 1.2;
                 if (time > 144)
                     time = 144;
                 this.Delay = TimeSpan.FromSeconds(time);

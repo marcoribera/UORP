@@ -21,7 +21,7 @@ namespace Server.Spells.SkillMasteries
 		public override double UpKeep { get { return 4; } }
         public override int RequiredMana { get { return 16; } }
 		public override bool PartyEffects { get { return true; } }
-        public override SkillName CastSkill { get { return SkillName.Peacemaking; } }
+        public override SkillName CastSkill { get { return SkillName.Pacificar; } }
 
         private int m_PropertyBonus;
 

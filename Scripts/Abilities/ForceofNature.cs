@@ -62,7 +62,7 @@ namespace Server.Items
 
                 if (t.Hits % 12 == 0)
                 {
-                    int duration = target.Skills[SkillName.MagicResist].Value >= 90.0 ? 1 : 2;
+                    int duration = target.Skills[SkillName.ResistenciaMagica].Value >= 90.0 ? 1 : 2;
                     target.Paralyze(TimeSpan.FromSeconds(duration));
                     t.Hits = 0;
 

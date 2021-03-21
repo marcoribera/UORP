@@ -51,7 +51,7 @@ namespace Server.Engines.Quests
                 return 1074858;
             }
         }
-        /* You look a bit worse for wear!  He put up a good fight did he?  Hah!  That's the spirit … a Master 
+        /* You look a bit worse for wear!  He put up a good fight did he?  Hah!  That's the spirit â€¦ a Master 
         of Bedlam is a match for most. */
         public override object Complete
         {
@@ -88,13 +88,12 @@ namespace Server.Engines.Quests
         public Gnosos()
             : base("Master Gnosos", "the necromancer")
         { 
-            SetSkill(SkillName.Focus, 60.0, 83.0);
-            SetSkill(SkillName.EvalInt, 65.0, 88.0);
-            SetSkill(SkillName.Inscribe, 60.0, 83.0);
-            SetSkill(SkillName.Necromancy, 64.0, 100.0);
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.MagicResist, 65.0, 88.0);
-            SetSkill(SkillName.SpiritSpeak, 36.0, 68.0);
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
+            SetSkill(SkillName.PoderMagico, 65.0, 88.0);
+            SetSkill(SkillName.Erudicao, 60.0, 83.0);
+            SetSkill(SkillName.Necromancia, 64.0, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
+            SetSkill(SkillName.PoderMagico, 36.0, 68.0);
         }
 
         public Gnosos(Serial serial)

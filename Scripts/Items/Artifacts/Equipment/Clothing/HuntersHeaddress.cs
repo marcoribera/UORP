@@ -9,7 +9,7 @@ namespace Server.Items
         public HuntersHeaddress()
         {
             Hue = 0x594;
-            SkillBonuses.SetValues(0, SkillName.Archery, 20);
+            SkillBonuses.SetValues(0, SkillName.Atirar, 20);
             Attributes.BonusDex = 8;
             Attributes.NightSight = 1;
             Attributes.AttackChance = 15;

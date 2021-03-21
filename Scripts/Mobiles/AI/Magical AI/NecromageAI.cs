@@ -18,7 +18,7 @@ namespace Server.Mobiles
 			set { m_Animated = value; }
 		}*/
 
-		public override SkillName CastSkill { get { return SkillName.Magery; } }
+		public override SkillName CastSkill { get { return SkillName.Arcanismo; } }
 
 		public NecroMageAI(BaseCreature m)
 			: base(m)
@@ -126,7 +126,7 @@ namespace Server.Mobiles
 				return null;
 
 			if (0.1 > Utility.RandomDouble())
-				m_Mobile.UseSkill(SkillName.SpiritSpeak);
+				m_Mobile.UseSkill(SkillName.PoderMagico);
 			else
 				return base.CheckCastHealingSpell();
 
@@ -151,12 +151,12 @@ namespace Server.Mobiles
 				}
 				else if (!m_Mobile.Summoned)
 				{
-					if (ScaleBySkill(HealChance, SkillName.Necromancy) > Utility.RandomDouble() &&
+					if (ScaleBySkill(HealChance, SkillName.Necromancia) > Utility.RandomDouble() &&
 						m_Mobile.Hits < m_Mobile.HitsMax - 30)
 					{
-						m_Mobile.UseSkill(SkillName.SpiritSpeak);
+						m_Mobile.UseSkill(SkillName.PoderMagico);
 					}
-					else if (ScaleBySkill(HealChance, SkillName.Magery) > Utility.RandomDouble())
+					else if (ScaleBySkill(HealChance, SkillName.Arcanismo) > Utility.RandomDouble())
 					{
 						if (m_Mobile.Hits < (m_Mobile.HitsMax - 50))
 						{

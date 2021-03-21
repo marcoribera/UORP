@@ -10,8 +10,8 @@ namespace Server.Mobiles
         public Baker()
             : base("the baker")
         {
-            this.SetSkill(SkillName.Cooking, 75.0, 98.0);
-            this.SetSkill(SkillName.TasteID, 36.0, 68.0);
+            this.SetSkill(SkillName.Culinaria, 75.0, 98.0);
+            this.SetSkill(SkillName.Alquimia, 36.0, 68.0);
         }
 
         public Baker(Serial serial)

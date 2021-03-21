@@ -41,9 +41,9 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 100);
             this.SetResistance(ResistanceType.Energy, 20, 30);
 
-            this.SetSkill(SkillName.MagicResist, 70.0);
-            this.SetSkill(SkillName.Tactics, 90.0);
-            this.SetSkill(SkillName.Wrestling, 90.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 70.0);
+            this.SetSkill(SkillName.Anatomia, 90.0);
+            this.SetSkill(SkillName.Briga, 90.0);
 
             this.Fame = 0;
             this.Karma = 0;
@@ -101,7 +101,7 @@ namespace Server.Mobiles
         }
         public override double GetFightModeRanking(Mobile m, FightMode acqType, bool bPlayerOnly)
         {
-            return (m.Str + m.Skills[SkillName.Tactics].Value) / Math.Max(this.GetDistanceToSqrt(m), 1.0);
+            return (m.Str + m.Skills[SkillName.Anatomia].Value) / Math.Max(this.GetDistanceToSqrt(m), 1.0);
         }
 
         public override int GetAngerSound()

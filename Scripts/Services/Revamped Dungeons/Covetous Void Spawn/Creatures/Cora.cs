@@ -40,12 +40,12 @@ using Server.Engines.VoidPool;
             SetResistance(ResistanceType.Poison, 51, 70);
             SetResistance(ResistanceType.Energy, 50, 68);
 
-            SetSkill(SkillName.Wrestling, 100.1, 119.7);
-            SetSkill(SkillName.Tactics, 102.3, 118.5);
-            SetSkill(SkillName.MagicResist, 101.2, 119.6);
-            SetSkill(SkillName.Anatomy, 100.1, 117.5);
-            SetSkill(SkillName.Magery, 100.1, 117.5);
-            SetSkill(SkillName.EvalInt, 100.1, 117.5);
+            SetSkill(SkillName.Briga, 100.1, 119.7);
+            SetSkill(SkillName.Anatomia, 102.3, 118.5);
+            SetSkill(SkillName.ResistenciaMagica, 101.2, 119.6);
+            SetSkill(SkillName.Anatomia, 100.1, 117.5);
+            SetSkill(SkillName.Arcanismo, 100.1, 117.5);
+            SetSkill(SkillName.PoderMagico, 100.1, 117.5);
 
             Fame = 32000;
             Karma = -32000;

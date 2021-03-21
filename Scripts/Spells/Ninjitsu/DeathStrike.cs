@@ -126,7 +126,7 @@ namespace Server.Spells.Ninjitsu
 
             if (Core.ML)
             {
-                double scalar = (info.m_Attacker.Skills[SkillName.Hiding].Value + info.m_Attacker.Skills[SkillName.Stealth].Value) / 220;
+                double scalar = (info.m_Attacker.Skills[SkillName.Furtividade].Value + info.m_Attacker.Skills[SkillName.Furtividade].Value) / 220;
 
                 if (scalar > 1)
                     scalar = 1;

@@ -45,7 +45,7 @@ namespace Server.Items
 
         public override int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
         {
-            double magery = from.Skills.Magery.Value - 100;
+            double magery = from.Skills.Arcanismo.Value - 100;
 			
             if (magery < 0)
                 magery = 0;

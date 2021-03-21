@@ -17,11 +17,11 @@ namespace Server.Items
 		public override int DefHitSound { get { return 0x234; } }
 		public override int DefMissSound { get { return 0x238; } }
 
-		public override SkillName DefSkill { get { return SkillName.Archery; } }
+		public override SkillName DefSkill { get { return SkillName.Atirar; } }
 		public override WeaponType DefType { get { return WeaponType.Ranged; } }
 		public override WeaponAnimation DefAnimation { get { return WeaponAnimation.ShootXBow; } }
 
-		public override SkillName AccuracySkill { get { return SkillName.Archery; } }
+		public override SkillName AccuracySkill { get { return SkillName.Atirar; } }
 
 		private Timer m_RecoveryTimer; // so we don't start too many timers
 		private int m_Velocity;

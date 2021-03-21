@@ -71,7 +71,7 @@ namespace Server.Spells.Spellweaving
                 }
                 else
                 {
-                    double skill = this.Caster.Skills[SkillName.Spellweaving].Value;
+                    double skill = this.Caster.Skills[SkillName.Feiticaria].Value;
 
                     int hitsPerRound = 5 + (int)(skill / 24) + this.FocusLevel;
                     TimeSpan duration = TimeSpan.FromSeconds(30 + (this.FocusLevel * 10));

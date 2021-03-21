@@ -624,11 +624,11 @@ namespace Server.Mobiles
 
             if (PetTrainingHelper.Enabled)
             {
-                if (Skills[SkillName.Focus].Value == 0)
-                    SetSkill(SkillName.Focus, 2, 20);
+                if (Skills[SkillName.PreparoFisico].Value == 0)
+                    SetSkill(SkillName.PreparoFisico, 2, 20);
 
-                if (Skills[SkillName.DetectHidden].Value == 0 && !(this is BaseVendor))
-                    SetSkill(SkillName.DetectHidden, Utility.RandomList(10, 60));
+                if (Skills[SkillName.Percepcao].Value == 0 && !(this is BaseVendor))
+                    SetSkill(SkillName.Percepcao, Utility.RandomList(10, 60));
             }
         }
 
@@ -778,7 +778,7 @@ namespace Server.Mobiles
 
         public void UpdateMasteryInfo()
         {
-            if (_Mastery == SkillName.Alchemy)
+            if (_Mastery == SkillName.Alquimia)
             {
                 Masteries = null;
             }
@@ -1530,8 +1530,8 @@ namespace Server.Mobiles
                 dMinTameSkill = -24.9;
             }
 
-            int taming = (int)((useBaseSkill ? m.Skills[SkillName.AnimalTaming].Base : m.Skills[SkillName.AnimalTaming].Value) * 10);
-            int lore =   (int)((useBaseSkill ? m.Skills[SkillName.AnimalLore].Base : m.Skills[SkillName.AnimalLore].Value) * 10);
+            int taming = (int)((useBaseSkill ? m.Skills[SkillName.Adestramento].Base : m.Skills[SkillName.Adestramento].Value) * 10);
+            int lore =   (int)((useBaseSkill ? m.Skills[SkillName.Adestramento].Base : m.Skills[SkillName.Adestramento].Value) * 10);
             int bonus = 0, chance = 700;
 
             if (Core.ML)
@@ -3247,8 +3247,8 @@ namespace Server.Mobiles
 
                             if (master != null && master == from) //So friends can't start the bonding process
                             {
-                                if (m_CurrentTameSkill <= 29.1 || master.Skills[SkillName.AnimalTaming].Base >= m_CurrentTameSkill ||
-                                    OverrideBondingReqs() || (Core.ML && master.Skills[SkillName.AnimalTaming].Value >= m_CurrentTameSkill))
+                                if (m_CurrentTameSkill <= 29.1 || master.Skills[SkillName.Adestramento].Base >= m_CurrentTameSkill ||
+                                    OverrideBondingReqs() || (Core.ML && master.Skills[SkillName.Adestramento].Value >= m_CurrentTameSkill))
                                 {
                                     if (BondingBegin == DateTime.MinValue)
                                     {
@@ -3952,7 +3952,7 @@ namespace Server.Mobiles
                 {
                     if (!PetTrainingHelper.Enabled || (AbilityProfile != null && AbilityProfile.HasAbility(MagicalAbility.Poisoning)))
                     {
-                        CheckSkill(SkillName.Poisoning, 0, Skills[SkillName.Poisoning].Cap);
+                        CheckSkill(SkillName.Envenenamento, 0, Skills[SkillName.Envenenamento].Cap);
                     }
                 }
             }
@@ -3985,7 +3985,7 @@ namespace Server.Mobiles
                 return HitPoison;
 
             int level = 1;
-            double total = Skills[SkillName.Poisoning].Value;
+            double total = Skills[SkillName.Envenenamento].Value;
 
             // natural poisoner retains their poison level. Added spell school is capped at level 2.
             if (total >= 100)
@@ -4010,7 +4010,7 @@ namespace Server.Mobiles
             if (profile == null || !profile.HasAbility(MagicalAbility.Poisoning))
                 return false;
 
-            return Skills[SkillName.Poisoning].Value >= Utility.Random(300);
+            return Skills[SkillName.Envenenamento].Value >= Utility.Random(300);
         }
 
         public override void OnAfterDelete()
@@ -4071,7 +4071,7 @@ namespace Server.Mobiles
                 switch (acqType)
                 {
                     case FightMode.Strongest:
-                        return (m.Skills[SkillName.Tactics].Value + m.Str); //returns strongest mobile
+                        return (m.Skills[SkillName.Anatomia].Value + m.Str); //returns strongest mobile
 
                     case FightMode.Weakest:
                         return -m.Hits; // returns weakest mobile
@@ -4166,7 +4166,7 @@ namespace Server.Mobiles
                 AnimalTaming.DisableMessage = true;
                 AnimalTaming.DeferredTarget = false;
 
-                if (Owner.From.UseSkill(SkillName.AnimalTaming) && Owner.From.Target != null)
+                if (Owner.From.UseSkill(SkillName.Adestramento) && Owner.From.Target != null)
                 {
                     Owner.From.Target.Invoke(Owner.From, m_Mobile);
                 }
@@ -4241,18 +4241,18 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if (skill == SkillName.Stealth && from.Skills[SkillName.Hiding].Base < Stealth.HidingRequirement)
+            if (skill == SkillName.Furtividade && from.Skills[SkillName.Furtividade].Base < Stealth.HidingRequirement)
             {
                 return false;
             }
 
-            if (!Core.EJ && skill == SkillName.RemoveTrap &&
-                (from.Skills[SkillName.Lockpicking].Base < 50.0 || from.Skills[SkillName.DetectHidden].Base < 50.0))
+            if (!Core.EJ && skill == SkillName.Mecanica &&
+                (from.Skills[SkillName.Mecanica].Base < 50.0 || from.Skills[SkillName.Percepcao].Base < 50.0))
             {
                 return false;
             }
 
-            if (!Core.AOS && (skill == SkillName.Focus || skill == SkillName.Chivalry || skill == SkillName.Necromancy))
+            if (!Core.AOS && (skill == SkillName.PreparoFisico || skill == SkillName.Ordem || skill == SkillName.Necromancia))
             {
                 return false;
             }
@@ -4863,7 +4863,7 @@ namespace Server.Mobiles
 
             if (Hidden) //Hidden, let's try stealth
             {
-                if (!Mounted && Skills.Stealth.Value >= 25.0 && CanStealth)
+                if (!Mounted && Skills.Furtividade.Value >= 25.0 && CanStealth)
                 {
                     bool running = (d & Direction.Running) != 0;
 
@@ -5207,16 +5207,16 @@ namespace Server.Mobiles
                 Skills[name].Cap = Skills[name].Base;
             }
 
-            if (name == SkillName.Poisoning && Skills[name].Base > 0 && 
+            if (name == SkillName.Envenenamento && Skills[name].Base > 0 && 
                 !Controlled &&
                 (AbilityProfile == null || !AbilityProfile.HasAbility(MagicalAbility.Poisoning)))
             {
                 SetMagicalAbility(MagicalAbility.Poisoning);
             }
 
-            if (!Controlled && name == SkillName.Magery && 
+            if (!Controlled && name == SkillName.Arcanismo && 
                 (AbilityProfile == null || !AbilityProfile.HasAbility(MagicalAbility.Magery)) && 
-                Skills[SkillName.Magery].Base > 0 && 
+                Skills[SkillName.Arcanismo].Base > 0 && 
                 (AI == AIType.AI_Mage || AI == AIType.AI_Necro || AI == AIType.AI_NecroMage || AI == AIType.AI_Mystic || AI == AIType.AI_Spellweaving))
 
             {
@@ -5243,16 +5243,16 @@ namespace Server.Mobiles
                 Skills[name].Cap = Skills[name].Base;
             }
 
-            if (name == SkillName.Poisoning && Skills[name].Base > 0 && 
+            if (name == SkillName.Envenenamento && Skills[name].Base > 0 && 
                 !Controlled &&
                 (AbilityProfile == null || !AbilityProfile.HasAbility(MagicalAbility.Poisoning)))
             {
                 SetMagicalAbility(MagicalAbility.Poisoning);
             }
 
-            if (!Controlled && name == SkillName.Magery &&
+            if (!Controlled && name == SkillName.Arcanismo &&
                 (AbilityProfile == null || !AbilityProfile.HasAbility(MagicalAbility.Magery)) && 
-                Skills[SkillName.Magery].Base > 0 && 
+                Skills[SkillName.Arcanismo].Base > 0 && 
                 (AI == AIType.AI_Mage || AI == AIType.AI_Necro || AI == AIType.AI_NecroMage || AI == AIType.AI_Mystic || AI == AIType.AI_Spellweaving))
 
             {
@@ -6877,8 +6877,8 @@ namespace Server.Mobiles
             {
                 int poisonLevel = patient.Poison.RealLevel;
 
-                double healing = Skills.Healing.Value;
-                double anatomy = Skills.Anatomy.Value;
+                double healing = Skills.Medicina.Value;
+                double anatomy = Skills.Anatomia.Value;
                 double chance = (healing - 30.0) / 50.0 - poisonLevel * 0.1;
 
                 if ((healing >= 60.0 && anatomy >= 60.0) && chance > Utility.RandomDouble())
@@ -6887,8 +6887,8 @@ namespace Server.Mobiles
                     {
                         patient.SendLocalizedMessage(1010059); // You have been cured of all poisons.
 
-                        CheckSkill(SkillName.Healing, 0.0, 60.0 + poisonLevel * 10.0); // TODO: Verify formula
-                        CheckSkill(SkillName.Anatomy, 0.0, Skills[SkillName.Anatomy].Cap);
+                        CheckSkill(SkillName.Medicina, 0.0, 60.0 + poisonLevel * 10.0); // TODO: Verify formula
+                        CheckSkill(SkillName.Anatomia, 0.0, Skills[SkillName.Anatomia].Cap);
                     }
                 }
             }
@@ -6899,8 +6899,8 @@ namespace Server.Mobiles
             }
             else
             {
-                double healing = Skills.Healing.Value;
-                double anatomy = Skills.Anatomy.Value;
+                double healing = Skills.Medicina.Value;
+                double anatomy = Skills.Anatomia.Value;
                 double chance = (healing + 10.0) / 100.0;
 
                 if (chance > Utility.RandomDouble())
@@ -6919,13 +6919,13 @@ namespace Server.Mobiles
 
                     patient.Heal((int)toHeal, this);
 
-                    CheckSkill(SkillName.Healing, 0.0, Skills[SkillName.Healing].Cap);
-                    CheckSkill(SkillName.Anatomy, 0.0, Skills[SkillName.Anatomy].Cap);
+                    CheckSkill(SkillName.Medicina, 0.0, Skills[SkillName.Medicina].Cap);
+                    CheckSkill(SkillName.Anatomia, 0.0, Skills[SkillName.Anatomia].Cap);
                 }
                 else if (PetTrainingHelper.Enabled && Controlled)
                 {
-                    CheckSkill(SkillName.Healing, 0.0, 10);
-                    CheckSkill(SkillName.Anatomy, 0.0, 10);
+                    CheckSkill(SkillName.Medicina, 0.0, 10);
+                    CheckSkill(SkillName.Anatomia, 0.0, 10);
                 }
             }
 
@@ -7068,7 +7068,7 @@ namespace Server.Mobiles
         {
             Mobile target = GetBardTarget(Controlled);
 
-            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Discordance)) || CheckInstrument() == null)
+            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Caos)) || CheckInstrument() == null)
                 return false;
 
             // TODO: get mana
@@ -7084,7 +7084,7 @@ namespace Server.Mobiles
             if (Spell != null)
                 Spell = null;
 
-            if (!UseSkill(SkillName.Discordance))
+            if (!UseSkill(SkillName.Caos))
                 return false;
 
             if (Target is Discordance.DiscordanceTarget)
@@ -7100,13 +7100,13 @@ namespace Server.Mobiles
         {
             Mobile target = GetBardTarget();
 
-            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Peacemaking)) || CheckInstrument() == null)
+            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Pacificar)) || CheckInstrument() == null)
                 return false;
 
             if (Spell != null)
                 Spell = null;
 
-            if (!UseSkill(SkillName.Peacemaking))
+            if (!UseSkill(SkillName.Pacificar))
                 return false;
 
             if (Target is Peacemaking.InternalTarget)
@@ -7122,13 +7122,13 @@ namespace Server.Mobiles
         {
             Mobile target = GetBardTarget();
 
-            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Provocation)) || CheckInstrument() == null || !(target is BaseCreature))
+            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Provocacao)) || CheckInstrument() == null || !(target is BaseCreature))
                 return false;
 
             if (Spell != null)
                 Spell = null;
 
-            if (!UseSkill(SkillName.Provocation))
+            if (!UseSkill(SkillName.Provocacao))
                 return false;
 
             if (Target is Provocation.InternalFirstTarget)
@@ -7229,7 +7229,7 @@ namespace Server.Mobiles
             if (first == null)
                 return null;
 
-            int range = BaseInstrument.GetBardRange(this, SkillName.Provocation);
+            int range = BaseInstrument.GetBardRange(this, SkillName.Provocacao);
 
             IPooledEnumerable eable = Map.GetMobilesInRange(Location, range);
             List<Mobile> possibles = new List<Mobile>();
@@ -7368,7 +7368,7 @@ namespace Server.Mobiles
         #region Detect Hidden
         private long _NextDetect;
 
-        public virtual bool CanDetectHidden { get { return Controlled && Skills.DetectHidden.Value > 0; } }
+        public virtual bool CanDetectHidden { get { return Controlled && Skills.Percepcao.Value > 0; } }
 
         public virtual int FindPlayerDelayBase { get { return (15000 / Int); } }
         public virtual int FindPlayerDelayMax { get { return 60; } }
@@ -7383,7 +7383,7 @@ namespace Server.Mobiles
                 return;
             }
 
-            double srcSkill = Skills[SkillName.DetectHidden].Value;
+            double srcSkill = Skills[SkillName.Percepcao].Value;
 
             if (srcSkill <= 0)
             {

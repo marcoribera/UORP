@@ -45,9 +45,9 @@ namespace Server.Mobiles
 
             this.SetDamageType(ResistanceType.Physical, 100);
 
-            this.SetSkill(SkillName.Wrestling, 4.2, 6.4);
-            this.SetSkill(SkillName.Tactics, 4.0, 6.0);
-            this.SetSkill(SkillName.MagicResist, 4.0, 5.0);
+            this.SetSkill(SkillName.Briga, 4.2, 6.4);
+            this.SetSkill(SkillName.Anatomia, 4.0, 6.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 4.0, 5.0);
 
             this.Fame = 150;
             this.Karma = 0;
@@ -126,9 +126,9 @@ namespace Server.Mobiles
 
             this.SetDamageType(ResistanceType.Physical, 100);
 
-            this.SetSkill(SkillName.Wrestling, 4.2, 6.4);
-            this.SetSkill(SkillName.Tactics, 4.0, 6.0);
-            this.SetSkill(SkillName.MagicResist, 4.0, 5.0);
+            this.SetSkill(SkillName.Briga, 4.2, 6.4);
+            this.SetSkill(SkillName.Anatomia, 4.0, 6.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 4.0, 5.0);
 
             this.Fame = 150;
             this.Karma = 0;

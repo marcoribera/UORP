@@ -10,13 +10,13 @@ namespace Server.Mobiles
         public Thief()
             : base("the thief")
         {
-            SetSkill(SkillName.Camping, 55.0, 78.0);
-            SetSkill(SkillName.DetectHidden, 65.0, 88.0);
-            SetSkill(SkillName.Hiding, 45.0, 68.0);
-            SetSkill(SkillName.Archery, 65.0, 88.0);
-            SetSkill(SkillName.Tracking, 65.0, 88.0);
-            SetSkill(SkillName.Veterinary, 60.0, 83.0);
-            SetSkill(SkillName.RemoveTrap, 75.0, 98.0);
+            SetSkill(SkillName.Sobrevivencia, 55.0, 78.0);
+            SetSkill(SkillName.Percepcao, 65.0, 88.0);
+            SetSkill(SkillName.Furtividade, 45.0, 68.0);
+            SetSkill(SkillName.Atirar, 65.0, 88.0);
+            SetSkill(SkillName.Sobrevivencia, 65.0, 88.0);
+            SetSkill(SkillName.Veterinaria, 60.0, 83.0);
+            SetSkill(SkillName.Mecanica, 75.0, 98.0);
         }
 
         public Thief(Serial serial)

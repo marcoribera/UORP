@@ -10,9 +10,9 @@ namespace Server.Mobiles
         {
             this.Title = "the noble";
 
-            this.SetSkill(SkillName.Parry, 80.0, 100.0);
-            this.SetSkill(SkillName.Swords, 80.0, 100.0);
-            this.SetSkill(SkillName.Tactics, 80.0, 100.0);
+            this.SetSkill(SkillName.Bloqueio, 80.0, 100.0);
+            this.SetSkill(SkillName.Cortante, 80.0, 100.0);
+            this.SetSkill(SkillName.Anatomia, 80.0, 100.0);
         }
 
         public Noble(Serial serial)

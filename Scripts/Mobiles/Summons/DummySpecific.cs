@@ -26,10 +26,10 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(125, 125, 90);
-            Skills[SkillName.Macing].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Healing].Base = 120;
-            Skills[SkillName.Tactics].Base = 120;
+            Skills[SkillName.Contusivo].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Medicina].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
 
             // Name
             Name = "Macer";
@@ -102,10 +102,10 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(125, 125, 90);
-            Skills[SkillName.Fencing].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Healing].Base = 120;
-            Skills[SkillName.Tactics].Base = 120;
+            Skills[SkillName.Perfurante].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Medicina].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
 
             // Name
             Name = "Fencer";
@@ -179,11 +179,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(125, 125, 90);
-            Skills[SkillName.Swords].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Healing].Base = 120;
-            Skills[SkillName.Tactics].Base = 120;
-            Skills[SkillName.Parry].Base = 120;
+            Skills[SkillName.Cortante].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Medicina].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Bloqueio].Base = 120;
 
             // Name
             Name = "Swordsman";
@@ -256,12 +256,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(90, 90, 125);
-            Skills[SkillName.Magery].Base = 120;
-            Skills[SkillName.EvalInt].Base = 120;
-            Skills[SkillName.Inscribe].Base = 100;
-            Skills[SkillName.Wrestling].Base = 120;
-            Skills[SkillName.Meditation].Base = 120;
-            Skills[SkillName.Poisoning].Base = 100;
+            Skills[SkillName.Arcanismo].Base = 120;
+            Skills[SkillName.PoderMagico].Base = 120;
+            Skills[SkillName.Erudicao].Base = 100;
+            Skills[SkillName.Briga].Base = 120;
+            Skills[SkillName.Envenenamento].Base = 100;
 
             // Name
             Name = "Nox Mage";
@@ -326,12 +325,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(90, 90, 125);
-            Skills[SkillName.Magery].Base = 100;
-            Skills[SkillName.EvalInt].Base = 120;
-            Skills[SkillName.Anatomy].Base = 80;
-            Skills[SkillName.Wrestling].Base = 80;
-            Skills[SkillName.Meditation].Base = 100;
-            Skills[SkillName.Poisoning].Base = 100;
+            Skills[SkillName.Arcanismo].Base = 100;
+            Skills[SkillName.PoderMagico].Base = 120;
+            Skills[SkillName.Anatomia].Base = 80;
+            Skills[SkillName.Briga].Base = 80;
+            Skills[SkillName.Envenenamento].Base = 100;
 
             // Name
             Name = "Stun Mage";
@@ -419,13 +417,12 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(125, 125, 125);
-            Skills[SkillName.Magery].Base = 120;
-            Skills[SkillName.EvalInt].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Wrestling].Base = 120;
-            Skills[SkillName.Meditation].Base = 120;
-            Skills[SkillName.Poisoning].Base = 100;
-            Skills[SkillName.Inscribe].Base = 100;
+            Skills[SkillName.Arcanismo].Base = 120;
+            Skills[SkillName.PoderMagico].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Briga].Base = 120;
+            Skills[SkillName.Envenenamento].Base = 100;
+            Skills[SkillName.Erudicao].Base = 100;
 
             // Name
             Name = "Super Mage";
@@ -518,12 +515,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(125, 125, 125);
-            Skills[SkillName.Magery].Base = 120;
-            Skills[SkillName.EvalInt].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Wrestling].Base = 120;
-            Skills[SkillName.Meditation].Base = 120;
-            Skills[SkillName.Healing].Base = 100;
+            Skills[SkillName.Arcanismo].Base = 120;
+            Skills[SkillName.PoderMagico].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Briga].Base = 120;
+            Skills[SkillName.Medicina].Base = 100;
 
             // Name
             Name = "Healer";
@@ -609,12 +605,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(105, 105, 105);
-            Skills[SkillName.Magery].Base = 120;
-            Skills[SkillName.EvalInt].Base = 120;
-            Skills[SkillName.Swords].Base = 120;
-            Skills[SkillName.Tactics].Base = 120;
-            Skills[SkillName.Meditation].Base = 120;
-            Skills[SkillName.Poisoning].Base = 100;
+            Skills[SkillName.Arcanismo].Base = 120;
+            Skills[SkillName.PoderMagico].Base = 120;
+            Skills[SkillName.Cortante].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Envenenamento].Base = 100;
 
             // Name
             Name = "Hybrid Assassin";
@@ -729,12 +724,11 @@ namespace Server.Mobiles
 
             // Skills and Stats
             InitStats(105, 105, 105);
-            Skills[SkillName.Healing].Base = 120;
-            Skills[SkillName.Anatomy].Base = 120;
-            Skills[SkillName.Stealing].Base = 120;
-            Skills[SkillName.ArmsLore].Base = 100;
-            Skills[SkillName.Meditation].Base = 120;
-            Skills[SkillName.Wrestling].Base = 120;
+            Skills[SkillName.Medicina].Base = 120;
+            Skills[SkillName.Anatomia].Base = 120;
+            Skills[SkillName.Prestidigitacao].Base = 120;
+            Skills[SkillName.ConhecimentoArmas].Base = 100;
+            Skills[SkillName.Briga].Base = 120;
 
             // Name
             Name = "Hybrid Thief";

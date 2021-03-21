@@ -72,7 +72,7 @@ namespace Server.Engines.Quests
         public WalkingSilentlyQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Stealth, 50, "Old Haven Training", 1078176, 1078177));
+            this.AddObjective(new ApprenticeObjective(SkillName.Furtividade, 50, "Old Haven Training", 1078176, 1078177));
 			
             // 1078176 You feel you can easily slip into the shadows and walk silently here. Your ability to Stealth is enhanced in this area.
             // 1078177 You feel it is more difficult to Stealth here. Your ability to Stealth is no longer enhanced.
@@ -91,7 +91,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Stealth.Base < 50;
+                return this.Owner.Skills.Furtividade.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -132,11 +132,11 @@ namespace Server.Engines.Quests
         public Jun()
             : base("Jun", "The Stealth Instructor")
         { 
-            this.SetSkill(SkillName.Hiding, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Tracking, 120.0, 120.0);
-            this.SetSkill(SkillName.Fencing, 120.0, 120.0);
-            this.SetSkill(SkillName.Stealth, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Sobrevivencia, 120.0, 120.0);
+            this.SetSkill(SkillName.Perfurante, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
             this.SetSkill(SkillName.Ninjitsu, 120.0, 120.0);
         }
 		

@@ -51,10 +51,10 @@ namespace Server.Mobiles
                 case 2: SetWearable(new BodySash(), GetRandomHue()); break;
             }
 
-			SetSkill(SkillName.Swords, 120);
-			SetSkill(SkillName.Tactics, 120);
-			SetSkill(SkillName.Anatomy, 120);
-			SetSkill(SkillName.MagicResist, 120);
+			SetSkill(SkillName.Cortante, 120);
+			SetSkill(SkillName.Anatomia, 120);
+			SetSkill(SkillName.Anatomia, 120);
+			SetSkill(SkillName.ResistenciaMagica, 120);
 		}
 
         public virtual int GetRandomHue()

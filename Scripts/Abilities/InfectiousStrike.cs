@@ -33,7 +33,7 @@ namespace Server.Items
         
         public override SkillName GetSecondarySkill(Mobile from)
         {
-            return SkillName.Poisoning;
+            return SkillName.Envenenamento;
         }
 
         public override void OnHit(Mobile attacker, Mobile defender, int damage)
@@ -71,19 +71,19 @@ namespace Server.Items
             int maxLevel = 0;
             if (p == Poison.DarkGlow)
             {
-            	maxLevel = 10 + (attacker.Skills[SkillName.Poisoning].Fixed / 333);
+            	maxLevel = 10 + (attacker.Skills[SkillName.Envenenamento].Fixed / 333);
             	if (maxLevel > 13)
             		maxLevel = 13;
             }
             else if (p == Poison.Parasitic)
             {
-            	maxLevel = 14 + (attacker.Skills[SkillName.Poisoning].Fixed / 250);
+            	maxLevel = 14 + (attacker.Skills[SkillName.Envenenamento].Fixed / 250);
             	if (maxLevel > 18)
             		maxLevel = 18;
             }
 			else            
 			{
-				maxLevel = attacker.Skills[SkillName.Poisoning].Fixed / 200;
+				maxLevel = attacker.Skills[SkillName.Envenenamento].Fixed / 200;
 				if (maxLevel > 5)
 					maxLevel = 5;
 			}
@@ -93,7 +93,7 @@ namespace Server.Items
             if (p.Level > maxLevel) // If they don't have enough Poisoning Skill for the potion strength, lower it.
                 p = Poison.GetPoison(maxLevel);
 
-            if ((attacker.Skills[SkillName.Poisoning].Value / 100.0) > Utility.RandomDouble())
+            if ((attacker.Skills[SkillName.Envenenamento].Value / 100.0) > Utility.RandomDouble())
             {
             	if (p !=null && p.Level + 1 <= maxLevel)
             	{

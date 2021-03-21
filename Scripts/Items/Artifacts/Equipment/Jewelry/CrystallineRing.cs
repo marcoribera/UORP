@@ -14,8 +14,8 @@ namespace Server.Items
             Attributes.RegenHits = 5;
             Attributes.RegenMana = 3;
             Attributes.SpellDamage = 20;		
-            SkillBonuses.SetValues(0, SkillName.Magery, 20.0);
-            SkillBonuses.SetValues(1, SkillName.Focus, 20.0);
+            SkillBonuses.SetValues(0, SkillName.Arcanismo, 20.0);
+            SkillBonuses.SetValues(1, SkillName.PreparoFisico, 20.0);
         }
 
         public CrystallineRing(Serial serial)

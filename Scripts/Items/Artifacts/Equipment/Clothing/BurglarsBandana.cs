@@ -9,9 +9,9 @@ namespace Server.Items
         public BurglarsBandana()
         {
             Hue = Utility.RandomBool() ? 0x58C : 0x10;
-            SkillBonuses.SetValues(0, SkillName.Stealing, 10.0);
-            SkillBonuses.SetValues(1, SkillName.Stealth, 10.0);
-            SkillBonuses.SetValues(2, SkillName.Snooping, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Prestidigitacao, 10.0);
+            SkillBonuses.SetValues(1, SkillName.Furtividade, 10.0);
+            SkillBonuses.SetValues(2, SkillName.Prestidigitacao, 10.0);
             Attributes.BonusDex = 5;
         }
 

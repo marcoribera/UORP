@@ -131,7 +131,7 @@ namespace Server.Items
 			DamageIncrease = 10;
 			WeightReduction = 30;
 			Attributes.BonusDex = 5;
-			SkillBonuses.SetValues( 0, SkillName.Archery, 5.0 );
+			SkillBonuses.SetValues( 0, SkillName.Atirar, 5.0 );
 			Attributes.ReflectPhysical = 5;
 			Attributes.AttackChance = 5;
             LowerAmmoCost = 30;
@@ -183,7 +183,7 @@ namespace Server.Items
 			Hue = 2671;
 			
 			Attributes.BonusDex = 5;
-			SkillBonuses.SetValues( 0, SkillName.Throwing, 5.0 );
+			SkillBonuses.SetValues( 0, SkillName.Atirar, 5.0 );
 			Attributes.ReflectPhysical = 5;
 			Attributes.AttackChance = 5;
 			

@@ -81,10 +81,9 @@ namespace Server.Engines.Quests
         public Ortlem()
             : base("Ortlem", "the Mystic")
         {
-            SetSkill(SkillName.EvalInt, 65.0, 90.0);
-            SetSkill(SkillName.Meditation, 65.0, 90.0);
-            SetSkill(SkillName.MagicResist, 65.0, 90.0);
-            SetSkill(SkillName.Mysticism, 65.0, 90.0);
+            SetSkill(SkillName.PoderMagico, 65.0, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 65.0, 90.0);
+            SetSkill(SkillName.Misticismo, 65.0, 90.0);
         }
 
         public Ortlem(Serial serial)

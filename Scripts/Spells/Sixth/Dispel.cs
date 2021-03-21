@@ -59,7 +59,7 @@ namespace Server.Spells.Sixth
                     {
                         SpellHelper.Turn(from, m);
 
-                        double dispelChance = (50.0 + ((100 * (from.Skills.Magery.Value - bc.GetDispelDifficulty())) / (bc.DispelFocus * 2))) / 100;
+                        double dispelChance = (50.0 + ((100 * (from.Skills.Arcanismo.Value - bc.GetDispelDifficulty())) / (bc.DispelFocus * 2))) / 100;
                         
                         //Skill Masteries
                         dispelChance -= ((double)SkillMasteries.MasteryInfo.EnchantedSummoningBonus(bc) / 100);

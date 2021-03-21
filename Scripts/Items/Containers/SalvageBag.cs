@@ -132,7 +132,7 @@ namespace Server.Items
                 Type resourceType = info.ResourceTypes[0];
                 Item ingot = (Item)Activator.CreateInstance(resourceType);
 
-                double skill = Math.Max(from.Skills[SkillName.Mining].Value, from.Skills[SkillName.Blacksmith].Value);
+                double skill = Math.Max(from.Skills[SkillName.Extracao].Value, from.Skills[SkillName.Ferraria].Value);
 
                 if (item is DragonBardingDeed || (item is BaseArmor && ((BaseArmor)item).PlayerConstructed) || (item is BaseWeapon && ((BaseWeapon)item).PlayerConstructed) || (item is BaseClothing && ((BaseClothing)item).PlayerConstructed))
                 {

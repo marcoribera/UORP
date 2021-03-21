@@ -144,12 +144,12 @@ namespace Server.Engines.Quests
         public Ryuichi()
             : base("Ryuichi", "The Ninjitsu Instructor")
         { 
-            this.SetSkill(SkillName.Hiding, 120.0, 120.0);
-            this.SetSkill(SkillName.Tracking, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Fencing, 120.0, 120.0);
-            this.SetSkill(SkillName.Stealth, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
+            this.SetSkill(SkillName.Sobrevivencia, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Perfurante, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
             this.SetSkill(SkillName.Ninjitsu, 120.0, 120.0);
         }
 		

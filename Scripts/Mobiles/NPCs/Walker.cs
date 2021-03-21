@@ -72,7 +72,7 @@ namespace Server.Engines.Quests
         public EyesOfRangerQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Tracking, 50, "Enhanced Tracking Skill", 1078215, 1078216));
+            this.AddObjective(new ApprenticeObjective(SkillName.Sobrevivencia, 50, "Enhanced Tracking Skill", 1078215, 1078216));
 			
             // 1078215 You feel you can track creatures here with ease. Your Tracking skill is enhanced in this area.
             // 1078216 You feel it is more difficult to track creatures here. Your Tracking skill is no longer enhanced.
@@ -91,7 +91,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Tracking.Base < 50;
+                return this.Owner.Skills.Sobrevivencia.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -132,12 +132,12 @@ namespace Server.Engines.Quests
         public Walker()
             : base("Walker", "The Tracking Instructor")
         { 
-            this.SetSkill(SkillName.Hiding, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Tracking, 120.0, 120.0);
-            this.SetSkill(SkillName.Fencing, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Stealth, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Sobrevivencia, 120.0, 120.0);
+            this.SetSkill(SkillName.Perfurante, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
+            this.SetSkill(SkillName.Furtividade, 120.0, 120.0);
             this.SetSkill(SkillName.Ninjitsu, 120.0, 120.0);
         }
 		

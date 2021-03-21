@@ -77,7 +77,7 @@ namespace Server.Engines.Quests
         public StoppingTheWorldQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Meditation, 50, "Old Haven Training", 1077490, 1077584));
+            this.AddObjective(new ApprenticeObjective(SkillName.PreparoFisico, 50, "Old Haven Training", 1077490, 1077584));
 			
             // 1077490 Your Meditation potential is greatly enhanced while questing in this area.
             // 1077584 You are not in the quest area for Apprentice Stoic. Your Meditation potential is not enhanced here.
@@ -96,7 +96,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Meditation.Base < 50;
+                return this.Owner.Skills.PoderMagico.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -137,12 +137,11 @@ namespace Server.Engines.Quests
         public Gustar()
             : base("Gustar", "The Meditation Instructor")
         { 
-            this.SetSkill(SkillName.EvalInt, 120.0, 120.0);
-            this.SetSkill(SkillName.Inscribe, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
+            this.SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            this.SetSkill(SkillName.Erudicao, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
         }
 		
         public Gustar(Serial serial)

@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Miner()
             : base("the miner")
         {
-            SetSkill(SkillName.Mining, 65.0, 88.0);
+            SetSkill(SkillName.Extracao, 65.0, 88.0);
         }
 
         public Miner(Serial serial)

@@ -362,9 +362,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Cloorne()
             : base("Cloorne", "the expeditionist")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Cloorne(Serial serial)

@@ -53,8 +53,8 @@ namespace Server.Engines.Quests.Samurai
                     break;
             }
 
-            this.SetSkill(SkillName.Swords, 50.0);
-            this.SetSkill(SkillName.Tactics, 50.0);
+            this.SetSkill(SkillName.Cortante, 50.0);
+            this.SetSkill(SkillName.Anatomia, 50.0);
         }
 
         public YoungRonin(Serial serial)

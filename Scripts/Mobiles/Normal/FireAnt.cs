@@ -30,10 +30,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 40);
             SetResistance(ResistanceType.Energy, 36);
 
-            SetSkill(SkillName.Anatomy, 8.7);
-            SetSkill(SkillName.MagicResist, 53.1);
-            SetSkill(SkillName.Tactics, 77.2);
-            SetSkill(SkillName.Wrestling, 75.4);
+            SetSkill(SkillName.Anatomia, 8.7);
+            SetSkill(SkillName.ResistenciaMagica, 53.1);
+            SetSkill(SkillName.Anatomia, 77.2);
+            SetSkill(SkillName.Briga, 75.4);
 
             SetAreaEffect(AreaEffect.ExplosiveGoo);
         }

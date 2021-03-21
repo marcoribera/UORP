@@ -10,12 +10,11 @@ namespace Server.Mobiles
         public Mystic()
             : base("the mystic")
         {
-            this.SetSkill(SkillName.EvalInt, 65.0, 88.0);
-            this.SetSkill(SkillName.Inscribe, 60.0, 83.0);
-            this.SetSkill(SkillName.Mysticism, 64.0, 100.0);
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.MagicResist, 65.0, 88.0);
-            this.SetSkill(SkillName.Wrestling, 36.0, 68.0);
+            this.SetSkill(SkillName.PoderMagico, 65.0, 88.0);
+            this.SetSkill(SkillName.Erudicao, 60.0, 83.0);
+            this.SetSkill(SkillName.Misticismo, 64.0, 100.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
+            this.SetSkill(SkillName.Briga, 36.0, 68.0);
         }
 
         public Mystic(Serial serial)

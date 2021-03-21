@@ -9,7 +9,7 @@ namespace Server.Items
         public GlovesOfThePugilist()
         {
             Hue = 0x6D1;
-            SkillBonuses.SetValues(0, SkillName.Wrestling, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Briga, 10.0);
             Attributes.BonusDex = 8;
             Attributes.WeaponDamage = 15;
         }

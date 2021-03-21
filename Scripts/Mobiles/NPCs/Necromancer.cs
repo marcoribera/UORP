@@ -11,11 +11,10 @@ namespace Server.Mobiles
 		public Necromancer() 
 			: base( "the Necromancer" )
 		{
-			SetSkill( SkillName.EvalInt, 80.0, 100.0 );
-			SetSkill( SkillName.Inscribe, 80.0, 100.0 );
-			SetSkill( SkillName.Necromancy, 80.0, 100.0 );
-			SetSkill( SkillName.Meditation, 80.0, 100.0 );
-			SetSkill( SkillName.MagicResist, 80.0, 100.0 );
+			SetSkill( SkillName.PoderMagico, 80.0, 100.0 );
+			SetSkill( SkillName.Erudicao, 80.0, 100.0 );
+			SetSkill( SkillName.Necromancia, 80.0, 100.0 );
+			SetSkill( SkillName.ResistenciaMagica, 80.0, 100.0 );
 
 			Hue = 0x3C6;
 		}

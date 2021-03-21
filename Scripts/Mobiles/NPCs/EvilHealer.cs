@@ -11,9 +11,9 @@ namespace Server.Mobiles
 
             this.Karma = -10000;
 
-            this.SetSkill(SkillName.Forensics, 80.0, 100.0);
-            this.SetSkill(SkillName.SpiritSpeak, 80.0, 100.0);
-            this.SetSkill(SkillName.Swords, 80.0, 100.0);
+            this.SetSkill(SkillName.Percepcao, 80.0, 100.0);
+            this.SetSkill(SkillName.PoderMagico, 80.0, 100.0);
+            this.SetSkill(SkillName.Cortante, 80.0, 100.0);
         }
 
         public EvilHealer(Serial serial)
@@ -47,10 +47,10 @@ namespace Server.Mobiles
             if (!base.CheckTeach(skill, from))
                 return false;
 
-            return (skill == SkillName.Forensics) ||
-                   (skill == SkillName.Healing) ||
-                   (skill == SkillName.SpiritSpeak) ||
-                   (skill == SkillName.Swords);
+            return (skill == SkillName.Percepcao) ||
+                   (skill == SkillName.Medicina) ||
+                   (skill == SkillName.PoderMagico) ||
+                   (skill == SkillName.Cortante);
         }
 
         public override void InitSBInfo()

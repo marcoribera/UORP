@@ -21,11 +21,11 @@ namespace Server.Mobiles
 
             SetDamage(8, 19);
 
-            SetSkill(SkillName.EvalInt, 80.1, 90.0);
-            SetSkill(SkillName.Magery, 80.1, 90.0);
-            SetSkill(SkillName.MagicResist, 75.1, 85.0);
-            SetSkill(SkillName.Tactics, 80.1, 90.0);
-            SetSkill(SkillName.Wrestling, 80.1, 100.0);
+            SetSkill(SkillName.PoderMagico, 80.1, 90.0);
+            SetSkill(SkillName.Arcanismo, 80.1, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 75.1, 85.0);
+            SetSkill(SkillName.Anatomia, 80.1, 90.0);
+            SetSkill(SkillName.Briga, 80.1, 100.0);
 
             SetResistance(ResistanceType.Physical, 55, 65);
             SetResistance(ResistanceType.Fire, 10, 20);

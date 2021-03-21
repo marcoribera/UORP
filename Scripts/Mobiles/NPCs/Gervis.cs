@@ -78,7 +78,7 @@ namespace Server.Engines.Quests
         public Gervis()
             : base("Gervis", "the blacksmith trainer")
         { 
-            SetSkill(SkillName.Blacksmith, 65.0, 88.0);
+            SetSkill(SkillName.Ferraria, 65.0, 88.0);
         }
 
         public Gervis(Serial serial)

@@ -43,14 +43,13 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Poison, 65, 75 );
 			SetResistance( ResistanceType.Energy, 60, 75 );
 
-			SetSkill( SkillName.Wrestling, 90.0 );
-			SetSkill( SkillName.Tactics, 90.0 );
-			SetSkill( SkillName.MagicResist, 110.0 );
-			SetSkill( SkillName.Poisoning, 120.0 );
-			SetSkill( SkillName.Magery, 110.0 );
-			SetSkill( SkillName.EvalInt, 110.0 );
-			SetSkill( SkillName.Meditation, 110.0 );
-            SetSkill(SkillName.Spellweaving, 120.0);
+			SetSkill( SkillName.Briga, 90.0 );
+			SetSkill( SkillName.Anatomia, 90.0 );
+			SetSkill( SkillName.ResistenciaMagica, 110.0 );
+			SetSkill( SkillName.Envenenamento, 120.0 );
+			SetSkill( SkillName.Arcanismo, 110.0 );
+			SetSkill( SkillName.PoderMagico, 110.0 );
+            SetSkill(SkillName.Feiticaria, 120.0);
 			
 			// TODO 1-3 spellweaving scroll
 
@@ -260,7 +259,7 @@ namespace Server.Mobiles
             {
                 if (m.GetStatMod("DreadHornStr") == null)
                 {
-                    double percent = m.Skills.MagicResist.Value / 100;
+                    double percent = m.Skills.ResistenciaMagica.Value / 100;
                     int malas = (int)(-20 + (percent * 5.2));
 
                     m.AddStatMod(new StatMod(StatType.Str, "DreadHornStr", m.Str < Math.Abs(malas) ? m.Str / 2 : malas, TimeSpan.FromSeconds(60)));

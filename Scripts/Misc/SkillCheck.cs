@@ -141,7 +141,7 @@ namespace Server.Misc
 			var value = skill.Value;
 
 			//TODO: Is there any other place this can go?
-			if (skillName == SkillName.Fishing && BaseGalleon.FindGalleonAt(from, from.Map) is TokunoGalleon)
+			if (skillName == SkillName.Sobrevivencia && BaseGalleon.FindGalleonAt(from, from.Map) is TokunoGalleon)
 				value += 1;
 
 			if (value < minSkill)
@@ -336,10 +336,10 @@ namespace Server.Misc
 			if (from is PlayerMobile)
 			{
 				#region SA
-				if (skill.Info.SkillID == (int)SkillName.Archery && from.Race == Race.Gargoyle)
+				if (skill.Info.SkillID == (int)SkillName.Atirar && from.Race == Race.Gargoyle)
 					return false;
 
-				if (skill.Info.SkillID == (int)SkillName.Throwing && @from.Race != Race.Gargoyle)
+				if (skill.Info.SkillID == (int)SkillName.Atirar && @from.Race != Race.Gargoyle)
 					return false;
 				#endregion
 
@@ -369,7 +369,7 @@ namespace Server.Misc
 			if (from is BaseCreature && ((BaseCreature)from).IsDeadPet)
 				return;
 
-			if (skill.SkillName == SkillName.Focus && from is BaseCreature &&
+			if (skill.SkillName == SkillName.PreparoFisico && from is BaseCreature &&
 				(!PetTrainingHelper.Enabled || !((BaseCreature)from).Controlled))
 				return;
 

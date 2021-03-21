@@ -19,7 +19,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Alchemy;
+                return SkillName.Alquimia;
             }
         }
 
@@ -346,11 +346,11 @@ namespace Server.Engines.Craft
 
                 index = AddCraft(typeof(VialOfVitriol), 1044495, 1113331, 90.0, 100.0, typeof(ParasiticPotion), 1072848, 1, 1113754);
                 AddRes(index, typeof (Nightshade), 1044358, 30, 1044366);
-                AddSkill(index, SkillName.Magery, 75.0, 100.0);
+                AddSkill(index, SkillName.Arcanismo, 75.0, 100.0);
 
                 index = AddCraft(typeof(BottleIchor), 1044495, 1113361, 90.0, 100.0, typeof(DarkglowPotion), 1072849, 1, 1113755);
                 AddRes(index, typeof(SpidersSilk), 1044360, 1, 1044368);
-                AddSkill(index, SkillName.Magery, 75.0, 100.0);
+                AddSkill(index, SkillName.Arcanismo, 75.0, 100.0);
             }
 
             if (Core.HS)

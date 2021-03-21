@@ -26,7 +26,7 @@ namespace Server.Mobiles
         {
             if (IsChildOf(from.Backpack))
             {
-                if (from.Skills[SkillName.AnimalTaming].Value >= 100)
+                if (from.Skills[SkillName.Adestramento].Value >= 100)
                 {
                     from.SendGump(new ConfirmMountStatuetteGump(this));
                 }
@@ -91,12 +91,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 35, 45);
             SetResistance(ResistanceType.Energy, 85, 90);
 
-            SetSkill(SkillName.MagicResist, 150.0, 190.0);
-            SetSkill(SkillName.Tactics, 80.0, 95.0);
-            SetSkill(SkillName.Wrestling, 110.0, 130.0);
-            SetSkill(SkillName.Healing, 70.0, 99.0);
-            SetSkill(SkillName.DetectHidden, 50.1);
-            SetSkill(SkillName.Parry, 55.0, 70.0);
+            SetSkill(SkillName.ResistenciaMagica, 150.0, 190.0);
+            SetSkill(SkillName.Anatomia, 80.0, 95.0);
+            SetSkill(SkillName.Briga, 110.0, 130.0);
+            SetSkill(SkillName.Medicina, 70.0, 99.0);
+            SetSkill(SkillName.Percepcao, 50.1);
+            SetSkill(SkillName.Bloqueio, 55.0, 70.0);
 
             Fame = 300;
             Karma = 300;

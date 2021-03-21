@@ -69,7 +69,7 @@ namespace Server.Spells.Seventh
                     if (bc == null)
                         continue;
 
-                    double dispelChance = (50.0 + ((100 * (this.Caster.Skills.Magery.Value - bc.GetDispelDifficulty())) / (bc.DispelFocus * 2))) / 100;
+                    double dispelChance = (50.0 + ((100 * (this.Caster.Skills.Arcanismo.Value - bc.GetDispelDifficulty())) / (bc.DispelFocus * 2))) / 100;
                     
                     // Skill Masteries
                     dispelChance -= ((double)SkillMasteries.MasteryInfo.EnchantedSummoningBonus(bc) / 100);

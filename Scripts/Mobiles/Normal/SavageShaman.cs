@@ -34,15 +34,14 @@ namespace Server.Mobiles
 			SetResistance(ResistanceType.Poison, 20, 30);
 			SetResistance(ResistanceType.Energy, 40, 50);
 
-			SetSkill(SkillName.EvalInt, 77.5, 100.0);
-			SetSkill(SkillName.Fencing, 62.5, 85.0);
-			SetSkill(SkillName.Macing, 62.5, 85.0);
-			SetSkill(SkillName.Magery, 72.5, 95.0);
-			SetSkill(SkillName.Meditation, 77.5, 100.0);
-			SetSkill(SkillName.MagicResist, 77.5, 100.0);
-			SetSkill(SkillName.Swords, 62.5, 85.0);
-			SetSkill(SkillName.Tactics, 62.5, 85.0);
-			SetSkill(SkillName.Wrestling, 62.5, 85.0);
+			SetSkill(SkillName.PoderMagico, 77.5, 100.0);
+			SetSkill(SkillName.Perfurante, 62.5, 85.0);
+			SetSkill(SkillName.Contusivo, 62.5, 85.0);
+			SetSkill(SkillName.Arcanismo, 72.5, 95.0);
+			SetSkill(SkillName.ResistenciaMagica, 77.5, 100.0);
+			SetSkill(SkillName.Cortante, 62.5, 85.0);
+			SetSkill(SkillName.Anatomia, 62.5, 85.0);
+			SetSkill(SkillName.Briga, 62.5, 85.0);
 
 			Fame = 1000;
 			Karma = -1000;
@@ -215,7 +214,7 @@ namespace Server.Mobiles
 
 								// Algorithm: (40% of magery) + (1-10)
 
-								int toHeal = (int)(Skills[SkillName.Magery].Value * 0.4);
+								int toHeal = (int)(Skills[SkillName.Arcanismo].Value * 0.4);
 								toHeal += Utility.Random(1, 10);
 
 								m.Heal(toHeal, this);
@@ -248,7 +247,7 @@ namespace Server.Mobiles
 
 								if (Core.AOS)
 								{
-									int baseDamage = 6 + (int)(Skills[SkillName.EvalInt].Value / 5.0);
+									int baseDamage = 6 + (int)(Skills[SkillName.PoderMagico].Value / 5.0);
 
 									damage = Utility.RandomMinMax(baseDamage, baseDamage + 3);
 								}
@@ -289,7 +288,7 @@ namespace Server.Mobiles
 
 								m.Paralyzed = false;
 
-								double total = Skills[SkillName.Magery].Value + Skills[SkillName.Poisoning].Value;
+								double total = Skills[SkillName.Arcanismo].Value + Skills[SkillName.Envenenamento].Value;
 
 								double dist = GetDistanceToSqrt(m);
 

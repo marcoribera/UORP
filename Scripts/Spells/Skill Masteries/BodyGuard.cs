@@ -22,7 +22,7 @@ namespace Server.Spells.SkillMasteries
         public override bool BlocksMovement { get { return false; } }
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(1.0); } }
 
-        public override SkillName CastSkill { get { return SkillName.Parry; } }
+        public override SkillName CastSkill { get { return SkillName.Bloqueio; } }
  
 		private double _Block;
  

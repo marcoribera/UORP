@@ -28,8 +28,8 @@ namespace Server.Engines.Quests.Ninja
             else
                 this.AddItem(new Tessen());
 
-            this.SetSkill(SkillName.Swords, 50.0);
-            this.SetSkill(SkillName.Tactics, 50.0);
+            this.SetSkill(SkillName.Cortante, 50.0);
+            this.SetSkill(SkillName.Anatomia, 50.0);
         }
 
         public Henchman(Serial serial)

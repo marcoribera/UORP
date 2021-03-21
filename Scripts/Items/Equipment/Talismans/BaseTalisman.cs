@@ -23,17 +23,15 @@ namespace Server.Items
 
     public enum TalismanSkill
     {
-        Alchemy,
-        Blacksmithy,
-        Fletching,
-        Carpentry,
-        Cartography,
-        Cooking,
+        Alquimia,
+        Ferraria,
+        Carpintaria,
+        Erudicao,
+        Culinaria,
         Glassblowing,
-        Inscription,
         Masonry,
-        Tailoring,
-        Tinkering
+        Costura,
+        Mecanica
     }
 
     public class BaseTalisman : Item, IWearableDurability, IVvVItem, IOwnerRestricted, ITalismanProtection, ITalismanKiller, IFactionItem, IArtifact
@@ -1433,31 +1431,31 @@ namespace Server.Items
         public static SkillName[] SkillsOld { get { return m_SkillsOld; } }
         private static readonly SkillName[] m_SkillsOld = new SkillName[]
         {
-            SkillName.Alchemy,
-            SkillName.Blacksmith,
-            SkillName.Carpentry,
-            SkillName.Cartography,
-            SkillName.Cooking,
-            SkillName.Fletching,
-            SkillName.Inscribe,
-            SkillName.Tailoring,
-            SkillName.Tinkering,
+            SkillName.Alquimia,
+            SkillName.Ferraria,
+            SkillName.Carpintaria,
+            SkillName.Erudicao,
+            SkillName.Culinaria,
+            SkillName.Carpintaria,
+            SkillName.Erudicao,
+            SkillName.Costura,
+            SkillName.Mecanica,
         };
 
         public static TalismanSkill[] Skills { get { return m_Skills; } }
         private static readonly TalismanSkill[] m_Skills = new TalismanSkill[]
         {
-            TalismanSkill.Alchemy,
-            TalismanSkill.Blacksmithy,
-            TalismanSkill.Fletching,
-            TalismanSkill.Carpentry,
-            TalismanSkill.Cartography,
-            TalismanSkill.Cooking,
+            TalismanSkill.Alquimia,
+            TalismanSkill.Ferraria,
+            TalismanSkill.Carpintaria,
+            TalismanSkill.Carpintaria,
+            TalismanSkill.Erudicao,
+            TalismanSkill.Culinaria,
             TalismanSkill.Glassblowing,
-            TalismanSkill.Inscription,
+            TalismanSkill.Erudicao,
             TalismanSkill.Masonry,
-            TalismanSkill.Tailoring,
-            TalismanSkill.Tinkering,
+            TalismanSkill.Costura,
+            TalismanSkill.Mecanica,
         };
 
         public static TalismanSkill GetRandomSkill()
@@ -1526,15 +1524,13 @@ namespace Server.Items
             switch (skill)
             {
                 default:
-                case SkillName.Alchemy: return TalismanSkill.Alchemy;
-                case SkillName.Blacksmith: return TalismanSkill.Blacksmithy;
-                case SkillName.Carpentry: return TalismanSkill.Carpentry;
-                case SkillName.Cartography: return TalismanSkill.Cartography;
-                case SkillName.Cooking: return TalismanSkill.Cooking;
-                case SkillName.Fletching: return TalismanSkill.Fletching;
-                case SkillName.Inscribe: return TalismanSkill.Inscription;
-                case SkillName.Tailoring: return TalismanSkill.Tailoring;
-                case SkillName.Tinkering: return TalismanSkill.Tinkering;
+                case SkillName.Alquimia: return TalismanSkill.Alquimia;
+                case SkillName.Ferraria: return TalismanSkill.Ferraria;
+                case SkillName.Carpintaria: return TalismanSkill.Carpintaria;
+                case SkillName.Erudicao: return TalismanSkill.Erudicao;
+                case SkillName.Culinaria: return TalismanSkill.Culinaria;
+                case SkillName.Costura: return TalismanSkill.Costura;
+                case SkillName.Mecanica: return TalismanSkill.Mecanica;
             }
         }
 
@@ -1543,17 +1539,15 @@ namespace Server.Items
             switch (m_Skill)
             {
                 default:
-                case TalismanSkill.Alchemy: return SkillName.Alchemy;
-                case TalismanSkill.Blacksmithy: return SkillName.Blacksmith;
-                case TalismanSkill.Fletching: return SkillName.Fletching;
-                case TalismanSkill.Carpentry: return SkillName.Carpentry;
-                case TalismanSkill.Cartography: return SkillName.Cartography;
-                case TalismanSkill.Cooking: return SkillName.Cooking;
-                case TalismanSkill.Glassblowing: return SkillName.Alchemy;
-                case TalismanSkill.Inscription: return SkillName.Inscribe;
-                case TalismanSkill.Masonry: return SkillName.Carpentry;
-                case TalismanSkill.Tailoring: return SkillName.Tailoring;
-                case TalismanSkill.Tinkering: return SkillName.Tinkering;
+                case TalismanSkill.Alquimia: return SkillName.Alquimia;
+                case TalismanSkill.Ferraria: return SkillName.Ferraria;
+                case TalismanSkill.Carpintaria: return SkillName.Carpintaria;
+                case TalismanSkill.Erudicao: return SkillName.Erudicao;
+                case TalismanSkill.Culinaria: return SkillName.Culinaria;
+                case TalismanSkill.Glassblowing: return SkillName.Alquimia;
+                case TalismanSkill.Masonry: return SkillName.Carpintaria;
+                case TalismanSkill.Costura: return SkillName.Costura;
+                case TalismanSkill.Mecanica: return SkillName.Mecanica;
             }
         }
 

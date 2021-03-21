@@ -27,9 +27,9 @@ namespace Server.Engines.Quests.Samurai
 
             this.SetResistance(ResistanceType.Physical, 5, 10);
 
-            this.SetSkill(SkillName.MagicResist, 5.0);
-            this.SetSkill(SkillName.Tactics, 4.0);
-            this.SetSkill(SkillName.Wrestling, 5.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 5.0);
+            this.SetSkill(SkillName.Anatomia, 4.0);
+            this.SetSkill(SkillName.Briga, 5.0);
 
             this.VirtualArmor = 8;
         }

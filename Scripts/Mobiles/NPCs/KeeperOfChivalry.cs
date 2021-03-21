@@ -11,10 +11,10 @@ namespace Server.Mobiles
         public KeeperOfChivalry()
             : base("the Keeper of Chivalry")
         {
-            this.SetSkill(SkillName.Fencing, 75.0, 85.0);
-            this.SetSkill(SkillName.Macing, 75.0, 85.0);
-            this.SetSkill(SkillName.Swords, 75.0, 85.0);
-            this.SetSkill(SkillName.Chivalry, 100.0);
+            this.SetSkill(SkillName.Perfurante, 75.0, 85.0);
+            this.SetSkill(SkillName.Contusivo, 75.0, 85.0);
+            this.SetSkill(SkillName.Cortante, 75.0, 85.0);
+            this.SetSkill(SkillName.Ordem, 100.0);
         }
 
         public KeeperOfChivalry(Serial serial)

@@ -1,4 +1,4 @@
-﻿using Server.Network;
+using Server.Network;
 using Server.Spells.Third;
 using System;
 
@@ -66,7 +66,7 @@ namespace Server.Items
             this.m_Timer = new InternalTimer(this);
             this.m_Timer.Start();
 
-            if (from.Skills.Magery.Value >= m_RequiredSkill)
+            if (from.Skills.Arcanismo.Value >= m_RequiredSkill)
             {
                 m_MagicUnlocked = true;
             }
@@ -79,7 +79,7 @@ namespace Server.Items
             this.m_Timer = new InternalTimer(this);
             this.m_Timer.Start();
 
-            if (from.Skills.Magery.Value >= m_RequiredSkill)
+            if (from.Skills.Arcanismo.Value >= m_RequiredSkill)
             {
                 m_MagicUnlocked = true;
             }

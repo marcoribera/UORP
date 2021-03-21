@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public LegendaryMapmakersGlasses()
         {
-            SkillBonuses.SetValues(0, SkillName.Cartography, Utility.RandomMinMax(1, 5));
+            SkillBonuses.SetValues(0, SkillName.Erudicao, Utility.RandomMinMax(1, 5));
             Quality = ItemQuality.Exceptional;
         }
 

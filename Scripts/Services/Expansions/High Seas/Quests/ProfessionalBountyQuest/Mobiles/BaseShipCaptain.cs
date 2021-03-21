@@ -100,13 +100,13 @@ namespace Server.Mobiles
 
             SetDamage(23, 35);
 
-            SetSkill(SkillName.Fencing, 115.0, 120.0);
-            SetSkill(SkillName.Macing, 115.0, 120.0);
-            SetSkill(SkillName.MagicResist, 115.0, 120.0);
-            SetSkill(SkillName.Swords, 115.0, 120.0);
-            SetSkill(SkillName.Tactics, 115.0, 120.0);
-            SetSkill(SkillName.Wrestling, 115.0, 120.0);
-            SetSkill(SkillName.Anatomy, 115.0, 120.0);
+            SetSkill(SkillName.Perfurante, 115.0, 120.0);
+            SetSkill(SkillName.Contusivo, 115.0, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 115.0, 120.0);
+            SetSkill(SkillName.Cortante, 115.0, 120.0);
+            SetSkill(SkillName.Anatomia, 115.0, 120.0);
+            SetSkill(SkillName.Briga, 115.0, 120.0);
+            SetSkill(SkillName.Anatomia, 115.0, 120.0);
 
             SetDamageType(ResistanceType.Physical, 100);
 

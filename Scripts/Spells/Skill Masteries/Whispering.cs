@@ -21,8 +21,8 @@ namespace Server.Spells.SkillMasteries
  
         public override int RequiredMana { get { return 40; } }
 		
-        public override SkillName CastSkill { get { return SkillName.AnimalTaming; } }
-		public override SkillName DamageSkill { get { return SkillName.AnimalLore; } }
+        public override SkillName CastSkill { get { return SkillName.Adestramento; } }
+		public override SkillName DamageSkill { get { return SkillName.Adestramento; } }
         public override bool RevealOnTick { get { return false; } }
 
         private int _EnhancedGainChance;

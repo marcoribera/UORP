@@ -252,16 +252,16 @@ namespace Server.Mobiles
 			
 			SetDamageType(ResistanceType.Physical, 100);
 			
-			SetSkill(SkillName.Wrestling, 100, 120);
-            SetSkill(SkillName.Fencing, 100, 120);
-            SetSkill(SkillName.Swords, 100, 120);
-            SetSkill(SkillName.Macing, 100, 120);
-            SetSkill(SkillName.Archery, 100, 120);
+			SetSkill(SkillName.Briga, 100, 120);
+            SetSkill(SkillName.Perfurante, 100, 120);
+            SetSkill(SkillName.Cortante, 100, 120);
+            SetSkill(SkillName.Contusivo, 100, 120);
+            SetSkill(SkillName.Atirar, 100, 120);
 
-            SetSkill(SkillName.Tactics, 100, 120);
-            SetSkill(SkillName.Anatomy, 100, 120);
-            SetSkill(SkillName.MagicResist, 100, 120);
-            SetSkill(SkillName.Parry, 120);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.ResistenciaMagica, 100, 120);
+            SetSkill(SkillName.Bloqueio, 120);
 
             switch(TribeType)
             {
@@ -449,17 +449,17 @@ namespace Server.Mobiles
 			
 			SetDamageType(ResistanceType.Physical, 100);
 			
-			SetSkill(SkillName.Wrestling, 100);
-			SetSkill(SkillName.Fencing, 100);
-			SetSkill(SkillName.Swords, 100);
-			SetSkill(SkillName.Macing, 100);
-			SetSkill(SkillName.Archery, 100);
+			SetSkill(SkillName.Briga, 100);
+			SetSkill(SkillName.Perfurante, 100);
+			SetSkill(SkillName.Cortante, 100);
+			SetSkill(SkillName.Contusivo, 100);
+			SetSkill(SkillName.Atirar, 100);
 			
-			SetSkill(SkillName.Tactics, 100);
-			SetSkill(SkillName.Anatomy, 100);
-			SetSkill(SkillName.MagicResist, 100);
-			SetSkill(SkillName.Magery, 120);
-			SetSkill(SkillName.EvalInt, 120);
+			SetSkill(SkillName.Anatomia, 100);
+			SetSkill(SkillName.Anatomia, 100);
+			SetSkill(SkillName.ResistenciaMagica, 100);
+			SetSkill(SkillName.Arcanismo, 120);
+			SetSkill(SkillName.PoderMagico, 120);
 
             switch (TribeType)
             {
@@ -608,16 +608,16 @@ namespace Server.Mobiles
 			
 			//Set resistances?
 			
-			SetSkill(SkillName.Wrestling, 120);
-            SetSkill(SkillName.Fencing, 120);
-            SetSkill(SkillName.Swords, 120);
-            SetSkill(SkillName.Macing, 120);
-            SetSkill(SkillName.Archery, 120);
+			SetSkill(SkillName.Briga, 120);
+            SetSkill(SkillName.Perfurante, 120);
+            SetSkill(SkillName.Cortante, 120);
+            SetSkill(SkillName.Contusivo, 120);
+            SetSkill(SkillName.Atirar, 120);
 
-            SetSkill(SkillName.Tactics, 120);
-            SetSkill(SkillName.Anatomy, 120);
-            SetSkill(SkillName.MagicResist, 120);
-            SetSkill(SkillName.Parry, 120);
+            SetSkill(SkillName.Anatomia, 120);
+            SetSkill(SkillName.Anatomia, 120);
+            SetSkill(SkillName.ResistenciaMagica, 120);
+            SetSkill(SkillName.Bloqueio, 120);
 
             switch (TribeType)
             {

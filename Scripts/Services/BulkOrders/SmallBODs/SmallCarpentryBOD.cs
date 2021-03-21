@@ -85,7 +85,7 @@ namespace Server.Engines.BulkOrders
             SmallBulkEntry[] entries;
             bool useMaterials = Utility.RandomBool();
 
-            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Carpentry);
+            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Carpintaria);
 
             entries = SmallBulkEntry.CarpentrySmalls;
 

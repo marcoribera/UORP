@@ -142,7 +142,7 @@ namespace Server.SkillHandlers
 						{
 							m_Thief.SendLocalizedMessage(1005592); // You cannot steal this sigil until it has been purified
 						}
-						else if (m_Thief.CheckTargetSkill(SkillName.Stealing, toSteal, 80.0, 80.0))
+						else if (m_Thief.CheckTargetSkill(SkillName.Prestidigitacao, toSteal, 80.0, 80.0))
 						{
 							if (Sigil.ExistsOn(m_Thief))
 							{
@@ -219,7 +219,7 @@ namespace Server.SkillHandlers
                         {
                             m_Thief.SendLocalizedMessage(1063222); // You cannot steal the sigil while mimicking an animal.
                         }
-                        else if (m_Thief.CheckTargetSkill(SkillName.Stealing, toSteal, 100.0, 120.0))
+                        else if (m_Thief.CheckTargetSkill(SkillName.Prestidigitacao, toSteal, 100.0, 120.0))
                         {
                             if (m_Thief.Backpack == null || !m_Thief.Backpack.CheckHold(m_Thief, sig, false, true))
                             {
@@ -262,7 +262,7 @@ namespace Server.SkillHandlers
 				{
 					m_Thief.SendLocalizedMessage(502703); // You must be standing next to an item to steal it.
 				}
-				else if (si != null && m_Thief.Skills[SkillName.Stealing].Value < 100.0)
+				else if (si != null && m_Thief.Skills[SkillName.Prestidigitacao].Value < 100.0)
 				{
 					m_Thief.SendLocalizedMessage(1060025, "", 0x66D); // You're not skilled enough to attempt the theft of this item.
 				}
@@ -296,7 +296,7 @@ namespace Server.SkillHandlers
 					{
 						if (toSteal.Stackable && toSteal.Amount > 1)
 						{
-							int maxAmount = (int)((m_Thief.Skills[SkillName.Stealing].Value / 10.0) / toSteal.Weight);
+							int maxAmount = (int)((m_Thief.Skills[SkillName.Prestidigitacao].Value / 10.0) / toSteal.Weight);
 
 							if (maxAmount < 1)
 							{
@@ -314,7 +314,7 @@ namespace Server.SkillHandlers
 								int pileWeight = (int)Math.Ceiling(toSteal.Weight * toSteal.Amount);
 								pileWeight *= 10;
 
-								if (m_Thief.CheckTargetSkill(SkillName.Stealing, toSteal, pileWeight - 22.5, pileWeight + 27.5))
+								if (m_Thief.CheckTargetSkill(SkillName.Prestidigitacao, toSteal, pileWeight - 22.5, pileWeight + 27.5))
 								{
 									stolen = toSteal;
 								}
@@ -324,7 +324,7 @@ namespace Server.SkillHandlers
 								int pileWeight = (int)Math.Ceiling(toSteal.Weight * amount);
 								pileWeight *= 10;
 
-								if (m_Thief.CheckTargetSkill(SkillName.Stealing, toSteal, pileWeight - 22.5, pileWeight + 27.5))
+								if (m_Thief.CheckTargetSkill(SkillName.Prestidigitacao, toSteal, pileWeight - 22.5, pileWeight + 27.5))
 								{
 									stolen = Mobile.LiftItemDupe(toSteal, toSteal.Amount - amount);
 
@@ -340,7 +340,7 @@ namespace Server.SkillHandlers
 							int iw = (int)Math.Ceiling(w);
 							iw *= 10;
 
-							if (m_Thief.CheckTargetSkill(SkillName.Stealing, toSteal, iw - 22.5, iw + 27.5))
+							if (m_Thief.CheckTargetSkill(SkillName.Prestidigitacao, toSteal, iw - 22.5, iw + 27.5))
 							{
 								stolen = toSteal;
 							}
@@ -349,7 +349,7 @@ namespace Server.SkillHandlers
                         // Non-movable stealable (not in fillable container) items cannot result in the stealer getting caught
                         if (stolen != null && (root is FillableContainer || stolen.Movable))
                         {
-                            double skillValue = m_Thief.Skills[SkillName.Stealing].Value;
+                            double skillValue = m_Thief.Skills[SkillName.Prestidigitacao].Value;
 
                             if (root is FillableContainer)
                             {

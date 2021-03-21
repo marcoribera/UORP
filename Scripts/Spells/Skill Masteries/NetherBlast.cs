@@ -27,15 +27,15 @@ namespace Server.Spells.SkillMasteries
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(2.0); } }
         public override double TickTime { get { return 1; } }
 
-        public override SkillName CastSkill { get { return SkillName.Mysticism; } }
+        public override SkillName CastSkill { get { return SkillName.Misticismo; } }
         public override SkillName DamageSkill
         {
             get
             {
-                if (Caster.Skills[SkillName.Focus].Value > Caster.Skills[SkillName.Imbuing].Value)
-                    return SkillName.Focus;
+                if (Caster.Skills[SkillName.PreparoFisico].Value > Caster.Skills[SkillName.ImbuirMagica].Value)
+                    return SkillName.PreparoFisico;
 
-                return SkillName.Imbuing;
+                return SkillName.ImbuirMagica;
             }
         }
 
@@ -157,9 +157,9 @@ namespace Server.Spells.SkillMasteries
                 if (SpellHelper.CanRevealCaster(m))
                     Caster.RevealingAction();
 
-                SkillName damageSkill = Caster.Skills[SkillName.Focus].Value > Caster.Skills[SkillName.Imbuing].Value ? SkillName.Focus : SkillName.Imbuing;
+                SkillName damageSkill = Caster.Skills[SkillName.PreparoFisico].Value > Caster.Skills[SkillName.ImbuirMagica].Value ? SkillName.PreparoFisico : SkillName.ImbuirMagica;
 
-                double skill = ((Caster.Skills[SkillName.Mysticism].Value) + Caster.Skills[damageSkill].Value * 2) / 3;
+                double skill = ((Caster.Skills[SkillName.Misticismo].Value) + Caster.Skills[damageSkill].Value * 2) / 3;
                 skill /= m.Player ? 3.5 : 2;
 
                 int damage = (int)skill + Utility.RandomMinMax(-3, 3);

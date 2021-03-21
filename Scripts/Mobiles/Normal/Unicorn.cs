@@ -35,12 +35,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 25, 40);
 
-            SetSkill(SkillName.EvalInt, 80.1, 90.0);
-            SetSkill(SkillName.Magery, 60.2, 80.0);
-            SetSkill(SkillName.Meditation, 50.1, 60.0);
-            SetSkill(SkillName.MagicResist, 75.3, 90.0);
-            SetSkill(SkillName.Tactics, 20.1, 22.5);
-            SetSkill(SkillName.Wrestling, 80.5, 92.5);
+            SetSkill(SkillName.PoderMagico, 80.1, 90.0);
+            SetSkill(SkillName.Arcanismo, 60.2, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 75.3, 90.0);
+            SetSkill(SkillName.Anatomia, 20.1, 22.5);
+            SetSkill(SkillName.Briga, 80.5, 92.5);
 
             Fame = 9000;
             Karma = 9000;
@@ -146,7 +145,7 @@ namespace Server.Mobiles
 
                 if (p != null)
                 {
-                    int chanceToCure = 10000 + (int)(Skills[SkillName.Magery].Value * 75) - ((p.RealLevel + 1) * (Core.AOS ? (p.RealLevel < 4 ? 3300 : 3100) : 1750));
+                    int chanceToCure = 10000 + (int)(Skills[SkillName.Arcanismo].Value * 75) - ((p.RealLevel + 1) * (Core.AOS ? (p.RealLevel < 4 ? 3300 : 3100) : 1750));
                     chanceToCure /= 100;
 
                     if (chanceToCure > Utility.Random(100))

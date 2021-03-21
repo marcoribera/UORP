@@ -25,20 +25,20 @@ namespace Server.Mobiles
         {
             m_RefineType = type;
 
-            SetSkill(SkillName.ArmsLore, 36.0, 68.0);
+            SetSkill(SkillName.ConhecimentoArmas, 36.0, 68.0);
             AddItem(new HalfApron());
 
             switch (m_RefineType)
             {
                 case RefinementCraftType.Blacksmith:
                     AddItem(new SmithHammer());
-                    SetSkill(SkillName.Blacksmith, 65.0, 88.0);
+                    SetSkill(SkillName.Ferraria, 65.0, 88.0);
                     break;
                 case RefinementCraftType.Tailor:
-                    SetSkill(SkillName.Tailoring, 60.0, 83.0);
+                    SetSkill(SkillName.Costura, 60.0, 83.0);
                     break;
                 case RefinementCraftType.Carpenter:
-                    SetSkill(SkillName.Carpentry, 61.0, 93.0);
+                    SetSkill(SkillName.Carpintaria, 61.0, 93.0);
                     break;
             }
         }

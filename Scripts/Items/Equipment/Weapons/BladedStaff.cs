@@ -114,7 +114,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Swords;
+                return SkillName.Cortante;
             }
         }
         public override void Serialize(GenericWriter writer)

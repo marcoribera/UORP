@@ -71,13 +71,12 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 40, 65);
             this.SetResistance(ResistanceType.Energy, 40, 65);
 
-            this.SetSkill(SkillName.MagicResist, 120.0);
-            this.SetSkill(SkillName.Tactics, 50.1, 60.0);
-            this.SetSkill(SkillName.Throwing, 120.0);
-            this.SetSkill(SkillName.Anatomy, 0.0, 10.0);
-            this.SetSkill(SkillName.Magery, 50.0, 80.0);
-            this.SetSkill(SkillName.EvalInt, 50.0, 80.0);
-            this.SetSkill(SkillName.Meditation, 120);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0);
+            this.SetSkill(SkillName.Anatomia, 50.1, 60.0);
+            this.SetSkill(SkillName.Atirar, 120.0);
+            this.SetSkill(SkillName.Anatomia, 0.0, 10.0);
+            this.SetSkill(SkillName.Arcanismo, 50.0, 80.0);
+            this.SetSkill(SkillName.PoderMagico, 50.0, 80.0);
 
             this.Fame = 12000;
             this.Karma = -12000;
@@ -86,13 +85,13 @@ namespace Server.Mobiles
             {
                 ChangeAIType(AIType.AI_Mage);
 
-                this.SetSkill(SkillName.Necromancy, 90, 105);
-                this.SetSkill(SkillName.SpiritSpeak, 90, 105);
+                this.SetSkill(SkillName.Necromancia, 90, 105);
+                this.SetSkill(SkillName.PoderMagico, 90, 105);
             }
             else
             {
-                this.SetSkill(SkillName.Mysticism, 90, 105);
-                this.SetSkill(SkillName.Focus, 90, 105);
+                this.SetSkill(SkillName.Misticismo, 90, 105);
+                this.SetSkill(SkillName.PreparoFisico, 90, 105);
             }
 
             m_NextSummon = DateTime.UtcNow;

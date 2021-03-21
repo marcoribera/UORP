@@ -199,7 +199,7 @@ namespace Server.Engines.Despise
             BaseSoundID = 451;
             Hue = 2075;
 
-            SetSkill(SkillName.Archery, SkillStart);
+            SetSkill(SkillName.Atirar, SkillStart);
 
             Fame = GetFame;
             Karma = GetKarmaEvil;

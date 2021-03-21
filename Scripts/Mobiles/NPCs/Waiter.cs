@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Waiter()
             : base("the waiter")
         {
-            this.SetSkill(SkillName.Discordance, 36.0, 68.0);
+            this.SetSkill(SkillName.Caos, 36.0, 68.0);
         }
 
         public Waiter(Serial serial)

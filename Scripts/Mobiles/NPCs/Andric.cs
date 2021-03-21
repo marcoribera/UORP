@@ -77,7 +77,7 @@ namespace Server.Engines.Quests
         public Andric()
             : base("Andric", "the archer trainer")
         {
-            this.SetSkill(SkillName.Archery, 65.0, 88.0);
+            this.SetSkill(SkillName.Atirar, 65.0, 88.0);
         }
 
         public Andric(Serial serial)

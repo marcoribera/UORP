@@ -30,9 +30,9 @@ namespace Server.Engines.Quests.Samurai
             this.SetResistance(ResistanceType.Poison, 95, 98);
             this.SetResistance(ResistanceType.Energy, 95, 98);
 
-            this.SetSkill(SkillName.Magery, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0);
 
             this.Fame = 2500;
             this.Karma = -2500;

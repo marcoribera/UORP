@@ -8,9 +8,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Ciala()
             : base("Ciala", "the aborist")
-        { 
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Ciala(Serial serial)

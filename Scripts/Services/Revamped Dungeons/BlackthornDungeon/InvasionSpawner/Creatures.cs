@@ -19,19 +19,19 @@ namespace Server.Engines.Blackthorn
 
         private static SkillName[] _Specialties =
         {
-            SkillName.Swords,
-            SkillName.Fencing,
-            SkillName.Macing,
-            SkillName.Archery,
-            SkillName.Magery,
-            SkillName.Mysticism,
-            SkillName.Spellweaving,
+            SkillName.Cortante,
+            SkillName.Perfurante,
+            SkillName.Contusivo,
+            SkillName.Atirar,
+            SkillName.Arcanismo,
+            SkillName.Misticismo,
+            SkillName.Feiticaria,
             SkillName.Bushido,
             SkillName.Bushido,
             SkillName.Ninjitsu,
-            SkillName.Chivalry,
-            SkillName.Necromancy,
-            SkillName.Poisoning
+            SkillName.Ordem,
+            SkillName.Necromancia,
+            SkillName.Envenenamento
         };
 
         private InvasionType _InvasionType;
@@ -102,7 +102,7 @@ namespace Server.Engines.Blackthorn
             {
                 title = "the sampire";
             }
-            else if (specialty == SkillName.Magery)
+            else if (specialty == SkillName.Arcanismo)
             {
                 title = "the wizard";
             }
@@ -158,8 +158,8 @@ namespace Server.Engines.Blackthorn
                         Race = Race.Human;
                     else
                         Race = Race.Elf; break;
-                case SkillName.Archery:
-                case SkillName.Spellweaving: Race = Race.Elf; break;
+                case SkillName.Atirar:
+                case SkillName.Feiticaria: Race = Race.Elf; break;
             }
 
             HairItemID = Race.RandomHair(Female);
@@ -182,19 +182,19 @@ namespace Server.Engines.Blackthorn
 
         public virtual void SetSkills()
         {
-            SetSkill(SkillName.Fencing, MinSkill, MaxSkill);
-            SetSkill(SkillName.Macing, MinSkill, MaxSkill);
-            SetSkill(SkillName.MagicResist, MinSkill, MaxSkill);
-            SetSkill(SkillName.Swords, MinSkill, MaxSkill);
-            SetSkill(SkillName.Tactics, MinSkill, MaxSkill);
-            SetSkill(SkillName.Wrestling, MinSkill, MaxSkill);
-            SetSkill(SkillName.Archery, MinSkill, MaxSkill);
-            SetSkill(SkillName.Parry, MinSkill, MaxSkill);
+            SetSkill(SkillName.Perfurante, MinSkill, MaxSkill);
+            SetSkill(SkillName.Contusivo, MinSkill, MaxSkill);
+            SetSkill(SkillName.ResistenciaMagica, MinSkill, MaxSkill);
+            SetSkill(SkillName.Cortante, MinSkill, MaxSkill);
+            SetSkill(SkillName.Anatomia, MinSkill, MaxSkill);
+            SetSkill(SkillName.Briga, MinSkill, MaxSkill);
+            SetSkill(SkillName.Atirar, MinSkill, MaxSkill);
+            SetSkill(SkillName.Bloqueio, MinSkill, MaxSkill);
 
             if (SpellCaster)
             {
-                SetSkill(SkillName.Magery, MinSkill, MaxSkill);
-                SetSkill(SkillName.EvalInt, MinSkill, MaxSkill);
+                SetSkill(SkillName.Arcanismo, MinSkill, MaxSkill);
+                SetSkill(SkillName.PoderMagico, MinSkill, MaxSkill);
             }
 
             if (Skills[_Specialty].Base < MinSkill)
@@ -202,18 +202,18 @@ namespace Server.Engines.Blackthorn
 
             if (_Sampire)
             {
-                SetSkill(SkillName.Necromancy, MinSkill, MaxSkill);
+                SetSkill(SkillName.Necromancia, MinSkill, MaxSkill);
             }
 
-            if (_Sampire || _Specialty == SkillName.Necromancy)
+            if (_Sampire || _Specialty == SkillName.Necromancia)
             {
-                SetSkill(SkillName.SpiritSpeak, MinSkill, MaxSkill);
+                SetSkill(SkillName.PoderMagico, MinSkill, MaxSkill);
             }
 
             if (_Specialty == SkillName.Ninjitsu)
             {
-                SetSkill(SkillName.Hiding, 100);
-                SetSkill(SkillName.Stealth, 100);
+                SetSkill(SkillName.Furtividade, 100);
+                SetSkill(SkillName.Furtividade, 100);
             }
         }
 
@@ -227,39 +227,39 @@ namespace Server.Engines.Blackthorn
 
             switch (_Specialty)
             {
-                case SkillName.Chivalry:
+                case SkillName.Ordem:
                     SetWearable(RandomSwordWeapon());
                     PaladinEquip();
                     break;
-                case SkillName.Swords:
+                case SkillName.Cortante:
                     SetWearable(RandomSwordWeapon());
                     StandardMeleeEquip();
                     break;
-                case SkillName.Fencing:
+                case SkillName.Perfurante:
                     SetWearable(RandomFencingWeapon());
                     StandardMeleeEquip();
                     break;
-                case SkillName.Macing:
+                case SkillName.Contusivo:
                     SetWearable(RandomMaceWeapon());
                     StandardMeleeEquip();
                     break;
-                case SkillName.Archery:
+                case SkillName.Atirar:
                     SetWearable(RandomArhceryWeapon());
                     StandardMeleeEquip();
                     break;
-                case SkillName.Magery:
+                case SkillName.Arcanismo:
                     SetWearable(RandomMageWeapon());
                     StandardMageEquip();
                     break;
-                case SkillName.Mysticism:
+                case SkillName.Misticismo:
                     SetWearable(RandomMageWeapon());
                     StandardMageEquip();
                     break;
-                case SkillName.Spellweaving:
+                case SkillName.Feiticaria:
                     SetWearable(RandomMageWeapon());
                     StandardMageEquip();
                     break;
-                case SkillName.Necromancy:
+                case SkillName.Necromancia:
                     SetWearable(RandomMageWeapon());
                     StandardMageEquip();
                     break;
@@ -276,7 +276,7 @@ namespace Server.Engines.Blackthorn
                     if (_Sampire)
                         w.WeaponAttributes.HitLeechHits = 100;
 
-                    SetSkill(SkillName.Parry, 120);
+                    SetSkill(SkillName.Bloqueio, 120);
                     break;
                 case SkillName.Ninjitsu:
                     SetWearable(RandomNinjaWeapon());
@@ -304,7 +304,7 @@ namespace Server.Engines.Blackthorn
                     SetWearable(new LeatherNinjaMitts());
 
                     break;
-                case SkillName.Poisoning:
+                case SkillName.Envenenamento:
                     BaseWeapon wep = RandomAssassinWeapon() as BaseWeapon;
                     wep.Poison = Poison.Lethal;
                     wep.PoisonCharges = 100;
@@ -329,7 +329,7 @@ namespace Server.Engines.Blackthorn
             SetWearable(new PlateArms());
             SetWearable(new MetalKiteShield());
 
-            SetSkill(SkillName.Parry, 120);
+            SetSkill(SkillName.Bloqueio, 120);
         }
 
         private void StandardMeleeEquip()
@@ -358,11 +358,11 @@ namespace Server.Engines.Blackthorn
                 default: return AIType.AI_Melee;
                 case SkillName.Ninjitsu: return AIType.AI_Ninja;
                 case SkillName.Bushido: return AIType.AI_Samurai;
-                case SkillName.Chivalry: return AIType.AI_Paladin;
-                case SkillName.Magery: return AIType.AI_Mage;
-                case SkillName.Necromancy: return AIType.AI_NecroMage;
-                case SkillName.Spellweaving: return AIType.AI_Spellweaving;
-                case SkillName.Mysticism: return AIType.AI_Mystic;
+                case SkillName.Ordem: return AIType.AI_Paladin;
+                case SkillName.Arcanismo: return AIType.AI_Mage;
+                case SkillName.Necromancia: return AIType.AI_NecroMage;
+                case SkillName.Feiticaria: return AIType.AI_Spellweaving;
+                case SkillName.Misticismo: return AIType.AI_Mystic;
             }
         }
 

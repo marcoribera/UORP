@@ -195,14 +195,14 @@ namespace Server.Engines.Despise
 			SetResistance( ResistanceType.Poison, 40, 60 );
 			SetResistance( ResistanceType.Energy, 40, 60 );
 			
-			SetSkill( SkillName.MagicResist, 120 );
-			SetSkill( SkillName.Tactics, 120 );
-			SetSkill( SkillName.Wrestling, 120 );
-			SetSkill( SkillName.Anatomy, 120 );
-			SetSkill( SkillName.Magery, 120 );
-			SetSkill( SkillName.EvalInt, 120 );
-			SetSkill( SkillName.Mysticism, 120 );
-			SetSkill( SkillName.Focus, 160 );
+			SetSkill( SkillName.ResistenciaMagica, 120 );
+			SetSkill( SkillName.Anatomia, 120 );
+			SetSkill( SkillName.Briga, 120 );
+			SetSkill( SkillName.Anatomia, 120 );
+			SetSkill( SkillName.Arcanismo, 120 );
+			SetSkill( SkillName.PoderMagico, 120 );
+			SetSkill( SkillName.Misticismo, 120 );
+			SetSkill( SkillName.PreparoFisico, 160 );
 			
 			Fame = 22000;
 			Karma = 22000;
@@ -279,14 +279,14 @@ namespace Server.Engines.Despise
 			SetResistance( ResistanceType.Poison, 40, 60 );
 			SetResistance( ResistanceType.Energy, 40, 60 );
 			
-			SetSkill( SkillName.MagicResist, 120 );
-			SetSkill( SkillName.Tactics, 120 );
-			SetSkill( SkillName.Wrestling, 120 );
-			SetSkill( SkillName.Anatomy, 120 );
-			SetSkill( SkillName.Magery, 120 );
-			SetSkill( SkillName.EvalInt, 120 );
-			SetSkill( SkillName.Mysticism, 120 );
-			SetSkill( SkillName.Focus, 160 );
+			SetSkill( SkillName.ResistenciaMagica, 120 );
+			SetSkill( SkillName.Anatomia, 120 );
+			SetSkill( SkillName.Briga, 120 );
+			SetSkill( SkillName.Anatomia, 120 );
+			SetSkill( SkillName.Arcanismo, 120 );
+			SetSkill( SkillName.PoderMagico, 120 );
+			SetSkill( SkillName.Misticismo, 120 );
+			SetSkill( SkillName.PreparoFisico, 160 );
 			
 			Fame = 22000;
 			Karma = -22000;
@@ -357,10 +357,10 @@ namespace Server.Engines.Despise
 			SetResistance( ResistanceType.Poison, 50, 60 );
 			SetResistance( ResistanceType.Energy, 60, 70 );
 			
-			SetSkill( SkillName.MagicResist, 110, 125 );
-			SetSkill( SkillName.Tactics, 110, 125 );
-			SetSkill( SkillName.Wrestling, 110, 125 );
-			SetSkill( SkillName.Anatomy, 110, 125 );
+			SetSkill( SkillName.ResistenciaMagica, 110, 125 );
+			SetSkill( SkillName.Anatomia, 110, 125 );
+			SetSkill( SkillName.Briga, 110, 125 );
+			SetSkill( SkillName.Anatomia, 110, 125 );
 			
 			Fame = 8000;
 			Karma = 8000;
@@ -436,10 +436,10 @@ namespace Server.Engines.Despise
 			SetResistance( ResistanceType.Poison, 50, 60 );
 			SetResistance( ResistanceType.Energy, 60, 70 );
 			
-			SetSkill( SkillName.MagicResist, 110, 125 );
-			SetSkill( SkillName.Tactics, 110, 125 );
-			SetSkill( SkillName.Wrestling, 110, 125 );
-			SetSkill( SkillName.Anatomy, 110, 125 );
+			SetSkill( SkillName.ResistenciaMagica, 110, 125 );
+			SetSkill( SkillName.Anatomia, 110, 125 );
+			SetSkill( SkillName.Briga, 110, 125 );
+			SetSkill( SkillName.Anatomia, 110, 125 );
 			
 			Fame = 8000;
 			Karma = -8000;

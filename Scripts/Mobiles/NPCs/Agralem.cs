@@ -77,10 +77,10 @@ namespace Server.Engines.Quests
         public Agralem()
             : base("Agralem", "the Bladeweaver")
         {
-            SetSkill(SkillName.Anatomy, 65.0, 90.0);
-            SetSkill(SkillName.MagicResist, 65.0, 90.0);
-            SetSkill(SkillName.Tactics, 65.0, 90.0);
-            SetSkill(SkillName.Throwing, 65.0, 90.0);
+            SetSkill(SkillName.Anatomia, 65.0, 90.0);
+            SetSkill(SkillName.ResistenciaMagica, 65.0, 90.0);
+            SetSkill(SkillName.Anatomia, 65.0, 90.0);
+            SetSkill(SkillName.Atirar, 65.0, 90.0);
         }
 
         public Agralem(Serial serial)

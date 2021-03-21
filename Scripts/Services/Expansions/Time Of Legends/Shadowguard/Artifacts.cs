@@ -86,7 +86,7 @@ namespace Server.Items
 		public AnonsSpellbook() 
 		{
 			LootType = LootType.Blessed;
-			SkillBonuses.SetValues( 0, SkillName.Magery, 15.0 );
+			SkillBonuses.SetValues( 0, SkillName.Arcanismo, 15.0 );
 			Attributes.BonusInt = 8;
 			Attributes.SpellDamage = 15;
 			Attributes.LowerManaCost = 10;
@@ -124,7 +124,7 @@ namespace Server.Items
 		[Constructable]
 		public BalakaisShamanStaff() 
 		{
-			SkillBonuses.SetValues( 0, SkillName.Meditation, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.PoderMagico, 10.0 );
 			WeaponAttributes.MageWeapon = 30;
 			Attributes.SpellChanneling = 1;
 			Attributes.EnhancePotions = 25;
@@ -159,7 +159,7 @@ namespace Server.Items
 		[Constructable]
 		public BalakaisShamanStaffGargoyle() : base(WandEffect.None, 0, 0)
 		{
-			SkillBonuses.SetValues( 0, SkillName.Meditation, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.PoderMagico, 10.0 );
 			WeaponAttributes.MageWeapon = 30;
 			Attributes.SpellChanneling = 1;
 			Attributes.EnhancePotions = 25;
@@ -234,7 +234,7 @@ namespace Server.Items
 		[Constructable]
 		public GrugorsShield() 
 		{
-			SkillBonuses.SetValues( 0, SkillName.Parry, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.Bloqueio, 10.0 );
 			Attributes.BonusStr = 10;
 			Attributes.BonusStam = 10;
 			Attributes.RegenHits = 5;
@@ -278,7 +278,7 @@ namespace Server.Items
 		[Constructable]
 		public GrugorsShieldGargoyle() 
 		{
-			SkillBonuses.SetValues( 0, SkillName.Parry, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.Bloqueio, 10.0 );
 			Attributes.BonusStr = 10;
 			Attributes.BonusStam = 10;
 			Attributes.RegenHits = 5;
@@ -513,7 +513,7 @@ namespace Server.Items
 		{
             Hue = 2500;
 
-			SkillBonuses.SetValues( 0, SkillName.Necromancy, 15.0 );
+			SkillBonuses.SetValues( 0, SkillName.Necromancia, 15.0 );
             Slayer = SlayerGroup.RandomSuperSlayerTOL();
 			
 			Attributes.BonusInt = 8;

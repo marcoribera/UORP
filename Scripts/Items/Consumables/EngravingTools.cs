@@ -190,7 +190,7 @@ namespace Server.Items
 
         public bool CheckSkill(Mobile from)
         {
-            if (from.Skills[SkillName.Tinkering].Value < 75.0)
+            if (from.Skills[SkillName.Mecanica].Value < 75.0)
             {
                 from.SendLocalizedMessage(LowSkillMessage);
                 return false;
@@ -229,7 +229,7 @@ namespace Server.Items
                         {
                             diamond.Consume();
 
-                            if (Utility.RandomDouble() < from.Skills[SkillName.Tinkering].Value / 100)
+                            if (Utility.RandomDouble() < from.Skills[SkillName.Mecanica].Value / 100)
                             {
                                 UsesRemaining = 10;
                                 from.SendLocalizedMessage(1076165); // Your engraver should be good as new!

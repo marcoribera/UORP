@@ -14,7 +14,7 @@ namespace Server.SkillHandlers
         private static readonly Dictionary<Mobile, TrackingInfo> m_Table = new Dictionary<Mobile, TrackingInfo>();
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Tracking].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Sobrevivencia].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
@@ -50,7 +50,7 @@ namespace Server.SkillHandlers
             m_Table.Remove(tracker);	//Reset as of Pub 40, counting it as bug for Core.SE.
 
             if (Core.ML)
-                return Math.Min(bonus, 10 + tracker.Skills.Tracking.Value / 10);
+                return Math.Min(bonus, 10 + tracker.Skills.Sobrevivencia.Value / 10);
 
             return bonus;
         }
@@ -84,7 +84,7 @@ namespace Server.SkillHandlers
             : base(20, 30)
         {
             this.m_From = from;
-            this.m_Success = from.CheckSkill(SkillName.Tracking, 0.0, 21.1);
+            this.m_Success = from.CheckSkill(SkillName.Sobrevivencia, 0.0, 21.1);
 
             this.AddPage(0);
 
@@ -186,9 +186,9 @@ namespace Server.SkillHandlers
 
             TrackTypeDelegate check = m_Delegates[type];
 
-            from.CheckSkill(SkillName.Tracking, 21.1, 100.0); // Passive gain
+            from.CheckSkill(SkillName.Sobrevivencia, 21.1, 100.0); // Passive gain
 
-            int range = 10 + (int)(from.Skills[SkillName.Tracking].Value / 10);
+            int range = 10 + (int)(from.Skills[SkillName.Sobrevivencia].Value / 10);
 
             List<Mobile> list = new List<Mobile>();
             IPooledEnumerable eable = from.GetMobilesInRange(range);
@@ -240,14 +240,14 @@ namespace Server.SkillHandlers
             if (!Core.AOS || !m.Player)
                 return true;
 
-            int tracking = from.Skills[SkillName.Tracking].Fixed;	
-            int detectHidden = from.Skills[SkillName.DetectHidden].Fixed;
+            int tracking = from.Skills[SkillName.Sobrevivencia].Fixed;	
+            int detectHidden = from.Skills[SkillName.Percepcao].Fixed;
 
             if (Core.ML && m.Race == Race.Elf)
                 tracking /= 2; //The 'Guide' says that it requires twice as Much tracking SKILL to track an elf.  Not the total difficulty to track.
 
-            int hiding = m.Skills[SkillName.Hiding].Fixed;
-            int stealth = m.Skills[SkillName.Stealth].Fixed;
+            int hiding = m.Skills[SkillName.Furtividade].Fixed;
+            int stealth = m.Skills[SkillName.Furtividade].Fixed;
             int divisor = hiding + stealth;
 
             // Necromancy forms affect tracking difficulty 

@@ -49,7 +49,7 @@ namespace Server.Items
             {
                 pm.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
             }
-            else if (pm.Skills[SkillName.Alchemy].Base < 100.0)
+            else if (pm.Skills[SkillName.Alquimia].Base < 100.0)
             {
                 pm.SendLocalizedMessage(1080042); // Only a Grandmaster Alchemist can learn from this book.
             }

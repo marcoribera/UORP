@@ -11,8 +11,8 @@ namespace Server.Factions
             : base(town, faction, "the Ore Man")
         {
             // NOTE: Skills verified
-            this.SetSkill(SkillName.Carpentry, 85.0, 100.0);
-            this.SetSkill(SkillName.Lumberjacking, 60.0, 83.0);
+            this.SetSkill(SkillName.Carpintaria, 85.0, 100.0);
+            this.SetSkill(SkillName.Extracao, 60.0, 83.0);
         }
 
         public FactionOreVendor(Serial serial)

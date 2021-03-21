@@ -89,7 +89,7 @@ namespace Server.Spells.Spellweaving
                 Caster.PlaySound(0x5C1);
 				
                 int level = GetFocusLevel(Caster);
-                double skill = Caster.Skills[SkillName.Spellweaving].Value;
+                double skill = Caster.Skills[SkillName.Feiticaria].Value;
 				
                 TimeSpan duration = TimeSpan.FromSeconds(15 + (int)(skill / 24) + level * 2);
                 int bonus = (int)Math.Floor(skill / 12) + level * 5;

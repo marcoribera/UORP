@@ -13,7 +13,7 @@ namespace Server.Mobiles
         public CrabFisher()
             : base("the crab fisher")
         {
-            SetSkill(SkillName.Fishing, 36.0, 68.0);
+            SetSkill(SkillName.Sobrevivencia, 36.0, 68.0);
         }
 
         public override void InitSBInfo()

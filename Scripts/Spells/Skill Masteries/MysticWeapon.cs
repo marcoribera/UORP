@@ -24,15 +24,15 @@ namespace Server.Spells.SkillMasteries
         public override int RequiredMana { get { return 40; } }
         public override bool PartyEffects { get { return false; } }
 
-        public override SkillName CastSkill { get { return SkillName.Mysticism; } }
+        public override SkillName CastSkill { get { return SkillName.Misticismo; } }
         public override SkillName DamageSkill
         {
             get
             {
-                if (Caster.Skills[SkillName.Focus].Value > Caster.Skills[SkillName.Imbuing].Value)
-                    return SkillName.Focus;
+                if (Caster.Skills[SkillName.PreparoFisico].Value > Caster.Skills[SkillName.ImbuirMagica].Value)
+                    return SkillName.PreparoFisico;
 
-                return SkillName.Imbuing;
+                return SkillName.ImbuirMagica;
             }
         }
 

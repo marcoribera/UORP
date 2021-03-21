@@ -158,7 +158,7 @@ namespace Server.Engines.Quests.TimeLord
             {
                 Skill sk = User.Skills[skName];
 
-                if (sk == null || skName == SkillName.Discordance || skName == SkillName.Provocation || skName == SkillName.Peacemaking)
+                if (sk == null || skName == SkillName.Caos || skName == SkillName.Provocacao || skName == SkillName.Pacificar)
                     continue;
 
                 if (sk.IsMastery && sk.VolumeLearned == 0)

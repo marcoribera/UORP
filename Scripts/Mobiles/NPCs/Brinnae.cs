@@ -626,7 +626,7 @@ namespace Server.Engines.Quests
         public Brinnae()
             : base("Brinnae", "the wise")
         { 
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Brinnae(Serial serial)

@@ -11,7 +11,7 @@ namespace Server.Mobiles
         {
             this.InitStats(31, 41, 51);
 
-            this.SetSkill(SkillName.Healing, 36, 68);
+            this.SetSkill(SkillName.Medicina, 36, 68);
 
             this.SpeechHue = Utility.RandomDyedHue();
             this.Title = "the artist";

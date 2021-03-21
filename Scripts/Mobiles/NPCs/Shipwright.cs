@@ -11,8 +11,8 @@ namespace Server.Mobiles
         public Shipwright()
             : base("the shipwright")
         { 
-            SetSkill(SkillName.Carpentry, 60.0, 83.0);
-            SetSkill(SkillName.Macing, 36.0, 68.0);
+            SetSkill(SkillName.Carpintaria, 60.0, 83.0);
+            SetSkill(SkillName.Contusivo, 36.0, 68.0);
         }
 
         public Shipwright(Serial serial)

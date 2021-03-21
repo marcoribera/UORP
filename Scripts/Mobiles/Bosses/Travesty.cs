@@ -55,31 +55,30 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 70);
             SetResistance(ResistanceType.Energy, 50, 70);
 
-            SetSkill(SkillName.Wrestling, 300.0, 320.0);
-            SetSkill(SkillName.Tactics, 100.0, 120.0);
-            SetSkill(SkillName.MagicResist, 100.0, 120.0);
-            SetSkill(SkillName.Anatomy, 100.0, 120.0);
-            SetSkill(SkillName.Healing, 100.0, 120.0);
-            SetSkill(SkillName.Poisoning, 100.0, 120.0);
-            SetSkill(SkillName.DetectHidden, 100.0);
-            SetSkill(SkillName.Hiding, 100.0);
-            SetSkill(SkillName.Parry, 100.0, 110.0);
-            SetSkill(SkillName.Magery, 100.0, 120.0);
-            SetSkill(SkillName.EvalInt, 100.0, 120.0);
-            SetSkill(SkillName.Meditation, 100.0, 120.0);
-            SetSkill(SkillName.Necromancy, 100.0, 120.0);
-            SetSkill(SkillName.SpiritSpeak, 100.0, 120.0);
-            SetSkill(SkillName.Focus, 100.0, 120.0);
-            SetSkill(SkillName.Spellweaving, 100.0, 120.0);
-            SetSkill(SkillName.Discordance, 100.0, 120.0);
+            SetSkill(SkillName.Briga, 300.0, 320.0);
+            SetSkill(SkillName.Anatomia, 100.0, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 100.0, 120.0);
+            SetSkill(SkillName.Anatomia, 100.0, 120.0);
+            SetSkill(SkillName.Medicina, 100.0, 120.0);
+            SetSkill(SkillName.Envenenamento, 100.0, 120.0);
+            SetSkill(SkillName.Percepcao, 100.0);
+            SetSkill(SkillName.Furtividade, 100.0);
+            SetSkill(SkillName.Bloqueio, 100.0, 110.0);
+            SetSkill(SkillName.Arcanismo, 100.0, 120.0);
+            SetSkill(SkillName.PoderMagico, 100.0, 120.0);
+            SetSkill(SkillName.Necromancia, 100.0, 120.0);
+            SetSkill(SkillName.PoderMagico, 100.0, 120.0);
+            SetSkill(SkillName.PreparoFisico, 100.0, 120.0);
+            SetSkill(SkillName.Feiticaria, 100.0, 120.0);
+            SetSkill(SkillName.Caos, 100.0, 120.0);
             SetSkill(SkillName.Bushido, 100.0, 120.0);
             SetSkill(SkillName.Ninjitsu, 100.0, 120.0);
-            SetSkill(SkillName.Chivalry, 100.0, 120.0);
+            SetSkill(SkillName.Ordem, 100.0, 120.0);
 
-            SetSkill(SkillName.Musicianship, 100.0, 120.0);
-            SetSkill(SkillName.Discordance, 100.0, 120.0);
-            SetSkill(SkillName.Provocation, 100.0, 120.0);
-            SetSkill(SkillName.Peacemaking, 100.0, 120.0);
+            SetSkill(SkillName.Tocar, 100.0, 120.0);
+            SetSkill(SkillName.Caos, 100.0, 120.0);
+            SetSkill(SkillName.Provocacao, 100.0, 120.0);
+            SetSkill(SkillName.Pacificar, 100.0, 120.0);
 
             Fame = 30000;
             Karma = -30000;
@@ -238,22 +237,22 @@ namespace Server.Mobiles
                 }
             }
 
-            if (attacker.Skills[SkillName.Swords].Value >= 50.0 || attacker.Skills[SkillName.Fencing].Value >= 50.0 || attacker.Skills[SkillName.Macing].Value >= 50.0)
+            if (attacker.Skills[SkillName.Cortante].Value >= 50.0 || attacker.Skills[SkillName.Perfurante].Value >= 50.0 || attacker.Skills[SkillName.Contusivo].Value >= 50.0)
                 ChangeAIType(AIType.AI_Melee);
 
-            if (attacker.Skills[SkillName.Archery].Value >= 50.0)
+            if (attacker.Skills[SkillName.Atirar].Value >= 50.0)
                 ChangeAIType(AIType.AI_Archer);
 
-            if (attacker.Skills[SkillName.Spellweaving].Value >= 50.0)
+            if (attacker.Skills[SkillName.Feiticaria].Value >= 50.0)
                 ChangeAIType(AIType.AI_Spellweaving);
 
-            if (attacker.Skills[SkillName.Mysticism].Value >= 50.0)
+            if (attacker.Skills[SkillName.Misticismo].Value >= 50.0)
                 ChangeAIType(AIType.AI_Mystic);
 
-            if (attacker.Skills[SkillName.Magery].Value >= 50.0)
+            if (attacker.Skills[SkillName.Arcanismo].Value >= 50.0)
                 ChangeAIType(AIType.AI_Mage);
 
-            if (attacker.Skills[SkillName.Necromancy].Value >= 50.0)
+            if (attacker.Skills[SkillName.Necromancia].Value >= 50.0)
                 ChangeAIType(AIType.AI_Necro);
 
             if (attacker.Skills[SkillName.Ninjitsu].Value >= 50.0)
@@ -262,7 +261,7 @@ namespace Server.Mobiles
             if (attacker.Skills[SkillName.Bushido].Value >= 50.0)
                 ChangeAIType(AIType.AI_Samurai);
 
-            if (attacker.Skills[SkillName.Necromancy].Value >= 50.0 && attacker.Skills[SkillName.Magery].Value >= 50.0)
+            if (attacker.Skills[SkillName.Necromancia].Value >= 50.0 && attacker.Skills[SkillName.Arcanismo].Value >= 50.0)
                 ChangeAIType(AIType.AI_NecroMage);
 
             PlaySound(0x511);
@@ -270,22 +269,22 @@ namespace Server.Mobiles
 
             m_NextBodyChange = DateTime.UtcNow + TimeSpan.FromSeconds(10.0);
 
-            if (attacker.Skills[SkillName.Healing].Base > 20)
+            if (attacker.Skills[SkillName.Medicina].Base > 20)
             {
                 SetSpecialAbility(SpecialAbility.Heal);
             }
 
-            if (attacker.Skills[SkillName.Discordance].Base > 50)
+            if (attacker.Skills[SkillName.Caos].Base > 50)
             {
                 _CanDiscord = true;
             }
 
-            if (attacker.Skills[SkillName.Peacemaking].Base > 50)
+            if (attacker.Skills[SkillName.Pacificar].Base > 50)
             {
                 _CanPeace = true;
             }
 
-            if (attacker.Skills[SkillName.Provocation].Base > 50)
+            if (attacker.Skills[SkillName.Provocacao].Base > 50)
             {
                 _CanProvoke = true;
             }

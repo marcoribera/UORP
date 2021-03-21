@@ -7,42 +7,40 @@ namespace Server.Items
     {
         private static readonly SkillName[] m_PossibleBonusSkills = new SkillName[]
         {
-            SkillName.Swords,
-            SkillName.Fencing,
-            SkillName.Macing,
-            SkillName.Archery,
-            SkillName.Wrestling,
-            SkillName.Parry,
-            SkillName.Tactics,
-            SkillName.Anatomy,
-            SkillName.Healing,
-            SkillName.Magery,
-            SkillName.Meditation,
-            SkillName.EvalInt,
-            SkillName.MagicResist,
-            SkillName.AnimalTaming,
-            SkillName.AnimalLore,
-            SkillName.Veterinary,
-            SkillName.Musicianship,
-            SkillName.Provocation,
-            SkillName.Discordance,
-            SkillName.Peacemaking,
-            SkillName.Chivalry,
-            SkillName.Focus,
-            SkillName.Necromancy,
-            SkillName.Stealing,
-            SkillName.Stealth,
-            SkillName.SpiritSpeak,
+            SkillName.Cortante,
+            SkillName.Perfurante,
+            SkillName.Contusivo,
+            SkillName.Atirar,
+            SkillName.Briga,
+            SkillName.Bloqueio,
+            SkillName.Anatomia,
+            SkillName.Anatomia,
+            SkillName.Medicina,
+            SkillName.Arcanismo,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica,
+            SkillName.Adestramento,
+            SkillName.Adestramento,
+            SkillName.Veterinaria,
+            SkillName.Tocar,
+            SkillName.Provocacao,
+            SkillName.Caos,
+            SkillName.Pacificar,
+            SkillName.Ordem,
+            SkillName.PreparoFisico,
+            SkillName.Necromancia,
+            SkillName.Prestidigitacao,
+            SkillName.Furtividade,
+            SkillName.PoderMagico,
             SkillName.Bushido,
             SkillName.Ninjitsu
         };
 
         private static readonly SkillName[] m_PossibleSpellbookSkills = new SkillName[]
         {
-            SkillName.Magery,
-            SkillName.Meditation,
-            SkillName.EvalInt,
-            SkillName.MagicResist
+            SkillName.Arcanismo,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica
         };
 
         private static readonly BitArray m_Props = new BitArray(MaxProperties);
@@ -73,7 +71,7 @@ namespace Server.Items
         #region Runic Reforging
         public override void OnDoubleClick(Mobile from)
         {
-            bool hasSkill = from.Skills[SkillName.Imbuing].Value >= 65;
+            bool hasSkill = from.Skills[SkillName.ImbuirMagica].Value >= 65;
 
             IPooledEnumerable eable = from.Map.GetItemsInRange(from.Location, 2);
 

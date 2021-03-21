@@ -118,7 +118,7 @@ namespace Server.Spells.Spellweaving
 
                 if (!IsImmolating(Caster, weapon)) // On OSI, the effect is not re-applied
                 {
-                    double skill = Caster.Skills.Spellweaving.Value;
+                    double skill = Caster.Skills.Feiticaria.Value;
 
                     int duration = 10 + (int)(skill / 24) + FocusLevel;
                     int damage = 5 + (int)(skill / 24) + FocusLevel;

@@ -43,14 +43,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 30);
             SetResistance(ResistanceType.Energy, 20);
 
-            SetSkill(SkillName.EvalInt, 90, 120.0);
-            SetSkill(SkillName.Magery, 90, 120.0);
-            SetSkill(SkillName.Meditation, 100, 120.0);
-            SetSkill(SkillName.Necromancy, 120.0);
-            SetSkill(SkillName.SpiritSpeak, 120.0);
-            SetSkill(SkillName.MagicResist, 120, 140.0);
-            SetSkill(SkillName.Tactics, 90, 120);
-            SetSkill(SkillName.Wrestling, 100, 120);
+            SetSkill(SkillName.PoderMagico, 90, 120.0);
+            SetSkill(SkillName.Arcanismo, 90, 120.0);
+            SetSkill(SkillName.Necromancia, 120.0);
+            SetSkill(SkillName.PoderMagico, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 120, 140.0);
+            SetSkill(SkillName.Anatomia, 90, 120);
+            SetSkill(SkillName.Briga, 100, 120);
 
             Fame = 28000;
             Karma = -28000;
@@ -382,7 +381,7 @@ namespace Server.Mobiles
         {
             if (Utility.RandomDouble() < 0.9 && !m_UnholyTouched.ContainsKey(target))
             {
-                double scalar = -((20 - (target.Skills[SkillName.MagicResist].Value / 10)) / 100);
+                double scalar = -((20 - (target.Skills[SkillName.ResistenciaMagica].Value / 10)) / 100);
 
                 ArrayList mods = new ArrayList();
 

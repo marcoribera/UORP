@@ -57,9 +57,9 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 30, 40);
                 this.SetResistance(ResistanceType.Energy, 25, 35);
 
-                this.SetSkill(SkillName.MagicResist, 70.1, 85.0);
-                this.SetSkill(SkillName.Swords, 60.1, 85.0);
-                this.SetSkill(SkillName.Tactics, 75.1, 90.0); 
+                this.SetSkill(SkillName.ResistenciaMagica, 70.1, 85.0);
+                this.SetSkill(SkillName.Cortante, 60.1, 85.0);
+                this.SetSkill(SkillName.Anatomia, 75.1, 90.0); 
             }
             else if (this.Body == 722)
             {
@@ -83,11 +83,11 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 55, 65);
                 this.SetResistance(ResistanceType.Energy, 40, 50);
 
-                this.SetSkill(SkillName.EvalInt, 90.1, 110.0);
-                this.SetSkill(SkillName.Magery, 120);
-                this.SetSkill(SkillName.MagicResist, 100.1, 120.0);
-                this.SetSkill(SkillName.Tactics, 60.1, 70.0);
-                this.SetSkill(SkillName.Wrestling, 60.1, 70.0);
+                this.SetSkill(SkillName.PoderMagico, 90.1, 110.0);
+                this.SetSkill(SkillName.Arcanismo, 120);
+                this.SetSkill(SkillName.ResistenciaMagica, 100.1, 120.0);
+                this.SetSkill(SkillName.Anatomia, 60.1, 70.0);
+                this.SetSkill(SkillName.Briga, 60.1, 70.0);
 
                 if (0.025 > Utility.RandomDouble())
                     this.PackItem(new GargoylesPickaxe());
@@ -116,11 +116,11 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 25, 35);
                 this.SetResistance(ResistanceType.Energy, 35, 45);
 
-                this.SetSkill(SkillName.EvalInt, 30.1, 40.0);
-                this.SetSkill(SkillName.Magery, 30.1, 40.0);
-                this.SetSkill(SkillName.MagicResist, 99.1, 100.0);
-                this.SetSkill(SkillName.Tactics, 97.6, 100.0);
-                this.SetSkill(SkillName.Wrestling, 90.1, 92.5);
+                this.SetSkill(SkillName.PoderMagico, 30.1, 40.0);
+                this.SetSkill(SkillName.Arcanismo, 30.1, 40.0);
+                this.SetSkill(SkillName.ResistenciaMagica, 99.1, 100.0);
+                this.SetSkill(SkillName.Anatomia, 97.6, 100.0);
+                this.SetSkill(SkillName.Briga, 90.1, 92.5);
             }
             else if (this.Body == 85)
             {
@@ -142,11 +142,11 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 35, 40);
                 this.SetResistance(ResistanceType.Energy, 25, 35);
 
-                this.SetSkill(SkillName.EvalInt, 95.1, 100.0);
-                this.SetSkill(SkillName.Magery, 95.1, 100.0);
-                this.SetSkill(SkillName.MagicResist, 75.0, 97.5);
-                this.SetSkill(SkillName.Tactics, 65.0, 87.5);
-                this.SetSkill(SkillName.Wrestling, 20.2, 60.0);
+                this.SetSkill(SkillName.PoderMagico, 95.1, 100.0);
+                this.SetSkill(SkillName.Arcanismo, 95.1, 100.0);
+                this.SetSkill(SkillName.ResistenciaMagica, 75.0, 97.5);
+                this.SetSkill(SkillName.Anatomia, 65.0, 87.5);
+                this.SetSkill(SkillName.Briga, 20.2, 60.0);
             }
             else if (this.Body == 310)
             {
@@ -169,9 +169,9 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 30, 40);
                 this.SetResistance(ResistanceType.Energy, 40, 50);
 
-                this.SetSkill(SkillName.MagicResist, 70.1, 95.0);
-                this.SetSkill(SkillName.Tactics, 45.1, 70.0);
-                this.SetSkill(SkillName.Wrestling, 50.1, 70.0);
+                this.SetSkill(SkillName.ResistenciaMagica, 70.1, 95.0);
+                this.SetSkill(SkillName.Anatomia, 45.1, 70.0);
+                this.SetSkill(SkillName.Briga, 50.1, 70.0);
             }
             else if (this.Body == 83)
             {
@@ -192,9 +192,9 @@ namespace Server.Mobiles
                 this.SetResistance(ResistanceType.Poison, 40, 50);
                 this.SetResistance(ResistanceType.Energy, 40, 50);
 
-                this.SetSkill(SkillName.MagicResist, 125.1, 140.0);
-                this.SetSkill(SkillName.Tactics, 90.1, 100.0);
-                this.SetSkill(SkillName.Wrestling, 90.1, 100.0);
+                this.SetSkill(SkillName.ResistenciaMagica, 125.1, 140.0);
+                this.SetSkill(SkillName.Anatomia, 90.1, 100.0);
+                this.SetSkill(SkillName.Briga, 90.1, 100.0);
             }
 			
             this.Fame = 8000;

@@ -1317,8 +1317,8 @@ namespace Server.Multis
             double clothNeeded = ClothPer * (100.0 - durability);
 
             //Apply skill bonus
-            woodNeeded -= ((double)from.Skills[SkillName.Carpentry].Value / 200.0) * woodNeeded;
-            clothNeeded -= ((double)from.Skills[SkillName.Tailoring].Value / 200.0) * clothNeeded;
+            woodNeeded -= ((double)from.Skills[SkillName.Carpintaria].Value / 200.0) * woodNeeded;
+            clothNeeded -= ((double)from.Skills[SkillName.Costura].Value / 200.0) * clothNeeded;
 
             //get 10% of needed repairs
             double minWood = woodNeeded / 10;

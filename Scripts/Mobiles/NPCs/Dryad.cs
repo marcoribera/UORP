@@ -11,13 +11,13 @@ namespace Server.Engines.Quests.Haven
         public Dryad()
             : base("the Dryad")
         {
-            this.SetSkill(SkillName.Peacemaking, 80.0, 100.0);
-            this.SetSkill(SkillName.Cooking, 80.0, 100.0);
-            this.SetSkill(SkillName.Provocation, 80.0, 100.0);
-            this.SetSkill(SkillName.Musicianship, 80.0, 100.0);
-            this.SetSkill(SkillName.Poisoning, 80.0, 100.0);
-            this.SetSkill(SkillName.Archery, 80.0, 100.0);
-            this.SetSkill(SkillName.Tailoring, 80.0, 100.0);
+            this.SetSkill(SkillName.Pacificar, 80.0, 100.0);
+            this.SetSkill(SkillName.Culinaria, 80.0, 100.0);
+            this.SetSkill(SkillName.Provocacao, 80.0, 100.0);
+            this.SetSkill(SkillName.Tocar, 80.0, 100.0);
+            this.SetSkill(SkillName.Envenenamento, 80.0, 100.0);
+            this.SetSkill(SkillName.Atirar, 80.0, 100.0);
+            this.SetSkill(SkillName.Costura, 80.0, 100.0);
         }
 
         public Dryad(Serial serial)

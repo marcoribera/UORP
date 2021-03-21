@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Mapmaker()
             : base("the mapmaker")
         {
-            this.SetSkill(SkillName.Cartography, 90.0, 100.0);
+            this.SetSkill(SkillName.Erudicao, 90.0, 100.0);
         }
 
         public Mapmaker(Serial serial)

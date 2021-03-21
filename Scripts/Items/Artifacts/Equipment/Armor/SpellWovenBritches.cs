@@ -9,7 +9,7 @@ namespace Server.Items
         public SpellWovenBritches()
         {
             Hue = 0x487;
-            SkillBonuses.SetValues(0, SkillName.Meditation, 10.0);
+            SkillBonuses.SetValues(0, SkillName.PreparoFisico, 10.0);
             Attributes.BonusInt = 8;
             Attributes.SpellDamage = 10;
             Attributes.LowerManaCost = 10;

@@ -143,11 +143,11 @@ namespace Server.Spells.Mysticism
         {
             if (TransformationSpellHelper.UnderTransformation(m, typeof(StoneFormSpell)))
             {
-                int prim = (int)m.Skills[SkillName.Mysticism].Value;
-                int sec = (int)m.Skills[SkillName.Imbuing].Value;
+                int prim = (int)m.Skills[SkillName.Misticismo].Value;
+                int sec = (int)m.Skills[SkillName.ImbuirMagica].Value;
 
-                if (m.Skills[SkillName.Focus].Value > sec)
-                    sec = (int)m.Skills[SkillName.Focus].Value;
+                if (m.Skills[SkillName.PreparoFisico].Value > sec)
+                    sec = (int)m.Skills[SkillName.PreparoFisico].Value;
 
                 caster.SendLocalizedMessage(1080192); // Your target resists your ability reduction magic.
 
@@ -159,11 +159,11 @@ namespace Server.Spells.Mysticism
 
         private static int GetResBonus(Mobile m)
         {
-            int prim = (int)m.Skills[SkillName.Mysticism].Value;
-            int sec = (int)m.Skills[SkillName.Imbuing].Value;
+            int prim = (int)m.Skills[SkillName.Misticismo].Value;
+            int sec = (int)m.Skills[SkillName.ImbuirMagica].Value;
 
-            if (m.Skills[SkillName.Focus].Value > sec)
-                sec = (int)m.Skills[SkillName.Focus].Value;
+            if (m.Skills[SkillName.PreparoFisico].Value > sec)
+                sec = (int)m.Skills[SkillName.PreparoFisico].Value;
 
             return Math.Max(2, (prim + sec) / 24);
         }
@@ -173,22 +173,22 @@ namespace Server.Spells.Mysticism
             if (Server.Items.BaseArmor.HasRefinedResist(m))
                 return 0;
 
-            int prim = (int)m.Skills[SkillName.Mysticism].Value;
-            int sec = (int)m.Skills[SkillName.Imbuing].Value;
+            int prim = (int)m.Skills[SkillName.Misticismo].Value;
+            int sec = (int)m.Skills[SkillName.ImbuirMagica].Value;
 
-            if (m.Skills[SkillName.Focus].Value > sec)
-                sec = (int)m.Skills[SkillName.Focus].Value;
+            if (m.Skills[SkillName.PreparoFisico].Value > sec)
+                sec = (int)m.Skills[SkillName.PreparoFisico].Value;
 
             return Math.Max(2, (prim + sec) / 48);
         }
 
         private static int GetDamBonus(Mobile m)
         {
-            int prim = (int)m.Skills[SkillName.Mysticism].Value;
-            int sec = (int)m.Skills[SkillName.Imbuing].Value;
+            int prim = (int)m.Skills[SkillName.Misticismo].Value;
+            int sec = (int)m.Skills[SkillName.ImbuirMagica].Value;
 
-            if (m.Skills[SkillName.Focus].Value > sec)
-                sec = (int)m.Skills[SkillName.Focus].Value;
+            if (m.Skills[SkillName.PreparoFisico].Value > sec)
+                sec = (int)m.Skills[SkillName.PreparoFisico].Value;
 
             return Math.Max(0, (prim + sec) / 12);
         }
@@ -197,11 +197,11 @@ namespace Server.Spells.Mysticism
         {
             if (TransformationSpellHelper.UnderTransformation(from, typeof(StoneFormSpell)))
             {
-                int prim = (int)from.Skills[SkillName.Mysticism].Value;
-                int sec = (int)from.Skills[SkillName.Imbuing].Value;
+                int prim = (int)from.Skills[SkillName.Misticismo].Value;
+                int sec = (int)from.Skills[SkillName.ImbuirMagica].Value;
 
-                if (from.Skills[SkillName.Focus].Value > sec)
-                    sec = (int)from.Skills[SkillName.Focus].Value;
+                if (from.Skills[SkillName.PreparoFisico].Value > sec)
+                    sec = (int)from.Skills[SkillName.PreparoFisico].Value;
 
                 int immunity = (int)(((double)(prim + sec) / 480) * 100);
 

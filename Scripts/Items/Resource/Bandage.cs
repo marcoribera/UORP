@@ -243,16 +243,16 @@ namespace Server.Items
 		{
             if (m is DespiseCreature)
             {
-                return healer.Skills[SkillName.Healing].Value > healer.Skills[SkillName.Veterinary].Value ? SkillName.Healing : SkillName.Veterinary;
+                return healer.Skills[SkillName.Medicina].Value > healer.Skills[SkillName.Veterinaria].Value ? SkillName.Medicina : SkillName.Veterinaria;
             }
 
 			if (!m.Player && (m.Body.IsMonster || m.Body.IsAnimal))
 			{
-				return SkillName.Veterinary;
+				return SkillName.Veterinaria;
 			}
 			else
 			{
-				return SkillName.Healing;
+				return SkillName.Medicina;
 			}
 		}
 
@@ -260,16 +260,16 @@ namespace Server.Items
 		{
             if (m is DespiseCreature)
             {
-                return healer.Skills[SkillName.Healing].Value > healer.Skills[SkillName.Veterinary].Value ? SkillName.Anatomy : SkillName.AnimalLore;
+                return healer.Skills[SkillName.Medicina].Value > healer.Skills[SkillName.Veterinaria].Value ? SkillName.Anatomia : SkillName.Adestramento;
             }
 
 			if (!m.Player && (m.Body.IsMonster || m.Body.IsAnimal))
 			{
-				return SkillName.AnimalLore;
+				return SkillName.Adestramento;
 			}
 			else
 			{
-				return SkillName.Anatomy;
+				return SkillName.Anatomia;
 			}
 		}
 
@@ -280,8 +280,8 @@ namespace Server.Items
 
             if (bleeding || poisoned)
             {
-                double healing = m_Healer.Skills[SkillName.Healing].Value;
-                double anatomy = m_Healer.Skills[SkillName.Anatomy].Value;
+                double healing = m_Healer.Skills[SkillName.Medicina].Value;
+                double anatomy = m_Healer.Skills[SkillName.Anatomia].Value;
                 double chance = ((healing + anatomy) - 120) * 25;
 
                 if (poisoned)
@@ -610,8 +610,8 @@ namespace Server.Items
                 {
                     return Core.SA && 
                            m_Context != null && m_Context.Healer == m_Context.Patient &&
-                           m_Context.Healer.Skills[SkillName.Healing].Value >= 80 &&
-                           m_Context.Healer.Skills[SkillName.Anatomy].Value >= 80;
+                           m_Context.Healer.Skills[SkillName.Medicina].Value >= 80 &&
+                           m_Context.Healer.Skills[SkillName.Anatomia].Value >= 80;
                 }
             }
 
@@ -735,7 +735,7 @@ namespace Server.Items
                     seconds = 9.4 + (0.6 * ((double)(120 - dex) / 10));
                 }
             }
-            else if (Core.AOS && skill == SkillName.Veterinary)
+            else if (Core.AOS && skill == SkillName.Veterinaria)
             {
                 seconds = 2.0;
             }

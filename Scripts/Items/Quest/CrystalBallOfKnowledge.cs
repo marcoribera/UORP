@@ -11,7 +11,7 @@ namespace Server.Items
     {
         private static SkillName[] _ExcludedSkills =
         {
-            SkillName.Meditation, SkillName.Focus
+            SkillName.PreparoFisico
         };
 
         public override int LabelNumber { get { return 1112568; } } // Crystal Ball of Knowledge

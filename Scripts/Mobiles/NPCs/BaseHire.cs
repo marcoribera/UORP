@@ -165,11 +165,11 @@ namespace Server.Mobiles
         #region [ Payday ] 
         public virtual bool Payday(BaseHire m) 
         { 
-            m_Pay = (int)m.Skills[SkillName.Anatomy].Value + (int)m.Skills[SkillName.Tactics].Value;
-            m_Pay += (int)m.Skills[SkillName.Macing].Value + (int)m.Skills[SkillName.Swords].Value;
-            m_Pay += (int)m.Skills[SkillName.Fencing].Value + (int)m.Skills[SkillName.Archery].Value;
-            m_Pay += (int)m.Skills[SkillName.MagicResist].Value + (int)m.Skills[SkillName.Healing].Value;
-            m_Pay += (int)m.Skills[SkillName.Magery].Value + (int)m.Skills[SkillName.Parry].Value;
+            m_Pay = (int)m.Skills[SkillName.Anatomia].Value + (int)m.Skills[SkillName.Anatomia].Value;
+            m_Pay += (int)m.Skills[SkillName.Contusivo].Value + (int)m.Skills[SkillName.Cortante].Value;
+            m_Pay += (int)m.Skills[SkillName.Perfurante].Value + (int)m.Skills[SkillName.Atirar].Value;
+            m_Pay += (int)m.Skills[SkillName.ResistenciaMagica].Value + (int)m.Skills[SkillName.Medicina].Value;
+            m_Pay += (int)m.Skills[SkillName.Arcanismo].Value + (int)m.Skills[SkillName.Bloqueio].Value;
             m_Pay /= 35;
             m_Pay += 1;
             return true;

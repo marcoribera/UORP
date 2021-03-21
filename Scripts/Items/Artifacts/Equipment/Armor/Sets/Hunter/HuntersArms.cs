@@ -16,7 +16,7 @@ namespace Server.Items
 			
             this.SetAttributes.BonusDex = 10;
 			
-            this.SetSkillBonuses.SetValues(0, SkillName.Stealth, 40);
+            this.SetSkillBonuses.SetValues(0, SkillName.Furtividade, 40);
 			
             this.SetSelfRepair = 3;
 			

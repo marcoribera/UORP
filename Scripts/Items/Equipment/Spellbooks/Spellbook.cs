@@ -1212,7 +1212,7 @@ namespace Server.Items
 			CraftItem craftItem,
 			int resHue)
 		{
-			int magery = from.Skills.Magery.BaseFixedPoint;
+			int magery = from.Skills.Arcanismo.BaseFixedPoint;
 
 			if (magery >= 800)
 			{

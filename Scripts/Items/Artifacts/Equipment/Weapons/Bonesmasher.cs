@@ -9,7 +9,7 @@ namespace Server.Items
         public Bonesmasher()
         {
             Hue = 0x482;
-            SkillBonuses.SetValues(0, SkillName.Macing, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Contusivo, 10.0);
             WeaponAttributes.HitLeechMana = 40;
             WeaponAttributes.SelfRepair = 2;
         }

@@ -23,8 +23,8 @@ namespace Server.Spells.SkillMasteries
 		public override int RequiredMana{ get { return 0; } }
 		public override bool PartyEffects { get { return false; } }
 
-        public override SkillName CastSkill { get { return SkillName.Magery; } }
-        public override SkillName DamageSkill { get { return SkillName.EvalInt; } }
+        public override SkillName CastSkill { get { return SkillName.Arcanismo; } }
+        public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
         public EtherealBurstSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

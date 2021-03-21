@@ -615,29 +615,29 @@ namespace Server.Items
 
         public static SkillName[][] _TranscendenceTable = new SkillName[][]
             {
-                new SkillName[] { SkillName.ArmsLore, SkillName.Blacksmith, SkillName.Carpentry, SkillName.Cartography, SkillName.Cooking, SkillName.Cooking, SkillName.Fletching, SkillName.Mining, SkillName.Tailoring },
-                new SkillName[] { SkillName.Anatomy, SkillName.DetectHidden, SkillName.Fencing, SkillName.Poisoning, SkillName.RemoveTrap, SkillName.Snooping, SkillName.Stealth },
-                new SkillName[] { SkillName.Magery, SkillName.Meditation, SkillName.MagicResist, SkillName.Spellweaving },
-                new SkillName[] { SkillName.Alchemy, SkillName.AnimalLore, SkillName.AnimalTaming, SkillName.Archery, },
-                new SkillName[] { SkillName.Chivalry, SkillName.Focus, SkillName.Parry, SkillName.Swords, SkillName.Tactics, SkillName.Wrestling },
+                new SkillName[] { SkillName.ConhecimentoArmas, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria, SkillName.Culinaria, SkillName.Carpintaria, SkillName.Extracao, SkillName.Costura },
+                new SkillName[] { SkillName.Anatomia, SkillName.Percepcao, SkillName.Perfurante, SkillName.Envenenamento, SkillName.Mecanica, SkillName.Prestidigitacao, SkillName.Furtividade },
+                new SkillName[] { SkillName.Arcanismo, SkillName.ResistenciaMagica, SkillName.Feiticaria },
+                new SkillName[] { SkillName.Alquimia, SkillName.Adestramento, SkillName.Adestramento, SkillName.Atirar, },
+                new SkillName[] { SkillName.Ordem, SkillName.PreparoFisico, SkillName.Bloqueio, SkillName.Cortante, SkillName.Anatomia, SkillName.Briga },
             };
 
         public static SkillName[][] _AlacrityTable = new SkillName[][]
            {
-                new SkillName[] { SkillName.ArmsLore, SkillName.Blacksmith, SkillName.Carpentry, SkillName.Cartography, SkillName.Cooking, SkillName.Cooking, SkillName.Fletching, SkillName.Mining, SkillName.Tailoring, SkillName.Lumberjacking },
-                new SkillName[] { SkillName.DetectHidden, SkillName.Fencing, SkillName.Hiding, SkillName.Lockpicking, SkillName.Poisoning, SkillName.RemoveTrap, SkillName.Snooping, SkillName.Stealing, SkillName.Stealth },
-                new SkillName[] { SkillName.Alchemy, SkillName.EvalInt, SkillName.Inscribe, SkillName.Magery, SkillName.Meditation, SkillName.Spellweaving, SkillName.SpiritSpeak },
-                new SkillName[] { SkillName.AnimalLore, SkillName.AnimalTaming, SkillName.Archery, SkillName.Musicianship, SkillName.Peacemaking, SkillName.Provocation, SkillName.Tinkering, SkillName.Tracking, SkillName.Veterinary },
-                new SkillName[] { SkillName.Chivalry, SkillName.Focus, SkillName.Macing, SkillName.Parry, SkillName.Swords, SkillName.Wrestling },
+                new SkillName[] { SkillName.ConhecimentoArmas, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria, SkillName.Culinaria, SkillName.Carpintaria, SkillName.Extracao, SkillName.Costura, SkillName.Extracao },
+                new SkillName[] { SkillName.Percepcao, SkillName.Perfurante, SkillName.Furtividade, SkillName.Mecanica, SkillName.Envenenamento, SkillName.Mecanica, SkillName.Prestidigitacao, SkillName.Prestidigitacao, SkillName.Furtividade },
+                new SkillName[] { SkillName.Alquimia, SkillName.PoderMagico, SkillName.Erudicao, SkillName.Arcanismo, SkillName.Feiticaria, SkillName.PoderMagico },
+                new SkillName[] { SkillName.Adestramento, SkillName.Adestramento, SkillName.Atirar, SkillName.Tocar, SkillName.Pacificar, SkillName.Provocacao, SkillName.Mecanica, SkillName.Sobrevivencia, SkillName.Veterinaria },
+                new SkillName[] { SkillName.Ordem, SkillName.PreparoFisico, SkillName.Contusivo, SkillName.Bloqueio, SkillName.Cortante, SkillName.Briga },
            };
 
         public static SkillName[][] _PowerscrollTable = new SkillName[][]
             {
                 null,
                 new SkillName[] { SkillName.Ninjitsu },
-                new SkillName[] { SkillName.Magery, SkillName.Meditation, SkillName.Mysticism, SkillName.Spellweaving, SkillName.SpiritSpeak },
-                new SkillName[] { SkillName.AnimalTaming, SkillName.Discordance, SkillName.Provocation, SkillName.Veterinary },
-                new SkillName[] { SkillName.Bushido, SkillName.Chivalry, SkillName.Focus, SkillName.Healing, SkillName.Parry, SkillName.Swords, SkillName.Tactics },
+                new SkillName[] { SkillName.Arcanismo, SkillName.Misticismo, SkillName.Feiticaria, SkillName.PoderMagico },
+                new SkillName[] { SkillName.Adestramento, SkillName.Caos, SkillName.Provocacao, SkillName.Veterinaria },
+                new SkillName[] { SkillName.Bushido, SkillName.Ordem, SkillName.PreparoFisico, SkillName.Medicina, SkillName.Bloqueio, SkillName.Cortante, SkillName.Anatomia },
             };
 
         public static void Fill(Mobile from, TreasureMapChest chest, TreasureMap tMap)

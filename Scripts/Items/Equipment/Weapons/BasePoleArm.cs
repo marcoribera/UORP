@@ -35,7 +35,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Swords;
+                return SkillName.Cortante;
             }
         }
         public override WeaponType DefType
@@ -120,7 +120,7 @@ namespace Server.Items
         {
             base.OnHit(attacker, defender, damageBonus);
 
-            if (!Core.AOS && defender is Mobile && (attacker.Player || attacker.Body.IsHuman) && this.Layer == Layer.TwoHanded && (attacker.Skills[SkillName.Anatomy].Value / 400.0) >= Utility.RandomDouble())
+            if (!Core.AOS && defender is Mobile && (attacker.Player || attacker.Body.IsHuman) && this.Layer == Layer.TwoHanded && (attacker.Skills[SkillName.Anatomia].Value / 400.0) >= Utility.RandomDouble())
             {
                 StatMod mod = ((Mobile)defender).GetStatMod("Concussion");
 

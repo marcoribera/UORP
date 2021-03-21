@@ -62,7 +62,7 @@ namespace Server.Spells.First
 
                 if (Core.AOS)
                 {
-                    toHeal = this.Caster.Skills.Magery.Fixed / 120;
+                    toHeal = this.Caster.Skills.Arcanismo.Fixed / 120;
                     toHeal += Utility.RandomMinMax(1, 4);
 
                     if (Core.SE && this.Caster != m)
@@ -70,7 +70,7 @@ namespace Server.Spells.First
                 }
                 else
                 {
-                    toHeal = (int)(this.Caster.Skills[SkillName.Magery].Value * 0.1);
+                    toHeal = (int)(this.Caster.Skills[SkillName.Arcanismo].Value * 0.1);
                     toHeal += Utility.Random(1, 5);
                 }
 

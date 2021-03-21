@@ -37,7 +37,7 @@ namespace Server.Items
             if (!base.CheckSkills(from))
                 return false;
 
-            Skill skill = from.Skills[SkillName.Stealth];
+            Skill skill = from.Skills[SkillName.Furtividade];
 
             if (skill != null && skill.Value >= 80.0)
                 return true;

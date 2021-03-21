@@ -258,7 +258,7 @@ namespace Server.Factions
             if (Faction.Find(m) == null)
                 return false;
 
-            return m.CheckTargetSkill(SkillName.DetectHidden, this, 80.0, 100.0);
+            return m.CheckTargetSkill(SkillName.Percepcao, this, 80.0, 100.0);
         }
 
         public virtual void OnRevealed(Mobile m)
@@ -292,7 +292,7 @@ namespace Server.Factions
         {
             if (!CheckDecay() && m.InRange(Location, 6))
             {
-                if (Faction.Find(m) != null && ((m.Skills[SkillName.DetectHidden].Value - 80.0) / 20.0) > Utility.RandomDouble())
+                if (Faction.Find(m) != null && ((m.Skills[SkillName.Percepcao].Value - 80.0) / 20.0) > Utility.RandomDouble())
                     PrivateOverheadLocalizedMessage(m, 1010154, MessageHue, "", ""); // [Faction Trap]
             }
 

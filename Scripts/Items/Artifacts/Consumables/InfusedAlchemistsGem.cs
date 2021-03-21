@@ -33,7 +33,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.Skills[SkillName.Alchemy].Base += 1;
+            from.Skills[SkillName.Alquimia].Base += 1;
             from.SendMessage("You have increased your Alchemy Skill by 1 Point !."); 
             this.Delete();
         }

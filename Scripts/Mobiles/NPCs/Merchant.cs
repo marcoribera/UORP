@@ -9,8 +9,8 @@ namespace Server.Mobiles
         public Merchant()
         {
             this.Title = "the merchant";
-            this.SetSkill(SkillName.ItemID, 55.0, 78.0);
-            this.SetSkill(SkillName.ArmsLore, 55, 78);
+            this.SetSkill(SkillName.Erudicao, 55.0, 78.0);
+            this.SetSkill(SkillName.ConhecimentoArmas, 55, 78);
         }
 
         public Merchant(Serial serial)

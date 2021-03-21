@@ -31,7 +31,7 @@ namespace Server.Items
                 double ar = base.ArmorRating;
 
                 if (m != null)
-                    return ((m.Skills[SkillName.Parry].Value * ar) / 200.0) + 1.0;
+                    return ((m.Skills[SkillName.Bloqueio].Value * ar) / 200.0) + 1.0;
                 else
                     return ar;
             }
@@ -145,7 +145,7 @@ namespace Server.Items
                     return damage;
 
                 double ar = ArmorRating;
-                double chance = (owner.Skills[SkillName.Parry].Value - (ar * 2.0)) / 100.0;
+                double chance = (owner.Skills[SkillName.Bloqueio].Value - (ar * 2.0)) / 100.0;
 
                 if (chance < 0.01)
                     chance = 0.01;
@@ -156,9 +156,9 @@ namespace Server.Items
 
                 FORMULA: Melee Damage Absorbed = (AR of Shield) / 2 | Archery Damage Absorbed = AR of Shield 
                 */
-                if (owner.CheckSkill(SkillName.Parry, chance))
+                if (owner.CheckSkill(SkillName.Bloqueio, chance))
                 {
-                    if (weapon.Skill == SkillName.Archery)
+                    if (weapon.Skill == SkillName.Atirar)
                         damage -= (int)ar;
                     else
                         damage -= (int)(ar / 2.0);

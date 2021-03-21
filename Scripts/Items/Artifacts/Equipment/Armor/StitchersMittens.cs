@@ -9,7 +9,7 @@ namespace Server.Items
         public StitchersMittens()
         {
             Hue = 0x481;
-            SkillBonuses.SetValues(0, SkillName.Healing, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Medicina, 10.0);
             Attributes.BonusDex = 5;
             Attributes.LowerRegCost = 30;
         }

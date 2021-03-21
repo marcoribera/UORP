@@ -41,7 +41,7 @@ namespace Server.Items
             {
                 from.SendMessage("This must be in your backpack to modify it.");
             }
-            else if (from.Skills[SkillName.Fletching].Base < 100.0)
+            else if (from.Skills[SkillName.Carpintaria].Base < 100.0)
             {
                 from.SendMessage("Only a grandmaster bowcrafter can modify this weapon.");
             }
@@ -68,7 +68,7 @@ namespace Server.Items
             {
                 from.SendMessage("This must be in your backpack to modify it.");
             }
-            else if (from.Skills[SkillName.Fletching].Base < 100.0)
+            else if (from.Skills[SkillName.Carpintaria].Base < 100.0)
             {
                 from.SendMessage("Only a grandmaster bowcrafter can modify this weapon.");
             }

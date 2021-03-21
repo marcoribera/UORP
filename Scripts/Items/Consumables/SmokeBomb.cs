@@ -47,7 +47,7 @@ namespace Server.Items
 			{
 				Hiding.CombatOverride = true;
 
-				if (from.UseSkill(SkillName.Hiding))
+				if (from.UseSkill(SkillName.Furtividade))
 				{
 					from.Mana -= 10;
 

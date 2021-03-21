@@ -23,7 +23,7 @@ namespace Server.Spells.SkillMasteries
         public override int RequiredMana { get { return 50; } }
         public override bool PartyEffects { get { return false; } }
 
-        public override SkillName CastSkill { get { return SkillName.Spellweaving; } }
+        public override SkillName CastSkill { get { return SkillName.Feiticaria; } }
 
         public SummonReaperSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -118,11 +118,11 @@ namespace Server.Spells.SkillMasteries
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 69);
 
-            SetSkill(SkillName.Spellweaving, Math.Max(100, 75 * scale));
-            SetSkill(SkillName.Anatomy, Math.Max(100, 75 * scale));
-            SetSkill(SkillName.MagicResist, Math.Max(100, 75 * scale));
-            SetSkill(SkillName.Tactics, Math.Max(100, 75 * scale));
-            SetSkill(SkillName.Wrestling, Math.Max(100, 75 * scale));
+            SetSkill(SkillName.Feiticaria, Math.Max(100, 75 * scale));
+            SetSkill(SkillName.Anatomia, Math.Max(100, 75 * scale));
+            SetSkill(SkillName.ResistenciaMagica, Math.Max(100, 75 * scale));
+            SetSkill(SkillName.Anatomia, Math.Max(100, 75 * scale));
+            SetSkill(SkillName.Briga, Math.Max(100, 75 * scale));
 
             ControlSlots = 5;
 
@@ -140,7 +140,7 @@ namespace Server.Spells.SkillMasteries
                     }
                 });
 
-            m_DispelDifficulty = 91 + (int)((caster.Skills[SkillName.Spellweaving].Base * 83) / 5.2);
+            m_DispelDifficulty = 91 + (int)((caster.Skills[SkillName.Feiticaria].Base * 83) / 5.2);
 
             _NextAura = Core.TickCount + 3000;
             SetWeaponAbility(WeaponAbility.WhirlwindAttack);

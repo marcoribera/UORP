@@ -9,7 +9,7 @@ namespace Server.Items
         public FleshRipper()
         {
             Hue = 0x341;
-            SkillBonuses.SetValues(0, SkillName.Anatomy, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Anatomia, 10.0);
             Attributes.BonusStr = 5;
             Attributes.AttackChance = 15;
             Attributes.WeaponSpeed = 40;

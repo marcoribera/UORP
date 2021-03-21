@@ -26,9 +26,9 @@ namespace Server.Mobiles
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetSkill(SkillName.MagicResist, 200.0);
-            SetSkill(SkillName.Tactics, 5.0);
-            SetSkill(SkillName.Wrestling, 5.0);
+            SetSkill(SkillName.ResistenciaMagica, 200.0);
+            SetSkill(SkillName.Anatomia, 5.0);
+            SetSkill(SkillName.Briga, 5.0);
 
             Fame = 1000;
             Karma = 0;

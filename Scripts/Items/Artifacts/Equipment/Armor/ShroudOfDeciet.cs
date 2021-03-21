@@ -11,7 +11,7 @@ namespace Server.Items
             Hue = 0x38F;
             Attributes.RegenHits = 3;
             ArmorAttributes.MageArmor = 1;
-            SkillBonuses.Skill_1_Name = SkillName.MagicResist;
+            SkillBonuses.Skill_1_Name = SkillName.ResistenciaMagica;
             SkillBonuses.Skill_1_Value = 10;
         }
 

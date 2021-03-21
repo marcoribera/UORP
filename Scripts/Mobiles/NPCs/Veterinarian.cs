@@ -19,8 +19,8 @@ namespace Server.Mobiles
 		public Veterinarian()
 			: base("the vet")
 		{
-			SetSkill(SkillName.AnimalLore, 85.0, 100.0);
-			SetSkill(SkillName.Veterinary, 90.0, 100.0);
+			SetSkill(SkillName.Adestramento, 85.0, 100.0);
+			SetSkill(SkillName.Veterinaria, 90.0, 100.0);
 		}
 
 		public override void InitSBInfo()

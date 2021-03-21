@@ -14,7 +14,7 @@ namespace Server.Items
             : base()
         {
             Hue = 0x3A;		
-            SkillBonuses.SetValues(0, SkillName.Fencing, 20.0);		
+            SkillBonuses.SetValues(0, SkillName.Perfurante, 20.0);		
             WeaponAttributes.HitPoisonArea = 30;
             Attributes.AttackChance = 15;
             Attributes.WeaponSpeed = 50;

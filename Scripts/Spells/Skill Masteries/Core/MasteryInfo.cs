@@ -38,84 +38,84 @@ namespace Server.Spells.SkillMasteries
 
             EventSink.Login += new LoginEventHandler(OnLogin);
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InspireSpell),          700, SkillName.Provocation));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InvigorateSpell),       701, SkillName.Provocation));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InspireSpell),          700, SkillName.Provocacao));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InvigorateSpell),       701, SkillName.Provocacao));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ResilienceSpell),       702, SkillName.Peacemaking));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PerseveranceSpell),     703, SkillName.Peacemaking));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ResilienceSpell),       702, SkillName.Pacificar));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PerseveranceSpell),     703, SkillName.Pacificar));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.TribulationSpell),      704, SkillName.Discordance));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.DespairSpell),          705, SkillName.Discordance));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.TribulationSpell),      704, SkillName.Caos));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.DespairSpell),          705, SkillName.Caos));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.DeathRaySpell),         706, SkillName.Magery));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.EtherealBurstSpell),    707, SkillName.Magery));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.DeathRaySpell),         706, SkillName.Arcanismo));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.EtherealBurstSpell),    707, SkillName.Arcanismo));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.NetherBlastSpell),      708, SkillName.Mysticism));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.MysticWeaponSpell),     709, SkillName.Mysticism));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.NetherBlastSpell),      708, SkillName.Misticismo));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.MysticWeaponSpell),     709, SkillName.Misticismo));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CommandUndeadSpell),    710, SkillName.Necromancy));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ConduitSpell),          711, SkillName.Necromancy));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CommandUndeadSpell),    710, SkillName.Necromancia));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ConduitSpell),          711, SkillName.Necromancia));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ManaShieldSpell),       712, SkillName.Spellweaving));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.SummonReaperSpell),     713, SkillName.Spellweaving));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ManaShieldSpell),       712, SkillName.Feiticaria));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.SummonReaperSpell),     713, SkillName.Feiticaria));
 
             Infos.Add(new MasteryInfo(typeof(SkillMasteries.WarcrySpell),           716, SkillName.Bushido));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.RejuvinateSpell),       718, SkillName.Chivalry));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.HolyFistSpell),         719, SkillName.Chivalry));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.RejuvinateSpell),       718, SkillName.Ordem));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.HolyFistSpell),         719, SkillName.Ordem));
 
             Infos.Add(new MasteryInfo(typeof(SkillMasteries.ShadowSpell),           720, SkillName.Ninjitsu));
             Infos.Add(new MasteryInfo(typeof(SkillMasteries.WhiteTigerFormSpell),   721, SkillName.Ninjitsu));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FlamingShotSpell),      722, SkillName.Archery));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PlayingTheOddsSpell),   723, SkillName.Archery));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FlamingShotSpell),      722, SkillName.Atirar));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PlayingTheOddsSpell),   723, SkillName.Atirar));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ThrustSpell),           724, SkillName.Fencing));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PierceSpell),           725, SkillName.Fencing));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ThrustSpell),           724, SkillName.Perfurante));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.PierceSpell),           725, SkillName.Perfurante));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.StaggerSpell),          726, SkillName.Macing));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ToughnessSpell),        727, SkillName.Macing));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.StaggerSpell),          726, SkillName.Contusivo));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ToughnessSpell),        727, SkillName.Contusivo));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.OnslaughtSpell),        728, SkillName.Swords));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FocusedEyeSpell),       729, SkillName.Swords));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.OnslaughtSpell),        728, SkillName.Cortante));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FocusedEyeSpell),       729, SkillName.Cortante));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ElementalFurySpell),    730, SkillName.Throwing));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CalledShotSpell),       731, SkillName.Throwing));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ElementalFurySpell),    730, SkillName.Atirar));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CalledShotSpell),       731, SkillName.Atirar));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ShieldBashSpell),       733, SkillName.Parry));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.BodyGuardSpell),        734, SkillName.Parry));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.HeightenedSensesSpell), 735, SkillName.Parry));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ShieldBashSpell),       733, SkillName.Bloqueio));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.BodyGuardSpell),        734, SkillName.Bloqueio));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.HeightenedSensesSpell), 735, SkillName.Bloqueio));
 
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ToleranceSpell),        736, SkillName.Poisoning));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InjectedStrikeSpell),   737, SkillName.Poisoning));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.ToleranceSpell),        736, SkillName.Envenenamento));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.InjectedStrikeSpell),   737, SkillName.Envenenamento));
  
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.RampageSpell),          739, SkillName.Wrestling));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FistsOfFurySpell),      740, SkillName.Wrestling));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.RampageSpell),          739, SkillName.Briga));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.FistsOfFurySpell),      740, SkillName.Briga));
  
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.WhisperingSpell),       742, SkillName.AnimalTaming));
-            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CombatTrainingSpell),   743, SkillName.AnimalTaming));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.WhisperingSpell),       742, SkillName.Adestramento));
+            Infos.Add(new MasteryInfo(typeof(SkillMasteries.CombatTrainingSpell),   743, SkillName.Adestramento));
 
             //Passive Masteries
-            Infos.Add(new MasteryInfo(null, 714, SkillName.Magery,          PassiveSpell.EnchantedSummoning));            // Enchanted Summoning
-            Infos.Add(new MasteryInfo(null, 714, SkillName.Necromancy,      PassiveSpell.EnchantedSummoning));        // Enchanted Summoning
-            Infos.Add(new MasteryInfo(null, 714, SkillName.Spellweaving,    PassiveSpell.EnchantedSummoning));      // Enchanted Summoning
-            Infos.Add(new MasteryInfo(null, 714, SkillName.Mysticism,       PassiveSpell.EnchantedSummoning));         // Enchanted Summoning
+            Infos.Add(new MasteryInfo(null, 714, SkillName.Arcanismo,          PassiveSpell.EnchantedSummoning));            // Enchanted Summoning
+            Infos.Add(new MasteryInfo(null, 714, SkillName.Necromancia,      PassiveSpell.EnchantedSummoning));        // Enchanted Summoning
+            Infos.Add(new MasteryInfo(null, 714, SkillName.Feiticaria,    PassiveSpell.EnchantedSummoning));      // Enchanted Summoning
+            Infos.Add(new MasteryInfo(null, 714, SkillName.Misticismo,       PassiveSpell.EnchantedSummoning));         // Enchanted Summoning
 
             Infos.Add(new MasteryInfo(null, 715, SkillName.Bushido,         PassiveSpell.AnticipateHit));           // Anticipate Hit
 
             Infos.Add(new MasteryInfo(null, 717, SkillName.Bushido,         PassiveSpell.Intuition));           // Intuition
             Infos.Add(new MasteryInfo(null, 717, SkillName.Ninjitsu,        PassiveSpell.Intuition));          // Intuition
-            Infos.Add(new MasteryInfo(null, 717, SkillName.Chivalry,        PassiveSpell.Intuition));          // Intuition
+            Infos.Add(new MasteryInfo(null, 717, SkillName.Ordem,        PassiveSpell.Intuition));          // Intuition
 
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Archery,         PassiveSpell.SavingThrow));           // Saving Throw
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Fencing,         PassiveSpell.SavingThrow));           // Saving Throw
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Swords,          PassiveSpell.SavingThrow));            // Saving Throw
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Macing,          PassiveSpell.SavingThrow));            // Saving Throw
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Throwing,        PassiveSpell.SavingThrow));          // Saving Throw
+            Infos.Add(new MasteryInfo(null, 732, SkillName.Atirar,         PassiveSpell.SavingThrow));           // Saving Throw
+            Infos.Add(new MasteryInfo(null, 732, SkillName.Perfurante,         PassiveSpell.SavingThrow));           // Saving Throw
+            Infos.Add(new MasteryInfo(null, 732, SkillName.Cortante,          PassiveSpell.SavingThrow));            // Saving Throw
+            Infos.Add(new MasteryInfo(null, 732, SkillName.Contusivo,          PassiveSpell.SavingThrow));            // Saving Throw
+            Infos.Add(new MasteryInfo(null, 732, SkillName.Atirar,        PassiveSpell.SavingThrow));          // Saving Throw
 
-            Infos.Add(new MasteryInfo(null, 738, SkillName.Poisoning,       PassiveSpell.Potency));         // Potency
-            Infos.Add(new MasteryInfo(null, 741, SkillName.Wrestling,       PassiveSpell.Knockout));         // Knockout
-            Infos.Add(new MasteryInfo(null, 744, SkillName.AnimalTaming,    PassiveSpell.Boarding));      // Boarding
+            Infos.Add(new MasteryInfo(null, 738, SkillName.Envenenamento,       PassiveSpell.Potency));         // Potency
+            Infos.Add(new MasteryInfo(null, 741, SkillName.Briga,       PassiveSpell.Knockout));         // Knockout
+            Infos.Add(new MasteryInfo(null, 744, SkillName.Adestramento,    PassiveSpell.Boarding));      // Boarding
         }
 
         public static List<MasteryInfo> Infos { get; set; }
@@ -193,7 +193,7 @@ namespace Server.Spells.SkillMasteries
             if (info != null)
                 return info.MasterySkill;
 
-            return SkillName.Archery;
+            return SkillName.Atirar;
         }
 
         public static bool HasLearned(Mobile m, SkillName skill)
@@ -265,7 +265,7 @@ namespace Server.Spells.SkillMasteries
                     ColUtility.Free(list);
                 }
 
-                if (m is PlayerMobile && oldMastery == SkillName.Necromancy)
+                if (m is PlayerMobile && oldMastery == SkillName.Necromancia)
                 {
                     ((PlayerMobile)m).AllFollowers.IterateReverse(mob => 
                     {
@@ -423,25 +423,25 @@ namespace Server.Spells.SkillMasteries
             switch (name)
             {
                 default:
-                case SkillName.Discordance: return 1151945;
-                case SkillName.Provocation: return 1151946;
-                case SkillName.Peacemaking: return 1151947;
-                case SkillName.Magery: return 1155771;
-                case SkillName.Mysticism: return 1155772;
-                case SkillName.Necromancy: return 1155773;
-                case SkillName.Spellweaving: return 1155774;
+                case SkillName.Caos: return 1151945;
+                case SkillName.Provocacao: return 1151946;
+                case SkillName.Pacificar: return 1151947;
+                case SkillName.Arcanismo: return 1155771;
+                case SkillName.Misticismo: return 1155772;
+                case SkillName.Necromancia: return 1155773;
+                case SkillName.Feiticaria: return 1155774;
                 case SkillName.Bushido: return 1155775;
-                case SkillName.Chivalry: return 1155776;
+                case SkillName.Ordem: return 1155776;
                 case SkillName.Ninjitsu: return 1155777;
-                case SkillName.Archery: return 1155786;
-                case SkillName.Fencing: return 1155778;
-                case SkillName.Macing: return 1155779;
-                case SkillName.Swords: return 1155780;
-                case SkillName.Throwing: return 1155781;
-                case SkillName.Parry: return 1155782;
-                case SkillName.Poisoning: return 1155783;
-                case SkillName.Wrestling: return 1155784;
-                case SkillName.AnimalTaming: return 1155785;
+                case SkillName.Atirar: return 1155786;
+                case SkillName.Perfurante: return 1155778;
+                case SkillName.Contusivo: return 1155779;
+                case SkillName.Cortante: return 1155780;
+                //case SkillName.Atirar: return 1155781;
+                case SkillName.Bloqueio: return 1155782;
+                case SkillName.Envenenamento: return 1155783;
+                case SkillName.Briga: return 1155784;
+                case SkillName.Adestramento: return 1155785;
             }
         }
 
@@ -492,8 +492,8 @@ namespace Server.Spells.SkillMasteries
         {
             if (IsActivePassive(m, PassiveSpell.Potency))
             {
-                double skill = m.Skills[SkillName.Poisoning].Value + m.Skills[SkillName.Anatomy].Value;
-                skill += GetMasteryLevel(m, SkillName.Poisoning) * 20;
+                double skill = m.Skills[SkillName.Envenenamento].Value + m.Skills[SkillName.Anatomia].Value;
+                skill += GetMasteryLevel(m, SkillName.Envenenamento) * 20;
 
                 return (int)(skill / 4.375);
             }
@@ -505,7 +505,7 @@ namespace Server.Spells.SkillMasteries
         {
             if (IsActivePassive(m, PassiveSpell.Knockout))
             {
-                switch (GetMasteryLevel(m, SkillName.Wrestling))
+                switch (GetMasteryLevel(m, SkillName.Briga))
                 {
                     default: return 0;
                     case 3: return pvp ? 50 : 100;
@@ -521,7 +521,7 @@ namespace Server.Spells.SkillMasteries
         {
             if (IsActivePassive(m, PassiveSpell.Boarding))
             {
-                return GetMasteryLevel(m, SkillName.AnimalTaming);
+                return GetMasteryLevel(m, SkillName.Adestramento);
             }
 
             return 0;
@@ -554,25 +554,25 @@ namespace Server.Spells.SkillMasteries
 
         private static SkillName[] _Skills =
         {
-            SkillName.Peacemaking,
-            SkillName.Provocation,
-            SkillName.Discordance,
-            SkillName.Magery,
-            SkillName.Mysticism,
-            SkillName.Necromancy,
-            SkillName.Spellweaving,
+            SkillName.Pacificar,
+            SkillName.Provocacao,
+            SkillName.Caos,
+            SkillName.Arcanismo,
+            SkillName.Misticismo,
+            SkillName.Necromancia,
+            SkillName.Feiticaria,
             SkillName.Bushido,
-            SkillName.Chivalry,
+            SkillName.Ordem,
             SkillName.Ninjitsu,
-            SkillName.Fencing,
-            SkillName.Macing,
-            SkillName.Swords,
-            SkillName.Throwing,
-            SkillName.Parry,
-            SkillName.Poisoning,
-            SkillName.Wrestling,
-            SkillName.AnimalTaming,
-            SkillName.Archery
+            SkillName.Perfurante,
+            SkillName.Contusivo,
+            SkillName.Cortante,
+            SkillName.Atirar,
+            SkillName.Bloqueio,
+            SkillName.Envenenamento,
+            SkillName.Briga,
+            SkillName.Adestramento,
+            SkillName.Atirar
         };
 
         private static int[] _Descriptions =

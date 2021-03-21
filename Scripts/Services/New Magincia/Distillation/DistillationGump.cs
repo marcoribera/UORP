@@ -263,8 +263,8 @@ namespace Server.Engines.Distillation
 
                             if (HasTotal(from, perc) && barrel != null)
                             {
-                                double cooking = from.Skills[SkillName.Cooking].Value;
-                                double alchemy = from.Skills[SkillName.Alchemy].Value / 2;
+                                double cooking = from.Skills[SkillName.Culinaria].Value;
+                                double alchemy = from.Skills[SkillName.Alquimia].Value / 2;
                                 int resist = 0;
 
                                 for (int i = 0; i < m_Context.SelectedYeast.Length; i++)

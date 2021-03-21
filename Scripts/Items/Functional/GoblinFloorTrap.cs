@@ -65,7 +65,7 @@ namespace Server.Items
 
         public virtual bool CheckReveal(Mobile m)
         {
-            return m.CheckTargetSkill(SkillName.DetectHidden, this, 50.0, 100.0);
+            return m.CheckTargetSkill(SkillName.Percepcao, this, 50.0, 100.0);
         }
 
         public virtual void OnRevealed(Mobile m)
@@ -139,7 +139,7 @@ namespace Server.Items
 			{
                 from.SendLocalizedMessage(1054107); // This item must be in your backpack.
 			}
-            else if (from.Skills[SkillName.Tinkering].Value < 80)
+            else if (from.Skills[SkillName.Mecanica].Value < 80)
             {
                 from.SendLocalizedMessage(1113318); // You do not have enough skill to set the trap.
             }
@@ -173,7 +173,7 @@ namespace Server.Items
 					Point3D p = new Point3D((IPoint3D)targeted);
                     Region r = Region.Find(p, from.Map);
 
-                    if (from.Skills[SkillName.Tinkering].Value < 80)
+                    if (from.Skills[SkillName.Mecanica].Value < 80)
                     {
                         from.SendLocalizedMessage(1113318); // You do not have enough skill to set the trap.
                     }

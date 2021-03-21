@@ -177,20 +177,19 @@ namespace Server.Engines.Despise
             SetResistance(ResistanceType.Poison, 5, 50);
             SetResistance(ResistanceType.Energy, 5, 50);
 
-            SetSkill(SkillName.Wrestling, SkillStart);
-            SetSkill(SkillName.Tactics, SkillStart);
-            SetSkill(SkillName.MagicResist, SkillStart);
-            SetSkill(SkillName.Anatomy, SkillStart);
-            SetSkill(SkillName.Poisoning, SkillStart);
-            SetSkill(SkillName.DetectHidden, SkillStart);
-            SetSkill(SkillName.Parry, SkillStart);
-            SetSkill(SkillName.Magery, SkillStart);
-            SetSkill(SkillName.EvalInt, SkillStart);
-            SetSkill(SkillName.Meditation, SkillStart);
-            SetSkill(SkillName.Necromancy, SkillStart);
-            SetSkill(SkillName.SpiritSpeak, SkillStart);
-            SetSkill(SkillName.Focus, SkillStart);
-            SetSkill(SkillName.Discordance, SkillStart);
+            SetSkill(SkillName.Briga, SkillStart);
+            SetSkill(SkillName.Anatomia, SkillStart);
+            SetSkill(SkillName.ResistenciaMagica, SkillStart);
+            SetSkill(SkillName.Anatomia, SkillStart);
+            SetSkill(SkillName.Envenenamento, SkillStart);
+            SetSkill(SkillName.Percepcao, SkillStart);
+            SetSkill(SkillName.Bloqueio, SkillStart);
+            SetSkill(SkillName.Arcanismo, SkillStart);
+            SetSkill(SkillName.PoderMagico, SkillStart);
+            SetSkill(SkillName.Necromancia, SkillStart);
+            SetSkill(SkillName.PoderMagico, SkillStart);
+            SetSkill(SkillName.PreparoFisico, SkillStart);
+            SetSkill(SkillName.Caos, SkillStart);
 
             NoLootOnDeath = true;
 

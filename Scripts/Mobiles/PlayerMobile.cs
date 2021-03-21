@@ -972,7 +972,7 @@ namespace Server.Mobiles
 
 		public override void OnSkillInvalidated(Skill skill)
 		{
-			if (Core.AOS && skill.SkillName == SkillName.MagicResist)
+			if (Core.AOS && skill.SkillName == SkillName.ResistenciaMagica)
 			{
 				UpdateResistances();
 			}
@@ -1172,7 +1172,7 @@ namespace Server.Mobiles
 
 		public override int GetMinResistance(ResistanceType type)
 		{
-			int magicResist = (int)(Skills[SkillName.MagicResist].Value * 10);
+			int magicResist = (int)(Skills[SkillName.ResistenciaMagica].Value * 10);
 			int min = int.MinValue;
 
 			if (magicResist >= 1000)
@@ -2230,9 +2230,9 @@ namespace Server.Mobiles
 
 		private readonly SkillName[] m_AnimalFormRestrictedSkills = new[]
 		{
-			SkillName.ArmsLore, SkillName.Begging, SkillName.Discordance, SkillName.Forensics, SkillName.Inscribe,
-			SkillName.ItemID, SkillName.Meditation, SkillName.Peacemaking, SkillName.Provocation, SkillName.RemoveTrap,
-			SkillName.SpiritSpeak, SkillName.Stealing, SkillName.TasteID
+			SkillName.ConhecimentoArmas, SkillName.Carisma, SkillName.Caos, SkillName.Percepcao, SkillName.Erudicao,
+			SkillName.Erudicao, SkillName.Pacificar, SkillName.Provocacao, SkillName.Mecanica,
+			SkillName.PoderMagico, SkillName.Prestidigitacao, SkillName.Alquimia
 		};
 
 		public override bool AllowSkillUse(SkillName skill)
@@ -2246,7 +2246,7 @@ namespace Server.Mobiles
 						#region Mondain's Legacy
 						AnimalFormContext context = AnimalForm.GetContext(this);
 
-						if (skill == SkillName.Stealing && context.StealingMod != null && context.StealingMod.Value > 0)
+						if (skill == SkillName.Prestidigitacao && context.StealingMod != null && context.StealingMod.Value > 0)
 						{
 							continue;
 						}
@@ -3674,10 +3674,10 @@ namespace Server.Mobiles
 
             if (Core.SA && Race == Race.Gargoyle)
             {
-                if (skill == SkillName.Imbuing)
+                if (skill == SkillName.ImbuirMagica)
                     return 30.0;
 
-                if (skill == SkillName.Throwing)
+                if (skill == SkillName.Atirar)
                     return 20.0;
             }
 
@@ -4220,7 +4220,7 @@ namespace Server.Mobiles
 				return false;
 			}
 
-			if (Core.ML && Skills[SkillName.SpiritSpeak].Value >= 100.0)
+			if (Core.ML && Skills[SkillName.PoderMagico].Value >= 100.0)
 			{
 				return false;
 			}
@@ -4231,7 +4231,7 @@ namespace Server.Mobiles
 				{
 					Mobile m = hears[i];
 
-					if (m != this && m.Skills[SkillName.SpiritSpeak].Value >= 100.0)
+					if (m != this && m.Skills[SkillName.PoderMagico].Value >= 100.0)
 					{
 						return false;
 					}
@@ -5447,7 +5447,7 @@ namespace Server.Mobiles
 
 			if (Hidden && DesignContext.Find(this) == null) //Hidden & NOT customizing a house
 			{
-				if (!Mounted && Skills.Stealth.Value >= 25.0)
+				if (!Mounted && Skills.Furtividade.Value >= 25.0)
 				{
 					bool running = (d & Direction.Running) != 0;
 
@@ -5875,12 +5875,12 @@ namespace Server.Mobiles
                 }
 			}
 
-            if (skill != SkillName.Alchemy && Skills.CurrentMastery == skill && Skills[skill].Value < MasteryInfo.MinSkillRequirement)
+            if (skill != SkillName.Alquimia && Skills.CurrentMastery == skill && Skills[skill].Value < MasteryInfo.MinSkillRequirement)
             {
                 //SendLocalizedMessage(1156236, String.Format("{0}\t{1}", MasteryInfo.MinSkillRequirement.ToString(), Skills[skill].Info.Name)); // You need at least ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ skill to use that mastery.
 
                 SkillName mastery = Skills.CurrentMastery;
-                Skills.CurrentMastery = SkillName.Alchemy;
+                Skills.CurrentMastery = SkillName.Alquimia;
 
                 Server.Spells.SkillMasteries.MasteryInfo.OnMasteryChanged(this, mastery);
             }

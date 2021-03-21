@@ -46,7 +46,7 @@ namespace Server.SkillHandlers
                 {
                     Mobile targ = (Mobile)targeted;
 
-                    int marginOfError = Math.Max(0, 20 - (int)(from.Skills[SkillName.EvalInt].Value / 5));
+                    int marginOfError = Math.Max(0, 20 - (int)(from.Skills[SkillName.PoderMagico].Value / 5));
 
                     int intel = targ.Int + Utility.RandomMinMax(-marginOfError, +marginOfError);
                     int mana = ((targ.Mana * 100) / Math.Max(targ.ManaMax, 1)) + Utility.RandomMinMax(-marginOfError, +marginOfError);
@@ -71,11 +71,11 @@ namespace Server.SkillHandlers
                     else
                         body = 22;
 
-                    if (from.CheckTargetSkill(SkillName.EvalInt, targ, 0.0, 120.0))
+                    if (from.CheckTargetSkill(SkillName.PoderMagico, targ, 0.0, 120.0))
                     {
                         targ.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1038169 + intMod + body, from.NetState); // He/She/It looks [slighly less intelligent than a rock.]  [Of Average intellect] [etc...]
 
-                        if (from.Skills[SkillName.EvalInt].Base >= 76.0)
+                        if (from.Skills[SkillName.PoderMagico].Base >= 76.0)
                             targ.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1038202 + mnMod, from.NetState); // That being is at [10,20,...] percent mental strength.
                     }
                     else 

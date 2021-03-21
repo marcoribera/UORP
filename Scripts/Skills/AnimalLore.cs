@@ -9,7 +9,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.AnimalLore].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Adestramento].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
@@ -31,7 +31,7 @@ namespace Server.SkillHandlers
         {
 			private static void SendGump(Mobile from, BaseCreature c)
 			{
-                from.CheckTargetSkill(SkillName.AnimalLore, c, 0.0, 120.0);
+                from.CheckTargetSkill(SkillName.Adestramento, c, 0.0, 120.0);
 
                 if (PetTrainingHelper.Enabled && from is PlayerMobile)
                 {
@@ -49,7 +49,7 @@ namespace Server.SkillHandlers
 
 			private static void Check(Mobile from, BaseCreature c, double min)
 			{
-				if (from.CheckTargetSkill(SkillName.AnimalLore, c, min, 120.0))
+				if (from.CheckTargetSkill(SkillName.Adestramento, c, min, 120.0))
 					SendGump(from, c);
 				else
 					from.SendLocalizedMessage(500334); // You can't think of anything you know offhand.
@@ -74,7 +74,7 @@ namespace Server.SkillHandlers
                     {
                         if (c.Body.IsAnimal || c.Body.IsMonster || c.Body.IsSea)
                         {
-							double skill = from.Skills[SkillName.AnimalLore].Value;
+							double skill = from.Skills[SkillName.Adestramento].Value;
 							if(skill < 100.0)
                             {
 								if (c.Controlled)
@@ -327,27 +327,27 @@ namespace Server.SkillHandlers
             AddHtmlLocalized(147, 150, 160, 18, 3001030, 200, false, false); // Combat Ratings
 
             AddHtmlLocalized(153, 168, 160, 18, 1044103, LabelColor, false, false); // Wrestling
-            AddHtml(320, 168, 35, 18, FormatSkill(c, SkillName.Wrestling), false, false);
+            AddHtml(320, 168, 35, 18, FormatSkill(c, SkillName.Briga), false, false);
 
             AddHtmlLocalized(153, 186, 160, 18, 1044087, LabelColor, false, false); // Tactics
-            AddHtml(320, 186, 35, 18, FormatSkill(c, SkillName.Tactics), false, false);
+            AddHtml(320, 186, 35, 18, FormatSkill(c, SkillName.Anatomia), false, false);
 
             AddHtmlLocalized(153, 204, 160, 18, 1044086, LabelColor, false, false); // Magic Resistance
-            AddHtml(320, 204, 35, 18, FormatSkill(c, SkillName.MagicResist), false, false);
+            AddHtml(320, 204, 35, 18, FormatSkill(c, SkillName.ResistenciaMagica), false, false);
 
             AddHtmlLocalized(153, 222, 160, 18, 1044061, LabelColor, false, false); // Anatomy
-            AddHtml(320, 222, 35, 18, FormatSkill(c, SkillName.Anatomy), false, false);
+            AddHtml(320, 222, 35, 18, FormatSkill(c, SkillName.Anatomia), false, false);
 
             #region Mondain's Legacy
             if (c is CuSidhe)
             {
                 AddHtmlLocalized(153, 240, 160, 18, 1044077, LabelColor, false, false); // Healing
-                AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Healing), false, false);
+                AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Medicina), false, false);
             }
             else
             {
                 AddHtmlLocalized(153, 240, 160, 18, 1044090, LabelColor, false, false); // Poisoning
-                AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Poisoning), false, false);
+                AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Envenenamento), false, false);
             }
             #endregion
 
@@ -355,13 +355,13 @@ namespace Server.SkillHandlers
             AddHtmlLocalized(147, 258, 160, 18, 3001032, 200, false, false); // Lore & Knowledge
 
             AddHtmlLocalized(153, 276, 160, 18, 1044085, LabelColor, false, false); // Magery
-            AddHtml(320, 276, 35, 18, FormatSkill(c, SkillName.Magery), false, false);
+            AddHtml(320, 276, 35, 18, FormatSkill(c, SkillName.Arcanismo), false, false);
 
             AddHtmlLocalized(153, 294, 160, 18, 1044076, LabelColor, false, false); // Evaluating Intelligence
-            AddHtml(320, 294, 35, 18, FormatSkill(c, SkillName.EvalInt), false, false);
+            AddHtml(320, 294, 35, 18, FormatSkill(c, SkillName.PoderMagico), false, false);
 
-            AddHtmlLocalized(153, 312, 160, 18, 1044106, LabelColor, false, false); // Meditation
-            AddHtml(320, 312, 35, 18, FormatSkill(c, SkillName.Meditation), false, false);
+            //AddHtmlLocalized(153, 312, 160, 18, 1044106, LabelColor, false, false); // Meditation
+            //AddHtml(320, 312, 35, 18, FormatSkill(c, SkillName.Meditation), false, false);
 
             AddButton(340, 358, 5601, 5605, 0, GumpButtonType.Page, page + 1);
             AddButton(317, 358, 5603, 5607, 0, GumpButtonType.Page, page - 1);

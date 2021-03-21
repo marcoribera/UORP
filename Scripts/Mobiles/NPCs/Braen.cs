@@ -63,9 +63,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Braen()
             : base("Braen", "the thaumaturgist")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Braen(Serial serial)

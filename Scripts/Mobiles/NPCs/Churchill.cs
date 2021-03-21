@@ -74,7 +74,7 @@ namespace Server.Engines.Quests
         public CrushingBonesAndTakingNamesQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Macing, 50, "Old Haven Training", 1078063, 1078064));
+            this.AddObjective(new ApprenticeObjective(SkillName.Contusivo, 50, "Old Haven Training", 1078063, 1078064));
 			
             // 1078063 You feel much more attuned to your mace. Your ability to hone your Mace Fighting skill is enhanced in this area.
             // 1078064 You feel less attuned to your mace. Your Mace Fighting learning potential is no longer enhanced.
@@ -93,7 +93,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Macing.Base < 50;
+                return this.Owner.Skills.Contusivo.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -134,12 +134,12 @@ namespace Server.Engines.Quests
         public Churchill()
             : base("Churchill", "The Mace Fighting Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Macing, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Contusivo, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public Churchill(Serial serial)

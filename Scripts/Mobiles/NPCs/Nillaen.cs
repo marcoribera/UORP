@@ -392,9 +392,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Nillaen()
             : base("Lorekeeper Nillaen", "the keeper of tradition")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Nillaen(Serial serial)

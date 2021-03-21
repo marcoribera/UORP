@@ -37,9 +37,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 10, 15);
 
-            SetSkill(SkillName.MagicResist, 25.0);
-            SetSkill(SkillName.Tactics, 30.0, 50.0);
-            SetSkill(SkillName.Wrestling, 30.0, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 25.0);
+            SetSkill(SkillName.Anatomia, 30.0, 50.0);
+            SetSkill(SkillName.Briga, 30.0, 80.0);
 
             if (0.75 > Utility.RandomDouble())
                 PackItem(new AcidSac());

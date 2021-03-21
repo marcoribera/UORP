@@ -70,9 +70,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Alejaha()
             : base("Elder Alejaha", "the wise")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Alejaha(Serial serial)

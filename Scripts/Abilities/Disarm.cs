@@ -32,7 +32,7 @@ namespace Server.Items
             if (weapon == null)
                 return false;
 
-            return weapon.Skill != SkillName.Wrestling;
+            return weapon.Skill != SkillName.Briga;
         }
 
         public override void OnHit(Mobile attacker, Mobile defender, int damage)

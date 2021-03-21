@@ -177,8 +177,8 @@ namespace Server.Spells.Necromancy
 
             this.AddHtmlLocalized(30, 26, 200, 20, 1060147, EnabledColor16, false, false); // Chose thy familiar...
 
-            double necro = from.Skills[SkillName.Necromancy].Value;
-            double spirit = from.Skills[SkillName.SpiritSpeak].Value;
+            double necro = from.Skills[SkillName.Necromancia].Value;
+            double spirit = from.Skills[SkillName.PoderMagico].Value;
 
             for (int i = 0; i < entries.Length; ++i)
             {
@@ -205,8 +205,8 @@ namespace Server.Spells.Necromancy
             {
                 SummonFamiliarEntry entry = this.m_Entries[index];
 
-                double necro = this.m_From.Skills[SkillName.Necromancy].Value;
-                double spirit = this.m_From.Skills[SkillName.SpiritSpeak].Value;
+                double necro = this.m_From.Skills[SkillName.Necromancia].Value;
+                double spirit = this.m_From.Skills[SkillName.PoderMagico].Value;
 
                 BaseCreature check = (BaseCreature)SummonFamiliarSpell.Table[this.m_From];
 
@@ -235,7 +235,7 @@ namespace Server.Spells.Necromancy
                     {
                         BaseCreature bc = (BaseCreature)Activator.CreateInstance(entry.Type);
 
-                        bc.Skills.MagicResist = this.m_From.Skills.MagicResist;
+                        bc.Skills.ResistenciaMagica = this.m_From.Skills.ResistenciaMagica;
 
                         if (BaseCreature.Summon(bc, this.m_From, this.m_From.Location, -1, TimeSpan.FromDays(1.0)))
                         {

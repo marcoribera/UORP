@@ -13,7 +13,7 @@ namespace Server.Items
             Hue = 2500;
             Attributes.BalancedWeapon = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
-            SetSkillBonuses.SetValues(0, SkillName.Lumberjacking, 10);
+            SetSkillBonuses.SetValues(0, SkillName.Extracao, 10);
             WeaponAttributes.HitLeechHits = 87;
             Attributes.RegenStam = 6;
             Attributes.RegenMana = 6;
@@ -57,7 +57,7 @@ namespace Server.Items
             Hue = 2500;
             Attributes.BalancedWeapon = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
-            SetSkillBonuses.SetValues(0, SkillName.Lumberjacking, 10);
+            SetSkillBonuses.SetValues(0, SkillName.Extracao, 10);
             WeaponAttributes.HitLeechHits = 87;
             Attributes.RegenStam = 6;
             Attributes.RegenMana = 6;

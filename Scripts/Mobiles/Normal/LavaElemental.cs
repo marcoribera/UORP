@@ -30,14 +30,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.EvalInt, 84.8, 92.6);
-            SetSkill(SkillName.Magery, 80.0, 92.7);
-            SetSkill(SkillName.Meditation, 97.8, 120.0);
-            SetSkill(SkillName.MagicResist, 101.9, 106.2);
-            SetSkill(SkillName.Tactics, 80.3, 94.0);
-            SetSkill(SkillName.Wrestling, 71.7, 85.4);
-            SetSkill(SkillName.Poisoning, 90.0, 100.0);
-            SetSkill(SkillName.DetectHidden, 75.1);
+            SetSkill(SkillName.PoderMagico, 84.8, 92.6);
+            SetSkill(SkillName.Arcanismo, 80.0, 92.7);
+            SetSkill(SkillName.ResistenciaMagica, 101.9, 106.2);
+            SetSkill(SkillName.Anatomia, 80.3, 94.0);
+            SetSkill(SkillName.Briga, 71.7, 85.4);
+            SetSkill(SkillName.Envenenamento, 90.0, 100.0);
+            SetSkill(SkillName.Percepcao, 75.1);
 
             PackItem(new Nightshade(4));
             PackItem(new SulfurousAsh(5));

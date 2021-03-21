@@ -56,13 +56,12 @@ namespace Server.Mobiles
 
                 ChangeAIType(AIType.AI_Mage);
 
-                SetSkill(SkillName.Wrestling, 45.0, 55.0);
-                SetSkill(SkillName.Tactics, 50.0, 60.0);
-                SetSkill(SkillName.MagicResist, 65.0, 75.0);
-                SetSkill(SkillName.Magery, 60.0, 70.0);
-                SetSkill(SkillName.EvalInt, 60.0, 75.0);
-                SetSkill(SkillName.Meditation, 70.0, 90.0);               
-                SetSkill(SkillName.Focus, 80.0, 100.0);
+                SetSkill(SkillName.Briga, 45.0, 55.0);
+                SetSkill(SkillName.Anatomia, 50.0, 60.0);
+                SetSkill(SkillName.ResistenciaMagica, 65.0, 75.0);
+                SetSkill(SkillName.Arcanismo, 60.0, 70.0);
+                SetSkill(SkillName.PoderMagico, 60.0, 75.0);
+                SetSkill(SkillName.PreparoFisico, 80.0, 100.0);
             }
             else if (Body == 0xB6) // Bomber
             {
@@ -80,9 +79,9 @@ namespace Server.Mobiles
                 SetResistance(ResistanceType.Poison, 15, 25);
                 SetResistance(ResistanceType.Energy, 20, 30);
 
-                SetSkill(SkillName.Wrestling, 60.0, 90.0);
-                SetSkill(SkillName.Tactics, 70.0, 85.0);
-                SetSkill(SkillName.MagicResist, 70.0, 85.0);
+                SetSkill(SkillName.Briga, 60.0, 90.0);
+                SetSkill(SkillName.Anatomia, 70.0, 85.0);
+                SetSkill(SkillName.ResistenciaMagica, 70.0, 85.0);
             }
             else // Archer 
             {
@@ -101,11 +100,11 @@ namespace Server.Mobiles
 
                 ChangeAIType(AIType.AI_Archer);
 
-                SetSkill(SkillName.Tactics, 55.0, 70.0);
-                SetSkill(SkillName.MagicResist, 50.0, 70.0);
-                SetSkill(SkillName.Anatomy, 60.0, 85.0);
-                SetSkill(SkillName.Healing, 60.0, 80.0);
-                SetSkill(SkillName.Archery, 100.0, 120.0);
+                SetSkill(SkillName.Anatomia, 55.0, 70.0);
+                SetSkill(SkillName.ResistenciaMagica, 50.0, 70.0);
+                SetSkill(SkillName.Anatomia, 60.0, 85.0);
+                SetSkill(SkillName.Medicina, 60.0, 80.0);
+                SetSkill(SkillName.Atirar, 100.0, 120.0);
 
                 Item bow;
 
@@ -121,7 +120,7 @@ namespace Server.Mobiles
                 AddItem(bow);
             }
 
-            SetSkill(SkillName.DetectHidden, 40.0, 45.0);            
+            SetSkill(SkillName.Percepcao, 40.0, 45.0);            
 
             Fame = 8000;
             Karma = -8000;

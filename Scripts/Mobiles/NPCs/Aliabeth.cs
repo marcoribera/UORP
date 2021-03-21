@@ -30,11 +30,11 @@ namespace Server.Engines.Quests
         }
         //Hello there! Hail and well met, and all of that. I must apologize in advance for being
         //so impatient, but you must help me! You see, my mother and my eldest sister are visiting
-        //soon, and I haven’t seen them in quite awhile, so I want to present them both with a
+        //soon, and I havenâ€™t seen them in quite awhile, so I want to present them both with a
         //surprise when they arrive.<br><br>My sister absolutely adores white chocolate, but 
-        //gargoyles don’t seem to care for it much, so I haven’t been able to find any here.
-        //It was recently my mother’s birthday, and I know that she would love some finely 
-        //crafted gargish jewelry, but the jeweler hasn’t had her favorite jewel in stock for 
+        //gargoyles donâ€™t seem to care for it much, so I havenâ€™t been able to find any here.
+        //It was recently my motherâ€™s birthday, and I know that she would love some finely 
+        //crafted gargish jewelry, but the jeweler hasnâ€™t had her favorite jewel in stock for 
         //quite some time. If you could help me obtain five pieces of white chocolate and one
         //dark sapphire, I will reward you with a bag of hard to obtain imbuing ingredients.
         public override object Description
@@ -61,7 +61,7 @@ namespace Server.Engines.Quests
             }
         }
         //Oh, thank you so very much! I cannot begin to thank you enough for helping me find 
-        //these presents. Here is your reward. You’ll have to excuse me while I set this dark
+        //these presents. Here is your reward. Youâ€™ll have to excuse me while I set this dark
         //sapphire in a setting that will best highlight the cut. Farewell!
         public override object Complete
         {
@@ -113,7 +113,7 @@ namespace Server.Engines.Quests
         //that the bamboo flutes of the Tokuno Islands are exceptionally strong for their weight, 
         //and nothing can beat elven fletching for strength in holding them together. If you 
         //would bring me, say, ten bamboo flutes and some elven fletching, I have some valuable
-        //imbuing ingredients I’ll give you in exchange. What do you say?
+        //imbuing ingredients Iâ€™ll give you in exchange. What do you say?
         public override object Description
         {
             get
@@ -121,7 +121,7 @@ namespace Server.Engines.Quests
                 return 1113783;
             }
         }
-        //Well, if you change your mind, I’ll be here.
+        //Well, if you change your mind, Iâ€™ll be here.
         public override object Refuse
         {
             get
@@ -130,7 +130,7 @@ namespace Server.Engines.Quests
             }
         }
         //Hmm, what is that? Oh yes, I would like you to bring me ten bamboo flutes and some elven
-        //fletching for my fly… er, my invention.
+        //fletching for my flyâ€¦ er, my invention.
         public override object Uncomplete
         {
             get
@@ -139,7 +139,7 @@ namespace Server.Engines.Quests
             }
         }
         //These are of fine quality! I think they will work just fine to reinforce the floor of the 
-        //basket. What’s that? Did I say basket? I meant, bakery! Yes, I am inventing a, um, floor 
+        //basket. Whatâ€™s that? Did I say basket? I meant, bakery! Yes, I am inventing a, um, floor 
         //for a bakery. There is a great need for that, you know! Ok, now please leave so I can get 
         //back to work. Thank you, bye, bye!
         public override object Complete
@@ -177,9 +177,9 @@ namespace Server.Engines.Quests
         public Aliabeth()
             : base("Aliabeth", "the Tinker")
         {
-            this.SetSkill(SkillName.Lockpicking, 60.0, 83.0);
-            this.SetSkill(SkillName.RemoveTrap, 75.0, 98.0);
-            this.SetSkill(SkillName.Tinkering, 64.0, 100.0);
+            this.SetSkill(SkillName.Mecanica, 60.0, 83.0);
+            this.SetSkill(SkillName.Mecanica, 75.0, 98.0);
+            this.SetSkill(SkillName.Mecanica, 64.0, 100.0);
         }
 
         public Aliabeth(Serial serial)

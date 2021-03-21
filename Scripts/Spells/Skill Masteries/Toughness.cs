@@ -17,8 +17,8 @@ namespace Server.Spells.SkillMasteries
         public override double UpKeep { get { return 20; } }
         public override int RequiredMana { get { return 20; } }
 
-        public override SkillName CastSkill { get { return SkillName.Macing; } }
-        public override SkillName DamageSkill { get { return SkillName.Tactics; } }
+        public override SkillName CastSkill { get { return SkillName.Contusivo; } }
+        public override SkillName DamageSkill { get { return SkillName.Anatomia; } }
 
         private int _HPBonus;
 

@@ -76,7 +76,7 @@ namespace Server.Engines.Quests
         public Gorrow()
             : base("Gorrow", "the mayor")
         { 
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Gorrow(Serial serial)

@@ -52,7 +52,7 @@ namespace Server.Items
 
         protected override void FinishEffect(Point3D p, Map map, Mobile from)
         {
-            if (from.Skills.Fishing.Value < 10)
+            if (from.Skills.Sobrevivencia.Value < 10)
             {
                 from.SendLocalizedMessage(1074487); // The creatures are too quick for you!
             }
@@ -103,7 +103,7 @@ namespace Server.Items
 
         private BaseFish GiveFish(Mobile from)
         {
-            double skill = from.Skills.Fishing.Value;
+            double skill = from.Skills.Sobrevivencia.Value;
 
             if ((skill / 100.0) >= Utility.RandomDouble())
             {

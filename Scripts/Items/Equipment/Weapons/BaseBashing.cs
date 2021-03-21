@@ -32,7 +32,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Macing;
+                return SkillName.Contusivo;
             }
         }
         public override WeaponType DefType
@@ -75,7 +75,7 @@ namespace Server.Items
         {
             double damage = base.GetBaseDamage(attacker);
 
-            if (!Core.AOS && (attacker.Player || attacker.Body.IsHuman) && this.Layer == Layer.TwoHanded && (attacker.Skills[SkillName.Anatomy].Value / 400.0) >= Utility.RandomDouble())
+            if (!Core.AOS && (attacker.Player || attacker.Body.IsHuman) && this.Layer == Layer.TwoHanded && (attacker.Skills[SkillName.Anatomia].Value / 400.0) >= Utility.RandomDouble())
             {
                 damage *= 1.5;
 

@@ -49,8 +49,8 @@ namespace Server.Spells
         private static readonly TimeSpan NextSpellDelay = TimeSpan.FromSeconds(0.75);
 		private static TimeSpan AnimateDelay = TimeSpan.FromSeconds(1.5);
 
-		public virtual SkillName CastSkill { get { return SkillName.Magery; } }
-		public virtual SkillName DamageSkill { get { return SkillName.EvalInt; } }
+		public virtual SkillName CastSkill { get { return SkillName.Arcanismo; } }
+		public virtual SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
 		public virtual bool RevealOnCast { get { return true; } }
 		public virtual bool ClearHandsOnCast { get { return true; } }
@@ -274,7 +274,7 @@ namespace Server.Spells
                 if (focus > 12) 
                     focus = 12;
 
-                focus += m_Caster.Skills[SkillName.Inscribe].Value >= 50 ? GetInscribeFixed(m_Caster) / 200 : 0;
+                focus += m_Caster.Skills[SkillName.Erudicao].Value >= 50 ? GetInscribeFixed(m_Caster) / 200 : 0;
 
                 if (focus > 0 && focus > Utility.Random(100))
                 {
@@ -413,15 +413,15 @@ namespace Server.Spells
 		public virtual double GetInscribeSkill(Mobile m)
 		{
 			// There is no chance to gain
-			// m.CheckSkill( SkillName.Inscribe, 0.0, 120.0 );
-			return m.Skills[SkillName.Inscribe].Value;
+			// m.CheckSkill( SkillName.Erudicao, 0.0, 120.0 );
+			return m.Skills[SkillName.Erudicao].Value;
 		}
 
 		public virtual int GetInscribeFixed(Mobile m)
 		{
 			// There is no chance to gain
-			// m.CheckSkill( SkillName.Inscribe, 0.0, 120.0 );
-			return m.Skills[SkillName.Inscribe].Fixed;
+			// m.CheckSkill( SkillName.Erudicao, 0.0, 120.0 );
+			return m.Skills[SkillName.Erudicao].Fixed;
 		}
 
 		public virtual int GetDamageFixed(Mobile m)
@@ -438,7 +438,7 @@ namespace Server.Spells
 
 		public virtual double GetResistSkill(Mobile m)
 		{
-			return m.Skills[SkillName.MagicResist].Value - EvilOmenSpell.GetResistMalus(m);
+			return m.Skills[SkillName.ResistenciaMagica].Value - EvilOmenSpell.GetResistMalus(m);
 		}
 
 		public virtual double GetDamageScalar(Mobile target)
@@ -451,7 +451,7 @@ namespace Server.Spells
 			if (!Core.AOS) //EvalInt stuff for AoS is handled elsewhere
 			{
 				double casterEI = m_Caster.Skills[DamageSkill].Value;
-				double targetRS = target.Skills[SkillName.MagicResist].Value;
+				double targetRS = target.Skills[SkillName.ResistenciaMagica].Value;
 
 				/*
 				if( Core.AOS )
@@ -932,7 +932,7 @@ namespace Server.Spells
 
 			GetCastSkills(out minSkill, out maxSkill);
 
-			if (DamageSkill != CastSkill && DamageSkill != SkillName.Imbuing)
+			if (DamageSkill != CastSkill && DamageSkill != SkillName.ImbuirMagica)
 			{
 				Caster.CheckSkill(DamageSkill, 0.0, Caster.Skills[DamageSkill].Cap);
 			}
@@ -1046,8 +1046,8 @@ namespace Server.Spells
 			// Paladins with magery of 70.0 or above are subject to a faster casting cap of 2 
 			int fcMax = 4;
 
-			if (CastSkill == SkillName.Magery || CastSkill == SkillName.Necromancy || CastSkill == SkillName.Mysticism ||
-                (CastSkill == SkillName.Chivalry && (m_Caster.Skills[SkillName.Magery].Value >= 70.0 || m_Caster.Skills[SkillName.Mysticism].Value >= 70.0)))
+			if (CastSkill == SkillName.Arcanismo || CastSkill == SkillName.Necromancia || CastSkill == SkillName.Misticismo ||
+                (CastSkill == SkillName.Ordem && (m_Caster.Skills[SkillName.Arcanismo].Value >= 70.0 || m_Caster.Skills[SkillName.Misticismo].Value >= 70.0)))
 			{
 				fcMax = 2;
 			}

@@ -76,7 +76,7 @@ namespace Server.Engines.Quests
         public KnowThineEnemyQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Anatomy, 50, "Old Haven Training", 1077686, 1077687));
+            this.AddObjective(new ApprenticeObjective(SkillName.Anatomia, 50, "Old Haven Training", 1077686, 1077687));
 			
             // 1077686 You feel very willing to learn more about the body. Your ability to hone your Anatomy skill is enhanced in this area.
             // 1077687 You lose your ambition to learn about the body. Your Anatomy skill learning potential is no longer enhanced.
@@ -95,7 +95,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Anatomy.Base < 50;
+                return this.Owner.Skills.Anatomia.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -136,12 +136,12 @@ namespace Server.Engines.Quests
         public AndreasVesalius()
             : base("Andreas Vesalius", "The Anatomy Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public AndreasVesalius(Serial serial)

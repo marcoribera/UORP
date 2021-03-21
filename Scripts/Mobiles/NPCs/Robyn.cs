@@ -73,7 +73,7 @@ namespace Server.Engines.Quests
         public SwiftAsAnArrowQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Archery, 50, "Old Haven Training", 1078203, 1078204));
+            this.AddObjective(new ApprenticeObjective(SkillName.Atirar, 50, "Old Haven Training", 1078203, 1078204));
 			
             // 1078203 You feel more steady and dexterous here. Your Archery skill is enhanced in this area.
             // 1078204 You feel less steady and dexterous here. Your Archery learning potential is no longer enhanced.
@@ -92,7 +92,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Archery.Base < 50;
+                return this.Owner.Skills.Atirar.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -138,13 +138,13 @@ namespace Server.Engines.Quests
         public Robyn()
             : base("Robyn", "The Archer Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Fletching, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Archery, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Carpintaria, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Atirar, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public Robyn(Serial serial)

@@ -65,7 +65,7 @@ namespace Server.Spells.Sixth
                 int itemID = eastToWest ? 0x3967 : 0x3979;
 
                 Point3D pnt = new Point3D(p);
-                TimeSpan duration = TimeSpan.FromSeconds(3.0 + (Caster.Skills[SkillName.Magery].Value / 3.0));
+                TimeSpan duration = TimeSpan.FromSeconds(3.0 + (Caster.Skills[SkillName.Arcanismo].Value / 3.0));
 
                 if (SpellHelper.CheckField(pnt, Caster.Map))
                     new InternalItem(itemID, pnt, Caster, Caster.Map, duration);
@@ -185,7 +185,7 @@ namespace Server.Spells.Sixth
 
                     if (Core.AOS)
                     {
-                        duration = 2.0 + ((int)(m_Caster.Skills[SkillName.EvalInt].Value / 10) - (int)(m.Skills[SkillName.MagicResist].Value / 10));
+                        duration = 2.0 + ((int)(m_Caster.Skills[SkillName.PoderMagico].Value / 10) - (int)(m.Skills[SkillName.ResistenciaMagica].Value / 10));
 
                         if (!m.Player)
                             duration *= 3.0;
@@ -195,7 +195,7 @@ namespace Server.Spells.Sixth
                     }
                     else
                     {
-                        duration = 7.0 + (m_Caster.Skills[SkillName.Magery].Value * 0.2);
+                        duration = 7.0 + (m_Caster.Skills[SkillName.Arcanismo].Value * 0.2);
                     }
 
                     m.Paralyze(TimeSpan.FromSeconds(duration));

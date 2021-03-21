@@ -32,11 +32,11 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Physical, 40 );
 			SetDamageType( ResistanceType.Fire, 60 );
 			
-			SetSkill( SkillName.Wrestling, 60, 77 );
-            SetSkill(SkillName.MagicResist, 90, 105);
-            SetSkill(SkillName.Tactics, 50, 70);
-            SetSkill(SkillName.Magery, 90, 100);
-            SetSkill(SkillName.EvalInt, 90, 100);
+			SetSkill( SkillName.Briga, 60, 77 );
+            SetSkill(SkillName.ResistenciaMagica, 90, 105);
+            SetSkill(SkillName.Anatomia, 50, 70);
+            SetSkill(SkillName.Arcanismo, 90, 100);
+            SetSkill(SkillName.PoderMagico, 90, 100);
 			
 			PackGold(500, 700);
 			

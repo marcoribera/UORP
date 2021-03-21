@@ -122,7 +122,7 @@ namespace Server.Items
 
             attacker.FixedParticles(0x37C4, 1, 16, 0x251D, 0x39D, 0x3, EffectLayer.RightHand);
 
-            int parry = (int)attacker.Skills[SkillName.Parry].Value;
+            int parry = (int)attacker.Skills[SkillName.Bloqueio].Value;
 
             bool creature = attacker is BaseCreature;
             double skill = creature ? attacker.Skills[SkillName.Bushido].Value :

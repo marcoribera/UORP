@@ -92,7 +92,7 @@ namespace Server.Items
                 item.Delete();
                 return false;
             }
-            if (from.Skills.Carpentry.Value < skill && from.Skills.Lumberjacking.Value < skill)
+            if (from.Skills.Carpintaria.Value < skill && from.Skills.Extracao.Value < skill)
             {
                 item.Delete();
                 from.SendLocalizedMessage(1072652); // You cannot work this strange and unusual wood.

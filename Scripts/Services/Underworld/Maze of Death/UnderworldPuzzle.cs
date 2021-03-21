@@ -515,7 +515,7 @@ namespace Server.Items
             AddHtmlLocalized(65, 295, 130, 16, 1150180, false, false); // Command Functions: 
             AddLabel(200, 295, 0, String.Format("{0}/{1}", m_Item.Attempts, m_Solution.MaxAttempts));
 			
-			if(from.Skills[SkillName.Lockpicking].Base >= 100.0)
+			if(from.Skills[SkillName.Mecanica].Base >= 100.0)
 			{
 				int locked = m_Solution.GetMatches(m_CurrentSolution);
                 AddHtmlLocalized(65, 310, 120, 16, 1150179, false, false); // Crystals Locked  : 

@@ -23,7 +23,7 @@ namespace Server.Spells.SkillMasteries
         public override int RequiredMana { get { return 10; } }
 
         public override SkillName CastSkill { get { return SkillName.Ninjitsu; } }
-        public override SkillName DamageSkill { get { return SkillName.Stealth; } }
+        public override SkillName DamageSkill { get { return SkillName.Furtividade; } }
 
         public override bool BlockedByAnimalForm { get { return false; } }
         public override bool BlocksMovement { get { return false; } }
@@ -144,7 +144,7 @@ namespace Server.Spells.SkillMasteries
                 AnimalForm.AddContext(Caster, new AnimalFormContext(timer, null, true, typeof(WildWhiteTiger), null));
                 Caster.CheckStatTimers();
 
-                int bleedMod = (int)(((Caster.Skills[SkillName.Ninjitsu].Value + Caster.Skills[SkillName.Stealth].Value + (GetMasteryLevel() * 40)) / 3) / 10);
+                int bleedMod = (int)(((Caster.Skills[SkillName.Ninjitsu].Value + Caster.Skills[SkillName.Furtividade].Value + (GetMasteryLevel() * 40)) / 3) / 10);
                 BuffInfo.AddBuff(Caster, new BuffInfo(BuffIcon.WhiteTigerForm, 1155911, 1156060, String.Format("{0}\t{1}\t{2}\t{3}", "20", "5", "", bleedMod.ToString()))); 
                 // +~1_ARG~ Defense Chance Increase.<br>+~2_ARG~ Max Defense Chance Increase Cap.<br> Chance to evade attacks.<br>Applies bleed to victim with a max damage of ~4_ARG~.
 
@@ -167,7 +167,7 @@ namespace Server.Spells.SkillMasteries
             AnimalFormContext context = AnimalForm.GetContext(m);
 
             if (context != null && context.Type == typeof(WildWhiteTiger))
-                return (int)(((m.Skills[SkillName.Ninjitsu].Value + m.Skills[SkillName.Stealth].Value + (MasteryInfo.GetMasteryLevel(m, SkillName.Ninjitsu) * 40)) / 3) / 10) / 2;
+                return (int)(((m.Skills[SkillName.Ninjitsu].Value + m.Skills[SkillName.Furtividade].Value + (MasteryInfo.GetMasteryLevel(m, SkillName.Ninjitsu) * 40)) / 3) / 10) / 2;
 
             return 0;
         }
@@ -197,7 +197,7 @@ namespace Server.Spells.SkillMasteries
             if (!HasBleedMod(attacker, out damage) || (_Table != null && _Table.ContainsKey(attacker)))
                 return;
 
-            double bleedchance = (double)((attacker.Skills.Ninjitsu.Value + attacker.Skills.Stealth.Value + (MasteryInfo.GetMasteryLevel(attacker, SkillName.Ninjitsu) * 40)) / 3.0) / 15.0;
+            double bleedchance = (double)((attacker.Skills.Ninjitsu.Value + attacker.Skills.Furtividade.Value + (MasteryInfo.GetMasteryLevel(attacker, SkillName.Ninjitsu) * 40)) / 3.0) / 15.0;
 
             if (bleedchance > Utility.RandomDouble())
             {

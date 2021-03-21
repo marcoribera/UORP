@@ -20,7 +20,7 @@ namespace Server.Spells.SkillMasteries
         public override bool RevealOnCast { get { return false; } }
 
         public override SkillName CastSkill { get { return SkillName.Ninjitsu; } }
-        public override SkillName DamageSkill { get { return SkillName.Stealth; } }
+        public override SkillName DamageSkill { get { return SkillName.Furtividade; } }
 
         public ShadowSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

@@ -847,6 +847,7 @@
     <Compile Include="Mobiles\Normal\Triton.cs" />
     <Compile Include="Mobiles\Normal\Eowmu.cs" />
     <Compile Include="Mobiles\NPCs\Gardener.cs" />
+    <Compile Include="Mobiles\NPCs\GypsyFortuneTeller.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\BaseProperty.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\Gumps.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\Mannequin.cs" />

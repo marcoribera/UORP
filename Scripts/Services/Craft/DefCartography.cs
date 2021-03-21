@@ -31,7 +31,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Cartography;
+                return SkillName.Erudicao;
             }
         }
         public override int GumpTitleNumber

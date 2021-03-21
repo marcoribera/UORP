@@ -28,12 +28,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 51, 60);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.EvalInt, 90.3, 99.8);
-            SetSkill(SkillName.Magery, 100.1, 100.6); // 10.1-10.6 on OSI, bug?
-            SetSkill(SkillName.Meditation, 90.1, 110.0);
-            SetSkill(SkillName.MagicResist, 112.2, 127.2);
-            SetSkill(SkillName.Tactics, 91.2, 92.8);
-            SetSkill(SkillName.Wrestling, 80.2, 86.4);
+            SetSkill(SkillName.PoderMagico, 90.3, 99.8);
+            SetSkill(SkillName.Arcanismo, 100.1, 100.6); // 10.1-10.6 on OSI, bug?
+            SetSkill(SkillName.ResistenciaMagica, 112.2, 127.2);
+            SetSkill(SkillName.Anatomia, 91.2, 92.8);
+            SetSkill(SkillName.Briga, 80.2, 86.4);
 
             Fame = 24000;
             Karma = -24000;

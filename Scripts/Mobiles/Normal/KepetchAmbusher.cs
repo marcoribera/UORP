@@ -35,12 +35,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 70, 95);
 
-            SetSkill(SkillName.Anatomy, 104.3, 114.1);
-            SetSkill(SkillName.MagicResist, 94.6, 97.4);
-            SetSkill(SkillName.Tactics, 110.4, 123.5);
-            SetSkill(SkillName.Wrestling, 107.3, 113.9);
-            SetSkill(SkillName.Stealth, 125.0);
-            SetSkill(SkillName.Hiding, 125.0);
+            SetSkill(SkillName.Anatomia, 104.3, 114.1);
+            SetSkill(SkillName.ResistenciaMagica, 94.6, 97.4);
+            SetSkill(SkillName.Anatomia, 110.4, 123.5);
+            SetSkill(SkillName.Briga, 107.3, 113.9);
+            SetSkill(SkillName.Furtividade, 125.0);
+            SetSkill(SkillName.Furtividade, 125.0);
 
             Fame = 2500;
             Karma = -2500;
@@ -191,7 +191,7 @@ namespace Server.Mobiles
                 this.PlaySound(0x22F);
                 this.Hidden = true;
 
-                this.UseSkill(SkillName.Stealth);
+                this.UseSkill(SkillName.Furtividade);
             }
         }
 

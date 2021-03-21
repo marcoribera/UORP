@@ -509,7 +509,7 @@ namespace Server.Items
             LootType = LootType.Regular;
             Hue = 0x530;
 
-            SkillBonuses.SetValues(0, SkillName.Magery, 15.0);
+            SkillBonuses.SetValues(0, SkillName.Arcanismo, 15.0);
             Attributes.BonusInt = 8;
             Attributes.LowerManaCost = 15;
             Attributes.SpellDamage = 15;

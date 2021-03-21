@@ -42,7 +42,7 @@ namespace Server.Gumps
 
             if (Category != SkillCat.None)
             {
-                if (Skill != SkillName.Alchemy)
+                if (Skill != SkillName.Alquimia)
                 {
                     BuildSkillPage();
 
@@ -122,7 +122,7 @@ namespace Server.Gumps
         {
             AddHtmlLocalized(0, 15, 175, 20, CenterLoc, String.Format("#{0}", SkillInfo.Table[(int)Skill].Localization), 0, false, false);
 
-            if (Skill == SkillName.Alchemy || Book == null || Book.Deleted || Book.ValueInfo == null)
+            if (Skill == SkillName.Alquimia || Book == null || Book.Deleted || Book.ValueInfo == null)
                 return;
 
             int x = 40;
@@ -159,14 +159,14 @@ namespace Server.Gumps
         {
             if (info.ButtonID == 1)
             {
-                Skill = SkillName.Alchemy;
+                Skill = SkillName.Alquimia;
 
                 Refresh();
             }
             else if (info.ButtonID == 2)
             {
                 Category = SkillCat.None;
-                Skill = SkillName.Alchemy;
+                Skill = SkillName.Alquimia;
 
                 Refresh();
             }

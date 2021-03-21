@@ -8,9 +8,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Jusae()
             : base("Jusae", "the bowcrafter")
-        { 
-            SetSkill(SkillName.Meditation, 60.0, 83.0);
-            SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Jusae(Serial serial)

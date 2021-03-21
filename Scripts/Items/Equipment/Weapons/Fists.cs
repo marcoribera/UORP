@@ -112,7 +112,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Wrestling;
+                return SkillName.Briga;
             }
         }
         public override WeaponType DefType
@@ -145,9 +145,9 @@ namespace Server.Items
 
         public override double GetDefendSkillValue(Mobile attacker, Mobile defender)
         {
-            double wresValue = defender.Skills[SkillName.Wrestling].Value;
-            double anatValue = defender.Skills[SkillName.Anatomy].Value;
-            double evalValue = defender.Skills[SkillName.EvalInt].Value;
+            double wresValue = defender.Skills[SkillName.Briga].Value;
+            double anatValue = defender.Skills[SkillName.Anatomia].Value;
+            double evalValue = defender.Skills[SkillName.PoderMagico].Value;
             double incrValue = (anatValue + evalValue + 20.0) * 0.5;
 
             if (incrValue > 120.0)
@@ -165,13 +165,13 @@ namespace Server.Items
             {
                 if (attacker.CanBeginAction(typeof(Fists)))
                 {
-                    if (attacker.Skills[SkillName.Anatomy].Value >= 80.0 && attacker.Skills[SkillName.Wrestling].Value >= 80.0)
+                    if (attacker.Skills[SkillName.Anatomia].Value >= 80.0 && attacker.Skills[SkillName.Briga].Value >= 80.0)
                     {
                         if (attacker.Stam >= 15)
                         {
                             attacker.Stam -= 15;
 
-                            if (CheckMove(attacker, SkillName.Anatomy))
+                            if (CheckMove(attacker, SkillName.Anatomia))
                             {
                                 StartMoveDelay(attacker);
 
@@ -206,7 +206,7 @@ namespace Server.Items
                 {
                     if (defender.Player || defender.Body.IsHuman)
                     {
-                        if (attacker.Skills[SkillName.ArmsLore].Value >= 80.0 && attacker.Skills[SkillName.Wrestling].Value >= 80.0)
+                        if (attacker.Skills[SkillName.ConhecimentoArmas].Value >= 80.0 && attacker.Skills[SkillName.Briga].Value >= 80.0)
                         {
                             if (attacker.Stam >= 15)
                             {
@@ -221,7 +221,7 @@ namespace Server.Items
                                 {
                                     attacker.SendLocalizedMessage(1004001); // You cannot disarm your opponent.
                                 }
-                                else if (CheckMove(attacker, SkillName.ArmsLore))
+                                else if (CheckMove(attacker, SkillName.ConhecimentoArmas))
                                 {
                                     StartMoveDelay(attacker);
 
@@ -296,7 +296,7 @@ namespace Server.Items
 
         private static bool CheckMove(Mobile m, SkillName other)
         {
-            double wresValue = m.Skills[SkillName.Wrestling].Value;
+            double wresValue = m.Skills[SkillName.Briga].Value;
             double scndValue = m.Skills[other].Value;
 
             /* 40% chance at 80, 80
@@ -326,8 +326,8 @@ namespace Server.Items
 
             Mobile m = e.Mobile;
 
-            double armsValue = m.Skills[SkillName.ArmsLore].Value;
-            double wresValue = m.Skills[SkillName.Wrestling].Value;
+            double armsValue = m.Skills[SkillName.ConhecimentoArmas].Value;
+            double wresValue = m.Skills[SkillName.Briga].Value;
 
             if (!HasFreeHands(m))
             {
@@ -354,8 +354,8 @@ namespace Server.Items
 
             Mobile m = e.Mobile;
 
-            double anatValue = m.Skills[SkillName.Anatomy].Value;
-            double wresValue = m.Skills[SkillName.Wrestling].Value;
+            double anatValue = m.Skills[SkillName.Anatomia].Value;
+            double wresValue = m.Skills[SkillName.Briga].Value;
 
             if (!HasFreeHands(m))
             {

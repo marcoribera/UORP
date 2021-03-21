@@ -351,7 +351,7 @@ namespace Server.Items
 
                 ShowNext = false;
 
-                if (User.Skills[SkillName.Lockpicking].Base >= 100)
+                if (User.Skills[SkillName.Mecanica].Base >= 100)
                 {
                     AddHtmlLocalized(410, 415, 150, 32, 1156492, false, false); // Attempt to pick the enclosure lock
                     AddButton(370, 415, 4005, 4005, 5, GumpButtonType.Reply, 0);

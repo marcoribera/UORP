@@ -135,12 +135,12 @@ namespace Server.Engines.Craft
                 }
                 else
                 {
-                    SkillLock sl = mob.Skills[SkillName.Tinkering].Lock;
-                    mob.Skills[SkillName.Tinkering].SetLockNoRelay(SkillLock.Locked);
+                    SkillLock sl = mob.Skills[SkillName.Mecanica].Lock;
+                    mob.Skills[SkillName.Mecanica].SetLockNoRelay(SkillLock.Locked);
 
                     bool check = mob.CheckSkill(skill, difficulty - 25.0, difficulty + 25.0);
 
-                    mob.Skills[SkillName.Tinkering].SetLockNoRelay(sl);
+                    mob.Skills[SkillName.Mecanica].SetLockNoRelay(sl);
 
                     return check;
                 }
@@ -247,7 +247,7 @@ namespace Server.Engines.Craft
                             {
                                 toWeaken = 1;
                             }
-                            else if (skill != SkillName.Tailoring)
+                            else if (skill != SkillName.Costura)
                             {
                                 double skillLevel = value;
 
@@ -318,7 +318,7 @@ namespace Server.Engines.Craft
                             {
                                 toWeaken = 1;
                             }
-                            else if (skill != SkillName.Tailoring)
+                            else if (skill != SkillName.Costura)
                             {
                                 double skillLevel = value;
 
@@ -385,7 +385,7 @@ namespace Server.Engines.Craft
                             {
                                 toWeaken = 1;
                             }
-                            else if (skill != SkillName.Tailoring)
+                            else if (skill != SkillName.Costura)
                             {
                                 double skillLevel = value;
 
@@ -452,7 +452,7 @@ namespace Server.Engines.Craft
                             {
                                 toWeaken = 1;
                             }
-                            else if (skill != SkillName.Tailoring)
+                            else if (skill != SkillName.Costura)
                             {
                                 double skillLevel = value;
 
@@ -519,7 +519,7 @@ namespace Server.Engines.Craft
                             {
                                 toWeaken = 1;
                             }
-                            else if (skill != SkillName.Tailoring)
+                            else if (skill != SkillName.Costura)
                             {
                                 double skillLevel = value;
 
@@ -684,7 +684,7 @@ namespace Server.Engines.Craft
                     }
                     else
                     {
-                        value = from.Skills[SkillName.Tinkering].Value;
+                        value = from.Skills[SkillName.Mecanica].Value;
                     }
 
                     double skillValue = value;
@@ -714,13 +714,13 @@ namespace Server.Engines.Craft
                         if (damage > (int)(skillValue * 0.6))
                             damage = (int)(skillValue * 0.6);
 
-                        SkillLock sl = from.Skills[SkillName.Tinkering].Lock;
-                        from.Skills[SkillName.Tinkering].SetLockNoRelay(SkillLock.Locked);
+                        SkillLock sl = from.Skills[SkillName.Mecanica].Lock;
+                        from.Skills[SkillName.Mecanica].SetLockNoRelay(SkillLock.Locked);
 
-                        if (!from.CheckSkill(SkillName.Tinkering, 0.0, 100.0))
+                        if (!from.CheckSkill(SkillName.Mecanica, 0.0, 100.0))
                             damage /= 6;
 
-                        from.Skills[SkillName.Tinkering].SetLockNoRelay(sl);
+                        from.Skills[SkillName.Mecanica].SetLockNoRelay(sl);
 
                         Container pack = from.Backpack;
 

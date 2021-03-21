@@ -115,7 +115,7 @@ namespace Server.Spells.Necromancy
 
             double ss = GetDamageSkill(Caster);
             double mr = GetResistSkill(m);
-            m.CheckSkill(SkillName.MagicResist, 0.0, m.Skills[SkillName.MagicResist].Cap);	//Skill check for gain
+            m.CheckSkill(SkillName.ResistenciaMagica, 0.0, m.Skills[SkillName.ResistenciaMagica].Cap);	//Skill check for gain
 
             TimeSpan duration = TimeSpan.FromSeconds((((ss - mr) / 2.5) + 40.0) * strength);
 

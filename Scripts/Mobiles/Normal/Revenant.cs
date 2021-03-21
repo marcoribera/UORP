@@ -19,7 +19,7 @@ namespace Server.Mobiles
 			Body = 400;
 			Hue = 1;
 
-			double scalar = caster.Skills[SkillName.SpiritSpeak].Value * 0.01;
+			double scalar = caster.Skills[SkillName.PoderMagico].Value * 0.01;
 
 			m_Target = target;
 			m_ExpireTime = DateTime.UtcNow + duration;
@@ -33,10 +33,10 @@ namespace Server.Mobiles
 			// Bestiary says 50 phys 50 cold, animal lore says differently
 			SetDamageType(ResistanceType.Physical, 100);
 
-			SetSkill(SkillName.MagicResist, 100.0 * scalar); // magic resist is absolute value of spiritspeak
-			SetSkill(SkillName.Tactics, 100.0); // always 100
-			SetSkill(SkillName.Swords, 100.0 * scalar); // not displayed in animal lore but tests clearly show this is influenced
-			SetSkill(SkillName.DetectHidden, 75.0 * scalar);
+			SetSkill(SkillName.ResistenciaMagica, 100.0 * scalar); // magic resist is absolute value of spiritspeak
+			SetSkill(SkillName.Anatomia, 100.0); // always 100
+			SetSkill(SkillName.Cortante, 100.0 * scalar); // not displayed in animal lore but tests clearly show this is influenced
+			SetSkill(SkillName.Percepcao, 75.0 * scalar);
 
 			scalar /= 1.2;
 
@@ -134,7 +134,7 @@ namespace Server.Mobiles
 				PlaySound(0x37D);
 			}
 
-			if (m_Target.Hidden && InRange(m_Target, 3) && Core.TickCount >= NextSkillTime && UseSkill(SkillName.DetectHidden))
+			if (m_Target.Hidden && InRange(m_Target, 3) && Core.TickCount >= NextSkillTime && UseSkill(SkillName.Percepcao))
 			{
 				Target targ = Target;
 

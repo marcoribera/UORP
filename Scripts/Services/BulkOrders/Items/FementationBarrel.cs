@@ -95,7 +95,7 @@ namespace Server.Items
                 {
                     _Fermented = true;
 
-                    int skill = (int)((from.Skills[SkillName.Cooking].Value + from.Skills[SkillName.Alchemy].Value) / 2);
+                    int skill = (int)((from.Skills[SkillName.Culinaria].Value + from.Skills[SkillName.Alquimia].Value) / 2);
 
                     skill *= _BacterialResistance / 4;
 

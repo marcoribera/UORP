@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Butcher()
             : base("the butcher")
         { 
-            this.SetSkill(SkillName.Anatomy, 45.0, 68.0);
+            this.SetSkill(SkillName.Anatomia, 45.0, 68.0);
         }
 
         public Butcher(Serial serial)

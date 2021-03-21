@@ -7,37 +7,36 @@ namespace Server.Items
     {
         private static readonly SkillName[] m_Skills = new SkillName[]
         {
-            SkillName.Blacksmith,
-            SkillName.Tailoring,
-            SkillName.Swords,
-            SkillName.Fencing,
-            SkillName.Macing,
-            SkillName.Archery,
-            SkillName.Wrestling,
-            SkillName.Parry,
-            SkillName.Tactics,
-            SkillName.Anatomy,
-            SkillName.Healing,
-            SkillName.Magery,
-            SkillName.Meditation,
-            SkillName.EvalInt,
-            SkillName.MagicResist,
-            SkillName.AnimalTaming,
-            SkillName.AnimalLore,
-            SkillName.Veterinary,
-            SkillName.Musicianship,
-            SkillName.Provocation,
-            SkillName.Discordance,
-            SkillName.Peacemaking
+            SkillName.Ferraria,
+            SkillName.Costura,
+            SkillName.Cortante,
+            SkillName.Perfurante,
+            SkillName.Contusivo,
+            SkillName.Atirar,
+            SkillName.Briga,
+            SkillName.Bloqueio,
+            SkillName.Anatomia,
+            SkillName.Anatomia,
+            SkillName.Medicina,
+            SkillName.Arcanismo,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica,
+            SkillName.Adestramento,
+            SkillName.Adestramento,
+            SkillName.Veterinaria,
+            SkillName.Tocar,
+            SkillName.Provocacao,
+            SkillName.Caos,
+            SkillName.Pacificar
         };
         private static readonly SkillName[] m_AOSSkills = new SkillName[]
         {
-            SkillName.Chivalry,
-            SkillName.Focus,
-            SkillName.Necromancy,
-            SkillName.Stealing,
-            SkillName.Stealth,
-            SkillName.SpiritSpeak
+            SkillName.Ordem,
+            SkillName.PreparoFisico,
+            SkillName.Necromancia,
+            SkillName.Prestidigitacao,
+            SkillName.Furtividade,
+            SkillName.PoderMagico
         };
         private static readonly SkillName[] m_SESkills = new SkillName[]
         {
@@ -46,24 +45,24 @@ namespace Server.Items
         };
         private static readonly SkillName[] m_MLSkills = new SkillName[]
         {
-            SkillName.Spellweaving
+            SkillName.Feiticaria
         };
         
         private static SkillName[] m_SASkills = new SkillName[]
         {
-        SkillName.Throwing,
-        SkillName.Mysticism,
-        SkillName.Imbuing
+        SkillName.Atirar,
+        SkillName.Misticismo,
+        SkillName.ImbuirMagica
         };
         /*
         private static SkillName[] m_HSSkills = new SkillName[]
         {
-        SkillName.Fishing
+        SkillName.Sobrevivencia
         };
         */
         private static readonly List<SkillName> _Skills = new List<SkillName>();
         public PowerScroll()
-            : this(SkillName.Alchemy, 0.0)
+            : this(SkillName.Alquimia, 0.0)
         {
         }
 
@@ -73,7 +72,7 @@ namespace Server.Items
         {
             this.Hue = 0x481;
 
-            if (this.Value == 105.0 || skill == Server.SkillName.Blacksmith || skill == Server.SkillName.Tailoring)
+            if (this.Value == 105.0 || skill == Server.SkillName.Ferraria || skill == Server.SkillName.Costura)
                 this.LootType = LootType.Regular;
         }
 
@@ -165,7 +164,7 @@ namespace Server.Items
             {
                 skillName = Skills[Utility.Random(Skills.Count)];
             }
-            while (skillName == SkillName.Blacksmith || skillName == SkillName.Tailoring  || skillName == SkillName.Imbuing);
+            while (skillName == SkillName.Ferraria || skillName == SkillName.Costura  || skillName == SkillName.ImbuirMagica);
 
             return new PowerScroll(skillName, 100 + (Utility.RandomMinMax(min, max) * 5));
         }
@@ -246,7 +245,7 @@ namespace Server.Items
 
             int version = (this.InheritsItem ? 0 : reader.ReadInt()); // Required for SpecialScroll insertion
 
-            if (this.Value == 105.0 || this.Skill == SkillName.Blacksmith || this.Skill == SkillName.Tailoring)
+            if (this.Value == 105.0 || this.Skill == SkillName.Ferraria || this.Skill == SkillName.Costura)
             {
                 this.LootType = LootType.Regular;
             }

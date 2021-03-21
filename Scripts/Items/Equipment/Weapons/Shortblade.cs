@@ -127,7 +127,7 @@ namespace Server.Items
         {
             get
             {
-                return SkillName.Fencing;
+                return SkillName.Perfurante;
             }
         }
         public override WeaponType DefType

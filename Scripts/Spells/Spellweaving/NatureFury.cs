@@ -75,7 +75,7 @@ namespace Server.Spells.Spellweaving
             }
             else if (SpellHelper.CheckTown(p, this.Caster) && this.CheckSequence())
             {
-                TimeSpan duration = TimeSpan.FromSeconds(this.Caster.Skills.Spellweaving.Value / 24 + 25 + this.FocusLevel * 2);
+                TimeSpan duration = TimeSpan.FromSeconds(this.Caster.Skills.Feiticaria.Value / 24 + 25 + this.FocusLevel * 2);
 
                 NatureFury nf = new NatureFury();
                 BaseCreature.Summon(nf, false, this.Caster, p, 0x5CB, duration);

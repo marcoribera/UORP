@@ -31,10 +31,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 45, 55);
             SetResistance(ResistanceType.Energy, 45, 55);
 
-            SetSkill(SkillName.MagicResist, 85.0, 100.0);
-            SetSkill(SkillName.Tactics, 100.0, 110.0);
-            SetSkill(SkillName.Wrestling, 100.0, 120.0);
-            SetSkill(SkillName.Anatomy, 75.0, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 85.0, 100.0);
+            SetSkill(SkillName.Anatomia, 100.0, 110.0);
+            SetSkill(SkillName.Briga, 100.0, 120.0);
+            SetSkill(SkillName.Anatomia, 75.0, 80.0);
 
             SetWeaponAbility(WeaponAbility.ParalyzingBlow);
             SetWeaponAbility(WeaponAbility.BleedAttack);

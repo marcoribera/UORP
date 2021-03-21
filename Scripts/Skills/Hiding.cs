@@ -67,12 +67,12 @@ namespace Server.SkillHandlers
                     bonus = 50.0;
             }
 
-            //int range = 18 - (int)(m.Skills[SkillName.Hiding].Value / 10);
-            int skill = Math.Min(100, (int)m.Skills[SkillName.Hiding].Value);
+            //int range = 18 - (int)(m.Skills[SkillName.Furtividade].Value / 10);
+            int skill = Math.Min(100, (int)m.Skills[SkillName.Furtividade].Value);
             int range = Math.Min((int)((100 - skill) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
 
             bool badCombat = (!m_CombatOverride && m.Combatant is Mobile && m.InRange(m.Combatant.Location, range) && ((Mobile)m.Combatant).InLOS(m.Combatant));
-            bool ok = (!badCombat /*&& m.CheckSkill( SkillName.Hiding, 0.0 - bonus, 100.0 - bonus )*/);
+            bool ok = (!badCombat /*&& m.CheckSkill( SkillName.Furtividade, 0.0 - bonus, 100.0 - bonus )*/);
 
             if (ok)
             {
@@ -93,7 +93,7 @@ namespace Server.SkillHandlers
                     eable.Free();
                 }
 
-                ok = (!badCombat && m.CheckSkill(SkillName.Hiding, 0.0 - bonus, 100.0 - bonus));
+                ok = (!badCombat && m.CheckSkill(SkillName.Furtividade, 0.0 - bonus, 100.0 - bonus));
             }
 
             if (badCombat)

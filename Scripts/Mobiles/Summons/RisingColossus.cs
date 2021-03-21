@@ -37,15 +37,15 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 65, 70);
 
-            SetSkill(SkillName.MagicResist, skillvalue);
-            SetSkill(SkillName.Tactics, skillvalue);
-            SetSkill(SkillName.Wrestling, skillvalue);
-            SetSkill(SkillName.Anatomy, skillvalue);
-            SetSkill(SkillName.Mysticism, skillvalue);
-            SetSkill(SkillName.DetectHidden, 70.0);
-            SetSkill(SkillName.EvalInt, skillvalue);
-            SetSkill(SkillName.Mysticism, m.Skills[SkillName.Mysticism].Value);
-            SetSkill(SkillName.Focus, m.Skills[SkillName.Focus].Value);
+            SetSkill(SkillName.ResistenciaMagica, skillvalue);
+            SetSkill(SkillName.Anatomia, skillvalue);
+            SetSkill(SkillName.Briga, skillvalue);
+            SetSkill(SkillName.Anatomia, skillvalue);
+            SetSkill(SkillName.Misticismo, skillvalue);
+            SetSkill(SkillName.Percepcao, 70.0);
+            SetSkill(SkillName.PoderMagico, skillvalue);
+            SetSkill(SkillName.Misticismo, m.Skills[SkillName.Misticismo].Value);
+            SetSkill(SkillName.PreparoFisico, m.Skills[SkillName.PreparoFisico].Value);
 
             VirtualArmor = 58;
             ControlSlots = 5;
@@ -58,7 +58,7 @@ namespace Server.Mobiles
 
         public override double GetFightModeRanking(Mobile m, FightMode acqType, bool bPlayerOnly)
         {
-            return (m.Int + m.Skills[SkillName.Magery].Value) / Math.Max(GetDistanceToSqrt(m), 1.0);
+            return (m.Int + m.Skills[SkillName.Arcanismo].Value) / Math.Max(GetDistanceToSqrt(m), 1.0);
         }
 
         public override bool AlwaysMurderer

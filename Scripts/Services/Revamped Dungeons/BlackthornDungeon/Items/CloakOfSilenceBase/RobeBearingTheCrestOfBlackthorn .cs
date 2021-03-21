@@ -12,7 +12,7 @@ namespace Server.Items
             : base()
         {
             ReforgedSuffix = ReforgedSuffix.Blackthorn;
-            SkillBonuses.SetValues(0, SkillName.Stealth, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Furtividade, 10.0);
             Hue = 2130;
         }
 

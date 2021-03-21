@@ -42,7 +42,7 @@ namespace Server.Items
             {
                 if (Path == null || Path.Count == 0)
                 {
-                    var skill = m.Skills[SkillName.RemoveTrap].Base;
+                    var skill = m.Skills[SkillName.Mecanica].Base;
 
                     if (skill < 80.0)
                     {
@@ -84,7 +84,7 @@ namespace Server.Items
         {
             m.SendLocalizedMessage(1159009); // You successfully disarm the trap!
 
-            m.CheckTargetSkill(SkillName.RemoveTrap, this, 0, 100);
+            m.CheckTargetSkill(SkillName.Mecanica, this, 0, 100);
         }
 
         public override void OnDelete()

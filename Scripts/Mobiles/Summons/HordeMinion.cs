@@ -48,8 +48,8 @@ namespace Server.Mobiles
 			SetResistance(ResistanceType.Poison, 25, 30);
 			SetResistance(ResistanceType.Energy, 25, 30);
 
-			SetSkill(SkillName.Wrestling, 70.1, 75.0);
-			SetSkill(SkillName.Tactics, 50.0);
+			SetSkill(SkillName.Briga, 70.1, 75.0);
+			SetSkill(SkillName.Anatomia, 50.0);
 
 			ControlSlots = 1;
 

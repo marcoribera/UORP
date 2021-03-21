@@ -9,10 +9,10 @@ namespace Server.Mobiles
         public BlacksmithGuildmaster()
             : base("blacksmith")
         {
-            SetSkill(SkillName.ArmsLore, 65.0, 88.0);
-            SetSkill(SkillName.Blacksmith, 90.0, 100.0);
-            SetSkill(SkillName.Macing, 36.0, 68.0);
-            SetSkill(SkillName.Parry, 36.0, 68.0);
+            SetSkill(SkillName.ConhecimentoArmas, 65.0, 88.0);
+            SetSkill(SkillName.Ferraria, 90.0, 100.0);
+            SetSkill(SkillName.Contusivo, 36.0, 68.0);
+            SetSkill(SkillName.Bloqueio, 36.0, 68.0);
         }
 
         public BlacksmithGuildmaster(Serial serial)
@@ -79,7 +79,7 @@ namespace Server.Mobiles
 
             if (pm != null && pm.NextSmithBulkOrder == TimeSpan.Zero && (fromContextMenu || 0.2 > Utility.RandomDouble()))
             {
-                double theirSkill = pm.Skills[SkillName.Blacksmith].Base;
+                double theirSkill = pm.Skills[SkillName.Ferraria].Base;
 
                 if (theirSkill >= 70.1)
                     pm.NextSmithBulkOrder = TimeSpan.FromHours(6.0);
@@ -104,7 +104,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return (from is PlayerMobile && from.Skills[SkillName.Blacksmith].Base > 0);
+            return (from is PlayerMobile && from.Skills[SkillName.Ferraria].Base > 0);
         }
 
         public override TimeSpan GetNextBulkOrder(Mobile from)

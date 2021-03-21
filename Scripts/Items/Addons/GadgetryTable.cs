@@ -114,7 +114,7 @@ namespace Server.Engines.VeteranRewards
         {
             double scalar;
 
-            double skill = m.Skills[SkillName.Tinkering].Value;
+            double skill = m.Skills[SkillName.Mecanica].Value;
 
             if (skill >= 100.0)
                 scalar = 1.0;
@@ -340,11 +340,11 @@ namespace Server.Engines.VeteranRewards
             SetResistance(ResistanceType.Poison, 75, 85);
             SetResistance(ResistanceType.Energy, 30, 45);
 
-            SetSkill(SkillName.MagicResist, 190.0);
-            SetSkill(SkillName.Tactics, 100.0);
-            SetSkill(SkillName.Wrestling, 100.0);
-            SetSkill(SkillName.Parry, 100.0);
-            SetSkill(SkillName.DetectHidden, 48.4);
+            SetSkill(SkillName.ResistenciaMagica, 190.0);
+            SetSkill(SkillName.Anatomia, 100.0);
+            SetSkill(SkillName.Briga, 100.0);
+            SetSkill(SkillName.Bloqueio, 100.0);
+            SetSkill(SkillName.Percepcao, 48.4);
 
             SetDamage(13, 24);
 

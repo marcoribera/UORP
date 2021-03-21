@@ -34,10 +34,10 @@ namespace Server.Mobiles
 			SetResistance(ResistanceType.Poison, 14, 20);
 			SetResistance(ResistanceType.Energy, 11, 20);
 
-			SetSkill(SkillName.MagicResist, 90.7, 98.8);
-			SetSkill(SkillName.Tactics, 80.9, 86.3);
-			SetSkill(SkillName.Wrestling, 107.7, 119.5);
-			SetSkill(SkillName.Anatomy, 80.3, 88.2);
+			SetSkill(SkillName.ResistenciaMagica, 90.7, 98.8);
+			SetSkill(SkillName.Anatomia, 80.9, 86.3);
+			SetSkill(SkillName.Briga, 107.7, 119.5);
+			SetSkill(SkillName.Anatomia, 80.3, 88.2);
 
 			Fame = 1500;
 			Karma = -1500;
@@ -113,7 +113,7 @@ namespace Server.Mobiles
 
 			if (m != null)
 			{
-				if (Core.TickCount >= NextSkillTime && UseSkill(SkillName.DetectHidden))
+				if (Core.TickCount >= NextSkillTime && UseSkill(SkillName.Percepcao))
 				{
 					Target targ = Target;
 

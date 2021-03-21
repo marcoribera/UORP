@@ -177,7 +177,7 @@ namespace Server.Engines.Quests
                             break;
                     }
 
-                    ((PowerScroll)item).Skill = SkillName.Fishing;
+                    ((PowerScroll)item).Skill = SkillName.Sobrevivencia;
                     ((PowerScroll)item).Value = value;
                     from.SendLocalizedMessage(1149591); //
                 }
@@ -403,7 +403,7 @@ namespace Server.Engines.Quests
             if (from == null)
                 return 0;
 
-            double skill = from.Skills[SkillName.Fishing].Base;
+            double skill = from.Skills[SkillName.Sobrevivencia].Base;
 
             if (skill < 80.0)
                 return 11;

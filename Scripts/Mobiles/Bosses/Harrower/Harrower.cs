@@ -73,12 +73,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 80);
             SetResistance(ResistanceType.Energy, 60, 80);
 
-            SetSkill(SkillName.Wrestling, 90.1, 100.0);
-            SetSkill(SkillName.Tactics, 90.2, 110.0);
-            SetSkill(SkillName.MagicResist, 120.2, 160.0);
-            SetSkill(SkillName.Magery, 120.0);
-            SetSkill(SkillName.EvalInt, 120.0);
-            SetSkill(SkillName.Meditation, 120.0);
+            SetSkill(SkillName.Briga, 90.1, 100.0);
+            SetSkill(SkillName.Anatomia, 90.2, 110.0);
+            SetSkill(SkillName.ResistenciaMagica, 120.2, 160.0);
+            SetSkill(SkillName.Arcanismo, 120.0);
+            SetSkill(SkillName.PoderMagico, 120.0);
 
             m_Tentacles = new List<HarrowerTentacles>();
         }

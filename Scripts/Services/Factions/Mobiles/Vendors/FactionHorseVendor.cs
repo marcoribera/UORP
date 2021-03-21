@@ -11,9 +11,9 @@ namespace Server.Factions
         public FactionHorseVendor(Town town, Faction faction)
             : base(town, faction, "the Horse Breeder")
         {
-            this.SetSkill(SkillName.AnimalLore, 64.0, 100.0);
-            this.SetSkill(SkillName.AnimalTaming, 90.0, 100.0);
-            this.SetSkill(SkillName.Veterinary, 65.0, 88.0);	
+            this.SetSkill(SkillName.Adestramento, 64.0, 100.0);
+            this.SetSkill(SkillName.Adestramento, 90.0, 100.0);
+            this.SetSkill(SkillName.Veterinaria, 65.0, 88.0);	
         }
 
         public FactionHorseVendor(Serial serial)

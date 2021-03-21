@@ -17,7 +17,7 @@ namespace Server.Items
             this.SetAttributes.ReflectPhysical = 25;
             this.SetAttributes.NightSight = 1;
 			
-            this.SetSkillBonuses.SetValues(0, SkillName.Chivalry, 10);
+            this.SetSkillBonuses.SetValues(0, SkillName.Ordem, 10);
 			
             this.SetSelfRepair = 3;
 			

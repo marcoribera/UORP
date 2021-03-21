@@ -20,7 +20,7 @@ namespace Server.Mobiles
         {
             double scalar;
 
-            double skill = m.Skills[SkillName.Tinkering].Value;
+            double skill = m.Skills[SkillName.Mecanica].Value;
 
             if (skill >= 100.0)
                 scalar = 1.0;
@@ -60,9 +60,9 @@ namespace Server.Mobiles
                 SetResistance(ResistanceType.Fire, 50, 65);
                 SetResistance(ResistanceType.Poison, 75, 85);
 
-                SetSkill(SkillName.MagicResist, (150.1 * scalar), (190.0 * scalar));
-                SetSkill(SkillName.Tactics, (60.1 * scalar), (100.0 * scalar));
-                SetSkill(SkillName.Wrestling, (60.1 * scalar), (100.0 * scalar));
+                SetSkill(SkillName.ResistenciaMagica, (150.1 * scalar), (190.0 * scalar));
+                SetSkill(SkillName.Anatomia, (60.1 * scalar), (100.0 * scalar));
+                SetSkill(SkillName.Briga, (60.1 * scalar), (100.0 * scalar));
 
                 Fame = 10;
                 Karma = 10;
@@ -74,10 +74,10 @@ namespace Server.Mobiles
                 SetResistance(ResistanceType.Fire, 100);
                 SetResistance(ResistanceType.Poison, 10, 25);
 
-                SetSkill(SkillName.MagicResist, 60.0, 100.0);
-                SetSkill(SkillName.Tactics, 60.0, 100.0);
-                SetSkill(SkillName.Wrestling, 150.0, 190.0);
-                SetSkill(SkillName.DetectHidden, 45.0, 50.0);
+                SetSkill(SkillName.ResistenciaMagica, 60.0, 100.0);
+                SetSkill(SkillName.Anatomia, 60.0, 100.0);
+                SetSkill(SkillName.Briga, 150.0, 190.0);
+                SetSkill(SkillName.Percepcao, 45.0, 50.0);
 
                 Fame = 3500;
                 Karma = -3500;

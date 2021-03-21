@@ -1741,7 +1741,7 @@ namespace Server.Mobiles
                 var profile = PetTrainingHelper.GetAbilityProfile(creature);
 
                 if ((profile != null && profile.HasAbility(MagicalAbility.Poisoning)) || 0.2 > Utility.RandomDouble())
-                    creature.CheckSkill(SkillName.Poisoning, 0, creature.Skills[SkillName.Poisoning].Cap);
+                    creature.CheckSkill(SkillName.Envenenamento, 0, creature.Skills[SkillName.Envenenamento].Cap);
             }
 
             ColUtility.Free(list);
@@ -2477,7 +2477,7 @@ namespace Server.Mobiles
 
         public override void DoEffects(BaseCreature creature, Mobile target, ref int damage)
         {
-            int seconds = (int)Math.Max(1, (13.0 - (target.Skills[SkillName.MagicResist].Value / 10.0)));
+            int seconds = (int)Math.Max(1, (13.0 - (target.Skills[SkillName.ResistenciaMagica].Value / 10.0)));
 
             int number;
 

@@ -59,11 +59,11 @@ namespace Server.Mobiles
             this.PackItem(new Arrow(250));
             this.PackGold(250, 500);
 
-            this.Skills[SkillName.Anatomy].Base = 120.0; 
-            this.Skills[SkillName.Tactics].Base = 120.0; 
-            this.Skills[SkillName.Archery].Base = 120.0; 
-            this.Skills[SkillName.MagicResist].Base = 120.0; 
-            this.Skills[SkillName.DetectHidden].Base = 100.0; 
+            this.Skills[SkillName.Anatomia].Base = 120.0; 
+            this.Skills[SkillName.Anatomia].Base = 120.0; 
+            this.Skills[SkillName.Atirar].Base = 120.0; 
+            this.Skills[SkillName.ResistenciaMagica].Base = 120.0; 
+            this.Skills[SkillName.Percepcao].Base = 100.0; 
         }
 
         public Guardian(Serial serial)

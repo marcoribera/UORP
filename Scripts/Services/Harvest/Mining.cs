@@ -46,7 +46,7 @@ namespace Server.Engines.Harvest
             oreAndStone.MaxRespawn = TimeSpan.FromMinutes(20.0);
 
             // Skill checking is done on the Mining skill
-            oreAndStone.Skill = SkillName.Mining;
+            oreAndStone.Skill = SkillName.Extracao;
 
             // Set the list of harvestable tiles
             oreAndStone.Tiles = m_MountainAndCaveTiles;
@@ -140,7 +140,7 @@ namespace Server.Engines.Harvest
             sand.MaxRespawn = TimeSpan.FromMinutes(20.0);
 
             // Skill checking is done on the Mining skill
-            sand.Skill = SkillName.Mining;
+            sand.Skill = SkillName.Extracao;
 
             // Set the list of harvestable tiles
             sand.Tiles = m_SandTiles;
@@ -207,18 +207,18 @@ namespace Server.Engines.Harvest
 
                 if (tool is ImprovedRockHammer)
                 {
-                    if (from.Skills[SkillName.Mining].Base >= 100.0)
+                    if (from.Skills[SkillName.Extracao].Base >= 100.0)
                         return resource.Types[1];
                     else
                         return null;
                 }
 
-                if (pm != null && pm.GemMining && pm.ToggleMiningGem && from.Skills[SkillName.Mining].Base >= 100.0 && 0.1 > Utility.RandomDouble())
+                if (pm != null && pm.GemMining && pm.ToggleMiningGem && from.Skills[SkillName.Extracao].Base >= 100.0 && 0.1 > Utility.RandomDouble())
                     return Loot.GemTypes[Utility.Random(Loot.GemTypes.Length)];
 
                 double chance = tool is RockHammer ? 0.50 : 0.15;
 
-                if (pm != null && pm.StoneMining && (pm.ToggleMiningStone || pm.ToggleStoneOnly) && from.Skills[SkillName.Mining].Base >= 100.0 && chance > Utility.RandomDouble())
+                if (pm != null && pm.StoneMining && (pm.ToggleMiningStone || pm.ToggleStoneOnly) && from.Skills[SkillName.Extracao].Base >= 100.0 && chance > Utility.RandomDouble())
                     return resource.Types[1];
 
                 if (pm != null && pm.ToggleStoneOnly)
@@ -283,7 +283,7 @@ namespace Server.Engines.Harvest
             if (!base.CheckHarvest(from, tool, def, toHarvest))
                 return false;
 
-            if (def == Sand && !(from is PlayerMobile && from.Skills[SkillName.Mining].Base >= 100.0 && ((PlayerMobile)from).SandMining))
+            if (def == Sand && !(from is PlayerMobile && from.Skills[SkillName.Extracao].Base >= 100.0 && ((PlayerMobile)from).SandMining))
             {
                 OnBadHarvestTarget(from, tool, toHarvest);
                 return false;
@@ -404,7 +404,7 @@ namespace Server.Engines.Harvest
             if (boat || !NiterDeposit.HasBeenChecked(bank))
             {
                 int luck = from is PlayerMobile ? ((PlayerMobile)from).RealLuck : from.Luck;
-                double bonus = (from.Skills[SkillName.Mining].Value / 9999) + ((double)luck / 150000);
+                double bonus = (from.Skills[SkillName.Extracao].Value / 9999) + ((double)luck / 150000);
 
                 if (boat)
                     bonus -= bonus * .33;

@@ -12,7 +12,7 @@ namespace Server.Items
             Attributes.BonusDex = 8;
             Attributes.NightSight = 1;
             Attributes.AttackChance = 15;
-            SkillBonuses.Skill_1_Name = SkillName.Swords;
+            SkillBonuses.Skill_1_Name = SkillName.Cortante;
             SkillBonuses.Skill_1_Value = 20;
         }
 

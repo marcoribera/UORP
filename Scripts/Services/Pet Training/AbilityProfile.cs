@@ -256,7 +256,7 @@ namespace Server.Mobiles
                         double skill = Creature.Skills[(SkillName)req.Requirement].Base;
                         double toAdd = req.Cost == 100 ? 20 : 40;
 
-                        if ((SkillName)req.Requirement == SkillName.Hiding)
+                        if ((SkillName)req.Requirement == SkillName.Furtividade)
                             toAdd = 100;
 
                         if (skill < toAdd)
@@ -417,19 +417,19 @@ namespace Server.Mobiles
             switch (ability)
             {
                 case MagicalAbility.Piercing:
-                    Creature.Mastery = SkillName.Fencing;
+                    Creature.Mastery = SkillName.Perfurante;
                     break;
                 case MagicalAbility.Bashing:
-                    Creature.Mastery = SkillName.Macing;
+                    Creature.Mastery = SkillName.Contusivo;
                     break;
                 case MagicalAbility.Slashing:
-                    Creature.Mastery = SkillName.Swords;
+                    Creature.Mastery = SkillName.Cortante;
                     break;
                 case MagicalAbility.BattleDefense:
-                    Creature.Mastery = SkillName.Parry;
+                    Creature.Mastery = SkillName.Bloqueio;
                     break;
                 case MagicalAbility.WrestlingMastery:
-                    Creature.Mastery = SkillName.Wrestling;
+                    Creature.Mastery = SkillName.Briga;
                     break;
                 case MagicalAbility.Poisoning:
                     if(Creature.Controlled && Creature.AI != AIType.AI_Melee) 
@@ -507,7 +507,7 @@ namespace Server.Mobiles
             //SpecialAbilities = null;
             WeaponAbilities = null;
 
-            Creature.Mastery = SkillName.Alchemy; // default
+            Creature.Mastery = SkillName.Alquimia; // default
         }
 
         public bool HasCustomized()

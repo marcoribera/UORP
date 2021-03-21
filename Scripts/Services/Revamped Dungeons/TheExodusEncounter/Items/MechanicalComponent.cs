@@ -24,7 +24,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.Skills[SkillName.Tinkering].Value >= 80.0)
+            if (from.Skills[SkillName.Mecanica].Value >= 80.0)
             {
                 from.AddToBackpack(new ExoticToolkit());
                 this.Delete();

@@ -13,7 +13,7 @@ namespace Server.Spells.SkillMasteries
         public override int BaseMana { get { return 20; } }
         public override double RequiredSkill { get { return 90.0; } }
 
-        public override SkillName MoveSkill { get { return SkillName.Swords; } }
+        public override SkillName MoveSkill { get { return SkillName.Cortante; } }
         public override TextDefinition AbilityMessage { get { return new TextDefinition(1156007); } } // *You ready an onslaught!*
 
         public OnslaughtSpell()
@@ -81,7 +81,7 @@ namespace Server.Spells.SkillMasteries
 
                 ResistanceType resistType = (ResistanceType)type;
 
-                int amount = (int)((attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Tactics].Value) / 12);
+                int amount = (int)((attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Anatomia].Value) / 12);
                 int duration = (MasteryInfo.GetMasteryLevel(attacker, MoveSkill) * 2) + 1;
 
                 if (defender is PlayerMobile)

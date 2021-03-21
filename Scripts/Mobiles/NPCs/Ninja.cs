@@ -13,12 +13,12 @@ namespace Server.Mobiles
 
             this.InitStats(100, 100, 25);
 
-            this.SetSkill(SkillName.Fencing, 64.0, 80.0);
-            this.SetSkill(SkillName.Macing, 64.0, 80.0);
+            this.SetSkill(SkillName.Perfurante, 64.0, 80.0);
+            this.SetSkill(SkillName.Contusivo, 64.0, 80.0);
             this.SetSkill(SkillName.Ninjitsu, 60.0, 80.0);
-            this.SetSkill(SkillName.Parry, 64.0, 80.0);
-            this.SetSkill(SkillName.Tactics, 64.0, 85.0);
-            this.SetSkill(SkillName.Swords, 64.0, 85.0);
+            this.SetSkill(SkillName.Bloqueio, 64.0, 80.0);
+            this.SetSkill(SkillName.Anatomia, 64.0, 85.0);
+            this.SetSkill(SkillName.Cortante, 64.0, 85.0);
 
             this.SpeechHue = Utility.RandomDyedHue();
 

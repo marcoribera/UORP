@@ -18,7 +18,7 @@ namespace Server.Spells.SkillMasteries
         public override int BaseMana { get { return 20; } }
         public override double RequiredSkill { get { return 90.0; } }
 
-        public override SkillName MoveSkill { get { return SkillName.Wrestling; } }
+        public override SkillName MoveSkill { get { return SkillName.Briga; } }
         public override TextDefinition AbilityMessage { get { return new TextDefinition(1155895); } } // You ready yourself to unleash your fists of fury!
 
         public override TimeSpan CooldownPeriod { get { return TimeSpan.FromSeconds(20); } }
@@ -47,7 +47,7 @@ namespace Server.Spells.SkillMasteries
 
         public override void OnUse(Mobile from)
         {
-            SkillName damageSkill = from.Skills[SkillName.Anatomy].Value > from.Skills[SkillName.EvalInt].Value ? SkillName.Anatomy : SkillName.EvalInt;
+            SkillName damageSkill = from.Skills[SkillName.Anatomia].Value > from.Skills[SkillName.PoderMagico].Value ? SkillName.Anatomia : SkillName.PoderMagico;
             double duration = (from.Skills[MoveSkill].Value + from.Skills[damageSkill].Value) / 24;
 
             AddToCooldown(from);

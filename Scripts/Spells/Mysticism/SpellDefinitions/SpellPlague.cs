@@ -94,7 +94,7 @@ namespace Server.Spells.Mysticism
             {
                 int amount = m_Table[from][0].Amount;
                 bool doExplosion = false;
-                double mod = from.Skills[SkillName.MagicResist].Value >= 70.0 ? (from.Skills[SkillName.MagicResist].Value / 1000 * 3) : 0.0;
+                double mod = from.Skills[SkillName.ResistenciaMagica].Value >= 70.0 ? (from.Skills[SkillName.ResistenciaMagica].Value / 1000 * 3) : 0.0;
 
                 if (mod < 0)
                     mod = .01;
@@ -120,11 +120,11 @@ namespace Server.Spells.Mysticism
 
         public static void DoExplosion(Mobile from, Mobile caster, bool initial, int amount)
         {
-            double prim = caster.Skills[SkillName.Mysticism].Value;
-            double sec = caster.Skills[SkillName.Imbuing].Value;
+            double prim = caster.Skills[SkillName.Misticismo].Value;
+            double sec = caster.Skills[SkillName.ImbuirMagica].Value;
 
-            if (caster.Skills[SkillName.Focus].Value > sec)
-                sec = caster.Skills[SkillName.Focus].Value;
+            if (caster.Skills[SkillName.PreparoFisico].Value > sec)
+                sec = caster.Skills[SkillName.PreparoFisico].Value;
 
             int damage = (int)((prim + sec) / 12) + Utility.RandomMinMax(1, 6);
 
@@ -136,7 +136,7 @@ namespace Server.Spells.Mysticism
             from.FixedParticles(0x375A, 1, 17, 9919, 1161, 7, EffectLayer.Waist);
             from.FixedParticles(0x3728, 1, 13, 9502, 1161, 7, (EffectLayer)255);
 
-            int sdiBonus = SpellHelper.GetSpellDamageBonus(caster, from, SkillName.Mysticism, from is PlayerMobile);
+            int sdiBonus = SpellHelper.GetSpellDamageBonus(caster, from, SkillName.Misticismo, from is PlayerMobile);
 
             damage *= (100 + sdiBonus);
             damage /= 100;

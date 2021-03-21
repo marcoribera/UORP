@@ -78,14 +78,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 80, 90);
             SetResistance(ResistanceType.Energy, 80, 90);
 
-            SetSkill(SkillName.Wrestling, 122.9, 128.0);
-            SetSkill(SkillName.Tactics, 127.7, 132.9);
-            SetSkill(SkillName.MagicResist, 120.9, 129.4);
-            SetSkill(SkillName.Necromancy, 122.9, 128.0);
-            SetSkill(SkillName.SpiritSpeak, 160.1, 220.0);
-            SetSkill(SkillName.Magery, 120.1, 129.4);
-            SetSkill(SkillName.EvalInt, 100.1, 120.0);
-            SetSkill(SkillName.DetectHidden, 100.0);
+            SetSkill(SkillName.Briga, 122.9, 128.0);
+            SetSkill(SkillName.Anatomia, 127.7, 132.9);
+            SetSkill(SkillName.ResistenciaMagica, 120.9, 129.4);
+            SetSkill(SkillName.Necromancia, 122.9, 128.0);
+            SetSkill(SkillName.PoderMagico, 160.1, 220.0);
+            SetSkill(SkillName.Arcanismo, 120.1, 129.4);
+            SetSkill(SkillName.PoderMagico, 100.1, 120.0);
+            SetSkill(SkillName.Percepcao, 100.0);
 
             Fame = 25000;
             Karma = -25000;
@@ -324,13 +324,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 99);
             SetResistance(ResistanceType.Energy, 5, 10);
 
-            SetSkill(SkillName.Wrestling, 52.0, 70.0);
-            SetSkill(SkillName.Tactics, 0.0);
-            SetSkill(SkillName.MagicResist, 100.4, 113.5);
-            SetSkill(SkillName.Anatomy, 1.0, 0.0);
-            SetSkill(SkillName.Magery, 60.2, 72.4);
-            SetSkill(SkillName.EvalInt, 60.1, 73.4);
-            SetSkill(SkillName.Meditation, 100.0);
+            SetSkill(SkillName.Briga, 52.0, 70.0);
+            SetSkill(SkillName.Anatomia, 0.0);
+            SetSkill(SkillName.ResistenciaMagica, 100.4, 113.5);
+            SetSkill(SkillName.Anatomia, 1.0, 0.0);
+            SetSkill(SkillName.Arcanismo, 60.2, 72.4);
+            SetSkill(SkillName.PoderMagico, 60.1, 73.4);
 
             Fame = 2500;
             Karma = -2500;

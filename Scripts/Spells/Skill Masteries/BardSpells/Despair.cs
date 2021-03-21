@@ -24,7 +24,7 @@ namespace Server.Spells.SkillMasteries
 		public override double UpKeep { get { return 12; } }
 		public override int RequiredMana{ get { return 26; } }
 		public override bool PartyEffects { get { return false; } }
-        public override SkillName CastSkill { get { return SkillName.Discordance; } }
+        public override SkillName CastSkill { get { return SkillName.Caos; } }
         public override double SlayerBonus { get { return 3.0; } }
 
         private int m_StatMod;

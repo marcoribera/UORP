@@ -40,9 +40,9 @@ namespace Server.Items
             SetResistance(ResistanceType.Poison, 55, 85);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.Wrestling, 120.0, 140.0);
-            SetSkill(SkillName.Tactics, 120.0, 140.0);
-            SetSkill(SkillName.MagicResist, 95.0, 105.0);
+            SetSkill(SkillName.Briga, 120.0, 140.0);
+            SetSkill(SkillName.Anatomia, 120.0, 140.0);
+            SetSkill(SkillName.ResistenciaMagica, 95.0, 105.0);
 
             Fame = 7000;
             Karma = -7000;

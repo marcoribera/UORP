@@ -34,13 +34,13 @@ namespace Server.Mobiles
 
             SetDamage(13, 24);
 
-            SetSkill(SkillName.Wrestling, 15, 37);
-            SetSkill(SkillName.Parry, 45, 60);
-            SetSkill(SkillName.Archery, 66, 97);
-            SetSkill(SkillName.Magery, 62, 62);
-            SetSkill(SkillName.Swords, 35, 57);
-            SetSkill(SkillName.Fencing, 15, 37);
-            SetSkill(SkillName.Tactics, 65, 87);
+            SetSkill(SkillName.Briga, 15, 37);
+            SetSkill(SkillName.Bloqueio, 45, 60);
+            SetSkill(SkillName.Atirar, 66, 97);
+            SetSkill(SkillName.Arcanismo, 62, 62);
+            SetSkill(SkillName.Cortante, 35, 57);
+            SetSkill(SkillName.Perfurante, 15, 37);
+            SetSkill(SkillName.Anatomia, 65, 87);
 
             Fame = 100;
             Karma = 125;

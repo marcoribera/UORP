@@ -10,10 +10,10 @@ namespace Server.Mobiles
         public Rancher()
             : base("the rancher")
         {
-            this.SetSkill(SkillName.AnimalLore, 55.0, 78.0);
-            this.SetSkill(SkillName.AnimalTaming, 55.0, 78.0);
-            this.SetSkill(SkillName.Herding, 64.0, 100.0);
-            this.SetSkill(SkillName.Veterinary, 60.0, 83.0);
+            this.SetSkill(SkillName.Adestramento, 55.0, 78.0);
+            this.SetSkill(SkillName.Adestramento, 55.0, 78.0);
+            this.SetSkill(SkillName.Adestramento, 64.0, 100.0);
+            this.SetSkill(SkillName.Veterinaria, 60.0, 83.0);
         }
 
         public Rancher(Serial serial)

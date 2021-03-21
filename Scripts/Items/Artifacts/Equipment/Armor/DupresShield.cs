@@ -13,7 +13,7 @@ namespace Server.Items
             Weight = 6.0;
             Attributes.BonusHits = 5;
             Attributes.RegenHits = 1;
-            SkillBonuses.SetValues(0, SkillName.Parry, 5);
+            SkillBonuses.SetValues(0, SkillName.Bloqueio, 5);
         }
 
         public DupresShield(Serial serial)

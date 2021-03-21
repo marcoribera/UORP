@@ -11,11 +11,11 @@ namespace Server.Mobiles
         public Monk()
             : base("the Monk")
         {
-            this.SetSkill(SkillName.EvalInt, 100.0);
-            this.SetSkill(SkillName.Tactics, 70.0, 90.0);
-            this.SetSkill(SkillName.Wrestling, 70.0, 90.0);
-            this.SetSkill(SkillName.MagicResist, 70.0, 90.0);
-            this.SetSkill(SkillName.Macing, 70.0, 90.0);
+            this.SetSkill(SkillName.PoderMagico, 100.0);
+            this.SetSkill(SkillName.Anatomia, 70.0, 90.0);
+            this.SetSkill(SkillName.Briga, 70.0, 90.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 70.0, 90.0);
+            this.SetSkill(SkillName.Contusivo, 70.0, 90.0);
         }
 
         public Monk(Serial serial)

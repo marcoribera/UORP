@@ -19,8 +19,8 @@ namespace Server.Spells.Spellweaving
 
 		public abstract double RequiredSkill { get; }
 		public abstract int RequiredMana { get; }
-		public override SkillName CastSkill { get { return SkillName.Spellweaving; } }
-		public override SkillName DamageSkill { get { return SkillName.Spellweaving; } }
+		public override SkillName CastSkill { get { return SkillName.Feiticaria; } }
+		public override SkillName DamageSkill { get { return SkillName.Feiticaria; } }
 		public override bool ClearHandsOnCast { get { return false; } }
 		public virtual int FocusLevel { get { return m_CastTimeFocusLevel; } }
 
@@ -30,9 +30,9 @@ namespace Server.Spells.Spellweaving
 
 			if (focus == null || focus.Deleted)
 			{
-                if (Core.TOL && from is BaseCreature && from.Skills[SkillName.Spellweaving].Value > 0)
+                if (Core.TOL && from is BaseCreature && from.Skills[SkillName.Feiticaria].Value > 0)
                 {
-                    return (int)Math.Max(1, Math.Min(6, from.Skills[SkillName.Spellweaving].Value / 20));
+                    return (int)Math.Max(1, Math.Min(6, from.Skills[SkillName.Feiticaria].Value / 20));
                 }
 
 				return Math.Max(GetMasteryFocusLevel(from), 0);
@@ -48,9 +48,9 @@ namespace Server.Spells.Spellweaving
                 return 0;
             }
 
-            if (from.Skills.CurrentMastery == SkillName.Spellweaving)
+            if (from.Skills.CurrentMastery == SkillName.Feiticaria)
             {
-                return Math.Max(1, MasteryInfo.GetMasteryLevel(from, SkillName.Spellweaving));
+                return Math.Max(1, MasteryInfo.GetMasteryLevel(from, SkillName.Feiticaria));
             }
 
             return 0;

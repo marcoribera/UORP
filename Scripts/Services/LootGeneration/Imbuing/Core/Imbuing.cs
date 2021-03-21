@@ -19,7 +19,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Imbuing].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.ImbuirMagica].Callback = new SkillUseCallback(OnUse);
 
             CommandSystem.Register("GetTotalWeight", AccessLevel.GameMaster, new CommandEventHandler(GetTotalWeight_OnCommand));
             CommandSystem.Register("GetTotalMods", AccessLevel.GameMaster, new CommandEventHandler(GetTotalMods_OnCommand));
@@ -254,7 +254,7 @@ namespace Server.SkillHandlers
 
         public static double GetSuccessChance(Mobile from, Item item, int totalItemIntensity, int propintensity, double bonus)
         {
-            double skill = from.Skills[SkillName.Imbuing].Value;
+            double skill = from.Skills[SkillName.ImbuirMagica].Value;
             double resultWeight = totalItemIntensity + propintensity;
 
             double e = Math.E;
@@ -365,16 +365,16 @@ namespace Server.SkillHandlers
                     return;
                 }
 
-                double skill = from.Skills[SkillName.Imbuing].Value;
+                double skill = from.Skills[SkillName.ImbuirMagica].Value;
                 double success = GetSuccessChance(from, i, trueWeight, propTrueWeight, bonus);
 
-                if (TimesImbued(i) < 20 && skill < from.Skills[SkillName.Imbuing].Cap)
+                if (TimesImbued(i) < 20 && skill < from.Skills[SkillName.ImbuirMagica].Cap)
                 {
                     double s = Math.Min(100, success);
                     double mins = 120 - (s * 1.2);
                     double maxs = Math.Max(120 / (s / 100), skill);
 
-                    from.CheckSkill(SkillName.Imbuing, mins, maxs);
+                    from.CheckSkill(SkillName.ImbuirMagica, mins, maxs);
                 }
 
                 success /= 100;
@@ -451,7 +451,7 @@ namespace Server.SkillHandlers
                     if (jewel.SkillBonuses.GetBonus(j) > 0 && group.Any(sk => sk == jewel.SkillBonuses.GetSkill(j)))
                     {
                         jewel.SkillBonuses.SetBonus(j, 0.0);
-                        jewel.SkillBonuses.SetSkill(j, SkillName.Alchemy);
+                        jewel.SkillBonuses.SetSkill(j, SkillName.Alquimia);
                     }
                 }
             }
@@ -768,7 +768,7 @@ namespace Server.SkillHandlers
 
 		    if (weight >= 480 - bonus)
 			{
-				if (from.Skills[SkillName.Imbuing].Value < 95.0)
+				if (from.Skills[SkillName.ImbuirMagica].Value < 95.0)
 				{
 					if (message)
 					{
@@ -779,13 +779,13 @@ namespace Server.SkillHandlers
 					return false;
 				}
 				
-				if (from.CheckSkill(SkillName.Imbuing, 90.1, 120.0))
+				if (from.CheckSkill(SkillName.ImbuirMagica, 90.1, 120.0))
 				{
 					success = true;
 					resType = typeof(RelicFragment);
 					resAmount = 1;
 				}
-				else if (from.CheckSkill(SkillName.Imbuing, 45.0, 95.0))
+				else if (from.CheckSkill(SkillName.ImbuirMagica, 45.0, 95.0))
 				{
 					success = true;
 					resType = typeof(EnchantedEssence);
@@ -794,7 +794,7 @@ namespace Server.SkillHandlers
 			}
 		    else if (weight > 200 - bonus && weight < 480 - bonus)
 			{
-				if (from.Skills[SkillName.Imbuing].Value < 45.0)
+				if (from.Skills[SkillName.ImbuirMagica].Value < 45.0)
 				{
 					if (message)
 					{
@@ -805,13 +805,13 @@ namespace Server.SkillHandlers
 					return false;
 				}
 				
-				if (from.CheckSkill(SkillName.Imbuing, 45.0, 95.0))
+				if (from.CheckSkill(SkillName.ImbuirMagica, 45.0, 95.0))
 				{
 					success = true;
 					resType = typeof(EnchantedEssence);
 					resAmount = Math.Max(1, resAmount);
 				}
-				else if (from.CheckSkill(SkillName.Imbuing, 0.0, 45.0))
+				else if (from.CheckSkill(SkillName.ImbuirMagica, 0.0, 45.0))
 				{
 					success = true;
 					resType = typeof(MagicalResidue);
@@ -820,7 +820,7 @@ namespace Server.SkillHandlers
 			}
 			else if (weight <= 200 - bonus)
 			{
-				if (from.CheckSkill(SkillName.Imbuing, 0.0, 45.0))
+				if (from.CheckSkill(SkillName.ImbuirMagica, 0.0, 45.0))
 				{
 					success = true;
 					resType = typeof(MagicalResidue);
@@ -1590,45 +1590,44 @@ namespace Server.SkillHandlers
         public static SkillName[] PossibleSkills { get { return m_PossibleSkills; } }
         private static SkillName[] m_PossibleSkills = new SkillName[]
 			{
-				SkillName.Swords,
-				SkillName.Fencing,
-				SkillName.Macing,
-				SkillName.Archery,
-				SkillName.Wrestling,
-				SkillName.Parry,
-				SkillName.Tactics,
-				SkillName.Anatomy,
-				SkillName.Healing,
-				SkillName.Magery,
-				SkillName.Meditation,
-				SkillName.EvalInt,
-				SkillName.MagicResist,
-				SkillName.AnimalTaming,
-				SkillName.AnimalLore,
-				SkillName.Veterinary,
-				SkillName.Musicianship,
-				SkillName.Provocation,
-				SkillName.Discordance,
-				SkillName.Peacemaking,
-				SkillName.Chivalry,
-				SkillName.Focus,
-				SkillName.Necromancy,
-				SkillName.Stealing,
-				SkillName.Stealth,
-				SkillName.SpiritSpeak,
+				SkillName.Cortante,
+				SkillName.Perfurante,
+				SkillName.Contusivo,
+				SkillName.Atirar,
+				SkillName.Briga,
+				SkillName.Bloqueio,
+				SkillName.Anatomia,
+				SkillName.Anatomia,
+				SkillName.Medicina,
+				SkillName.Arcanismo,
+				SkillName.PoderMagico,
+				SkillName.ResistenciaMagica,
+				SkillName.Adestramento,
+				SkillName.Adestramento,
+				SkillName.Veterinaria,
+				SkillName.Tocar,
+				SkillName.Provocacao,
+				SkillName.Caos,
+				SkillName.Pacificar,
+				SkillName.Ordem,
+				SkillName.PreparoFisico,
+				SkillName.Necromancia,
+				SkillName.Prestidigitacao,
+				SkillName.Furtividade,
+				SkillName.PoderMagico,
 				SkillName.Bushido,
 				SkillName.Ninjitsu,
-                SkillName.Throwing,
-                SkillName.Mysticism
+                SkillName.Atirar,
+                SkillName.Misticismo
 			};
 
         private static SkillName[][] m_SkillGroups = new SkillName[][]
         {
-            new SkillName[] { SkillName.Fencing, SkillName.Macing, SkillName.Swords, SkillName.Musicianship, SkillName.Magery },
-            new SkillName[] { SkillName.Wrestling, SkillName.AnimalTaming, SkillName.SpiritSpeak, SkillName.Tactics, SkillName.Provocation },
-            new SkillName[] { SkillName.Focus, SkillName.Parry, SkillName.Stealth, SkillName.Meditation, SkillName.AnimalLore, SkillName.Discordance },
-            new SkillName[] { SkillName.Mysticism, SkillName.Bushido, SkillName.Necromancy, SkillName.Veterinary, SkillName.Stealing, SkillName.EvalInt, SkillName.Anatomy },
-            new SkillName[] { SkillName.Peacemaking, SkillName.Ninjitsu, SkillName.Chivalry, SkillName.Archery, SkillName.MagicResist, SkillName.Healing, SkillName.Throwing }
+            new SkillName[] { SkillName.Perfurante, SkillName.Contusivo, SkillName.Cortante, SkillName.Tocar, SkillName.Arcanismo },
+            new SkillName[] { SkillName.Briga, SkillName.Adestramento, SkillName.PoderMagico, SkillName.Anatomia, SkillName.Provocacao },
+            new SkillName[] { SkillName.PreparoFisico, SkillName.Bloqueio, SkillName.Furtividade, SkillName.Adestramento, SkillName.Caos },
+            new SkillName[] { SkillName.Misticismo, SkillName.Bushido, SkillName.Necromancia, SkillName.Veterinaria, SkillName.Prestidigitacao, SkillName.PoderMagico, SkillName.Anatomia },
+            new SkillName[] { SkillName.Pacificar, SkillName.Ninjitsu, SkillName.Ordem, SkillName.Atirar, SkillName.ResistenciaMagica, SkillName.Medicina, SkillName.Atirar }
         };
 
         public static SkillName[] GetSkillGroup(SkillName skill)

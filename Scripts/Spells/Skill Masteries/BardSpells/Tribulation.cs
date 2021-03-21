@@ -30,7 +30,7 @@ namespace Server.Spells.SkillMasteries
 		public override bool PartyEffects { get { return false; } }
         public override double TickTime { get { return 2.0; } }
 
-        public override SkillName CastSkill { get { return SkillName.Discordance; } }
+        public override SkillName CastSkill { get { return SkillName.Caos; } }
 
         private int m_PropertyBonus;
         private double m_DamageChance;

@@ -9,7 +9,7 @@ namespace Server.Items
         public GargishSignOfOrder()
             : base()
         {		
-            SkillBonuses.SetValues(0, SkillName.Chivalry, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Ordem, 10.0);
             Attributes.AttackChance = 5;
             Attributes.DefendChance = 10;
             Attributes.CastSpeed = 1;

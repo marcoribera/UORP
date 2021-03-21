@@ -63,12 +63,12 @@ namespace Server.Items
             SetResistance(ResistanceType.Poison, 45, 50);
             SetResistance(ResistanceType.Energy, 45, 50);
 
-            SetSkill(SkillName.Anatomy, 90.3, 99.9);
-            SetSkill(SkillName.MagicResist, 121.0, 126.7);
-            SetSkill(SkillName.Tactics, 82.0, 94.8);
-            SetSkill(SkillName.Wrestling, 94.4, 108.4);
-            SetSkill(SkillName.DetectHidden, 40.0);
-            SetSkill(SkillName.Parry, 70.0, 80.0);
+            SetSkill(SkillName.Anatomia, 90.3, 99.9);
+            SetSkill(SkillName.ResistenciaMagica, 121.0, 126.7);
+            SetSkill(SkillName.Anatomia, 82.0, 94.8);
+            SetSkill(SkillName.Briga, 94.4, 108.4);
+            SetSkill(SkillName.Percepcao, 40.0);
+            SetSkill(SkillName.Bloqueio, 70.0, 80.0);
 
             Fame = 14000;
             Karma = -14000;
@@ -118,7 +118,7 @@ namespace Server.Items
 
         public override double GetControlChance(Mobile m, bool useBaseSkill)
         {
-            if (m.Skills[SkillName.Tinkering].Base < 100.0)
+            if (m.Skills[SkillName.Mecanica].Base < 100.0)
             {
                 m.SendLocalizedMessage(1157043); // You lack the skill to command this Automaton.
                 return 0;

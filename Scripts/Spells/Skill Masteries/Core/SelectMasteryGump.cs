@@ -59,7 +59,7 @@ namespace Server.Gumps
 
             if (n == current)
             {
-                User.Skills.CurrentMastery = SkillName.Alchemy;
+                User.Skills.CurrentMastery = SkillName.Alquimia;
                 MasteryInfo.OnMasteryChanged(User, current);
             }
             else if (User.Skills[n].Base >= MasteryInfo.MinSkillRequirement)

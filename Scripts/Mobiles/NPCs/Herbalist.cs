@@ -10,9 +10,9 @@ namespace Server.Mobiles
         public Herbalist()
             : base("the herbalist")
         { 
-            this.SetSkill(SkillName.Alchemy, 80.0, 100.0);
-            this.SetSkill(SkillName.Cooking, 80.0, 100.0);
-            this.SetSkill(SkillName.TasteID, 80.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 80.0, 100.0);
+            this.SetSkill(SkillName.Culinaria, 80.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 80.0, 100.0);
         }
 
         public Herbalist(Serial serial)

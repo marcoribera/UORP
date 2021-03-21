@@ -36,9 +36,9 @@ namespace Server.Mobiles
             SetDamageType(ResistanceType.Physical, 50);
             SetDamageType(ResistanceType.Poison, 50);
 
-            SetSkill(SkillName.MagicResist, 30.1, 43.5);
-            SetSkill(SkillName.Tactics, 30.1, 49.0);
-            SetSkill(SkillName.Wrestling, 41.1, 49.8);
+            SetSkill(SkillName.ResistenciaMagica, 30.1, 43.5);
+            SetSkill(SkillName.Anatomia, 30.1, 49.0);
+            SetSkill(SkillName.Briga, 41.1, 49.8);
 
             PackGold(50, 70);
 

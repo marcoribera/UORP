@@ -8,17 +8,17 @@ namespace Server.Mobiles
         public RangerGuildmaster()
             : base("ranger")
         {
-            this.SetSkill(SkillName.AnimalLore, 64.0, 100.0);
-            this.SetSkill(SkillName.Camping, 75.0, 98.0);
-            this.SetSkill(SkillName.Hiding, 75.0, 98.0);
-            this.SetSkill(SkillName.MagicResist, 75.0, 98.0);
-            this.SetSkill(SkillName.Tactics, 65.0, 88.0);
-            this.SetSkill(SkillName.Archery, 90.0, 100.0);
-            this.SetSkill(SkillName.Tracking, 90.0, 100.0);
-            this.SetSkill(SkillName.Stealth, 60.0, 83.0);
-            this.SetSkill(SkillName.Fencing, 36.0, 68.0);
-            this.SetSkill(SkillName.Herding, 36.0, 68.0);
-            this.SetSkill(SkillName.Swords, 45.0, 68.0);
+            this.SetSkill(SkillName.Adestramento, 64.0, 100.0);
+            this.SetSkill(SkillName.Sobrevivencia, 75.0, 98.0);
+            this.SetSkill(SkillName.Furtividade, 75.0, 98.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 75.0, 98.0);
+            this.SetSkill(SkillName.Anatomia, 65.0, 88.0);
+            this.SetSkill(SkillName.Atirar, 90.0, 100.0);
+            this.SetSkill(SkillName.Sobrevivencia, 90.0, 100.0);
+            this.SetSkill(SkillName.Furtividade, 60.0, 83.0);
+            this.SetSkill(SkillName.Perfurante, 36.0, 68.0);
+            this.SetSkill(SkillName.Adestramento, 36.0, 68.0);
+            this.SetSkill(SkillName.Cortante, 45.0, 68.0);
         }
 
         public RangerGuildmaster(Serial serial)

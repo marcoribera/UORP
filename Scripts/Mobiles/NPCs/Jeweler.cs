@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Jeweler()
             : base("the jeweler")
         {
-            this.SetSkill(SkillName.ItemID, 64.0, 100.0);
+            this.SetSkill(SkillName.Erudicao, 64.0, 100.0);
         }
 
         public Jeweler(Serial serial)

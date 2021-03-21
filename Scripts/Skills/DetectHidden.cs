@@ -29,7 +29,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.DetectHidden].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Percepcao].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile src)
@@ -61,10 +61,10 @@ namespace Server.SkillHandlers
                 else
                     p = src.Location;
 
-                double srcSkill = src.Skills[SkillName.DetectHidden].Value;
+                double srcSkill = src.Skills[SkillName.Percepcao].Value;
                 int range = Math.Max(2, (int)(srcSkill / 10.0));
 
-                if (!src.CheckSkill(SkillName.DetectHidden, 0.0, 100.0))
+                if (!src.CheckSkill(SkillName.Percepcao, 0.0, 100.0))
                     range /= 2;
 
                 BaseHouse house = BaseHouse.FindHouseAt(p, src.Map, 16);
@@ -83,7 +83,7 @@ namespace Server.SkillHandlers
                         if (trg.Hidden && src != trg)
                         {
                             double ss = srcSkill + Utility.Random(21) - 10;
-                            double ts = trg.Skills[SkillName.Hiding].Value + Utility.Random(21) - 10;
+                            double ts = trg.Skills[SkillName.Furtividade].Value + Utility.Random(21) - 10;
                             double shadow = Server.Spells.SkillMasteries.ShadowSpell.GetDifficultyFactor(trg);
                             bool houseCheck = inHouse && house.IsInside(trg);
 
@@ -142,7 +142,7 @@ namespace Server.SkillHandlers
             if (src == null || src.Map == null || src.Location == Point3D.Zero || src.IsStaff())
                 return;
 
-            double ss = src.Skills[SkillName.DetectHidden].Value;
+            double ss = src.Skills[SkillName.Percepcao].Value;
 
             if (ss <= 0)
                 return;
@@ -157,7 +157,7 @@ namespace Server.SkillHandlers
                 if (m == null || m == src || m is ShadowKnight || !CanDetect(src, m))
                     continue;
 
-                double ts = (m.Skills[SkillName.Hiding].Value + m.Skills[SkillName.Stealth].Value) / 2;
+                double ts = (m.Skills[SkillName.Furtividade].Value + m.Skills[SkillName.Furtividade].Value) / 2;
 
                 if (src.Race == Race.Elf)
                     ss += 20;

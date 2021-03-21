@@ -32,9 +32,9 @@ namespace Server.Mobiles
 
             SetResistance(ResistanceType.Physical, 2);
 
-            SetSkill(SkillName.MagicResist, 4);
-            SetSkill(SkillName.Tactics, 4);
-            SetSkill(SkillName.Wrestling, 4);
+            SetSkill(SkillName.ResistenciaMagica, 4);
+            SetSkill(SkillName.Anatomia, 4);
+            SetSkill(SkillName.Briga, 4);
 
             CantWalk = true;
             Frozen = true;

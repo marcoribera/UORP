@@ -16,8 +16,8 @@ namespace Server.Spells.Chivalry
 		public abstract int RequiredMana { get; }
 		public abstract int RequiredTithing { get; }
 		public abstract int MantraNumber { get; }
-		public override SkillName CastSkill { get { return SkillName.Chivalry; } }
-		public override SkillName DamageSkill { get { return SkillName.Chivalry; } }
+		public override SkillName CastSkill { get { return SkillName.Ordem; } }
+		public override SkillName DamageSkill { get { return SkillName.Ordem; } }
 		public override bool ClearHandsOnCast { get { return false; } }
 		public override int CastRecoveryBase { get { return 7; } }
 
@@ -28,7 +28,7 @@ namespace Server.Spells.Chivalry
 				return 0;
 			}
 
-			int v = (int)Math.Sqrt(from.Karma + 20000 + (from.Skills.Chivalry.Fixed * 10));
+			int v = (int)Math.Sqrt(from.Karma + 20000 + (from.Skills.Ordem.Fixed * 10));
 
 			return v / div;
 		}

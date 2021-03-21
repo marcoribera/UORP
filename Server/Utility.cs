@@ -1178,26 +1178,26 @@ namespace Server
 
 		private static readonly SkillName[] m_AllSkills = new[]
 		{
-			SkillName.Alchemy, SkillName.Anatomy, SkillName.AnimalLore, SkillName.ItemID, SkillName.ArmsLore, SkillName.Parry,
-			SkillName.Begging, SkillName.Blacksmith, SkillName.Fletching, SkillName.Peacemaking, SkillName.Camping,
-			SkillName.Carpentry, SkillName.Cartography, SkillName.Cooking, SkillName.DetectHidden, SkillName.Discordance,
-			SkillName.EvalInt, SkillName.Healing, SkillName.Fishing, SkillName.Forensics, SkillName.Herding, SkillName.Hiding,
-			SkillName.Provocation, SkillName.Inscribe, SkillName.Lockpicking, SkillName.Magery, SkillName.MagicResist,
-			SkillName.Tactics, SkillName.Snooping, SkillName.Musicianship, SkillName.Poisoning, SkillName.Archery,
-			SkillName.SpiritSpeak, SkillName.Stealing, SkillName.Tailoring, SkillName.AnimalTaming, SkillName.TasteID,
-			SkillName.Tinkering, SkillName.Tracking, SkillName.Veterinary, SkillName.Swords, SkillName.Macing, SkillName.Fencing,
-			SkillName.Wrestling, SkillName.Lumberjacking, SkillName.Mining, SkillName.Meditation, SkillName.Stealth,
-			SkillName.RemoveTrap, SkillName.Necromancy, SkillName.Focus, SkillName.Chivalry, SkillName.Bushido,
-			SkillName.Ninjitsu, SkillName.Spellweaving, SkillName.Mysticism, SkillName.Imbuing, SkillName.Throwing
+			SkillName.Alquimia, SkillName.Anatomia, SkillName.Adestramento, SkillName.Erudicao, SkillName.ConhecimentoArmas, SkillName.Bloqueio,
+			SkillName.Carisma, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Pacificar, SkillName.Sobrevivencia,
+			SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria, SkillName.Percepcao, SkillName.Caos,
+			SkillName.PoderMagico, SkillName.Medicina, SkillName.Sobrevivencia, SkillName.Percepcao, SkillName.Adestramento, SkillName.Furtividade,
+			SkillName.Provocacao, SkillName.Erudicao, SkillName.Mecanica, SkillName.Arcanismo, SkillName.ResistenciaMagica,
+			SkillName.Anatomia, SkillName.Prestidigitacao, SkillName.Tocar, SkillName.Envenenamento, SkillName.Atirar,
+			SkillName.PoderMagico, SkillName.Prestidigitacao, SkillName.Costura, SkillName.Adestramento, SkillName.Alquimia,
+			SkillName.Mecanica, SkillName.Sobrevivencia, SkillName.Veterinaria, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante,
+			SkillName.Briga, SkillName.Extracao, SkillName.Extracao, SkillName.Furtividade,
+			SkillName.Mecanica, SkillName.Necromancia, SkillName.PreparoFisico, SkillName.Ordem, SkillName.Bushido,
+			SkillName.Ninjitsu, SkillName.Feiticaria, SkillName.Misticismo, SkillName.ImbuirMagica, SkillName.Atirar
 		};
 
 		private static readonly SkillName[] m_CombatSkills = new[]
-		{SkillName.Archery, SkillName.Swords, SkillName.Macing, SkillName.Fencing, SkillName.Wrestling};
+		{SkillName.Atirar, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante, SkillName.Briga};
 
 		private static readonly SkillName[] m_CraftSkills = new[]
 		{
-			SkillName.Alchemy, SkillName.Blacksmith, SkillName.Fletching, SkillName.Carpentry, SkillName.Cartography,
-			SkillName.Cooking, SkillName.Inscribe, SkillName.Tailoring, SkillName.Tinkering
+			SkillName.Alquimia, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Carpintaria, SkillName.Erudicao,
+			SkillName.Culinaria, SkillName.Erudicao, SkillName.Costura, SkillName.Mecanica
 		};
 
 		public static SkillName RandomSkill()

@@ -138,7 +138,7 @@ namespace Server.Items
                 return;
             }
 
-            double tinkerSkill = from.Skills[SkillName.Tinkering].Value;
+            double tinkerSkill = from.Skills[SkillName.Mecanica].Value;
 
             if (tinkerSkill < 60.0)
             {

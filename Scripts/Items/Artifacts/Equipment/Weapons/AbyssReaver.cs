@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public AbyssReaver()
         {
-            SkillBonuses.SetValues(0, SkillName.Throwing, Utility.RandomMinMax(5, 10));
+            SkillBonuses.SetValues(0, SkillName.Atirar, Utility.RandomMinMax(5, 10));
             Attributes.WeaponDamage = Utility.RandomMinMax(25, 35);
             Slayer = SlayerName.Exorcism;
         }

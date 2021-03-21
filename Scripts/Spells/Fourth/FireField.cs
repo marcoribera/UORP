@@ -76,9 +76,9 @@ namespace Server.Spells.Fourth
                 TimeSpan duration;
 
                 if (Core.AOS)
-                    duration = TimeSpan.FromSeconds((15 + (Caster.Skills.Magery.Fixed / 5)) / 4);
+                    duration = TimeSpan.FromSeconds((15 + (Caster.Skills.Arcanismo.Fixed / 5)) / 4);
                 else
-                    duration = TimeSpan.FromSeconds(4.0 + (Caster.Skills[SkillName.Magery].Value * 0.5));
+                    duration = TimeSpan.FromSeconds(4.0 + (Caster.Skills[SkillName.Arcanismo].Value * 0.5));
 
                 Point3D pnt = new Point3D(p);
 
@@ -219,7 +219,7 @@ namespace Server.Spells.Fourth
 
                     int damage = m_Damage;
 
-                    if (!Core.AOS && m.CheckSkill(SkillName.MagicResist, 0.0, 30.0))
+                    if (!Core.AOS && m.CheckSkill(SkillName.ResistenciaMagica, 0.0, 30.0))
                     {
                         damage = 1;
 
@@ -291,7 +291,7 @@ namespace Server.Spells.Fourth
 
                                 int damage = m_Item.m_Damage;
 
-                                if (!Core.AOS && m.CheckSkill(SkillName.MagicResist, 0.0, 30.0))
+                                if (!Core.AOS && m.CheckSkill(SkillName.ResistenciaMagica, 0.0, 30.0))
                                 {
                                     damage = 1;
 

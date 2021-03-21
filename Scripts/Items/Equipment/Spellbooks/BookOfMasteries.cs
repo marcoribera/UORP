@@ -108,7 +108,7 @@ namespace Server.Items
                 {
                     list.Add(MasteryInfo.GetLocalization(sk));
 
-                    if (sk == SkillName.Spellweaving)
+                    if (sk == SkillName.Feiticaria)
                     {
                         list.Add(1060485, ArcanistSpell.GetMasteryFocusLevel((Mobile)RootParent).ToString()); // strength bonus ~1_val~
                     }

@@ -18,7 +18,7 @@ namespace Server.Items
             : base(content, 0x2D9D)
         {
             Hue = 687;		
-            SkillBonuses.SetValues(0, SkillName.Mysticism, 10.0);			
+            SkillBonuses.SetValues(0, SkillName.Misticismo, 10.0);			
             Attributes.LowerManaCost = 5;	
             Attributes.RegenMana = 1;
             Attributes.LowerRegCost = 10;

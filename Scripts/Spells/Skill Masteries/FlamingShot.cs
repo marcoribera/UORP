@@ -21,8 +21,8 @@ namespace Server.Spells.SkillMasteries
         public override int RequiredMana { get { return 30; } }
 
         public override DamageType SpellDamageType { get { return DamageType.SpellAOE; } }
-        public override SkillName CastSkill { get { return SkillName.Archery; } }
-        public override SkillName DamageSkill { get { return SkillName.Tactics; } }
+        public override SkillName CastSkill { get { return SkillName.Atirar; } }
+        public override SkillName DamageSkill { get { return SkillName.Anatomia; } }
         public override bool DelayedDamage { get { return true; } }
 
         public FlamingShotSpell(Mobile caster, Item scroll)

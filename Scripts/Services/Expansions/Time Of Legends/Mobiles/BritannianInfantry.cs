@@ -38,12 +38,12 @@ namespace Server.Mobiles
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetSkill(SkillName.MagicResist, 120);
-            SetSkill(SkillName.Tactics, 120);
-            SetSkill(SkillName.Anatomy, 120);
-            SetSkill(SkillName.Swords, 120);
-            SetSkill(SkillName.Fencing, 120);
-            SetSkill(SkillName.Macing, 120);
+            SetSkill(SkillName.ResistenciaMagica, 120);
+            SetSkill(SkillName.Anatomia, 120);
+            SetSkill(SkillName.Anatomia, 120);
+            SetSkill(SkillName.Cortante, 120);
+            SetSkill(SkillName.Perfurante, 120);
+            SetSkill(SkillName.Contusivo, 120);
 
             AddImmovableItem(new PlateChest());
             AddImmovableItem(new PlateLegs());

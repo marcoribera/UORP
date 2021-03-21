@@ -39,10 +39,10 @@ namespace Server.Items
             SetResistance(ResistanceType.Poison, 50, 55);
             SetResistance(ResistanceType.Energy, 45, 50);
 
-            SetSkill(SkillName.Anatomy, 90.3, 99.9);
-            SetSkill(SkillName.MagicResist, 121.0, 126.7);
-            SetSkill(SkillName.Tactics, 82.0, 94.8);
-            SetSkill(SkillName.Wrestling, 94.4, 108.4);
+            SetSkill(SkillName.Anatomia, 90.3, 99.9);
+            SetSkill(SkillName.ResistenciaMagica, 121.0, 126.7);
+            SetSkill(SkillName.Anatomia, 82.0, 94.8);
+            SetSkill(SkillName.Briga, 94.4, 108.4);
 
             SetWeaponAbility(WeaponAbility.ParalyzingBlow);
             SetWeaponAbility(WeaponAbility.Disarm);

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Server.Items;
 
 namespace Server.Mobiles
@@ -35,12 +35,11 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 60, 70);
             this.SetResistance(ResistanceType.Energy, 60, 70);
 
-            this.SetSkill(SkillName.Magery, 107.7, 109.1);
-            this.SetSkill(SkillName.Meditation, 63.9, 78.2);
-            this.SetSkill(SkillName.EvalInt, 106.8, 111.1);
-            this.SetSkill(SkillName.Wrestling, 108.6, 109.4);
-            this.SetSkill(SkillName.MagicResist, 125.8, 127.6);
-            this.SetSkill(SkillName.Tactics, 112.8, 123.7);
+            this.SetSkill(SkillName.Arcanismo, 107.7, 109.1);
+            this.SetSkill(SkillName.PoderMagico, 106.8, 111.1);
+            this.SetSkill(SkillName.Briga, 108.6, 109.4);
+            this.SetSkill(SkillName.ResistenciaMagica, 125.8, 127.6);
+            this.SetSkill(SkillName.Anatomia, 112.8, 123.7);
 
             this.Fame = 24000;
             this.Karma = -24000;

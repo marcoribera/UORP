@@ -8,9 +8,8 @@ namespace Server.Engines.Quests
         [Constructable]
         public Aeluva()
             : base("Aeluva", "the arcanist")
-        { 
-            this.SetSkill(SkillName.Meditation, 60.0, 83.0);
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+        {
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Aeluva(Serial serial)

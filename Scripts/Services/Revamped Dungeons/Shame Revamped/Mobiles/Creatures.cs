@@ -40,9 +40,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 35, 45);
             SetResistance(ResistanceType.Energy, 40);
 
-            SetSkill(SkillName.MagicResist, 65, 85);
-            SetSkill(SkillName.Tactics, 65, 85);
-            SetSkill(SkillName.Wrestling, 65, 85);
+            SetSkill(SkillName.ResistenciaMagica, 65, 85);
+            SetSkill(SkillName.Anatomia, 65, 85);
+            SetSkill(SkillName.Briga, 65, 85);
 
             Fame = 500;
             Karma = -500;
@@ -114,9 +114,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 60);
             SetResistance(ResistanceType.Energy, 45, 55);
 
-            SetSkill(SkillName.MagicResist, 100.0);
-            SetSkill(SkillName.Tactics, 80.0, 96.0);
-            SetSkill(SkillName.Wrestling, 80.0, 97.0);
+            SetSkill(SkillName.ResistenciaMagica, 100.0);
+            SetSkill(SkillName.Anatomia, 80.0, 96.0);
+            SetSkill(SkillName.Briga, 80.0, 97.0);
 
             Fame = 4000;
             Karma = -4000;
@@ -209,10 +209,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 35, 45);
             SetResistance(ResistanceType.Energy, 35, 45);
 
-            SetSkill(SkillName.MagicResist, 70, 90);
-            SetSkill(SkillName.Tactics, 80, 110);
-            SetSkill(SkillName.Wrestling, 80, 110);
-            SetSkill(SkillName.DetectHidden, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 70, 90);
+            SetSkill(SkillName.Anatomia, 80, 110);
+            SetSkill(SkillName.Briga, 80, 110);
+            SetSkill(SkillName.Percepcao, 100.0);
 
             Fame = 3500;
             Karma = -3500;
@@ -296,11 +296,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 99);
             SetResistance(ResistanceType.Energy, 35, 45);
 
-            SetSkill(SkillName.MagicResist, 150, 200);
-            SetSkill(SkillName.Tactics, 80, 120);
-            SetSkill(SkillName.Wrestling, 80, 110);
-            SetSkill(SkillName.Parry, 70, 80);
-            SetSkill(SkillName.DetectHidden, 70.0, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 150, 200);
+            SetSkill(SkillName.Anatomia, 80, 120);
+            SetSkill(SkillName.Briga, 80, 110);
+            SetSkill(SkillName.Bloqueio, 70, 80);
+            SetSkill(SkillName.Percepcao, 70.0, 80.0);
 
             Fame = 4500;
             Karma = -4500;
@@ -362,9 +362,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 45, 55);
             SetResistance(ResistanceType.Energy, 25, 35);
 
-            SetSkill(SkillName.MagicResist, 40, 70);
-            SetSkill(SkillName.Tactics, 70, 90);
-            SetSkill(SkillName.Wrestling, 80, 95);
+            SetSkill(SkillName.ResistenciaMagica, 40, 70);
+            SetSkill(SkillName.Anatomia, 70, 90);
+            SetSkill(SkillName.Briga, 80, 95);
 
             Fame = 2500;
             Karma = -2500;
@@ -425,10 +425,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.MagicResist, 100);
-            SetSkill(SkillName.Tactics, 100);
-            SetSkill(SkillName.Wrestling, 120);
-            SetSkill(SkillName.Parry, 120);
+            SetSkill(SkillName.ResistenciaMagica, 100);
+            SetSkill(SkillName.Anatomia, 100);
+            SetSkill(SkillName.Briga, 120);
+            SetSkill(SkillName.Bloqueio, 120);
 
             Fame = 3500;
             Karma = -3500;
@@ -489,11 +489,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 45, 55);
 
-            SetSkill(SkillName.MagicResist, 100, 120);
-            SetSkill(SkillName.Tactics, 100, 120);
-            SetSkill(SkillName.Wrestling, 100, 120);
-            SetSkill(SkillName.Magery, 100, 120);
-            SetSkill(SkillName.EvalInt, 100, 120);
+            SetSkill(SkillName.ResistenciaMagica, 100, 120);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Briga, 100, 120);
+            SetSkill(SkillName.Arcanismo, 100, 120);
+            SetSkill(SkillName.PoderMagico, 100, 120);
 
             Fame = 4500;
             Karma = -4500;
@@ -552,10 +552,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.MagicResist, 100);
-            SetSkill(SkillName.Tactics, 100);
-            SetSkill(SkillName.Wrestling, 120);
-            SetSkill(SkillName.Parry, 120);
+            SetSkill(SkillName.ResistenciaMagica, 100);
+            SetSkill(SkillName.Anatomia, 100);
+            SetSkill(SkillName.Briga, 120);
+            SetSkill(SkillName.Bloqueio, 120);
 
             Fame = 5000;
             Karma = -5000;
@@ -625,13 +625,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 60, 70);
 
-            SetSkill(SkillName.MagicResist, 90, 140);
-            SetSkill(SkillName.Tactics, 90, 130.0);
-            SetSkill(SkillName.Wrestling, 90, 120);
-            SetSkill(SkillName.Magery, 100, 145);
-            SetSkill(SkillName.EvalInt, 90, 140);
-            SetSkill(SkillName.Meditation, 80, 120);
-            SetSkill(SkillName.Parry, 100, 120);
+            SetSkill(SkillName.ResistenciaMagica, 90, 140);
+            SetSkill(SkillName.Anatomia, 90, 130.0);
+            SetSkill(SkillName.Briga, 90, 120);
+            SetSkill(SkillName.Arcanismo, 100, 145);
+            SetSkill(SkillName.PoderMagico, 90, 140);
+            SetSkill(SkillName.Bloqueio, 100, 120);
 
             Fame = 3500;
             Karma = -3500;
@@ -716,11 +715,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 60, 75);
 
-            SetSkill(SkillName.MagicResist, 60, 80);
-            SetSkill(SkillName.Tactics, 60, 80.0);
-            SetSkill(SkillName.Wrestling, 60, 80);
-            SetSkill(SkillName.Magery, 60, 80);
-            SetSkill(SkillName.EvalInt, 60, 80);
+            SetSkill(SkillName.ResistenciaMagica, 60, 80);
+            SetSkill(SkillName.Anatomia, 60, 80.0);
+            SetSkill(SkillName.Briga, 60, 80);
+            SetSkill(SkillName.Arcanismo, 60, 80);
+            SetSkill(SkillName.PoderMagico, 60, 80);
 
             Fame = 3500;
             Karma = -3500;
@@ -781,12 +780,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 65, 75);
             SetResistance(ResistanceType.Energy, 65, 75);
 
-            SetSkill(SkillName.MagicResist, 125, 140);
-            SetSkill(SkillName.Tactics, 115, 130);
-            SetSkill(SkillName.Wrestling, 110, 130);
-            SetSkill(SkillName.Anatomy, 75, 90);
-            SetSkill(SkillName.Magery, 120, 130);
-            SetSkill(SkillName.EvalInt, 120, 130);
+            SetSkill(SkillName.ResistenciaMagica, 125, 140);
+            SetSkill(SkillName.Anatomia, 115, 130);
+            SetSkill(SkillName.Briga, 110, 130);
+            SetSkill(SkillName.Anatomia, 75, 90);
+            SetSkill(SkillName.Arcanismo, 120, 130);
+            SetSkill(SkillName.PoderMagico, 120, 130);
         }
 
         public override MeatType MeatType { get { return MeatType.Ribs; } }
@@ -867,11 +866,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 60);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.MagicResist, 125, 140);
-            SetSkill(SkillName.Tactics, 100, 120);
-            SetSkill(SkillName.Wrestling, 110, 130);
-            SetSkill(SkillName.Magery, 120, 130);
-            SetSkill(SkillName.EvalInt, 120, 130);
+            SetSkill(SkillName.ResistenciaMagica, 125, 140);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Briga, 110, 130);
+            SetSkill(SkillName.Arcanismo, 120, 130);
+            SetSkill(SkillName.PoderMagico, 120, 130);
 
             AddItem(new Robe(1156));
             AddItem(new Sandals());
@@ -1015,12 +1014,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 60);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.MagicResist, 125, 140);
-            SetSkill(SkillName.Tactics, 100, 120);
-            SetSkill(SkillName.Wrestling, 140);
-            SetSkill(SkillName.Anatomy, 100, 120);
-            SetSkill(SkillName.Magery, 100, 110);
-            SetSkill(SkillName.EvalInt, 100, 110);
+            SetSkill(SkillName.ResistenciaMagica, 125, 140);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Briga, 140);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Arcanismo, 100, 110);
+            SetSkill(SkillName.PoderMagico, 100, 110);
 
             AddItem(new Robe(1157));
             AddItem(new Sandals());
@@ -1160,12 +1159,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 65, 75);
 
-            SetSkill(SkillName.MagicResist, 115, 120);
-            SetSkill(SkillName.Tactics, 110, 120);
-            SetSkill(SkillName.Wrestling, 100, 110);
-            SetSkill(SkillName.Magery, 120, 130);
-            SetSkill(SkillName.EvalInt, 120, 130);
-            SetSkill(SkillName.Meditation, 100, 110);
+            SetSkill(SkillName.ResistenciaMagica, 115, 120);
+            SetSkill(SkillName.Anatomia, 110, 120);
+            SetSkill(SkillName.Briga, 100, 110);
+            SetSkill(SkillName.Arcanismo, 120, 130);
+            SetSkill(SkillName.PoderMagico, 120, 130);
         }
 
         public override bool CanRummageCorpses { get { return true; } }
@@ -1302,11 +1300,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 55, 65);
             SetResistance(ResistanceType.Energy, 65, 75);
 
-            SetSkill(SkillName.MagicResist, 110, 115);
-            SetSkill(SkillName.Tactics, 110, 115);
-            SetSkill(SkillName.Wrestling, 100, 110);
-            SetSkill(SkillName.Magery, 110, 115);
-            SetSkill(SkillName.EvalInt, 115, 125);
+            SetSkill(SkillName.ResistenciaMagica, 110, 115);
+            SetSkill(SkillName.Anatomia, 110, 115);
+            SetSkill(SkillName.Briga, 100, 110);
+            SetSkill(SkillName.Arcanismo, 110, 115);
+            SetSkill(SkillName.PoderMagico, 115, 125);
         }
 
         public override void OnDeath(Container c)
@@ -1372,9 +1370,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 65, 75);
             SetResistance(ResistanceType.Energy, 65, 75);
 
-            SetSkill(SkillName.MagicResist, 100, 110);
-            SetSkill(SkillName.Tactics, 110, 130);
-            SetSkill(SkillName.Wrestling, 124, 140);
+            SetSkill(SkillName.ResistenciaMagica, 100, 110);
+            SetSkill(SkillName.Anatomia, 110, 130);
+            SetSkill(SkillName.Briga, 124, 140);
 
             Fame = 22500;
             Karma = -22500;
@@ -1512,9 +1510,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 65, 75);
             SetResistance(ResistanceType.Energy, 100);
 
-            SetSkill(SkillName.MagicResist, 100, 110);
-            SetSkill(SkillName.Tactics, 110, 130);
-            SetSkill(SkillName.Wrestling, 124, 140);
+            SetSkill(SkillName.ResistenciaMagica, 100, 110);
+            SetSkill(SkillName.Anatomia, 110, 130);
+            SetSkill(SkillName.Briga, 124, 140);
 
             Fame = 22500;
             Karma = -22500;
@@ -1656,15 +1654,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 50, 60);
 
-            SetSkill(SkillName.MagicResist, 110, 125);
-            SetSkill(SkillName.Tactics, 130, 140);
-            SetSkill(SkillName.Wrestling, 120, 140);
-            SetSkill(SkillName.Poisoning, 100);
-            SetSkill(SkillName.Magery, 110, 120);
-            SetSkill(SkillName.EvalInt, 115, 130);
-            SetSkill(SkillName.Meditation, 130, 155);
-            SetSkill(SkillName.DetectHidden, 80.0);
-            SetSkill(SkillName.Parry, 90.0, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 110, 125);
+            SetSkill(SkillName.Anatomia, 130, 140);
+            SetSkill(SkillName.Briga, 120, 140);
+            SetSkill(SkillName.Envenenamento, 100);
+            SetSkill(SkillName.Arcanismo, 110, 120);
+            SetSkill(SkillName.PoderMagico, 115, 130);
+            SetSkill(SkillName.Percepcao, 80.0);
+            SetSkill(SkillName.Bloqueio, 90.0, 100.0);
 
             PackReg(7, 11);
 
@@ -1739,11 +1736,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 70, 80);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.MagicResist, 100, 110);
-            SetSkill(SkillName.Tactics, 90, 110);
-            SetSkill(SkillName.Wrestling, 90, 110);
-            SetSkill(SkillName.Magery, 90, 110);
-            SetSkill(SkillName.EvalInt, 90, 100);
+            SetSkill(SkillName.ResistenciaMagica, 100, 110);
+            SetSkill(SkillName.Anatomia, 90, 110);
+            SetSkill(SkillName.Briga, 90, 110);
+            SetSkill(SkillName.Arcanismo, 90, 110);
+            SetSkill(SkillName.PoderMagico, 90, 100);
 
             Fame = 3500;
             Karma = -3500;
@@ -1804,14 +1801,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.MagicResist, 110, 120);
-            SetSkill(SkillName.Tactics, 90, 120);
-            SetSkill(SkillName.Wrestling, 100, 115);
-            SetSkill(SkillName.Magery, 90, 110);
-            SetSkill(SkillName.EvalInt, 90, 100);
-            SetSkill(SkillName.Meditation, 100, 120);
-            SetSkill(SkillName.DetectHidden, 85.1);
-            SetSkill(SkillName.Parry, 80, 100);
+            SetSkill(SkillName.ResistenciaMagica, 110, 120);
+            SetSkill(SkillName.Anatomia, 90, 120);
+            SetSkill(SkillName.Briga, 100, 115);
+            SetSkill(SkillName.Arcanismo, 90, 110);
+            SetSkill(SkillName.PoderMagico, 90, 100);
+            SetSkill(SkillName.Percepcao, 85.1);
+            SetSkill(SkillName.Bloqueio, 80, 100);
         }
 
         public override void GenerateLoot()
@@ -1869,12 +1865,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 60);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.MagicResist, 115, 120);
-            SetSkill(SkillName.Tactics, 100, 120);
-            SetSkill(SkillName.Wrestling, 110, 120);
-            SetSkill(SkillName.Magery, 80, 100);
-            SetSkill(SkillName.EvalInt, 110, 120);
-            SetSkill(SkillName.Meditation, 120, 140);
+            SetSkill(SkillName.ResistenciaMagica, 115, 120);
+            SetSkill(SkillName.Anatomia, 100, 120);
+            SetSkill(SkillName.Briga, 110, 120);
+            SetSkill(SkillName.Arcanismo, 80, 100);
+            SetSkill(SkillName.PoderMagico, 110, 120);
         }
 
         public override void GenerateLoot()
@@ -1925,9 +1920,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 25, 30);
             SetResistance(ResistanceType.Energy, 20, 25);
 
-            SetSkill(SkillName.MagicResist, 65, 85);
-            SetSkill(SkillName.Tactics, 65, 90);
-            SetSkill(SkillName.Wrestling, 80, 85);
+            SetSkill(SkillName.ResistenciaMagica, 65, 85);
+            SetSkill(SkillName.Anatomia, 65, 90);
+            SetSkill(SkillName.Briga, 80, 85);
 
             Fame = 3500;
             Karma = -3500;

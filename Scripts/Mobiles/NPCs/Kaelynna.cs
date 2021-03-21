@@ -76,7 +76,7 @@ namespace Server.Engines.Quests
         public TheMagesApprenticeQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Magery, 50, "Old Haven Training", 1077489, 1077583));
+            this.AddObjective(new ApprenticeObjective(SkillName.Arcanismo, 50, "Old Haven Training", 1077489, 1077583));
 			
             // 1077489 Your Magery potential is greatly enhanced while questing in this area.
             // 1077583 You are not in the quest area for Apprentice Magery. Your Magery potential is not enhanced here.
@@ -95,7 +95,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Magery.Base < 50;
+                return this.Owner.Skills.Arcanismo.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -141,12 +141,11 @@ namespace Server.Engines.Quests
         public Kaelynna()
             : base("Kaelynna", "The Magery Instructor")
         { 
-            this.SetSkill(SkillName.EvalInt, 120.0, 120.0);
-            this.SetSkill(SkillName.Inscribe, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
+            this.SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            this.SetSkill(SkillName.Erudicao, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
         }
 		
         public Kaelynna(Serial serial)

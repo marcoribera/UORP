@@ -40,7 +40,7 @@ namespace Server.Items
             {
                 from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
             }
-            else if (pm == null || from.Skills[SkillName.Tinkering].Base < 100.0)
+            else if (pm == null || from.Skills[SkillName.Mecanica].Base < 100.0)
             {
                 from.SendLocalizedMessage(1112255); // Only a Grandmaster Tinker can learn from this book.
             }

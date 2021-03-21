@@ -9,7 +9,7 @@ namespace Server.Items
         public LunaLance()
         {
             Hue = 0x47E;
-            SkillBonuses.SetValues(0, SkillName.Chivalry, 10.0);
+            SkillBonuses.SetValues(0, SkillName.Ordem, 10.0);
             Attributes.BonusStr = 5;
             Attributes.WeaponSpeed = 20;
             Attributes.WeaponDamage = 35;

@@ -23,8 +23,8 @@ namespace Server.Spells.SkillMasteries
         public override double RequiredSkill { get { return 90; } }
         public override int RequiredMana { get { return 50; } }
 
-        public override SkillName CastSkill { get { return SkillName.Chivalry; } }
-        public override SkillName DamageSkill { get { return SkillName.Chivalry; } }
+        public override SkillName CastSkill { get { return SkillName.Ordem; } }
+        public override SkillName DamageSkill { get { return SkillName.Ordem; } }
 
         public int RequiredTithing { get { return 100; } }
 

@@ -223,7 +223,7 @@ namespace Server.Spells.Chivalry
 
         private void UpdateDamage()
         {
-            var chivalry = (int)m_Owner.Skills.Chivalry.Value;
+            var chivalry = (int)m_Owner.Skills.Ordem.Value;
             m_DamageScalar = 10 + ((chivalry - 40) * 9) / 10;
 
             if (m_PlayerOrPet != null)

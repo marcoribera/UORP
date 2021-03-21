@@ -78,7 +78,7 @@ namespace Server.Spells.Spellweaving
 
                 int damage = 10 + FocusLevel;
 
-                double skill = Caster.Skills[SkillName.Spellweaving].Value;
+                double skill = Caster.Skills[SkillName.Feiticaria].Value;
                 int dmgBonus = Math.Max((int)(skill / 24.0d), 1);
                 damage += dmgBonus;
 

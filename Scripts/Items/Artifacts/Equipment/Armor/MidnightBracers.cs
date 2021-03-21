@@ -9,7 +9,7 @@ namespace Server.Items
         public MidnightBracers()
         {
             Hue = 0x455;
-            SkillBonuses.SetValues(0, SkillName.Necromancy, 20.0);
+            SkillBonuses.SetValues(0, SkillName.Necromancia, 20.0);
             Attributes.SpellDamage = 10;
             ArmorAttributes.MageArmor = 1;
         }

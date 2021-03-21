@@ -53,11 +53,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 20, 30);
 
-            SetSkill(SkillName.MagicResist, level);
-            SetSkill(SkillName.Tactics, caster.Skills[SkillName.Tactics].Value / 2);
-            SetSkill(SkillName.Wrestling, level);
-            SetSkill(SkillName.Anatomy, caster.Skills[SkillName.Anatomy].Value / 2);
-            SetSkill(SkillName.DetectHidden, 40, 50);
+            SetSkill(SkillName.ResistenciaMagica, level);
+            SetSkill(SkillName.Anatomia, caster.Skills[SkillName.Anatomia].Value / 2);
+            SetSkill(SkillName.Briga, level);
+            SetSkill(SkillName.Anatomia, caster.Skills[SkillName.Anatomia].Value / 2);
+            SetSkill(SkillName.Percepcao, 40, 50);
 
             Fame = 0;
             Karma = 0;
@@ -86,7 +86,7 @@ namespace Server.Mobiles
 
         public override double GetFightModeRanking(Mobile m, FightMode acqType, bool bPlayerOnly)
         {
-            return (m.Str + m.Skills[SkillName.Tactics].Value) / Math.Max(GetDistanceToSqrt(m), 1.0);
+            return (m.Str + m.Skills[SkillName.Anatomia].Value) / Math.Max(GetDistanceToSqrt(m), 1.0);
         }
 
         public override bool AlwaysMurderer { get { return true; } }

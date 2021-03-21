@@ -79,7 +79,7 @@ namespace Server.Engines.Quests
         public Frazer()
             : base("Frazer", "the vagabond")
         { 
-            this.SetSkill(SkillName.ItemID, 64.0, 100.0);
+            this.SetSkill(SkillName.Erudicao, 64.0, 100.0);
         }
 
         public Frazer(Serial serial)

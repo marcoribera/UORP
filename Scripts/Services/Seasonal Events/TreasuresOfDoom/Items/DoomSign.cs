@@ -67,7 +67,7 @@ namespace Server.Items
 
         public bool CheckReveal(Mobile m)
         {
-            return Utility.Random((int)m.Skills[SkillName.DetectHidden].Value) < 100;
+            return Utility.Random((int)m.Skills[SkillName.Percepcao].Value) < 100;
         }
 
         public void OnRevealed(Mobile m)

@@ -13,7 +13,7 @@ namespace Server.Items
             Hue = 0;
             Attributes.BonusInt = 5;
             Attributes.NightSight = 1;
-            SkillBonuses.SetValues(0, SkillName.Focus, 5.0);
+            SkillBonuses.SetValues(0, SkillName.PreparoFisico, 5.0);
         }
 
         public ObiDiEnse(Serial serial)

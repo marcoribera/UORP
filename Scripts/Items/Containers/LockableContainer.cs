@@ -470,7 +470,7 @@ namespace Server.Items
                 Resource = CraftResources.GetFromType(typeRes);
             }
 
-            if (from.CheckSkill(SkillName.Tinkering, -5.0, 15.0))
+            if (from.CheckSkill(SkillName.Mecanica, -5.0, 15.0))
             {
                 from.SendLocalizedMessage(500636); // Your tinker skill was sufficient to make the item lockable.
 
@@ -479,7 +479,7 @@ namespace Server.Items
                 KeyValue = key.KeyValue;
                 DropItem(key);
 
-                double tinkering = from.Skills[SkillName.Tinkering].Value;
+                double tinkering = from.Skills[SkillName.Mecanica].Value;
                 int level = (int)(tinkering * 0.8);
 
                 RequiredSkill = level - 4;

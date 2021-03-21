@@ -28,7 +28,7 @@ namespace Server.Spells.SkillMasteries
 		public override double UpKeep { get { return 5; } }
 		public override int RequiredMana{ get { return 22; } }
 		public override bool PartyEffects { get { return true; } }
-        public override SkillName CastSkill { get { return SkillName.Provocation; } }
+        public override SkillName CastSkill { get { return SkillName.Provocacao; } }
 
         private int m_HPBonus;
         private int m_StatBonus;

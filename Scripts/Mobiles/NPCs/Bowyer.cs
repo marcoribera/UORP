@@ -12,8 +12,8 @@ namespace Server.Mobiles
         public Bowyer()
             : base("the bowyer")
         {
-            this.SetSkill(SkillName.Fletching, 80.0, 100.0);
-            this.SetSkill(SkillName.Archery, 80.0, 100.0);
+            this.SetSkill(SkillName.Carpintaria, 80.0, 100.0);
+            this.SetSkill(SkillName.Atirar, 80.0, 100.0);
         }
 
         public Bowyer(Serial serial)
@@ -67,7 +67,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Fletching].Base > 0;
+            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Carpintaria].Base > 0;
         }
 
         public override void OnSuccessfulBulkOrderReceive(Mobile from)

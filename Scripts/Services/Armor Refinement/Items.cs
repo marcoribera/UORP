@@ -161,13 +161,13 @@ namespace Server.Items
 
         private bool CheckSkill(Mobile from)
         {
-            SkillName check = SkillName.Blacksmith;
+            SkillName check = SkillName.Ferraria;
 
             switch (m_CraftType)
             {
                 case RefinementCraftType.Blacksmith: break;
-                case RefinementCraftType.Tailor: check = SkillName.Tailoring; break;
-                case RefinementCraftType.Carpenter: check = SkillName.Carpentry; break;
+                case RefinementCraftType.Tailor: check = SkillName.Costura; break;
+                case RefinementCraftType.Carpenter: check = SkillName.Carpintaria; break;
             }
 
             return from.Skills[check].Value >= 100;
@@ -413,13 +413,13 @@ namespace Server.Items
 
         private bool CheckSkill(Mobile from)
         {
-            SkillName check = SkillName.Blacksmith;
+            SkillName check = SkillName.Ferraria;
 
             switch (m_CraftType)
             {
                 case RefinementCraftType.Blacksmith: break;
-                case RefinementCraftType.Tailor: check = SkillName.Tailoring; break;
-                case RefinementCraftType.Carpenter: check = SkillName.Carpentry; break;
+                case RefinementCraftType.Tailor: check = SkillName.Costura; break;
+                case RefinementCraftType.Carpenter: check = SkillName.Carpintaria; break;
             }
 
             return from.Skills[check].Value >= 100;

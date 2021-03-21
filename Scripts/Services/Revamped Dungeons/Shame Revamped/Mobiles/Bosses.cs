@@ -122,9 +122,9 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 20, 30);
             SetResistance(ResistanceType.Energy, 15, 25);
 
-            SetSkill(SkillName.MagicResist, 110, 120);
-            SetSkill(SkillName.Tactics, 100, 110.0);
-            SetSkill(SkillName.Wrestling, 110, 120);
+            SetSkill(SkillName.ResistenciaMagica, 110, 120);
+            SetSkill(SkillName.Anatomia, 100, 110.0);
+            SetSkill(SkillName.Briga, 110, 120);
 
             Fame = 4500;
             Karma = -4500;
@@ -199,13 +199,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 60, 70);
             SetResistance(ResistanceType.Energy, 60, 70);
 
-            SetSkill(SkillName.MagicResist, 90, 140);
-            SetSkill(SkillName.Tactics, 90, 130.0);
-            SetSkill(SkillName.Wrestling, 90, 120);
-            SetSkill(SkillName.Magery, 100, 145);
-            SetSkill(SkillName.EvalInt, 90, 140);
-            SetSkill(SkillName.Meditation, 80, 120);
-            SetSkill(SkillName.Parry, 100, 120);
+            SetSkill(SkillName.ResistenciaMagica, 90, 140);
+            SetSkill(SkillName.Anatomia, 90, 130.0);
+            SetSkill(SkillName.Briga, 90, 120);
+            SetSkill(SkillName.Arcanismo, 100, 145);
+            SetSkill(SkillName.PoderMagico, 90, 140);
+            SetSkill(SkillName.Bloqueio, 100, 120);
 
             Fame = 4500;
             Karma = -4500;
@@ -283,11 +282,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 60, 75);
 
-            SetSkill(SkillName.MagicResist, 60, 80);
-            SetSkill(SkillName.Tactics, 60, 80.0);
-            SetSkill(SkillName.Wrestling, 60, 80);
-            SetSkill(SkillName.Magery, 60, 80);
-            SetSkill(SkillName.EvalInt, 60, 80);
+            SetSkill(SkillName.ResistenciaMagica, 60, 80);
+            SetSkill(SkillName.Anatomia, 60, 80.0);
+            SetSkill(SkillName.Briga, 60, 80);
+            SetSkill(SkillName.Arcanismo, 60, 80);
+            SetSkill(SkillName.PoderMagico, 60, 80);
 
             Fame = 4500;
             Karma = -4500;

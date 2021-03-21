@@ -56,7 +56,7 @@ namespace Server.Spells.Third
 
                     if (Core.AOS)
                     {
-                        int total = (Caster.Skills.Magery.Fixed + Caster.Skills.Poisoning.Fixed) / 2;
+                        int total = (Caster.Skills.Arcanismo.Fixed + Caster.Skills.Envenenamento.Fixed) / 2;
 
                         if (Core.SA && Caster.InRange(m, 8))
                         {
@@ -95,7 +95,7 @@ namespace Server.Spells.Third
                     }
                     else
                     {
-                        double total = Caster.Skills[SkillName.Magery].Value + Caster.Skills[SkillName.Poisoning].Value;                        
+                        double total = Caster.Skills[SkillName.Arcanismo].Value + Caster.Skills[SkillName.Envenenamento].Value;                        
                         double dist = Caster.GetDistanceToSqrt(m);
 
                         if (dist >= 3.0)

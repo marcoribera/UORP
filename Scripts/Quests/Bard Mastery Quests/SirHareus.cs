@@ -37,7 +37,7 @@ namespace Server.Engines.Quests
             if (Owner == null)
                 return false;
 
-            if (Owner.Skills[SkillName.Musicianship].Base < 90 || Owner.Skills[SkillName.Provocation].Base < 90)
+            if (Owner.Skills[SkillName.Tocar].Base < 90 || Owner.Skills[SkillName.Provocacao].Base < 90)
             {
                 Owner.SendLocalizedMessage(1115703); // Your skills in this focus area are less than the required master level. (90 minimum)
                 return false;
@@ -59,9 +59,9 @@ namespace Server.Engines.Quests
         {
             base.GiveRewards();
 
-            MasteryInfo.LearnMastery(Owner, SkillName.Provocation, 3);
+            MasteryInfo.LearnMastery(Owner, SkillName.Provocacao, 3);
 
-            SkillMasterySpell.SetActiveMastery(Owner, SkillName.Provocation);
+            SkillMasterySpell.SetActiveMastery(Owner, SkillName.Provocacao);
         }
 
         public override void Serialize(GenericWriter writer)

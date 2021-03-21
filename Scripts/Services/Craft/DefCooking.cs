@@ -28,7 +28,7 @@ namespace Server.Engines.Craft
         {
             get
             {
-                return SkillName.Cooking;
+                return SkillName.Culinaria;
             }
         }
 

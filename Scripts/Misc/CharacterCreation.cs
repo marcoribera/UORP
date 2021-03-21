@@ -458,8 +458,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Anatomy, 30), new SkillNameValue(SkillName.Healing, 30),
-						new SkillNameValue(SkillName.Swords, 30), new SkillNameValue(SkillName.Tactics, 30)
+						new SkillNameValue(SkillName.Anatomia, 30), new SkillNameValue(SkillName.Medicina, 30),
+						new SkillNameValue(SkillName.Cortante, 30), new SkillNameValue(SkillName.Anatomia, 30)
 					};
 
 					break;
@@ -468,8 +468,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.EvalInt, 30), new SkillNameValue(SkillName.Wrestling, 30),
-						new SkillNameValue(SkillName.Magery, 30), new SkillNameValue(SkillName.Meditation, 30)
+						new SkillNameValue(SkillName.PoderMagico, 30), new SkillNameValue(SkillName.Briga, 30),
+						new SkillNameValue(SkillName.Arcanismo, 30)
 					};
 
 					break;
@@ -478,8 +478,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Mining, 30), new SkillNameValue(SkillName.ArmsLore, 30),
-						new SkillNameValue(SkillName.Blacksmith, 30), new SkillNameValue(SkillName.Tinkering, 30)
+						new SkillNameValue(SkillName.Extracao, 30), new SkillNameValue(SkillName.ConhecimentoArmas, 30),
+						new SkillNameValue(SkillName.Ferraria, 30), new SkillNameValue(SkillName.Mecanica, 30)
 					};
 
 					break;
@@ -488,9 +488,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Necromancy, 30),
-						new SkillNameValue(SkillName.SpiritSpeak, 30), new SkillNameValue(SkillName.Swords, 30),
-						new SkillNameValue(SkillName.Meditation, 20)
+						new SkillNameValue(SkillName.Necromancia, 30),
+						new SkillNameValue(SkillName.PoderMagico, 30), new SkillNameValue(SkillName.Cortante, 30)
 					};
 
 					break;
@@ -499,8 +498,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Chivalry, 30), new SkillNameValue(SkillName.Swords, 30),
-						new SkillNameValue(SkillName.Focus, 30), new SkillNameValue(SkillName.Tactics, 30)
+						new SkillNameValue(SkillName.Ordem, 30), new SkillNameValue(SkillName.Cortante, 30),
+						new SkillNameValue(SkillName.PreparoFisico, 30), new SkillNameValue(SkillName.Anatomia, 30)
 					};
 
 					break;
@@ -509,8 +508,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Bushido, 30), new SkillNameValue(SkillName.Swords, 30),
-						new SkillNameValue(SkillName.Anatomy, 30), new SkillNameValue(SkillName.Healing, 30)
+						new SkillNameValue(SkillName.Bushido, 30), new SkillNameValue(SkillName.Cortante, 30),
+						new SkillNameValue(SkillName.Anatomia, 30), new SkillNameValue(SkillName.Medicina, 30)
 					};
 					break;
 				}
@@ -518,8 +517,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Ninjitsu, 30), new SkillNameValue(SkillName.Hiding, 30),
-						new SkillNameValue(SkillName.Fencing, 30), new SkillNameValue(SkillName.Stealth, 30)
+						new SkillNameValue(SkillName.Ninjitsu, 30), new SkillNameValue(SkillName.Furtividade, 30),
+						new SkillNameValue(SkillName.Perfurante, 30), new SkillNameValue(SkillName.Furtividade, 30)
 					};
 					break;
 				}
@@ -728,8 +727,8 @@ namespace Server.Misc
 			{
 				var snv = skills[i];
 
-				if (snv.Value > 0 && (snv.Name != SkillName.Stealth || prof == 7) && snv.Name != SkillName.RemoveTrap &&
-					snv.Name != SkillName.Spellweaving)
+				if (snv.Value > 0 && (snv.Name != SkillName.Furtividade || prof == 7) && snv.Name != SkillName.Mecanica &&
+					snv.Name != SkillName.Feiticaria)
 				{
 					var skill = m.Skills[snv.Name];
 
@@ -897,7 +896,7 @@ namespace Server.Misc
 
 			switch (skill)
 			{
-				case SkillName.Alchemy:
+				case SkillName.Alquimia:
 				{
 					PackItem(new Bottle(4));
 					PackItem(new MortarPestle());
@@ -917,7 +916,7 @@ namespace Server.Misc
 					}
 					break;
 				}
-				case SkillName.Anatomy:
+				case SkillName.Anatomia:
 				{
 					PackItem(new Bandage(3));
 
@@ -936,7 +935,7 @@ namespace Server.Misc
 					}
 					break;
 				}
-				case SkillName.AnimalLore:
+				case SkillName.Adestramento:
 				{
 					var hue = Utility.RandomBlueHue();
 
@@ -956,7 +955,7 @@ namespace Server.Misc
 					}
 					break;
 				}
-				case SkillName.Archery:
+				case SkillName.Atirar:
 				{
 					PackItem(new Arrow(25));
 
@@ -967,7 +966,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.ArmsLore:
+				case SkillName.ConhecimentoArmas:
 				{
 					if (elf)
 					{
@@ -1017,7 +1016,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Begging:
+				case SkillName.Carisma:
 				{
 					if (elf)
 						EquipItem(new WildStaff());
@@ -1028,7 +1027,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Blacksmith:
+				case SkillName.Ferraria:
 				{
 					PackItem(new Tongs());
 					PackItem(new Pickaxe());
@@ -1053,20 +1052,21 @@ namespace Server.Misc
 					EquipItem(new BookOfBushido());
 					break;
 				}
-				case SkillName.Fletching:
+				case SkillName.Carpintaria:
 				{
 					PackItem(new Board(14));
 					PackItem(new Feather(5));
 					PackItem(new Shaft(5));
 					break;
 				}
-				case SkillName.Camping:
+				case SkillName.Sobrevivencia:
 				{
 					PackItem(new Bedroll());
 					PackItem(new Kindling(5));
 					break;
 				}
-				case SkillName.Carpentry:
+                    /*
+				case SkillName.Carpintaria:
 				{
 					PackItem(new Board(10));
 					PackItem(new Saw());
@@ -1077,8 +1077,8 @@ namespace Server.Misc
 					}
 
 					break;
-				}
-				case SkillName.Cartography:
+				}*/
+				case SkillName.Erudicao:
 				{
 					PackItem(new BlankMap());
 					PackItem(new BlankMap());
@@ -1087,7 +1087,7 @@ namespace Server.Misc
 					PackItem(new Sextant());
 					break;
 				}
-				case SkillName.Cooking:
+				case SkillName.Culinaria:
 				{
 					PackItem(new Kindling(2));
 					PackItem(new RawLambLeg());
@@ -1097,26 +1097,26 @@ namespace Server.Misc
 					PackItem(new Pitcher(BeverageType.Water));
 					break;
 				}
-				case SkillName.Chivalry:
+				case SkillName.Ordem:
 				{
 					if (Core.ML)
 						PackItem(new BookOfChivalry((ulong)0x3FF));
 
 					break;
 				}
-				case SkillName.DetectHidden:
+				case SkillName.Percepcao:
 				{
 					if (human || elf)
 						EquipItem(new Cloak(0x455));
 
 					break;
 				}
-				case SkillName.Discordance:
+				case SkillName.Caos:
 				{
 					PackInstrument();
 					break;
 				}
-				case SkillName.Fencing:
+				case SkillName.Perfurante:
 				{
 					if (elf)
 						EquipItem(new Leafblade());
@@ -1126,8 +1126,8 @@ namespace Server.Misc
 						EquipItem(new BloodBlade());
 
 					break;
-				}
-				case SkillName.Fishing:
+				}/*
+				case SkillName.Sobrevivencia:
 				{
 					EquipItem(new FishingPole());
 
@@ -1145,14 +1145,14 @@ namespace Server.Misc
 					}
 
 					break;
-				}
-				case SkillName.Healing:
+				}*/
+				case SkillName.Medicina:
 				{
 					PackItem(new Bandage(50));
 					PackItem(new Scissors());
 					break;
-				}
-				case SkillName.Herding:
+				}/*
+				case SkillName.Adestramento:
 				{
 					if (elf)
 						EquipItem(new WildStaff());
@@ -1160,21 +1160,22 @@ namespace Server.Misc
 						EquipItem(new ShepherdsCrook());
 
 					break;
-				}
-				case SkillName.Hiding:
+				}*/
+				case SkillName.Furtividade:
 				{
 					if (human || elf)
 						EquipItem(new Cloak(0x455));
 
 					break;
-				}
-				case SkillName.Inscribe:
+				}/*
+				case SkillName.Erudicao:
 				{
 					PackItem(new BlankScroll(2));
 					PackItem(new BlueBook());
 					break;
-				}
-				case SkillName.ItemID:
+				}*/
+                    /*
+				case SkillName.Erudicao:
 				{
 					if (elf)
 						EquipItem(new WildStaff());
@@ -1184,13 +1185,13 @@ namespace Server.Misc
 						EquipItem(new SerpentStoneStaff());
 
 					break;
-				}
-				case SkillName.Lockpicking:
+				}*/
+				case SkillName.Mecanica:
 				{
 					PackItem(new Lockpick(20));
 					break;
 				}
-				case SkillName.Lumberjacking:
+				case SkillName.Extracao:
 				{
 					if (human || elf)
 						EquipItem(new Hatchet());
@@ -1199,7 +1200,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Macing:
+				case SkillName.Contusivo:
 				{
 					if (elf)
 						EquipItem(new DiamondMace());
@@ -1210,7 +1211,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Magery:
+				case SkillName.Arcanismo:
 				{
 					var regs = new BagOfReagents(50);
 
@@ -1250,18 +1251,18 @@ namespace Server.Misc
 					}
 
 					break;
-				}
-				case SkillName.Mining:
+				}/*
+				case SkillName.Extracao:
 				{
 					PackItem(new Pickaxe());
 					break;
-				}
-				case SkillName.Musicianship:
+				}*/
+				case SkillName.Tocar:
 				{
 					PackInstrument();
 					break;
 				}
-				case SkillName.Necromancy:
+				case SkillName.Necromancia:
 				{
 					if (Core.ML)
 					{
@@ -1292,7 +1293,7 @@ namespace Server.Misc
 					EquipItem(new BookOfNinjitsu());
 					break;
 				}
-				case SkillName.Parry:
+				case SkillName.Bloqueio:
 				{
 					if (human || elf)
 						EquipItem(new WoodenShield());
@@ -1301,28 +1302,28 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Peacemaking:
+				case SkillName.Pacificar:
 				{
 					PackInstrument();
 					break;
 				}
-				case SkillName.Poisoning:
+				case SkillName.Envenenamento:
 				{
 					PackItem(new LesserPoisonPotion());
 					PackItem(new LesserPoisonPotion());
 					break;
 				}
-				case SkillName.Provocation:
+				case SkillName.Provocacao:
 				{
 					PackInstrument();
 					break;
 				}
-				case SkillName.Snooping:
+				case SkillName.Prestidigitacao:
 				{
 					PackItem(new Lockpick(20));
 					break;
 				}
-				case SkillName.SpiritSpeak:
+				case SkillName.PoderMagico:
 				{
 					if (human || elf)
 					{
@@ -1330,13 +1331,13 @@ namespace Server.Misc
 					}
 
 					break;
-				}
-				case SkillName.Stealing:
+				}/*
+				case SkillName.Prestidigitacao:
 				{
 					PackItem(new Lockpick(20));
 					break;
-				}
-				case SkillName.Swords:
+				}*/
+				case SkillName.Cortante:
 				{
 					if (elf)
 						EquipItem(new RuneBlade());
@@ -1346,8 +1347,8 @@ namespace Server.Misc
 						EquipItem(new GlassSword());
 
 					break;
-				}
-				case SkillName.Tactics:
+				}/*
+				case SkillName.Anatomia:
 				{
 					if (elf)
 						EquipItem(new RuneBlade());
@@ -1357,14 +1358,14 @@ namespace Server.Misc
 						EquipItem(new GlassSword());
 
 					break;
-				}
-				case SkillName.Tailoring:
+				}*/
+				case SkillName.Costura:
 				{
 					PackItem(new BoltOfCloth());
 					PackItem(new SewingKit());
 					break;
-				}
-				case SkillName.Tinkering:
+				}/*
+				case SkillName.Mecanica:
 				{
 					PackItem(new TinkerTools());
 					PackItem(new IronIngot(50));
@@ -1373,8 +1374,9 @@ namespace Server.Misc
 					PackItem(new Springs());
 					PackItem(new ClockFrame());
 					break;
-				}
-				case SkillName.Tracking:
+				}*/
+                    /*
+				case SkillName.Sobrevivencia:
 				{
 					if (human || elf)
 					{
@@ -1399,14 +1401,14 @@ namespace Server.Misc
 						PackItem(new SkinningKnife());
 
 					break;
-				}
-				case SkillName.Veterinary:
+				}*/
+				case SkillName.Veterinaria:
 				{
 					PackItem(new Bandage(5));
 					PackItem(new Scissors());
 					break;
 				}
-				case SkillName.Wrestling:
+				case SkillName.Briga:
 				{
 					if (elf)
 						EquipItem(new LeafGloves());
@@ -1419,15 +1421,15 @@ namespace Server.Misc
 					}
 
 					break;
-				}
-				case SkillName.Throwing:
+				}/*
+				case SkillName.Atirar:
 				{
 					if (gargoyle)
 						EquipItem(new Boomerang());
 
 					break;
-				}
-				case SkillName.Mysticism:
+				}*/
+				case SkillName.Misticismo:
 				{
 					PackItem(new MysticBook((ulong)0xAB));
 					break;

@@ -851,25 +851,25 @@ namespace Server.Mobiles
             _TrainingPoints.Add(new TrainingPoint(ResistanceType.Poison, 3.0, 1, 80, 1061161, 1157520));
             _TrainingPoints.Add(new TrainingPoint(ResistanceType.Energy, 3.0, 1, 80, 1061162, 1157521));
 
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Magery, 0.5, 50, 200, 1002106, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.EvalInt, 1.0, 50, 200, 1044076, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Necromancy, 0.5, 50, 200, 1044109, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.SpiritSpeak, 1.0, 50, 200, 1044092, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Chivalry, 0.5, 50, 200, 1044111, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Focus, 0.1, 50, 200, 1044110, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Arcanismo, 0.5, 50, 200, 1002106, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.PoderMagico, 1.0, 50, 200, 1044076, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Necromancia, 0.5, 50, 200, 1044109, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.PoderMagico, 1.0, 50, 200, 1044092, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Ordem, 0.5, 50, 200, 1044111, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.PreparoFisico, 0.1, 50, 200, 1044110, 1157522));
             _TrainingPoints.Add(new TrainingPoint(SkillName.Bushido, 0.5, 50, 200, 1044112, 1157522));
             _TrainingPoints.Add(new TrainingPoint(SkillName.Ninjitsu, 0.5, 50, 200, 1044113, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Spellweaving, 0.5, 50, 200, 1044114, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Mysticism, 0.5, 50, 200, 1044115, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Meditation, 0.1, 50, 200, 1044106, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.MagicResist, 0.1, 50, 200, 1044086, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Feiticaria, 0.5, 50, 200, 1044114, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Misticismo, 0.5, 50, 200, 1044115, 1157522));
+            //_TrainingPoints.Add(new TrainingPoint(SkillName.Meditation, 0.1, 50, 200, 1044106, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.ResistenciaMagica, 0.1, 50, 200, 1044086, 1157522));
 
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Wrestling, 1.0, 50, 200, 1044103, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Tactics, 1.0, 50, 200, 1044087, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Anatomy, 0.1, 50, 200, 1044061, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Parry, 0.1, 50, 200, 1002118, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Healing, 0.1, 50, 200, 1002082, 1157522));
-            _TrainingPoints.Add(new TrainingPoint(SkillName.Discordance, 0.1, 50, 200, 1044075, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Briga, 1.0, 50, 200, 1044103, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Anatomia, 1.0, 50, 200, 1044087, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Anatomia, 0.1, 50, 200, 1044061, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Bloqueio, 0.1, 50, 200, 1002118, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Medicina, 0.1, 50, 200, 1002082, 1157522));
+            _TrainingPoints.Add(new TrainingPoint(SkillName.Caos, 0.1, 50, 200, 1044075, 1157522));
 
             TextDefinition[][] loc = _MagicalAbilityLocalizations;
 
@@ -898,40 +898,40 @@ namespace Server.Mobiles
                 new TrainingPointRequirement(WeaponAbility.ParalyzingBlow, 100, 1028848)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Poisoning, 1.0, 1, 1, loc[5][0], loc[5][1],
-                new TrainingPointRequirement(SkillName.Poisoning, 100, 1044090)));
+                new TrainingPointRequirement(SkillName.Envenenamento, 100, 1044090)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Bushido, 1.0, 1, 1, loc[6][0], loc[6][1],
                 new TrainingPointRequirement(SkillName.Bushido, 500, 1044112)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Ninjitsu, 1.0, 1, 1, loc[7][0], loc[7][1],
                 new TrainingPointRequirement(SkillName.Ninjitsu, 500, 1044113),
-                new TrainingPointRequirement(SkillName.Hiding, 100, 1002088)));
+                new TrainingPointRequirement(SkillName.Furtividade, 100, 1002088)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Discordance, 1.0, 1, 1, loc[8][0], loc[8][1],
-                new TrainingPointRequirement(SkillName.Discordance, 500, 1044075)));
+                new TrainingPointRequirement(SkillName.Caos, 500, 1044075)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.MageryMastery, 1.0, 1, 1, loc[9][0], loc[9][1],
-                new TrainingPointRequirement(SkillName.Magery, 100, 1044085),
-                new TrainingPointRequirement(SkillName.EvalInt, 1000, 1044076)));
+                new TrainingPointRequirement(SkillName.Arcanismo, 100, 1044085),
+                new TrainingPointRequirement(SkillName.PoderMagico, 1000, 1044076)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Mysticism, 1.0, 1, 1, loc[10][0], loc[10][1],
-                new TrainingPointRequirement(SkillName.Mysticism, 500, 1044115)));
+                new TrainingPointRequirement(SkillName.Misticismo, 500, 1044115)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Spellweaving, 1.0, 1, 1, loc[11][0], loc[11][1],
-                new TrainingPointRequirement(SkillName.Spellweaving, 500, 1044114)));
+                new TrainingPointRequirement(SkillName.Feiticaria, 500, 1044114)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Chivalry, 1.0, 1, 1, loc[12][0], loc[12][1],
-                new TrainingPointRequirement(SkillName.Chivalry, 500, 1044111)));
+                new TrainingPointRequirement(SkillName.Ordem, 500, 1044111)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Necromage, 1.0, 1, 1, loc[13][0], loc[13][1],
-                new TrainingPointRequirement(SkillName.Magery, 100, 1044085),
-                new TrainingPointRequirement(SkillName.Necromancy, 100, 1044109),
-                new TrainingPointRequirement(SkillName.SpiritSpeak, 100, 1044092),
-                new TrainingPointRequirement(SkillName.EvalInt, 100, 1044076)));
+                new TrainingPointRequirement(SkillName.Arcanismo, 100, 1044085),
+                new TrainingPointRequirement(SkillName.Necromancia, 100, 1044109),
+                new TrainingPointRequirement(SkillName.PoderMagico, 100, 1044092),
+                new TrainingPointRequirement(SkillName.PoderMagico, 100, 1044076)));
 
             _TrainingPoints.Add(new TrainingPoint(MagicalAbility.Necromancy, 1.0, 1, 1, loc[14][0], loc[14][1],
-                new TrainingPointRequirement(SkillName.Necromancy, 100, 1044109),
-                new TrainingPointRequirement(SkillName.SpiritSpeak, 100, 1044092)));
+                new TrainingPointRequirement(SkillName.Necromancia, 100, 1044109),
+                new TrainingPointRequirement(SkillName.PoderMagico, 100, 1044092)));
 
             loc = _SpecialAbilityLocalizations;
 
@@ -983,7 +983,7 @@ namespace Server.Mobiles
         {
             var projected = Math.Min(BaseCreature.MaxTameRequirement, bc.CurrentTameSkill + trainProfile.GetRequirementIncrease(!trainProfile.HasIncreasedControlSlot));
 
-            return m.Skills[SkillName.AnimalTaming].Value >= projected;
+            return m.Skills[SkillName.Adestramento].Value >= projected;
         }
 
         public static int GetTrainingCapTotal(PetStat stat)
@@ -1404,41 +1404,40 @@ namespace Server.Mobiles
         #region Skill Categories
         public static SkillName[] MagicSkills =
         {
-            SkillName.Magery,
-            SkillName.EvalInt,
-            SkillName.Necromancy,
-            SkillName.SpiritSpeak,
-            SkillName.Chivalry,
-            SkillName.Focus,
+            SkillName.Arcanismo,
+            SkillName.PoderMagico,
+            SkillName.Necromancia,
+            SkillName.PoderMagico,
+            SkillName.Ordem,
+            SkillName.PreparoFisico,
             SkillName.Bushido,
             SkillName.Ninjitsu,
-            SkillName.Spellweaving,
-            SkillName.Mysticism,
-            SkillName.Meditation,
-            SkillName.MagicResist,
-            SkillName.Discordance
+            SkillName.Feiticaria,
+            SkillName.Misticismo,
+            SkillName.ResistenciaMagica,
+            SkillName.Caos
         };
 
         public static SkillName[] CombatSkills =
         {
-            SkillName.Wrestling,
-            SkillName.Tactics,
-            SkillName.Anatomy,
-            SkillName.Parry,
-            SkillName.Healing
+            SkillName.Briga,
+            SkillName.Anatomia,
+            SkillName.Anatomia,
+            SkillName.Bloqueio,
+            SkillName.Medicina
         };
 
         public static bool CommonSkill(BaseCreature bc, SkillName skill)
         {
-            if (bc.Skills[SkillName.Wrestling].Base >= 100 && skill == SkillName.Parry)
+            if (bc.Skills[SkillName.Briga].Base >= 100 && skill == SkillName.Bloqueio)
                 return true;
 
             AIType ai = bc.AI;
 
-            if (skill == SkillName.Meditation && (ai == AIType.AI_Mage || ai == AIType.AI_NecroMage || ai == AIType.AI_Spellweaving || ai == AIType.AI_Mystic))
+            if (skill == SkillName.Arcanismo && (ai == AIType.AI_Mage || ai == AIType.AI_NecroMage || ai == AIType.AI_Spellweaving || ai == AIType.AI_Mystic)) //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
                 return true;
 
-            return skill == SkillName.Focus || skill == SkillName.Tactics || skill == SkillName.Anatomy || skill == SkillName.MagicResist || skill == SkillName.Wrestling;
+            return skill == SkillName.PreparoFisico || skill == SkillName.Anatomia || skill == SkillName.Anatomia || skill == SkillName.ResistenciaMagica || skill == SkillName.Briga;
         }
         #endregion
 
@@ -1740,7 +1739,7 @@ namespace Server.Mobiles
                                 if (bc is GreaterDragon)
                                 {
                                     AnimalTaming.ScaleSkills(bc, 0.72, 0.90, true); // 72% of original skills trainable to 90%
-                                    bc.Skills[SkillName.Magery].Base = bc.Skills[SkillName.Magery].Cap;
+                                    bc.Skills[SkillName.Arcanismo].Base = bc.Skills[SkillName.Arcanismo].Cap;
                                     // Greater dragons have a 90% cap reduction and 90% skill reduction on magery
                                 }
                                 else

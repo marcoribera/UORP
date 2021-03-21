@@ -16,7 +16,7 @@ namespace Server.Items
             Attributes.LowerManaCost = 10;
             Attributes.BonusInt = 8;
             Attributes.SpellDamage = 15;
-            SkillBonuses.SetValues(0, SkillName.Magery, 15.0);
+            SkillBonuses.SetValues(0, SkillName.Arcanismo, 15.0);
         }
 
         public ConjurersGrimoire(Serial serial)

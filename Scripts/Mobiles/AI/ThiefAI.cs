@@ -71,8 +71,8 @@ namespace Server.Mobiles
 					}
 				}
 
-				if (!Core.AOS && !m_Mobile.DisarmReady && m_Mobile.Skills[SkillName.Wrestling].Value >= 80.0 &&
-					m_Mobile.Skills[SkillName.ArmsLore].Value >= 80.0 && m_toDisarm != null)
+				if (!Core.AOS && !m_Mobile.DisarmReady && m_Mobile.Skills[SkillName.Briga].Value >= 80.0 &&
+					m_Mobile.Skills[SkillName.ConhecimentoArmas].Value >= 80.0 && m_toDisarm != null)
 				{
 					EventSink.InvokeDisarmRequest(new DisarmRequestEventArgs(m_Mobile));
 				}
@@ -81,7 +81,7 @@ namespace Server.Mobiles
 					(m_toDisarm.LootType != LootType.Blessed && m_toDisarm.LootType != LootType.Newbied))
 				{
 					m_Mobile.DebugSay("Trying to steal from combatant.");
-					m_Mobile.UseSkill(SkillName.Stealing);
+					m_Mobile.UseSkill(SkillName.Prestidigitacao);
 
 					if (m_Mobile.Target != null)
 					{
@@ -99,7 +99,7 @@ namespace Server.Mobiles
 						if (steala != null)
 						{
 							m_Mobile.DebugSay("Trying to steal from combatant.");
-							m_Mobile.UseSkill(SkillName.Stealing);
+							m_Mobile.UseSkill(SkillName.Prestidigitacao);
 
 							if (m_Mobile.Target != null)
 							{
@@ -112,7 +112,7 @@ namespace Server.Mobiles
 						if (stealb != null)
 						{
 							m_Mobile.DebugSay("Trying to steal from combatant.");
-							m_Mobile.UseSkill(SkillName.Stealing);
+							m_Mobile.UseSkill(SkillName.Prestidigitacao);
 
 							if (m_Mobile.Target != null)
 							{
@@ -125,7 +125,7 @@ namespace Server.Mobiles
 						if (stealc != null)
 						{
 							m_Mobile.DebugSay("Trying to steal from combatant.");
-							m_Mobile.UseSkill(SkillName.Stealing);
+							m_Mobile.UseSkill(SkillName.Prestidigitacao);
 
 							if (m_Mobile.Target != null)
 							{
@@ -138,7 +138,7 @@ namespace Server.Mobiles
 						if (steald != null)
 						{
 							m_Mobile.DebugSay("Trying to steal from combatant.");
-							m_Mobile.UseSkill(SkillName.Stealing);
+							m_Mobile.UseSkill(SkillName.Prestidigitacao);
 
 							if (m_Mobile.Target != null)
 							{

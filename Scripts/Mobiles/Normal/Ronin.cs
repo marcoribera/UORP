@@ -39,14 +39,14 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Poison, 50, 70 );
 			SetResistance( ResistanceType.Energy, 55, 75 );
 
-			SetSkill( SkillName.MagicResist, 42.6, 57.5 );
-			SetSkill( SkillName.Tactics, 115.1, 130.0 );
-			SetSkill( SkillName.Wrestling, 92.6, 107.5 );
-			SetSkill( SkillName.Anatomy, 110.1, 125.0 );
+			SetSkill( SkillName.ResistenciaMagica, 42.6, 57.5 );
+			SetSkill( SkillName.Anatomia, 115.1, 130.0 );
+			SetSkill( SkillName.Briga, 92.6, 107.5 );
+			SetSkill( SkillName.Anatomia, 110.1, 125.0 );
 
-			SetSkill( SkillName.Fencing, 92.6, 107.5 );
-			SetSkill( SkillName.Macing, 92.6, 107.5 );
-			SetSkill( SkillName.Swords, 92.6, 107.5 );
+			SetSkill( SkillName.Perfurante, 92.6, 107.5 );
+			SetSkill( SkillName.Contusivo, 92.6, 107.5 );
+			SetSkill( SkillName.Cortante, 92.6, 107.5 );
 
             SetSkill(SkillName.Bushido, 95.0, 120.0);
 

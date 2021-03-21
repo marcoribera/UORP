@@ -34,12 +34,12 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 100);
             SetResistance(ResistanceType.Energy, 40, 49);
 
-            SetSkill(SkillName.Wrestling, 92.8, 111.7);
-            SetSkill(SkillName.Tactics, 91.6, 107.4);
-            SetSkill(SkillName.MagicResist, 78.1, 93.3);
-            SetSkill(SkillName.Poisoning, 120.0);
-            SetSkill(SkillName.Magery, 104.2, 119.8);
-            SetSkill(SkillName.EvalInt, 102.8, 116.8);
+            SetSkill(SkillName.Briga, 92.8, 111.7);
+            SetSkill(SkillName.Anatomia, 91.6, 107.4);
+            SetSkill(SkillName.ResistenciaMagica, 78.1, 93.3);
+            SetSkill(SkillName.Envenenamento, 120.0);
+            SetSkill(SkillName.Arcanismo, 104.2, 119.8);
+            SetSkill(SkillName.PoderMagico, 102.8, 116.8);
 			
             PackItem(new SpidersSilk(8));
 

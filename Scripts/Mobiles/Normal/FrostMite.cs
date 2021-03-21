@@ -31,11 +31,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 50, 70);
             SetResistance(ResistanceType.Energy, 40, 45);
 
-            SetSkill(SkillName.MagicResist, 50.0, 85.0);
-            SetSkill(SkillName.Tactics, 70.0, 105.0);
-            SetSkill(SkillName.Wrestling, 70.0, 110.0);
-            SetSkill(SkillName.DetectHidden, 60.0, 80.0);
-            SetSkill(SkillName.Focus, 100.0, 115.0);
+            SetSkill(SkillName.ResistenciaMagica, 50.0, 85.0);
+            SetSkill(SkillName.Anatomia, 70.0, 105.0);
+            SetSkill(SkillName.Briga, 70.0, 110.0);
+            SetSkill(SkillName.Percepcao, 60.0, 80.0);
+            SetSkill(SkillName.PreparoFisico, 100.0, 115.0);
 
             Tamable = true;
             ControlSlots = 3;

@@ -10,12 +10,12 @@ namespace Server.Mobiles
         public Ranger()
             : base("the ranger")
         {
-            this.SetSkill(SkillName.Camping, 55.0, 78.0);
-            this.SetSkill(SkillName.DetectHidden, 65.0, 88.0);
-            this.SetSkill(SkillName.Hiding, 45.0, 68.0);
-            this.SetSkill(SkillName.Archery, 65.0, 88.0);
-            this.SetSkill(SkillName.Tracking, 65.0, 88.0);
-            this.SetSkill(SkillName.Veterinary, 60.0, 83.0);
+            this.SetSkill(SkillName.Sobrevivencia, 55.0, 78.0);
+            this.SetSkill(SkillName.Percepcao, 65.0, 88.0);
+            this.SetSkill(SkillName.Furtividade, 45.0, 68.0);
+            this.SetSkill(SkillName.Atirar, 65.0, 88.0);
+            this.SetSkill(SkillName.Sobrevivencia, 65.0, 88.0);
+            this.SetSkill(SkillName.Veterinaria, 60.0, 83.0);
         }
 
         public Ranger(Serial serial)

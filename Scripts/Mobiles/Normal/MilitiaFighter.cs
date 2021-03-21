@@ -63,7 +63,7 @@ namespace Server.Engines.Quests.Haven
             shield.Movable = false;
             this.AddItem(shield);
 
-            this.SetSkill(SkillName.Swords, 20.0);
+            this.SetSkill(SkillName.Cortante, 20.0);
         }
 
         public MilitiaFighter(Serial serial)

@@ -404,16 +404,16 @@ namespace Server.Mobiles
 
 		private static readonly SkillName[] m_KeywordTable =
 		{
-			SkillName.Parry, SkillName.Healing, SkillName.Hiding, SkillName.Stealing, SkillName.Alchemy, SkillName.AnimalLore,
-			SkillName.ItemID, SkillName.ArmsLore, SkillName.Begging, SkillName.Blacksmith, SkillName.Fletching,
-			SkillName.Peacemaking, SkillName.Camping, SkillName.Carpentry, SkillName.Cartography, SkillName.Cooking,
-			SkillName.DetectHidden, SkillName.Discordance, //??
-			SkillName.EvalInt, SkillName.Fishing, SkillName.Provocation, SkillName.Lockpicking, SkillName.Magery,
-			SkillName.MagicResist, SkillName.Tactics, SkillName.Snooping, SkillName.RemoveTrap, SkillName.Musicianship,
-			SkillName.Poisoning, SkillName.Archery, SkillName.SpiritSpeak, SkillName.Tailoring, SkillName.AnimalTaming,
-			SkillName.TasteID, SkillName.Tinkering, SkillName.Veterinary, SkillName.Forensics, SkillName.Herding,
-			SkillName.Tracking, SkillName.Stealth, SkillName.Inscribe, SkillName.Swords, SkillName.Macing, SkillName.Fencing,
-			SkillName.Wrestling, SkillName.Lumberjacking, SkillName.Mining, SkillName.Meditation
+			SkillName.Bloqueio, SkillName.Medicina, SkillName.Furtividade, SkillName.Prestidigitacao, SkillName.Alquimia, SkillName.Adestramento,
+			SkillName.Erudicao, SkillName.ConhecimentoArmas, SkillName.Carisma, SkillName.Ferraria, SkillName.Carpintaria,
+			SkillName.Pacificar, SkillName.Sobrevivencia, SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria,
+			SkillName.Percepcao, SkillName.Caos, //??
+			SkillName.PoderMagico, SkillName.Sobrevivencia, SkillName.Provocacao, SkillName.Mecanica, SkillName.Arcanismo,
+			SkillName.ResistenciaMagica, SkillName.Anatomia, SkillName.Prestidigitacao, SkillName.Mecanica, SkillName.Tocar,
+			SkillName.Envenenamento, SkillName.Atirar, SkillName.PoderMagico, SkillName.Costura, SkillName.Adestramento,
+			SkillName.Alquimia, SkillName.Mecanica, SkillName.Veterinaria, SkillName.Percepcao, SkillName.Adestramento,
+			SkillName.Sobrevivencia, SkillName.Furtividade, SkillName.Erudicao, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante,
+			SkillName.Briga, SkillName.Extracao, SkillName.Extracao
 		};
 
 		public virtual void OnSpeech(SpeechEventArgs e)
@@ -516,7 +516,7 @@ namespace Server.Mobiles
 
 						if (keyword == 0x154)
 						{
-							toTrain = SkillName.Anatomy;
+							toTrain = SkillName.Anatomia;
 						}
 						else if (keyword >= 0x6D && keyword <= 0x9C)
 						{

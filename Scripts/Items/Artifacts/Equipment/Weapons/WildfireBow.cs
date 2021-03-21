@@ -11,7 +11,7 @@ namespace Server.Items
             : base()
         {
             Hue = 1161;		
-            SkillBonuses.SetValues(0, SkillName.Archery, 10);
+            SkillBonuses.SetValues(0, SkillName.Atirar, 10);
             WeaponAttributes.ResistFireBonus = 25;			
             Velocity = 15;			
         }

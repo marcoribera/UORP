@@ -158,7 +158,7 @@ namespace Server.Engines.Craft
                             break;
                     }
 
-                    double skill = Math.Max(from.Skills[SkillName.Mining].Value, from.Skills[SkillName.Blacksmith].Value);
+                    double skill = Math.Max(from.Skills[SkillName.Extracao].Value, from.Skills[SkillName.Ferraria].Value);
 
                     if (difficulty > skill)
                         return SmeltResult.NoSkill;

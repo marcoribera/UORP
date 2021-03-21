@@ -72,7 +72,7 @@ namespace Server.Engines.Quests
         public TheRudimentsOfSelfDefenseQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Wrestling, 50, "Old Haven Training", 1077492, 1077586));
+            this.AddObjective(new ApprenticeObjective(SkillName.Briga, 50, "Old Haven Training", 1077492, 1077586));
 			
             // 1077492 Your Wrestling potential is greatly enhanced while questing in this area.
             // 1077586 You are not in the quest area for Apprentice Wrestler. Your Wrestling potential is not enhanced here.
@@ -91,7 +91,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Wrestling.Base < 50;
+                return this.Owner.Skills.Briga.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -132,12 +132,11 @@ namespace Server.Engines.Quests
         public Dimethro()
             : base("Dimethro", "The Wrestling Instructor")
         { 
-            this.SetSkill(SkillName.EvalInt, 120.0, 120.0);
-            this.SetSkill(SkillName.Inscribe, 120.0, 120.0);
-            this.SetSkill(SkillName.Magery, 120.0, 120.0);
-            this.SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            this.SetSkill(SkillName.Wrestling, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
+            this.SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            this.SetSkill(SkillName.Erudicao, 120.0, 120.0);
+            this.SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            this.SetSkill(SkillName.Briga, 120.0, 120.0);
         }
 		
         public Dimethro(Serial serial)

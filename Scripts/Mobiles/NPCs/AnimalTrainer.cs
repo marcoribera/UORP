@@ -21,9 +21,9 @@ namespace Server.Mobiles
 		public AnimalTrainer()
 			: base("the animal trainer")
 		{
-			SetSkill(SkillName.AnimalLore, 64.0, 100.0);
-			SetSkill(SkillName.AnimalTaming, 90.0, 100.0);
-			SetSkill(SkillName.Veterinary, 65.0, 88.0);
+			SetSkill(SkillName.Adestramento, 64.0, 100.0);
+			SetSkill(SkillName.Adestramento, 90.0, 100.0);
+			SetSkill(SkillName.Veterinaria, 65.0, 88.0);
 		}
 
 		public AnimalTrainer(Serial serial)
@@ -145,9 +145,9 @@ namespace Server.Mobiles
 
 		public static int GetMaxStabled(Mobile from)
 		{
-			var taming = from.Skills[SkillName.AnimalTaming].Value;
-			var anlore = from.Skills[SkillName.AnimalLore].Value;
-			var vetern = from.Skills[SkillName.Veterinary].Value;
+			var taming = from.Skills[SkillName.Adestramento].Value;
+			var anlore = from.Skills[SkillName.Adestramento].Value;
+			var vetern = from.Skills[SkillName.Veterinaria].Value;
 			var sklsum = taming + anlore + vetern;
 
             int max = from is PlayerMobile ? ((PlayerMobile)from).RewardStableSlots : 0;

@@ -1947,7 +1947,7 @@ namespace Server.Items
             if (Core.ML && from != null)
             {
                 double div = Siege.SiegeShard ? 12.5 : 20;
-                int bonus = (int)Math.Min(4, (from.Skills.ArmsLore.Value / div));
+                int bonus = (int)Math.Min(4, (from.Skills.ConhecimentoArmaduras.Value / div));
 
                 for (int i = 0; i < bonus; i++)
                 {
@@ -1961,7 +1961,7 @@ namespace Server.Items
                     }
                 }
 
-                from.CheckSkill(SkillName.ArmsLore, 0, 100);
+                from.CheckSkill(SkillName.ConhecimentoArmas, 0, 100);
             }
 
             #region Stygian Abyss

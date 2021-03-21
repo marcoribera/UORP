@@ -40,7 +40,7 @@ namespace Server.Spells.Eighth
         {
             if (SpellHelper.CheckTown(Caster, Caster) && CheckSequence())
             {
-                foreach (var id in AcquireIndirectTargets(Caster.Location, 1 + (int)(Caster.Skills[SkillName.Magery].Value / 15.0)))
+                foreach (var id in AcquireIndirectTargets(Caster.Location, 1 + (int)(Caster.Skills[SkillName.Arcanismo].Value / 15.0)))
                 {
                     Mobile m = id as Mobile;
 

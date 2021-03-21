@@ -37,10 +37,10 @@ namespace Server.Gumps
                     summon.IsBonded = true;
                     from.SendLocalizedMessage(1049666); // Your pet has bonded with you!
 
-                    summon.Skills.Wrestling.Base = 100;
-                    summon.Skills.Tactics.Base = 100;
-                    summon.Skills.MagicResist.Base = 100;
-                    summon.Skills.Anatomy.Base = 100;
+                    summon.Skills.Briga.Base = 100;
+                    summon.Skills.Anatomia.Base = 100;
+                    summon.Skills.ResistenciaMagica.Base = 100;
+                    summon.Skills.Anatomia.Base = 100;
 					
                     Effects.PlaySound(summon.Location, summon.Map, summon.BaseSoundID);
                     Effects.SendLocationParticles(EffectItem.Create(summon.Location, summon.Map, EffectItem.DefaultDuration), 0x3728, 1, 10, 0x26B6);

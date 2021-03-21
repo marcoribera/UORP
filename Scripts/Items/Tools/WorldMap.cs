@@ -16,7 +16,7 @@ namespace Server.Items
 			// Unlike the others, world map is not based on crafted location
             Facet = from.Map;
 
-			double skillValue = from.Skills[SkillName.Cartography].Value;
+			double skillValue = from.Skills[SkillName.Erudicao].Value;
 			int x20 = (int)(skillValue * 20);
 			int size = 25 + (int)(skillValue * 6.6);
 

@@ -11,8 +11,8 @@ namespace Server.Mobiles
         public Alchemist()
             : base("the alchemist")
         {
-            this.SetSkill(SkillName.Alchemy, 85.0, 100.0);
-            this.SetSkill(SkillName.TasteID, 65.0, 88.0);
+            this.SetSkill(SkillName.Alquimia, 85.0, 100.0);
+            this.SetSkill(SkillName.Alquimia, 65.0, 88.0);
         }
 
         #region Bulk Orders
@@ -25,7 +25,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Alchemy].Base > 0;
+            return BulkOrderSystem.NewSystemEnabled && from is PlayerMobile && from.Skills[SkillName.Alquimia].Base > 0;
         }
 
         public override void OnSuccessfulBulkOrderReceive(Mobile from)

@@ -807,8 +807,8 @@ namespace Server.Engines.Quests
         public EscortableMerchant()
         {
             Title = "the merchant";
-            SetSkill(SkillName.ItemID, 55.0, 78.0);
-            SetSkill(SkillName.ArmsLore, 55, 78);
+            SetSkill(SkillName.Erudicao, 55.0, 78.0);
+            SetSkill(SkillName.ConhecimentoArmas, 55, 78);
         }
 
         public EscortableMerchant(Serial serial)
@@ -871,11 +871,10 @@ namespace Server.Engines.Quests
         {
             Title = "the mage";
 
-            SetSkill(SkillName.EvalInt, 80.0, 100.0);
-            SetSkill(SkillName.Inscribe, 80.0, 100.0);
-            SetSkill(SkillName.Magery, 80.0, 100.0);
-            SetSkill(SkillName.Meditation, 80.0, 100.0);
-            SetSkill(SkillName.MagicResist, 80.0, 100.0);
+            SetSkill(SkillName.PoderMagico, 80.0, 100.0);
+            SetSkill(SkillName.Erudicao, 80.0, 100.0);
+            SetSkill(SkillName.Arcanismo, 80.0, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 80.0, 100.0);
         }
 
         public EscortableMage(Serial serial)
@@ -1066,9 +1065,9 @@ namespace Server.Engines.Quests
         {
             Title = "the noble";
 
-            SetSkill(SkillName.Parry, 80.0, 100.0);
-            SetSkill(SkillName.Swords, 80.0, 100.0);
-            SetSkill(SkillName.Tactics, 80.0, 100.0);
+            SetSkill(SkillName.Bloqueio, 80.0, 100.0);
+            SetSkill(SkillName.Cortante, 80.0, 100.0);
+            SetSkill(SkillName.Anatomia, 80.0, 100.0);
         }
 
         public EscortableNoble(Serial serial)
@@ -1284,15 +1283,15 @@ namespace Server.Engines.Quests
             SetResistance(ResistanceType.Poison, 40, 50);
             SetResistance(ResistanceType.Energy, 40, 50);
 
-            SetSkill(SkillName.Anatomy, 75.0, 97.5);
-            SetSkill(SkillName.EvalInt, 82.0, 100.0);
-            SetSkill(SkillName.Healing, 75.0, 97.5);
-            SetSkill(SkillName.Magery, 82.0, 100.0);
-            SetSkill(SkillName.MagicResist, 82.0, 100.0);
-            SetSkill(SkillName.Tactics, 82.0, 100.0);
-            SetSkill(SkillName.Camping, 80.0, 100.0);
-            SetSkill(SkillName.Forensics, 80.0, 100.0);
-            SetSkill(SkillName.SpiritSpeak, 80.0, 100.0);
+            SetSkill(SkillName.Anatomia, 75.0, 97.5);
+            SetSkill(SkillName.PoderMagico, 82.0, 100.0);
+            SetSkill(SkillName.Medicina, 75.0, 97.5);
+            SetSkill(SkillName.Arcanismo, 82.0, 100.0);
+            SetSkill(SkillName.ResistenciaMagica, 82.0, 100.0);
+            SetSkill(SkillName.Anatomia, 82.0, 100.0);
+            SetSkill(SkillName.Sobrevivencia, 80.0, 100.0);
+            SetSkill(SkillName.Percepcao, 80.0, 100.0);
+            SetSkill(SkillName.PoderMagico, 80.0, 100.0);
 
             Fame = 1000;
             Karma = 10000;
@@ -1333,11 +1332,11 @@ namespace Server.Engines.Quests
             if (!base.CheckTeach(skill, from))
                 return false;
 
-            return (skill == SkillName.Anatomy) ||
-                   (skill == SkillName.Camping) ||
-                   (skill == SkillName.Forensics) ||
-                   (skill == SkillName.Healing) ||
-                   (skill == SkillName.SpiritSpeak);
+            return (skill == SkillName.Anatomia) ||
+                   (skill == SkillName.Sobrevivencia) ||
+                   (skill == SkillName.Percepcao) ||
+                   (skill == SkillName.Medicina) ||
+                   (skill == SkillName.PoderMagico);
         }
 
         public override void InitOutfit()

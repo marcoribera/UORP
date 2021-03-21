@@ -72,7 +72,7 @@ namespace Server.Engines.Quests
         public ChannelingTheSupernaturalQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.SpiritSpeak, 50, "Old Haven Training", 1078045, 1078046));
+            this.AddObjective(new ApprenticeObjective(SkillName.PoderMagico, 50, "Old Haven Training", 1078045, 1078046));
 			
             // 1078045 You ability to channel the supernatural is greatly enhanced while questing in this area.
             // 1078046 You are not in the quest area for Apprentice Medium. Your ability to channel the supernatural potential is not enhanced here.
@@ -91,7 +91,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.SpiritSpeak.Base < 50;
+                return this.Owner.Skills.PoderMagico.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -137,12 +137,11 @@ namespace Server.Engines.Quests
         public Morganna()
             : base("Morganna", "The Spirit Speak Instructor")
         { 
-            SetSkill(SkillName.Magery, 120.0, 120.0);
-            SetSkill(SkillName.MagicResist, 120.0, 120.0);
-            SetSkill(SkillName.SpiritSpeak, 120.0, 120.0);
-            SetSkill(SkillName.Swords, 120.0, 120.0);
-            SetSkill(SkillName.Meditation, 120.0, 120.0);
-            SetSkill(SkillName.Necromancy, 120.0, 120.0);
+            SetSkill(SkillName.Arcanismo, 120.0, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 120.0, 120.0);
+            SetSkill(SkillName.PoderMagico, 120.0, 120.0);
+            SetSkill(SkillName.Cortante, 120.0, 120.0);
+            SetSkill(SkillName.Necromancia, 120.0, 120.0);
         }
 		
         public Morganna(Serial serial)

@@ -235,7 +235,7 @@ namespace Server.Spells.Seventh
             {
                 this.m_Owner = owner;
 
-                int val = (int)owner.Skills[SkillName.Magery].Value;
+                int val = (int)owner.Skills[SkillName.Arcanismo].Value;
 
                 if (val > 120)
                     val = 120;

@@ -32,13 +32,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 40, 45);
             SetResistance(ResistanceType.Energy, 95, 100);
 
-            SetSkill(SkillName.Anatomy, 2.0, 3.8);
-            SetSkill(SkillName.MagicResist, 47.5, 57.9);
-            SetSkill(SkillName.Poisoning, 70.5, 73.5);
-            SetSkill(SkillName.Tactics, 73.3, 78.9);
-            SetSkill(SkillName.Wrestling, 92.5, 94.6);
-            SetSkill(SkillName.Hiding, 110.3, 119.9);
-            SetSkill(SkillName.Stealth, 110.5, 119.6);
+            SetSkill(SkillName.Anatomia, 2.0, 3.8);
+            SetSkill(SkillName.ResistenciaMagica, 47.5, 57.9);
+            SetSkill(SkillName.Envenenamento, 70.5, 73.5);
+            SetSkill(SkillName.Anatomia, 73.3, 78.9);
+            SetSkill(SkillName.Briga, 92.5, 94.6);
+            SetSkill(SkillName.Furtividade, 110.3, 119.9);
+            SetSkill(SkillName.Furtividade, 110.5, 119.6);
         }
 
         public TrapdoorSpider(Serial serial)
@@ -131,7 +131,7 @@ namespace Server.Mobiles
                 this.PlaySound(0x22F);
                 this.Hidden = true;
 
-                this.UseSkill(SkillName.Stealth);
+                this.UseSkill(SkillName.Furtividade);
             }
         }
 

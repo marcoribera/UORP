@@ -84,9 +84,9 @@ namespace Server.Misc
             if (from.Skills == null)
                 return Mobile.DefaultStamRate;
 
-            CheckBonusSkill(from, from.Stam, from.StamMax, SkillName.Focus);
+            CheckBonusSkill(from, from.Stam, from.StamMax, SkillName.PreparoFisico);
 
-            double bonus = from.Skills[SkillName.Focus].Value * 0.1;
+            double bonus = from.Skills[SkillName.PreparoFisico].Value * 0.1;
 
             bonus += StamRegen(from);
 
@@ -113,20 +113,20 @@ namespace Server.Misc
                 return Mobile.DefaultManaRate;
 
             if (!from.Meditating)
-                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Meditation);
+                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Arcanismo); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
             double rate;
             double armorPenalty = GetArmorOffset(from);
 
             if (Core.ML)
             {
-                double med = from.Skills[SkillName.Meditation].Value;
-                double focus = from.Skills[SkillName.Focus].Value;
+                double med = from.Skills[SkillName.Arcanismo].Value; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                double focus = from.Skills[SkillName.PreparoFisico].Value;
 
                 double focusBonus = focus / 200;
                 double medBonus = 0;
 
-                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Focus);
+                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.PreparoFisico);
 
                 if (armorPenalty == 0)
                 {
@@ -153,13 +153,13 @@ namespace Server.Misc
             }
             else if (Core.AOS)
             {
-                double medPoints = from.Int + (from.Skills[SkillName.Meditation].Value * 3);
+                double medPoints = from.Int + (from.Skills[SkillName.Arcanismo].Value * 3); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
-                medPoints *= (from.Skills[SkillName.Meditation].Value < 100.0) ? 0.025 : 0.0275;
+                medPoints *= (from.Skills[SkillName.Arcanismo].Value < 100.0) ? 0.025 : 0.0275; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
-                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Focus);
+                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.PreparoFisico);
 
-                double focusPoints = (from.Skills[SkillName.Focus].Value * 0.05);
+                double focusPoints = (from.Skills[SkillName.PreparoFisico].Value * 0.05);
 
                 if (armorPenalty > 0)
                     medPoints = 0; // In AOS, wearing any meditation-blocking armor completely removes meditation bonus
@@ -178,7 +178,7 @@ namespace Server.Misc
             }
             else
             {
-                double medPoints = (from.Int + from.Skills[SkillName.Meditation].Value) * 0.5;
+                double medPoints = (from.Int + from.Skills[SkillName.Arcanismo].Value) * 0.5; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
                 if (medPoints <= 0)
                     rate = 7.0;

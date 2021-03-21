@@ -140,7 +140,7 @@ namespace Server.Spells.SkillMasteries
 
             BaseWeapon wep = GetWeapon();
 
-            if (CastSkill == SkillName.Poisoning && wep != null && !(wep is Fists))
+            if (CastSkill == SkillName.Envenenamento && wep != null && !(wep is Fists))
                 return true;
 
             return wep != null && wep.DefSkill == CastSkill;
@@ -350,8 +350,8 @@ namespace Server.Spells.SkillMasteries
             int maxSkill = (1 + volumeMod) * 10;
             maxSkill += (1 + (volumeMod / 6)) * 25;
 
-            if (target.Skills[SkillName.MagicResist].Value < maxSkill)
-                target.CheckSkill(SkillName.MagicResist, 0.0, target.Skills[SkillName.MagicResist].Cap);
+            if (target.Skills[SkillName.ResistenciaMagica].Value < maxSkill)
+                target.CheckSkill(SkillName.ResistenciaMagica, 0.0, target.Skills[SkillName.ResistenciaMagica].Cap);
 
             return (n >= Utility.RandomDouble());
         }
@@ -953,12 +953,12 @@ namespace Server.Spells.SkillMasteries
 
         public int GetWeaponSkill()
         {
-            double swrd = Caster.Skills[SkillName.Swords].Value;
-            double fenc = Caster.Skills[SkillName.Fencing].Value;
-            double mcng = Caster.Skills[SkillName.Macing].Value;
-            double arch = Caster.Skills[SkillName.Archery].Value;
-            double thro = Caster.Skills[SkillName.Throwing].Value;
-            double wres = Caster.Skills[SkillName.Wrestling].Value;
+            double swrd = Caster.Skills[SkillName.Cortante].Value;
+            double fenc = Caster.Skills[SkillName.Perfurante].Value;
+            double mcng = Caster.Skills[SkillName.Contusivo].Value;
+            double arch = Caster.Skills[SkillName.Atirar].Value;
+            double thro = Caster.Skills[SkillName.Atirar].Value;
+            double wres = Caster.Skills[SkillName.Briga].Value;
 
             double val = swrd;
 

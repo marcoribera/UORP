@@ -21,8 +21,8 @@ namespace Server.Spells.SkillMasteries
         public override bool PartyEffects { get { return false; } }
         public override bool RevealOnTick { get { return false; } }
 
-        public override SkillName CastSkill { get { return SkillName.Spellweaving; } }
-        public override SkillName DamageSkill { get { return SkillName.Meditation; } }
+        public override SkillName CastSkill { get { return SkillName.Feiticaria; } }
+        public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
         public double Chance { get; set; }
 

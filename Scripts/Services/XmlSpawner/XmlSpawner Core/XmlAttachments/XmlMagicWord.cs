@@ -209,11 +209,11 @@ namespace Server.Engines.XmlSpawner2
 					m.SendMessage("You disappear!");
 					break;
 				case "Tarda":
-					m.AddSkillMod( new TimedSkillMod( SkillName.Tactics, true, 20, Duration ) );
+					m.AddSkillMod( new TimedSkillMod( SkillName.Anatomia, true, 20, Duration ) );
 					m.SendMessage("You are more skillful warrior!");
 					break;
 				case "Marda":
-					m.AddSkillMod( new TimedSkillMod( SkillName.Magery, true, 20, Duration ) );
+					m.AddSkillMod( new TimedSkillMod( SkillName.Arcanismo, true, 20, Duration ) );
 					m.SendMessage("You are more skillful mage!");
 					break;
 				case "Vas Malik":

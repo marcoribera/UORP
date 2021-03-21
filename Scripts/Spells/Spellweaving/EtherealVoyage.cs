@@ -85,7 +85,7 @@ namespace Server.Spells.Spellweaving
             m.PlaySound(0x5C8);
             m.SendLocalizedMessage(1074770); // You are now under the effects of Ethereal Voyage.
 
-            double skill = this.Caster.Skills.Spellweaving.Value;
+            double skill = this.Caster.Skills.Feiticaria.Value;
 
             TimeSpan duration = TimeSpan.FromSeconds(12 + (int)(skill / 24) + (this.FocusLevel * 2));
 

@@ -12,7 +12,7 @@ namespace Server.Spells.SkillMasteries
         public override int BaseMana { get { return 20; } }
         public override double RequiredSkill { get { return 90.0; } }
 
-        public override SkillName MoveSkill { get { return SkillName.Macing; } }
+        public override SkillName MoveSkill { get { return SkillName.Contusivo; } }
         public override TextDefinition AbilityMessage { get { return new TextDefinition(1155980); } } // *You ready yourself to stagger your opponent!*
         public override TimeSpan CooldownPeriod { get { return TimeSpan.FromSeconds(2); } }
 
@@ -58,7 +58,7 @@ namespace Server.Spells.SkillMasteries
 
             defender.FixedEffect(0x3779, 20, 10, 2719, 0);
 
-            double skills = (attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Tactics].Value + (MasteryInfo.GetMasteryLevel(attacker, MoveSkill) * 40)) / 3;
+            double skills = (attacker.Skills[MoveSkill].Value + attacker.Skills[SkillName.Anatomia].Value + (MasteryInfo.GetMasteryLevel(attacker, MoveSkill) * 40)) / 3;
 
             AddToTable(defender, (int)(skills / 2));
             BuffInfo.AddBuff(defender, new BuffInfo(BuffIcon.Stagger, 1155981, 1155982, TimeSpan.FromSeconds(10), defender, ((int)skills / 2).ToString()));

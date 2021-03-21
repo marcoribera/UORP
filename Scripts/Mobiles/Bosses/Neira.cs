@@ -34,12 +34,11 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 30, 40);
             SetResistance(ResistanceType.Energy, 20, 30);
 
-            SetSkill(SkillName.EvalInt, 120.0);
-            SetSkill(SkillName.Magery, 120.0);
-            SetSkill(SkillName.Meditation, 120.0);
-            SetSkill(SkillName.MagicResist, 150.0);
-            SetSkill(SkillName.Tactics, 97.6, 100.0);
-            SetSkill(SkillName.Wrestling, 97.6, 100.0);
+            SetSkill(SkillName.PoderMagico, 120.0);
+            SetSkill(SkillName.Arcanismo, 120.0);
+            SetSkill(SkillName.ResistenciaMagica, 150.0);
+            SetSkill(SkillName.Anatomia, 97.6, 100.0);
+            SetSkill(SkillName.Briga, 97.6, 100.0);
 
             Fame = 22500;
             Karma = -22500;
@@ -55,7 +54,7 @@ namespace Server.Mobiles
 
             Scimitar weapon = new Scimitar();
 
-            weapon.Skill = SkillName.Wrestling;
+            weapon.Skill = SkillName.Briga;
             weapon.Hue = 38;
             weapon.Movable = false;
 

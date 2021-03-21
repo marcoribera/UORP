@@ -44,7 +44,7 @@ namespace Server.Spells.Spellweaving
         {
             get
             {
-                return ((Caster.Skills.Spellweaving.Value / 2.4) + FocusLevel) / 100;
+                return ((Caster.Skills.Feiticaria.Value / 2.4) + FocusLevel) / 100;
             }
         }
         public static void Initialize()
@@ -130,7 +130,7 @@ namespace Server.Spells.Spellweaving
                 m.FixedParticles(0x3709, 1, 30, 0x26ED, 5, 2, EffectLayer.Waist);
                 m.FixedParticles(0x376A, 1, 30, 0x251E, 5, 3, EffectLayer.Waist);
 
-                double skill = Caster.Skills[SkillName.Spellweaving].Value;
+                double skill = Caster.Skills[SkillName.Feiticaria].Value;
 
                 TimeSpan duration = TimeSpan.FromMinutes(((int)(skill / 24)) * 2 + FocusLevel);
 

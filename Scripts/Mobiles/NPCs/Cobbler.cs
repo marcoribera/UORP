@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Cobbler()
             : base("the cobbler")
         { 
-            this.SetSkill(SkillName.Tailoring, 60.0, 83.0);
+            this.SetSkill(SkillName.Costura, 60.0, 83.0);
         }
 
         public Cobbler(Serial serial)

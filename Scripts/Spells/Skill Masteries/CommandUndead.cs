@@ -23,8 +23,8 @@ namespace Server.Spells.SkillMasteries
 		public override int RequiredMana{ get { return 40; } }
 		public override bool PartyEffects { get { return false; } }
 
-        public override SkillName CastSkill { get { return SkillName.Necromancy; } }
-        public override SkillName DamageSkill { get { return SkillName.SpiritSpeak; } }
+        public override SkillName CastSkill { get { return SkillName.Necromancia; } }
+        public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(3.0); } }
 

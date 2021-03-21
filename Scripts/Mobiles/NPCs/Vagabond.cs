@@ -14,8 +14,8 @@ namespace Server.Mobiles
 		public Vagabond()
 			: base("the vagabond")
 		{
-			SetSkill(SkillName.Begging, 64.0, 100.0);
-			SetSkill(SkillName.ItemID, 60.0, 83.0);
+			SetSkill(SkillName.Carisma, 64.0, 100.0);
+			SetSkill(SkillName.Erudicao, 60.0, 83.0);
 		}
 
 		public Vagabond(Serial serial)

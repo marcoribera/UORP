@@ -26,10 +26,10 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Physical, 10);
             this.SetResistance(ResistanceType.Poison, 100);
 
-            this.SetSkill(SkillName.Wrestling, 90.0);
-            this.SetSkill(SkillName.Tactics, 50.0);
-            this.SetSkill(SkillName.MagicResist, 100.0);
-            this.SetSkill(SkillName.Poisoning, 150.0);
+            this.SetSkill(SkillName.Briga, 90.0);
+            this.SetSkill(SkillName.Anatomia, 50.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 100.0);
+            this.SetSkill(SkillName.Envenenamento, 150.0);
 
             this.ControlSlots = 1;
         }

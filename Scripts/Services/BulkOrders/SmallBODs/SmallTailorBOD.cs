@@ -87,7 +87,7 @@ namespace Server.Engines.BulkOrders
             SmallBulkEntry[] entries;
             bool useMaterials = Utility.RandomBool();
 
-            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Tailoring);
+            double theirSkill = BulkOrderSystem.GetBODSkill(m, SkillName.Costura);
             if (useMaterials && theirSkill >= 6.2) // Ugly, but the easiest leather BOD is Leather Cap which requires at least 6.2 skill.
                 entries = SmallBulkEntry.TailorLeather;
             else

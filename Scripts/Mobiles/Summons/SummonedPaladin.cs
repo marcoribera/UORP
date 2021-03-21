@@ -39,8 +39,8 @@ namespace Server.Engines.Quests.Necro
 
             this.AddItem(new ThinLongsword());
 
-            this.SetSkill(SkillName.Swords, 50.0);
-            this.SetSkill(SkillName.Tactics, 50.0);
+            this.SetSkill(SkillName.Cortante, 50.0);
+            this.SetSkill(SkillName.Anatomia, 50.0);
 
             this.PackGold(500);
         }

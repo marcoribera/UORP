@@ -85,7 +85,7 @@ namespace Server.Spells.Necromancy
         }
         public override bool CheckCast()
         {
-            if (Caster.Skills.SpiritSpeak.Value < 100.0)
+            if (Caster.Skills.PoderMagico.Value < 100.0)
             {
                 Caster.SendLocalizedMessage(1072112); // You must have GM Spirit Speak to use this spell
                 return false;

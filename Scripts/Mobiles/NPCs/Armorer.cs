@@ -13,8 +13,8 @@ namespace Server.Mobiles
         public Armorer()
             : base("the armourer")
         {
-            SetSkill(SkillName.ArmsLore, 64.0, 100.0);
-            SetSkill(SkillName.Blacksmith, 60.0, 83.0);
+            SetSkill(SkillName.ConhecimentoArmas, 64.0, 100.0);
+            SetSkill(SkillName.Ferraria, 60.0, 83.0);
         }
 
         public Armorer(Serial serial)
@@ -91,7 +91,7 @@ namespace Server.Mobiles
 
             if (pm != null && pm.NextSmithBulkOrder == TimeSpan.Zero && (fromContextMenu || 0.2 > Utility.RandomDouble()))
             {
-                double theirSkill = pm.Skills[SkillName.Blacksmith].Base;
+                double theirSkill = pm.Skills[SkillName.Ferraria].Base;
 
                 if (theirSkill >= 70.1)
                     pm.NextSmithBulkOrder = TimeSpan.FromHours(6.0);
@@ -116,7 +116,7 @@ namespace Server.Mobiles
 
         public override bool SupportsBulkOrders(Mobile from)
         {
-            return (from is PlayerMobile && from.Skills[SkillName.Blacksmith].Base > 0);
+            return (from is PlayerMobile && from.Skills[SkillName.Ferraria].Base > 0);
         }
 
         public override TimeSpan GetNextBulkOrder(Mobile from)

@@ -459,7 +459,7 @@ namespace Server.Engines.BulkOrders
         private static Item CreatePowerScroll(int type)
         {
             if (type == 5 || type == 10 || type == 15 || type == 20)
-                return new PowerScroll(SkillName.Blacksmith, 100 + type);
+                return new PowerScroll(SkillName.Ferraria, 100 + type);
 
             throw new InvalidOperationException();
         }
@@ -479,7 +479,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E2A, TalismanSkill.Blacksmithy);
+            return new MasterCraftsmanTalisman(type, 0x9E2A, TalismanSkill.Ferraria);
         }
         #endregion
 
@@ -832,7 +832,7 @@ namespace Server.Engines.BulkOrders
         private static Item CreatePowerScroll(int type)
         {
             if (type == 5 || type == 10 || type == 15 || type == 20)
-                return new PowerScroll(SkillName.Tailoring, 100 + type);
+                return new PowerScroll(SkillName.Costura, 100 + type);
 
             throw new InvalidOperationException();
         }
@@ -844,7 +844,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CreateCraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E25, TalismanSkill.Tailoring);
+            return new MasterCraftsmanTalisman(type, 0x9E25, TalismanSkill.Costura);
         }
 
         #endregion
@@ -1071,7 +1071,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E2B, TalismanSkill.Tinkering);
+            return new MasterCraftsmanTalisman(type, 0x9E2B, TalismanSkill.Mecanica);
         }
         #endregion
 
@@ -1262,7 +1262,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E2C, TalismanSkill.Carpentry);
+            return new MasterCraftsmanTalisman(type, 0x9E2C, TalismanSkill.Carpintaria);
         }
         #endregion
 
@@ -1422,7 +1422,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E28, TalismanSkill.Inscription);
+            return new MasterCraftsmanTalisman(type, 0x9E28, TalismanSkill.Erudicao);
         }
 
         private static Item ImprovementTalisman(int type)
@@ -1545,7 +1545,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E27, TalismanSkill.Cooking);
+            return new MasterCraftsmanTalisman(type, 0x9E27, TalismanSkill.Culinaria);
         }
 
         private static Item CreateItem(int type)
@@ -1683,7 +1683,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E29, TalismanSkill.Fletching);
+            return new MasterCraftsmanTalisman(type, 0x9E29, TalismanSkill.Carpintaria);
         }
 
         private static Item CreateRunicFletcherTools(int type)
@@ -1861,7 +1861,7 @@ namespace Server.Engines.BulkOrders
 
         private static Item CraftsmanTalisman(int type)
         {
-            return new MasterCraftsmanTalisman(type, 0x9E26, TalismanSkill.Alchemy);
+            return new MasterCraftsmanTalisman(type, 0x9E26, TalismanSkill.Alquimia);
         }
         #endregion
 

@@ -38,8 +38,8 @@ namespace Server.Spells.SkillMasteries
 
         public override TimeSpan ExpirationPeriod { get { return TimeSpan.FromMinutes(360); } }
 
-        public override SkillName CastSkill { get { return SkillName.Magery; } }
-        public override SkillName DamageSkill { get { return SkillName.EvalInt; } }
+        public override SkillName CastSkill { get { return SkillName.Arcanismo; } }
+        public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
         public DeathRaySpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

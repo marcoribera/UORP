@@ -335,7 +335,7 @@ namespace Server.Items
 
         public static bool IsMageryCreature(BaseCreature bc)
         {
-            return (bc != null && bc.AI == AIType.AI_Mage && bc.Skills[SkillName.Magery].Base > 5.0);
+            return (bc != null && bc.AI == AIType.AI_Mage && bc.Skills[SkillName.Arcanismo].Base > 5.0);
         }
 
         public static bool IsFireBreathingCreature(BaseCreature bc)
@@ -707,9 +707,9 @@ namespace Server.Items
 
         public static bool CheckMusicianship(Mobile m)
         {
-            m.CheckSkill(SkillName.Musicianship, 0.0, 120.0);
+            m.CheckSkill(SkillName.Tocar, 0.0, 120.0);
 
-            return ((m.Skills[SkillName.Musicianship].Value / 100) > Utility.RandomDouble());
+            return ((m.Skills[SkillName.Tocar].Value / 100) > Utility.RandomDouble());
         }
 
         public void PlayInstrumentWell(Mobile from)

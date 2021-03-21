@@ -75,7 +75,7 @@ namespace Server.Engines.Quests
         public ThouAndThineShieldQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Parry, 50, "Old Haven Training", 1077705, 1077706));
+            this.AddObjective(new ApprenticeObjective(SkillName.Bloqueio, 50, "Old Haven Training", 1077705, 1077706));
 			
             // 1077705 You feel as light as a butterfly, as if you could block incoming blows easily. Your ability to hone your Parrying skill is enhanced in this area. 
             // 1077706 Your inner butterfly is tired. You're not particularly able to block incoming blows well. Your Parrying learning potential is no longer enhanced.
@@ -94,7 +94,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Parry.Base < 50;
+                return this.Owner.Skills.Bloqueio.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -135,13 +135,12 @@ namespace Server.Engines.Quests
         public TylAriadne()
             : base("Tyl Ariadne", "The Parrying Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Meditation, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public TylAriadne(Serial serial)

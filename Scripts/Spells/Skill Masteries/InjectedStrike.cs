@@ -18,8 +18,8 @@ namespace Server.Spells.SkillMasteries
  
         public override int RequiredMana { get { return 30; } }
 		
-        public override SkillName CastSkill { get { return SkillName.Poisoning; } }
-		public override SkillName DamageSkill { get { return SkillName.Anatomy; } }
+        public override SkillName CastSkill { get { return SkillName.Envenenamento; } }
+		public override SkillName DamageSkill { get { return SkillName.Anatomia; } }
 
         public override bool CancelsWeaponAbility { get { return true; } }
 
@@ -199,7 +199,7 @@ namespace Server.Spells.SkillMasteries
             else
                 Caster.SendLocalizedMessage(1156095); // Your mastery of poisoning allows you to use your poison charge without consuming it.
 
-            int maxLevel = Caster.Skills[SkillName.Poisoning].Fixed / 200;
+            int maxLevel = Caster.Skills[SkillName.Envenenamento].Fixed / 200;
             if (maxLevel < 0) maxLevel = 0;
 
             #region Mondain's Legacy
@@ -211,7 +211,7 @@ namespace Server.Spells.SkillMasteries
                 p = Poison.GetPoison(maxLevel);
             #endregion
 
-            if ((Caster.Skills[SkillName.Poisoning].Value / 100.0) > Utility.RandomDouble() && p.Level < 3)
+            if ((Caster.Skills[SkillName.Envenenamento].Value / 100.0) > Utility.RandomDouble() && p.Level < 3)
             {
                 int level = p.Level + 1;
                 Poison newPoison = Poison.GetPoison(level);

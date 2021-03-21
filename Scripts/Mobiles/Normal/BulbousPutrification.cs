@@ -31,11 +31,11 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 55, 70);
             this.SetResistance(ResistanceType.Energy, 50, 60);
 
-            this.SetSkill(SkillName.Wrestling, 104.8, 114.7);
-            this.SetSkill(SkillName.Tactics, 111.9, 119.1);
-            this.SetSkill(SkillName.MagicResist, 55.5, 64.1);
-            this.SetSkill(SkillName.Anatomy, 110.0);
-            this.SetSkill(SkillName.Poisoning, 80.0);	
+            this.SetSkill(SkillName.Briga, 104.8, 114.7);
+            this.SetSkill(SkillName.Anatomia, 111.9, 119.1);
+            this.SetSkill(SkillName.ResistenciaMagica, 55.5, 64.1);
+            this.SetSkill(SkillName.Anatomia, 110.0);
+            this.SetSkill(SkillName.Envenenamento, 80.0);	
         }
 
         public BulbousPutrification(Serial serial)

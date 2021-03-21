@@ -78,7 +78,7 @@ namespace Server.Engines.Quests
         public BruisesBandagesAndBloodQuest()
             : base()
         { 
-            this.AddObjective(new ApprenticeObjective(SkillName.Healing, 50, "Old Haven Training", 1077677, 1077678));
+            this.AddObjective(new ApprenticeObjective(SkillName.Medicina, 50, "Old Haven Training", 1077677, 1077678));
 			
             // 1077677 You feel fresh and are eager to heal wounds. Your ability to improve your Healing skill is enhanced in this area.
             // 1077678 You feel as if you've seen enough blood to last a lifetime. Your Healing learning potential is no longer enhanced.
@@ -97,7 +97,7 @@ namespace Server.Engines.Quests
             }
             #endregion
             else
-                return this.Owner.Skills.Healing.Base < 50;
+                return this.Owner.Skills.Medicina.Base < 50;
         }
 		
         public override void OnCompleted()
@@ -138,12 +138,12 @@ namespace Server.Engines.Quests
         public Avicenna()
             : base("Avicenna", "The Healing Instructor")
         { 
-            this.SetSkill(SkillName.Anatomy, 120.0, 120.0);
-            this.SetSkill(SkillName.Parry, 120.0, 120.0);
-            this.SetSkill(SkillName.Healing, 120.0, 120.0);
-            this.SetSkill(SkillName.Tactics, 120.0, 120.0);
-            this.SetSkill(SkillName.Swords, 120.0, 120.0);
-            this.SetSkill(SkillName.Focus, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Bloqueio, 120.0, 120.0);
+            this.SetSkill(SkillName.Medicina, 120.0, 120.0);
+            this.SetSkill(SkillName.Anatomia, 120.0, 120.0);
+            this.SetSkill(SkillName.Cortante, 120.0, 120.0);
+            this.SetSkill(SkillName.PreparoFisico, 120.0, 120.0);
         }
 		
         public Avicenna(Serial serial)

@@ -18,7 +18,7 @@ namespace Server.Items
 
         public override SkillName GetSecondarySkill(Mobile from)
         {
-            return SkillName.Poisoning;
+            return SkillName.Envenenamento;
         }
 
         public override void OnHit(Mobile attacker, Mobile defender, int damage)
@@ -36,7 +36,7 @@ namespace Server.Items
             {
                 if (attacker.InRange(defender, 2))
                 {
-                    int total = (attacker.Skills.Poisoning.Fixed) / 2;
+                    int total = (attacker.Skills.Envenenamento.Fixed) / 2;
 
                     if (total >= 1000)
                         level = 3;
@@ -54,7 +54,7 @@ namespace Server.Items
             }
             else
             {
-                double total = attacker.Skills[SkillName.Poisoning].Value;
+                double total = attacker.Skills[SkillName.Envenenamento].Value;
 
                 double dist = attacker.GetDistanceToSqrt(defender);
 

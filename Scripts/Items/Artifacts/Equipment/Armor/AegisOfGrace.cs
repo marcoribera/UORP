@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public AegisOfGrace()
         {
-            SkillBonuses.SetValues(0, SkillName.MagicResist, 10.0);
+            SkillBonuses.SetValues(0, SkillName.ResistenciaMagica, 10.0);
             Attributes.DefendChance = 20;
             ArmorAttributes.SelfRepair = 2;
 

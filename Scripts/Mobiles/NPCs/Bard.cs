@@ -10,12 +10,12 @@ namespace Server.Mobiles
         public Bard()
             : base("the bard")
         {
-            this.SetSkill(SkillName.Discordance, 64.0, 100.0);
-            this.SetSkill(SkillName.Musicianship, 64.0, 100.0);
-            this.SetSkill(SkillName.Peacemaking, 65.0, 88.0);
-            this.SetSkill(SkillName.Provocation, 60.0, 83.0);
-            this.SetSkill(SkillName.Archery, 36.0, 68.0);
-            this.SetSkill(SkillName.Swords, 36.0, 68.0);
+            this.SetSkill(SkillName.Caos, 64.0, 100.0);
+            this.SetSkill(SkillName.Tocar, 64.0, 100.0);
+            this.SetSkill(SkillName.Pacificar, 65.0, 88.0);
+            this.SetSkill(SkillName.Provocacao, 60.0, 83.0);
+            this.SetSkill(SkillName.Atirar, 36.0, 68.0);
+            this.SetSkill(SkillName.Cortante, 36.0, 68.0);
         }
 
         public Bard(Serial serial)

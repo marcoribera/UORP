@@ -10,7 +10,7 @@ namespace Server.Engines.Quests
         { 
             this.BaseSoundID = 0x46F;
 			
-            this.SetSkill(SkillName.Focus, 60.0, 83.0);
+            this.SetSkill(SkillName.PreparoFisico, 60.0, 83.0);
         }
 
         public Arielle(Serial serial)

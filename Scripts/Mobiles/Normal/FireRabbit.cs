@@ -31,10 +31,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 46);
             SetResistance(ResistanceType.Energy, 46);
 
-            SetSkill(SkillName.MagicResist, 200);
-            SetSkill(SkillName.Tactics, 0.0);
-            SetSkill(SkillName.Wrestling, 80.0);
-            SetSkill(SkillName.Anatomy, 0.0);
+            SetSkill(SkillName.ResistenciaMagica, 200);
+            SetSkill(SkillName.Anatomia, 0.0);
+            SetSkill(SkillName.Briga, 80.0);
+            SetSkill(SkillName.Anatomia, 0.0);
         }
 
         public FireRabbit(Serial serial)
