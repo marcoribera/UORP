@@ -422,83 +422,60 @@ namespace Server.Gumps
     {
         private static readonly SkillsGumpGroup[] m_Groups = new SkillsGumpGroup[]
         {
-            new SkillsGumpGroup("Crafting", new SkillName[]
+            new SkillsGumpGroup("Combate", new SkillName[]
             {
-                SkillName.Alquimia,
-                SkillName.Ferraria,
-                SkillName.Erudicao,
-                SkillName.Carpintaria,
-                SkillName.Culinaria,
-                SkillName.Carpintaria,
-                SkillName.Erudicao,
-                SkillName.Costura,
+                SkillName.Anatomia,
+                SkillName.Atirar,
+                SkillName.Bloqueio,
+                SkillName.Briga,
+                SkillName.Bushido,
+                SkillName.Contusivo,
+                SkillName.Cortante,
+                SkillName.DuasMaos,
+                SkillName.Envenenamento,
+                SkillName.Ninjitsu,
+                SkillName.Perfurante,
+                SkillName.PreparoFisico,
+                SkillName.UmaMao
+            }),
+            new SkillsGumpGroup("Diversos", new SkillName[]
+            {
+                SkillName.Carisma,
+                SkillName.Furtividade,
                 SkillName.Mecanica,
-                SkillName.ImbuirMagica
-            }),
-            new SkillsGumpGroup("Bardic", new SkillName[]
-            {
-                SkillName.Caos,
-                SkillName.Tocar,
                 SkillName.Pacificar,
-                SkillName.Provocacao
+                SkillName.Percepcao,
+                SkillName.Prestidigitacao,
+                SkillName.Provocacao,
+                SkillName.Sobrevivencia,
+                SkillName.Tocar
             }),
-            new SkillsGumpGroup("Magical", new SkillName[]
+            new SkillsGumpGroup("Magia", new SkillName[]
             {
+                SkillName.Arcanismo,
+                SkillName.Caos,
+                SkillName.Feiticaria,
+                SkillName.ImbuirMagica,
+                SkillName.Misticismo,
+                SkillName.Necromancia,
                 SkillName.Ordem,
                 SkillName.PoderMagico,
-                SkillName.Arcanismo,
-                SkillName.ResistenciaMagica,
-                SkillName.Necromancia,
-                SkillName.PoderMagico,
-                SkillName.Ninjitsu,
-                SkillName.Bushido,
-                SkillName.Feiticaria,
-                SkillName.Misticismo
+                SkillName.ResistenciaMagica
             }),
-            new SkillsGumpGroup("Miscellaneous", new SkillName[]
+            new SkillsGumpGroup("Ofícios", new SkillName[]
             {
-                SkillName.Sobrevivencia,
-                SkillName.Sobrevivencia,
-                SkillName.PreparoFisico,
-                SkillName.Medicina,
-                SkillName.Adestramento,
-                SkillName.Mecanica,
-                SkillName.Extracao,
-                SkillName.Extracao,
-                SkillName.Prestidigitacao,
-                SkillName.Veterinaria
-            }),
-            new SkillsGumpGroup("Combat Ratings", new SkillName[]
-            {
-                SkillName.Atirar,
-                SkillName.Perfurante,
-                SkillName.Contusivo,
-                SkillName.Bloqueio,
-                SkillName.Cortante,
-                SkillName.Anatomia,
-                SkillName.Briga,
-                SkillName.Atirar
-            }),
-            new SkillsGumpGroup("Actions", new SkillName[]
-            {
-                SkillName.Adestramento,
-                SkillName.Carisma,
-                SkillName.Percepcao,
-                SkillName.Furtividade,
-                SkillName.Mecanica,
-                SkillName.Envenenamento,
-                SkillName.Prestidigitacao,
-                SkillName.Furtividade,
-                SkillName.Sobrevivencia
-            }),
-            new SkillsGumpGroup("Lore & Knowledge", new SkillName[]
-            {
-                SkillName.Anatomia,
-                SkillName.Adestramento,
+                SkillName.Agricultura,
+                SkillName.Alquimia,
+                SkillName.Carpintaria,
+                SkillName.ConhecimentoArmaduras,
                 SkillName.ConhecimentoArmas,
-                SkillName.Percepcao,
+                SkillName.Costura,
+                SkillName.Culinaria,
                 SkillName.Erudicao,
-                SkillName.Alquimia
+                SkillName.Extracao,
+                SkillName.Ferraria,
+                SkillName.Medicina,
+                SkillName.Veterinaria
             })
         };
         private readonly string m_Name;
