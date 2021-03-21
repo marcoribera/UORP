@@ -404,17 +404,50 @@ namespace Server.Mobiles
 
 		private static readonly SkillName[] m_KeywordTable =
 		{
-			SkillName.Bloqueio, SkillName.Medicina, SkillName.Furtividade, SkillName.Prestidigitacao, SkillName.Alquimia, SkillName.Adestramento,
-			SkillName.Erudicao, SkillName.ConhecimentoArmas, SkillName.Carisma, SkillName.Ferraria, SkillName.Carpintaria,
-			SkillName.Pacificar, SkillName.Sobrevivencia, SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria,
-			SkillName.Percepcao, SkillName.Caos, //??
-			SkillName.PoderMagico, SkillName.Sobrevivencia, SkillName.Provocacao, SkillName.Mecanica, SkillName.Arcanismo,
-			SkillName.ResistenciaMagica, SkillName.Anatomia, SkillName.Prestidigitacao, SkillName.Mecanica, SkillName.Tocar,
-			SkillName.Envenenamento, SkillName.Atirar, SkillName.PoderMagico, SkillName.Costura, SkillName.Adestramento,
-			SkillName.Alquimia, SkillName.Mecanica, SkillName.Veterinaria, SkillName.Percepcao, SkillName.Adestramento,
-			SkillName.Sobrevivencia, SkillName.Furtividade, SkillName.Erudicao, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante,
-			SkillName.Briga, SkillName.Extracao, SkillName.Extracao
-		};
+            SkillName.Anatomia,
+            SkillName.Atirar,
+            SkillName.Bloqueio,
+            SkillName.Briga,
+            SkillName.Bushido,
+            SkillName.Contusivo,
+            SkillName.Cortante,
+            SkillName.DuasMaos,
+            SkillName.Envenenamento,
+            SkillName.Ninjitsu,
+            SkillName.Perfurante,
+            SkillName.PreparoFisico,
+            SkillName.UmaMao,
+            SkillName.Carisma,
+            SkillName.Furtividade,
+            SkillName.Mecanica,
+            SkillName.Pacificar,
+            SkillName.Percepcao,
+            SkillName.Prestidigitacao,
+            SkillName.Provocacao,
+            SkillName.Sobrevivencia,
+            SkillName.Tocar,
+            SkillName.Arcanismo,
+            SkillName.Caos,
+            SkillName.Feiticaria,
+            SkillName.ImbuirMagica,
+            SkillName.Misticismo,
+            SkillName.Necromancia,
+            SkillName.Ordem,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica,
+            SkillName.Agricultura,
+            SkillName.Alquimia,
+            SkillName.Carpintaria,
+            SkillName.ConhecimentoArmaduras,
+            SkillName.ConhecimentoArmas,
+            SkillName.Costura,
+            SkillName.Culinaria,
+            SkillName.Erudicao,
+            SkillName.Extracao,
+            SkillName.Ferraria,
+            SkillName.Medicina,
+            SkillName.Veterinaria
+        };
 
 		public virtual void OnSpeech(SpeechEventArgs e)
 		{
