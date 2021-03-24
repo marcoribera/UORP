@@ -196,18 +196,18 @@ namespace Server.Items
                     return 0;
                 case SkillCat.Miscellaneous:
                     return 1078596;
-                case SkillCat.Combat:
+                case SkillCat.Combate:
                     return 1078592;
-                case SkillCat.TradeSkills:
+                case SkillCat.Oficios:
                     return 1078591;
-                case SkillCat.Magic:
+                case SkillCat.Magia:
                     return 1078593;
-                case SkillCat.Wilderness:
-                    return 1078595;
-                case SkillCat.Thievery:
+                //case SkillCat.Wilderness:
+                //    return 1078595;
+                case SkillCat.Diversos:
                     return 1078594;
-                case SkillCat.Bard:
-                    return 1078590;
+                //case SkillCat.Bard:
+                //    return 1078590;
             }
         }
     }

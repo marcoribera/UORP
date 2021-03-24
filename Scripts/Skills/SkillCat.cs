@@ -6,11 +6,9 @@ namespace Server
     {
         None,
         Miscellaneous,
-        Combat,
-        TradeSkills,
-        Magic,
-        Wilderness,
-        Thievery,
-        Bard
+        Combate,
+        Diversos,
+        Magia,
+        Oficios
     }
 }

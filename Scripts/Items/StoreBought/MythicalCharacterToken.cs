@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Server;
 using Server.Gumps;
 using Server.Mobiles;
@@ -175,10 +175,10 @@ namespace Server.Items
 
                     AddPage(1);
 
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Magic), Width / 3, 65, SkillCat.Magic, ScrollOfAlacrityBook._SkillInfo[SkillCat.Magic]);
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Bard), Width / 3, 345, SkillCat.Bard, ScrollOfAlacrityBook._SkillInfo[SkillCat.Bard]);
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Combat), (Width / 3) * 2, 65, SkillCat.Combat, ScrollOfAlacrityBook._SkillInfo[SkillCat.Combat]);
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Wilderness), (Width / 3) * 2, 305, SkillCat.Wilderness, ScrollOfAlacrityBook._SkillInfo[SkillCat.Wilderness]);
+                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Combate), Width / 3, 65, SkillCat.Combate, ScrollOfAlacrityBook._SkillInfo[SkillCat.Combate]);
+                    //BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.CBard), Width / 3, 345, SkillCat.Bard, ScrollOfAlacrityBook._SkillInfo[SkillCat.Bard]);
+                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Diversos), (Width / 3) * 2, 65, SkillCat.Diversos, ScrollOfAlacrityBook._SkillInfo[SkillCat.Diversos]);
+                    //BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Wilderness), (Width / 3) * 2, 305, SkillCat.Wilderness, ScrollOfAlacrityBook._SkillInfo[SkillCat.Wilderness]);
 
                     AddButton(Width - 120, Height - 30, 4005, 4007, 0, GumpButtonType.Page, 2);
                     AddHtmlLocalized(Width - 85, Height - 30, 75, 20, 3005109, White, false, false); // Next
@@ -186,9 +186,9 @@ namespace Server.Items
                     AddButton(Width - 160, Height - 30, 4014, 4015, 0, GumpButtonType.Page, 1);
                     AddHtmlLocalized(Width - 128, Height - 30, 75, 20, 3010002, White, false, false); // Back
 
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.TradeSkills), Width / 3, 65, SkillCat.TradeSkills, ScrollOfAlacrityBook._SkillInfo[SkillCat.TradeSkills]);
+                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Magia), Width / 3, 65, SkillCat.Magia, ScrollOfAlacrityBook._SkillInfo[SkillCat.Magia]);
                     BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Miscellaneous), Width / 3, 285, SkillCat.Miscellaneous, ScrollOfAlacrityBook._SkillInfo[SkillCat.Miscellaneous]);
-                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Thievery), (Width / 3) * 2, 150, SkillCat.Thievery, ScrollOfAlacrityBook._SkillInfo[SkillCat.Thievery]);
+                    BuildSkillCategory(BaseSpecialScrollBook.GetCategoryLocalization(SkillCat.Oficios), (Width / 3) * 2, 150, SkillCat.Oficios, ScrollOfAlacrityBook._SkillInfo[SkillCat.Oficios]);
                 }
             }
 

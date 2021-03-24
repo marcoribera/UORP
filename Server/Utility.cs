@@ -1178,26 +1178,70 @@ namespace Server
 
 		private static readonly SkillName[] m_AllSkills = new[]
 		{
-			SkillName.Alquimia, SkillName.Anatomia, SkillName.Adestramento, SkillName.Erudicao, SkillName.ConhecimentoArmas, SkillName.Bloqueio,
-			SkillName.Carisma, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Pacificar, SkillName.Sobrevivencia,
-			SkillName.Carpintaria, SkillName.Erudicao, SkillName.Culinaria, SkillName.Percepcao, SkillName.Caos,
-			SkillName.PoderMagico, SkillName.Medicina, SkillName.Sobrevivencia, SkillName.Percepcao, SkillName.Adestramento, SkillName.Furtividade,
-			SkillName.Provocacao, SkillName.Erudicao, SkillName.Mecanica, SkillName.Arcanismo, SkillName.ResistenciaMagica,
-			SkillName.Anatomia, SkillName.Prestidigitacao, SkillName.Tocar, SkillName.Envenenamento, SkillName.Atirar,
-			SkillName.PoderMagico, SkillName.Prestidigitacao, SkillName.Costura, SkillName.Adestramento, SkillName.Alquimia,
-			SkillName.Mecanica, SkillName.Sobrevivencia, SkillName.Veterinaria, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante,
-			SkillName.Briga, SkillName.Extracao, SkillName.Extracao, SkillName.Furtividade,
-			SkillName.Mecanica, SkillName.Necromancia, SkillName.PreparoFisico, SkillName.Ordem, SkillName.Bushido,
-			SkillName.Ninjitsu, SkillName.Feiticaria, SkillName.Misticismo, SkillName.ImbuirMagica, SkillName.Atirar
-		};
+            SkillName.Anatomia,
+            SkillName.Atirar,
+            SkillName.Bloqueio,
+            SkillName.Briga,
+            SkillName.Bushido,
+            SkillName.Contusivo,
+            SkillName.Cortante,
+            SkillName.DuasMaos,
+            SkillName.Envenenamento,
+            SkillName.Ninjitsu,
+            SkillName.Perfurante,
+            SkillName.PreparoFisico,
+            SkillName.UmaMao,
+            SkillName.Carisma,
+            SkillName.Furtividade,
+            SkillName.Mecanica,
+            SkillName.Pacificar,
+            SkillName.Percepcao,
+            SkillName.Prestidigitacao,
+            SkillName.Provocacao,
+            SkillName.Sobrevivencia,
+            SkillName.Tocar,
+            SkillName.Arcanismo,
+            SkillName.Caos,
+            SkillName.Feiticaria,
+            SkillName.ImbuirMagica,
+            SkillName.Misticismo,
+            SkillName.Necromancia,
+            SkillName.Ordem,
+            SkillName.PoderMagico,
+            SkillName.ResistenciaMagica,
+            SkillName.Agricultura,
+            SkillName.Alquimia,
+            SkillName.Carpintaria,
+            SkillName.ConhecimentoArmaduras,
+            SkillName.ConhecimentoArmas,
+            SkillName.Costura,
+            SkillName.Culinaria,
+            SkillName.Erudicao,
+            SkillName.Extracao,
+            SkillName.Ferraria,
+            SkillName.Medicina,
+            SkillName.Veterinaria
+        };
 
 		private static readonly SkillName[] m_CombatSkills = new[]
-		{SkillName.Atirar, SkillName.Cortante, SkillName.Contusivo, SkillName.Perfurante, SkillName.Briga};
+		{
+            SkillName.Atirar,
+            SkillName.Briga,
+            SkillName.Contusivo,
+            SkillName.Cortante,
+            SkillName.DuasMaos,
+            SkillName.Perfurante,
+            SkillName.UmaMao
+        };
 
 		private static readonly SkillName[] m_CraftSkills = new[]
 		{
-			SkillName.Alquimia, SkillName.Ferraria, SkillName.Carpintaria, SkillName.Carpintaria, SkillName.Erudicao,
-			SkillName.Culinaria, SkillName.Erudicao, SkillName.Costura, SkillName.Mecanica
+            SkillName.Alquimia,
+            SkillName.Carpintaria,
+            SkillName.Costura,
+            SkillName.Culinaria,
+            SkillName.Erudicao,
+            SkillName.Ferraria
 		};
 
 		public static SkillName RandomSkill()

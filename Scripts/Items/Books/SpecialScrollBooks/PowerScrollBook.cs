@@ -52,14 +52,11 @@ namespace Server.Items
         {
             _SkillInfo = new Dictionary<SkillCat, List<SkillName>>();
 
-            _SkillInfo[SkillCat.Miscellaneous] = new List<SkillName>();
-            _SkillInfo[SkillCat.Combat] = new List<SkillName>() { SkillName.Anatomia, SkillName.Atirar, SkillName.Perfurante, SkillName.PreparoFisico, SkillName.Medicina, SkillName.Contusivo, SkillName.Bloqueio, SkillName.Cortante, SkillName.Anatomia, SkillName.Atirar, SkillName.Briga };
-            _SkillInfo[SkillCat.TradeSkills] = new List<SkillName>() { SkillName.Ferraria, SkillName.Costura };
-            _SkillInfo[SkillCat.Magic] = new List<SkillName>() { SkillName.Bushido, SkillName.Ordem, SkillName.PoderMagico, SkillName.ImbuirMagica, SkillName.Arcanismo, SkillName.Misticismo, SkillName.Necromancia, SkillName.Ninjitsu, SkillName.ResistenciaMagica, SkillName.Feiticaria, SkillName.PoderMagico };
-            _SkillInfo[SkillCat.Wilderness] = new List<SkillName>() { SkillName.Adestramento, SkillName.Adestramento, SkillName.Sobrevivencia, SkillName.Veterinaria };
-            _SkillInfo[SkillCat.Thievery] = new List<SkillName>() { SkillName.Prestidigitacao, SkillName.Furtividade };
-            _SkillInfo[SkillCat.Bard] = new List<SkillName>() { SkillName.Caos, SkillName.Tocar, SkillName.Pacificar, SkillName.Provocacao };
-
+            _SkillInfo[SkillCat.Combate] = new List<SkillName>() {SkillName.Anatomia, SkillName.Atirar, SkillName.Bloqueio, SkillName.Briga, SkillName.Bushido, SkillName.Contusivo, SkillName.Cortante, SkillName.DuasMaos, SkillName.Envenenamento, SkillName.Ninjitsu, SkillName.Perfurante, SkillName.PreparoFisico, SkillName.UmaMao};
+            _SkillInfo[SkillCat.Diversos] = new List<SkillName>() {SkillName.Carisma, SkillName.Furtividade, SkillName.Mecanica, SkillName.Pacificar, SkillName.Percepcao, SkillName.Prestidigitacao, SkillName.Provocacao, SkillName.Tocar};
+            _SkillInfo[SkillCat.Magia] = new List<SkillName>() { SkillName.Arcanismo, SkillName.Caos, SkillName.Feiticaria, SkillName.ImbuirMagica, SkillName.Misticismo, SkillName.Necromancia, SkillName.Ordem, SkillName.PoderMagico, SkillName.ResistenciaMagica};
+            _SkillInfo[SkillCat.Oficios] = new List<SkillName>() { SkillName.Agricultura, SkillName.Alquimia, SkillName.Carpintaria, SkillName.ConhecimentoArmaduras, SkillName.ConhecimentoArmas, SkillName.Costura, SkillName.Culinaria, SkillName.Erudicao, SkillName.Extracao, SkillName.Medicina, SkillName.Veterinaria};
+  
             _ValueInfo = new Dictionary<int, double>();
 
             _ValueInfo[1155685] = 105;
