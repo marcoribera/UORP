@@ -375,7 +375,7 @@ namespace Server.SkillHandlers
 
 						if (!alreadyOwned)
 						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
+							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill - 10.0, m_Creature.CurrentTameSkill + 10.0);
 						}
 
 						if (m_Creature.Paralyzed)
@@ -394,23 +394,23 @@ namespace Server.SkillHandlers
 							m_Paralyzed = true;
 						}
 
-						if (!alreadyOwned) // Passively check animal lore for gain
-						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
-						}
+						//if (!alreadyOwned) // Passively check animal lore for gain
+						//{
+						//     m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill- 10.0, m_Creature.CurrentTameSkill + 10.0);
+						//}
 
 						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
                         bool necroMastery = DarkWolfFamiliar.CheckMastery(m_Tamer, m_Creature);
 
-                        if (minSkill > -24.9 && necroMastery)
+                        if (minSkill > -9.9 && necroMastery)
 						{
-							minSkill = -24.9; // 50% at 0.0?
+							minSkill = -9.9; // 50% at 0.0?
 						}
 
-						minSkill += 24.9;
+						//minSkill += 24.9;
 
 						if (necroMastery || alreadyOwned ||
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, minSkill - 25.0, minSkill + 25.0))
+							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, minSkill, minSkill + 20.0))
 						{
                             if (m_Creature.Owners.Count == 0) // First tame
                             {

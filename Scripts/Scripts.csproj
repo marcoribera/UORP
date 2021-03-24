@@ -11537,7 +11537,7 @@
     <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\AnimalTaming.cs">
+    <Compile Include="Skills\Adestramento.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\ArmsLore.cs">
