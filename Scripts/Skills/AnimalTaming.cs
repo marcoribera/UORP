@@ -13,14 +13,14 @@ using Server.Targeting;
 
 namespace Server.SkillHandlers
 {
-	public class AnimalTaming
+	public class Adestramento
 	{
 		private static readonly Hashtable m_BeingTamed = new Hashtable();
 
 		public static bool DisableMessage { get; set; }
 		public static bool DeferredTarget { get; set; }
 
-		static AnimalTaming()
+		static Adestramento()
 		{
 			DeferredTarget = true;
 			DisableMessage = false;
@@ -373,9 +373,9 @@ namespace Server.SkillHandlers
 								break;
 						}
 
-						if (!alreadyOwned) // Passively check animal lore for gain
+						if (!alreadyOwned)
 						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, 0.0, 120.0);
+							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
 						}
 
 						if (m_Creature.Paralyzed)
@@ -396,7 +396,7 @@ namespace Server.SkillHandlers
 
 						if (!alreadyOwned) // Passively check animal lore for gain
 						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, 0.0, 120.0);
+							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
 						}
 
 						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
