@@ -5,23 +5,24 @@ using Server.Targeting;
 
 namespace Server.SkillHandlers
 {
-    public class AnimalLore
+    //Marcknight: Feito
+    public class Veterinaria
     {
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Adestramento].Callback = new SkillUseCallback(OnUse);
+            SkillInfo.Table[(int)SkillName.Veterinaria].Callback = new SkillUseCallback(OnUse);
         }
 
         public static TimeSpan OnUse(Mobile m)
         {
             if (PetTrainingHelper.Enabled && m.HasGump(typeof(NewAnimalLoreGump)))
             {
-                m.SendLocalizedMessage(500118); // You must wait a few moments to use another skill.
+                m.SendLocalizedMessage(500118); // You must wait a few moments to use another skill. //Aguarde um pouco para utilizar outra skill.
             }
             else
             {
                 m.Target = new InternalTarget();
-                m.SendLocalizedMessage(500328); // What animal should I look at?
+                m.SendLocalizedMessage(500328); // What animal should I look at? //Que criatura pretende examinar?
             }
 
             return TimeSpan.FromSeconds(1.0);
@@ -31,13 +32,13 @@ namespace Server.SkillHandlers
         {
 			private static void SendGump(Mobile from, BaseCreature c)
 			{
-                from.CheckTargetSkill(SkillName.Adestramento, c, 0.0, 120.0);
+                from.CheckTargetSkill(SkillName.Veterinaria, c, 0.0, 120.0);
 
                 if (PetTrainingHelper.Enabled && from is PlayerMobile)
                 {
                     Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
                         {
-                            BaseGump.SendGump(new NewAnimalLoreGump((PlayerMobile)from, c));
+                            BaseGump.SendGump(new NewAnimalLoreGump((PlayerMobile)from, c)); 
                         });
                 }
                 else
@@ -49,11 +50,11 @@ namespace Server.SkillHandlers
 
 			private static void Check(Mobile from, BaseCreature c, double min)
 			{
-				if (from.CheckTargetSkill(SkillName.Adestramento, c, min, 120.0))
+				if (from.CheckTargetSkill(SkillName.Veterinaria, c, min, min + 20.0))
 					SendGump(from, c);
 				else
-					from.SendLocalizedMessage(500334); // You can't think of anything you know offhand.
-			}
+					from.SendLocalizedMessage(500334); // You can't think of anything you know offhand. //Exame inconclusivo.
+            }
 
             public InternalTarget()
                 : base(8, false, TargetFlags.None)
@@ -64,7 +65,7 @@ namespace Server.SkillHandlers
             {
                 if (!from.Alive)
                 {
-                    from.SendLocalizedMessage(500331); // The spirits of the dead are not the province of animal lore.
+                    from.SendLocalizedMessage(500331); // The spirits of the dead are not the province of animal lore. //Os espíritos dos mortos não são o da seara da Veterinária
                 }
                 else if (targeted is BaseCreature)
                 {
@@ -74,22 +75,22 @@ namespace Server.SkillHandlers
                     {
                         if (c.Body.IsAnimal || c.Body.IsMonster || c.Body.IsSea)
                         {
-							double skill = from.Skills[SkillName.Adestramento].Value;
-							if(skill < 100.0)
+							double skill = from.Skills[SkillName.Veterinaria].Value;
+							if(skill < 60.0)
                             {
 								if (c.Controlled)
 									SendGump(from, c);
 								else
-									from.SendLocalizedMessage(1049674); // At your skill level, you can only lore tamed creatures.
+									from.SendLocalizedMessage(1049674); // At your skill level, you can only lore tamed creatures. //Suas habilidades só permitem examinar criaturas domadas.
                             }
-                            else if (skill < 110.0)
+                            else if (skill < 80.0)
                             {
 								if (c.Controlled)
 									SendGump(from, c);
 								else if (c.Tamable)
-									Check(from, c, 80.0);
+									Check(from, c, 60.0);
 								else
-									from.SendLocalizedMessage(1049675); // At your skill level, you can only lore tamed or tameable creatures.
+									from.SendLocalizedMessage(1049675); // At your skill level, you can only lore tamed or tameable creatures. //Suas habilidades só permitem examinar criaturas domadas ou domáveis.
                             }
                             else
                             {
@@ -103,17 +104,17 @@ namespace Server.SkillHandlers
                         }
                         else
                         {
-                            from.SendLocalizedMessage(500329); // That's not an animal!
+                            from.SendLocalizedMessage(500329); // That's not an animal! //Veterinária não se aplica a isso!
                         }
                     }
                     else
                     {
-                        from.SendLocalizedMessage(500331); // The spirits of the dead are not the province of animal lore.
+                        from.SendLocalizedMessage(500331); // The spirits of the dead are not the province of animal lore. //Os espíritos dos mortos não são o da seara da Veterinária
                     }
                 }
                 else
                 {
-                    from.SendLocalizedMessage(500329); // That's not an animal!
+                    from.SendLocalizedMessage(500329); // That's not an animal! //Veterinária não se aplica a isso!
                 }
             }
         }
@@ -201,7 +202,7 @@ namespace Server.SkillHandlers
             AddPage(++page);
 
             AddImage(128, 152, 2086);
-            AddHtmlLocalized(147, 150, 160, 18, 1049593, 200, false, false); // Attributes
+            AddHtmlLocalized(147, 150, 160, 18, 1049593, 200, false, false); // Attributes //Atributos
 
             AddHtmlLocalized(153, 168, 160, 18, 1049578, LabelColor, false, false); // Hits
             AddHtml(280, 168, 75, 18, FormatAttributes(c.Hits, c.HitsMax), false, false);
@@ -212,13 +213,13 @@ namespace Server.SkillHandlers
             AddHtmlLocalized(153, 204, 160, 18, 1049580, LabelColor, false, false); // Mana
             AddHtml(280, 204, 75, 18, FormatAttributes(c.Mana, c.ManaMax), false, false);
 
-            AddHtmlLocalized(153, 222, 160, 18, 1028335, LabelColor, false, false); // Strength
+            AddHtmlLocalized(153, 222, 160, 18, 3000111, LabelColor, false, false); // Strength //Força
             AddHtml(320, 222, 35, 18, FormatStat(c.Str), false, false);
 
-            AddHtmlLocalized(153, 240, 160, 18, 3000113, LabelColor, false, false); // Dexterity
+            AddHtmlLocalized(153, 240, 160, 18, 3000113, LabelColor, false, false); // Dexterity //Destreza
             AddHtml(320, 240, 35, 18, FormatStat(c.Dex), false, false);
 
-            AddHtmlLocalized(153, 258, 160, 18, 3000112, LabelColor, false, false); // Intelligence
+            AddHtmlLocalized(153, 258, 160, 18, 3000112, LabelColor, false, false); // Intelligence //Inteligência
             AddHtml(320, 258, 35, 18, FormatStat(c.Int), false, false);
 
             if (Core.AOS)
@@ -231,14 +232,14 @@ namespace Server.SkillHandlers
                     if (c.Uncalmable)
                         bd = 0;
 
-                    AddHtmlLocalized(153, 276, 160, 18, 1070793, LabelColor, false, false); // Barding Difficulty
+                    AddHtmlLocalized(153, 276, 160, 18, 1070793, LabelColor, false, false); // Barding Difficulty //Dificuldade Bárdica
                     AddHtml(320, y, 35, 18, FormatDouble(bd), false, false);
 
                     y += 18;
                 }
 
                 AddImage(128, y + 2, 2086);
-                AddHtmlLocalized(147, y, 160, 18, 1049594, 200, false, false); // Loyalty Rating
+                AddHtmlLocalized(147, y, 160, 18, 1049594, 200, false, false); // Loyalty Rating //Fator de Lealdade
                 y += 18;
 
                 AddHtmlLocalized(153, y, 160, 18, (!c.Controlled || c.Loyalty == 0) ? 1061643 : 1049595 + (c.Loyalty / 10), LabelColor, false, false);
@@ -246,9 +247,9 @@ namespace Server.SkillHandlers
             else
             {
                 AddImage(128, 278, 2086);
-                AddHtmlLocalized(147, 276, 160, 18, 3001016, 200, false, false); // Miscellaneous
+                AddHtmlLocalized(147, 276, 160, 18, 3001016, 200, false, false); // Miscellaneous //Diversos
 
-                AddHtmlLocalized(153, 294, 160, 18, 1049581, LabelColor, false, false); // Armor Rating
+                AddHtmlLocalized(153, 294, 160, 18, 1049581, LabelColor, false, false); // Armor Rating //Armadura
                 AddHtml(320, 294, 35, 18, FormatStat(c.VirtualArmor), false, false);
             }
 
@@ -262,21 +263,21 @@ namespace Server.SkillHandlers
                 AddPage(++page);
 
                 AddImage(128, 152, 2086);
-                AddHtmlLocalized(147, 150, 160, 18, 1061645, 200, false, false); // Resistances
+                AddHtmlLocalized(147, 150, 160, 18, 1061645, 200, false, false); // Resistances //Resistências
 
-                AddHtmlLocalized(153, 168, 160, 18, 1061646, LabelColor, false, false); // Physical
+                AddHtmlLocalized(153, 168, 160, 18, 1061646, LabelColor, false, false); // Physical //Físico
                 AddHtml(320, 168, 35, 18, FormatElement(c.PhysicalResistance), false, false);
 
-                AddHtmlLocalized(153, 186, 160, 18, 1061647, LabelColor, false, false); // Fire
+                AddHtmlLocalized(153, 186, 160, 18, 1061647, LabelColor, false, false); // Fire //Fogo
                 AddHtml(320, 186, 35, 18, FormatElement(c.FireResistance), false, false);
 
-                AddHtmlLocalized(153, 204, 160, 18, 1061648, LabelColor, false, false); // Cold
+                AddHtmlLocalized(153, 204, 160, 18, 1061648, LabelColor, false, false); // Cold //Frio
                 AddHtml(320, 204, 35, 18, FormatElement(c.ColdResistance), false, false);
 
-                AddHtmlLocalized(153, 222, 160, 18, 1061649, LabelColor, false, false); // Poison
+                AddHtmlLocalized(153, 222, 160, 18, 1061649, LabelColor, false, false); // Poison //Veneno
                 AddHtml(320, 222, 35, 18, FormatElement(c.PoisonResistance), false, false);
 
-                AddHtmlLocalized(153, 240, 160, 18, 1061650, LabelColor, false, false); // Energy
+                AddHtmlLocalized(153, 240, 160, 18, 1061650, LabelColor, false, false); // Energy //Energia
                 AddHtml(320, 240, 35, 18, FormatElement(c.EnergyResistance), false, false);
 
                 AddButton(340, 358, 5601, 5605, 0, GumpButtonType.Page, page + 1);
@@ -290,27 +291,27 @@ namespace Server.SkillHandlers
                 AddPage(++page);
 
                 AddImage(128, 152, 2086);
-                AddHtmlLocalized(147, 150, 160, 18, 1017319, 200, false, false); // Damage
+                AddHtmlLocalized(147, 150, 160, 18, 1017319, 200, false, false); // Damage //Dano
 
-                AddHtmlLocalized(153, 168, 160, 18, 1061646, LabelColor, false, false); // Physical
+                AddHtmlLocalized(153, 168, 160, 18, 1061646, LabelColor, false, false); // Physical //Físico
                 AddHtml(320, 168, 35, 18, FormatElement(c.PhysicalDamage), false, false);
 
-                AddHtmlLocalized(153, 186, 160, 18, 1061647, LabelColor, false, false); // Fire
+                AddHtmlLocalized(153, 186, 160, 18, 1061647, LabelColor, false, false); // Fire  //Fogo
                 AddHtml(320, 186, 35, 18, FormatElement(c.FireDamage), false, false);
 
-                AddHtmlLocalized(153, 204, 160, 18, 1061648, LabelColor, false, false); // Cold
+                AddHtmlLocalized(153, 204, 160, 18, 1061648, LabelColor, false, false); // Cold //Frio
                 AddHtml(320, 204, 35, 18, FormatElement(c.ColdDamage), false, false);
 
-                AddHtmlLocalized(153, 222, 160, 18, 1061649, LabelColor, false, false); // Poison
+                AddHtmlLocalized(153, 222, 160, 18, 1061649, LabelColor, false, false); // Poison //Veneno
                 AddHtml(320, 222, 35, 18, FormatElement(c.PoisonDamage), false, false);
 
-                AddHtmlLocalized(153, 240, 160, 18, 1061650, LabelColor, false, false); // Energy
+                AddHtmlLocalized(153, 240, 160, 18, 1061650, LabelColor, false, false); // Energy //Energia
                 AddHtml(320, 240, 35, 18, FormatElement(c.EnergyDamage), false, false);
 
                 #region Mondain's Legacy
                 if (Core.ML)
                 {
-                    AddHtmlLocalized(153, 258, 160, 18, 1076750, LabelColor, false, false); // Base Damage
+                    AddHtmlLocalized(153, 258, 160, 18, 1076750, LabelColor, false, false); // Base Damage //Dano Base
                     AddHtml(300, 258, 55, 18, FormatDamage(c.DamageMin, c.DamageMax), false, false);
                 }
                 #endregion
@@ -324,29 +325,29 @@ namespace Server.SkillHandlers
             AddPage(++page);
 
             AddImage(128, 152, 2086);
-            AddHtmlLocalized(147, 150, 160, 18, 3001030, 200, false, false); // Combat Ratings
+            AddHtmlLocalized(147, 150, 160, 18, 3001030, 200, false, false); // Combat Ratings //Skills de Combate
 
-            AddHtmlLocalized(153, 168, 160, 18, 1044103, LabelColor, false, false); // Wrestling
+            AddHtmlLocalized(153, 168, 160, 18, 1044103, LabelColor, false, false); // Wrestling //Briga
             AddHtml(320, 168, 35, 18, FormatSkill(c, SkillName.Briga), false, false);
 
-            AddHtmlLocalized(153, 186, 160, 18, 1044087, LabelColor, false, false); // Tactics
-            AddHtml(320, 186, 35, 18, FormatSkill(c, SkillName.Anatomia), false, false);
+            AddHtmlLocalized(153, 186, 160, 18, 1044065, LabelColor, false, false); // Bloqueio
+            AddHtml(320, 186, 35, 18, FormatSkill(c, SkillName.Bloqueio), false, false);
 
-            AddHtmlLocalized(153, 204, 160, 18, 1044086, LabelColor, false, false); // Magic Resistance
+            AddHtmlLocalized(153, 204, 160, 18, 1044086, LabelColor, false, false); // Magic Resistance //Resistência mágica
             AddHtml(320, 204, 35, 18, FormatSkill(c, SkillName.ResistenciaMagica), false, false);
 
-            AddHtmlLocalized(153, 222, 160, 18, 1044061, LabelColor, false, false); // Anatomy
+            AddHtmlLocalized(153, 222, 160, 18, 1044061, LabelColor, false, false); // Anatomy //Anatomia
             AddHtml(320, 222, 35, 18, FormatSkill(c, SkillName.Anatomia), false, false);
 
             #region Mondain's Legacy
             if (c is CuSidhe)
             {
-                AddHtmlLocalized(153, 240, 160, 18, 1044077, LabelColor, false, false); // Healing
+                AddHtmlLocalized(153, 240, 160, 18, 1044077, LabelColor, false, false); // Healing //Medicina
                 AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Medicina), false, false);
             }
             else
             {
-                AddHtmlLocalized(153, 240, 160, 18, 1044090, LabelColor, false, false); // Poisoning
+                AddHtmlLocalized(153, 240, 160, 18, 1044090, LabelColor, false, false); // Poisoning //Envenenamento
                 AddHtml(320, 240, 35, 18, FormatSkill(c, SkillName.Envenenamento), false, false);
             }
             #endregion
@@ -354,11 +355,11 @@ namespace Server.SkillHandlers
             AddImage(128, 260, 2086);
             AddHtmlLocalized(147, 258, 160, 18, 3001032, 200, false, false); // Lore & Knowledge
 
-            AddHtmlLocalized(153, 276, 160, 18, 1044085, LabelColor, false, false); // Magery
-            AddHtml(320, 276, 35, 18, FormatSkill(c, SkillName.Arcanismo), false, false);
+            AddHtmlLocalized(153, 276, 160, 18, 1044076, LabelColor, false, false); // Poder Mágico
+            AddHtml(320, 276, 35, 18, FormatSkill(c, SkillName.PoderMagico), false, false);
 
-            AddHtmlLocalized(153, 294, 160, 18, 1044076, LabelColor, false, false); // Evaluating Intelligence
-            AddHtml(320, 294, 35, 18, FormatSkill(c, SkillName.PoderMagico), false, false);
+            AddHtmlLocalized(153, 294, 160, 18, 1044085, LabelColor, false, false); // Arcanismo
+            AddHtml(320, 294, 35, 18, FormatSkill(c, SkillName.Arcanismo), false, false);
 
             //AddHtmlLocalized(153, 312, 160, 18, 1044106, LabelColor, false, false); // Meditation
             //AddHtml(320, 312, 35, 18, FormatSkill(c, SkillName.Meditation), false, false);
@@ -371,51 +372,51 @@ namespace Server.SkillHandlers
             AddPage(++page);
 
             AddImage(128, 152, 2086);
-            AddHtmlLocalized(147, 150, 160, 18, 1049563, 200, false, false); // Preferred Foods
+            AddHtmlLocalized(147, 150, 160, 18, 1049563, 200, false, false); // Preferred Foods //Alimentos Prediletos
 
             int foodPref = 3000340;
 
             if ((c.FavoriteFood & FoodType.FruitsAndVegies) != 0)
-                foodPref = 1049565; // Fruits and Vegetables
+                foodPref = 1049565; // Fruits and Vegetables //Frutas e Verduras
             else if ((c.FavoriteFood & FoodType.GrainsAndHay) != 0)
-                foodPref = 1049566; // Grains and Hay
+                foodPref = 1049566; // Grains and Hay //Grãos e Feno
             else if ((c.FavoriteFood & FoodType.Fish) != 0)
-                foodPref = 1049568; // Fish
+                foodPref = 1049568; // Fish //Peixe
             else if ((c.FavoriteFood & FoodType.Meat) != 0)
-                foodPref = 1049564; // Meat
+                foodPref = 1049564; // Meat //Carne
             else if ((c.FavoriteFood & FoodType.Eggs) != 0)
-                foodPref = 1044477; // Eggs
+                foodPref = 1044477; // Eggs //Ovos
 
             AddHtmlLocalized(153, 168, 160, 18, foodPref, LabelColor, false, false);
 
             AddImage(128, 188, 2086);
-            AddHtmlLocalized(147, 186, 160, 18, 1049569, 200, false, false); // Pack Instincts
+            AddHtmlLocalized(147, 186, 160, 18, 1049569, 200, false, false); // Pack Instincts //Instinto de bando
 
             int packInstinct = 3000340;
 
             if ((c.PackInstinct & PackInstinct.Canine) != 0)
-                packInstinct = 1049570; // Canine
+                packInstinct = 1049570; // Canine //Canino
             else if ((c.PackInstinct & PackInstinct.Ostard) != 0)
                 packInstinct = 1049571; // Ostard
             else if ((c.PackInstinct & PackInstinct.Feline) != 0)
-                packInstinct = 1049572; // Feline
+                packInstinct = 1049572; // Feline //Felino
             else if ((c.PackInstinct & PackInstinct.Arachnid) != 0)
-                packInstinct = 1049573; // Arachnid
+                packInstinct = 1049573; // Arachnid //Aracnídeo
             else if ((c.PackInstinct & PackInstinct.Daemon) != 0)
-                packInstinct = 1049574; // Daemon
+                packInstinct = 1049574; // Daemon //Demônio
             else if ((c.PackInstinct & PackInstinct.Bear) != 0)
-                packInstinct = 1049575; // Bear
+                packInstinct = 1049575; // Bear //Urso
             else if ((c.PackInstinct & PackInstinct.Equine) != 0)
-                packInstinct = 1049576; // Equine
+                packInstinct = 1049576; // Equine //Equino
             else if ((c.PackInstinct & PackInstinct.Bull) != 0)
-                packInstinct = 1049577; // Bull
+                packInstinct = 1049577; // Bull //Bovino
 
             AddHtmlLocalized(153, 204, 160, 18, packInstinct, LabelColor, false, false);
 
             if (!Core.AOS)
             {
                 AddImage(128, 224, 2086);
-                AddHtmlLocalized(147, 222, 160, 18, 1049594, 200, false, false); // Loyalty Rating
+                AddHtmlLocalized(147, 222, 160, 18, 1049594, 200, false, false); // Loyalty Rating //Fator de Lealdade
 
                 AddHtmlLocalized(153, 240, 160, 18, (!c.Controlled || c.Loyalty == 0) ? 1061643 : 1049595 + (c.Loyalty / 10), LabelColor, false, false);
             }

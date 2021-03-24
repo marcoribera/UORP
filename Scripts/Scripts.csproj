@@ -11531,10 +11531,10 @@
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\StaffCloak.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Anatomy.cs">
+    <Compile Include="Skills\Anatomia.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\AnimalLore.cs">
+    <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\AnimalTaming.cs">
