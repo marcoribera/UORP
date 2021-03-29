@@ -4163,16 +4163,16 @@ namespace Server.Mobiles
                 }
 
                 Owner.From.TargetLocked = true;
-                AnimalTaming.DisableMessage = true;
-                AnimalTaming.DeferredTarget = false;
+                Adestramento.DisableMessage = true;
+                Adestramento.DeferredTarget = false;
 
                 if (Owner.From.UseSkill(SkillName.Adestramento) && Owner.From.Target != null)
                 {
                     Owner.From.Target.Invoke(Owner.From, m_Mobile);
                 }
 
-                AnimalTaming.DeferredTarget = true;
-                AnimalTaming.DisableMessage = false;
+                Adestramento.DeferredTarget = true;
+                Adestramento.DisableMessage = false;
                 Owner.From.TargetLocked = false;
             }
         }
@@ -6689,7 +6689,7 @@ namespace Server.Mobiles
         {
             if (StatLossAfterTame && (!PetTrainingHelper.Enabled || Owners.Count == 0))
             {
-                AnimalTaming.ScaleStats(this, 0.5);
+                Adestramento.ScaleStats(this, 0.5);
             }
         }
 

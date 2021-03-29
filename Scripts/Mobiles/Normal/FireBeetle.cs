@@ -174,7 +174,7 @@ namespace Server.Mobiles
 
             if (version < 2 && Controlled && RawStr >= 300 && ControlSlots == ControlSlotsMin)
             {
-                Server.SkillHandlers.AnimalTaming.ScaleStats(this, 0.5);
+                Server.SkillHandlers.Adestramento.ScaleStats(this, 0.5);
             }
 
             if (PetTrainingHelper.Enabled && version == 2)

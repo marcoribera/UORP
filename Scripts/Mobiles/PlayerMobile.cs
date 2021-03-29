@@ -877,8 +877,8 @@ namespace Server.Mobiles
 
             if (e.SkillID == 35)
             {
-                AnimalTaming.DisableMessage = true;
-                AnimalTaming.DeferredTarget = false;
+                Adestramento.DisableMessage = true;
+                Adestramento.DeferredTarget = false;
             }
 
             if (from.UseSkill(e.SkillID) && from.Target != null)
@@ -888,8 +888,8 @@ namespace Server.Mobiles
 
             if (e.SkillID == 35)
             {
-                AnimalTaming.DeferredTarget = true;
-                AnimalTaming.DisableMessage = false;
+                Adestramento.DeferredTarget = true;
+                Adestramento.DisableMessage = false;
             }
 
             from.TargetLocked = false;

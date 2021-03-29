@@ -13,7 +13,8 @@ using Server.Targeting;
 
 namespace Server.SkillHandlers
 {
-	public class Adestramento
+    //Marcknight: Feito
+    public class Adestramento
 	{
 		private static readonly Hashtable m_BeingTamed = new Hashtable();
 
