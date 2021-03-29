@@ -4297,7 +4297,12 @@ namespace Server.Items
 				writer.Write(m_Crafter);
 			}
 
-			if (GetSaveFlag(flags, SaveFlag.StrReq))
+            if (GetSaveFlag(flags, SaveFlag.Identified))
+            {
+                writer.Write(m_Identified);
+            }
+
+            if (GetSaveFlag(flags, SaveFlag.StrReq))
 			{
 				writer.Write(m_StrReq);
 			}
@@ -4716,8 +4721,8 @@ namespace Server.Items
 
 						if (GetSaveFlag(flags, SaveFlag.Identified))
 						{
-							m_Identified = (version >= 6 || reader.ReadBool());
-						}
+                            m_Identified = reader.ReadBool(); //m_Identified = (version >= 6 || reader.ReadBool()); //Marcknight: tirei porque quero as armas começando não identificadas.
+                        }
 
 						if (GetSaveFlag(flags, SaveFlag.StrReq))
 						{
@@ -5521,7 +5526,7 @@ namespace Server.Items
 			#endregion
 
 			#region Mondain's Legacy Sets
-			if (IsSetItem)
+			if (IsSetItem && m_Identified)
 			{
 				list.Add(1073491, Pieces.ToString()); // Part of a Weapon/Armor Set (~1_val~ pieces)
 
@@ -5538,24 +5543,26 @@ namespace Server.Items
 				}
 			}
             #endregion
-
-            if (m_ExtendedWeaponAttributes.Focus > 0)
+            if (m_Identified)
             {
-                list.Add(1150018); // Focus
+                if (m_ExtendedWeaponAttributes.Focus > 0)
+                {
+                    list.Add(1150018); // Focus
+                }
+
+                if (m_NegativeAttributes.Brittle == 0 && m_AosAttributes.Brittle != 0)
+                {
+                    list.Add(1116209); // Brittle
+                }
+
+                if (m_NegativeAttributes != null)
+                    m_NegativeAttributes.GetProperties(list, this);
+
+                if (m_AosSkillBonuses != null)
+                {
+                    m_AosSkillBonuses.GetProperties(list);
+                }
             }
-
-            if (m_NegativeAttributes.Brittle == 0 && m_AosAttributes.Brittle != 0)
-            {
-                list.Add(1116209); // Brittle
-            }
-
-            if (m_NegativeAttributes != null)
-                m_NegativeAttributes.GetProperties(list, this);
-
-			if (m_AosSkillBonuses != null)
-			{
-				m_AosSkillBonuses.GetProperties(list);
-			}			
 
 			if (RequiredRace == Race.Elf)
 			{
@@ -5565,591 +5572,594 @@ namespace Server.Items
 			#region Stygian Abyss
 			else if (RequiredRace == Race.Gargoyle)
 			{
-				list.Add(1111709); // Gargoyles Only
-			}
-			#endregion
-
-			if (ArtifactRarity > 0)
-			{
-				list.Add(1061078, ArtifactRarity.ToString()); // artifact rarity ~1_val~
-			}
-
-            if (m_Poison != null && m_PoisonCharges > 0 && CanShowPoisonCharges())
-			{
-				#region Mondain's Legacy mod
-				list.Add(m_Poison.LabelNumber, m_PoisonCharges.ToString());
-				#endregion
-			}
-
-			if (m_Slayer != SlayerName.None)
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer);
-				if (entry != null)
-				{
-					list.Add(entry.Title);
-				}
-			}
-
-			if (m_Slayer2 != SlayerName.None)
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer2);
-				if (entry != null)
-				{
-					list.Add(entry.Title);
-				}
-			}
-
-			#region Mondain's Legacy
-			if (m_Slayer3 != TalismanSlayerName.None)
-			{
-				if (m_Slayer3 == TalismanSlayerName.Wolf)
-				{
-					list.Add(1075462);
-				}
-				else if (m_Slayer3 == TalismanSlayerName.Goblin)
-				{
-					list.Add(1095010);
-				}
-				else if (m_Slayer3 == TalismanSlayerName.Undead)
-				{
-					list.Add(1060479);
-				}
-				else
-				{
-					list.Add(1072503 + (int)m_Slayer3);
-				}
-			}
-			#endregion
-
-            if (HasSocket<Caddellite>())
-            {
-                list.Add(1158662); // Caddellite Infused
-            }
-
-            double focusBonus = 1;
-            int enchantBonus = 0;
-            bool fcMalus = false;
-            int damBonus = 0;
-            SpecialMove move = null;
-            AosWeaponAttribute bonus = AosWeaponAttribute.HitColdArea;
-
-            #region Focus Attack
-            if (FocusWeilder != null)
-            {
-                move = SpecialMove.GetCurrentMove(FocusWeilder);
-
-                if (move is FocusAttack)
-                {
-                    focusBonus = move.GetPropertyBonus(FocusWeilder);
-                    damBonus = (int)(move.GetDamageScalar(FocusWeilder, null) * 100) - 100;
-                }
+				list.Add(1111709); // Gargoyles Only 
             }
             #endregion
-
-            #region Stygian Abyss
-            if (EnchantedWeilder != null)
+            if (m_Identified)
             {
-                if (Server.Spells.Mysticism.EnchantSpell.IsUnderSpellEffects(EnchantedWeilder, this))
+                if (ArtifactRarity > 0)
                 {
-                    bonus = Server.Spells.Mysticism.EnchantSpell.BonusAttribute(EnchantedWeilder);
-                    enchantBonus = Server.Spells.Mysticism.EnchantSpell.BonusValue(EnchantedWeilder);
-                    fcMalus = Server.Spells.Mysticism.EnchantSpell.CastingMalus(EnchantedWeilder, this);
-                }
-            }
-            #endregion
-
-            int prop;
-            double fprop;
-
-            if ((prop = m_AosWeaponAttributes.DurabilityBonus) != 0)
-            {
-                list.Add(1151780, prop.ToString()); // durability +~1_VAL~%
-            }
-
-            if (Core.TOL)
-            {
-                if (m_ExtendedWeaponAttributes.Bane > 0)
-                {
-                    list.Add(1154671); // Bane
+                    list.Add(1061078, ArtifactRarity.ToString()); // artifact rarity ~1_val~
                 }
 
-                if (m_ExtendedWeaponAttributes.BoneBreaker > 0)
+                if (m_Poison != null && m_PoisonCharges > 0 && CanShowPoisonCharges())
                 {
-                    list.Add(1157318); // Bone Breaker
+                    #region Mondain's Legacy mod
+                    list.Add(m_Poison.LabelNumber, m_PoisonCharges.ToString());
+                    #endregion
                 }
 
-                if ((prop = m_ExtendedWeaponAttributes.HitSwarm) != 0)
+                if (m_Slayer != SlayerName.None)
                 {
-                    list.Add(1157325, prop.ToString()); // Swarm ~1_val~%
+                    SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer);
+                    if (entry != null)
+                    {
+                        list.Add(entry.Title);
+                    }
                 }
 
-                if ((prop = m_ExtendedWeaponAttributes.HitSparks) != 0)
+                if (m_Slayer2 != SlayerName.None)
                 {
-                    list.Add(1157326, prop.ToString()); // Sparks ~1_val~%
+                    SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer2);
+                    if (entry != null)
+                    {
+                        list.Add(entry.Title);
+                    }
                 }
 
-                if ((prop = m_ExtendedWeaponAttributes.AssassinHoned) != 0)
+                #region Mondain's Legacy
+                if (m_Slayer3 != TalismanSlayerName.None)
                 {
-                    list.Add(1152206); // Assassin Honed
+                    if (m_Slayer3 == TalismanSlayerName.Wolf)
+                    {
+                        list.Add(1075462);
+                    }
+                    else if (m_Slayer3 == TalismanSlayerName.Goblin)
+                    {
+                        list.Add(1095010);
+                    }
+                    else if (m_Slayer3 == TalismanSlayerName.Undead)
+                    {
+                        list.Add(1060479);
+                    }
+                    else
+                    {
+                        list.Add(1072503 + (int)m_Slayer3);
+                    }
+                }
+                #endregion
+
+                if (HasSocket<Caddellite>())
+                {
+                    list.Add(1158662); // Caddellite Infused
+                }
+
+                double focusBonus = 1;
+                int enchantBonus = 0;
+                bool fcMalus = false;
+                int damBonus = 0;
+                SpecialMove move = null;
+                AosWeaponAttribute bonus = AosWeaponAttribute.HitColdArea;
+
+                #region Focus Attack
+                if (FocusWeilder != null)
+                {
+                    move = SpecialMove.GetCurrentMove(FocusWeilder);
+
+                    if (move is FocusAttack)
+                    {
+                        focusBonus = move.GetPropertyBonus(FocusWeilder);
+                        damBonus = (int)(move.GetDamageScalar(FocusWeilder, null) * 100) - 100;
+                    }
+                }
+                #endregion
+
+                #region Stygian Abyss
+                if (EnchantedWeilder != null)
+                {
+                    if (Server.Spells.Mysticism.EnchantSpell.IsUnderSpellEffects(EnchantedWeilder, this))
+                    {
+                        bonus = Server.Spells.Mysticism.EnchantSpell.BonusAttribute(EnchantedWeilder);
+                        enchantBonus = Server.Spells.Mysticism.EnchantSpell.BonusValue(EnchantedWeilder);
+                        fcMalus = Server.Spells.Mysticism.EnchantSpell.CastingMalus(EnchantedWeilder, this);
+                    }
+                }
+                #endregion
+
+                int prop;
+                double fprop;
+
+                if ((prop = m_AosWeaponAttributes.DurabilityBonus) != 0)
+                {
+                    list.Add(1151780, prop.ToString()); // durability +~1_VAL~%
+                }
+
+                if (Core.TOL)
+                {
+                    if (m_ExtendedWeaponAttributes.Bane > 0)
+                    {
+                        list.Add(1154671); // Bane
+                    }
+
+                    if (m_ExtendedWeaponAttributes.BoneBreaker > 0)
+                    {
+                        list.Add(1157318); // Bone Breaker
+                    }
+
+                    if ((prop = m_ExtendedWeaponAttributes.HitSwarm) != 0)
+                    {
+                        list.Add(1157325, prop.ToString()); // Swarm ~1_val~%
+                    }
+
+                    if ((prop = m_ExtendedWeaponAttributes.HitSparks) != 0)
+                    {
+                        list.Add(1157326, prop.ToString()); // Sparks ~1_val~%
+                    }
+
+                    if ((prop = m_ExtendedWeaponAttributes.AssassinHoned) != 0)
+                    {
+                        list.Add(1152206); // Assassin Honed
+                    }
+                }
+
+                if ((prop = m_AosWeaponAttributes.SplinteringWeapon) != 0)
+                {
+                    list.Add(1112857, prop.ToString()); //splintering weapon ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitDispel * focusBonus) != 0)
+                {
+                    list.Add(1060417, ((int)fprop).ToString()); // hit dispel ~1_val~%
+                }
+                else if (bonus == AosWeaponAttribute.HitDispel && enchantBonus != 0)
+                {
+                    list.Add(1060417, ((int)(enchantBonus * focusBonus)).ToString()); // hit dispel ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitFireball * focusBonus) != 0)
+                {
+                    list.Add(1060420, ((int)fprop).ToString()); // hit fireball ~1_val~%
+                }
+                else if (bonus == AosWeaponAttribute.HitFireball && enchantBonus != 0)
+                {
+                    list.Add(1060420, ((int)((double)enchantBonus * focusBonus)).ToString()); // hit fireball ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLightning * focusBonus) != 0)
+                {
+                    list.Add(1060423, ((int)fprop).ToString()); // hit lightning ~1_val~%
+                }
+                else if (bonus == AosWeaponAttribute.HitLightning && enchantBonus != 0)
+                {
+                    list.Add(1060423, ((int)(enchantBonus * focusBonus)).ToString()); // hit lightning ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitHarm * focusBonus) != 0)
+                {
+                    list.Add(1060421, ((int)fprop).ToString()); // hit harm ~1_val~%
+                }
+                else if (bonus == AosWeaponAttribute.HitHarm && enchantBonus != 0)
+                {
+                    list.Add(1060421, ((int)(enchantBonus * focusBonus)).ToString()); // hit harm ~1_val~%
+                }
+
+                if ((fprop = (double)m_ExtendedWeaponAttributes.HitExplosion * focusBonus) != 0)
+                {
+                    list.Add(1158922, ((int)fprop).ToString()); // hit explosion ~1_val~%
+                }
+
+                if (SearingWeapon)
+                {
+                    list.Add(1151183); // Searing Weapon
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitMagicArrow * focusBonus) != 0)
+                {
+                    list.Add(1060426, ((int)fprop).ToString()); // hit magic arrow ~1_val~%
+                }
+                else if (bonus == AosWeaponAttribute.HitMagicArrow && enchantBonus != 0)
+                {
+                    list.Add(1060426, ((int)(enchantBonus * focusBonus)).ToString()); // hit magic arrow ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitPhysicalArea * focusBonus) != 0)
+                {
+                    list.Add(1060428, ((int)fprop).ToString()); // hit physical area ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitFireArea * focusBonus) != 0)
+                {
+                    list.Add(1060419, ((int)fprop).ToString()); // hit fire area ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitColdArea * focusBonus) != 0)
+                {
+                    list.Add(1060416, ((int)fprop).ToString()); // hit cold area ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitPoisonArea * focusBonus) != 0)
+                {
+                    list.Add(1060429, ((int)fprop).ToString()); // hit poison area ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitEnergyArea * focusBonus) != 0)
+                {
+                    list.Add(1060418, ((int)fprop).ToString()); // hit energy area ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLeechStam * focusBonus) != 0)
+                {
+                    list.Add(1060430, Math.Min(100, (int)fprop).ToString()); // hit stamina leech ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLeechMana * focusBonus) != 0)
+                {
+                    list.Add(1060427, Math.Min(100, (int)fprop).ToString()); // hit mana leech ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLeechHits * focusBonus) != 0)
+                {
+                    list.Add(1060422, Math.Min(100, (int)fprop).ToString()); // hit life leech ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitFatigue * focusBonus) != 0)
+                {
+                    list.Add(1113700, ((int)fprop).ToString()); // Hit Fatigue ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitManaDrain * focusBonus) != 0)
+                {
+                    list.Add(1113699, ((int)fprop).ToString()); // Hit Mana Drain ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitCurse * focusBonus) != 0)
+                {
+                    list.Add(1113712, ((int)fprop).ToString()); // Hit Curse ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLowerAttack * focusBonus) != 0)
+                {
+                    list.Add(1060424, ((int)fprop).ToString()); // hit lower attack ~1_val~%
+                }
+
+                if ((fprop = (double)m_AosWeaponAttributes.HitLowerDefend * focusBonus) != 0)
+                {
+                    list.Add(1060425, ((int)fprop).ToString()); // hit lower defense ~1_val~%
+                }
+
+                if ((prop = m_AosWeaponAttributes.BloodDrinker) != 0)
+                {
+                    list.Add(1113591, prop.ToString()); // Blood Drinker
+                }
+
+                if ((prop = m_AosWeaponAttributes.BattleLust) != 0)
+                {
+                    list.Add(1113710, prop.ToString()); // Battle Lust
+                }
+
+                if (ImmolatingWeaponSpell.IsImmolating(RootParent as Mobile, this))
+                {
+                    list.Add(1111917); // Immolated
+                }
+
+                if (Core.ML && this is BaseRanged && (prop = ((BaseRanged)this).Velocity) != 0)
+                {
+                    list.Add(1072793, prop.ToString()); // Velocity ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.LowerAmmoCost) != 0)
+                {
+                    list.Add(1075208, prop.ToString()); // Lower Ammo Cost ~1_Percentage~%
+                }
+
+                if ((prop = m_ExtendedWeaponAttributes.MysticWeapon) != 0)
+                {
+                    list.Add(1155881, (30 - prop).ToString());   // mystic weapon -~1_val~ skill
+                }
+                else if ((prop = Parent is Mobile ? Enhancement.GetValue((Mobile)Parent, ExtendedWeaponAttribute.MysticWeapon) : 0) != 0)
+                {
+                    list.Add(1155881, (30 - prop).ToString());   // mystic weapon -~1_val~ skill
+                }
+
+                if ((prop = m_AosWeaponAttributes.SelfRepair) != 0)
+                {
+                    list.Add(1060450, prop.ToString()); // self repair ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.NightSight) != 0)
+                {
+                    list.Add(1060441); // night sight
+                }
+
+                if ((prop = fcMalus ? 1 : m_AosAttributes.SpellChanneling) != 0)
+                {
+                    list.Add(1060482); // spell channeling
+                }
+
+                if ((prop = m_AosWeaponAttributes.MageWeapon) != 0)
+                {
+                    list.Add(1060438, (30 - prop).ToString()); // mage weapon -~1_val~ skill
+                }
+
+                if (Core.ML && m_AosAttributes.BalancedWeapon > 0 && Layer == Layer.TwoHanded)
+                {
+                    list.Add(1072792); // Balanced
+                }
+
+                if ((prop = (GetLuckBonus() + m_AosAttributes.Luck)) != 0)
+                {
+                    list.Add(1060436, prop.ToString()); // luck ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.EnhancePotions) != 0)
+                {
+                    list.Add(1060411, prop.ToString()); // enhance potions ~1_val~%
+                }
+
+                if ((prop = m_AosWeaponAttributes.ReactiveParalyze) != 0)
+                {
+                    list.Add(1112364); // reactive paralyze
+                }
+
+                if ((prop = m_AosAttributes.BonusStr) != 0)
+                {
+                    list.Add(1060485, prop.ToString()); // strength bonus ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.BonusInt) != 0)
+                {
+                    list.Add(1060432, prop.ToString()); // intelligence bonus ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.BonusDex) != 0)
+                {
+                    list.Add(1060409, prop.ToString()); // dexterity bonus ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.BonusHits) != 0)
+                {
+                    list.Add(1060431, prop.ToString()); // hit point increase ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.BonusStam) != 0)
+                {
+                    list.Add(1060484, prop.ToString()); // stamina increase ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.BonusMana) != 0)
+                {
+                    list.Add(1060439, prop.ToString()); // mana increase ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.RegenHits) != 0)
+                {
+                    list.Add(1060444, prop.ToString()); // hit point regeneration ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.RegenStam) != 0)
+                {
+                    list.Add(1060443, prop.ToString()); // stamina regeneration ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.RegenMana) != 0)
+                {
+                    list.Add(1060440, prop.ToString()); // mana regeneration ~1_val~
+                }
+
+                if ((prop = m_AosAttributes.ReflectPhysical) != 0)
+                {
+                    list.Add(1060442, prop.ToString()); // reflect physical damage ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.SpellDamage) != 0)
+                {
+                    list.Add(1060483, prop.ToString()); // spell damage increase ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.CastRecovery) != 0)
+                {
+                    list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~
+                }
+
+                if ((prop = fcMalus ? m_AosAttributes.CastSpeed - 1 : m_AosAttributes.CastSpeed) != 0)
+                {
+                    list.Add(1060413, prop.ToString()); // faster casting ~1_val~
+                }
+
+                if ((prop = (GetHitChanceBonus() + m_AosAttributes.AttackChance)) != 0)
+                {
+                    list.Add(1060415, prop.ToString()); // hit chance increase ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.DefendChance) != 0)
+                {
+                    list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.LowerManaCost) != 0)
+                {
+                    list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.LowerRegCost) != 0)
+                {
+                    list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
+                }
+
+                if ((prop = m_AosAttributes.WeaponSpeed) != 0)
+                {
+                    list.Add(1060486, prop.ToString()); // swing speed increase ~1_val~%
+                }
+
+                if ((prop = (GetDamageBonus() + m_AosAttributes.WeaponDamage + damBonus)) != 0)
+                {
+                    list.Add(1060401, prop.ToString()); // damage increase ~1_val~%
+                }
+
+                if (Core.ML && (prop = m_AosAttributes.IncreasedKarmaLoss) != 0)
+                {
+                    list.Add(1075210, prop.ToString()); // Increased Karma Loss ~1val~%
+                }
+
+                #region Stygian Abyss
+                if ((prop = m_SAAbsorptionAttributes.CastingFocus) != 0)
+                {
+                    list.Add(1113696, prop.ToString()); // Casting Focus ~1_val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterFire) != 0)
+                {
+                    list.Add(1113593, prop.ToString()); // Fire Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterCold) != 0)
+                {
+                    list.Add(1113594, prop.ToString()); // Cold Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterPoison) != 0)
+                {
+                    list.Add(1113595, prop.ToString()); // Poison Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterEnergy) != 0)
+                {
+                    list.Add(1113596, prop.ToString()); // Energy Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterKinetic) != 0)
+                {
+                    list.Add(1113597, prop.ToString()); // Kinetic Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.EaterDamage) != 0)
+                {
+                    list.Add(1113598, prop.ToString()); // Damage Eater ~1_Val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.ResonanceFire) != 0)
+                {
+                    list.Add(1113691, prop.ToString()); // Fire Resonance ~1_val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.ResonanceCold) != 0)
+                {
+                    list.Add(1113692, prop.ToString()); // Cold Resonance ~1_val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.ResonancePoison) != 0)
+                {
+                    list.Add(1113693, prop.ToString()); // Poison Resonance ~1_val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.ResonanceEnergy) != 0)
+                {
+                    list.Add(1113694, prop.ToString()); // Energy Resonance ~1_val~%
+                }
+
+                if ((prop = m_SAAbsorptionAttributes.ResonanceKinetic) != 0)
+                {
+                    list.Add(1113695, prop.ToString()); // Kinetic Resonance ~1_val~%
+                }
+                #endregion
+
+                base.AddResistanceProperties(list);
+
+                if ((prop = GetLowerStatReq()) != 0)
+                {
+                    list.Add(1060435, prop.ToString()); // lower requirements ~1_val~%
+                }
+
+                if ((prop = m_AosWeaponAttributes.UseBestSkill) != 0)
+                {
+                    list.Add(1060400); // use best weapon skill
                 }
             }
+            int phys, fire, cold, pois, nrgy, chaos, direct;
 
-            if ((prop = m_AosWeaponAttributes.SplinteringWeapon) != 0)
+            GetDamageTypes(null, out phys, out fire, out cold, out pois, out nrgy, out chaos, out direct);
+
+            if (m_Identified)
             {
-                list.Add(1112857, prop.ToString()); //splintering weapon ~1_val~%
+                #region Mondain's Legacy
+                if (chaos != 0)
+                {
+                    list.Add(1072846, chaos.ToString()); // chaos damage ~1_val~%
+                }
+
+                if (direct != 0)
+                {
+                    list.Add(1079978, direct.ToString()); // Direct Damage: ~1_PERCENT~%
+                }
+                #endregion
+
+                if (phys != 0)
+                {
+                    list.Add(1060403, phys.ToString()); // physical damage ~1_val~%
+                }
+
+                if (fire != 0)
+                {
+                    list.Add(1060405, fire.ToString()); // fire damage ~1_val~%
+                }
+
+                if (cold != 0)
+                {
+                    list.Add(1060404, cold.ToString()); // cold damage ~1_val~%
+                }
+
+                if (pois != 0)
+                {
+                    list.Add(1060406, pois.ToString()); // poison damage ~1_val~%
+                }
+
+                if (nrgy != 0)
+                {
+                    list.Add(1060407, nrgy.ToString()); // energy damage ~1_val
+                }
+
+                if (Core.ML && chaos != 0)
+                {
+                    list.Add(1072846, chaos.ToString()); // chaos damage ~1_val~%
+                }
+
+                if (Core.ML && direct != 0)
+                {
+                    list.Add(1079978, direct.ToString()); // Direct Damage: ~1_PERCENT~%
+                }
+
+                list.Add(1061168, "{0}\t{1}", MinDamage.ToString(), MaxDamage.ToString()); // weapon damage ~1_val~ - ~2_val~
+
+                if (Core.ML)
+                {
+                    list.Add(1061167, String.Format("{0}s", Speed)); // weapon speed ~1_val~
+                }
+                else
+                {
+                    list.Add(1061167, Speed.ToString());
+                }
+
+                if (MaxRange > 1)
+                {
+                    list.Add(1061169, MaxRange.ToString()); // range ~1_val~
+                }
+
+                int strReq = AOS.Scale(StrRequirement, 100 - GetLowerStatReq());
+
+                if (strReq > 0)
+                {
+                    list.Add(1061170, strReq.ToString()); // strength requirement ~1_val~
+                }
+
+                if (Layer == Layer.TwoHanded)
+                {
+                    list.Add(1061171); // two-handed weapon
+                }
+                else
+                {
+                    list.Add(1061824); // one-handed weapon
+                }
             }
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitDispel * focusBonus) != 0)
-			{
-				list.Add(1060417, ((int)fprop).ToString()); // hit dispel ~1_val~%
-			}
-            else if (bonus == AosWeaponAttribute.HitDispel && enchantBonus != 0)
-            {
-                list.Add(1060417, ((int)(enchantBonus * focusBonus)).ToString()); // hit dispel ~1_val~%
-            }
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitFireball * focusBonus) != 0)
-			{
-				list.Add(1060420, ((int)fprop).ToString()); // hit fireball ~1_val~%
-			}
-            else if (bonus == AosWeaponAttribute.HitFireball && enchantBonus != 0)
-            {
-                list.Add(1060420, ((int)((double)enchantBonus * focusBonus)).ToString()); // hit fireball ~1_val~%
-            }
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitLightning * focusBonus) != 0)
-			{
-				list.Add(1060423, ((int)fprop).ToString()); // hit lightning ~1_val~%
-			}
-            else if (bonus == AosWeaponAttribute.HitLightning && enchantBonus != 0)
-            {
-                list.Add(1060423, ((int)(enchantBonus * focusBonus)).ToString()); // hit lightning ~1_val~%
-            }
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitHarm * focusBonus) != 0)
-			{
-				list.Add(1060421, ((int)fprop).ToString()); // hit harm ~1_val~%
-			}
-            else if (bonus == AosWeaponAttribute.HitHarm && enchantBonus != 0)
-            {
-                list.Add(1060421, ((int)(enchantBonus * focusBonus)).ToString()); // hit harm ~1_val~%
-            }
-
-            if ((fprop = (double)m_ExtendedWeaponAttributes.HitExplosion * focusBonus) != 0)
-            {
-                list.Add(1158922, ((int)fprop).ToString()); // hit explosion ~1_val~%
-            }
-
-            if (SearingWeapon)
-            {
-                list.Add(1151183); // Searing Weapon
-            }
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitMagicArrow * focusBonus) != 0)
-			{
-				list.Add(1060426, ((int)fprop).ToString()); // hit magic arrow ~1_val~%
-			}
-            else if (bonus == AosWeaponAttribute.HitMagicArrow && enchantBonus != 0)
-            {
-                list.Add(1060426, ((int)(enchantBonus * focusBonus)).ToString()); // hit magic arrow ~1_val~%
-            }
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitPhysicalArea * focusBonus) != 0)
-			{
-				list.Add(1060428, ((int)fprop).ToString()); // hit physical area ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitFireArea * focusBonus) != 0)
-			{
-				list.Add(1060419, ((int)fprop).ToString()); // hit fire area ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitColdArea * focusBonus) != 0)
-			{
-				list.Add(1060416, ((int)fprop).ToString()); // hit cold area ~1_val~%
-			}
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitPoisonArea * focusBonus) != 0)
-			{
-				list.Add(1060429, ((int)fprop).ToString()); // hit poison area ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitEnergyArea * focusBonus) != 0)
-			{
-				list.Add(1060418, ((int)fprop).ToString()); // hit energy area ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitLeechStam * focusBonus) != 0)
-			{
-                list.Add(1060430, Math.Min(100, (int)fprop).ToString()); // hit stamina leech ~1_val~%
-			}
-
-            if ((fprop = (double)m_AosWeaponAttributes.HitLeechMana * focusBonus) != 0)
-			{
-				list.Add(1060427, Math.Min(100, (int)fprop).ToString()); // hit mana leech ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitLeechHits * focusBonus) != 0)
-			{
-                list.Add(1060422, Math.Min(100, (int)fprop).ToString()); // hit life leech ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitFatigue * focusBonus) != 0)
-			{
-				list.Add(1113700, ((int)fprop).ToString()); // Hit Fatigue ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitManaDrain * focusBonus) != 0)
-			{
-				list.Add(1113699, ((int)fprop).ToString()); // Hit Mana Drain ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitCurse * focusBonus) != 0)
-			{
-				list.Add(1113712, ((int)fprop).ToString()); // Hit Curse ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitLowerAttack * focusBonus) != 0)
-			{
-				list.Add(1060424, ((int)fprop).ToString()); // hit lower attack ~1_val~%
-			}
-			
-			if ((fprop = (double)m_AosWeaponAttributes.HitLowerDefend * focusBonus) != 0)
-			{
-				list.Add(1060425, ((int)fprop).ToString()); // hit lower defense ~1_val~%
-			}
-			
-			if ((prop = m_AosWeaponAttributes.BloodDrinker) != 0)
-			{
-				list.Add(1113591, prop.ToString()); // Blood Drinker
-			}
-			
-			if ((prop = m_AosWeaponAttributes.BattleLust) != 0)
-			{
-				list.Add(1113710, prop.ToString()); // Battle Lust
-			}
-
-			if (ImmolatingWeaponSpell.IsImmolating(RootParent as Mobile, this))
-			{
-				list.Add(1111917); // Immolated
-			}
-
-			if (Core.ML && this is BaseRanged && (prop = ((BaseRanged)this).Velocity) != 0)
-			{
-				list.Add(1072793, prop.ToString()); // Velocity ~1_val~%
-			}
-
-			if ((prop = m_AosAttributes.LowerAmmoCost) != 0)
-			{
-				list.Add(1075208, prop.ToString()); // Lower Ammo Cost ~1_Percentage~%
-			}
-
-            if ((prop = m_ExtendedWeaponAttributes.MysticWeapon) != 0)
-            {
-                list.Add(1155881, (30 - prop).ToString());   // mystic weapon -~1_val~ skill
-            }
-            else if ((prop = Parent is Mobile ? Enhancement.GetValue((Mobile)Parent, ExtendedWeaponAttribute.MysticWeapon) : 0) != 0)
-            {
-                list.Add(1155881, (30 - prop).ToString());   // mystic weapon -~1_val~ skill
-            }
-
-			if ((prop = m_AosWeaponAttributes.SelfRepair) != 0)
-			{
-				list.Add(1060450, prop.ToString()); // self repair ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.NightSight) != 0)
-			{
-				list.Add(1060441); // night sight
-			}
-
-            if ((prop = fcMalus ? 1 : m_AosAttributes.SpellChanneling) != 0)
-			{
-				list.Add(1060482); // spell channeling
-			}
-			
-			if ((prop = m_AosWeaponAttributes.MageWeapon) != 0)
-			{
-				list.Add(1060438, (30 - prop).ToString()); // mage weapon -~1_val~ skill
-			}
-			
-			if (Core.ML && m_AosAttributes.BalancedWeapon > 0 && Layer == Layer.TwoHanded)
-			{
-				list.Add(1072792); // Balanced
-			}
-			
-			if ((prop = (GetLuckBonus() + m_AosAttributes.Luck)) != 0)
-			{
-				list.Add(1060436, prop.ToString()); // luck ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.EnhancePotions) != 0)
-			{
-				list.Add(1060411, prop.ToString()); // enhance potions ~1_val~%
-			}
-			
-			if ((prop = m_AosWeaponAttributes.ReactiveParalyze) != 0)
-            {
-                list.Add(1112364); // reactive paralyze
-            }
-			
-			if ((prop = m_AosAttributes.BonusStr) != 0)
-			{
-				list.Add(1060485, prop.ToString()); // strength bonus ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.BonusInt) != 0)
-			{
-				list.Add(1060432, prop.ToString()); // intelligence bonus ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.BonusDex) != 0)
-			{
-				list.Add(1060409, prop.ToString()); // dexterity bonus ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.BonusHits) != 0)
-			{
-				list.Add(1060431, prop.ToString()); // hit point increase ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.BonusStam) != 0)
-			{
-				list.Add(1060484, prop.ToString()); // stamina increase ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.BonusMana) != 0)
-			{
-				list.Add(1060439, prop.ToString()); // mana increase ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.RegenHits) != 0)
-			{
-				list.Add(1060444, prop.ToString()); // hit point regeneration ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.RegenStam) != 0)
-			{
-				list.Add(1060443, prop.ToString()); // stamina regeneration ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.RegenMana) != 0)
-			{
-				list.Add(1060440, prop.ToString()); // mana regeneration ~1_val~
-			}
-			
-			if ((prop = m_AosAttributes.ReflectPhysical) != 0)
-			{
-				list.Add(1060442, prop.ToString()); // reflect physical damage ~1_val~%
-			}
-			
-			if ((prop = m_AosAttributes.SpellDamage) != 0)
-			{
-				list.Add(1060483, prop.ToString()); // spell damage increase ~1_val~%
-			}
-			
-			if ((prop = m_AosAttributes.CastRecovery) != 0)
-			{
-				list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~
-			}
-
-            if ((prop = fcMalus ? m_AosAttributes.CastSpeed - 1 : m_AosAttributes.CastSpeed) != 0)
-			{
-				list.Add(1060413, prop.ToString()); // faster casting ~1_val~
-			}
-			
-			if ((prop = (GetHitChanceBonus() + m_AosAttributes.AttackChance)) != 0)
-			{
-				list.Add(1060415, prop.ToString()); // hit chance increase ~1_val~%
-			}
-			
-			if ((prop = m_AosAttributes.DefendChance) != 0)
-			{
-				list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%
-			}
-			
-			if ((prop = m_AosAttributes.LowerManaCost) != 0)
-			{
-				list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
-			}
-			
-			if ((prop = m_AosAttributes.LowerRegCost) != 0)
-			{
-				list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
-			}
-
-			if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-			{
-				list.Add(1060486, prop.ToString()); // swing speed increase ~1_val~%
-			}
-			
-			if ((prop = (GetDamageBonus() + m_AosAttributes.WeaponDamage + damBonus)) != 0)
-			{
-				list.Add(1060401, prop.ToString()); // damage increase ~1_val~%
-			}
-
-			if (Core.ML && (prop = m_AosAttributes.IncreasedKarmaLoss) != 0)
-			{
-				list.Add(1075210, prop.ToString()); // Increased Karma Loss ~1val~%
-			}
-
-			#region Stygian Abyss
-			if ((prop = m_SAAbsorptionAttributes.CastingFocus) != 0)
-			{
-				list.Add(1113696, prop.ToString()); // Casting Focus ~1_val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterFire) != 0)
-			{
-				list.Add(1113593, prop.ToString()); // Fire Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterCold) != 0)
-			{
-				list.Add(1113594, prop.ToString()); // Cold Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterPoison) != 0)
-			{
-				list.Add(1113595, prop.ToString()); // Poison Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterEnergy) != 0)
-			{
-				list.Add(1113596, prop.ToString()); // Energy Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterKinetic) != 0)
-			{
-				list.Add(1113597, prop.ToString()); // Kinetic Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.EaterDamage) != 0)
-			{
-				list.Add(1113598, prop.ToString()); // Damage Eater ~1_Val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.ResonanceFire) != 0)
-			{
-				list.Add(1113691, prop.ToString()); // Fire Resonance ~1_val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.ResonanceCold) != 0)
-			{
-				list.Add(1113692, prop.ToString()); // Cold Resonance ~1_val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.ResonancePoison) != 0)
-			{
-				list.Add(1113693, prop.ToString()); // Poison Resonance ~1_val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.ResonanceEnergy) != 0)
-			{
-				list.Add(1113694, prop.ToString()); // Energy Resonance ~1_val~%
-			}
-
-			if ((prop = m_SAAbsorptionAttributes.ResonanceKinetic) != 0)
-			{
-				list.Add(1113695, prop.ToString()); // Kinetic Resonance ~1_val~%
-			}
-			#endregion
-			
-			base.AddResistanceProperties(list);
-			
-			if ((prop = GetLowerStatReq()) != 0)
-			{
-				list.Add(1060435, prop.ToString()); // lower requirements ~1_val~%
-			}
-			
-			if ((prop = m_AosWeaponAttributes.UseBestSkill) != 0)
-			{
-				list.Add(1060400); // use best weapon skill
-			}
-
-			int phys, fire, cold, pois, nrgy, chaos, direct;
-
-			GetDamageTypes(null, out phys, out fire, out cold, out pois, out nrgy, out chaos, out direct);
-
-			#region Mondain's Legacy
-			if (chaos != 0)
-			{
-				list.Add(1072846, chaos.ToString()); // chaos damage ~1_val~%
-			}
-
-			if (direct != 0)
-			{
-				list.Add(1079978, direct.ToString()); // Direct Damage: ~1_PERCENT~%
-			}
-			#endregion
-
-			if (phys != 0)
-			{
-				list.Add(1060403, phys.ToString()); // physical damage ~1_val~%
-			}
-
-			if (fire != 0)
-			{
-				list.Add(1060405, fire.ToString()); // fire damage ~1_val~%
-			}
-
-			if (cold != 0)
-			{
-				list.Add(1060404, cold.ToString()); // cold damage ~1_val~%
-			}
-
-			if (pois != 0)
-			{
-				list.Add(1060406, pois.ToString()); // poison damage ~1_val~%
-			}
-
-			if (nrgy != 0)
-			{
-				list.Add(1060407, nrgy.ToString()); // energy damage ~1_val
-			}
-
-			if (Core.ML && chaos != 0)
-			{
-				list.Add(1072846, chaos.ToString()); // chaos damage ~1_val~%
-			}
-
-			if (Core.ML && direct != 0)
-			{
-				list.Add(1079978, direct.ToString()); // Direct Damage: ~1_PERCENT~%
-            }
-
-            list.Add(1061168, "{0}\t{1}", MinDamage.ToString(), MaxDamage.ToString()); // weapon damage ~1_val~ - ~2_val~
-
-			if (Core.ML)
-			{
-				list.Add(1061167, String.Format("{0}s", Speed)); // weapon speed ~1_val~
-			}
-			else
-			{
-				list.Add(1061167, Speed.ToString());
-			}
-
-			if (MaxRange > 1)
-			{
-				list.Add(1061169, MaxRange.ToString()); // range ~1_val~
-			}
-
-			int strReq = AOS.Scale(StrRequirement, 100 - GetLowerStatReq());
-
-			if (strReq > 0)
-			{
-				list.Add(1061170, strReq.ToString()); // strength requirement ~1_val~
-			}
-
-			if (Layer == Layer.TwoHanded)
-			{
-				list.Add(1061171); // two-handed weapon
-			}
-			else
-			{
-				list.Add(1061824); // one-handed weapon
-			}
-
 			if (Core.SE || m_AosWeaponAttributes.UseBestSkill == 0)
 			{
 				switch (Skill)
@@ -6173,21 +6183,27 @@ namespace Server.Items
 			}
 
 			XmlAttach.AddAttachmentProperties(this, list);
-
-			if (m_Hits >= 0 && m_MaxHits > 0)
-			{
-				list.Add(1060639, "{0}\t{1}", m_Hits, m_MaxHits); // durability ~1_val~ / ~2_val~
-			}
-
-			if (IsSetItem && !m_SetEquipped)
-			{
-				list.Add(1072378); // <br>Only when full set is present:
-				GetSetProperties(list);
-			}
-
-            if (Core.EJ && LastParryChance > 0)
+            if (m_Identified)
             {
-                list.Add(1158861, LastParryChance.ToString()); // Last Parry Chance: ~1_val~%
+                if (m_Hits >= 0 && m_MaxHits > 0)
+                {
+                    list.Add(1060639, "{0}\t{1}", m_Hits, m_MaxHits); // durability ~1_val~ / ~2_val~
+                }
+
+                if (IsSetItem && !m_SetEquipped)
+                {
+                    list.Add(1072378); // <br>Only when full set is present:
+                    GetSetProperties(list);
+                }
+
+                if (Core.EJ && LastParryChance > 0)
+                {
+                    list.Add(1158861, LastParryChance.ToString()); // Last Parry Chance: ~1_val~%
+                }
+            }
+            else //Marcknight: Coloquei querendo que apareça "Não Identificado"
+            {
+                list.Add(1038000); // Unidentified //Não Identificado
             }
         }
 

@@ -11534,13 +11534,14 @@
     <Compile Include="Skills\Anatomia.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Skills\ConhecimentoArmas.cs" />
     <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Adestramento.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\ArmsLore.cs">
+    <Compile Include="Skills\ConhecimentoArmaduras.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Begging.cs">
