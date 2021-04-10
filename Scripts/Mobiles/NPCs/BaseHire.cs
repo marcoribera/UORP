@@ -165,11 +165,15 @@ namespace Server.Mobiles
         #region [ Payday ] 
         public virtual bool Payday(BaseHire m) 
         { 
-            m_Pay = (int)m.Skills[SkillName.Anatomia].Value + (int)m.Skills[SkillName.Anatomia].Value;
+            m_Pay = (int)m.Skills[SkillName.Anatomia].Value + (int)m.Skills[SkillName.PreparoFisico].Value;
+            m_Pay = (int)m.Skills[SkillName.UmaMao].Value + (int)m.Skills[SkillName.DuasMaos].Value;
             m_Pay += (int)m.Skills[SkillName.Contusivo].Value + (int)m.Skills[SkillName.Cortante].Value;
             m_Pay += (int)m.Skills[SkillName.Perfurante].Value + (int)m.Skills[SkillName.Atirar].Value;
             m_Pay += (int)m.Skills[SkillName.ResistenciaMagica].Value + (int)m.Skills[SkillName.Medicina].Value;
-            m_Pay += (int)m.Skills[SkillName.Arcanismo].Value + (int)m.Skills[SkillName.Bloqueio].Value;
+            m_Pay += (int)m.Skills[SkillName.Arcanismo].Value + (int)m.Skills[SkillName.Necromancia].Value;
+            m_Pay += (int)m.Skills[SkillName.Feiticaria].Value + (int)m.Skills[SkillName.Misticismo].Value;
+            m_Pay += (int)m.Skills[SkillName.Caos].Value + (int)m.Skills[SkillName.Ordem].Value;
+            m_Pay += (int)m.Skills[SkillName.Furtividade].Value + (int)m.Skills[SkillName.Bloqueio].Value;
             m_Pay /= 35;
             m_Pay += 1;
             return true;

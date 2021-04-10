@@ -9223,6 +9223,7 @@ namespace Server
 				return false;
 			}
 
+            //Marcknight: TODO: Tentar fazer a detecção se passiva dos chars sem revelá-los
 			return this == m ||
 				   (m.m_Map == m_Map && (!m.Hidden || (IsStaff() && m_AccessLevel >= m.AccessLevel)) &&
 					((m.Alive || (Core.SE && Skills.PoderMagico.Value >= 100.0)) || !Alive || IsStaff() || m.Warmode));

@@ -11544,7 +11544,7 @@
     <Compile Include="Skills\ConhecimentoArmaduras.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Begging.cs">
+    <Compile Include="Skills\Carisma.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\DetectHidden.cs">

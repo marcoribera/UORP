@@ -376,7 +376,7 @@ namespace Server.SkillHandlers
 
 						if (!alreadyOwned)
 						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill - 10.0, m_Creature.CurrentTameSkill + 10.0);
+							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
 						}
 
 						if (m_Creature.Paralyzed)
