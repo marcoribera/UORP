@@ -1951,13 +1951,14 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				int strBase;
+				int strBase,dexBase;
 				int strOffs = GetStatOffset(StatType.Str);
+                dexBase = Dex;
 
-				if (Core.AOS)
+                if (Core.AOS)
 				{
 					strBase = Str; //Str already includes GetStatOffset/str
-					strOffs = AosAttributes.GetValue(this, AosAttribute.BonusHits);
+                    strOffs = AosAttributes.GetValue(this, AosAttribute.BonusHits);
 
 					if (Core.ML && strOffs > 25 && IsPlayer())
 					{
@@ -1980,9 +1981,10 @@ namespace Server.Mobiles
 				else
 				{
 					strBase = RawStr;
-				}
+                    dexBase = RawDex;
+                }
 
-				return (strBase / 2) + 50 + strOffs;
+				return (strBase * 2) + dexBase + strOffs;
 			}
 		}
 
