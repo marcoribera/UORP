@@ -1336,31 +1336,49 @@ namespace Server.Items
             }
         }
 
-		public virtual SkillName GetUsedSkill(Mobile m, bool checkSkillAttrs)
+		public virtual SkillName GetAttUsedSkill(Mobile m, bool checkSkillAttrs)
 		{
 			SkillName sk;
 
 			if (checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0)
 			{
-				double swrd = m.Skills[SkillName.Cortante].Value;
-				double fenc = m.Skills[SkillName.Perfurante].Value;
-				double mcng = m.Skills[SkillName.Contusivo].Value;
-				double val;
+				double cortante = m.Skills[SkillName.Cortante].Value;
+				double perfurante = m.Skills[SkillName.Perfurante].Value;
+				double contusivo = m.Skills[SkillName.Contusivo].Value;
+                double umamao = m.Skills[SkillName.UmaMao].Value;
+                double duasmaos = m.Skills[SkillName.DuasMaos].Value;
+                double briga = m.Skills[SkillName.Briga].Value;
+                double val;
 
 				sk = SkillName.Cortante;
-				val = swrd;
+				val = cortante;
 
-				if (fenc > val)
+				if (perfurante > val)
 				{
 					sk = SkillName.Perfurante;
-					val = fenc;
+					val = perfurante;
 				}
-				if (mcng > val)
+				if (contusivo > val)
 				{
 					sk = SkillName.Contusivo;
-					val = mcng;
+					val = contusivo;
 				}
-			}
+                if (umamao > val)
+                {
+                    sk = SkillName.UmaMao;
+                    val = umamao;
+                }
+                if (duasmaos > val)
+                {
+                    sk = SkillName.DuasMaos;
+                    val = duasmaos;
+                }
+                if (briga > val)
+                {
+                    sk = SkillName.Briga;
+                    val = briga;
+                }
+            }
 			else if (m_AosWeaponAttributes.MageWeapon != 0)
 			{
 				if (m.Skills[SkillName.Arcanismo].Value > m.Skills[Skill].Value)
@@ -1385,26 +1403,190 @@ namespace Server.Items
             }
             else
             {
-                sk = Skill;
+                sk = Skill; //Skill base da arma
 
-                if (sk != SkillName.Briga && !m.Player && !m.Body.IsHuman &&
-                    m.Skills[SkillName.Briga].Value > m.Skills[sk].Value)
+                if (sk == SkillName.Atirar) //Verifica se é arma de ataque a distância
                 {
-                    sk = SkillName.Briga;
+                    return SkillName.Atirar;
+                }
+                else
+                {
+                    SkillName sk2; //skill do tipo de empunhadura (uma mão/duas mãos)
+
+                    double skVal = m.Skills[Skill].Value;
+                    double sk2Val;
+
+                    if (Layer == Layer.OneHanded)
+                    {
+                        sk2Val = m.Skills[SkillName.UmaMao].Value;
+                        sk2 = SkillName.UmaMao;
+                    }
+                    else
+                    {
+                        sk2Val = m.Skills[SkillName.DuasMaos].Value;
+                        sk2 = SkillName.DuasMaos;
+                    }
+
+                    if (sk2Val > skVal)
+                    {
+                        sk = sk2;
+                    }
+
+                    if (sk != SkillName.Briga && !m.Player && !m.Body.IsHuman &&
+                        m.Skills[SkillName.Briga].Value > m.Skills[sk].Value)
+                    {
+                        sk = SkillName.Briga;
+                    }
                 }
             }
 
 			return sk;
 		}
 
-		public virtual double GetAttackSkillValue(Mobile attacker, Mobile defender)
+        public virtual SkillName GetDefUsedSkill(Mobile m, bool checkSkillAttrs)
+        {
+            SkillName sk;
+
+            if (checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0)
+            {
+                double cortante = m.Skills[SkillName.Cortante].Value;
+                double perfurante = m.Skills[SkillName.Perfurante].Value;
+                double contusivo = m.Skills[SkillName.Contusivo].Value;
+                double umamao = m.Skills[SkillName.UmaMao].Value;
+                double duasmaos = m.Skills[SkillName.DuasMaos].Value;
+                double briga = m.Skills[SkillName.Briga].Value;
+                double bloqueio = m.Skills[SkillName.Bloqueio].Value;
+                double val;
+
+                sk = SkillName.Cortante;
+                val = cortante;
+
+                if (perfurante > val)
+                {
+                    sk = SkillName.Perfurante;
+                    val = perfurante;
+                }
+                if (contusivo > val)
+                {
+                    sk = SkillName.Contusivo;
+                    val = contusivo;
+                }
+                if (umamao > val)
+                {
+                    sk = SkillName.UmaMao;
+                    val = umamao;
+                }
+                if (duasmaos > val)
+                {
+                    sk = SkillName.DuasMaos;
+                    val = duasmaos;
+                }
+                if (briga > val)
+                {
+                    sk = SkillName.Briga;
+                    val = briga;
+                }
+                if (bloqueio > val)
+                {
+                    sk = SkillName.Bloqueio;
+                    val = bloqueio;
+                }
+            }
+            else if (m_AosWeaponAttributes.MageWeapon != 0)
+            {
+                if (m.Skills[SkillName.Arcanismo].Value > m.Skills[Skill].Value)
+                {
+                    sk = SkillName.Arcanismo;
+                }
+                else
+                {
+                    sk = Skill;
+                }
+            }
+            else if (m_ExtendedWeaponAttributes.MysticWeapon != 0 || Enhancement.GetValue(m, ExtendedWeaponAttribute.MysticWeapon) > 0)
+            {
+                if (m.Skills[SkillName.Misticismo].Value > m.Skills[Skill].Value)
+                {
+                    sk = SkillName.Misticismo;
+                }
+                else
+                {
+                    sk = Skill;
+                }
+            }
+            else
+            {
+                sk = Skill; //Skill base da arma
+
+                if (sk == SkillName.Atirar)
+                {
+                    return SkillName.Briga;
+                }
+                else
+                {
+
+                    SkillName sk2; //skill do tipo de empunhadura (uma mão/duas mãos)
+
+                    double skVal = m.Skills[Skill].Value;
+                    double sk2Val;
+
+                    if (Layer == Layer.OneHanded)
+                    {
+                        // Quando um escudo estiver equipado, escolhe a maior dentre a skill de tipo de empunhadura e a skill de bloqueio
+                        if (m.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
+                        {
+                            sk2Val = m.Skills[SkillName.UmaMao].Value;
+                            double bloqueio = m.Skills[SkillName.Bloqueio].Value;
+
+                            if (bloqueio > sk2Val)
+                            {
+                                sk2 = SkillName.Bloqueio;
+                                sk2Val = m.Skills[SkillName.Bloqueio].Value;
+                            }
+                            else
+                            {
+                                sk2 = SkillName.UmaMao;
+                            }
+                        }
+                        else
+                        {
+                            sk2Val = m.Skills[SkillName.UmaMao].Value;
+                            sk2 = SkillName.UmaMao;
+                        }
+                    }
+                    else
+                    {
+                        sk2Val = m.Skills[SkillName.DuasMaos].Value;
+                        sk2 = SkillName.DuasMaos;
+                    }
+
+                    //Escolhe a maior dentre a skill base da arma, a skill de tipo de empunhadura e, caso um escudo esteja esquipado, a skill de bloqueio
+                    if (sk2Val > skVal)
+                    {
+                        sk = sk2;
+                        skVal = sk2Val;
+                    }
+
+                    //Usa a skill briga caso seja maior que as outras aplicáveis
+                    if (m.Skills[SkillName.Briga].Value > skVal)
+                    {
+                        sk = SkillName.Briga;
+                    }
+                }
+            }
+
+            return sk;
+        }
+
+
+        public virtual double GetAttackSkillValue(Mobile attacker, Mobile defender)
 		{
-			return attacker.Skills[GetUsedSkill(attacker, true)].Value;
+			return attacker.Skills[GetAttUsedSkill(attacker, true)].Value;
 		}
 
 		public virtual double GetDefendSkillValue(Mobile attacker, Mobile defender)
 		{
-			return defender.Skills[GetUsedSkill(defender, true)].Value;
+			return defender.Skills[GetDefUsedSkill(defender, true)].Value;
 		}
 
 		public static bool CheckAnimal(Mobile m, Type type)
@@ -1427,11 +1609,11 @@ namespace Server.Items
 			BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
 			BaseWeapon defWeapon = defender.Weapon as BaseWeapon;
 
-			Skill atkSkill = attacker.Skills[atkWeapon.Skill];
-			Skill defSkill = defender.Skills[defWeapon.Skill];
+			Skill atkSkill = attacker.Skills[GetAttUsedSkill(attacker, true)]; //Seleciona a skill adequada pra ataque
+			Skill defSkill = defender.Skills[GetAttUsedSkill(defender, true)]; //Seleciona a skill adequada pra ataque
 
-			double atkValue = atkWeapon.GetAttackSkillValue(attacker, defender);
-			double defValue = defWeapon.GetDefendSkillValue(attacker, defender);
+            double atkValue = atkSkill.Value;
+			double defValue = defSkill.Value;
 
 			double ourValue, theirValue;
 
@@ -1467,7 +1649,7 @@ namespace Server.Items
 
                 theirValue = (defValue + 20.0) * (100 + bonus);
 
-                bonus = 0;
+                bonus = 0;  //Se tirar isso o bonus se aplica duas vezes. Não retire.
 			}
 			else
 			{
@@ -1527,7 +1709,7 @@ namespace Server.Items
                 }
             }
 
-            if (Core.AOS && chance < 0.02)
+            if (Core.AOS)
             {
                 chance = 0.02;
             }
