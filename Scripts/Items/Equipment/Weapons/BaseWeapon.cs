@@ -1610,7 +1610,7 @@ namespace Server.Items
 			BaseWeapon defWeapon = defender.Weapon as BaseWeapon;
 
 			Skill atkSkill = attacker.Skills[GetAttUsedSkill(attacker, true)]; //Seleciona a skill adequada pra ataque
-			Skill defSkill = defender.Skills[GetAttUsedSkill(defender, true)]; //Seleciona a skill adequada pra ataque
+			Skill defSkill = defender.Skills[GetAttUsedSkill(defender, true)]; //Seleciona a skill adequada pra defesa
 
             double atkValue = atkSkill.Value;
 			double defValue = defSkill.Value;
@@ -1630,7 +1630,7 @@ namespace Server.Items
                 bonus += AosAttributes.GetValue(attacker, AosAttribute.AttackChance);
 
                 //SA Gargoyle cap is 50, else 45
-                bonus = Math.Min(attacker.Race == Race.Gargoyle ? 50 : 45, bonus);
+                bonus = Math.Min(attacker.Race == Race.Gargoyle ? 50 : 45, bonus) + (atkSkill.SkillName == SkillName.Atirar ? 20 : 0); //20% de chance de acerto adicional se estiver utilizando armas de ataque a distância. Pra compensar a skill não servir pra defesa.
 
                 ourValue = (atkValue + 20.0) * (100 + bonus);
 
