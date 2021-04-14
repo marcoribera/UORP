@@ -8614,7 +8614,7 @@ namespace Server
 		///     </c>
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public virtual int StamMax { get { return Dex; } }
+		public virtual int StamMax { get { return (Dex * 2) + Str; } }
 
 		/// <summary>
 		///     Gets or sets the current stamina of the Mobile. This value ranges from 0 to <see cref="ManaMax" />, inclusive.
@@ -8684,7 +8684,7 @@ namespace Server
 		///     </c>
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public virtual int ManaMax { get { return Int; } }
+		public virtual int ManaMax { get { return Int*2; } }
 		#endregion
 
 		public virtual int Luck { get { return 0; } }
