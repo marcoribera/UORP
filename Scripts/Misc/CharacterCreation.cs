@@ -279,9 +279,12 @@ namespace Server.Misc
 			var city = args.City;
 			var map = Siege.SiegeShard && city.Map == Map.Trammel ? Map.Felucca : city.Map;
 
-			newChar.MoveToWorld(city.Location, map);
+            //MArcknight: Posição inicial de novos persoangens
+			//newChar.MoveToWorld(city.Location, map);
 
-			Utility.PushColor(ConsoleColor.Green);
+            newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Ilshenar);
+
+            Utility.PushColor(ConsoleColor.Green);
 			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
 			Utility.PopColor();
 			Utility.PushColor(ConsoleColor.DarkGreen);
