@@ -202,24 +202,28 @@ namespace Server.Misc
 
 			var young = false;
 
-			if (newChar is PlayerMobile)
-			{
-				var pm = (PlayerMobile)newChar;
-				
-				pm.AutoRenewInsurance = true;
+            if (newChar is PlayerMobile)
+            {
+                var pm = (PlayerMobile)newChar;
 
-				var skillcap = Config.Get("PlayerCaps.SkillCap", 1000.0d) / 10;
-				
-				if (skillcap != 100.0)
-				{
-					for (var i = 0; i < Enum.GetNames(typeof(SkillName)).Length; ++i)
-						pm.Skills[i].Cap = skillcap;
-				}
-				
-				pm.Profession = args.Profession;
+                pm.AutoRenewInsurance = true;
 
-				if (pm.IsPlayer() && pm.Account.Young && !Siege.SiegeShard)
-					young = pm.Young = true;
+                var skillcap = Config.Get("PlayerCaps.SkillCap", 1000.0d) / 10;
+
+                if (skillcap != 100.0)
+                {
+                    for (var i = 0; i < Enum.GetNames(typeof(SkillName)).Length; ++i)
+                        pm.Skills[i].Cap = skillcap;
+                }
+
+                pm.Profession = args.Profession;
+
+                if (pm.IsPlayer() && pm.Account.Young && !Siege.SiegeShard) {
+                    //young = pm.Young = true;
+                    //Marcknight: Tirar young dos chars novos
+                    young = pm.Young = false;
+
+                }
 			}
 
 			SetName(newChar, args.Name);
