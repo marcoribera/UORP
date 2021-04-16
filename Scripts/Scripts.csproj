@@ -91,7 +91,6 @@
     <Compile Include="Commands\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\Custom\FalaRP.cs" />
     <Compile Include="Commands\Decorate.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -617,7 +616,6 @@
     <Compile Include="Items\Consumables\DecorativeKitchenSet.cs" />
     <Compile Include="Items\Consumables\DecorativeStableSet.cs" />
     <Compile Include="Items\Consumables\EmbroideryTool.cs" />
-    <Compile Include="Items\Custom\pedrafakedeminerar.cs" />
     <Compile Include="Items\Damageable\Beacon.cs" />
     <Compile Include="Items\Damageable\DamageableItem.cs" />
     <Compile Include="Items\Decorative\AncientWeapons.cs" />
