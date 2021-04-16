@@ -1,4 +1,6 @@
+using Server.Items;
 using Server.Mobiles;
+using Server.Network;
 using Server.Targeting;
 using System;
 using System.Collections.Generic;
@@ -113,7 +115,7 @@ namespace Server.Commands
         {
             if (arg.Length < 1)
             {
-                arg.Mobile.SendMessage("RPnarrador <texto>");
+                arg.Mobile.SendMessage("RPnarrar <texto>");
             }
             else
             {
@@ -126,7 +128,7 @@ namespace Server.Commands
             private readonly int m_tipo;
             private readonly string m_texto;
             public MobileTarget(int tipo, string texto)
-                : base(-1, false, TargetFlags.None)
+                : base(-1, true, TargetFlags.None)
             {
                 m_tipo = tipo;
                 m_texto = texto;
@@ -141,30 +143,30 @@ namespace Server.Commands
                     switch (m_tipo)
                     {
                         case sussurro:
-                            alvo.PublicOverheadMessage(Network.MessageType.Whisper, alvo.WhisperHue, true, m_texto);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Whisper, alvo.SpeechHue);
                             break;
                         case fala:
-                            alvo.PublicOverheadMessage(Network.MessageType.Regular, alvo.SpeechHue, true, m_texto);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Regular, alvo.SpeechHue);
                             break;
                         case falaprivada:
-                            alvo.PrivateOverheadMessage(Network.MessageType.Regular, from.SpeechHue, true, m_texto, alvo.NetState);
+                            alvo.PrivateOverheadMessage(MessageType.Regular, from.SpeechHue, true, m_texto, alvo.NetState);
                             break;
                         case emote:
-                            alvo.PublicOverheadMessage(Network.MessageType.Emote, alvo.EmoteHue, true, m_texto);
+                            alvo.DoSpeech(String.Format("*{0}*", m_texto), new int[] { }, MessageType.Emote, alvo.EmoteHue);
                             break;
                         case grito:
-                            alvo.PublicOverheadMessage(Network.MessageType.Yell, alvo.YellHue, true, m_texto);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Yell, alvo.SpeechHue);
                             break;
                         case mensagem:
                             alvo.SendMessage(from.SpeechHue, m_texto);
                             break;
                         case narrar:
-                            alvo.PublicOverheadMessage(Network.MessageType.Emote, from.SpeechHue, true, m_texto);
+                            alvo.DoSpeech(String.Format("Narrador: *{0}*", m_texto), new int[] { 1 }, MessageType.Encoded, alvo.SpeechHue);
                             break;
                         default:
+                            from.SendMessage("Esse tipo de alvo não aceita esse comando");
                             break;
                     }
-                    return;
                 }
                 else if (target is Mobile)
                 {
@@ -173,51 +175,139 @@ namespace Server.Commands
                     switch (m_tipo)
                     {
                         case sussurro:
-                            alvo.PublicOverheadMessage(Network.MessageType.Whisper, alvo.WhisperHue, true, m_texto);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Whisper, from.SpeechHue);
                             break;
                         case fala:
-                            alvo.PublicOverheadMessage(Network.MessageType.Regular, alvo.SpeechHue, true, m_texto);
-                            break;
-                        case falaprivada:
-                            alvo.PrivateOverheadMessage(Network.MessageType.Regular, from.SpeechHue, true, m_texto, alvo.NetState);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Regular, from.SpeechHue);
                             break;
                         case emote:
-                            alvo.PublicOverheadMessage(Network.MessageType.Emote, alvo.EmoteHue, true, m_texto);
+                            alvo.DoSpeech(String.Format("*{0}*", m_texto), new int[] { }, MessageType.Emote, from.EmoteHue);
                             break;
                         case grito:
-                            alvo.PublicOverheadMessage(Network.MessageType.Yell, alvo.YellHue, true, m_texto);
-                            break;
-                        case mensagem:
-                            alvo.SendMessage(from.SpeechHue, m_texto);
+                            alvo.DoSpeech(m_texto, new int[] { }, MessageType.Yell, from.SpeechHue);
                             break;
                         case narrar:
-                            alvo.PublicOverheadMessage(Network.MessageType.Emote, from.SpeechHue, true, m_texto);
+                            alvo.DoSpeech(String.Format("Narrador: *{0}*", m_texto), new int[] { 1 }, MessageType.Encoded, from.SpeechHue);
                             break;
                         default:
+                            from.SendMessage("Esse tipo de alvo não aceita esse comando");
                             break;
                     }
                     return;
                 }
-                //Marcknight TODO: FAzer mensagens aparecerem em lugares específicos
+                else if (target is Item)
+                {
+                    Item alvo = (Item)target;
+
+                    switch (m_tipo)
+                    {
+                        case sussurro:
+                            alvo.PublicOverheadMessage(MessageType.Whisper, from.SpeechHue, false, m_texto);
+                            break;
+                        case fala:
+                            alvo.PublicOverheadMessage(MessageType.Regular, from.SpeechHue, false, m_texto);
+                            break;
+                        case emote:
+                            alvo.PublicOverheadMessage(MessageType.Emote, from.EmoteHue, false, String.Format("*{0}*", m_texto));
+                            break;
+                        case grito:
+                            alvo.PublicOverheadMessage(MessageType.Yell, from.SpeechHue, false, m_texto);
+                            break;
+                        case narrar:
+                            alvo.PublicOverheadMessage(MessageType.Emote, from.SpeechHue, false, String.Format("Narrador: *{0}*", m_texto));
+                            break;
+                        default:
+                            from.SendMessage("Esse tipo de alvo não aceita esse comando");
+                            break;
+                    }
+                    return;
+                }
+                else if (target is StaticTarget)
+                {
+                    StaticTarget alvo = (StaticTarget) target;
+                    Item falador = new Item(0x0001); //item "no draw"
+                    falador.MoveToWorld(alvo.Location, from.Map);
+                    falador.Movable = false;
+                    DeleteFaladorTimer apagador = new DeleteFaladorTimer(falador, TimeSpan.FromSeconds(10));
+                    
+                    switch (m_tipo)
+                    {
+                        case sussurro:
+                            falador.PublicOverheadMessage(MessageType.Whisper, from.SpeechHue, false, m_texto);
+                            break;
+                        case fala:
+                            falador.PublicOverheadMessage(MessageType.Regular, from.SpeechHue, false, m_texto);
+                            break;
+                        case emote:
+                            falador.PublicOverheadMessage(MessageType.Emote, from.EmoteHue, false, String.Format("*{0}*", m_texto));
+                            break;
+                        case grito:
+                            falador.PublicOverheadMessage(MessageType.Yell, from.SpeechHue, false, m_texto);
+                            break;
+                        case narrar:
+                            falador.PublicOverheadMessage(MessageType.Emote, from.SpeechHue, false, String.Format("Narrador: *{0}*", m_texto));
+                            break;
+                        default:
+                            from.SendMessage("Esse tipo de alvo não aceita esse comando");
+                            break;
+                    }
+                    apagador.Start();
+                }
+                else if (target is LandTarget)
+                {
+                    LandTarget alvo = (LandTarget)target;
+                    Item falador = new Item(0x0001); //item "no draw"
+                    falador.MoveToWorld(alvo.Location, from.Map);
+                    falador.Movable = false;
+                    DeleteFaladorTimer apagador = new DeleteFaladorTimer(falador, TimeSpan.FromSeconds(10));
+
+                    switch (m_tipo)
+                    {
+                        case sussurro:
+                            falador.PublicOverheadMessage(MessageType.Whisper, from.SpeechHue, false, m_texto);
+                            break;
+                        case fala:
+                            falador.PublicOverheadMessage(MessageType.Regular, from.SpeechHue, false, m_texto);
+                            break;
+                        case emote:
+                            falador.PublicOverheadMessage(MessageType.Emote, from.EmoteHue, false, String.Format("*{0}*", m_texto));
+                            break;
+                        case grito:
+                            falador.PublicOverheadMessage(MessageType.Yell, from.SpeechHue, false, m_texto);
+                            break;
+                        case narrar:
+                            falador.PublicOverheadMessage(MessageType.Emote, from.SpeechHue, false, String.Format("Narrador: *{0}*", m_texto));
+                            break;
+                        default:
+                            from.SendMessage("Esse tipo de alvo não aceita esse comando");
+                            break;
+                    }
+                    apagador.Start();
+                }
                 else
                 {
-                    from.SendMessage("O alvo precisa ser um pesonagem.");
+                    from.SendMessage("Alvo inválido.");
                 }
+                return;
+            }
+        }
+
+        private class DeleteFaladorTimer : Timer
+        {
+            private readonly Item m_Item;
+
+            public DeleteFaladorTimer(Item item, TimeSpan duration)
+                : base(duration)
+            {
+                Priority = TimerPriority.FiveSeconds;
+                m_Item = item;
+            }
+
+            protected override void OnTick()
+            {
+                m_Item.Delete();
+                Stop();
             }
         }
     }
 }
-
-
-
-
-
-/*
- * program textcmd_sayabove( who, text )
-    SendSysMessage( who, "Say above what or whom?" );
-
-    var what := Target( who );
-    if (what)
-        PrintTextAbove( what, text );
-    endif
-endprogram*/
