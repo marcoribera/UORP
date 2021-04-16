@@ -1376,7 +1376,6 @@ namespace Server.Items
                 if (briga > val)
                 {
                     sk = SkillName.Briga;
-                    val = briga;
                 }
             }
 			else if (m_AosWeaponAttributes.MageWeapon != 0)
@@ -1401,13 +1400,15 @@ namespace Server.Items
                     sk = Skill;
                 }
             }
+            else if (Skill != SkillName.Briga && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.Briga].Value > m.Skills[Skill].Value)
+            {
+                sk = SkillName.Briga;
+            }
             else
             {
-                sk = Skill; //Skill base da arma
-
-                if (sk == SkillName.Atirar) //Verifica se é arma de ataque a distância
+                if (Skill == SkillName.Atirar) //Verifica se é arma de ataque a distância
                 {
-                    return SkillName.Atirar;
+                    sk = Skill;
                 }
                 else
                 {
@@ -1426,21 +1427,30 @@ namespace Server.Items
                         sk2Val = m.Skills[SkillName.DuasMaos].Value;
                         sk2 = SkillName.DuasMaos;
                     }
-
+                    /*
+                    if (m is PlayerMobile)
+                    {
+                        m.SendMessage(String.Format("ATK | sk1: {0} sk2: {1}", m.Skills[Skill].Name, m.Skills[sk2].Name));
+                        m.SendMessage(String.Format("ATK | sk1: {0} sk2: {1}", m.Skills[Skill].Value, m.Skills[sk2].Value));
+                    }
+                    */
                     if (sk2Val > skVal)
                     {
                         sk = sk2;
                     }
-
-                    if (sk != SkillName.Briga && !m.Player && !m.Body.IsHuman &&
-                        m.Skills[SkillName.Briga].Value > m.Skills[sk].Value)
+                    else
                     {
-                        sk = SkillName.Briga;
+                        sk = Skill;
                     }
                 }
             }
-
-			return sk;
+            /*
+            if (m is PlayerMobile)
+            {
+                m.SendMessage(String.Format("Técnica de Ataque: {0}", m.Skills[sk].Name));
+            }
+            */
+            return sk;
 		}
 
         public virtual SkillName GetDefUsedSkill(Mobile m, bool checkSkillAttrs)
@@ -1489,7 +1499,6 @@ namespace Server.Items
                 if (bloqueio > val)
                 {
                     sk = SkillName.Bloqueio;
-                    val = bloqueio;
                 }
             }
             else if (m_AosWeaponAttributes.MageWeapon != 0)
@@ -1516,21 +1525,18 @@ namespace Server.Items
             }
             else
             {
-                sk = Skill; //Skill base da arma
-
-                if (sk == SkillName.Atirar)
+                if (Skill == SkillName.Atirar)
                 {
-                    return SkillName.Briga;
+                    sk = SkillName.Briga;
                 }
                 else
                 {
-
                     SkillName sk2; //skill do tipo de empunhadura (uma mão/duas mãos)
 
                     double skVal = m.Skills[Skill].Value;
                     double sk2Val;
 
-                    if (Layer == Layer.OneHanded)
+                    if (m.FindItemOnLayer(Layer.OneHanded) != null)
                     {
                         // Quando um escudo estiver equipado, escolhe a maior dentre a skill de tipo de empunhadura e a skill de bloqueio
                         if (m.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
@@ -1553,6 +1559,13 @@ namespace Server.Items
                             sk2Val = m.Skills[SkillName.UmaMao].Value;
                             sk2 = SkillName.UmaMao;
                         }
+                        /*
+                        if (m is PlayerMobile)
+                        {
+                            m.SendMessage(String.Format("DEF | sk1: {0} sk2: {1}", m.Skills[Skill].Name, m.Skills[sk2].Name));
+                            m.SendMessage(String.Format("DEF | sk1: {0} sk2: {1}", m.Skills[Skill].Value, m.Skills[sk2].Value));
+                        }
+                        */
                     }
                     else
                     {
@@ -1560,21 +1573,30 @@ namespace Server.Items
                         sk2 = SkillName.DuasMaos;
                     }
 
+                    //Usa a skill briga caso seja maior que as outras aplicáveis
+                    if (m.Skills[SkillName.Briga].Value > sk2Val)
+                    {
+                        sk2 = SkillName.Briga;
+                        sk2Val = m.Skills[SkillName.Briga].Value;
+                    }
+
                     //Escolhe a maior dentre a skill base da arma, a skill de tipo de empunhadura e, caso um escudo esteja esquipado, a skill de bloqueio
                     if (sk2Val > skVal)
                     {
                         sk = sk2;
-                        skVal = sk2Val;
                     }
-
-                    //Usa a skill briga caso seja maior que as outras aplicáveis
-                    if (m.Skills[SkillName.Briga].Value > skVal)
+                    else
                     {
-                        sk = SkillName.Briga;
+                        sk = Skill;
                     }
                 }
             }
-
+            /*
+            if (m is PlayerMobile)
+            {
+                m.SendMessage(String.Format("Técnica de Defesa: {0}", m.Skills[sk].Name));
+            }
+            */
             return sk;
         }
 
@@ -1610,12 +1632,26 @@ namespace Server.Items
 			BaseWeapon defWeapon = defender.Weapon as BaseWeapon;
 
 			Skill atkSkill = attacker.Skills[GetAttUsedSkill(attacker, true)]; //Seleciona a skill adequada pra ataque
-			Skill defSkill = defender.Skills[GetAttUsedSkill(defender, true)]; //Seleciona a skill adequada pra defesa
+			Skill defSkill = defender.Skills[GetDefUsedSkill(defender, true)]; //Seleciona a skill adequada pra defesa
+
+            /*
+            if (attacker is PlayerMobile)
+            {
+                attacker.SendMessage(String.Format("Atk sk: {0} Def sk: {1}", atkSkill.Name, defSkill.Name));
+            }
+            */
 
             double atkValue = atkSkill.Value;
 			double defValue = defSkill.Value;
 
-			double ourValue, theirValue;
+            /*
+            if (attacker is PlayerMobile)
+            {
+                attacker.SendMessage(String.Format("Atk sk Val: {0} Def sk Val: {1}", atkValue, defValue));
+            }
+            */
+
+            double ourValue, theirValue;
 
 			int bonus = GetHitChanceBonus();
 
@@ -1649,6 +1685,14 @@ namespace Server.Items
 
                 theirValue = (defValue + 20.0) * (100 + bonus);
 
+                /*
+                if (attacker is PlayerMobile)
+                {
+                    attacker.SendMessage(String.Format("ourValue: {0} theirValue: {1}", ourValue, theirValue));
+                }
+                */
+
+
                 bonus = 0;  //Se tirar isso o bonus se aplica duas vezes. Não retire.
 			}
 			else
@@ -1669,7 +1713,21 @@ namespace Server.Items
 
 			double chance = ourValue / (theirValue * 2.0);
 
-			chance *= 1.0 + ((double)bonus / 100);
+            /*
+            if (attacker is PlayerMobile)
+            {
+                attacker.SendMessage(String.Format("chance sem bonus: {0}", chance));
+            }
+            */
+
+            /*
+            chance *= 1.0 + ((double)bonus / 100);
+
+            if (attacker is PlayerMobile)
+            {
+                attacker.SendMessage(String.Format("chance COM bonus: {0}", chance));
+            }
+            */
 
             if (Core.SA)
             {
@@ -1709,9 +1767,9 @@ namespace Server.Items
                 }
             }
 
-            if (Core.AOS)
+            if (Core.AOS && chance < 0.03)
             {
-                chance = 0.02;
+                chance = 0.03;
             }
 
             if (Core.AOS && m_AosWeaponAttributes.MageWeapon > 0 && attacker.Skills[SkillName.Arcanismo].Value > atkSkill.Value)
