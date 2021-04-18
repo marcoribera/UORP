@@ -828,6 +828,17 @@ namespace Server
             }
         }
 
+		private string m_Label1;
+		private string m_Label2;
+		private string m_Label3;
+
+		[CommandProperty(AccessLevel.GameMaster)]
+		public string Label1 { get => m_Label1; set { m_Label1 = value; InvalidateProperties(); } }
+		[CommandProperty(AccessLevel.GameMaster)]
+		public string Label2 { get => m_Label2; set { m_Label2 = value; InvalidateProperties(); } }
+		[CommandProperty(AccessLevel.GameMaster)]
+		public string Label3 { get => m_Label3; set { m_Label3 = value; InvalidateProperties(); } }
+
         /// <summary>
         ///     The <see cref="Mobile" /> who is currently <see cref="Mobile.Holding">holding</see> this item.
         /// </summary>
@@ -1339,6 +1350,25 @@ namespace Server
             }
         }
 
+		public string GetCustomLabel()
+		{
+			string customLabels = "";  // $"{!String.IsNullOrEmpty(Label1)}"
+
+			if (!String.IsNullOrEmpty(Label1))
+				customLabels += Label1;
+			if (!String.IsNullOrEmpty(Label2))
+			{
+				if(!String.IsNullOrEmpty(Label1))
+					customLabels += "\n" + Label2;
+				else
+					customLabels += Label2;
+			}
+			if (!String.IsNullOrEmpty(Label3))
+				customLabels += "\n" + Label3;
+
+			return customLabels;
+		}
+
         /// <summary>
         ///     Overridable. Adds header properties. By default, this invokes <see cref="AddNameProperty" />,
         ///     <see
@@ -1351,6 +1381,11 @@ namespace Server
         public virtual void AddNameProperties(ObjectPropertyList list)
         {
             AddNameProperty(list);
+
+			string customLabel = GetCustomLabel();
+
+			if (!String.IsNullOrEmpty(customLabel))
+				list.Add(customLabel);
 
             if (IsSecure)
             {
@@ -2615,7 +2650,11 @@ namespace Server
 
         public virtual void Serialize(GenericWriter writer)
         {
-            writer.Write(14); // version
+			writer.Write(15); // version
+
+			writer.Write(m_Label1);
+			writer.Write(m_Label2);
+			writer.Write(m_Label3);
 
             // 14
             writer.Write(Sockets != null ? Sockets.Count : 0);
@@ -3122,6 +3161,14 @@ namespace Server
 
             switch (version)
             {
+				case 15:
+					{
+						m_Label1 = reader.ReadString();
+						m_Label2 = reader.ReadString();
+						m_Label3 = reader.ReadString();
+
+						goto case 14;
+					}
                 case 14:
                     var socketCount = reader.ReadInt();
 
