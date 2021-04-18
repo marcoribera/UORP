@@ -3745,6 +3745,9 @@ namespace Server.Mobiles
                 state.CancelAllTrades();
             }
 
+			if (Commands.PossessCommand.UncontrolDeath((Mobile)this))
+				return false;
+
             if (Criminal)
                 BuffInfo.RemoveBuff(this, BuffIcon.CriminalStatus);
 
