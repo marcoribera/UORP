@@ -16,6 +16,11 @@ namespace Server.Mobiles
 		{
 			SetSkill(SkillName.Carisma, 64.0, 100.0);
 			SetSkill(SkillName.Erudicao, 60.0, 83.0);
+
+			Tamable = true;
+			ControlSlots = 1;
+			MinTameSkill = 1;
+
 		}
 
 		public Vagabond(Serial serial)

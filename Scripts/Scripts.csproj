@@ -846,12 +846,19 @@
     <Compile Include="Misc\ArchivedSaves.cs" />
     <Compile Include="Misc\Replacer.cs" />
     <Compile Include="Misc\TaskPollingTimer.cs" />
+    <Compile Include="Mobiles\Normal\Brigand.cs" />
     <Compile Include="Mobiles\Normal\CoconutCrab.cs" />
     <Compile Include="Mobiles\Normal\HungryCoconutCrab.cs" />
+    <Compile Include="Mobiles\Normal\LesserBrigand.cs" />
+    <Compile Include="Mobiles\Normal\LesserElfBrigand.cs" />
+    <Compile Include="Mobiles\Normal\LesserRonin.cs" />
+    <Compile Include="Mobiles\Normal\Ronin.cs" />
     <Compile Include="Mobiles\Normal\SkeletalCat.cs" />
     <Compile Include="Mobiles\Normal\TheButcher.cs" />
     <Compile Include="Mobiles\Normal\Triton.cs" />
     <Compile Include="Mobiles\Normal\Eowmu.cs" />
+    <Compile Include="Mobiles\Normal\EvilMage.cs" />
+    <Compile Include="Mobiles\Normal\EvilMageLord.cs" />
     <Compile Include="Mobiles\NPCs\Gardener.cs" />
     <Compile Include="Mobiles\NPCs\GypsyFortuneTeller.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\BaseProperty.cs" />
@@ -2241,7 +2248,6 @@
     <Compile Include="Mobiles\Normal\BoneDemon.cs" />
     <Compile Include="Mobiles\Normal\BoneKnight.cs" />
     <Compile Include="Mobiles\Normal\BoneMagi.cs" />
-    <Compile Include="Mobiles\Normal\Brigand.cs" />
     <Compile Include="Mobiles\Normal\BronzeElemental.cs" />
     <Compile Include="Mobiles\Normal\BrownBear.cs" />
     <Compile Include="Mobiles\Normal\BulbousPutrification.cs" />
@@ -2330,8 +2336,6 @@
     <Compile Include="Mobiles\Normal\Ethereals.cs" />
     <Compile Include="Mobiles\Normal\EtherealWarrior.cs" />
     <Compile Include="Mobiles\Normal\Ettin.cs" />
-    <Compile Include="Mobiles\Normal\EvilMage.cs" />
-    <Compile Include="Mobiles\Normal\EvilMageLord.cs" />
     <Compile Include="Mobiles\Normal\Executioner.cs" />
     <Compile Include="Mobiles\Normal\ExodusMinion.cs" />
     <Compile Include="Mobiles\Normal\ExodusOverseer.cs" />
@@ -2546,7 +2550,6 @@
     <Compile Include="Mobiles\Normal\RevenantLion.cs" />
     <Compile Include="Mobiles\Normal\RidableLlama.cs" />
     <Compile Include="Mobiles\Normal\Ridgeback.cs" />
-    <Compile Include="Mobiles\Normal\Ronin.cs" />
     <Compile Include="Mobiles\Normal\RottingCorpse.cs" />
     <Compile Include="Mobiles\Normal\Rotworm.cs" />
     <Compile Include="Mobiles\Normal\RuddyBoura.cs" />
@@ -12296,6 +12299,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Services\TreasureMaps\desktop.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gumps\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.targets" />
   <ProjectExtensions>

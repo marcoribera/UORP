@@ -56,6 +56,11 @@ namespace Server.Mobiles
             Karma = -2500;
 
             VirtualArmor = 16;
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             PackReg(6);
 
             if (Core.AOS)

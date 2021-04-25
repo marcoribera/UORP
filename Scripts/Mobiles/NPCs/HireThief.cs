@@ -53,8 +53,14 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Mecanica, 65, 87);
             this.SetSkill(SkillName.Furtividade, 65, 87);
             this.SetSkill(SkillName.Prestidigitacao, 65, 87);	
+
             this.Fame = 100;
             this.Karma = 0;
+
+
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 90;
 
             this.AddItem(new Sandals(Utility.RandomNeutralHue()));
             this.AddItem(new Dagger());

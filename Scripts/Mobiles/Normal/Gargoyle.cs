@@ -40,6 +40,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 32;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 90;
+
             if (0.025 > Utility.RandomDouble())
                 this.PackItem(new GargoylesPickaxe());
 

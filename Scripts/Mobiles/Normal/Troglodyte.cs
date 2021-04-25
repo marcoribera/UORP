@@ -43,6 +43,10 @@ namespace Server.Mobiles
 
             VirtualArmor = 28; // Don't know what it should be
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 95;
+
             PackItem(new Bandage(5));  // How many?
             PackItem(new Ribs());
 

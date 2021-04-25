@@ -46,6 +46,10 @@ namespace Server.Mobiles
 			Fame = 1000;
 			Karma = -1000;
 
+			Tamable = true;
+			ControlSlots = 3;
+			MinTameSkill = 95;
+
 			PackReg(10, 15);
 			PackItem(new Bandage(Utility.RandomMinMax(1, 15)));
 

@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             VirtualArmor = 28;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             // loot 30-40 gold, magic item, gem, essence control,gob blood
             switch ( Utility.Random(20) )
             {

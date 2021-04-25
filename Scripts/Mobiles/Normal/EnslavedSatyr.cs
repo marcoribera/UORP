@@ -15,6 +15,11 @@ namespace Server.Mobiles
             Fame = 10000;
             Karma = -10000;
 
+            Tamable = true;
+            ControlSlots = 1;
+            MinTameSkill = 20;
+
+
             SetSpecialAbility(SpecialAbility.AngryFire);
         }
 

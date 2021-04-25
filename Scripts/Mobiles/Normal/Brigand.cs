@@ -43,6 +43,10 @@ namespace Server.Mobiles
             Fame = 1000;
             Karma = -1000;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             AddItem(new Boots(Utility.RandomNeutralHue()));
             AddItem(new FancyShirt());
             AddItem(new Bandana());

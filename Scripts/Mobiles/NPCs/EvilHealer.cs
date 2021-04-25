@@ -14,6 +14,12 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Percepcao, 80.0, 100.0);
             this.SetSkill(SkillName.PoderMagico, 80.0, 100.0);
             this.SetSkill(SkillName.Cortante, 80.0, 100.0);
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
+
         }
 
         public EvilHealer(Serial serial)

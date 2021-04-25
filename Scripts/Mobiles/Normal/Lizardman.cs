@@ -37,6 +37,11 @@ namespace Server.Mobiles
             Karma = -1500;
 
             VirtualArmor = 28;
+
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 75;
+
         }
 
         public Lizardman(Serial serial)

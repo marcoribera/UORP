@@ -55,6 +55,10 @@ namespace Server.Mobiles
             this.Fame = 100;
             this.Karma = 100;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 70;
+
             this.AddItem(new Shoes(Utility.RandomNeutralHue()));
 
             switch ( Utility.Random(2) )

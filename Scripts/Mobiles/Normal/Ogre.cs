@@ -40,6 +40,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 32;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 80;
+
             this.PackItem(new Club());
         }
 

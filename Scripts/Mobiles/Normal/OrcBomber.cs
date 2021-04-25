@@ -45,6 +45,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 30;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 90;
+
             this.PackItem(new SulfurousAsh(Utility.RandomMinMax(6, 10)));
             this.PackItem(new MandrakeRoot(Utility.RandomMinMax(6, 10)));
             this.PackItem(new BlackPearl(Utility.RandomMinMax(6, 10)));

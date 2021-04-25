@@ -48,6 +48,11 @@ namespace Server.Mobiles
             Fame = 1000;
             Karma = -1000;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 75;
+
+
             // outfit
             AddItem(new Shirt(Utility.RandomNeutralHue()));
 

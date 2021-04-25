@@ -35,10 +35,14 @@ namespace Server.Mobiles
             SetSkill(SkillName.ResistenciaMagica, 120.3, 129.2);
             SetSkill(SkillName.Anatomia, 81.9, 87.1);
             SetSkill(SkillName.Anatomia, 0.0, 0.0);
-            SetSkill(SkillName.Briga, 94.8, 106.9);
+            SetSkill(SkillName.Briga, 94.8, 100);
 
             Fame = 1500;
             Karma = -1500;
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
 
             VirtualArmor = 28;
 
