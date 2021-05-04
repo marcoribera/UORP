@@ -38,6 +38,11 @@ namespace Server.Mobiles
             this.Karma = -1500;
 
             this.VirtualArmor = 28;
+
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 76;
+
         }
 
         public Ratman(Serial serial)

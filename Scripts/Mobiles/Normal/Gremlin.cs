@@ -33,6 +33,10 @@ namespace Server.Mobiles
             SetSkill(SkillName.ResistenciaMagica, 82.5);
             SetSkill(SkillName.Anatomia, 65.3);
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 75;
+
             AddItem(new Bow());
             PackItem(new Arrow(Utility.RandomMinMax(60, 80)));
             PackItem(new Apple(5));

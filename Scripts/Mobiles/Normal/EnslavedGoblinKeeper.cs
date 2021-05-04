@@ -40,6 +40,10 @@ namespace Server.Mobiles
             Fame = 1500;
             Karma = -1500;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             VirtualArmor = 28;
 
             // Loot - 30-40gold, magicitem,gem,goblin blood, essence control

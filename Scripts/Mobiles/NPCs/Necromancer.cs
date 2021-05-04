@@ -16,6 +16,10 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Necromancia, 80.0, 100.0 );
 			SetSkill( SkillName.ResistenciaMagica, 80.0, 100.0 );
 
+			Tamable = true;
+			ControlSlots = 3;
+			MinTameSkill = 100;
+
 			Hue = 0x3C6;
 		}
 		

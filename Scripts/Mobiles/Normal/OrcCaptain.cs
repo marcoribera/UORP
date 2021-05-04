@@ -38,6 +38,10 @@ namespace Server.Mobiles
             this.Fame = 2500;
             this.Karma = -2500;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             this.VirtualArmor = 34;
 
             // TODO: Skull?

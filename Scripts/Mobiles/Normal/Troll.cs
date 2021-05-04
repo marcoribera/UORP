@@ -37,6 +37,10 @@ namespace Server.Mobiles
             this.Karma = -3500;
 
             this.VirtualArmor = 40;
+
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 70;
         }
 
         public Troll(Serial serial)

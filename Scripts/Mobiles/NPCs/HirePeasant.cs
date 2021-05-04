@@ -52,6 +52,10 @@ namespace Server.Mobiles
             this.Fame = 0;
             this.Karma = 0;
 
+            Tamable = true;
+            ControlSlots = 1;
+            MinTameSkill = 1;
+
             this.AddItem(new Sandals(Utility.RandomNeutralHue()));
             switch ( Utility.Random(2) )
             {

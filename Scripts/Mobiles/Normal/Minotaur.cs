@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             VirtualArmor = 28; // Don't know what it should be
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 95;
+
             for (int i = 0; i < Utility.RandomMinMax(0, 1); i++)
             {
                 PackItem(Loot.RandomScroll(0, Loot.ArcanistScrollTypes.Length, SpellbookType.Arcanist));

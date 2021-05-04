@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 56;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 95;
+
             this.AddItem(new Bow());
             this.PackItem(new Arrow(Utility.RandomMinMax(50, 70)));
         }

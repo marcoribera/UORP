@@ -39,6 +39,10 @@ namespace Server.Mobiles
             this.Karma = -16000;
 
             this.VirtualArmor = 50;
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
         }
 
         public OphidianMatriarch(Serial serial)

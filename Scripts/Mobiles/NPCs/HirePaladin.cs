@@ -63,6 +63,10 @@ namespace Server.Mobiles
             Fame = 100;
             Karma = 250;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
             AddItem(new VikingSword());

@@ -39,6 +39,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 50;
 
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
             this.PackItem(new DoubleAxe()); // TODO: Weapon??
         }
 

@@ -43,6 +43,10 @@ namespace Server.Mobiles
             this.Karma = -4500;
 
             this.VirtualArmor = 36;
+
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 85;
         }
 
         public OphidianWarrior(Serial serial)

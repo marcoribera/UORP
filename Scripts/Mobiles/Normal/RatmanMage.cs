@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 44;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 85;
+
             this.PackReg(6);
 
             if (0.02 > Utility.RandomDouble())

@@ -39,6 +39,10 @@ namespace Server.Mobiles
             this.Fame = 2500;
             this.Karma = -2500;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 90;
+
             switch ( Utility.Random(5) )
             {
                 case 0:

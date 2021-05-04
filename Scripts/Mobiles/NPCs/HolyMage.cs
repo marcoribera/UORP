@@ -16,6 +16,11 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Arcanismo, 64.0, 100.0);
             this.SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
             this.SetSkill(SkillName.Briga, 36.0, 68.0);
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
         }
 
         public HolyMage(Serial serial)

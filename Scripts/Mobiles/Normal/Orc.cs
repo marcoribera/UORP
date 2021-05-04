@@ -40,6 +40,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 28;
 
+            Tamable = true;
+            ControlSlots = 2;
+            MinTameSkill = 75;
+
             switch ( Utility.Random(20) )
             {
                 case 0:
