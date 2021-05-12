@@ -44,9 +44,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 28;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
             switch ( Utility.Random(20) )
             {

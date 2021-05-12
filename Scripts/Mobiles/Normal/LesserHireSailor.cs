@@ -1,17 +1,17 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
+namespace Server.Mobiles
 {
-    public class LesserHireSailor : BaseHire 
+    public class LesserHireSailor : BaseHire
     {
-        [Constructable] 
+        [Constructable]
         public LesserHireSailor()
         {
             this.SpeechHue = Utility.RandomDyedHue();
             this.Hue = Utility.RandomSkinHue();
 
-            if (this.Female = Utility.RandomBool()) 
+            if (this.Female = Utility.RandomBool())
             {
                 this.Body = 0x191;
                 this.Name = NameList.RandomName("female");
@@ -43,18 +43,18 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Bloqueio, 37.0, 40);
             this.SetSkill(SkillName.Mecanica, 65, 87);
             this.SetSkill(SkillName.Furtividade, 65, 87);
-            this.SetSkill(SkillName.Prestidigitacao, 65, 87);	
+            this.SetSkill(SkillName.Prestidigitacao, 65, 87);
 
             this.Fame = 100;
             this.Karma = 0;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 40;
+            MinPersuadeSkill = 40;
 
             this.AddItem(new Shoes(Utility.RandomNeutralHue()));
             this.AddItem(new Cutlass());
-		
+
             switch ( Utility.Random(2) )
             {
                 case 0:
@@ -80,14 +80,14 @@ namespace Server.Mobiles
                 return false;
             }
         }
-        public override void Serialize(GenericWriter writer) 
+        public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);// version 
+            writer.Write((int)0);// version
         }
 
-        public override void Deserialize(GenericReader reader) 
+        public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 

@@ -37,9 +37,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 35;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 70;
+            MinPersuadeSkill = 70;
 
             if (0.2 > Utility.RandomDouble())
                 PackItem(new GargoylesPickaxe());

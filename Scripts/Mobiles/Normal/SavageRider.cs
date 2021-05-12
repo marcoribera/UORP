@@ -33,9 +33,9 @@ namespace Server.Mobiles
             this.Fame = 1000;
             this.Karma = -1000;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
             this.PackItem(new Bandage(Utility.RandomMinMax(1, 15)));
 

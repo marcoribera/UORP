@@ -537,7 +537,7 @@ namespace Server.SkillHandlers
 
 	public class StolenItem
 	{
-		public static readonly TimeSpan StealTime = TimeSpan.FromMinutes(2.0);
+		public static readonly TimeSpan StealTime = TimeSpan.FromDays(2.0);
 
 		private readonly Item m_Stolen;
 		private readonly Mobile m_Thief;

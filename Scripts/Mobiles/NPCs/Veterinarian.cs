@@ -60,7 +60,7 @@ namespace Server.Mobiles
             if (bc is KotlAutomaton)
                 return 0;
 
-			int fee = (int)(100 + Math.Pow(1.1041, bc.MinTameSkill));
+			int fee = (int)(100 + Math.Pow(1.1041, bc.MinPersuadeSkill));
 
 			if (fee > 30000)
 				fee = 30000;
@@ -128,7 +128,7 @@ namespace Server.Mobiles
 	public class VetResurrectGump : Gump
 	{
 		//public override int TypeID { get { return 0xF3E96; } }
-		
+
 
 		private Veterinarian m_Vet;
 		private BaseCreature[] m_Pets;

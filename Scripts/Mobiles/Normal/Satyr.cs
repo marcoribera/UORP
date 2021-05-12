@@ -45,9 +45,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 28; // Don't know what it should be
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
             for (int i = 0; i < Utility.RandomMinMax(0, 1); i++)
             {

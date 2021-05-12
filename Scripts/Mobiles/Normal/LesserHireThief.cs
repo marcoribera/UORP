@@ -1,17 +1,17 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
+namespace Server.Mobiles
 {
-    public class LesserHireThief : BaseHire 
+    public class LesserHireThief : BaseHire
     {
-        [Constructable] 
+        [Constructable]
         public LesserHireThief()
         {
             this.SpeechHue = Utility.RandomDyedHue();
             this.Hue = Utility.RandomSkinHue();
 
-            if (this.Female = Utility.RandomBool()) 
+            if (this.Female = Utility.RandomBool())
             {
                 this.Body = 0x191;
                 this.Name = NameList.RandomName("female");
@@ -26,7 +26,7 @@ namespace Server.Mobiles
                         break;
                 }
             }
-            else 
+            else
             {
                 this.Body = 0x190;
                 this.Name = NameList.RandomName("male");
@@ -52,15 +52,15 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Bloqueio, 30.0, 48);
             this.SetSkill(SkillName.Mecanica, 65, 87);
             this.SetSkill(SkillName.Furtividade, 65, 87);
-            this.SetSkill(SkillName.Prestidigitacao, 65, 87);	
+            this.SetSkill(SkillName.Prestidigitacao, 65, 87);
 
             this.Fame = 100;
             this.Karma = 0;
 
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 49;
+            MinPersuadeSkill = 49;
 
             this.AddItem(new Sandals(Utility.RandomNeutralHue()));
             this.AddItem(new Dagger());
@@ -73,7 +73,7 @@ namespace Server.Mobiles
                     this.AddItem(new Shirt(Utility.RandomNeutralHue()));
                     break;
             }
-		
+
             this.PackGold(0, 25);
         }
 
@@ -89,14 +89,14 @@ namespace Server.Mobiles
                 return false;
             }
         }
-        public override void Serialize(GenericWriter writer) 
+        public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);// version 
+            writer.Write((int)0);// version
         }
 
-        public override void Deserialize(GenericReader reader) 
+        public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 

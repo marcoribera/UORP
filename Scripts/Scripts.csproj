@@ -91,6 +91,10 @@
     <Compile Include="Commands\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Custom\Idiomas\PolyglotMobile.cs" />
+    <Compile Include="Custom\Idiomas\Translator\SelecionarIdioma.cs" />
+    <Compile Include="Custom\Idiomas\Translator\Translate.cs" />
+    <Compile Include="Custom\Idiomas\Translator\Translator.cs" />
     <Compile Include="Commands\Custom\RPfala.cs" />
     <Compile Include="Commands\Custom\RPcontrolar.cs" />
     <Compile Include="Commands\Decorate.cs">
@@ -12281,6 +12285,9 @@
     <Compile Include="VendorInfo\VendorInventory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Custom\Idiomas\EngToDrow.txt" />
+    <Content Include="Custom\Idiomas\EngToElven.txt" />
+    <Content Include="Custom\Idiomas\EngToOrcish.txt" />
     <Content Include="Services\LootGeneration\RunicReforging\ReadMe.txt" />
     <Content Include="Services\New Magincia\ReadMe.txt" />
     <Content Include="Services\Revamped Dungeons\DespiseRevamped\Read Me.txt" />

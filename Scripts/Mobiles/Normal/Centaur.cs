@@ -41,9 +41,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 50;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
             AddItem(new Bow());
             PackItem(new Arrow(Utility.RandomMinMax(80, 90))); // OSI it is different: in a sub backpack, this is probably just a limitation of their engine

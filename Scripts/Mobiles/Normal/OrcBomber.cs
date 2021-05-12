@@ -45,9 +45,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 30;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 90;
+            MinPersuadeSkill = 90;
 
             this.PackItem(new SulfurousAsh(Utility.RandomMinMax(6, 10)));
             this.PackItem(new MandrakeRoot(Utility.RandomMinMax(6, 10)));

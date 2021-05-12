@@ -47,9 +47,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 40;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
             this.PackItem(new LesserPoisonPotion());
         }

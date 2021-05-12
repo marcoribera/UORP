@@ -39,9 +39,9 @@ namespace Server.Mobiles
             this.Fame = 2500;
             this.Karma = -2500;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 90;
+            MinPersuadeSkill = 90;
 
             switch ( Utility.Random(5) )
             {

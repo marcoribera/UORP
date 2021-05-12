@@ -38,9 +38,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 40;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 70;
+            MinPersuadeSkill = 70;
         }
 
         public Troll(Serial serial)

@@ -1,23 +1,23 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
+namespace Server.Mobiles
 {
-    public class LesserHireRangerArcher : BaseHire 
+    public class LesserHireRangerArcher : BaseHire
     {
-        [Constructable] 
+        [Constructable]
         public LesserHireRangerArcher()
             : base(AIType.AI_Archer)
         {
             SpeechHue = Utility.RandomDyedHue();
             Hue = Utility.RandomSkinHue();
 
-            if (Female = Utility.RandomBool()) 
+            if (Female = Utility.RandomBool())
             {
                 Body = 0x191;
                 Name = NameList.RandomName("female");
             }
-            else 
+            else
             {
                 Body = 0x190;
                 Name = NameList.RandomName("male");
@@ -45,15 +45,15 @@ namespace Server.Mobiles
             Fame = 100;
             Karma = 125;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 50;
+            MinPersuadeSkill = 50;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 
             // Pick a random sword
-            switch ( Utility.Random(2)) 
+            switch ( Utility.Random(2))
             {
                 case 0:
                     AddItem(new Bow());
@@ -85,14 +85,14 @@ namespace Server.Mobiles
                 return false;
             }
         }
-        public override void Serialize(GenericWriter writer) 
+        public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);// version 
+            writer.Write((int)0);// version
         }
 
-        public override void Deserialize(GenericReader reader) 
+        public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 

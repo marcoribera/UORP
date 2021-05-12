@@ -42,9 +42,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 44;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 85;
+            MinPersuadeSkill = 85;
 
             this.PackReg(6);
 
@@ -62,7 +62,7 @@ namespace Server.Mobiles
 				case 6: PackItem(new MindRotScroll()); break;
 				case 7: PackItem(new PainSpikeScroll()); break;
 				case 8: PackItem(new WraithFormScroll()); break;
-				case 9: PackItem(new PoisonStrikeScroll()); break; 
+				case 9: PackItem(new PoisonStrikeScroll()); break;
 			}
         }
 
@@ -128,7 +128,7 @@ namespace Server.Mobiles
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-            int version = reader.ReadInt();           
+            int version = reader.ReadInt();
         }
     }
 }

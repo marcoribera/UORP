@@ -123,7 +123,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public partial class PlayerMobile : Mobile, IHonorTarget
+	public partial class PlayerMobile : PolyGlotMobile, IHonorTarget
 	{
 		public static List<PlayerMobile> Instances { get; private set; }
 
