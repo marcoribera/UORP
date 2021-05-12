@@ -18,7 +18,7 @@ namespace Server.Mobiles
 			Hue = Utility.RandomSkinHue();
 			Name = "";
 			Body = (( this.Female = Utility.RandomBool() ) ? Body = 0x191 : Body = 0x190);
-			
+
 			Hue = Utility.RandomSkinHue();
 
 			SetStr( 326, 375 );
@@ -53,9 +53,9 @@ namespace Server.Mobiles
 			Fame = 8500;
 			Karma = -8500;
 
-			Tamable = true;
+			Persuadable = true;
 			ControlSlots = 1;
-			MinTameSkill = 40;
+			MinPersuadeSkill = 40;
 
 			AddItem( new SamuraiTabi() );
 			AddItem( new LeatherHiroSode());
@@ -88,7 +88,7 @@ namespace Server.Mobiles
 
             SetWeaponAbility(WeaponAbility.RidingSwipe);
 		}
-		
+
 		public override void OnDeath( Container c )
  		{
 			base.OnDeath( c );
@@ -106,7 +106,7 @@ namespace Server.Mobiles
 		public override bool BardImmune{ get{ return true; } }
 		public override bool CanRummageCorpses{ get{ return true; } }
 
-        public override double WeaponAbilityChance 
+        public override double WeaponAbilityChance
         {
             get
             {
@@ -114,7 +114,7 @@ namespace Server.Mobiles
                     return 0.8;
 
                 return base.WeaponAbilityChance;
-            } 
+            }
         }
 
         private void ChangeWeapon()

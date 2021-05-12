@@ -20,9 +20,9 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Anatomia, 30.0, 45.0);
             this.SetSkill(SkillName.Cortante, 30.0, 45.0);
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 49;
+            MinPersuadeSkill = 49;
 
             this.SpeechHue = Utility.RandomDyedHue();
 

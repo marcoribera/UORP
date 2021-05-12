@@ -43,9 +43,9 @@ namespace Server.Mobiles
             Fame = 1000;
             Karma = -1000;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 50;
+            MinPersuadeSkill = 50;
 
             AddItem(new Boots(Utility.RandomNeutralHue()));
             AddItem(new FancyShirt());

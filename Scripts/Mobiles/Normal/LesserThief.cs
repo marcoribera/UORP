@@ -18,9 +18,9 @@ namespace Server.Mobiles
             SetSkill(SkillName.Veterinaria, 60.0, 83.0);
             SetSkill(SkillName.Mecanica, 20, 40.0);
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 40;
+            MinPersuadeSkill = 40;
         }
 
         public LesserThief(Serial serial)

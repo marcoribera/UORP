@@ -40,9 +40,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 32;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 45;
+            MinPersuadeSkill = 45;
 
             this.PackItem(new Club());
         }

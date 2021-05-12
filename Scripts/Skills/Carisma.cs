@@ -12,8 +12,6 @@ using Server.Targeting;
 using System;
 using System.Collections;
 
-using Server.Engines.XmlSpawner2;
-using Server.Factions;
 using Server.Gumps;
 using Server.Items;
 using Server.Misc;
@@ -65,11 +63,11 @@ namespace Server.SkillHandlers
 
             if (DeferredTarget)
             {
-                Timer.DelayCall(() => m.Target = new InternalTarget(m));
+                Timer.DelayCall(() => m.Target = new CarismaTarget(m));
             }
             else
             {
-                m.Target = new InternalTarget(m);
+                m.Target = new CarismaTarget(m);
             }
 
             // We're not sure why this is getting hung up. Now, its 30 second timeout + 10 seconds (max) to tame
@@ -138,11 +136,11 @@ namespace Server.SkillHandlers
             }
         }
 
-        private class InternalTarget : Target
+        private class CarismaTarget : Target
         {
             private bool m_SetSkillTime = true;
 
-            public InternalTarget(Mobile m)
+            public CarismaTarget(Mobile m)
                 : base(Core.AOS ? 3 : 2, false, TargetFlags.None)
             {
                 BeginTimeout(m, TimeSpan.FromSeconds(30.0));
@@ -167,7 +165,7 @@ namespace Server.SkillHandlers
 
             }
 
-            public class CarismaGump : Gumps.Gump
+            public class CarismaGump : Gump
             {
                 Mobile m_eu;
                 object m_alvo;
@@ -177,47 +175,28 @@ namespace Server.SkillHandlers
                     m_eu = from;
                     m_alvo = targ;
 
-                    this.Closable = true;
-                    this.Disposable = true;
-                    this.Dragable = true;
-                    this.Resizable = false;
+                    Closable = true;
+                    Disposable = true;
+                    Dragable = true;
+                    Resizable = false;
 
-                    this.AddPage(0);
-                    this.AddImageTiled(0, 0, 348, 262, 0xA8E);
-                    this.AddAlphaRegion(0, 0, 348, 262);
-                    this.AddImage(0, 15, 0x27A8);
-                    this.AddImageTiled(0, 30, 17, 200, 0x27A7);
-                    this.AddImage(0, 230, 0x27AA);
-                    this.AddImage(15, 230, 0x280C);
-                    this.AddImageTiled(30, 0, 300, 17, 0x280A);
-                    this.AddImage(315, 0, 0x280E);
-                    this.AddImage(15, 244, 0x280C);
-                    this.AddImageTiled(30, 244, 300, 17, 0x280A);
-                    this.AddImage(315, 244, 0x280E);
-                    this.AddImage(330, 15, 0x27A8);
-                    this.AddImageTiled(330, 30, 17, 200, 0x27A7);
-                    this.AddImage(330, 230, 0x27AA);
-                    this.AddImage(333, 2, 0x2716);
-                    this.AddImage(315, 248, 0x2716);
-                    this.AddImage(2, 248, 0x2716);
-                    this.AddImage(2, 2, 0x2716);
+                    AddPage(0);
+                    AddImage(0, 0, 0x24F4); //largura: 250 | altura: 177
+                    AddHtmlLocalized(25, 5, 200, 20, 503472, false, false); //MENU CARISMA
+                    AddHtmlLocalized(25, 35, 200, 60, 503473, false, false); // Como deseja interagir?
 
-                    AddHtml(25, 25, 200, 20, "<BASEFONT COLOR=#FF0000> Menu Carisma </BASEFONT>", false, false);
 
-                    this.AddImage(25, 40, 0xBBF);
+                    AddButton(35, 65, 0x7583, 0x7584, (int)Buttons.Intimidar, GumpButtonType.Reply, 0);
+                    AddHtmlLocalized(60, 65, 300, 120, 503474, false, false); //Intimidar
 
-                    AddHtml(25, 55, 300, 120, "<BASEFONT COLOR=#FFFFFF> Como deseja interagir com essa pessoa? </BASEFONT>", false, false);
+                    AddButton(35, 90, 0x7583, 0x7584, (int)Buttons.Esmolar, GumpButtonType.Reply, 0);
+                    AddHtmlLocalized(60, 90, 300, 120, 503475, false, false); //Pedir Esmola
 
-                    AddLabel(60, 80, 0xFF0000, "Intimidar");
-                    AddLabel(60, 115, 0xFF0000, "Pedir esmola");
-                    AddLabel(60, 155, 0xFF0000, "Recrutar para seu grupo");
-
-                    this.AddButton(25, 75, 9904, 9903, (int)Buttons.Intimidar, GumpButtonType.Reply, 0);
-                    this.AddButton(25, 110, 9904, 9903, (int)Buttons.Esmolar, GumpButtonType.Reply, 0);
-                    this.AddButton(25, 150, 9904, 9903, (int)Buttons.Recrutar, GumpButtonType.Reply, 0);
+                    AddButton(35, 115, 0x7583, 0x7584, (int)Buttons.Recrutar, GumpButtonType.Reply, 0);
+                    AddHtmlLocalized(60, 115, 300, 120, 503476, false, false); //Recrutar para o grupo
                 }
 
-                public override void OnResponse(Server.Network.NetState state, RelayInfo info)
+                public override void OnResponse(NetState state, RelayInfo info)
                 {
                     int resposta = info.ButtonID;
 
@@ -229,7 +208,7 @@ namespace Server.SkillHandlers
                         }
                         else if (m_alvo is Mobile)
                         {
-                            new InternalTimerVendor(m_eu, (Mobile)m_alvo, true).Start();
+                            Intimidar();
                         }
                         else
                         {
@@ -244,7 +223,7 @@ namespace Server.SkillHandlers
                         }
                         else if (m_alvo is Mobile)
                         {
-                            new InternalTimerVendor(m_eu, (Mobile)m_alvo, false).Start();
+                            PedirEsmola();
                         }
                         else
                         {
@@ -263,10 +242,13 @@ namespace Server.SkillHandlers
                             {
                                 number = 500398; // Tente conversar com essa pessoa pra convencê-la.
                             }
+                            /*
                             else if (!targ.Body.IsHuman && !targ.Body.IsGargoyle) // Make sure the NPC is human
                             {
                                 number = 500399; // Não dá pra convencer isso a ser seu aliado com Carisma
                             }
+                            */
+                            /*
                             else if (targ is BaseVendor)
                             {
                                 number = 503415; //Essa pessoa não vai largar o emprego por você!
@@ -277,6 +259,7 @@ namespace Server.SkillHandlers
                                 m_eu.Animate(32, 5, 1, true, false, 0); // Bow
 
                             }
+                            */
                             else if (!m_eu.InRange(targ, 2))
                             {
                                 if (!targ.Female)
@@ -296,13 +279,12 @@ namespace Server.SkillHandlers
                             {
                                 BaseCreature creature = (BaseCreature)m_alvo;
 
-                                /*
-                                if (!creature.Tamable)  //Só colocar pra fazer essa verificação se decidir setar quais NPC humanos são domáveis
+                                if (!creature.Persuadable)
                                 {
                                     creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1049655, m_eu.NetState);
                                     // That creature cannot be tamed. //Novo numero de cliloc: Esta pessoa não tem interesse em servir a ninguém.
                                 }
-                                */
+
                                 if (creature.Controlled)
                                 {
                                     creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503416, m_eu.NetState);
@@ -383,10 +365,10 @@ namespace Server.SkillHandlers
 
                                         m_BeingTamed[m_alvo] = m_eu;
 
-                                        m_eu.LocalOverheadMessage(MessageType.Emote, 0x59, 503424); // *Tentando persuadir a pessoa*.
-                                        m_eu.NonlocalOverheadMessage(MessageType.Emote, 0x59, 503425); // *conversando com a pessoa*
+                                        m_eu.LocalOverheadMessage(MessageType.Emote, m_eu.EmoteHue, 503424); // *Tentando persuadir a pessoa*.
+                                        m_eu.NonlocalOverheadMessage(MessageType.Emote, creature.EmoteHue, 503425); // *conversando com a pessoa*
 
-                                        new InternalTimer(m_eu, creature, Utility.Random(3, 2)).Start();
+                                        new InternalTimer(m_eu, creature, Utility.Random(5, 9)).Start();
                                     }
                                 }
                                 else
@@ -411,456 +393,540 @@ namespace Server.SkillHandlers
                         return;
                     }
                 }
-            }
 
-
-            private class InternalTimer : Timer
-            {
-                private readonly Mobile m_Tamer;
-                private readonly BaseCreature m_Creature;
-                private readonly int m_MaxCount;
-                private readonly DateTime m_StartTime;
-                private int m_Count;
-                private bool m_Paralyzed;
-
-                public InternalTimer(Mobile tamer, BaseCreature creature, int count)
-                    : base(TimeSpan.FromSeconds(3.0), TimeSpan.FromSeconds(3.0), count)
+                protected void Intimidar()
                 {
-                    m_Tamer = tamer;
-                    m_Creature = creature;
-                    m_MaxCount = count;
-                    m_Paralyzed = creature.Paralyzed;
-                    m_StartTime = DateTime.UtcNow;
-                    Priority = TimerPriority.TwoFiftyMS;
-                }
+                    if (m_alvo is Mobile)
+                    {
+                        Mobile targ = (Mobile)m_alvo;
 
-                protected override void OnTick()
-                {
-                    m_Count++;
-
-                    DamageEntry de = m_Creature.FindMostRecentDamageEntry(false);
-                    bool alreadyOwned = m_Creature.Owners.Contains(m_Tamer);
-
-                    if (!m_Tamer.InRange(m_Creature, Core.AOS ? 7 : 6))
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503429, m_Tamer.NetState);
-                        // Você se afastou demais pra continuar persuadindo direito.
-                        Stop();
-                    }
-                    else if (!m_Tamer.CheckAlive())
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503430, m_Tamer.NetState);
-                        // Não dá pra continuar a persuadir estando inconsciente.
-                        Stop();
-                    }
-                    else if (!m_Tamer.CanSee(m_Creature) || !m_Tamer.InLOS(m_Creature) || !CanPath())
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Tamer.SendLocalizedMessage(503431);
-                        // Você não tem um caminho livre até a pessoa que tenta persuadir e teve que interromper a tentativa.
-                        Stop();
-                    }
-                    /* //Só colocar pra fazer essa verificação se decidir setar quais NPC humanos são domáveis
-                    else if (!m_Creature.Tamable)
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503432, m_Tamer.NetState);
-                        // Impossível convencer esta criatura com Carisma.
-                        Stop();
-                    }
-                    */
-                    else if (m_Creature.Controlled)
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503416, m_Tamer.NetState);
-                        // Parece que esta pessoa já serve a alguém.
-                        Stop();
-                    }
-                    else if (m_Creature.Owners.Count >= BaseCreature.MaxOwners && !m_Creature.Owners.Contains(m_Tamer))
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503420, m_Tamer.NetState);
-                        // Esta pessoa já foi abandonada por muitos mestres e não quer seguir um novo.
-                        Stop();
-                    }
-                    else if (MustBeSubdued(m_Creature))
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503421, m_Tamer.NetState);
-                        // Você deve subjugar esta pessoa antes de persuadí-la!
-                        Stop();
-                    }
-                    else if (de != null && de.LastDamage > m_StartTime)
-                    {
-                        m_BeingTamed.Remove(m_Creature);
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503423, m_Tamer.NetState);
-                        // A pessoa se sentiu ofendida e está furiosa!
-                        Stop();
-                    }
-                    else if (m_Count < m_MaxCount)
-                    {
-                        m_Tamer.RevealingAction();
-
-                        //Marcknight: Deixei espaço reservado no Cliloc.enu para mais 4 falas de cada interlocutor.
-
-                        m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503433, 11));
-                        m_Creature.PublicOverheadMessage(MessageType.Regular, 0x3B2, Utility.Random(503448, 11));
-
-                        if (!alreadyOwned)
+                        if (!m_eu.InRange(targ, 2))
                         {
-                            m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
-                        }
-
-                        if (m_Creature.Paralyzed)
-                        {
-                            m_Paralyzed = true;
-                        }
-                    }
-                    else
-                    {
-                        m_Tamer.RevealingAction();
-                        m_Tamer.NextSkillTime = Core.TickCount;
-                        m_BeingTamed.Remove(m_Creature);
-
-                        if (m_Creature.Paralyzed)
-                        {
-                            m_Paralyzed = true;
-                        }
-
-                        //if (!alreadyOwned) // Passively check animal lore for gain
-                        //{
-                        //     m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, m_Creature.CurrentTameSkill- 10.0, m_Creature.CurrentTameSkill + 10.0);
-                        //}
-
-                        double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
-
-                        //minSkill += 24.9;
-
-                        if (alreadyOwned || m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, minSkill, minSkill + 20.0))
-                        {
-                            if (m_Creature.Owners.Count == 0) // First tame
+                            if (!targ.Female)
                             {
-                                if (m_Paralyzed)
+                                targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 500401); //Você está longe demais pra argumentar direito com ele.
+                            }
+                            else
+                            {
+                                targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 500402); //Você está longe demais pra argumentar direito com ela.
+                            }
+                            return;
+                        }
+
+                            double carismaPower = m_eu.Skills.Carisma.Value / 5.0;
+                        int resposta = Math.Min(12, 3 * (int)(m_eu.Skills.Carisma.Value / 20.0)); //calcula posição relativa da mensagem no cliloc com base na skill Carisma
+                        Container theirPack = targ.Backpack;
+
+                        double badKarmaChance = 0.9;
+
+                        m_eu.PublicOverheadMessage(MessageType.Emote, m_eu.EmoteHue, 503492 + resposta); //Emote de Intimidar
+
+                        Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+                        {
+                            m_eu.PublicOverheadMessage(MessageType.Regular, m_eu.SpeechHue, Utility.Random(503493 + resposta, 2)); //Mensagens de Intimidar
+
+                            Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+                            {
+                                if (theirPack == null)
                                 {
-                                    ScaleSkills(m_Creature, 0.86, true); // 86% of original skills if they were paralyzed during the taming
+                                    m_eu.SendLocalizedMessage(500404); // They seem unwilling to give you any money.
+                                }
+                                else if (m_eu.CheckTargetSkill(SkillName.Carisma, targ, 0.0, 100.0))
+                                {
+                                    int disponivel = theirPack.GetAmount(typeof(Gold));
+                                    int toConsume = (int)((double)disponivel * (carismaPower / 20.0)); //Se tiver mais de 100 de skill, o NPC tinha dinheiro extra de algum lugar e dá um extra.
+                                    int max = (int)(10.0 * carismaPower);
+
+                                    if (toConsume > max)
+                                    {
+                                        toConsume = max;
+                                    }
+
+                                    if (toConsume > 0)
+                                    {
+                                        int consumed = theirPack.ConsumeUpTo(typeof(Gold), Math.Min(toConsume, disponivel));
+
+                                        if (consumed > 0)
+                                        {
+                                            targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 503515);
+
+                                            Gold gold = new Gold(toConsume);
+
+                                            m_eu.AddToBackpack(gold);
+                                            m_eu.PlaySound(gold.GetDropSound());
+                                        }
+                                        else
+                                        {
+                                            targ.PublicOverheadMessage(MessageType.Emote, targ.SpeechHue, 503517);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 503516);
+                                    }
                                 }
                                 else
                                 {
-                                    ScaleSkills(m_Creature, 0.90, true); // 90% of original skills
-                                }
-                            }
-                            else
-                            {
-                                ScaleSkills(m_Creature, 0.90, false); // 90% of original skills
-                            }
-
-                            if (alreadyOwned)
-                            {
-                                m_Tamer.SendLocalizedMessage(502797); // Nem foi desafiador.
-                            }
-                            else
-                            {
-                                //Marcknight: Sucesso em domar
-
-                                // Face eachother
-                                m_Tamer.Direction = m_Tamer.GetDirectionTo(m_Creature);
-                                m_Creature.Direction = m_Creature.GetDirectionTo(m_Tamer);
-
-                                m_Tamer.Animate(33, 5, 1, true, false, 0); // Salute
-                                m_Creature.Animate(33, 5, 1, true, false, 0); // Salute
-
-                                m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503463, 3));
-                                Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
-                                {
-                                    m_Creature.PublicOverheadMessage(MessageType.Regular, 0x3B2, Utility.Random(503466, 3));
-                                });
-                            }
-
-                            m_Creature.SetControlMaster(m_Tamer);
-                            m_Creature.IsBonded = false;
-
-                            m_Creature.OnAfterTame(m_Tamer);
-
-                            if (!m_Creature.Owners.Contains(m_Tamer))
-                            {
-                                m_Creature.Owners.Add(m_Tamer);
-                            }
-
-                            PetTrainingHelper.GetAbilityProfile(m_Creature, true).OnTame();
-
-                            EventSink.InvokeTameCreature(new TameCreatureEventArgs(m_Tamer, m_Creature));
-
-                        }
-                        else
-                        {
-                            m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503463, 3));
-
-                            Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
-                            {
-                                m_Creature.PublicOverheadMessage(MessageType.Regular, 0x3B2, Utility.Random(503466, 3));
-                            });
-                        }
-                    }
-                }
-
-                private bool CanPath()
-                {
-                    IPoint3D p = m_Tamer;
-
-                    if (p == null)
-                    {
-                        return false;
-                    }
-
-                    if (m_Creature.InRange(new Point3D(p), 1))
-                    {
-                        return true;
-                    }
-
-                    MovementPath path = new MovementPath(m_Creature, new Point3D(p));
-                    return path.Success;
-                }
-            }
-        }
-        private class InternalTimerVendor : Timer
-        {
-            private readonly Mobile m_From;
-            private readonly Mobile m_Target;
-
-            public InternalTimerVendor(Mobile from, Mobile target, bool evil)
-                : base(TimeSpan.FromSeconds(2.0))
-            {
-                m_From = from;
-                m_Target = target;
-                Priority = TimerPriority.TwoFiftyMS;
-            }
-
-            protected override void OnTick()
-            {
-                Container theirPack = m_Target.Backpack;
-
-                double badKarmaChance = 0.5 - ((double)m_From.Karma / 8570);
-
-                if (theirPack == null && m_Target.Race != Race.Elf)
-                {
-                    m_From.SendLocalizedMessage(500404); // They seem unwilling to give you any money.
-                }
-                else if (m_From.Karma < 0 && badKarmaChance > Utility.RandomDouble())
-                {
-                    m_Target.PublicOverheadMessage(MessageType.Regular, m_Target.SpeechHue, 500406);
-                    // Thou dost not look trustworthy... no gold for thee today!
-                }
-                else if (m_From.CheckTargetSkill(SkillName.Carisma, m_Target, 0.0, 100.0))
-                {
-                    if (m_Target.Race != Race.Elf)
-                    {
-                        int toConsume = theirPack.GetAmount(typeof(Gold)) / 10;
-                        int max = 10 + (m_From.Fame / 2500);
-
-                        if (max > 14)
-                        {
-                            max = 14;
-                        }
-                        else if (max < 10)
-                        {
-                            max = 10;
-                        }
-
-                        if (toConsume > max)
-                        {
-                            toConsume = max;
-                        }
-
-                        if (toConsume > 0)
-                        {
-                            int consumed = theirPack.ConsumeUpTo(typeof(Gold), toConsume);
-
-                            if (consumed > 0)
-                            {
-                                m_Target.PublicOverheadMessage(MessageType.Regular, m_Target.SpeechHue, 500405);
-                                // I feel sorry for thee...
-
-                                Gold gold = new Gold(consumed);
-
-                                m_From.AddToBackpack(gold);
-                                m_From.PlaySound(gold.GetDropSound());
-
-                                if (m_From.Karma > -3000)
-                                {
-                                    int toLose = m_From.Karma + 3000;
-
-                                    if (toLose > 40)
+                                    targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, Utility.Random(503507, 4));
+                                    if (m_eu.Karma > -3000 && (Utility.RandomDouble() <= badKarmaChance))
                                     {
-                                        toLose = 40;
+                                        int toLose = m_eu.Karma + 3000;
+
+                                        if (toLose > 100)
+                                        {
+                                            toLose = 100;
+                                        }
+
+                                        Titles.AwardKarma(m_eu, -toLose, true);
+                                    }
+                                }
+                            });
+                        });
+                    }
+                    else // Not a Mobile
+                    {
+                        m_eu.SendLocalizedMessage(503429); // Não tem como dialogar com ISTO!
+                    }
+                }
+                protected void PedirEsmola()
+                {
+                    if (m_alvo is Mobile)
+                    {
+                        Mobile targ = (Mobile)m_alvo;
+
+                        if (!m_eu.InRange(targ, 2))
+                        {
+                            if (!targ.Female)
+                            {
+                                targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 500401); //Você está longe demais pra argumentar direito com ele.
+                            }
+                            else
+                            {
+                                targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 500402); //Você está longe demais pra argumentar direito com ela.
+                            }
+                            return;
+                        }
+
+                        double carismaPower = m_eu.Skills.Carisma.Value / 5.0;
+                        int resposta = Math.Min(12, 3 * (int)(m_eu.Skills.Carisma.Value / 20.0)); //calcula posição relativa da mensagem no cliloc com base na skill Carisma
+
+                        Container theirPack = targ.Backpack;
+
+                        double badKarmaChance = 0.05;
+
+                        m_eu.PublicOverheadMessage(MessageType.Emote, m_eu.EmoteHue, 503477 + resposta); //Emote de Pedir esmola
+
+                        Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+                        {
+                            m_eu.PublicOverheadMessage(MessageType.Regular, m_eu.SpeechHue, Utility.Random(503478 + resposta, 2)); //Mensagemde Pedir esmola
+
+                            Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+                            {
+                                if (theirPack == null)
+                                {
+                                    m_eu.SendLocalizedMessage(500404);
+                                }
+                                else if (m_eu.CheckTargetSkill(SkillName.Carisma, targ, 0.0, 100.0))
+                                {
+                                    int disponivel = theirPack.GetAmount(typeof(Gold));
+                                    int toConsume = (int)((double)disponivel * (carismaPower / 40.0));
+                                    int max = (int)(carismaPower);
+
+                                    if (toConsume > max)
+                                    {
+                                        toConsume = max;
                                     }
 
-                                    Titles.AwardKarma(m_From, -toLose, true);
+                                    double chance = Utility.RandomDouble();
+                                    Item reward = null;
+                                    string rewardName = "";
+
+                                    if (chance >= .99)
+                                    {
+                                        int rand = Utility.Random(8);
+
+                                        if (rand == 0)
+                                        {
+                                            reward = new BegBedRoll();
+                                            rewardName = "um Saco de dormir";
+                                        }
+                                        else if (rand == 1)
+                                        {
+                                            reward = new BegCookies();
+                                            rewardName = "uma Travessa de biscoitos";
+                                        }
+                                        else if (rand == 2)
+                                        {
+                                            reward = new BegFishSteak();
+                                            rewardName = "uma Posta de peixe";
+                                        }
+                                        else if (rand == 3)
+                                        {
+                                            reward = new BegFishingPole();
+                                            rewardName = "uma Vara de pescar";
+                                        }
+                                        else if (rand == 4)
+                                        {
+                                            reward = new BegFlowerGarland();
+                                            rewardName = "uma Guirlanda de flores";
+                                        }
+                                        else if (rand == 5)
+                                        {
+                                            reward = new BegSake();
+                                            rewardName = "uma Garrafa de sake";
+                                        }
+                                        else if (rand == 6)
+                                        {
+                                            reward = new BegTurnip();
+                                            rewardName = "um Nabo";
+                                        }
+                                        else if (rand == 7)
+                                        {
+                                            reward = new BegWine();
+                                            rewardName = "uma Garrafa de vinho";
+                                        }
+                                        else if (rand == 8)
+                                        {
+                                            reward = new BegWinePitcher();
+                                            rewardName = "uma Jarra de vinho";
+                                        }
+                                    }
+                                    else if (chance >= .76)
+                                    {
+                                        int rand = Utility.Random(6);
+
+                                        if (rand == 0)
+                                        {
+                                            reward = new BegStew();
+                                            rewardName = "uma Tigela de sopa";
+                                        }
+                                        else if (rand == 1)
+                                        {
+                                            reward = new BegCheeseWedge();
+                                            rewardName = "uma Fatia de queijo";
+                                        }
+                                        else if (rand == 2)
+                                        {
+                                            reward = new BegDates();
+                                            rewardName = "uma Porção de tâmaras";
+                                        }
+                                        else if (rand == 3)
+                                        {
+                                            reward = new BegLantern();
+                                            rewardName = "uma Lanterna";
+                                        }
+                                        else if (rand == 4)
+                                        {
+                                            reward = new BegLiquorPitcher();
+                                            rewardName = "uma Jarra de Licor";
+                                        }
+                                        else if (rand == 5)
+                                        {
+                                            reward = new BegPizza();
+                                            rewardName = "uma Pizza";
+                                        }
+                                        else if (rand == 6)
+                                        {
+                                            reward = new BegShirt();
+                                            rewardName = "uma Camiseta";
+                                        }
+                                    }
+                                    else if (chance >= .25)
+                                    {
+                                        int rand = Utility.Random(1);
+
+                                        if (rand == 0)
+                                        {
+                                            reward = new BegFrenchBread();
+                                            rewardName = "um Pão francês";
+                                        }
+                                        else
+                                        {
+                                            reward = new BegWaterPitcher();
+                                            rewardName = "uma Jarra de água";
+                                        }
+                                    }
+
+                                    if (toConsume > 0)
+                                    {
+                                        int consumed = theirPack.ConsumeUpTo(typeof(Gold), Math.Min(toConsume, disponivel));
+
+                                        if (consumed > 0)
+                                        {
+                                            targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, 500405);
+
+                                            Gold gold = new Gold(toConsume);
+
+                                            m_eu.AddToBackpack(gold);
+                                            m_eu.PlaySound(gold.GetDropSound());
+                                        }
+                                    }
+
+                                    if (rewardName != "" && toConsume > 0)
+                                    {
+                                        rewardName = String.Concat(rewardName, " e ", (toConsume > 1) ? "uma Moeda." : "Moedas.");
+                                    }
+                                    else if (rewardName != "")
+                                    {
+                                        rewardName = String.Concat(rewardName, ".");
+                                    }
+                                    if (toConsume > 0)
+                                    {
+                                        rewardName = (toConsume > 1) ? "uma Moeda." : "Moedas.";
+                                    }
+                                    else
+                                    {
+                                        rewardName = "absolutamente nada.";
+                                    }
+                                    m_eu.SendLocalizedMessage(1074853, rewardName); // You have been given ~1_name~
                                 }
-                            }
-                            else
+                                else
+                                {
+                                    targ.PublicOverheadMessage(MessageType.Regular, targ.SpeechHue, Utility.Random(503511, 4));
+                                    if (m_eu.Karma > -3000 && (Utility.RandomDouble() <= badKarmaChance))
+                                    {
+                                        int toLose = m_eu.Karma + 3000;
+
+                                        if (toLose > 100)
+                                        {
+                                            toLose = 100;
+                                        }
+
+                                        Titles.AwardKarma(m_eu, -toLose, true);
+                                    }
+                                }
+                            });
+                        });
+                        m_eu.NextSkillTime = Core.TickCount + 10000;
+                    }
+                    else // Not a Mobile
+                    {
+                        m_eu.SendLocalizedMessage(503429); // Não tem como dialogar com ISTO!
+                    }
+                }
+
+
+                private class InternalTimer : Timer
+                {
+                    private readonly Mobile m_Tamer;
+                    private readonly BaseCreature m_Creature;
+                    private readonly int m_MaxCount;
+                    private readonly DateTime m_StartTime;
+                    private int m_Count;
+                    private bool m_Paralyzed;
+
+                    public InternalTimer(Mobile tamer, BaseCreature creature, int count)
+                        : base(TimeSpan.FromSeconds(4.0), TimeSpan.FromSeconds(4.0), count)
+                    {
+                        m_Tamer = tamer;
+                        m_Creature = creature;
+                        m_MaxCount = count;
+                        m_Paralyzed = creature.Paralyzed;
+                        m_StartTime = DateTime.UtcNow;
+                        Priority = TimerPriority.TwoFiftyMS;
+                    }
+
+                    protected override void OnTick()
+                    {
+                        m_Count++;
+
+                        DamageEntry de = m_Creature.FindMostRecentDamageEntry(false);
+                        bool alreadyOwned = m_Creature.Owners.Contains(m_Tamer);
+
+                        if (!m_Tamer.InRange(m_Creature, Core.AOS ? 7 : 6))
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503429, m_Tamer.NetState);
+                            // Você se afastou demais pra continuar persuadindo direito.
+                            Stop();
+                        }
+                        else if (!m_Tamer.CheckAlive())
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503430, m_Tamer.NetState);
+                            // Não dá pra continuar a persuadir estando inconsciente.
+                            Stop();
+                        }
+                        else if (!m_Tamer.CanSee(m_Creature) || !m_Tamer.InLOS(m_Creature) || !CanPath())
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Tamer.SendLocalizedMessage(503431);
+                            // Você não tem um caminho livre até a pessoa que tenta persuadir e teve que interromper a tentativa.
+                            Stop();
+                        }
+                        //Só colocar pra fazer essa verificação se decidir setar quais NPC humanos são domáveis
+                        else if (!m_Creature.Persuadable)
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503432, m_Tamer.NetState);
+                            // Impossível convencer esta criatura com Carisma.
+                            Stop();
+                        }
+                        else if (m_Creature.Controlled)
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503416, m_Tamer.NetState);
+                            // Parece que esta pessoa já serve a alguém.
+                            Stop();
+                        }
+                        else if (m_Creature.Owners.Count >= BaseCreature.MaxOwners && !m_Creature.Owners.Contains(m_Tamer))
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503420, m_Tamer.NetState);
+                            // Esta pessoa já foi abandonada por muitos mestres e não quer seguir um novo.
+                            Stop();
+                        }
+                        else if (MustBeSubdued(m_Creature))
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503421, m_Tamer.NetState);
+                            // Você deve subjugar esta pessoa antes de persuadí-la!
+                            Stop();
+                        }
+                        else if (de != null && de.LastDamage > m_StartTime)
+                        {
+                            m_BeingTamed.Remove(m_Creature);
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_Creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 503423, m_Tamer.NetState);
+                            // A pessoa se sentiu ofendida e está furiosa!
+                            Stop();
+                        }
+                        else if (m_Count < m_MaxCount)
+                        {
+                            m_Tamer.RevealingAction();
+
+                            //Marcknight: Deixei espaço reservado no Cliloc.enu para mais 4 falas de cada interlocutor.
+
+                            //Fala do personagem que tenta convencer
+                            m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503433, 11));
+
+                            Timer.DelayCall(TimeSpan.FromSeconds(2.0), () =>
                             {
-                                m_Target.PublicOverheadMessage(MessageType.Regular, m_Target.SpeechHue, 500407);
-                                // I have not enough money to give thee any!
+                            //Fala do personagem que tenta não ser convencido
+                            m_Creature.PublicOverheadMessage(MessageType.Regular, 0x3B2, Utility.Random(503448, 11));
+                            });
+
+                            if (!alreadyOwned)
+                            {
+                                m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
+                            }
+
+                            if (m_Creature.Paralyzed)
+                            {
+                                m_Paralyzed = true;
                             }
                         }
                         else
                         {
-                            m_Target.PublicOverheadMessage(MessageType.Regular, m_Target.SpeechHue, 500407);
-                            // I have not enough money to give thee any!
-                        }
-                    }
-                    else
-                    {
-                        double chance = Utility.RandomDouble();
-                        Item reward = null;
-                        string rewardName = "";
-                        if (chance >= .99)
-                        {
-                            int rand = Utility.Random(8);
+                            m_Tamer.RevealingAction();
+                            m_Tamer.NextSkillTime = Core.TickCount;
+                            m_BeingTamed.Remove(m_Creature);
 
-                            if (rand == 0)
+                            if (m_Creature.Paralyzed)
                             {
-                                reward = new BegBedRoll();
-                                rewardName = "a bedroll";
+                                m_Paralyzed = true;
                             }
-                            else if (rand == 1)
-                            {
-                                reward = new BegCookies();
-                                rewardName = "a plate of cookies.";
-                            }
-                            else if (rand == 2)
-                            {
-                                reward = new BegFishSteak();
-                                rewardName = "a fish steak.";
-                            }
-                            else if (rand == 3)
-                            {
-                                reward = new BegFishingPole();
-                                rewardName = "a fishing pole.";
-                            }
-                            else if (rand == 4)
-                            {
-                                reward = new BegFlowerGarland();
-                                rewardName = "a flower garland.";
-                            }
-                            else if (rand == 5)
-                            {
-                                reward = new BegSake();
-                                rewardName = "a bottle of Sake.";
-                            }
-                            else if (rand == 6)
-                            {
-                                reward = new BegTurnip();
-                                rewardName = "a turnip.";
-                            }
-                            else if (rand == 7)
-                            {
-                                reward = new BegWine();
-                                rewardName = "a Bottle of wine.";
-                            }
-                            else if (rand == 8)
-                            {
-                                reward = new BegWinePitcher();
-                                rewardName = "a Pitcher of wine.";
-                            }
-                        }
-                        else if (chance >= .76)
-                        {
-                            int rand = Utility.Random(6);
 
-                            if (rand == 0)
-                            {
-                                reward = new BegStew();
-                                rewardName = "a bowl of stew.";
-                            }
-                            else if (rand == 1)
-                            {
-                                reward = new BegCheeseWedge();
-                                rewardName = "a wedge of cheese.";
-                            }
-                            else if (rand == 2)
-                            {
-                                reward = new BegDates();
-                                rewardName = "a bunch of dates.";
-                            }
-                            else if (rand == 3)
-                            {
-                                reward = new BegLantern();
-                                rewardName = "a lantern.";
-                            }
-                            else if (rand == 4)
-                            {
-                                reward = new BegLiquorPitcher();
-                                rewardName = "a Pitcher of liquor";
-                            }
-                            else if (rand == 5)
-                            {
-                                reward = new BegPizza();
-                                rewardName = "pizza";
-                            }
-                            else if (rand == 6)
-                            {
-                                reward = new BegShirt();
-                                rewardName = "a shirt.";
-                            }
-                        }
-                        else if (chance >= .25)
-                        {
-                            int rand = Utility.Random(1);
+                            //if (!alreadyOwned) // Passively check animal lore for gain
+                            //{
+                            //     m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, m_Creature.CurrentTameSkill- 10.0, m_Creature.CurrentTameSkill + 10.0);
+                            //}
 
-                            if (rand == 0)
+                            double minSkill = m_Creature.CurrentPersuadeSkill + (m_Creature.Owners.Count * 6.0);
+
+                            //minSkill += 24.9;
+
+                            if (alreadyOwned || m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, minSkill, minSkill + 20.0))
                             {
-                                reward = new BegFrenchBread();
-                                rewardName = "french bread.";
+                                if (m_Creature.Owners.Count == 0) // First tame
+                                {
+                                    if (m_Paralyzed)
+                                    {
+                                        ScaleSkills(m_Creature, 0.86, true); // 86% of original skills if they were paralyzed during the taming
+                                    }
+                                    else
+                                    {
+                                        ScaleSkills(m_Creature, 0.90, true); // 90% of original skills
+                                    }
+                                }
+                                else
+                                {
+                                    ScaleSkills(m_Creature, 0.90, false); // 90% of original skills
+                                }
+
+                                if (alreadyOwned)
+                                {
+                                    m_Tamer.SendLocalizedMessage(502797); // Nem foi desafiador.
+                                }
+                                else
+                                {
+                                    //Marcknight: Sucesso em domar
+
+                                    // Face eachother
+                                    m_Tamer.Direction = m_Tamer.GetDirectionTo(m_Creature);
+                                    m_Creature.Direction = m_Creature.GetDirectionTo(m_Tamer);
+
+                                    m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503463, 3));
+                                    Timer.DelayCall(TimeSpan.FromSeconds(2.0), () =>
+                                    {
+                                        m_Creature.PublicOverheadMessage(MessageType.Regular, 0x3B2, Utility.Random(503466, 3));
+                                        m_Tamer.Animate(33, 5, 1, true, false, 0); // Salute
+                                    m_Creature.Animate(33, 5, 1, true, false, 0); // Salute
+                                });
+                                }
+
+                                m_Creature.SetControlMaster(m_Tamer);
+                                m_Creature.IsBonded = false;
+
+                                m_Creature.OnAfterTame(m_Tamer);
+
+                                if (!m_Creature.Owners.Contains(m_Tamer))
+                                {
+                                    m_Creature.Owners.Add(m_Tamer);
+                                }
+
+                                PetTrainingHelper.GetAbilityProfile(m_Creature, true).OnTame();
+
+                                EventSink.InvokeTameCreature(new TameCreatureEventArgs(m_Tamer, m_Creature));
+
                             }
                             else
                             {
-                                reward = new BegWaterPitcher();
-                                rewardName = "a Pitcher of water.";
+                                m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, Utility.Random(503463, 3));
+
+                                Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+                                {
+                                    m_Creature.PublicOverheadMessage(MessageType.Regular, m_Creature.SpeechHue, Utility.Random(503469, 3));
+                                });
                             }
                         }
+                    }
 
-                        if (reward == null)
+                    private bool CanPath()
+                    {
+                        IPoint3D p = m_Tamer;
+
+                        if (p == null)
                         {
-                            reward = new Gold(1);
+                            return false;
                         }
 
-                        m_Target.Say(1074854); // Here, take this...
-                        m_From.AddToBackpack(reward);
-                        m_From.SendLocalizedMessage(1074853, rewardName); // You have been given ~1_name~
-
-                        if (m_From.Karma > -3000)
+                        if (m_Creature.InRange(new Point3D(p), 1))
                         {
-                            int toLose = m_From.Karma + 3000;
-
-                            if (toLose > 40)
-                            {
-                                toLose = 40;
-                            }
-
-                            Titles.AwardKarma(m_From, -toLose, true);
+                            return true;
                         }
 
+                        MovementPath path = new MovementPath(m_Creature, new Point3D(p));
+                        return path.Success;
                     }
                 }
-
-                else
-                {
-                    m_Target.SendLocalizedMessage(500404); // They seem unwilling to give you any money.
-                }
-
-
-                m_From.NextSkillTime = Core.TickCount + 10000;
             }
         }
     }

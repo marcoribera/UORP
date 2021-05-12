@@ -37,9 +37,9 @@ namespace Server.Mobiles
             this.Fame = 4000;
             this.Karma = -4000;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 85;
+            MinPersuadeSkill = 85;
 
             this.VirtualArmor = 50;
 

@@ -16,9 +16,9 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
             this.SetSkill(SkillName.Briga, 30.0, 50.0);
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 51;
+            MinPersuadeSkill = 51;
 
         }
 

@@ -11,7 +11,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
             Name = "Gremlin";
-            Body = 724; 
+            Body = 724;
 
             SetStr(106);
             SetDex(130);
@@ -33,9 +33,9 @@ namespace Server.Mobiles
             SetSkill(SkillName.ResistenciaMagica, 35);
             SetSkill(SkillName.Anatomia, 35);
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 1;
-            MinTameSkill = 35;
+            MinPersuadeSkill = 35;
 
             AddItem(new Bow());
             PackItem(new Arrow(Utility.RandomMinMax(60, 80)));

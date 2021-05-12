@@ -38,9 +38,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 38;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 2;
-            MinTameSkill = 65;
+            MinPersuadeSkill = 65;
 
         }
 

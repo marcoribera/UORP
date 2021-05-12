@@ -42,9 +42,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 28;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
 
             // Loot - 30-40gold, magicitem,gem,goblin blood, essence control

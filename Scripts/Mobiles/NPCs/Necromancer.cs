@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	{
 		private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
 		[Constructable]
-		public Necromancer() 
+		public Necromancer()
 			: base( "the Necromancer" )
 		{
 			SetSkill( SkillName.PoderMagico, 80.0, 100.0 );
@@ -16,18 +16,18 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Necromancia, 80.0, 100.0 );
 			SetSkill( SkillName.ResistenciaMagica, 80.0, 100.0 );
 
-			Tamable = true;
+			Persuadable = true;
 			ControlSlots = 3;
-			MinTameSkill = 100;
+			MinPersuadeSkill = 100;
 
 			Hue = 0x3C6;
 		}
-		
+
 		public Necromancer(Serial serial)
             : base(serial)
         {
         }
-		
+
 		protected override List<SBInfo> SBInfos
         {
             get
@@ -41,7 +41,7 @@ namespace Server.Mobiles
 			m_SBInfos.Add( new SBNecromancer() );
 		}
 
-		
+
 		public override void InitOutfit()
 		{
 			base.InitOutfit();
@@ -49,17 +49,17 @@ namespace Server.Mobiles
 			AddItem( new Server.Items.Robe( 0x455 ) );
 			AddItem( new Server.Items.FancyShirt( 0x455 ) );
 
-			Item hair = new Item( Utility.RandomList( 0x203B, 0x2049, 0x2048, 0x204A ) ); 
-			hair.Hue = 0x3c6; 
-			hair.Layer = Layer.Hair; 
-			hair.Movable = false; 
-			AddItem( hair ); 
+			Item hair = new Item( Utility.RandomList( 0x203B, 0x2049, 0x2048, 0x204A ) );
+			hair.Hue = 0x3c6;
+			hair.Layer = Layer.Hair;
+			hair.Movable = false;
+			AddItem( hair );
 
 			Item beard = new Item( 0x0 );
 			beard.Layer = Layer.FacialHair;
 			AddItem( beard );
 		}
-		
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );

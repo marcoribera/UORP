@@ -14,7 +14,7 @@ namespace Server.Mobiles
         {
             Name = "a troglodyte";
             Body = 267;
-            BaseSoundID = 0x59F; 
+            BaseSoundID = 0x59F;
 
             SetStr(148, 217);
             SetDex(91, 120);
@@ -43,9 +43,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 28; // Don't know what it should be
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 95;
+            MinPersuadeSkill = 95;
 
             PackItem(new Bandage(5));  // How many?
             PackItem(new Ribs());
@@ -60,7 +60,7 @@ namespace Server.Mobiles
             : base(serial)
         {
         }
-		
+
 		public override int TreasureMapLevel
         {
             get
@@ -73,7 +73,7 @@ namespace Server.Mobiles
         {
             this.AddLoot(LootPack.Rich);  // Need to verify
         }
-		
+
 		public override void OnDeath( Container c )
         {
         base.OnDeath( c );

@@ -40,9 +40,9 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 50;
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
         }
 
         public OphidianMatriarch(Serial serial)

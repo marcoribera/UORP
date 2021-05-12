@@ -51,9 +51,9 @@ namespace Server.Mobiles
 			Fame = 1500;
 			Karma = -1500;
 
-			Tamable = true;
+			Persuadable = true;
 			ControlSlots = 3;
-			MinTameSkill = 100;
+			MinPersuadeSkill = 100;
 
 			PackItem(new Apple(Utility.RandomMinMax(3, 5)));
 			PackItem(new Arrow(Utility.RandomMinMax(60, 70)));

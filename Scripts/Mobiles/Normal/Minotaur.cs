@@ -42,9 +42,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 28; // Don't know what it should be
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 95;
+            MinPersuadeSkill = 95;
 
             for (int i = 0; i < Utility.RandomMinMax(0, 1); i++)
             {
@@ -58,7 +58,7 @@ namespace Server.Mobiles
             : base(serial)
         {
         }
-		
+
 		public override int TreasureMapLevel { get { return 3; } }
 
         public override void GenerateLoot()

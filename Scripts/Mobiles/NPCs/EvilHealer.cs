@@ -15,9 +15,9 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.PoderMagico, 80.0, 100.0);
             this.SetSkill(SkillName.Cortante, 80.0, 100.0);
 
-            Tamable = true;
+            Persuadable = true;
             ControlSlots = 3;
-            MinTameSkill = 100;
+            MinPersuadeSkill = 100;
 
 
         }
