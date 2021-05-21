@@ -761,7 +761,16 @@ namespace Server.Custom
                     }
                 case SpeechType.Kriktik:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaKriktik(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Krusk:
                     {
