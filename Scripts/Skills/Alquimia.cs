@@ -34,63 +34,17 @@ namespace Server.SkillHandlers
 
             protected override void OnTarget(Mobile from, object targeted)
             {
-                if (targeted is BaseWeapon)
+                if (targeted is BasePotion)
                 {
-                    BaseWeapon weap = (BaseWeapon)targeted;
-
-                    if (from.CheckTargetSkill(SkillName.ConhecimentoArmas, targeted, 0, 100))
+                    BasePotion potion = (BasePotion)targeted;
+                    if (potion.Identified)
                     {
-                        weap.Identified = true;
-
-                        if (weap.MaxHitPoints != 0)
-                        {
-                            int hp = (int)((weap.HitPoints / (double)weap.MaxHitPoints) * 100);
-
-                            //if (hp < 0)
-                            //    hp = 0;
-                            //else if (hp > 9)
-                            //    hp = 9;
-
-                            //from.SendLocalizedMessage(1038285 + hp);
-                            from.SendLocalizedMessage(503412, String.Format("{0}/{1} ({2}%)", weap.HitPoints, weap.MaxHitPoints, hp)); //Durabilidade: 25/100 (25%)
-                        }
-
-                        int damage = (weap.MaxDamage + weap.MinDamage) / 2;
-                        int hand = (weap.Layer == Layer.OneHanded ? 0 : 1);
-
-                        if (damage < 3)
-                            damage = 0;
-                        else
-                            damage = (int)Math.Ceiling(Math.Min(damage, 30) / 5.0);
-                        
-                        //else if ( damage < 6 )
-                        //damage = 1;
-                        //else if ( damage < 11 )
-                        //damage = 2;
-                        //else if ( damage < 16 )
-                        //damage = 3;
-                        //else if ( damage < 21 )
-                        //damage = 4;
-                        //else if ( damage < 26 )
-                        //damage = 5;
-                        //else
-                        //damage = 6;
-
-                        //WeaponType type = weap.Type;
-
-                        //if (type == WeaponType.Ranged)
-                        //    from.SendLocalizedMessage(1038224 + (damage * 9));
-                        //else if (type == WeaponType.Piercing)
-                        //    from.SendLocalizedMessage(1038218 + hand + (damage * 9));
-                        //else if (type == WeaponType.Slashing)
-                        //    from.SendLocalizedMessage(1038220 + hand + (damage * 9));
-                        //else if (type == WeaponType.Bashing)
-                        //    from.SendLocalizedMessage(1038222 + hand + (damage * 9));
-                        //else
-                        //    from.SendLocalizedMessage(1038216 + hand + (damage * 9));
-
-                        if (weap.Poison != null && weap.PoisonCharges > 0)
-                            from.SendLocalizedMessage(1038284); // It appears to have poison smeared on it. //Parece ter veneno espalhado no item.
+                        from.SendMessage("Poção já identificada");
+                        return;
+                    }
+                    else if (from.CheckTargetSkill(SkillName.Alquimia, targeted, 0, 100))
+                    {
+                        potion.Identified = true;
                     }
                     else
                     {

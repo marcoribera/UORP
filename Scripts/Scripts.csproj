@@ -11543,6 +11543,7 @@
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\StaffCloak.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Skills\Alquimia.cs" />
     <Compile Include="Skills\Anatomia.cs">
       <SubType>Code</SubType>
     </Compile>
