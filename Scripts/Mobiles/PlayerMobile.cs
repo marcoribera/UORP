@@ -47,6 +47,7 @@ using Server.Targeting;
 
 using RankDefinition = Server.Guilds.RankDefinition;
 using Server.Engines.Fellowship;
+
 #endregion
 
 namespace Server.Mobiles
@@ -228,9 +229,11 @@ namespace Server.Mobiles
 		private TimeSpan m_NpcGuildGameTime;
 		private PlayerFlag m_Flags;
         private ExtendedPlayerFlag m_ExtendedFlags;
-		private int m_Profession;
+        private int m_Profession;
 
-		private int m_NonAutoreinsuredItems;
+        public FurtivoTimer m_FurtivoTimer;
+
+        private int m_NonAutoreinsuredItems;
 		// number of items that could not be automaitically reinsured because gold in bank was not enough
 
 		/*
@@ -1217,8 +1220,16 @@ namespace Server.Mobiles
 		private static void OnLogin(LoginEventArgs e)
 		{
 			Mobile from = e.Mobile;
+            PlayerMobile player = (PlayerMobile)from;
 
-			CheckAtrophies(from);
+            player.m_FurtivoTimer = new FurtivoTimer(player, TimeSpan.FromSeconds(3.0)); //Inicializa o timer de furtividade
+
+            if (player.Hidden)
+            {
+                player.m_FurtivoTimer.Start();
+            }
+
+            CheckAtrophies(from);
 
 			if (AccountHandler.LockdownLevel > AccessLevel.VIP)
 			{
@@ -4047,7 +4058,7 @@ namespace Server.Mobiles
 		}
 
 		private List<Mobile> m_PermaFlags;
-		private readonly List<Mobile> m_VisList;
+		private List<Mobile> m_VisList;
 		private readonly Hashtable m_AntiMacroTable;
 		private TimeSpan m_GameTime;
 		private TimeSpan m_ShortTermElapse;
@@ -5199,7 +5210,18 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool CanSee(Mobile m)
+        public void StartSeeing(Mobile m)
+        {
+            m_VisList.Add(m);
+            return;
+        }
+        public void StopSeeing(Mobile m)
+        {
+            m_VisList.Remove(m);
+            return;
+        }
+
+        public override bool CanSee(Mobile m)
 		{
             if (m is IConditionalVisibility && !((IConditionalVisibility)m).CanBeSeenBy(this))
                 return false;
@@ -5452,26 +5474,49 @@ namespace Server.Mobiles
 
 			if (Hidden && DesignContext.Find(this) == null) //Hidden & NOT customizing a house
 			{
-				if (!Mounted && Skills.Furtividade.Value >= 25.0)
-				{
-					bool running = (d & Direction.Running) != 0;
+                int armorRating = Furtividade.GetArmorRating((Mobile)this);
+                if (Mounted)
+                {
+                    RevealingAction();
+                }
+                else if (Skills.Furtividade.Value >= (20 + (armorRating * 2))) //Consegue correr vestindo peças de armadura se tiver skill suficiente
+                {
+                    bool running = (d & Direction.Running) != 0;
 
-					if (running)
-					{
-						if ((AllowedStealthSteps -= 2) <= 0)
-						{
-							RevealingAction();
-						}
-					}
-					else if (AllowedStealthSteps-- <= 0)
-					{
-						Stealth.OnUse(this);
-					}
-				}
-				else
-				{
-					RevealingAction();
-				}
+                    if (running)
+                    {
+                        if ((AllowedStealthSteps -= 2) <= 0)
+                        {
+                            Furtividade.OnUse(this);
+                        }
+                    }
+                    else{
+                        if (AllowedStealthSteps-- <= 0)
+                        {
+                            Furtividade.OnUse(this);
+                        }
+                    } 
+                }
+                else if (Skills.Furtividade.Value >= (armorRating * 2)) 
+                {
+                    bool running = (d & Direction.Running) != 0;
+
+                    if (running)
+                    {
+                        if ((AllowedStealthSteps -= 2) <= 0)
+                        {
+                            RevealingAction();
+                        }
+                    }
+                    else if (AllowedStealthSteps-- <= 0)
+                    {
+                        Furtividade.OnUse(this);
+                    }
+                }
+                else
+                {
+                    RevealingAction();
+                }
 			}
 
 			#region Mondain's Legacy
@@ -6991,5 +7036,90 @@ namespace Server.Mobiles
 
 			m_AutoStabled.Clear();
 		}
-	}
+
+
+        public bool PermaneceOcultoPara(Mobile targ)
+        {
+            if (!this.InLOS(targ))
+            {
+                return false;
+            }
+            else
+            {
+                //Calcula dificuldade para não ser percebido passivamente
+                double dificuldade = targ.Skills.Percepcao.Value - ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de se manter despercebido é padrão. Mais perto é maior, mais longe é menor.
+                dificuldade -= Math.Min(targ.LightLevel, LightCycle.ComputeLevelFor(targ)); //Se estiver mais escuro, fica mais fácil se manter despercebido
+
+                bool despercebido = (this.Skills.Furtividade.Value > dificuldade);
+                //this.SendMessage(targ.Name + " " + dificuldade.ToString());
+                if (!despercebido)
+                {
+                    //Calcula chance de perceber que foi percebido
+                    dificuldade = targ.Skills.Furtividade.Value + ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de notar que foi percebido é padrão. Mais perto é menor, mais longe é maior.
+                    dificuldade += Math.Min(this.LightLevel, LightCycle.ComputeLevelFor(this)); //Se estiver mais escuro, fica dificil perceber que foi percebido
+                                                                                                //this.SendMessage(targ.Name + " Dificuldade: " + dificuldade.ToString());
+                    if (targ.Skills.Furtividade.Value > dificuldade)
+                    {
+                        if (targ is PlayerMobile)
+                        {
+                            PlayerMobile observador = (PlayerMobile)targ;
+                            if ((!observador.Hidden) || observador.VisibilityList.Contains(this))
+                            {
+                                this.SendMessage("Você acha que " + targ.Name + " te percebeu.");
+                            }
+                        }
+                    }
+                }
+                return despercebido;
+            }
+        }
+
+        public class FurtivoTimer : Timer
+        {
+            private readonly PlayerMobile m_Player;
+
+            public FurtivoTimer(PlayerMobile m, TimeSpan delay)
+                : base(delay)
+            {
+                m_Player = m;
+                Priority = TimerPriority.EveryTick;
+            }
+
+            protected override void OnTick()
+            {
+                if (m_Player.Hidden && m_Player.NetState != null)
+                {
+                    var eable = m_Player.Map.GetClientsInRange(m_Player.Location, 15); //Pega lista de Clients no alcance de atualização máximo definido
+
+                    m_Player.VisibilityList.Clear();
+
+                    if (!m_Player.IsStaff())
+                    {
+                        foreach (NetState state in eable) //Percorre a lista de clients no alcance verificando se os personagens deles conseguem ou não perceber você
+                        {
+                            Mobile m = state.Mobile;
+
+                            if ((m.Serial != m_Player.Serial) && !m.IsStaff()) //Não verifica staff nem a si mesmo
+                            {
+                                if (!m_Player.PermaneceOcultoPara(m))
+                                {
+                                    m_Player.VisibilityList.Add(m);
+                                    m.SendEverything();
+                                }
+                            }
+                        }
+                    }
+                    Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
+                    {
+                        //m_Player.SendMessage("Verificando se alguem te enxerga");
+                        this.Start();
+                    });
+                }
+                else
+                {
+                    this.Stop();
+                }
+            }
+        }
+    }
 }

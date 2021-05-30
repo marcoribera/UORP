@@ -9224,10 +9224,11 @@ namespace Server
 			}
 
             //Marcknight: TODO: Tentar fazer a detecção se passiva dos chars sem revelá-los
-			return this == m ||
-				   (m.m_Map == m_Map && (!m.Hidden || (IsStaff() && m_AccessLevel >= m.AccessLevel)) &&
-					((m.Alive || (Core.SE && Skills.PoderMagico.Value >= 100.0)) || !Alive || IsStaff() || m.Warmode));
-		}
+			return this == m ||  //É você mesmo ou
+				   (m.m_Map == m_Map && //está no mesmo mapa e
+                   (!m.Hidden || (IsStaff() && m_AccessLevel >= m.AccessLevel)) && //(Não está está escondido ou é Staff de nivel igual ou superior ao do alvo) e
+                   (IsStaff() || m.Alive || Skills.PoderMagico.Value >= 100.0); //Você é staff ou alvo está vivo ou você tem skill suficiente pra ver os mortos
+        }
 
 		public virtual bool CanBeRenamedBy(Mobile from)
 		{

@@ -120,7 +120,7 @@ namespace Server.Spells.Ninjitsu
 
                 m.PlaySound(0x512);
 				
-                Server.SkillHandlers.Stealth.OnUse(m); // stealth check after the a jump
+                Server.SkillHandlers.Furtividade.OnUse(m); // stealth check after the a jump
             }
 
             this.FinishSequence();

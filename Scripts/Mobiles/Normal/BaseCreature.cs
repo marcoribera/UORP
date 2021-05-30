@@ -4334,7 +4334,7 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if (skill == SkillName.Furtividade && from.Skills[SkillName.Furtividade].Base < Stealth.HidingRequirement)
+            if (skill == SkillName.Furtividade && from.Skills[SkillName.Furtividade].Base < Furtividade.HidingRequirement)
             {
                 return false;
             }
@@ -4967,7 +4967,7 @@ namespace Server.Mobiles
                     }
                     else if (AllowedStealthSteps-- <= 0)
                     {
-                        Server.SkillHandlers.Stealth.OnUse(this);
+                        Server.SkillHandlers.Furtividade.OnUse(this);
                     }
                 }
                 else
