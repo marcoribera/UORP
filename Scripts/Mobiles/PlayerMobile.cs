@@ -3971,7 +3971,7 @@ namespace Server.Mobiles
 					((Corpse)c).Criminal = true;
 				}
 
-				if (Stealing.ClassicMode)
+				if (Prestidigitacao.ClassicMode)
 				{
 					Criminal = true;
 				}
@@ -4424,7 +4424,7 @@ namespace Server.Mobiles
 		{
             Mobile target = damageable as Mobile;
 
-			if (Stealing.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0)
+			if (Prestidigitacao.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0)
 			{
 				int noto = Notoriety.Compute(this, target);
 

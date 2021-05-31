@@ -18,11 +18,11 @@ namespace Server.SkillHandlers
 {
     public delegate void ItemStolenEventHandler(ItemStolenEventArgs e);
 
-	public class Stealing
-	{
+	public class Prestidigitacao
+    {
 		public static void Initialize()
 		{
-			SkillInfo.Table[33].Callback = OnUse;
+			SkillInfo.Table[(int)SkillName.Prestidigitacao].Callback = OnUse;
 		}
 
         public static event ItemStolenEventHandler ItemStolen;
