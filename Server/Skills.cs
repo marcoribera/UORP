@@ -622,7 +622,7 @@ namespace Server
             new SkillInfo(40, "Extração", 20.0, 5.0, 0.0, "Extrator(a)", null, 4.0, 1.0, 0.0, 1.0, StatCode.Str, StatCode.Dex),
             new SkillInfo(41, "Ferraria", 20.0, 5.0, 0.0, "Ferreiro(a)", null, 4.0, 1.0, 0.0, 1.0, StatCode.Str, StatCode.Dex),
             new SkillInfo(42, "Medicina", 0.0, 5.0, 5.0, "Médico(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex),
-            new SkillInfo(43, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex),
+            new SkillInfo(43, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex)
         };
 
 		public static SkillInfo[] Table { get { return m_Table; } set { m_Table = value; } }

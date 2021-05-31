@@ -378,7 +378,7 @@ namespace Server.Misc
 
 			for (var i = 0; i < skills.Length; ++i)
 			{
-				if (skills[i].Value < 0 || skills[i].Value > 50)
+				if (skills[i].Value < 0 || skills[i].Value > 43)
 					return false;
 
 				total += skills[i].Value;
@@ -466,7 +466,7 @@ namespace Server.Misc
 					skills = new[]
 					{
 						new SkillNameValue(SkillName.Anatomia, 30), new SkillNameValue(SkillName.Medicina, 30),
-						new SkillNameValue(SkillName.Cortante, 30), new SkillNameValue(SkillName.Anatomia, 30)
+						new SkillNameValue(SkillName.UmaMao, 30), new SkillNameValue(SkillName.DuasMaos, 30)
 					};
 
 					break;
@@ -476,8 +476,8 @@ namespace Server.Misc
 					skills = new[]
 					{
 						new SkillNameValue(SkillName.PoderMagico, 30), new SkillNameValue(SkillName.Briga, 30),
-						new SkillNameValue(SkillName.Arcanismo, 30)
-					};
+						new SkillNameValue(SkillName.Arcanismo, 30), new SkillNameValue(SkillName.Alquimia, 30)
+                    };
 
 					break;
 				}
@@ -495,8 +495,8 @@ namespace Server.Misc
 				{
 					skills = new[]
 					{
-						new SkillNameValue(SkillName.Necromancia, 30),
-						new SkillNameValue(SkillName.PoderMagico, 30), new SkillNameValue(SkillName.Cortante, 30)
+						new SkillNameValue(SkillName.Necromancia, 30), new SkillNameValue(SkillName.Envenenamento, 30),
+                        new SkillNameValue(SkillName.PoderMagico, 30), new SkillNameValue(SkillName.Cortante, 30)
 					};
 
 					break;
@@ -506,7 +506,7 @@ namespace Server.Misc
 					skills = new[]
 					{
 						new SkillNameValue(SkillName.Ordem, 30), new SkillNameValue(SkillName.Cortante, 30),
-						new SkillNameValue(SkillName.PreparoFisico, 30), new SkillNameValue(SkillName.Anatomia, 30)
+						new SkillNameValue(SkillName.PreparoFisico, 30), new SkillNameValue(SkillName.ResistenciaMagica, 30)
 					};
 
 					break;
@@ -525,7 +525,7 @@ namespace Server.Misc
 					skills = new[]
 					{
 						new SkillNameValue(SkillName.Ninjitsu, 30), new SkillNameValue(SkillName.Furtividade, 30),
-						new SkillNameValue(SkillName.Perfurante, 30), new SkillNameValue(SkillName.Furtividade, 30)
+						new SkillNameValue(SkillName.Perfurante, 30), new SkillNameValue(SkillName.Anatomia, 30)
 					};
 					break;
 				}
@@ -734,8 +734,7 @@ namespace Server.Misc
 			{
 				var snv = skills[i];
 
-				if (snv.Value > 0 && (snv.Name != SkillName.Furtividade || prof == 7) && snv.Name != SkillName.Mecanica &&
-					snv.Name != SkillName.Feiticaria)
+				if (snv.Value > 0) // && (snv.Name != SkillName.Furtividade || prof == 7) && snv.Name != SkillName.Mecanica &&	snv.Name != SkillName.Feiticaria)
 				{
 					var skill = m.Skills[snv.Name];
 
