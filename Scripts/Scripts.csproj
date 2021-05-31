@@ -11547,6 +11547,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\ConhecimentoArmas.cs" />
+    <Compile Include="Skills\Erudicao.cs" />
     <Compile Include="Skills\Furtividade.cs" />
     <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
@@ -11600,7 +11601,7 @@
     <Compile Include="Skills\SpiritSpeak.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Stealing.cs">
+    <Compile Include="Skills\Prestidigitacao.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\TasteID.cs">

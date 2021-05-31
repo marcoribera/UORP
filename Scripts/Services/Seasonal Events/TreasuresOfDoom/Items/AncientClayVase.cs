@@ -51,7 +51,7 @@ namespace Server.Items
 
         public static void Initialize()
         {
-            Stealing.ItemStolen += OnStolen;
+            Prestidigitacao.ItemStolen += OnStolen;
         }
 
         public static void OnStolen(ItemStolenEventArgs e)

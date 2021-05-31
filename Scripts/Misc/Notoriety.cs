@@ -428,7 +428,7 @@ namespace Server.Misc
 			if (ViceVsVirtueSystem.Enabled && ViceVsVirtueSystem.IsEnemy(source, target) && (ViceVsVirtueSystem.EnhancedRules || source.Map == Faction.Facet))
 				return Notoriety.Enemy;
 
-			if (Stealing.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).PermaFlags.Contains(source))
+			if (Prestidigitacao.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).PermaFlags.Contains(source))
 				return Notoriety.CanBeAttacked;
 
 			if (target is BaseCreature && ((BaseCreature)target).AlwaysAttackable)
