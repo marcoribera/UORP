@@ -8,6 +8,7 @@
 /Scripts/bin
 /Scripts/obj
 /Scripts/Output
+/Config/DataPath.cfg
 
 /Honesty
 /Logs
