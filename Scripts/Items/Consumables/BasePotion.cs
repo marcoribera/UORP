@@ -51,7 +51,7 @@ namespace Server.Items
     public abstract class BasePotion : Item, ICraftable, ICommodity
     {
         private PotionEffect m_PotionEffect;
-     
+
         public PotionEffect PotionEffect
         {
             get
@@ -64,21 +64,7 @@ namespace Server.Items
                 this.InvalidateProperties();
             }
         }
-        private bool m_Identified;
 
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool Identified
-        {
-            get
-            {
-                return m_Identified;
-            }
-            set
-            {
-                m_Identified = value;
-                InvalidateProperties();
-            }
-        }
         TextDefinition ICommodity.Description
         {
             get
@@ -98,14 +84,7 @@ namespace Server.Items
         {
             get
             {
-                if (m_Identified)
-                {
-                    return 1041314 + (int)this.m_PotionEffect; 
-                }
-                else
-                {
-                    return 1038000; // Poção não identificada
-                }
+                return 1041314 + (int)this.m_PotionEffect;
             }
         }
 
@@ -205,8 +184,8 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)2); // version
-            writer.Write((bool)m_Identified);
+            writer.Write((int)1); // version
+
             writer.Write((int)this.m_PotionEffect);
         }
 
@@ -218,11 +197,6 @@ namespace Server.Items
 
             switch ( version )
             {
-                case 2:
-                    {
-                        this.m_Identified = reader.ReadBool();
-                        goto case 1;
-                    }
                 case 1:
                 case 0:
                     {
