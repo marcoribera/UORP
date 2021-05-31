@@ -11546,6 +11546,9 @@
     <Compile Include="Skills\Anatomia.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Skills\Anatomia.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Skills\ConhecimentoArmas.cs" />
     <Compile Include="Skills\Furtividade.cs" />
     <Compile Include="Skills\Veterinaria.cs">
