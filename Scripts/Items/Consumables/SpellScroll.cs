@@ -38,11 +38,36 @@ namespace Server.Items
                 return this.m_SpellID;
             }
         }
+
+        private bool m_Identified;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Identified
+        {
+            get
+            {
+                return m_Identified;
+            }
+            set
+            {
+                m_Identified = value;
+                InvalidateProperties();
+            }
+        }
+        
+        
         TextDefinition ICommodity.Description
         {
             get
             {
-                return this.LabelNumber;
+                 if (m_Identified)
+                 {
+                    return this.LabelNumber;
+                 }
+                else
+                {
+                    return 1038000; // Não identificado
+                }
             }
         }
         bool ICommodity.IsDeedable
@@ -56,7 +81,8 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
+            writer.Write((bool)m_Identified);
 
             writer.Write((int)this.m_SpellID);
         }
@@ -68,7 +94,11 @@ namespace Server.Items
             int version = reader.ReadInt();
 
             switch ( version )
-            {
+{              case 1:
+                    {
+                        this.m_Identified = reader.ReadBool();
+                        goto case 0;
+                    }
                 case 0:
                     {
                         this.m_SpellID = reader.ReadInt();
