@@ -35,7 +35,7 @@ namespace Server.Items
         Invisibility,
         Parasitic,
         Darkglow,
-		ExplodingTarPotion,
+        ExplodingTarPotion,
         #region TOL Publish 93
         Barrab,
         Jukari,
@@ -64,6 +64,21 @@ namespace Server.Items
                 this.InvalidateProperties();
             }
         }
+        private bool m_Identified;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Identified
+        {
+            get
+            {
+                return m_Identified;
+            }
+            set
+            {
+                m_Identified = value;
+                InvalidateProperties();
+            }
+        }
 
         TextDefinition ICommodity.Description
         {
@@ -84,7 +99,14 @@ namespace Server.Items
         {
             get
             {
-                return 1041314 + (int)this.m_PotionEffect;
+                if (m_Identified)
+                {
+                    return 1041314 + (int)this.m_PotionEffect;
+                }
+                else
+                {
+                    return 1038000; // Poção não identificada
+                }
             }
         }
 
@@ -120,7 +142,7 @@ namespace Server.Items
             if (handTwo is BaseWeapon)
             {
                 BaseWeapon wep = (BaseWeapon)handTwo;
-				
+
                 if (wep.Attributes.BalancedWeapon > 0)
                     return true;
             }
@@ -184,8 +206,8 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
+            writer.Write((int)2); // version
+            writer.Write((bool)m_Identified);
             writer.Write((int)this.m_PotionEffect);
         }
 
@@ -195,8 +217,13 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
+                case 2:
+                    {
+                        this.m_Identified = reader.ReadBool();
+                        goto case 1;
+                    }
                 case 1:
                 case 0:
                     {
