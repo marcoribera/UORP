@@ -6,7 +6,7 @@ using Server.Targeting;
 
 namespace Server.SkillHandlers
 {
-      public class Erudicao
+    public class Erudicao
     {
         public static void Initialize()
         {
@@ -35,7 +35,7 @@ namespace Server.SkillHandlers
             {
                 if (targeted is SpellScroll)
                 {
-                    SpellScroll scroll  = (SpellScroll)targeted;
+                    SpellScroll scroll = (SpellScroll)targeted;
                     if (scroll.Identified)
                     {
                         from.SendMessage("Pergaminho já identificado");
@@ -44,7 +44,7 @@ namespace Server.SkillHandlers
                     else if (from.CheckTargetSkill(SkillName.Erudicao, targeted, 0, 100))
                     {
                         scroll.Identified = true;
-                        from.SendMessage("Você identificou esse pergaminho");
+                        from.SendMessage("Você identificou o pergaminho");
                     }
                     else
                     {

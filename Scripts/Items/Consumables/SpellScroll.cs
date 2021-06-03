@@ -54,20 +54,12 @@ namespace Server.Items
                 InvalidateProperties();
             }
         }
-        
-        
+
         TextDefinition ICommodity.Description
         {
             get
             {
-                 if (m_Identified)
-                 {
-                    return this.LabelNumber;
-                 }
-                else
-                {
-                    return 1038000; // Não identificado
-                }
+                return this.LabelNumber;
             }
         }
         bool ICommodity.IsDeedable
@@ -77,13 +69,34 @@ namespace Server.Items
                 return (Core.ML);
             }
         }
+
+        public override int LabelNumber
+        {
+            get
+            {
+                if (m_Identified)
+                {
+                    if (ItemID < 0x4000)
+                    {
+                        return 1020000 + ItemID;
+                    }
+                    else
+                    {
+                        return 1078872 + ItemID;
+                    }
+                }
+                else
+                {
+                    return 1038000; // Não Identificado
+                }
+            }
+        }
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
+            writer.Write((int)2); // version
             writer.Write((bool)m_Identified);
-
             writer.Write((int)this.m_SpellID);
         }
 
@@ -93,12 +106,14 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
-{              case 1:
+            switch (version)
+            {
+                case 2:
                     {
                         this.m_Identified = reader.ReadBool();
                         goto case 0;
                     }
+                case 1:
                 case 0:
                     {
                         this.m_SpellID = reader.ReadInt();
