@@ -107,7 +107,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    return 1038000; // Poção não identificada
+                    return 1038000; // Não Identificado
                 }
             }
         }

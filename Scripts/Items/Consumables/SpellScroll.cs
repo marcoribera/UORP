@@ -38,6 +38,23 @@ namespace Server.Items
                 return this.m_SpellID;
             }
         }
+
+        private bool m_Identified;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Identified
+        {
+            get
+            {
+                return m_Identified;
+            }
+            set
+            {
+                m_Identified = value;
+                InvalidateProperties();
+            }
+        }
+
         TextDefinition ICommodity.Description
         {
             get
@@ -52,12 +69,34 @@ namespace Server.Items
                 return (Core.ML);
             }
         }
+
+        public override int LabelNumber
+        {
+            get
+            {
+                if (m_Identified)
+                {
+                    if (ItemID < 0x4000)
+                    {
+                        return 1020000 + ItemID;
+                    }
+                    else
+                    {
+                        return 1078872 + ItemID;
+                    }
+                }
+                else
+                {
+                    return 1038000; // Não Identificado
+                }
+            }
+        }
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
-
+            writer.Write((int)2); // version
+            writer.Write((bool)m_Identified);
             writer.Write((int)this.m_SpellID);
         }
 
@@ -67,8 +106,14 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
+                case 2:
+                    {
+                        this.m_Identified = reader.ReadBool();
+                        goto case 0;
+                    }
+                case 1:
                 case 0:
                     {
                         this.m_SpellID = reader.ReadInt();
