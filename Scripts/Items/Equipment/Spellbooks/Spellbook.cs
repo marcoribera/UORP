@@ -633,13 +633,20 @@ namespace Server.Items
 		{
             if (dropped is SpellScroll && !(dropped is SpellStone))
             {
-				SpellScroll scroll = (SpellScroll)dropped;
+                if (!( (dropped as SpellScroll).Identified) )
+                {
+                    from.SendMessage("Você não consegue adicionar pergaminhos não identificados.");
+                    return false;
+                }
+
+                SpellScroll scroll = (SpellScroll)dropped;
 
 				SpellbookType type = GetTypeForSpell(scroll.SpellID);
 
 				if (type != SpellbookType)
 				{
-					return false;
+                    from.SendMessage("Tente um livro diferente.");
+                    return false;
 				}
 				else if (HasSpell(scroll.SpellID))
 				{
@@ -648,7 +655,8 @@ namespace Server.Items
 				}
 				else
 				{
-					int val = scroll.SpellID - BookOffset;
+                    from.SendMessage("Escreveu uma magia no livro.");
+                    int val = scroll.SpellID - BookOffset;
 
 					if (val >= 0 && val < BookCount)
 					{
