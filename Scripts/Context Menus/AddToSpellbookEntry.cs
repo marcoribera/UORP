@@ -36,7 +36,11 @@ namespace Server.ContextMenus
 
                         SpellbookType type = Spellbook.GetTypeForSpell(this.m_Scroll.SpellID);
 
-                        if (type != book.SpellbookType)
+                        if (this.m_Scroll.ItemID == 1038000)
+                        {
+                            from.SendMessage("Você não consegue adicionar pergaminhos não identificados");
+                        }
+                        else if (type != book.SpellbookType)
                         {
                         }
                         else if (book.HasSpell(this.m_Scroll.SpellID))
