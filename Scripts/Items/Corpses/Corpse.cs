@@ -415,11 +415,20 @@ namespace Server.Items
             SetFlag(CorpseFlag.NoBones, true);
             SetFlag(CorpseFlag.IsBones, true);
 
-            BeginDecay(m_BoneDecayTime);
+            //Evitar que os ossos dos corpos de player sejam apagados
+            if (m_Owner is PlayerMobile && m_DecayTimer != null)
+            {
+                m_DecayTimer.Stop();
+            }
+            else
+            {
+                BeginDecay(m_BoneDecayTime);
+            }
+
         }
 
-        private static readonly TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes(7.0);
-        private static readonly TimeSpan m_BoneDecayTime = TimeSpan.FromMinutes(7.0);
+        private static readonly TimeSpan m_DefaultDecayTime = TimeSpan.FromMinutes(15.0);
+        private static readonly TimeSpan m_BoneDecayTime = TimeSpan.FromMinutes(15.0);
 
         private Timer m_DecayTimer;
         private DateTime m_DecayTime;
@@ -455,7 +464,7 @@ namespace Server.Items
                 : base(delay)
             {
                 m_Corpse = c;
-                Priority = TimerPriority.FiveSeconds;
+                Priority = TimerPriority.OneMinute;
             }
 
             protected override void OnTick()
@@ -1314,18 +1323,20 @@ namespace Server.Items
                         {
                             ProcessDelta();
                             SendRemovePacket();
-                            ItemID = Utility.Random(0xECA, 9); // bone graphic
+                            //ItemID = Utility.Random(0xECA, 9); // bone graphic
                             Hue = 0;
                             ProcessDelta();
                         }
 
-                        from.PlaySound(0x3E3);
-                        from.SendLocalizedMessage(1062471); // You quickly gather all of your belongings.
+                        //Removida mensagem e efeito sonoro padrões para usar o corpo
+                        //from.PlaySound(0x3E3);
+                        //from.SendLocalizedMessage(1062471); // You quickly gather all of your belongings.
                         items.Clear();
                         m_EquipItems.Clear();
                         return;
                     }
 
+                    //Isso só deve acontecer se acontecer algo muito errado
                     if (gathered && didntFit)
                     {
                         from.SendLocalizedMessage(1062472); // You gather some of your belongings. The rest remain on the corpse.
@@ -1412,11 +1423,13 @@ namespace Server.Items
         {
             Open(from, Core.AOS);
 
+            /*
             if (m_Owner == from)
             {
                 if (from.Corpse != null)
                     from.NetState.Send(new RemoveWaypoint(from.Corpse.Serial));
             }
+            */
         }
 
         public override bool CheckContentDisplay(Mobile from)

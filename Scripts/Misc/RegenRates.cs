@@ -16,6 +16,7 @@ namespace Server.Misc
         public static List<RegenBonusHandler> HitsBonusHandlers = new List<RegenBonusHandler>();
         public static List<RegenBonusHandler> StamBonusHandlers = new List<RegenBonusHandler>();
         public static List<RegenBonusHandler> ManaBonusHandlers = new List<RegenBonusHandler>();
+        public static List<RegenBonusHandler> DesmaioBonusHandlers = new List<RegenBonusHandler>(); // Criado para lidar com o Desmaio
 
         [CallPriority(10)]
         public static void Configure()
@@ -23,8 +24,10 @@ namespace Server.Misc
             Mobile.DefaultHitsRate = TimeSpan.FromSeconds(11.0);
             Mobile.DefaultStamRate = TimeSpan.FromSeconds(7.0);
             Mobile.DefaultManaRate = TimeSpan.FromSeconds(7.0);
+            Mobile.DefaultDesmaioRate = TimeSpan.FromSeconds(15.0); //Delay entre as recuperações de 0.1 de Desmaio
 
             Mobile.ManaRegenRateHandler = new RegenRateHandler(Mobile_ManaRegenRate);
+            Mobile.DesmaioRegenRateHandler = new RegenRateHandler(Mobile_DesmaioRegenRate); //Hendler de Regen Rate de Desmaio
 
             if (Core.AOS)
             {
@@ -208,6 +211,18 @@ namespace Server.Misc
             return TimeSpan.FromSeconds(rate);
         }
 
+        private static TimeSpan Mobile_DesmaioRegenRate(Mobile from)
+        {
+            if (from.Skills == null)
+            {
+                return Mobile.DefaultDesmaioRate;
+            }
+            else
+            {
+                return TimeSpan.FromSeconds(1.0 / (DesmaioRegen(from)));
+            }
+        }
+
         public static double HitPointRegen(Mobile from)
         {
             double points = AosAttributes.GetValue(from, AosAttribute.RegenHits);
@@ -293,6 +308,12 @@ namespace Server.Misc
                 points += handler(from);
 
             return points;
+        }
+
+        public static double DesmaioRegen(Mobile from)
+        {
+            //FLS: Adicionar aqui se tiver algum fator que influencie no regen de DP
+            return 0.1;
         }
 
         public static double GetArmorMeditationValue(BaseArmor ar)

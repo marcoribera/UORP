@@ -3638,36 +3638,159 @@ namespace Server.Mobiles
 			base.OnDamage(amount, from, willKill);
 		}
 
-		public override void Resurrect()
-		{
-			bool wasAlive = Alive;
-
-			base.Resurrect();
-
-			if (Alive && !wasAlive)
-			{
-				Item deathRobe = new DeathRobe();
-
-				if (!EquipItem(deathRobe))
-				{
-					deathRobe.Delete();
-				}
-
-                if (NetState != null /*&& NetState.IsEnhancedClient*/)
+        public override void OnBeforeResurrect()
+        {
+            Item a = FindItemOnLayer(Layer.InnerTorso); //Remove o manto do fantasminha
+            if (a != null)
+            {
+                a.Movable = true;
+                a.Delete();
+                Console.WriteLine("Teste");
+            }
+            //Leva a alminha pra perto do corpo
+            if (m_Player)
+            {
+                if (!Corpse.Deleted)
                 {
-                    Waypoints.RemoveHealers(this, Map);
+                    Map = Corpse.Map;
+                    Location = Corpse.Location;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Overridable. Event invoked after the Mobile is <see cref="Resurrect">resurrected</see>.
+        ///     <seealso cref="Resurrect" />
+        /// </summary>
+        public override void OnAfterResurrect()
+        {
+            //Equipa o que sobrou do corpo e apaga ele
+            if (m_Player)
+            {
+                if (!m_Corpse.Deleted)
+                {
+                    Use(m_Corpse);
+                    Corpse.Delete();
                 }
 
-                #region Scroll of Alacrity
-                if (AcceleratedStart > DateTime.UtcNow)
-				{
-					BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.ArcaneEmpowerment, 1078511, 1078512, AcceleratedSkill.ToString()));
-				}
-				#endregion
-			}
-		}
+                Emote("*Acorda do Desmaio*");
 
-		public override double RacialSkillBonus
+                //Sons de acordar
+                //TODO: Verificar se todos estão com os ID corretos
+                Random som = new Random();
+                if (Female)
+                {
+                    PlaySound(0x325 + som.Next(7)); //0x325 a 0x32B (7 sons de oomph) female f_oomph_01.wav até f_oomph_07.wav
+                }
+                else
+                {
+                    PlaySound(0x435 + som.Next(9)); //0x435 a 0x43D (9 sons de oomph) male m_oomph_01.wav até m_oomph_09.wav
+                }
+            }
+        }
+
+        public override bool CheckResurrect()
+        {
+            if (Desmaio < 1.0)
+            {
+                PublicOverheadMessage(MessageType.Emote, 88, false, "*MORTO: Sem pontos de Desmaio*"); // FLS TODO: Se possível inserir no patch um texto e utilizar apenas o número como referencia no lugar da string
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public override void Resurrect()
+        {
+
+            if (!Alive)
+            {
+                //Por enquanto não usaremos regiões que proibam reviver
+                //if (!Region.OnResurrect(this))
+                //{
+                //    return;
+                //}
+
+                if (!CheckResurrect())
+                {
+                    SendMessage("Não dá para acordar sem pontos de Desmaio suficientes.");
+                    return;
+                }
+
+                if (!Corpse.Deleted) //Leva a alminha pra perto do corpo se ele ainda existir
+                {
+                    Map = Corpse.Map;
+                    Location = Corpse.Location;
+                }
+                else
+                {
+                    SendMessage("Seu corpo já se decompôs! Isso não deveria acontecer. Chame um GM.");
+                    return;
+                }
+
+                OnBeforeResurrect();
+
+                BankBox box = FindBankNoCreate();
+
+                if (box != null && box.Opened)
+                {
+                    box.Close();
+                }
+
+                Poison = null;
+
+                Warmode = false;
+
+                Hits = 10;
+                Stam = StamMax;
+                Mana = 0;
+
+                BodyMod = 0;
+                Body = Race.AliveBody(this);
+
+                ProcessDeltaQueue();
+
+                for (int i = m_Items.Count - 1; i >= 0; --i)
+                {
+                    if (i >= m_Items.Count)
+                    {
+                        continue;
+                    }
+
+                    Item item = m_Items[i];
+
+                    if (item.ItemID == 8270)
+                    {
+                        item.Delete();
+                    }
+                }
+
+                SendIncomingPacket();
+                //SendIncomingPacket();
+
+                //para o contador de acordar quando desperta
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+
+                OnAfterResurrect();
+
+                //Send( new DeathStatus( false ) );
+            }
+        }
+        public override double RacialSkillBonus
 		{
 			get
 			{
@@ -3904,14 +4027,14 @@ namespace Server.Mobiles
 			return res;
 		}
 
-		public override void OnDeath(Container c)
-		{
+        public override void OnDeath(Container c)
+        {
             if (NetState != null /*&& NetState.IsEnhancedClient*/)
             {
                 Waypoints.OnDeath(this);
             }
 
-			Mobile m = FindMostRecentDamager(false);
+            Mobile m = FindMostRecentDamager(false);
             PlayerMobile killer = m as PlayerMobile;
 
             if (killer == null && m is BaseCreature)
@@ -3919,24 +4042,66 @@ namespace Server.Mobiles
                 killer = ((BaseCreature)m).GetMaster() as PlayerMobile;
             }
 
-			if (m_NonAutoreinsuredItems > 0)
-			{
-				SendLocalizedMessage(1061115);
-			}
+            if (m_NonAutoreinsuredItems > 0)
+            {
+                SendLocalizedMessage(1061115);
+            }
 
-			base.OnDeath(c);
+            //Início do decremento de Desmaio e teletransportes
 
-			m_EquipSnapshot = null;
+            SetLocation(new Point3D(1503, 1630, 10), true); //definir local da sala dos mortos
+            Random perdaDesmaio = new Random();
+            double perda = 0.5 + perdaDesmaio.NextDouble();
+            Desmaio -= perda;
 
-			HueMod = -1;
-			NameMod = null;
-			SavagePaintExpiration = TimeSpan.Zero;
+            if (Desmaio < 1.0)
+            {
+                //Send(DeathStatus.Instantiate(true));
+                //Send(DeathStatus.Instantiate(false));
+                SendMessage(38, "!!! VOCÊ MORREU !!!");
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! VOCÊ MORREU !!!", NetState);
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+            }
+            else if (Desmaio < 1.5)
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! MORIBUNDO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ NÃO MORREU POR POUCO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
+            else if (Desmaio < 2.5)
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! FRAGILIZADO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ PODE MORRER SE NÃO TOMAR MAIS CUIDADO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
+            else
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! DESMAIADO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ ESTÁ DESMAIADO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
 
-			SetHairMods(-1, -1);
+            m_ExpireDeathTimer = new ExpireDeathTimer(this);
+            m_ExpireDeathTimer.Start();
 
-			PolymorphSpell.StopTimer(this);
-			IncognitoSpell.StopTimer(this);
-			DisguiseTimers.RemoveTimer(this);
+            //Fim do decremento de Desmaio
+
+            base.OnDeath(c);
+
+            m_EquipSnapshot = null;
+
+            HueMod = -1;
+            NameMod = null;
+            SavagePaintExpiration = TimeSpan.Zero;
+
+            SetHairMods(-1, -1);
+
+            PolymorphSpell.StopTimer(this);
+            IncognitoSpell.StopTimer(this);
+            DisguiseTimers.RemoveTimer(this);
 
             WeakenSpell.RemoveEffects(this);
             ClumsySpell.RemoveEffects(this);
@@ -3946,36 +4111,36 @@ namespace Server.Mobiles
 
 
             EndAction(typeof(PolymorphSpell));
-			EndAction(typeof(IncognitoSpell));
+            EndAction(typeof(IncognitoSpell));
 
-			MeerMage.StopEffect(this, false);
+            MeerMage.StopEffect(this, false);
 
             BaseEscort.DeleteEscort(this);
 
             #region Stygian Abyss
             if (Flying)
-			{
-				Flying = false;
-				BuffInfo.RemoveBuff(this, BuffIcon.Fly);
-			}
-			#endregion
+            {
+                Flying = false;
+                BuffInfo.RemoveBuff(this, BuffIcon.Fly);
+            }
+            #endregion
 
-			StolenItem.ReturnOnDeath(this, c);
+            StolenItem.ReturnOnDeath(this, c);
 
-			if (m_PermaFlags.Count > 0)
-			{
-				m_PermaFlags.Clear();
+            if (m_PermaFlags.Count > 0)
+            {
+                m_PermaFlags.Clear();
 
-				if (c is Corpse)
-				{
-					((Corpse)c).Criminal = true;
-				}
+                if (c is Corpse)
+                {
+                    ((Corpse)c).Criminal = true;
+                }
 
-				if (Prestidigitacao.ClassicMode)
-				{
-					Criminal = true;
-				}
-			}
+                if (Prestidigitacao.ClassicMode)
+                {
+                    Criminal = true;
+                }
+            }
 
             if (killer != null && Murderer && DateTime.UtcNow >= killer.m_NextJustAward)
             {
@@ -4005,59 +4170,68 @@ namespace Server.Mobiles
                 }
             }
 
-			if (m_InsuranceAward is PlayerMobile)
-			{
-				PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
+            if (m_InsuranceAward is PlayerMobile)
+            {
+                PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
 
-				if (pm.m_InsuranceBonus > 0)
-				{
-					pm.SendLocalizedMessage(1060397, pm.m_InsuranceBonus.ToString());
-					// ~1_AMOUNT~ gold has been deposited into your bank box.
-				}
-			}
+                if (pm.m_InsuranceBonus > 0)
+                {
+                    pm.SendLocalizedMessage(1060397, pm.m_InsuranceBonus.ToString());
+                    // ~1_AMOUNT~ gold has been deposited into your bank box.
+                }
+            }
 
-			if (Young)
-			{
+            if (Young)
+            {
+                /*
 				if (YoungDeathTeleport())
 				{
 					Timer.DelayCall(TimeSpan.FromSeconds(2.5), SendYoungDeathNotice);
 				}
-			}
+                */
+            }
 
-			Faction.HandleDeath(this, killer);
+            Faction.HandleDeath(this, killer);
 
-			Guilds.Guild.HandleDeath(this, killer);
-            
+            Guilds.Guild.HandleDeath(this, killer);
+
             if (m_BuffTable != null)
-			{
-				var list = new List<BuffInfo>();
+            {
+                var list = new List<BuffInfo>();
 
-				foreach (BuffInfo buff in m_BuffTable.Values)
-				{
-					if (!buff.RetainThroughDeath)
-					{
-						list.Add(buff);
-					}
-				}
+                foreach (BuffInfo buff in m_BuffTable.Values)
+                {
+                    if (!buff.RetainThroughDeath)
+                    {
+                        list.Add(buff);
+                    }
+                }
 
-				for (int i = 0; i < list.Count; i++)
-				{
-					RemoveBuff(list[i]);
-				}
-			}
+                for (int i = 0; i < list.Count; i++)
+                {
+                    RemoveBuff(list[i]);
+                }
+            }
 
-			#region Stygian Abyss
-			if (Region.IsPartOf("Abyss") && SSSeedExpire > DateTime.UtcNow)
-			{
-				SendGump(new ResurrectGump(this, ResurrectMessage.SilverSapling));
-			}
+            #region Stygian Abyss
+            if (Region.IsPartOf("Abyss") && SSSeedExpire > DateTime.UtcNow)
+            {
+                SendGump(new ResurrectGump(this, ResurrectMessage.SilverSapling));
+            }
 
             if (LastKiller is BaseVoidCreature)
                 ((BaseVoidCreature)LastKiller).Mutate(VoidEvolution.Killing);
-			#endregion
-		}
+            #endregion
 
-		private List<Mobile> m_PermaFlags;
+            if (Desmaio < 1.0)
+            {
+                Send(DeathStatus.Instantiate(true));
+                //Send(DeathStatus.Instantiate(false));
+            }
+        }
+
+
+        private List<Mobile> m_PermaFlags;
 		private List<Mobile> m_VisList;
 		private readonly Hashtable m_AntiMacroTable;
 		private TimeSpan m_GameTime;
@@ -5279,7 +5453,16 @@ namespace Server.Mobiles
 			DisguiseTimers.RemoveTimer(this);
 		}
 
-		public override bool NewGuildDisplay { get { return Guilds.Guild.NewGuildSystem; } }
+        public virtual void OnConnected()
+        {
+            if ((Desmaio < 1.0) && (!Alive))
+            {
+                PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", NetState);
+                SendMessage(88, "*Este personagem está MORTO*", NetState); 
+            }
+        }
+
+        public override bool NewGuildDisplay { get { return Guilds.Guild.NewGuildSystem; } }
 
 		public delegate void PlayerPropertiesEventHandler(PlayerPropertiesEventArgs e);
 
