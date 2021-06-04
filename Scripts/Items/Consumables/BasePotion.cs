@@ -64,6 +64,8 @@ namespace Server.Items
                 this.InvalidateProperties();
             }
         }
+
+        private int m_Original_ItemID;
         private bool m_Identified;
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -111,18 +113,27 @@ namespace Server.Items
         }
 
         public BasePotion(int itemID, PotionEffect effect)
-            : base(itemID)
+            : base(3849)
         {
+            this.m_Original_ItemID = itemID; //Imagem da White Potion
             this.m_PotionEffect = effect;
 
             this.Stackable = Core.ML;
             this.Weight = 1.0;
+            this.Hue = 2050;
         }
 
         public BasePotion(Serial serial)
             : base(serial)
         {
         }
+
+        public void Revelar_Original_ItemID()
+        {
+            this.ItemID = this.m_Original_ItemID;
+        }
+
+
 
         public virtual bool RequireFreeHand
         {
@@ -206,7 +217,8 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)2); // version
+            writer.Write((int)3); // version
+            writer.Write((int)m_Original_ItemID);
             writer.Write((bool)m_Identified);
             writer.Write((int)this.m_PotionEffect);
         }
@@ -219,6 +231,9 @@ namespace Server.Items
 
             switch (version)
             {
+                case 3:
+                    this.m_Original_ItemID = reader.ReadInt();
+                    goto case 2;
                 case 2:
                     {
                         this.m_Identified = reader.ReadBool();
@@ -298,7 +313,8 @@ namespace Server.Items
 
         public override bool WillStack(Mobile from, Item dropped)
         {
-            return dropped is BasePotion && ((BasePotion)dropped).m_PotionEffect == this.m_PotionEffect && base.WillStack(from, dropped);
+            //TODO: Fazer ela só ser stackeavel quando craftada pela pessoa
+            return dropped is BasePotion && ((BasePotion)dropped).m_PotionEffect == this.m_PotionEffect && base.WillStack(from, dropped) && (this.Hue == ((BasePotion)dropped).Hue); //&& Identified;
         }
 
         #region ICraftable Members
