@@ -11608,9 +11608,6 @@
     <Compile Include="Skills\Prestidigitacao.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\TasteID.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Skills\Tracking.cs">
       <SubType>Code</SubType>
     </Compile>
