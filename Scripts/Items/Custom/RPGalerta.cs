@@ -33,7 +33,7 @@ namespace Server.Items
 
         public override void SendMessage(Mobile triggerer, bool mensagemPrivada, string messageString, int messageNumber)
         {
-            Item falador = new Item(0x0001); //item "no draw"
+            Item falador = new InvisibleTile(); //item "no draw"
             falador.MoveToWorld(Location, Map);
             falador.Movable = false;
             DeleteFaladorTimer apagador = new DeleteFaladorTimer(falador, TimeSpan.FromSeconds(10));
