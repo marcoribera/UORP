@@ -226,7 +226,7 @@ namespace Server.Commands
                 else if (target is StaticTarget)
                 {
                     StaticTarget alvo = (StaticTarget) target;
-                    Item falador = new Item(0x0001); //item "no draw"
+                    Item falador = new InvisibleTile();
                     falador.MoveToWorld(alvo.Location, from.Map);
                     falador.Movable = false;
                     DeleteFaladorTimer apagador = new DeleteFaladorTimer(falador, TimeSpan.FromSeconds(10));
@@ -257,7 +257,7 @@ namespace Server.Commands
                 else if (target is LandTarget)
                 {
                     LandTarget alvo = (LandTarget)target;
-                    Item falador = new Item(0x0001); //item "no draw"
+                    Item falador = new InvisibleTile();
                     falador.MoveToWorld(alvo.Location, from.Map);
                     falador.Movable = false;
                     DeleteFaladorTimer apagador = new DeleteFaladorTimer(falador, TimeSpan.FromSeconds(10));
