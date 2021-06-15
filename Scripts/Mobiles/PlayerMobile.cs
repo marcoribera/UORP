@@ -2010,10 +2010,34 @@ namespace Server.Mobiles
                    MasteryInfo.IntuitionBonus(this) +
                    UraliTranceTonic.GetManaBuff(this);
 		} }
-		#endregion
+        #endregion
 
-		#region Stat Getters/Setters
-		[CommandProperty(AccessLevel.GameMaster)]
+        public override int StatCap
+        {
+            get
+            { //Começa em 100 de total de atributos e sobe o Cap total de atributos em 3 por dia de criação do char para assegurar uma progressão suficientemente lenta
+                return Math.Min(100 + (3 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(this.CreationTime)).TotalDays)))), 225);
+            }
+            set
+            {
+                if (m_StatCap != value)
+                {
+                    int old = m_StatCap;
+
+                    m_StatCap = value;
+
+                    if (old != m_StatCap)
+                    {
+                        EventSink.InvokeStatCapChange(new StatCapChangeEventArgs(this, old, m_StatCap));
+                    }
+
+                    Delta(MobileDelta.StatCap);
+                }
+            }
+        }
+
+        #region Stat Getters/Setters
+        [CommandProperty(AccessLevel.GameMaster)]
 		public override int Str
 		{
 			get

@@ -769,7 +769,7 @@ namespace Server
 		private string m_Language;
 		private NetState m_NetState;
 		private bool m_Female, m_Warmode, m_Hidden, m_Blessed, m_Flying;
-        private int m_StatCap;
+        protected int m_StatCap;
 		private int m_StrCap;
 		private int m_DexCap;
 		private int m_IntCap;
@@ -12953,7 +12953,7 @@ namespace Server
 		///     Gets or sets the maximum attainable value for <see cref="RawStr" />, <see cref="RawDex" />, and <see cref="RawInt" />.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int StatCap
+		public virtual int StatCap
 		{
 			get { return m_StatCap; }
 			set

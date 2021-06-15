@@ -771,7 +771,16 @@ namespace Server
 		public Skill Veterinaria { get { return this[SkillName.Veterinaria]; } set { } }
 
 		[CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
-		public int Cap { get { return m_Cap; } set { m_Cap = value; } }
+		public int Cap {
+            get
+            {
+                return Math.Min(m_Cap + (50 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
+            }
+            set
+            {
+                m_Cap = value;
+            }
+        }
 
         [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
         public SkillName CurrentMastery
