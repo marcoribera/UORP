@@ -284,14 +284,25 @@ namespace Server.Misc
 			var map = Siege.SiegeShard && city.Map == Map.Trammel ? Map.Felucca : city.Map;
 
             //MArcknight: Posição inicial de novos persoangens
-			//newChar.MoveToWorld(city.Location, map);
+            //newChar.MoveToWorld(city.Location, map);
             if (newChar.Race == Race.Human)
+            {
+                ((PlayerMobile)newChar).KnowEorin = true;
+                ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Eorin;
                 newChar.MoveToWorld(new Point3D(827, 1205, -70), Map.Ilshenar);
+            }
             else if (newChar.Race == Race.Elf)
+            {
+                ((PlayerMobile)newChar).KnowAvlitir = true;
+                ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Avlitir;
                 newChar.MoveToWorld(new Point3D(1267, 962, -27), Map.Ilshenar);
+            }
             else if (newChar.Race == Race.Gargoyle)
+            {
+                ((PlayerMobile)newChar).KnowCelirus = true;
+                ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Celirus;
                 newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Felucca); //Fora da área do pré alfa
-
+            }
             Utility.PushColor(ConsoleColor.Green);
 			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
 			Utility.PopColor();

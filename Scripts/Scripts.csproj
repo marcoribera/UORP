@@ -637,6 +637,7 @@
     <Compile Include="Items\Custom\monsternest\DreadSpiderNest.cs" />
     <Compile Include="Items\Custom\monsternest\MonsterNest.cs" />
     <Compile Include="Items\Custom\monsternest\MonsterNestLoot.cs" />
+    <Compile Include="Items\Custom\monsternest\OrcNest.cs" />
     <Compile Include="Items\Custom\monsternest\RatNest.cs" />
     <Compile Include="Items\Custom\monsternest\SkeletalKnightNest.cs" />
     <Compile Include="Items\Custom\RPGalerta.cs" />
