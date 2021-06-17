@@ -20,8 +20,7 @@ namespace Server.Items
 			Hits = 1600;
 			NestSpawnType = "SkeletalKnight";
 			ItemID = 3793;
-			LootLevel = 3;
-			RangeHome = 20;
+			LootLevel = 1;
 		}
 
 		public override void AddLoot()

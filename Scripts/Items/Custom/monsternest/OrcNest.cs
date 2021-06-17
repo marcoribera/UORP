@@ -7,29 +7,30 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public class DragonNest : MonsterNest
+	public class OrcNest : MonsterNest
 	{
 		[Constructable]
-		public DragonNest() : base()
+		public OrcNest() : base()
 		{
-			Name = "Dragon Roost (Double click to attack)";
-			Hue = 32;
-			MaxCount = 7;
-			RespawnTime = TimeSpan.FromSeconds( 45.0 );
-			HitsMax = 2600;
-			Hits = 2600;
-			NestSpawnType = "Dragon";
-			LootLevel = 7;
-			RangeHome = 15;
+			Name = "Orcish Campfire (Double click to attack)";
+			Hue = 0;
+			MaxCount = 15;
+			RangeHome = 20;
+			RespawnTime = TimeSpan.FromSeconds( 10.0 );
+			HitsMax = 1600;
+			Hits = 1600;
+			NestSpawnType = "Orc";
+			ItemID = 10749;
+			LootLevel = 1;
 		}
 
 		public override void AddLoot()
 		{
-			MonsterNestLoot loot = new MonsterNestLoot( 4971, 32, this.LootLevel, "Dragon Eggs" );
+			MonsterNestLoot loot = new MonsterNestLoot( 6927, 0, this.LootLevel, "Scattered Orc Rubbish" );
 			loot.MoveToWorld( this.Location, this.Map );
 		}
 
-		public DragonNest( Serial serial ) : base( serial )
+		public OrcNest( Serial serial ) : base( serial )
 		{
 		}
 

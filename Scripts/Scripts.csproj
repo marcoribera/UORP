@@ -91,6 +91,7 @@
     <Compile Include="Commands\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\Custom\Emoteptbr.cs" />
     <Compile Include="Custom\Classes\RPClasse.cs" />
     <Compile Include="Custom\Classes\ClassePersonagem.cs" />
     <Compile Include="Custom\Classes\Classes.cs" />
@@ -624,9 +625,20 @@
     <Compile Include="Items\Consumables\DecorativeKitchenSet.cs" />
     <Compile Include="Items\Consumables\DecorativeStableSet.cs" />
     <Compile Include="Items\Consumables\EmbroideryTool.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\CauldronBurningAddon.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\CauldronUnlitAddon.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\GypsyCampBlue.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\GypsyCampGreen.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\MoonstoneJewelry.cs" />
     <Compile Include="Items\Custom\fakeArvore.cs" />
     <Compile Include="Items\Custom\fakeMandrake .cs" />
     <Compile Include="Items\Custom\fakeMinerio.cs" />
+    <Compile Include="Items\Custom\monsternest\DragonNest.cs" />
+    <Compile Include="Items\Custom\monsternest\DreadSpiderNest.cs" />
+    <Compile Include="Items\Custom\monsternest\MonsterNest.cs" />
+    <Compile Include="Items\Custom\monsternest\MonsterNestLoot.cs" />
+    <Compile Include="Items\Custom\monsternest\RatNest.cs" />
+    <Compile Include="Items\Custom\monsternest\SkeletalKnightNest.cs" />
     <Compile Include="Items\Custom\RPGalerta.cs" />
     <Compile Include="Items\Damageable\Beacon.cs" />
     <Compile Include="Items\Damageable\DamageableItem.cs" />
@@ -866,6 +878,7 @@
     <Compile Include="Mobiles\Normal\EvilMage.cs" />
     <Compile Include="Mobiles\Normal\EvilMageLord.cs" />
     <Compile Include="Mobiles\NPCs\Gardener.cs" />
+    <Compile Include="Mobiles\NPCs\Gypsy.cs" />
     <Compile Include="Mobiles\NPCs\GypsyFortuneTeller.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\BaseProperty.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\Gumps.cs" />
@@ -2773,7 +2786,6 @@
     <Compile Include="Mobiles\NPCs\Gorrow.cs" />
     <Compile Include="Mobiles\NPCs\GrandpaCharley.cs" />
     <Compile Include="Mobiles\NPCs\Gustar.cs" />
-    <Compile Include="Mobiles\NPCs\Gypsy.cs" />
     <Compile Include="Mobiles\NPCs\GypsyAnimalTrainer.cs" />
     <Compile Include="Mobiles\NPCs\GypsyBanker.cs" />
     <Compile Include="Mobiles\NPCs\GypsyMaiden.cs" />

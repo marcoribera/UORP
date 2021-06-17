@@ -55,11 +55,11 @@ namespace Server.Items
 			{
 				m.AddToBackpack( new BankCheck( Utility.Random( 3000, 4000 )));
 			}
-			else if ( chance < 55 )
+			else if ( chance < 50 )
 			{
 				m.AddToBackpack( new BankCheck( Utility.Random( 4000, 5000 )));
 			}
-			else if ( chance < 65 )
+			else if ( chance < 60 )
 			{
 				m.AddToBackpack( new BankCheck( Utility.Random( 5000, 6000 )));
 			}
@@ -67,17 +67,17 @@ namespace Server.Items
 			{
 				m.AddToBackpack( new BankCheck( Utility.Random( 6000, 7000 )));
 			}
-			else if ( chance < 85 )
+			else if ( chance < 80 )
 			{
-				m.AddToBackpack( new BankCheck( Utility.Random( 7000, 10000 )));
+				m.AddToBackpack( new BankCheck( Utility.Random( 7000, 8000 )));
 			}
-			else if ( chance < 95 )
+			else if ( chance < 90 )
 			{
-				m.AddToBackpack( new BankCheck( Utility.Random( 10000, 15000 )));
+				m.AddToBackpack( new BankCheck( Utility.Random( 8000, 9000 )));
 			}
 			else
 			{
-				m.AddToBackpack( new BankCheck( Utility.Random( 20000, 30000 )));
+				m.AddToBackpack( new BankCheck( Utility.Random( 7000, 10000 )));
 			}
 		}
 

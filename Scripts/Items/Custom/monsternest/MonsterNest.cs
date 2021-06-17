@@ -68,14 +68,13 @@ namespace Server.Items
 		public MonsterNest() : base( 4962 )
 		{
 			m_NestSpawnType = null;
-			if (Name == null)
-				Name = "Monster Nest";
+			Name = "Monster Nest";
 			m_Spawn = new ArrayList();
 			Weight = 0.1;
 			Hue = 1818;
 			HitsMax = 300;
 			Hits = 300;
-			RangeHome = 20;
+			RangeHome = 10;
 			RespawnTime = TimeSpan.FromSeconds( 15.0 );
 			new InternalTimer( this ).Start();
 			new RegenTimer( this ).Start();
@@ -103,51 +102,35 @@ namespace Server.Items
 		public void Damage( int damage )
 		{
 			this.Hits -= damage;
-			//this.PublicOverheadMessage( MessageType.Regular, 0x22, false, damage.ToString() );
+			this.PublicOverheadMessage( MessageType.Regular, 0x22, false, damage.ToString() );
 			if ( this.Hits <= 0 )
 				this.Destroy();
 		}
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.SendMessage( 0, "You disturb the hideous object!" );
-			
+			from.SendMessage( 0, "You begin to attack the object." );
 			if ( this.m_Entity != null )
-			{
-				Mobile entity = this.m_Entity;
-				if (this.Location != entity.Location || this.Map != entity.Map )
-					entity.MoveToWorld( this.Location, this.Map );
-
 				from.Combatant = this.m_Entity;
-			}
-			else
-			{
-				m_Entity = new MonsterNestEntity( this );
-				m_Entity.MoveToWorld( this.Location, this.Map );
-				from.Combatant = this.m_Entity;
-			}	
 		}
 
 		public virtual void AddLoot()
 		{
-			if (this.LootLevel != 0)
-			{
-				MonsterNestLoot loot = new MonsterNestLoot( 6585, this.Hue, this.m_LootLevel, "Monster Nest remains" );
-				loot.MoveToWorld( this.Location, this.Map );
-			}
+			MonsterNestLoot loot = new MonsterNestLoot( 6585, this.Hue, this.m_LootLevel, "Monster Nest remains" );
+			loot.MoveToWorld( this.Location, this.Map );
 		}
 
 		public void Destroy()
 		{
 			AddLoot();
-			/*if ( m_Spawn != null && m_Spawn.Count > 0 )
+			if ( m_Spawn != null && m_Spawn.Count > 0 )
 			{
 				for( int i = 0; i < this.m_Spawn.Count; i++ )
 				{
 					Mobile m = (Mobile)this.m_Spawn[i];
-					m.Delete();
+					m.Kill();
 				}
-			}*/
+			}
 			if ( this.m_Entity != null )
 				this.m_Entity.Delete();
 			this.Delete();
@@ -190,7 +173,6 @@ namespace Server.Items
 							m.MoveToWorld( this.Location, this.Map );
 							m.Home = this.Location;
 							m.RangeHome = this.m_RangeHome;
-							((BaseCreature)m).OnAfterSpawn();
 						}
 					}
 				}
@@ -248,7 +230,7 @@ namespace Server.Items
 			{
 				if ( nest != null && !nest.Deleted )
 				{
-					nest.Hits += nest.HitsMax / 20;
+					nest.Hits += nest.HitsMax / 10;
 					if ( nest.Hits > nest.HitsMax )
 						nest.Hits = nest.HitsMax;
 					new RegenTimer( nest ).Start();
@@ -267,13 +249,8 @@ namespace Server.Items
 			{
 				if ( nest != null && !nest.Deleted )
 				{
-					new InternalTimer( nest ).Start();
-
-					if ( ( nest is PortalEvil && ((PortalEvil)nest).knockout ) || ( nest is PortalGood && ((PortalGood)nest).knockout ) )
-						return;
-					
 					nest.DoSpawn();
-
+					new InternalTimer( nest ).Start();
 				}
 			}
 		}
@@ -282,13 +259,6 @@ namespace Server.Items
 	public class MonsterNestEntity : BaseCreature
 	{
 		private Item m_MonsterNest;
-
-		[CommandProperty( AccessLevel.GameMaster )]
-        public Item MonstersNest
-        {
-            get{ return m_MonsterNest; }
-            set{ m_MonsterNest = value; }
-        }	
 
 		[Constructable]
 		public MonsterNestEntity( MonsterNest nest ) : base( AIType.AI_Melee, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
@@ -317,12 +287,7 @@ namespace Server.Items
 			SetResistance( ResistanceType.Energy, 0 );
 
 			Fame = 5000;
-			if (nest is GoodDragonNest)
-				Karma = 500;
-			else if (nest is PortalEvil || nest is PortalGood)
-				Karma = 0;
-			else 
-				Karma = -500;
+			Karma = -5000;
 
 			VirtualArmor = 0;
 			CantWalk = true;
@@ -341,135 +306,12 @@ namespace Server.Items
 
 		public override void OnDamage( int amount, Mobile from, bool willkill )
 		{
-			if (from == null || amount == null )
-				return;
-			
-			MonsterNest nest = null;
-
 			if ( this.m_MonsterNest != null && this.m_MonsterNest is MonsterNest )
-				nest = this.m_MonsterNest as MonsterNest;
-
-			if (nest == null)
-				return;
-
-			if ( nest is PortalEvil || nest is PortalGood )
 			{
-				Mobile killer = null;
-
-				if (from is PlayerMobile)
-					killer = from;
-
-				if ( from is BaseCreature && (((BaseCreature)from).Controlled || ((BaseCreature)from).Summoned ) )
-					killer = ((BaseCreature)from).GetMaster();
-
-				if ( killer != null ) // got a player - player is destroying nest
-				{
-					if ( ((PlayerMobile)killer).BalanceStatus != 0 )
-					{
-						if (willkill)
-						{
-							if (m_MonsterNest is PortalGood && ((PlayerMobile)killer).BalanceStatus < 0 )
-								((PlayerMobile)killer).BalanceEffect += (int)(( (double)((MonsterNest)m_MonsterNest).HitsMax /8500 ) * 5000) ;
-							else if (m_MonsterNest is PortalEvil && ((PlayerMobile)killer).BalanceStatus > 0 )
-								((PlayerMobile)killer).BalanceEffect -= (int)(( (double)((MonsterNest)m_MonsterNest).HitsMax /8500 ) * 5000) ;
-						}
-						nest.Damage( amount );
-						base.OnDamage( amount, from, willkill );
-						return;						
-					}
-					else // player is not pledged
-					{
-						if ( willkill )
-						{
-							nest.HitsMax = 1000;
-							nest.Hits = nest.HitsMax;
-							willkill = false;
-							this.Hits = nest.Hits;
-							nest.MaxCount = 1;
-							if (nest is PortalEvil)
-								((PortalEvil)nest).knockout = true;
-							if (nest is PortalGood)
-								((PortalGood)nest).knockout = true;
-							
-							from.SendMessage( 0,  "You are not pledged to the balance and cannot affect this strange portal, but you have weakened it." ); 
-							return;
-						}
-					}
-				}
-				else if (willkill) // not attacked by a player
-				{
-					nest.HitsMax = 1000;
-					nest.Hits = nest.HitsMax;
-					willkill = false;
-					this.Hits = nest.Hits;
-					nest.MaxCount = 1;
-					return;
-				}
-
+				MonsterNest nest = this.m_MonsterNest as MonsterNest;
+				nest.Damage( amount );
 			}
-
-			nest.Damage( amount );
 			base.OnDamage( amount, from, willkill );
-		}
-
-		public override void AlterMeleeDamageFrom( Mobile from, ref int damage )
-		{
-			MonsterNest nest = null;
-
-			if ( this.m_MonsterNest != null && this.m_MonsterNest is MonsterNest )
-				nest = this.m_MonsterNest as MonsterNest;
-
-			if ( nest != null && ( nest is PortalEvil || nest is PortalGood ) )
-			{
-				if ( from is BaseCreature )
-				{
-					BaseCreature bc = (BaseCreature)from;
-
-					if (!bc.Controlled)
-						damage = 0; // immune to non player damage
-					
-					if (bc.ControlMaster is PlayerMobile)
-					{
-						PlayerMobile mastah = (PlayerMobile)bc.ControlMaster;
-						if (mastah.BalanceStatus == 0)
-							damage = damage /10;
-					}
-				}
-				else if (from is PlayerMobile && ((PlayerMobile)from).BalanceStatus == 0)
-				{
-					damage = damage / 10;
-				}
-			}
-		}
-		
-		public override void AlterSpellDamageFrom( Mobile from, ref int damage )
-		{
-			MonsterNest nest = null;
-
-			if ( this.m_MonsterNest != null && this.m_MonsterNest is MonsterNest )
-				nest = this.m_MonsterNest as MonsterNest;
-
-			if ( nest != null && ( nest is PortalEvil || nest is PortalGood ) )
-			{
-				if ( from is BaseCreature )
-				{
-					BaseCreature bc = (BaseCreature)from;
-
-					if (!bc.Controlled)
-						damage = 0; // immune to non player damage
-					
-					if (bc.ControlMaster is PlayerMobile)
-					{
-						PlayerMobile mastah = (PlayerMobile)bc.ControlMaster;
-						if (mastah.BalanceStatus == 0)
-							damage = damage /10;
-					}
-				}
-				else if (from is PlayerMobile && ((PlayerMobile)from).BalanceStatus == 0)
-				{
-					damage = damage / 10;
-				}
-			}
 		}
 
 		public override int GetAngerSound()

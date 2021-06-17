@@ -7,40 +7,39 @@ namespace Server.Mobiles
     {
         [Constructable]
         public Gypsy()
-            : base(AIType.AI_Animal, FightMode.None, 10, 1, 0.2, 0.4)
+            : base(AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4)
         {
-            InitStats(31, 41, 51);
+            this.InitStats(31, 41, 51);
 
-            SpeechHue = Utility.RandomDyedHue();
+            this.SpeechHue = Utility.RandomDyedHue();
 
-			SetSkill(SkillName.Carisma, 64.0, 100.0);
-            SetSkill(SkillName.Culinaria, 65, 88);
-            SetSkill(SkillName.Prestidigitacao, 65, 88);
-            SetSkill(SkillName.Prestidigitacao, 65, 88);
+            this.SetSkill(SkillName.Culinaria, 65, 88);
+            this.SetSkill(SkillName.Prestidigitacao, 65, 88);
+            this.SetSkill(SkillName.Prestidigitacao, 65, 88);
 
-            Hue = Utility.RandomSkinHue();
+            this.Hue = Utility.RandomSkinHue();
 
-            if (Female = Utility.RandomBool())
+            if (this.Female = Utility.RandomBool())
             {
-                Body = 0x191;
-                Name = NameList.RandomName("female");
-                AddItem(new Kilt(Utility.RandomDyedHue()));
-                AddItem(new Shirt(Utility.RandomDyedHue()));
-                AddItem(new ThighBoots());
-                Title = "the gypsy";
+                this.Body = 0x191;
+                this.Name = NameList.RandomName("female");
+                this.AddItem(new Kilt(Utility.RandomDyedHue()));
+                this.AddItem(new Shirt(Utility.RandomDyedHue()));
+                this.AddItem(new ThighBoots());
+                this.Title = "the gypsy";
             }
             else
             {
-                Body = 0x190;
-                Name = NameList.RandomName("male");
-                AddItem(new ShortPants(Utility.RandomNeutralHue()));
-                AddItem(new Shirt(Utility.RandomDyedHue()));
-                AddItem(new Sandals());
-                Title = "the gypsy";
+                this.Body = 0x190;
+                this.Name = NameList.RandomName("male");
+                this.AddItem(new ShortPants(Utility.RandomNeutralHue()));
+                this.AddItem(new Shirt(Utility.RandomDyedHue()));
+                this.AddItem(new Sandals());
+                this.Title = "the gypsy";
             }
 
-            AddItem(new Bandana(Utility.RandomDyedHue()));
-            AddItem(new Dagger());
+            this.AddItem(new Bandana(Utility.RandomDyedHue()));
+            this.AddItem(new Dagger());
 
             Utility.AssignRandomHair(this);
 
@@ -72,6 +71,24 @@ namespace Server.Mobiles
                 return false;
             }
         }
+
+        public override void OnDeath(Container c)
+        {
+
+            base.OnDeath(c);
+
+            if (Utility.RandomDouble() < 0.001) // 1/1000 chance
+
+            switch (Utility.Random(4))
+            {
+                case 0: c.DropItem(new MoonstoneBracelet()); break;
+                case 1: c.DropItem(new MoonstoneEarrings()); break;
+                case 2: c.DropItem(new MoonstoneRing()); break;
+                case 3: c.DropItem(new MoonstoneNecklace()); break;
+        
+            }
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
