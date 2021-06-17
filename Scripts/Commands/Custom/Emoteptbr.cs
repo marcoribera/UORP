@@ -238,7 +238,7 @@ namespace Server.Commands
 				case EmotePage.P1:
 				{
 					AddButtonLabeled( 10, 90, GetButtonID( 1, 1 ), "Ah");
-					AddButtonLabeled( 10, 115, GetButtonID( 1, 2 ), "Ah-ha");
+					AddButtonLabeled( 10, 115, GetButtonID( 1, 2 ), "Ahha");
 					AddButtonLabeled( 10, 140, GetButtonID( 1, 3 ), "Aplaudir");
 					AddButtonLabeled( 10, 165, GetButtonID( 1, 4 ), "Assoar o Nariz");
 					AddButtonLabeled( 10, 190, GetButtonID( 1, 5 ), "Reverência");
