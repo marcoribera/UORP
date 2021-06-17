@@ -91,6 +91,9 @@
     <Compile Include="Commands\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Custom\Classes\RPClasse.cs" />
+    <Compile Include="Custom\Classes\ClassePersonagem.cs" />
+    <Compile Include="Custom\Classes\Classes.cs" />
     <Compile Include="Custom\Idiomas\PolyglotMobile.cs" />
     <Compile Include="Custom\Idiomas\Translator\SelecionarIdioma.cs" />
     <Compile Include="Custom\Idiomas\Translator\Translate.cs" />

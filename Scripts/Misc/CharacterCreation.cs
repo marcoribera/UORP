@@ -285,8 +285,12 @@ namespace Server.Misc
 
             //MArcknight: Posição inicial de novos persoangens
 			//newChar.MoveToWorld(city.Location, map);
-
-            newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Ilshenar);
+            if (newChar.Race == Race.Human)
+                newChar.MoveToWorld(new Point3D(827, 1205, -70), Map.Ilshenar);
+            else if (newChar.Race == Race.Elf)
+                newChar.MoveToWorld(new Point3D(1267, 962, -27), Map.Ilshenar);
+            else if (newChar.Race == Race.Gargoyle)
+                newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Felucca); //Fora da área do pré alfa
 
             Utility.PushColor(ConsoleColor.Green);
 			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
@@ -928,18 +932,23 @@ namespace Server.Misc
 
 					var hue = Utility.RandomYellowHue();
 
-					if (elf)
-					{
-						if (m.Female)
-							EquipItem(new FemaleElvenRobe(hue));
-						else
-							EquipItem(new MaleElvenRobe(hue));
-					}
-					else
-					{
-						EquipItem(new Robe(hue));
-					}
-					break;
+                    if (elf)
+                    {
+                        EquipItem(new RuneBlade());
+                        if (m.Female)
+                            EquipItem(new FemaleElvenRobe(hue));
+                        else
+                            EquipItem(new MaleElvenRobe(hue));
+                    }
+                    else
+                    {
+                        EquipItem(new Robe(hue));
+                        if (human)
+                            EquipItem(new Katana());
+                        else if (gargoyle)
+                            EquipItem(new GlassSword());
+                    }
+                    break;
 				}
 				case SkillName.Adestramento:
 				{
@@ -969,8 +978,10 @@ namespace Server.Misc
 						EquipItem(new ElvenCompositeLongbow());
 					else if (human)
 						EquipItem(new Bow());
+                    else if (gargoyle)
+                        EquipItem(new Boomerang());
 
-					break;
+                        break;
 				}
 				case SkillName.ConhecimentoArmas:
 				{
@@ -1063,27 +1074,42 @@ namespace Server.Misc
 					PackItem(new Board(14));
 					PackItem(new Feather(5));
 					PackItem(new Shaft(5));
-					break;
+                    PackItem(new Board(10));
+                    PackItem(new Saw());
+                    break;
 				}
 				case SkillName.Sobrevivencia:
 				{
 					PackItem(new Bedroll());
 					PackItem(new Kindling(5));
-					break;
+                    EquipItem(new FishingPole());
+                    if (human || elf)
+                    {
+                        if (m_Mobile != null)
+                        {
+                            var shoes = m_Mobile.FindItemOnLayer(Layer.Shoes);
+
+                            if (shoes != null)
+                                shoes.Delete();
+                        }
+
+                        var hue = Utility.RandomYellowHue();
+
+                        if (elf)
+                            EquipItem(new ElvenBoots(hue));
+                        else
+                            EquipItem(new Boots(hue));
+
+                        PackItem(new SkinningKnife());
+                    }
+                    else if (gargoyle)
+                        PackItem(new SkinningKnife());
+
+
+
+
+                        break;
 				}
-                    /*
-				case SkillName.Carpintaria:
-				{
-					PackItem(new Board(10));
-					PackItem(new Saw());
-
-					if (human || elf)
-					{
-						EquipItem(new HalfApron(Utility.RandomYellowHue()));
-					}
-
-					break;
-				}*/
 				case SkillName.Erudicao:
 				{
 					PackItem(new BlankMap());
@@ -1091,7 +1117,15 @@ namespace Server.Misc
 					PackItem(new BlankMap());
 					PackItem(new BlankMap());
 					PackItem(new Sextant());
-					break;
+                    PackItem(new BlankScroll(2));
+                    PackItem(new BlueBook());
+                    if (elf)
+                        EquipItem(new WildStaff());
+                    else if (human)
+                        EquipItem(new GnarledStaff());
+                    else if (gargoyle)
+                        EquipItem(new SerpentStoneStaff());
+                    break;
 				}
 				case SkillName.Culinaria:
 				{
@@ -1132,74 +1166,35 @@ namespace Server.Misc
 						EquipItem(new BloodBlade());
 
 					break;
-				}/*
-				case SkillName.Sobrevivencia:
-				{
-					EquipItem(new FishingPole());
-
-					var hue = Utility.RandomYellowHue();
-
-					if (elf)
-					{
-						Item i = new Circlet();
-						i.Hue = hue;
-						EquipItem(i);
-					}
-					else if (human)
-					{
-						EquipItem(new FloppyHat(hue));
-					}
-
-					break;
-				}*/
+				}
 				case SkillName.Medicina:
 				{
 					PackItem(new Bandage(50));
 					PackItem(new Scissors());
 					break;
-				}/*
-				case SkillName.Adestramento:
-				{
-					if (elf)
-						EquipItem(new WildStaff());
-					else
-						EquipItem(new ShepherdsCrook());
-
-					break;
-				}*/
+				}
 				case SkillName.Furtividade:
 				{
 					if (human || elf)
 						EquipItem(new Cloak(0x455));
 
 					break;
-				}/*
-				case SkillName.Erudicao:
-				{
-					PackItem(new BlankScroll(2));
-					PackItem(new BlueBook());
-					break;
-				}*/
-                    /*
-				case SkillName.Erudicao:
-				{
-					if (elf)
-						EquipItem(new WildStaff());
-					else if (human)
-						EquipItem(new GnarledStaff());
-					else if (gargoyle)
-						EquipItem(new SerpentStoneStaff());
-
-					break;
-				}*/
+				}
 				case SkillName.Mecanica:
 				{
-					PackItem(new Lockpick(20));
-					break;
+                    PackItem(new Lockpick(20));
+                    PackItem(new TinkerTools());
+                    PackItem(new IronIngot(50));
+                    PackItem(new Axle());
+                    PackItem(new AxleGears());
+                    PackItem(new Springs());
+                    PackItem(new ClockFrame());
+                    break;
 				}
 				case SkillName.Extracao:
 				{
-					if (human || elf)
+                    PackItem(new Pickaxe());
+                    if (human || elf)
 						EquipItem(new Hatchet());
 					else if (gargoyle)
 						EquipItem(new DualShortAxes());
@@ -1257,12 +1252,7 @@ namespace Server.Misc
 					}
 
 					break;
-				}/*
-				case SkillName.Extracao:
-				{
-					PackItem(new Pickaxe());
-					break;
-				}*/
+				}
 				case SkillName.Tocar:
 				{
 					PackInstrument();
@@ -1337,12 +1327,7 @@ namespace Server.Misc
 					}
 
 					break;
-				}/*
-				case SkillName.Prestidigitacao:
-				{
-					PackItem(new Lockpick(20));
-					break;
-				}*/
+				}
 				case SkillName.Cortante:
 				{
 					if (elf)
@@ -1353,61 +1338,13 @@ namespace Server.Misc
 						EquipItem(new GlassSword());
 
 					break;
-				}/*
-				case SkillName.Anatomia:
-				{
-					if (elf)
-						EquipItem(new RuneBlade());
-					else if (human)
-						EquipItem(new Katana());
-					else if (gargoyle)
-						EquipItem(new GlassSword());
-
-					break;
-				}*/
+				}
 				case SkillName.Costura:
 				{
 					PackItem(new BoltOfCloth());
 					PackItem(new SewingKit());
 					break;
-				}/*
-				case SkillName.Mecanica:
-				{
-					PackItem(new TinkerTools());
-					PackItem(new IronIngot(50));
-					PackItem(new Axle());
-					PackItem(new AxleGears());
-					PackItem(new Springs());
-					PackItem(new ClockFrame());
-					break;
-				}*/
-                    /*
-				case SkillName.Sobrevivencia:
-				{
-					if (human || elf)
-					{
-						if (m_Mobile != null)
-						{
-							var shoes = m_Mobile.FindItemOnLayer(Layer.Shoes);
-
-							if (shoes != null)
-								shoes.Delete();
-						}
-
-						var hue = Utility.RandomYellowHue();
-
-						if (elf)
-							EquipItem(new ElvenBoots(hue));
-						else
-							EquipItem(new Boots(hue));
-
-						EquipItem(new SkinningKnife());
-					}
-					else if (gargoyle)
-						PackItem(new SkinningKnife());
-
-					break;
-				}*/
+				}
 				case SkillName.Veterinaria:
 				{
 					PackItem(new Bandage(5));
@@ -1427,14 +1364,7 @@ namespace Server.Misc
 					}
 
 					break;
-				}/*
-				case SkillName.Atirar:
-				{
-					if (gargoyle)
-						EquipItem(new Boomerang());
-
-					break;
-				}*/
+				}
 				case SkillName.Misticismo:
 				{
 					PackItem(new MysticBook((ulong)0xAB));

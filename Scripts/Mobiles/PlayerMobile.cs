@@ -44,6 +44,7 @@ using Server.Spells.Spellweaving;
 using Server.Engines.SphynxFortune;
 using Server.Engines.VendorSearching;
 using Server.Targeting;
+using Server.Custom.Classes;
 
 using RankDefinition = Server.Guilds.RankDefinition;
 using Server.Engines.Fellowship;
@@ -231,6 +232,9 @@ namespace Server.Mobiles
         private ExtendedPlayerFlag m_ExtendedFlags;
         private int m_Profession;
 
+        public int ClasseBasicaID, ClasseIntermediariaID, ClasseAvancadaID, ClasseLendariaID;
+        public TierClasse ClasseAbandonavelID;
+
         public FurtivoTimer m_FurtivoTimer;
 
         private int m_NonAutoreinsuredItems;
@@ -362,6 +366,22 @@ namespace Server.Mobiles
         #endregion
 
         #region Getters & Setters
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseBasica { get { return ClasseBasicaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseBasicaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseIntermediaria { get { return ClasseIntermediariaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseIntermediariaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseAvancada { get { return ClasseAvancadaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseAvancadaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseLendaria { get { return ClasseLendariaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseLendariaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public TierClasse ClasseAbandonavel { get { return ClasseAbandonavelID; } set { ClasseAbandonavelID = value; } }
+
         public List<Mobile> RecentlyReported { get { return m_RecentlyReported; } set { m_RecentlyReported = value; } }
 
 		public List<Mobile> AutoStabled { get { return m_AutoStabled; } }
@@ -4072,8 +4092,8 @@ namespace Server.Mobiles
             }
 
             //Início do decremento de Desmaio e teletransportes
-
-            SetLocation(new Point3D(1503, 1630, 10), true); //definir local da sala dos mortos
+            MoveToWorld(new Point3D(4861, 3581, 0), Map.Felucca); //Sala dos Mortos
+            //SetLocation(new Point3D(4861, 3581, 0), true); //Sala dos mortos em mapa antigo
             Random perdaDesmaio = new Random();
             double perda = 0.5 + perdaDesmaio.NextDouble();
             Desmaio -= perda;
@@ -4716,6 +4736,13 @@ namespace Server.Mobiles
 
 			switch (version)
 			{
+                case 41:
+                    ClasseBasicaID = reader.ReadInt();
+                    ClasseIntermediariaID = reader.ReadInt();
+                    ClasseAvancadaID = reader.ReadInt();
+                    ClasseLendariaID = reader.ReadInt();
+                    ClasseAbandonavelID = (TierClasse)reader.ReadInt();
+                    goto case 40;
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT turn ins to PointsSystem
                 case 39: // Version 39, removed ML quest save/load
                 case 38:
@@ -5182,7 +5209,13 @@ namespace Server.Mobiles
 
 			base.Serialize(writer);
 
-			writer.Write(40); // version
+			writer.Write(41); // version
+
+            writer.Write((int)ClasseBasicaID);
+            writer.Write((int)ClasseIntermediariaID);
+            writer.Write((int)ClasseAvancadaID);
+            writer.Write((int)ClasseLendariaID);
+            writer.Write((int)ClasseAbandonavelID);
 
             writer.Write((DateTime)NextGemOfSalvationUse);
 
