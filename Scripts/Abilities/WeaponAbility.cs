@@ -1,3 +1,4 @@
+using Server.Engines.XmlSpawner2;
 using System;
 using System.Collections;
 
@@ -144,7 +145,20 @@ namespace Server.Items
 
             return mana;
         }
-
+        public virtual WeaponAbility GetWeaponAbility()
+        {
+            // ARTEGORDONMOD
+            // allow creatures special attack ability to be specified by the xmlweaponability attachment
+            XmlWeaponAbility a = (XmlWeaponAbility)XmlAttach.FindAttachment(this, typeof(XmlWeaponAbility));
+            if (a != null)
+            {
+                return a.WeaponAbility;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public virtual bool CheckWeaponSkill(Mobile from)
         {
             BaseWeapon weapon = from.Weapon as BaseWeapon;
