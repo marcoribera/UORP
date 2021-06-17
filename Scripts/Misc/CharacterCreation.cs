@@ -393,7 +393,7 @@ namespace Server.Misc
 
 			for (var i = 0; i < skills.Length; ++i)
 			{
-				if (skills[i].Value < 0 || skills[i].Value > 43)
+				if (skills[i].Value < 0 || skills[i].Value > 50)
 					return false;
 
 				total += skills[i].Value;
@@ -1339,7 +1339,8 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Cortante:
+                case SkillName.UmaMao:
+                case SkillName.Cortante:
 				{
 					if (elf)
 						EquipItem(new RuneBlade());
@@ -1350,7 +1351,12 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Costura:
+                case SkillName.DuasMaos:
+                    {
+                        EquipItem(new DoubleAxe());
+                        break;
+                    }
+                case SkillName.Costura:
 				{
 					PackItem(new BoltOfCloth());
 					PackItem(new SewingKit());
