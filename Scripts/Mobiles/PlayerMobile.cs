@@ -2107,7 +2107,7 @@ namespace Server.Mobiles
 
             if (!Siege.SiegeShard && Core.TickCount - NextPassiveDetectHidden >= 0)
             {
-                DetectHidden.DoPassiveDetect(this);
+                Percepcao.DoPassiveDetect(this);
                 NextPassiveDetectHidden = Core.TickCount + (int)TimeSpan.FromSeconds(2).TotalMilliseconds;
             }
 			return true;

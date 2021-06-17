@@ -1591,9 +1591,9 @@ namespace Server.Mobiles
 			}
             else if (m_Mobile.CanDetectHidden)
 			{
-				DetectHidden.OnUse(m_Mobile);
+				Percepcao.OnUse(m_Mobile);
 
-				if (m_Mobile.Target is DetectHidden.InternalTarget)
+				if (m_Mobile.Target is Percepcao.InternalTarget)
 				{
 					m_Mobile.Target.Invoke(m_Mobile, m_RevealTarget);
 				}
