@@ -289,7 +289,7 @@ namespace Server.Misc
             {
                 ((PlayerMobile)newChar).KnowEorin = true;
                 ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Eorin;
-                newChar.MoveToWorld(new Point3D(827, 1205, -70), Map.Ilshenar);
+                newChar.MoveToWorld(new Point3D(635, 832, -61), Map.Ilshenar);
             }
             else if (newChar.Race == Race.Elf)
             {
@@ -312,7 +312,27 @@ namespace Server.Misc
 			Utility.PopColor();
 
 			new WelcomeTimer(newChar).Start();
-		}
+
+            //Mensagem RP para começar a vida.
+            Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
+            {
+                if (m_Mobile.Race == Race.Human)
+                {
+                    m_Mobile.PrivateOverheadMessage(MessageType.Emote, 33, false, "*acorda tont" + (m_Mobile.Female ? "a.*" : "o.*"), m_Mobile.NetState);
+                    m_Mobile.SendMessage(33, "Mais um dia levantando no lixo, amaldiçoando essa terra desgraçada e jurando nunca mais beber.");
+                }
+                else if (m_Mobile.Race == Race.Elf)
+                {
+                    m_Mobile.PrivateOverheadMessage(MessageType.Emote, 33, false, "*pernas inquietas*", m_Mobile.NetState);
+                    m_Mobile.SendMessage(33, "O dia parece promissor. Você sente vontade de andar por aí.");
+                }
+                else if (m_Mobile.Race == Race.Gargoyle)
+                {
+                    m_Mobile.PrivateOverheadMessage(MessageType.Emote, 33, false, "Você não existe", m_Mobile.NetState);
+                    m_Mobile.SendMessage(33, "Raça indisponível no pré-alfa. No Alfa liberaremos... Paciencia");
+                }
+            });
+        }
 
 		private static void FixStats(ref int str, ref int dex, ref int intel, int max)
 		{
