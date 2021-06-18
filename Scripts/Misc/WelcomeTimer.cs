@@ -11,8 +11,8 @@ namespace Server.Misc
 	{
 		private static readonly string[] m_Messages =
 		{
-			"Welcome to " + ServerList.ServerName + ".", //
-			"Please enjoy your stay!"
+			"Bem vindo ao Pré-alfa do " + ServerList.ServerName + ".", //
+			"Roleplay ON"
 		};
 
 		private static readonly string[] m_TCMessages =
@@ -52,8 +52,10 @@ namespace Server.Misc
 			if (m_State < m_Lines.Length)
                 m_Mobile.SendMessage(0x35, m_Lines[m_State++]);
 
-			if (m_State == m_Lines.Length)
-				Stop();
+            if (m_State == m_Lines.Length)
+            {
+                Stop();
+            }
 		}
 	}
 }
