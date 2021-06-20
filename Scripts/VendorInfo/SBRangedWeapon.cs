@@ -41,7 +41,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(Bolt), 10, 500, 0x1BFB, 0, true));
                 Add(new GenericBuyInfo(typeof(Bow), 250, 3, 0x13B2, 0));
                 Add(new GenericBuyInfo(typeof(Arrow), 10, 500, 0xF3F, 0, true));
-                Add(new GenericBuyInfo(typeof(Feather), 4, 30 0x1BD1, 0, true));
+                Add(new GenericBuyInfo(typeof(Feather), 4, 30, 0x1BD1, 0, true));
                 Add(new GenericBuyInfo(typeof(Shaft), 3, 30, 0x1BD4, 0, true));
             }
         }

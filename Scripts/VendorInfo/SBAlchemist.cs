@@ -56,8 +56,8 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 40, 0xF8D, 0));
                 Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 40, 0xF8C, 0));
 
-                Add(new GenericBuyInfo(typeof(Bottle), 10, 50 0xF0E, 0, true)); 
-                Add(new GenericBuyInfo(typeof(HeatingStand), 50, 2 0x1849, 0));
+                Add(new GenericBuyInfo(typeof(Bottle), 10, 50, 0xF0E, 0, true)); 
+                Add(new GenericBuyInfo(typeof(HeatingStand), 50, 2, 0x1849, 0));
               //  Add(new GenericBuyInfo(typeof(SkinTingeingTincture), 1255, 20, 0xEFF, 90));
 
                 if (m.Map != Map.TerMur)

@@ -50,12 +50,12 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 40, 0xF8D, 0));
                 Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 40, 0xF8C, 0));
 
-                Add(new GenericBuyInfo(typeof(Bottle), 10, 50 0xF0E, 0, true));
-                Add(new GenericBuyInfo(typeof(HeatingStand), 50, 2 0x1849, 0))
+                Add(new GenericBuyInfo(typeof(Bottle), 10, 50, 0xF0E, 0, true));
+                Add(new GenericBuyInfo(typeof(HeatingStand), 50, 2, 0x1849, 0));
 
-               // Add(new GenericBuyInfo("Crafting Glass With Glassblowing", typeof(GlassblowingBook), 10637, 30, 0xFF4, 0));
-               // Add(new GenericBuyInfo("Finding Glass-Quality Sand", typeof(SandMiningBook), 10637, 30, 0xFF4, 0));
-               // Add(new GenericBuyInfo("1044608", typeof(Blowpipe), 21, 100, 0xE8A, 0x3B9));
+                // Add(new GenericBuyInfo("Crafting Glass With Glassblowing", typeof(GlassblowingBook), 10637, 30, 0xFF4, 0));
+                // Add(new GenericBuyInfo("Finding Glass-Quality Sand", typeof(SandMiningBook), 10637, 30, 0xFF4, 0));
+                // Add(new GenericBuyInfo("1044608", typeof(Blowpipe), 21, 100, 0xE8A, 0x3B9));
             }
         }
 

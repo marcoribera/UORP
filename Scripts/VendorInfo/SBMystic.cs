@@ -38,7 +38,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(AnimatedWeaponScroll), 250, 10, 0x2DA4, 0, true));
                 Add(new GenericBuyInfo(typeof(StoneFormScroll), 250, 10, 0x2DA5, 0, true));
                 Add(new GenericBuyInfo(typeof(MysticBook), 1000, 10, 0x2D9D, 0, true));
-                Add(new GenericBuyInfo(typeof(ScribesPen), , 50, 0xFBF, 0, true));
+                Add(new GenericBuyInfo(typeof(ScribesPen), 10, 50, 0xFBF, 0, true));
                 Add(new GenericBuyInfo(typeof(BlankScroll), 15, 20, 0x0E34, 0, true));
            //     Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0, true));
 
