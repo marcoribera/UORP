@@ -637,13 +637,13 @@ namespace Server
 		private static AOSStatusHandler m_AOSStatusHandler;
 
 		public static AOSStatusHandler AOSStatusHandler { get { return m_AOSStatusHandler; } set { m_AOSStatusHandler = value; } }
-		#endregion
+        #endregion
 
-		#region Regeneration
-		private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate;
-		private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate;
+        #region Regeneration
+        private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate, m_DesmaioRegenRate; //Adicionado Regen Rate para Desmaio
+        private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate, m_DefaultDesmaioRate; //Adicionado Regen Rate Default para Desmaio
 
-		public static RegenRateHandler HitsRegenRateHandler { get { return m_HitsRegenRate; } set { m_HitsRegenRate = value; } }
+        public static RegenRateHandler HitsRegenRateHandler { get { return m_HitsRegenRate; } set { m_HitsRegenRate = value; } }
 
 		public static TimeSpan DefaultHitsRate { get { return m_DefaultHitsRate; } set { m_DefaultHitsRate = value; } }
 
@@ -653,9 +653,13 @@ namespace Server
 
 		public static RegenRateHandler ManaRegenRateHandler { get { return m_ManaRegenRate; } set { m_ManaRegenRate = value; } }
 
-		public static TimeSpan DefaultManaRate { get { return m_DefaultManaRate; } set { m_DefaultManaRate = value; } }
+        public static TimeSpan DefaultManaRate { get { return m_DefaultManaRate; } set { m_DefaultManaRate = value; } }
 
-		public static TimeSpan GetHitsRegenRate(Mobile m)
+        public static RegenRateHandler DesmaioRegenRateHandler { get { return m_DesmaioRegenRate; } set { m_DesmaioRegenRate = value; } }
+
+        public static TimeSpan DefaultDesmaioRate { get { return m_DefaultDesmaioRate; } set { m_DefaultDesmaioRate = value; } }
+
+        public static TimeSpan GetHitsRegenRate(Mobile m)
 		{
 			if (m_HitsRegenRate == null)
 			{
@@ -690,9 +694,22 @@ namespace Server
 				return m_ManaRegenRate(m);
 			}
 		}
-		#endregion
 
-		private class MovementRecord
+        public static TimeSpan GetDesmaioRegenRate(Mobile m)
+        {
+            if (m_DesmaioRegenRate == null)
+            {
+                return m_DefaultDesmaioRate;
+            }
+            else
+            {
+                return m_DesmaioRegenRate(m);
+            }
+        }
+
+        #endregion
+
+        private class MovementRecord
 		{
 			public long m_End;
 
@@ -752,7 +769,7 @@ namespace Server
 		private string m_Language;
 		private NetState m_NetState;
 		private bool m_Female, m_Warmode, m_Hidden, m_Blessed, m_Flying;
-        private int m_StatCap;
+        protected int m_StatCap;
 		private int m_StrCap;
 		private int m_DexCap;
 		private int m_IntCap;
@@ -761,11 +778,12 @@ namespace Server
 		private int m_IntMaxCap;
 		private int m_Str, m_Dex, m_Int;
 		private int m_Hits, m_Stam, m_Mana;
-		private int m_Fame, m_Karma;
+        private double m_Desmaio; //Variável que armazena os pontos de Desmaio
+        private int m_Fame, m_Karma;
 		private AccessLevel m_AccessLevel;
 		private Skills m_Skills;
-		private List<Item> m_Items;
-		private bool m_Player;
+		protected List<Item> m_Items;
+		protected bool m_Player;
 		private string m_Title;
 		private string m_Profile;
 		private bool m_ProfileLocked;
@@ -789,11 +807,12 @@ namespace Server
 		private DateTime[] m_StuckMenuUses;
 		private Timer m_ExpireCombatant;
 		private Timer m_ExpireCriminal;
-		private Timer m_ExpireAggrTimer;
+        protected Timer m_ExpireDeathTimer; // Controle de tempo de desmaio
+        private Timer m_ExpireAggrTimer;
 		private Timer m_LogoutTimer;
 		private Timer m_CombatTimer;
-		private Timer m_ManaTimer, m_HitsTimer, m_StamTimer;
-		private long m_NextSkillTime;
+        private Timer m_ManaTimer, m_HitsTimer, m_StamTimer, m_DesmaioTimer; // Criada variável para Timer de recuperar Desmaio
+        private long m_NextSkillTime;
 		private long m_NextActionMessage;
 		private bool m_Paralyzed;
 		private ParalyzedTimer m_ParaTimer;
@@ -1907,9 +1926,10 @@ namespace Server
 		public virtual bool CanRegenHits { get { return Alive && (RegenThroughPoison || !Poisoned); } }
 		public virtual bool CanRegenStam { get { return Alive; } }
 		public virtual bool CanRegenMana { get { return Alive; } }
+        public virtual bool CanRegenDesmaio { get { return (Alive && (Desmaio >= 1.0)); } }
 
-		#region Timers
-		private class ManaTimer : Timer
+        #region Timers
+        private class ManaTimer : Timer
 		{
 			private readonly Mobile m_Owner;
 
@@ -1975,7 +1995,29 @@ namespace Server
 			}
 		}
 
-		private class LogoutTimer : Timer
+        private class DesmaioTimer : Timer
+        {
+            private readonly Mobile m_Owner;
+
+            public DesmaioTimer(Mobile m)
+                : base(GetDesmaioRegenRate(m), GetDesmaioRegenRate(m))
+            {
+                Priority = TimerPriority.FiveSeconds;
+                m_Owner = m;
+            }
+
+            protected override void OnTick()
+            {//FLS TODO: Ajustar a quantidade de regen de DP por Tick antes do lançamento
+                if (m_Owner.CanRegenDesmaio) // m_Owner.Alive
+                {
+                    m_Owner.Desmaio += 0.1;
+                }
+
+                Delay = Interval = GetDesmaioRegenRate(m_Owner);
+            }
+        }
+
+        private class LogoutTimer : Timer
 		{
 			private readonly Mobile m_Mobile;
 
@@ -2142,9 +2184,75 @@ namespace Server
 				}
 			}
 		}
-		#endregion
+        //Evento de contagem de tempo para acordar do desmaio
+        //TODO: Ajustar o tempo que permanece Desmaiado antes de lançar
+        private static TimeSpan m_ExpireDeathDelay = TimeSpan.FromSeconds(15.0);
 
-		private long m_NextCombatTime;
+        public static TimeSpan ExpireDeathDelay { get { return m_ExpireDeathDelay; } set { m_ExpireDeathDelay = value; } }
+
+        public class ExpireDeathTimer : Timer
+        {
+            private readonly Mobile m_Mobile;
+            private int ticks_left;
+            private const double intervalo_desmaio = 10.0; //Intervalo entre as verificações de se deve ou não mandar mensagem para o jogador
+            private const int ticks_desmaio = 12; //Número de vezes que o tick será executado
+
+            public ExpireDeathTimer(Mobile m)
+                : base(TimeSpan.Zero, TimeSpan.FromSeconds(intervalo_desmaio), (int)ticks_desmaio)
+            {
+                Priority = TimerPriority.FiveSeconds;
+                m_Mobile = m;
+                ticks_left = ticks_desmaio-1;
+            }
+
+            public ExpireDeathTimer(Mobile m, TimeSpan delay, TimeSpan interval, int count)
+                : base(delay, interval, count)
+            {
+                //Priority = TimerPriority.FiveSeconds;
+                m_Mobile = m;
+                ticks_left = ticks_desmaio - 1;
+            }
+
+            protected override void OnTick()
+            {
+                if (m_Mobile.Desmaio >= 1.0)
+                {
+                    switch (ticks_left)
+                    {
+                        case 6:
+                            m_Mobile.SendMessage("Falta um minuto pra acordar do desmaio.");
+                            break;
+                        case 3:
+                            m_Mobile.SendMessage("Faltam trinta segundos pra acordar do desmaio.");
+                            break;
+                        case 1:
+                            m_Mobile.SendMessage("Faltam dez segundo pra acordar do desmaio.");
+                            break;
+                        case 0:
+                            //m_Mobile.SendMessage("Ultimo Tick");
+                            if (!m_Mobile.Alive) //no ultimo tick, tenta ressuscitar o morto
+                            {
+                                m_Mobile.SendMessage("Acordando.");
+                                m_Mobile.Resurrect();
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    m_Mobile.PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", m_Mobile.NetState);
+                    m_Mobile.SendMessage(88, "*Este personagem está MORTO", m_Mobile.NetState);
+                    this.Stop();
+                }
+                ticks_left--;
+            }
+        }
+        //Fim do Evento
+        #endregion
+
+        private long m_NextCombatTime;
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public long NextSkillTime { get { return m_NextSkillTime; } set { m_NextSkillTime = value; } }
@@ -3694,7 +3802,7 @@ namespace Server
 				}
 
 				SendIncomingPacket();
-				SendIncomingPacket();
+				//SendIncomingPacket();
 
 				OnAfterResurrect();
 
@@ -3889,7 +3997,12 @@ namespace Server
 				m_ManaTimer.Stop();
 			}
 
-			if (m_CombatTimer != null)
+            if (m_DesmaioTimer != null)
+            {
+                m_DesmaioTimer.Stop();
+            }
+
+            if (m_CombatTimer != null)
 			{
 				m_CombatTimer.Stop();
 			}
@@ -4171,7 +4284,7 @@ namespace Server
 			OnDeath(c);
 		}
 
-		private Container m_Corpse;
+		protected Container m_Corpse;
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public Container Corpse { get { return m_Corpse; } set { m_Corpse = value; } }
@@ -4231,7 +4344,7 @@ namespace Server
 			}
 			else
 			{
-				Send(DeathStatus.Instantiate(true));
+				//Send(DeathStatus.Instantiate(true));
 
 				Warmode = false;
 
@@ -4260,7 +4373,7 @@ namespace Server
 
 				ProcessDeltaQueue();
 
-				Send(DeathStatus.Instantiate(false));
+				//Send(DeathStatus.Instantiate(false));
 
 				CheckStatTimers();
 			}
@@ -5811,6 +5924,9 @@ namespace Server
 
 			switch (version)
 			{
+                case 38:
+                    m_Desmaio = reader.ReadDouble();
+                    goto case 37;
 				case 37:
 				{
 					m_DisplayGuildAbbr = reader.ReadBool();
@@ -6327,7 +6443,28 @@ namespace Server
 			{
 				Mana = ManaMax;
 			}
-		}
+
+            if (Desmaio < DesmaioMax)
+            {
+                if (CanRegenDesmaio)
+                {
+                    if (m_DesmaioTimer == null)
+                    {
+                        m_DesmaioTimer = new DesmaioTimer(this);
+                    }
+
+                    m_DesmaioTimer.Start();
+                }
+                else if (m_DesmaioTimer != null)
+                {
+                    m_DesmaioTimer.Stop();
+                }
+            }
+            else
+            {
+                Desmaio = DesmaioMax;
+            }
+        }
 
         public virtual void ResetStatTimers()
         {
@@ -6357,6 +6494,15 @@ namespace Server
                 m_ManaTimer = new ManaTimer(this);
                 m_ManaTimer.Start();
             }
+
+            if (m_DesmaioTimer != null)
+                m_DesmaioTimer.Stop();
+
+            if (CanRegenDesmaio && Desmaio < DesmaioMax)
+            {
+                m_DesmaioTimer = new DesmaioTimer(this);
+                m_DesmaioTimer.Start();
+            }
         }
 
 		private DateTime m_CreationTime;
@@ -6370,10 +6516,12 @@ namespace Server
 
 		public virtual void Serialize(GenericWriter writer)
 		{
-			writer.Write(37); // version
+			writer.Write(38); // version
+            // 38
+            writer.Write(m_Desmaio);
 
-			// 37
-			writer.Write(m_DisplayGuildAbbr);
+            // 37
+            writer.Write(m_DisplayGuildAbbr);
 
 			// 36
 			writer.Write(m_BloodHue);
@@ -8475,13 +8623,16 @@ namespace Server
 		public virtual void OnManaChange(int oldValue)
 		{ }
 
-		/// <summary>
-		///     Gets or sets the current hit point of the Mobile. This value ranges from 0 to <see cref="HitsMax" />, inclusive. When set to the value of
-		///     <see
-		///         cref="HitsMax" />
-		///     , the <see cref="AggressorInfo.CanReportMurder">CanReportMurder</see> flag of all aggressors is reset to false, and the list of damage entries is cleared.
-		/// </summary>
-		[CommandProperty(AccessLevel.GameMaster)]
+        public virtual void OnDesmaioChange(double oldValue)
+        { }
+
+        /// <summary>
+        ///     Gets or sets the current hit point of the Mobile. This value ranges from 0 to <see cref="HitsMax" />, inclusive. When set to the value of
+        ///     <see
+        ///         cref="HitsMax" />
+        ///     , the <see cref="AggressorInfo.CanReportMurder">CanReportMurder</see> flag of all aggressors is reset to false, and the list of damage entries is cleared.
+        /// </summary>
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int Hits
 		{
 			get { return m_Hits; }
@@ -8685,9 +8836,69 @@ namespace Server
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
 		public virtual int ManaMax { get { return Int*2; } }
-		#endregion
 
-		public virtual int Luck { get { return 0; } }
+        /// <summary>
+        ///     Gets or sets the current Desmaio of the Mobile. This value ranges from 0 to <see cref="DesmaioMax" />, inclusive.
+        /// </summary>
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public double Desmaio
+        {
+            get { return m_Desmaio; }
+            set
+            {
+                if (m_Deleted)
+                {
+                    return;
+                }
+
+                if (value < 1.0)
+                {
+                    value = 0.01;
+                }
+                else if (value >= DesmaioMax)
+                {
+                    value = DesmaioMax;
+
+                    if (m_DesmaioTimer != null)
+                    {
+                        m_DesmaioTimer.Stop();
+                    }
+                }
+
+                if (value < DesmaioMax)
+                {
+                    if (CanRegenDesmaio)
+                    {
+                        if (m_DesmaioTimer == null)
+                        {
+                            m_DesmaioTimer = new DesmaioTimer(this);
+                        }
+
+                        m_DesmaioTimer.Start();
+                    }
+                    else if (m_DesmaioTimer != null)
+                    {
+                        m_DesmaioTimer.Stop();
+                    }
+                }
+
+                double oldValue = m_Desmaio;
+                m_Desmaio = value;
+                OnDesmaioChange(oldValue);
+            }
+        }
+
+        /// <summary>
+        ///     Overridable. Gets the maximum Desmaio of the Mobile. By default, this returns: 4.0
+        /// </summary>
+        [CommandProperty(AccessLevel.GameMaster)]
+        public virtual double DesmaioMax { get { return 4.0; } }
+
+
+        #endregion
+
+        public virtual int Luck { get { return 0; } }
 
         public virtual int HuedItemID { get { return (m_Female ? 0x2107 : 0x2106); } }
 
@@ -9224,10 +9435,11 @@ namespace Server
 			}
 
             //Marcknight: TODO: Tentar fazer a detecção se passiva dos chars sem revelá-los
-			return this == m ||
-				   (m.m_Map == m_Map && (!m.Hidden || (IsStaff() && m_AccessLevel >= m.AccessLevel)) &&
-					((m.Alive || (Core.SE && Skills.PoderMagico.Value >= 100.0)) || !Alive || IsStaff() || m.Warmode));
-		}
+			return this == m ||  //É você mesmo ou
+				   (m.m_Map == m_Map && //está no mesmo mapa e
+                   (!m.Hidden || (IsStaff() && m_AccessLevel >= m.AccessLevel)) && //(Não está está escondido ou é Staff de nivel igual ou superior ao do alvo) e
+                   (IsStaff() || m.Alive || Skills.PoderMagico.Value >= 100.0)); //Você é staff ou alvo está vivo ou você tem skill suficiente pra ver os mortos
+        }
 
 		public virtual bool CanBeRenamedBy(Mobile from)
 		{
@@ -11141,8 +11353,9 @@ namespace Server
 			m_Virtues = new VirtueInfo();
 			m_Stabled = new List<Mobile>();
 			m_DamageEntries = new List<DamageEntry>();
+            m_Desmaio = 4.0;
 
-			m_NextSkillTime = Core.TickCount;
+            m_NextSkillTime = Core.TickCount;
 			m_CreationTime = DateTime.UtcNow;
 		}
 
@@ -12316,8 +12529,9 @@ namespace Server
 			Hits = HitsMax;
 			Stam = StamMax;
 			Mana = ManaMax;
+            m_Desmaio = DesmaioMax; //Inicialização Desmaio
 
-			Delta(MobileDelta.Stat | MobileDelta.Hits | MobileDelta.Stam | MobileDelta.Mana);
+            Delta(MobileDelta.Stat | MobileDelta.Hits | MobileDelta.Stam | MobileDelta.Mana);
 		}
 
 		public virtual void DisplayPaperdollTo(Mobile to)
@@ -12739,7 +12953,7 @@ namespace Server
 		///     Gets or sets the maximum attainable value for <see cref="RawStr" />, <see cref="RawDex" />, and <see cref="RawInt" />.
 		/// </summary>
 		[CommandProperty(AccessLevel.GameMaster)]
-		public int StatCap
+		public virtual int StatCap
 		{
 			get { return m_StatCap; }
 			set

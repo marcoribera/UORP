@@ -44,9 +44,11 @@ using Server.Spells.Spellweaving;
 using Server.Engines.SphynxFortune;
 using Server.Engines.VendorSearching;
 using Server.Targeting;
+using Server.Custom.Classes;
 
 using RankDefinition = Server.Guilds.RankDefinition;
 using Server.Engines.Fellowship;
+
 #endregion
 
 namespace Server.Mobiles
@@ -123,7 +125,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public partial class PlayerMobile : Mobile, IHonorTarget
+	public partial class PlayerMobile : PolyGlotMobile, IHonorTarget
 	{
 		public static List<PlayerMobile> Instances { get; private set; }
 
@@ -228,9 +230,14 @@ namespace Server.Mobiles
 		private TimeSpan m_NpcGuildGameTime;
 		private PlayerFlag m_Flags;
         private ExtendedPlayerFlag m_ExtendedFlags;
-		private int m_Profession;
+        private int m_Profession;
 
-		private int m_NonAutoreinsuredItems;
+        public int ClasseBasicaID, ClasseIntermediariaID, ClasseAvancadaID, ClasseLendariaID;
+        public TierClasse ClasseAbandonavelID;
+
+        public FurtivoTimer m_FurtivoTimer;
+
+        private int m_NonAutoreinsuredItems;
 		// number of items that could not be automaitically reinsured because gold in bank was not enough
 
 		/*
@@ -359,6 +366,22 @@ namespace Server.Mobiles
         #endregion
 
         #region Getters & Setters
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseBasica { get { return ClasseBasicaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseBasicaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseIntermediaria { get { return ClasseIntermediariaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseIntermediariaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseAvancada { get { return ClasseAvancadaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseAvancadaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string ClasseLendaria { get { return ClasseLendariaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseLendariaID).Nome; }}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public TierClasse ClasseAbandonavel { get { return ClasseAbandonavelID; } set { ClasseAbandonavelID = value; } }
+
         public List<Mobile> RecentlyReported { get { return m_RecentlyReported; } set { m_RecentlyReported = value; } }
 
 		public List<Mobile> AutoStabled { get { return m_AutoStabled; } }
@@ -1217,8 +1240,16 @@ namespace Server.Mobiles
 		private static void OnLogin(LoginEventArgs e)
 		{
 			Mobile from = e.Mobile;
+            PlayerMobile player = (PlayerMobile)from;
 
-			CheckAtrophies(from);
+            player.m_FurtivoTimer = new FurtivoTimer(player, TimeSpan.FromSeconds(3.0)); //Inicializa o timer de furtividade
+
+            if (player.Hidden)
+            {
+                player.m_FurtivoTimer.Start();
+            }
+
+            CheckAtrophies(from);
 
 			if (AccountHandler.LockdownLevel > AccessLevel.VIP)
 			{
@@ -1999,10 +2030,34 @@ namespace Server.Mobiles
                    MasteryInfo.IntuitionBonus(this) +
                    UraliTranceTonic.GetManaBuff(this);
 		} }
-		#endregion
+        #endregion
 
-		#region Stat Getters/Setters
-		[CommandProperty(AccessLevel.GameMaster)]
+        public override int StatCap
+        {
+            get
+            { //Começa em 100 de total de atributos e sobe o Cap total de atributos em 3 por dia de criação do char para assegurar uma progressão suficientemente lenta
+                return Math.Min(100 + (3 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(this.CreationTime)).TotalDays)))), 225);
+            }
+            set
+            {
+                if (m_StatCap != value)
+                {
+                    int old = m_StatCap;
+
+                    m_StatCap = value;
+
+                    if (old != m_StatCap)
+                    {
+                        EventSink.InvokeStatCapChange(new StatCapChangeEventArgs(this, old, m_StatCap));
+                    }
+
+                    Delta(MobileDelta.StatCap);
+                }
+            }
+        }
+
+        #region Stat Getters/Setters
+        [CommandProperty(AccessLevel.GameMaster)]
 		public override int Str
 		{
 			get
@@ -3627,36 +3682,159 @@ namespace Server.Mobiles
 			base.OnDamage(amount, from, willKill);
 		}
 
-		public override void Resurrect()
-		{
-			bool wasAlive = Alive;
-
-			base.Resurrect();
-
-			if (Alive && !wasAlive)
-			{
-				Item deathRobe = new DeathRobe();
-
-				if (!EquipItem(deathRobe))
-				{
-					deathRobe.Delete();
-				}
-
-                if (NetState != null /*&& NetState.IsEnhancedClient*/)
+        public override void OnBeforeResurrect()
+        {
+            Item a = FindItemOnLayer(Layer.InnerTorso); //Remove o manto do fantasminha
+            if (a != null)
+            {
+                a.Movable = true;
+                a.Delete();
+                Console.WriteLine("Teste");
+            }
+            //Leva a alminha pra perto do corpo
+            if (m_Player)
+            {
+                if (!Corpse.Deleted)
                 {
-                    Waypoints.RemoveHealers(this, Map);
+                    Map = Corpse.Map;
+                    Location = Corpse.Location;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Overridable. Event invoked after the Mobile is <see cref="Resurrect">resurrected</see>.
+        ///     <seealso cref="Resurrect" />
+        /// </summary>
+        public override void OnAfterResurrect()
+        {
+            //Equipa o que sobrou do corpo e apaga ele
+            if (m_Player)
+            {
+                if (!m_Corpse.Deleted)
+                {
+                    Use(m_Corpse);
+                    Corpse.Delete();
                 }
 
-                #region Scroll of Alacrity
-                if (AcceleratedStart > DateTime.UtcNow)
-				{
-					BuffInfo.AddBuff(this, new BuffInfo(BuffIcon.ArcaneEmpowerment, 1078511, 1078512, AcceleratedSkill.ToString()));
-				}
-				#endregion
-			}
-		}
+                Emote("*Acorda do Desmaio*");
 
-		public override double RacialSkillBonus
+                //Sons de acordar
+                //TODO: Verificar se todos estão com os ID corretos
+                Random som = new Random();
+                if (Female)
+                {
+                    PlaySound(0x325 + som.Next(7)); //0x325 a 0x32B (7 sons de oomph) female f_oomph_01.wav até f_oomph_07.wav
+                }
+                else
+                {
+                    PlaySound(0x435 + som.Next(9)); //0x435 a 0x43D (9 sons de oomph) male m_oomph_01.wav até m_oomph_09.wav
+                }
+            }
+        }
+
+        public override bool CheckResurrect()
+        {
+            if (Desmaio < 1.0)
+            {
+                PublicOverheadMessage(MessageType.Emote, 88, false, "*MORTO: Sem pontos de Desmaio*"); // FLS TODO: Se possível inserir no patch um texto e utilizar apenas o número como referencia no lugar da string
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public override void Resurrect()
+        {
+
+            if (!Alive)
+            {
+                //Por enquanto não usaremos regiões que proibam reviver
+                //if (!Region.OnResurrect(this))
+                //{
+                //    return;
+                //}
+
+                if (!CheckResurrect())
+                {
+                    SendMessage("Não dá para acordar sem pontos de Desmaio suficientes.");
+                    return;
+                }
+
+                if (!Corpse.Deleted) //Leva a alminha pra perto do corpo se ele ainda existir
+                {
+                    Map = Corpse.Map;
+                    Location = Corpse.Location;
+                }
+                else
+                {
+                    SendMessage("Seu corpo já se decompôs! Isso não deveria acontecer. Chame um GM.");
+                    return;
+                }
+
+                OnBeforeResurrect();
+
+                BankBox box = FindBankNoCreate();
+
+                if (box != null && box.Opened)
+                {
+                    box.Close();
+                }
+
+                Poison = null;
+
+                Warmode = false;
+
+                Hits = 10;
+                Stam = StamMax;
+                Mana = 0;
+
+                BodyMod = 0;
+                Body = Race.AliveBody(this);
+
+                ProcessDeltaQueue();
+
+                for (int i = m_Items.Count - 1; i >= 0; --i)
+                {
+                    if (i >= m_Items.Count)
+                    {
+                        continue;
+                    }
+
+                    Item item = m_Items[i];
+
+                    if (item.ItemID == 8270)
+                    {
+                        item.Delete();
+                    }
+                }
+
+                SendIncomingPacket();
+                //SendIncomingPacket();
+
+                //para o contador de acordar quando desperta
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+
+                OnAfterResurrect();
+
+                //Send( new DeathStatus( false ) );
+            }
+        }
+        public override double RacialSkillBonus
 		{
 			get
 			{
@@ -3744,6 +3922,9 @@ namespace Server.Mobiles
             {
                 state.CancelAllTrades();
             }
+
+			if (Commands.PossessCommand.UncontrolDeath((Mobile)this))
+				return false;
 
             if (Criminal)
                 BuffInfo.RemoveBuff(this, BuffIcon.CriminalStatus);
@@ -3890,14 +4071,14 @@ namespace Server.Mobiles
 			return res;
 		}
 
-		public override void OnDeath(Container c)
-		{
+        public override void OnDeath(Container c)
+        {
             if (NetState != null /*&& NetState.IsEnhancedClient*/)
             {
                 Waypoints.OnDeath(this);
             }
 
-			Mobile m = FindMostRecentDamager(false);
+            Mobile m = FindMostRecentDamager(false);
             PlayerMobile killer = m as PlayerMobile;
 
             if (killer == null && m is BaseCreature)
@@ -3905,24 +4086,66 @@ namespace Server.Mobiles
                 killer = ((BaseCreature)m).GetMaster() as PlayerMobile;
             }
 
-			if (m_NonAutoreinsuredItems > 0)
-			{
-				SendLocalizedMessage(1061115);
-			}
+            if (m_NonAutoreinsuredItems > 0)
+            {
+                SendLocalizedMessage(1061115);
+            }
 
-			base.OnDeath(c);
+            //Início do decremento de Desmaio e teletransportes
+            MoveToWorld(new Point3D(4861, 3581, 0), Map.Felucca); //Sala dos Mortos
+            //SetLocation(new Point3D(4861, 3581, 0), true); //Sala dos mortos em mapa antigo
+            Random perdaDesmaio = new Random();
+            double perda = 0.5 + perdaDesmaio.NextDouble();
+            Desmaio -= perda;
 
-			m_EquipSnapshot = null;
+            if (Desmaio < 1.0)
+            {
+                //Send(DeathStatus.Instantiate(true));
+                //Send(DeathStatus.Instantiate(false));
+                SendMessage(38, "!!! VOCÊ MORREU !!!");
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! VOCÊ MORREU !!!", NetState);
+                if (m_ExpireDeathTimer != null)
+                {
+                    m_ExpireDeathTimer.Stop();
+                }
+            }
+            else if (Desmaio < 1.5)
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! MORIBUNDO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ NÃO MORREU POR POUCO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
+            else if (Desmaio < 2.5)
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! FRAGILIZADO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ PODE MORRER SE NÃO TOMAR MAIS CUIDADO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
+            else
+            {
+                PrivateOverheadMessage(MessageType.Emote, 38, false, "!!! DESMAIADO(A) !!!", NetState);
+                SendMessage(38, "!!! VOCÊ ESTÁ DESMAIADO !!!");
+                SendMessage("Faltam dois minutos pra acordar do desmaio.");
+            }
 
-			HueMod = -1;
-			NameMod = null;
-			SavagePaintExpiration = TimeSpan.Zero;
+            m_ExpireDeathTimer = new ExpireDeathTimer(this);
+            m_ExpireDeathTimer.Start();
 
-			SetHairMods(-1, -1);
+            //Fim do decremento de Desmaio
 
-			PolymorphSpell.StopTimer(this);
-			IncognitoSpell.StopTimer(this);
-			DisguiseTimers.RemoveTimer(this);
+            base.OnDeath(c);
+
+            m_EquipSnapshot = null;
+
+            HueMod = -1;
+            NameMod = null;
+            SavagePaintExpiration = TimeSpan.Zero;
+
+            SetHairMods(-1, -1);
+
+            PolymorphSpell.StopTimer(this);
+            IncognitoSpell.StopTimer(this);
+            DisguiseTimers.RemoveTimer(this);
 
             WeakenSpell.RemoveEffects(this);
             ClumsySpell.RemoveEffects(this);
@@ -3932,36 +4155,36 @@ namespace Server.Mobiles
 
 
             EndAction(typeof(PolymorphSpell));
-			EndAction(typeof(IncognitoSpell));
+            EndAction(typeof(IncognitoSpell));
 
-			MeerMage.StopEffect(this, false);
+            MeerMage.StopEffect(this, false);
 
             BaseEscort.DeleteEscort(this);
 
             #region Stygian Abyss
             if (Flying)
-			{
-				Flying = false;
-				BuffInfo.RemoveBuff(this, BuffIcon.Fly);
-			}
-			#endregion
+            {
+                Flying = false;
+                BuffInfo.RemoveBuff(this, BuffIcon.Fly);
+            }
+            #endregion
 
-			StolenItem.ReturnOnDeath(this, c);
+            StolenItem.ReturnOnDeath(this, c);
 
-			if (m_PermaFlags.Count > 0)
-			{
-				m_PermaFlags.Clear();
+            if (m_PermaFlags.Count > 0)
+            {
+                m_PermaFlags.Clear();
 
-				if (c is Corpse)
-				{
-					((Corpse)c).Criminal = true;
-				}
+                if (c is Corpse)
+                {
+                    ((Corpse)c).Criminal = true;
+                }
 
-				if (Stealing.ClassicMode)
-				{
-					Criminal = true;
-				}
-			}
+                if (Prestidigitacao.ClassicMode)
+                {
+                    Criminal = true;
+                }
+            }
 
             if (killer != null && Murderer && DateTime.UtcNow >= killer.m_NextJustAward)
             {
@@ -3991,60 +4214,69 @@ namespace Server.Mobiles
                 }
             }
 
-			if (m_InsuranceAward is PlayerMobile)
-			{
-				PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
+            if (m_InsuranceAward is PlayerMobile)
+            {
+                PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
 
-				if (pm.m_InsuranceBonus > 0)
-				{
-					pm.SendLocalizedMessage(1060397, pm.m_InsuranceBonus.ToString());
-					// ~1_AMOUNT~ gold has been deposited into your bank box.
-				}
-			}
+                if (pm.m_InsuranceBonus > 0)
+                {
+                    pm.SendLocalizedMessage(1060397, pm.m_InsuranceBonus.ToString());
+                    // ~1_AMOUNT~ gold has been deposited into your bank box.
+                }
+            }
 
-			if (Young)
-			{
+            if (Young)
+            {
+                /*
 				if (YoungDeathTeleport())
 				{
 					Timer.DelayCall(TimeSpan.FromSeconds(2.5), SendYoungDeathNotice);
 				}
-			}
+                */
+            }
 
-			Faction.HandleDeath(this, killer);
+            Faction.HandleDeath(this, killer);
 
-			Guilds.Guild.HandleDeath(this, killer);
-            
+            Guilds.Guild.HandleDeath(this, killer);
+
             if (m_BuffTable != null)
-			{
-				var list = new List<BuffInfo>();
+            {
+                var list = new List<BuffInfo>();
 
-				foreach (BuffInfo buff in m_BuffTable.Values)
-				{
-					if (!buff.RetainThroughDeath)
-					{
-						list.Add(buff);
-					}
-				}
+                foreach (BuffInfo buff in m_BuffTable.Values)
+                {
+                    if (!buff.RetainThroughDeath)
+                    {
+                        list.Add(buff);
+                    }
+                }
 
-				for (int i = 0; i < list.Count; i++)
-				{
-					RemoveBuff(list[i]);
-				}
-			}
+                for (int i = 0; i < list.Count; i++)
+                {
+                    RemoveBuff(list[i]);
+                }
+            }
 
-			#region Stygian Abyss
-			if (Region.IsPartOf("Abyss") && SSSeedExpire > DateTime.UtcNow)
-			{
-				SendGump(new ResurrectGump(this, ResurrectMessage.SilverSapling));
-			}
+            #region Stygian Abyss
+            if (Region.IsPartOf("Abyss") && SSSeedExpire > DateTime.UtcNow)
+            {
+                SendGump(new ResurrectGump(this, ResurrectMessage.SilverSapling));
+            }
 
             if (LastKiller is BaseVoidCreature)
                 ((BaseVoidCreature)LastKiller).Mutate(VoidEvolution.Killing);
-			#endregion
-		}
+            #endregion
 
-		private List<Mobile> m_PermaFlags;
-		private readonly List<Mobile> m_VisList;
+            if (Desmaio < 1.0)
+            {
+                Send(DeathStatus.Instantiate(true));
+                //Send(DeathStatus.Instantiate(false));
+            }
+        }
+
+
+        private List<Mobile> m_PermaFlags;
+		private List<Mobile> m_VisList;
 		private readonly Hashtable m_AntiMacroTable;
 		private TimeSpan m_GameTime;
 		private TimeSpan m_ShortTermElapse;
@@ -4410,7 +4642,7 @@ namespace Server.Mobiles
 		{
             Mobile target = damageable as Mobile;
 
-			if (Stealing.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0)
+			if (Prestidigitacao.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0)
 			{
 				int noto = Notoriety.Compute(this, target);
 
@@ -4504,6 +4736,13 @@ namespace Server.Mobiles
 
 			switch (version)
 			{
+                case 41:
+                    ClasseBasicaID = reader.ReadInt();
+                    ClasseIntermediariaID = reader.ReadInt();
+                    ClasseAvancadaID = reader.ReadInt();
+                    ClasseLendariaID = reader.ReadInt();
+                    ClasseAbandonavelID = (TierClasse)reader.ReadInt();
+                    goto case 40;
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT turn ins to PointsSystem
                 case 39: // Version 39, removed ML quest save/load
                 case 38:
@@ -4970,7 +5209,13 @@ namespace Server.Mobiles
 
 			base.Serialize(writer);
 
-			writer.Write(40); // version
+			writer.Write(41); // version
+
+            writer.Write((int)ClasseBasicaID);
+            writer.Write((int)ClasseIntermediariaID);
+            writer.Write((int)ClasseAvancadaID);
+            writer.Write((int)ClasseLendariaID);
+            writer.Write((int)ClasseAbandonavelID);
 
             writer.Write((DateTime)NextGemOfSalvationUse);
 
@@ -5196,7 +5441,18 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override bool CanSee(Mobile m)
+        public void StartSeeing(Mobile m)
+        {
+            m_VisList.Add(m);
+            return;
+        }
+        public void StopSeeing(Mobile m)
+        {
+            m_VisList.Remove(m);
+            return;
+        }
+
+        public override bool CanSee(Mobile m)
 		{
             if (m is IConditionalVisibility && !((IConditionalVisibility)m).CanBeSeenBy(this))
                 return false;
@@ -5254,7 +5510,16 @@ namespace Server.Mobiles
 			DisguiseTimers.RemoveTimer(this);
 		}
 
-		public override bool NewGuildDisplay { get { return Guilds.Guild.NewGuildSystem; } }
+        public virtual void OnConnected()
+        {
+            if ((Desmaio < 1.0) && (!Alive))
+            {
+                PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", NetState);
+                SendMessage(88, "*Este personagem está MORTO*", NetState); 
+            }
+        }
+
+        public override bool NewGuildDisplay { get { return Guilds.Guild.NewGuildSystem; } }
 
 		public delegate void PlayerPropertiesEventHandler(PlayerPropertiesEventArgs e);
 
@@ -5449,26 +5714,49 @@ namespace Server.Mobiles
 
 			if (Hidden && DesignContext.Find(this) == null) //Hidden & NOT customizing a house
 			{
-				if (!Mounted && Skills.Furtividade.Value >= 25.0)
-				{
-					bool running = (d & Direction.Running) != 0;
+                int armorRating = Furtividade.GetArmorRating((Mobile)this);
+                if (Mounted)
+                {
+                    RevealingAction();
+                }
+                else if (Skills.Furtividade.Value >= (20 + (armorRating * 2))) //Consegue correr vestindo peças de armadura se tiver skill suficiente
+                {
+                    bool running = (d & Direction.Running) != 0;
 
-					if (running)
-					{
-						if ((AllowedStealthSteps -= 2) <= 0)
-						{
-							RevealingAction();
-						}
-					}
-					else if (AllowedStealthSteps-- <= 0)
-					{
-						Stealth.OnUse(this);
-					}
-				}
-				else
-				{
-					RevealingAction();
-				}
+                    if (running)
+                    {
+                        if ((AllowedStealthSteps -= 2) <= 0)
+                        {
+                            Furtividade.OnUse(this);
+                        }
+                    }
+                    else{
+                        if (AllowedStealthSteps-- <= 0)
+                        {
+                            Furtividade.OnUse(this);
+                        }
+                    } 
+                }
+                else if (Skills.Furtividade.Value >= (armorRating * 2)) 
+                {
+                    bool running = (d & Direction.Running) != 0;
+
+                    if (running)
+                    {
+                        if ((AllowedStealthSteps -= 2) <= 0)
+                        {
+                            RevealingAction();
+                        }
+                    }
+                    else if (AllowedStealthSteps-- <= 0)
+                    {
+                        Furtividade.OnUse(this);
+                    }
+                }
+                else
+                {
+                    RevealingAction();
+                }
 			}
 
 			#region Mondain's Legacy
@@ -6988,5 +7276,90 @@ namespace Server.Mobiles
 
 			m_AutoStabled.Clear();
 		}
-	}
+
+
+        public bool PermaneceOcultoPara(Mobile targ)
+        {
+            if (!this.InLOS(targ))
+            {
+                return false;
+            }
+            else
+            {
+                //Calcula dificuldade para não ser percebido passivamente
+                double dificuldade = targ.Skills.Percepcao.Value - ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de se manter despercebido é padrão. Mais perto é maior, mais longe é menor.
+                dificuldade -= Math.Min(targ.LightLevel, LightCycle.ComputeLevelFor(targ)); //Se estiver mais escuro, fica mais fácil se manter despercebido
+
+                bool despercebido = (this.Skills.Furtividade.Value > dificuldade);
+                //this.SendMessage(targ.Name + " " + dificuldade.ToString());
+                if (!despercebido)
+                {
+                    //Calcula chance de perceber que foi percebido
+                    dificuldade = targ.Skills.Furtividade.Value + ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de notar que foi percebido é padrão. Mais perto é menor, mais longe é maior.
+                    dificuldade += Math.Min(this.LightLevel, LightCycle.ComputeLevelFor(this)); //Se estiver mais escuro, fica dificil perceber que foi percebido
+                                                                                                //this.SendMessage(targ.Name + " Dificuldade: " + dificuldade.ToString());
+                    if (targ.Skills.Furtividade.Value > dificuldade)
+                    {
+                        if (targ is PlayerMobile)
+                        {
+                            PlayerMobile observador = (PlayerMobile)targ;
+                            if ((!observador.Hidden) || observador.VisibilityList.Contains(this))
+                            {
+                                this.SendMessage("Você acha que " + targ.Name + " te percebeu.");
+                            }
+                        }
+                    }
+                }
+                return despercebido;
+            }
+        }
+
+        public class FurtivoTimer : Timer
+        {
+            private readonly PlayerMobile m_Player;
+
+            public FurtivoTimer(PlayerMobile m, TimeSpan delay)
+                : base(delay)
+            {
+                m_Player = m;
+                Priority = TimerPriority.EveryTick;
+            }
+
+            protected override void OnTick()
+            {
+                if (m_Player.Hidden && m_Player.NetState != null)
+                {
+                    var eable = m_Player.Map.GetClientsInRange(m_Player.Location, 15); //Pega lista de Clients no alcance de atualização máximo definido
+
+                    m_Player.VisibilityList.Clear();
+
+                    if (!m_Player.IsStaff())
+                    {
+                        foreach (NetState state in eable) //Percorre a lista de clients no alcance verificando se os personagens deles conseguem ou não perceber você
+                        {
+                            Mobile m = state.Mobile;
+
+                            if ((m.Serial != m_Player.Serial) && !m.IsStaff()) //Não verifica staff nem a si mesmo
+                            {
+                                if (!m_Player.PermaneceOcultoPara(m))
+                                {
+                                    m_Player.VisibilityList.Add(m);
+                                    m.SendEverything();
+                                }
+                            }
+                        }
+                    }
+                    Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
+                    {
+                        //m_Player.SendMessage("Verificando se alguem te enxerga");
+                        this.Start();
+                    });
+                }
+                else
+                {
+                    this.Stop();
+                }
+            }
+        }
+    }
 }

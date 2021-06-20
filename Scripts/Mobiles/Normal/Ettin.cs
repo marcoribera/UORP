@@ -37,6 +37,11 @@ namespace Server.Mobiles
             this.Karma = -3000;
 
             this.VirtualArmor = 38;
+
+            Persuadable = true;
+            ControlSlots = 2;
+            MinPersuadeSkill = 65;
+
         }
 
         public Ettin(Serial serial)

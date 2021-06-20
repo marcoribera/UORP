@@ -41,17 +41,21 @@ namespace Server.Mobiles
 
 			SetSkill( SkillName.ResistenciaMagica, 42.6, 57.5 );
 			SetSkill( SkillName.Anatomia, 115.1, 130.0 );
-			SetSkill( SkillName.Briga, 92.6, 107.5 );
+			SetSkill( SkillName.Briga, 92.6, 100 );
 			SetSkill( SkillName.Anatomia, 110.1, 125.0 );
 
-			SetSkill( SkillName.Perfurante, 92.6, 107.5 );
-			SetSkill( SkillName.Contusivo, 92.6, 107.5 );
-			SetSkill( SkillName.Cortante, 92.6, 107.5 );
+			SetSkill( SkillName.Perfurante, 92.6, 100 );
+			SetSkill( SkillName.Contusivo, 92.6, 100 );
+			SetSkill( SkillName.Cortante, 92.6, 100 );
 
             SetSkill(SkillName.Bushido, 95.0, 120.0);
 
 			Fame = 8500;
 			Karma = -8500;
+
+			Tamable = true;
+			ControlSlots = 3;
+			MinTameSkill = 100;
 
 			AddItem( new SamuraiTabi() );
 			AddItem( new LeatherHiroSode());

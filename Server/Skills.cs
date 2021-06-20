@@ -622,7 +622,7 @@ namespace Server
             new SkillInfo(40, "Extração", 20.0, 5.0, 0.0, "Extrator(a)", null, 4.0, 1.0, 0.0, 1.0, StatCode.Str, StatCode.Dex),
             new SkillInfo(41, "Ferraria", 20.0, 5.0, 0.0, "Ferreiro(a)", null, 4.0, 1.0, 0.0, 1.0, StatCode.Str, StatCode.Dex),
             new SkillInfo(42, "Medicina", 0.0, 5.0, 5.0, "Médico(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex),
-            new SkillInfo(43, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex),
+            new SkillInfo(43, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, 1.0, StatCode.Int, StatCode.Dex)
         };
 
 		public static SkillInfo[] Table { get { return m_Table; } set { m_Table = value; } }
@@ -771,7 +771,16 @@ namespace Server
 		public Skill Veterinaria { get { return this[SkillName.Veterinaria]; } set { } }
 
 		[CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
-		public int Cap { get { return m_Cap; } set { m_Cap = value; } }
+		public int Cap {
+            get
+            {
+                return Math.Min(m_Cap + (50 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
+            }
+            set
+            {
+                m_Cap = value;
+            }
+        }
 
         [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
         public SkillName CurrentMastery

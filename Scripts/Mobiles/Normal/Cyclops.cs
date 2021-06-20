@@ -38,6 +38,11 @@ namespace Server.Mobiles
             this.Karma = -4500;
 
             this.VirtualArmor = 48;
+
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 95;
+
         }
 
         public Cyclops(Serial serial)

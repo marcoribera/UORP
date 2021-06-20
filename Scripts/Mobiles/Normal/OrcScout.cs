@@ -40,7 +40,7 @@ namespace Server.Mobiles
 			SetSkill(SkillName.Anatomia, 55.1, 80.0);
 
 			SetSkill(SkillName.Perfurante, 50.1, 70.0);
-			SetSkill(SkillName.Atirar, 80.1, 120.0);
+			SetSkill(SkillName.Atirar, 80.1, 100.0);
 			SetSkill(SkillName.Bloqueio, 40.1, 60.0);
 			SetSkill(SkillName.Medicina, 80.1, 100.0);
 			SetSkill(SkillName.Anatomia, 50.1, 90.0);
@@ -50,6 +50,10 @@ namespace Server.Mobiles
 
 			Fame = 1500;
 			Karma = -1500;
+
+			Persuadable = true;
+			ControlSlots = 3;
+			MinPersuadeSkill = 100;
 
 			PackItem(new Apple(Utility.RandomMinMax(3, 5)));
 			PackItem(new Arrow(Utility.RandomMinMax(60, 70)));

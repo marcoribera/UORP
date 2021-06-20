@@ -1,17 +1,17 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
+namespace Server.Mobiles
 {
-    public class HirePeasant : BaseHire 
+    public class HirePeasant : BaseHire
     {
-        [Constructable] 
+        [Constructable]
         public HirePeasant()
         {
             this.SpeechHue = Utility.RandomDyedHue();
             this.Hue = Utility.RandomSkinHue();
 
-            if (this.Female = Utility.RandomBool()) 
+            if (this.Female = Utility.RandomBool())
             {
                 this.Body = 0x191;
                 this.Name = NameList.RandomName("female");
@@ -26,7 +26,7 @@ namespace Server.Mobiles
                         break;
                 }
             }
-            else 
+            else
             {
                 this.Body = 0x190;
                 this.Name = NameList.RandomName("male");
@@ -52,6 +52,10 @@ namespace Server.Mobiles
             this.Fame = 0;
             this.Karma = 0;
 
+            Persuadable = true;
+            ControlSlots = 1;
+            MinPersuadeSkill = 1;
+
             this.AddItem(new Sandals(Utility.RandomNeutralHue()));
             switch ( Utility.Random(2) )
             {
@@ -62,7 +66,7 @@ namespace Server.Mobiles
                     this.AddItem(new Shirt(Utility.RandomNeutralHue()));
                     break;
             }
-		
+
             this.PackGold(0, 25);
         }
 
@@ -78,14 +82,14 @@ namespace Server.Mobiles
                 return false;
             }
         }
-        public override void Serialize(GenericWriter writer) 
+        public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);// version 
+            writer.Write((int)0);// version
         }
 
-        public override void Deserialize(GenericReader reader) 
+        public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 

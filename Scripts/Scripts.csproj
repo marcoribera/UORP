@@ -91,7 +91,15 @@
     <Compile Include="Commands\CreateWorld.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\Custom\FalaRP.cs" />
+    <Compile Include="Commands\Custom\Emoteptbr.cs" />
+    <Compile Include="Custom\Classes\RPClasse.cs" />
+    <Compile Include="Custom\Classes\ClassePersonagem.cs" />
+    <Compile Include="Custom\Classes\Classes.cs" />
+    <Compile Include="Custom\Idiomas\PolyglotMobile.cs" />
+    <Compile Include="Custom\Idiomas\Translator\SelecionarIdioma.cs" />
+    <Compile Include="Custom\Idiomas\Translator\Translate.cs" />
+    <Compile Include="Commands\Custom\RPfala.cs" />
+    <Compile Include="Commands\Custom\RPcontrolar.cs" />
     <Compile Include="Commands\Decorate.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -552,6 +560,17 @@
     <Compile Include="Items\Addons\Craft Addons\EnchantedSculptingTool.cs" />
     <Compile Include="Items\Addons\EnchantedGraniteCart.cs" />
     <Compile Include="Items\Addons\JollyHolidayTree.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitamadera3Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitamaderaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitapiedra2Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casita_madera4Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casita_marmolAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\herreriaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\JoustingpitAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\monglowAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\temploAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\tiendacasaAddon.cs" />
     <Compile Include="Items\Addons\SkullTiledFloor.cs" />
     <Compile Include="Items\Addons\TheKingsCollection\AlchemistsBookshelf.cs" />
     <Compile Include="Items\Addons\TheKingsCollection\TheTokenBox.cs" />
@@ -617,7 +636,22 @@
     <Compile Include="Items\Consumables\DecorativeKitchenSet.cs" />
     <Compile Include="Items\Consumables\DecorativeStableSet.cs" />
     <Compile Include="Items\Consumables\EmbroideryTool.cs" />
-    <Compile Include="Items\Custom\pedrafakedeminerar.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\CauldronBurningAddon.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\CauldronUnlitAddon.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\GypsyCampBlue.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\GypsyCampGreen.cs" />
+    <Compile Include="Items\Custom\acampamentos ciganos\MoonstoneJewelry.cs" />
+    <Compile Include="Items\Custom\fakeArvore.cs" />
+    <Compile Include="Items\Custom\fakeMandrake .cs" />
+    <Compile Include="Items\Custom\fakeMinerio.cs" />
+    <Compile Include="Items\Custom\monsternest\DragonNest.cs" />
+    <Compile Include="Items\Custom\monsternest\DreadSpiderNest.cs" />
+    <Compile Include="Items\Custom\monsternest\MonsterNest.cs" />
+    <Compile Include="Items\Custom\monsternest\MonsterNestLoot.cs" />
+    <Compile Include="Items\Custom\monsternest\OrcNest.cs" />
+    <Compile Include="Items\Custom\monsternest\RatNest.cs" />
+    <Compile Include="Items\Custom\monsternest\SkeletalKnightNest.cs" />
+    <Compile Include="Items\Custom\RPGalerta.cs" />
     <Compile Include="Items\Damageable\Beacon.cs" />
     <Compile Include="Items\Damageable\DamageableItem.cs" />
     <Compile Include="Items\Decorative\AncientWeapons.cs" />
@@ -842,13 +876,21 @@
     <Compile Include="Misc\ArchivedSaves.cs" />
     <Compile Include="Misc\Replacer.cs" />
     <Compile Include="Misc\TaskPollingTimer.cs" />
+    <Compile Include="Mobiles\Normal\Brigand.cs" />
     <Compile Include="Mobiles\Normal\CoconutCrab.cs" />
     <Compile Include="Mobiles\Normal\HungryCoconutCrab.cs" />
+    <Compile Include="Mobiles\Normal\LesserBrigand.cs" />
+    <Compile Include="Mobiles\Normal\LesserElfBrigand.cs" />
+    <Compile Include="Mobiles\Normal\LesserRonin.cs" />
+    <Compile Include="Mobiles\Normal\Ronin.cs" />
     <Compile Include="Mobiles\Normal\SkeletalCat.cs" />
     <Compile Include="Mobiles\Normal\TheButcher.cs" />
     <Compile Include="Mobiles\Normal\Triton.cs" />
     <Compile Include="Mobiles\Normal\Eowmu.cs" />
+    <Compile Include="Mobiles\Normal\EvilMage.cs" />
+    <Compile Include="Mobiles\Normal\EvilMageLord.cs" />
     <Compile Include="Mobiles\NPCs\Gardener.cs" />
+    <Compile Include="Mobiles\NPCs\Gypsy.cs" />
     <Compile Include="Mobiles\NPCs\GypsyFortuneTeller.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\BaseProperty.cs" />
     <Compile Include="Mobiles\NPCs\Mannequin\Gumps.cs" />
@@ -2237,7 +2279,6 @@
     <Compile Include="Mobiles\Normal\BoneDemon.cs" />
     <Compile Include="Mobiles\Normal\BoneKnight.cs" />
     <Compile Include="Mobiles\Normal\BoneMagi.cs" />
-    <Compile Include="Mobiles\Normal\Brigand.cs" />
     <Compile Include="Mobiles\Normal\BronzeElemental.cs" />
     <Compile Include="Mobiles\Normal\BrownBear.cs" />
     <Compile Include="Mobiles\Normal\BulbousPutrification.cs" />
@@ -2326,8 +2367,6 @@
     <Compile Include="Mobiles\Normal\Ethereals.cs" />
     <Compile Include="Mobiles\Normal\EtherealWarrior.cs" />
     <Compile Include="Mobiles\Normal\Ettin.cs" />
-    <Compile Include="Mobiles\Normal\EvilMage.cs" />
-    <Compile Include="Mobiles\Normal\EvilMageLord.cs" />
     <Compile Include="Mobiles\Normal\Executioner.cs" />
     <Compile Include="Mobiles\Normal\ExodusMinion.cs" />
     <Compile Include="Mobiles\Normal\ExodusOverseer.cs" />
@@ -2542,7 +2581,6 @@
     <Compile Include="Mobiles\Normal\RevenantLion.cs" />
     <Compile Include="Mobiles\Normal\RidableLlama.cs" />
     <Compile Include="Mobiles\Normal\Ridgeback.cs" />
-    <Compile Include="Mobiles\Normal\Ronin.cs" />
     <Compile Include="Mobiles\Normal\RottingCorpse.cs" />
     <Compile Include="Mobiles\Normal\Rotworm.cs" />
     <Compile Include="Mobiles\Normal\RuddyBoura.cs" />
@@ -2760,7 +2798,6 @@
     <Compile Include="Mobiles\NPCs\Gorrow.cs" />
     <Compile Include="Mobiles\NPCs\GrandpaCharley.cs" />
     <Compile Include="Mobiles\NPCs\Gustar.cs" />
-    <Compile Include="Mobiles\NPCs\Gypsy.cs" />
     <Compile Include="Mobiles\NPCs\GypsyAnimalTrainer.cs" />
     <Compile Include="Mobiles\NPCs\GypsyBanker.cs" />
     <Compile Include="Mobiles\NPCs\GypsyMaiden.cs" />
@@ -11533,10 +11570,17 @@
     <Compile Include="Services\XmlSpawner\XMLSpawner Support\StaffCloak.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Skills\Alquimia.cs" />
+    <Compile Include="Skills\Anatomia.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Skills\Anatomia.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\ConhecimentoArmas.cs" />
+    <Compile Include="Skills\Envenenamento.cs" />
+    <Compile Include="Skills\Erudicao.cs" />
+    <Compile Include="Skills\Furtividade.cs" />
     <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -11561,9 +11605,6 @@
     <Compile Include="Skills\ForensicEval.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Hiding.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Skills\Inscribe.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -11574,9 +11615,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Peacemaking.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Skills\Poisoning.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Provocation.cs">
@@ -11592,13 +11630,7 @@
     <Compile Include="Skills\SpiritSpeak.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Stealing.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Skills\Stealth.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Skills\TasteID.cs">
+    <Compile Include="Skills\Prestidigitacao.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Tracking.cs">
@@ -12292,6 +12324,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Services\TreasureMaps\desktop.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gumps\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.targets" />
   <ProjectExtensions>

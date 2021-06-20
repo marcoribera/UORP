@@ -57,7 +57,7 @@ namespace Server.Items
 				// Only Members of the thieves guild are trained to use this item.
 				from.SendLocalizedMessage(501702);
 			}
-			else if (Stealing.SuspendOnMurder && pm.Kills > 0)
+			else if (Prestidigitacao.SuspendOnMurder && pm.Kills > 0)
 			{
 				// You are currently suspended from the thieves guild.  They would frown upon your actions.
 				from.SendLocalizedMessage(501703);

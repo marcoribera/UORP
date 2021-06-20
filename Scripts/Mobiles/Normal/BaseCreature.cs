@@ -237,6 +237,12 @@ namespace Server.Mobiles
         }
 
         #region Var declarations
+
+        private SpeechType m_Idioma;
+        private bool m_bPersuadable; //Se pode ser recrutado com Carisma
+        private double m_dMinPersuadeSkill; //Skill mínima pra convencer
+        private double m_dCurrentPersuadeSkill; //Skill atual para convencer
+
         private BaseAI m_AI; // THE AI
 
         private AIType m_CurrentAI; // The current AI
@@ -573,6 +579,7 @@ namespace Server.Mobiles
 
         #region Pet Training
         public static double MaxTameRequirement = 108.0;
+        public static double MaxPersuadeRequirement = 108.0;
 
         private AbilityProfile _Profile;
         private TrainingProfile _TrainingProfile;
@@ -736,6 +743,22 @@ namespace Server.Mobiles
             _InitAverage = null;
         }
 
+        public void AdjustPersuadeRequirements()
+        {
+            if (ControlSlots <= ControlSlotsMin)
+            {
+                CurrentPersuadeSkill = MinPersuadeSkill;
+            }
+            else
+            {
+                CurrentPersuadeSkill = ((ControlSlots - ControlSlotsMin) * 21) + 1;
+            }
+
+            if (CurrentPersuadeSkill > MaxPersuadeRequirement)
+            {
+                CurrentPersuadeSkill = MaxPersuadeRequirement;
+            }
+        }
         public void AdjustTameRequirements()
         {
             if (ControlSlots <= ControlSlotsMin)
@@ -2402,6 +2425,8 @@ namespace Server.Mobiles
             m_ControlOrder = OrderType.None;
 
             m_bTamable = false;
+            m_bPersuadable = false;
+            m_Idioma = Mobiles.SpeechType.Comum;
 
             m_Owners = new List<Mobile>();
 
@@ -2439,7 +2464,12 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write(29); // version
+            writer.Write(31); // version
+
+            writer.Write((int)m_Idioma); //Idioma para persuadir a criatura
+            writer.Write((bool)m_bPersuadable); //Se pode ser recrutado com Carisma
+            writer.Write((double)m_dMinPersuadeSkill);
+            writer.Write((double)m_dCurrentPersuadeSkill); //Skill para Convencer
 
             writer.Write(IsSoulbound);
 
@@ -2626,6 +2656,18 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 31:
+                    m_Idioma = (SpeechType) reader.ReadInt(); //Idioma para persuadir a criatura
+                    goto case 30;
+                case 30:
+                    m_bPersuadable = reader.ReadBool(); //Se pode ser recrutado com Carisma
+                    m_dMinPersuadeSkill = reader.ReadDouble(); //Skill mínima para Convencer
+                    m_dCurrentPersuadeSkill = reader.ReadDouble(); //Skill atual para convencer
+                    if (Controlled && CurrentPersuadeSkill > MaxPersuadeRequirement)
+                    {
+                        CurrentPersuadeSkill = MaxPersuadeRequirement;
+                    }
+                    goto case 29;
                 case 29:
                     IsSoulbound = reader.ReadBool();
                     goto case 28;
@@ -3013,6 +3055,10 @@ namespace Server.Mobiles
             if (Tamable && CurrentTameSkill == 0)
             {
                 AdjustTameRequirements();
+            }
+            if (Persuadable && CurrentPersuadeSkill == 0)
+            {
+                AdjustPersuadeRequirements();
             }
         }
 
@@ -3786,6 +3832,53 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime BardEndTime { get; set; }
 
+        [CommandProperty(AccessLevel.GameMaster)] //Retorna o idioma 
+        public string IdiomaPersuade {
+            get
+            {
+                return m_Idioma.ToString();
+            }
+        }
+        public SpeechType IdiomaNativo
+        {
+            get
+            {
+                return m_Idioma;
+            }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public double MinPersuadeSkill
+        {
+            get { return m_dMinPersuadeSkill; }
+            set
+            {
+                double skill = m_dMinPersuadeSkill;
+
+                if (skill != value)
+                {
+                    m_dMinPersuadeSkill = value;
+                    var adjusted = CurrentPersuadeSkill - skill;
+
+                    if (adjusted > 0)
+                    {
+                        m_dCurrentPersuadeSkill = value + adjusted;
+                    }
+                    else
+                    {
+                        m_dCurrentPersuadeSkill = value;
+                    }
+                }
+            }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public double CurrentPersuadeSkill { get { return m_dCurrentPersuadeSkill; } set { m_dCurrentPersuadeSkill = value; } }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Persuadable { get { return m_bPersuadable && !m_Paragon; } set { m_bPersuadable = value; } }
+
+
         [CommandProperty(AccessLevel.GameMaster)]
         public double MinTameSkill 
         {
@@ -4241,7 +4334,7 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if (skill == SkillName.Furtividade && from.Skills[SkillName.Furtividade].Base < Stealth.HidingRequirement)
+            if (skill == SkillName.Furtividade && from.Skills[SkillName.Furtividade].Base < Furtividade.HidingRequirement)
             {
                 return false;
             }
@@ -4874,7 +4967,7 @@ namespace Server.Mobiles
                     }
                     else if (AllowedStealthSteps-- <= 0)
                     {
-                        Server.SkillHandlers.Stealth.OnUse(this);
+                        Server.SkillHandlers.Furtividade.OnUse(this);
                     }
                 }
                 else

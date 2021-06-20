@@ -15,6 +15,11 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Misticismo, 64.0, 100.0);
             this.SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
             this.SetSkill(SkillName.Briga, 36.0, 68.0);
+
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
         }
 
         public Mystic(Serial serial)

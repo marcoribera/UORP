@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             VirtualArmor = 28; // Don't know what it should be
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 95;
+
             for (int i = 0; i < Utility.RandomMinMax(0, 1); i++)
             {
                 PackItem(Loot.RandomScroll(0, Loot.ArcanistScrollTypes.Length, SpellbookType.Arcanist));
@@ -54,7 +58,7 @@ namespace Server.Mobiles
             : base(serial)
         {
         }
-		
+
 		public override int TreasureMapLevel { get { return 3; } }
 
         public override void GenerateLoot()

@@ -37,6 +37,10 @@ namespace Server.Mobiles
             this.Karma = -3500;
 
             this.VirtualArmor = 40;
+
+            Persuadable = true;
+            ControlSlots = 2;
+            MinPersuadeSkill = 70;
         }
 
         public Troll(Serial serial)

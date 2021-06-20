@@ -47,6 +47,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 30;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
             this.PackReg(10);
 
 			switch (Utility.Random(6))

@@ -18,6 +18,10 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Bloqueio, 64.0, 80.0);
             this.SetSkill(SkillName.Cortante, 64.0, 85.0);
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 90;
+
             this.SpeechHue = Utility.RandomDyedHue();
 
             this.Hue = Utility.RandomSkinHue();

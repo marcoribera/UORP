@@ -40,6 +40,10 @@ namespace Server.Mobiles
             Fame = 1500;
             Karma = -1500;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
             VirtualArmor = 28;
 
             // Loot - 30-40gold, magicitem,gem,goblin blood, essence control
@@ -88,7 +92,7 @@ namespace Server.Mobiles
             : base(serial)
         {
         }
-		
+
 		public override int GetAngerSound() { return 0x600; }
         public override int GetIdleSound() { return 0x600; }
         public override int GetAttackSound() { return 0x5FD; }

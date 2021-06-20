@@ -13,6 +13,11 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Bloqueio, 80.0, 100.0);
             this.SetSkill(SkillName.Cortante, 80.0, 100.0);
             this.SetSkill(SkillName.Anatomia, 80.0, 100.0);
+
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
         }
 
         public Noble(Serial serial)

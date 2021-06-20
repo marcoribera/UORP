@@ -42,7 +42,12 @@ namespace Server.Mobiles
             Karma = -10500;
 
             VirtualArmor = 16;
-			switch (Utility.Random(16))
+
+            Tamable = true;
+            ControlSlots = 3;
+            MinTameSkill = 100;
+
+            switch (Utility.Random(16))
             {
                 case 0: PackItem(new BloodOathScroll()); break;
                 case 1: PackItem(new CurseWeaponScroll()); break;

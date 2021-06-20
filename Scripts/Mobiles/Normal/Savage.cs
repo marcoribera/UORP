@@ -35,6 +35,10 @@ namespace Server.Mobiles
             this.Fame = 1000;
             this.Karma = -1000;
 
+            Persuadable = true;
+            ControlSlots = 2;
+            MinPersuadeSkill = 85;
+
             this.PackItem(new Bandage(Utility.RandomMinMax(1, 15)));
 
             if (this.Female && 0.1 > Utility.RandomDouble())

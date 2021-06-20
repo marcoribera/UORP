@@ -35,7 +35,7 @@ namespace Server.Items
         Invisibility,
         Parasitic,
         Darkglow,
-		ExplodingTarPotion,
+        ExplodingTarPotion,
         #region TOL Publish 93
         Barrab,
         Jukari,
@@ -65,6 +65,23 @@ namespace Server.Items
             }
         }
 
+        private int m_Original_ItemID;
+        private bool m_Identified;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Identified
+        {
+            get
+            {
+                return m_Identified;
+            }
+            set
+            {
+                m_Identified = value;
+                InvalidateProperties();
+            }
+        }
+
         TextDefinition ICommodity.Description
         {
             get
@@ -84,23 +101,39 @@ namespace Server.Items
         {
             get
             {
-                return 1041314 + (int)this.m_PotionEffect;
+                if (m_Identified)
+                {
+                    return 1041314 + (int)this.m_PotionEffect;
+                }
+                else
+                {
+                    return 1038000; // Não Identificado
+                }
             }
         }
 
         public BasePotion(int itemID, PotionEffect effect)
-            : base(itemID)
+            : base(3849)
         {
+            this.m_Original_ItemID = itemID; //Imagem da White Potion
             this.m_PotionEffect = effect;
 
             this.Stackable = Core.ML;
             this.Weight = 1.0;
+            this.Hue = 2050;
         }
 
         public BasePotion(Serial serial)
             : base(serial)
         {
         }
+
+        public void Revelar_Original_ItemID()
+        {
+            this.ItemID = this.m_Original_ItemID;
+        }
+
+
 
         public virtual bool RequireFreeHand
         {
@@ -120,7 +153,7 @@ namespace Server.Items
             if (handTwo is BaseWeapon)
             {
                 BaseWeapon wep = (BaseWeapon)handTwo;
-				
+
                 if (wep.Attributes.BalancedWeapon > 0)
                     return true;
             }
@@ -184,8 +217,9 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
+            writer.Write((int)3); // version
+            writer.Write((int)m_Original_ItemID);
+            writer.Write((bool)m_Identified);
             writer.Write((int)this.m_PotionEffect);
         }
 
@@ -195,8 +229,16 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
+                case 3:
+                    this.m_Original_ItemID = reader.ReadInt();
+                    goto case 2;
+                case 2:
+                    {
+                        this.m_Identified = reader.ReadBool();
+                        goto case 1;
+                    }
                 case 1:
                 case 0:
                     {
@@ -271,7 +313,8 @@ namespace Server.Items
 
         public override bool WillStack(Mobile from, Item dropped)
         {
-            return dropped is BasePotion && ((BasePotion)dropped).m_PotionEffect == this.m_PotionEffect && base.WillStack(from, dropped);
+            //TODO: Fazer ela só ser stackeavel quando craftada pela pessoa
+            return dropped is BasePotion && ((BasePotion)dropped).m_PotionEffect == this.m_PotionEffect && base.WillStack(from, dropped) && (this.Hue == ((BasePotion)dropped).Hue); //&& Identified;
         }
 
         #region ICraftable Members

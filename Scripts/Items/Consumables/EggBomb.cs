@@ -48,7 +48,7 @@ namespace Server.Items
 			}
 			else
 			{
-				Hiding.CombatOverride = true;
+				Furtividade.CombatOverride = true;
 
 				if (from.UseSkill(SkillName.Furtividade))
 				{
@@ -60,7 +60,7 @@ namespace Server.Items
 					Consume();
 				}
 
-				Hiding.CombatOverride = false;
+                Furtividade.CombatOverride = false;
 			}
 		}
 

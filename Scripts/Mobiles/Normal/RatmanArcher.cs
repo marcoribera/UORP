@@ -42,6 +42,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 56;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 95;
+
             this.AddItem(new Bow());
             this.PackItem(new Arrow(Utility.RandomMinMax(50, 70)));
         }
@@ -93,7 +97,7 @@ namespace Server.Mobiles
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-            int version = reader.ReadInt();          
+            int version = reader.ReadInt();
         }
     }
 }

@@ -39,6 +39,10 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 50;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
             this.PackItem(new DoubleAxe()); // TODO: Weapon??
         }
 

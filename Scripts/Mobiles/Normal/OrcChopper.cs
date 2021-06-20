@@ -41,6 +41,10 @@ namespace Server.Mobiles
 
             VirtualArmor = 54;
 
+            Persuadable = true;
+            ControlSlots = 2;
+            MinPersuadeSkill = 90;
+
             PackItem(new Log(Utility.RandomMinMax(1, 10)));
             PackItem(new Board(Utility.RandomMinMax(10, 20)));
             PackItem(new ExecutionersAxe());

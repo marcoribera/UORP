@@ -1,8 +1,8 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
-{ 
+namespace Server.Mobiles
+{
     [CorpseName("an elf corpse")]
     public class ElfBrigand : BaseCreature
     {
@@ -48,6 +48,11 @@ namespace Server.Mobiles
             Fame = 1000;
             Karma = -1000;
 
+            Persuadable = true;
+            ControlSlots = 2;
+            MinPersuadeSkill = 75;
+
+
             // outfit
             AddItem(new Shirt(Utility.RandomNeutralHue()));
 
@@ -77,7 +82,7 @@ namespace Server.Mobiles
             else
                 AddItem(new ShortPants(Utility.RandomNeutralHue()));
 
-            // hair, facial hair			
+            // hair, facial hair
             HairItemID = Race.RandomHair(Female);
             HairHue = Race.RandomHairHue();
 

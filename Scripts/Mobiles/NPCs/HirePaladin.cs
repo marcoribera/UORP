@@ -1,22 +1,22 @@
 using System;
 using Server.Items;
 
-namespace Server.Mobiles 
+namespace Server.Mobiles
 {
-    public class HirePaladin : BaseHire 
+    public class HirePaladin : BaseHire
     {
-        [Constructable] 
+        [Constructable]
         public HirePaladin()
         {
             SpeechHue = Utility.RandomDyedHue();
             Hue = Utility.RandomSkinHue();
 
-            if (Female = Utility.RandomBool()) 
+            if (Female = Utility.RandomBool())
             {
                 Body = 0x191;
                 Name = NameList.RandomName("female");
             }
-            else 
+            else
             {
                 Body = 0x190;
                 Name = NameList.RandomName("male");
@@ -63,11 +63,15 @@ namespace Server.Mobiles
             Fame = 100;
             Karma = 250;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
             AddItem(new VikingSword());
             AddItem(new MetalKiteShield());
- 
+
             AddItem(new PlateChest());
             AddItem(new PlateLegs());
             AddItem(new PlateArms());
@@ -87,14 +91,14 @@ namespace Server.Mobiles
                 return false;
             }
         }
-        public override void Serialize(GenericWriter writer) 
+        public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);// version 
+            writer.Write((int)0);// version
         }
 
-        public override void Deserialize(GenericReader reader) 
+        public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
 

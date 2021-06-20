@@ -16,6 +16,11 @@ namespace Server.Mobiles
 		{
 			SetSkill(SkillName.Carisma, 64.0, 100.0);
 			SetSkill(SkillName.Erudicao, 60.0, 83.0);
+
+			Persuadable = true;
+			ControlSlots = 1;
+			MinPersuadeSkill = 1;
+
 		}
 
 		public Vagabond(Serial serial)

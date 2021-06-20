@@ -141,7 +141,7 @@ namespace Server.Gumps
 
                                     CheckMurderer(pk);
                                 }
-                                else if (SkillHandlers.Stealing.SuspendOnMurder && pk.Kills == 1 && pk.NpcGuild == NpcGuild.ThievesGuild)
+                                else if (SkillHandlers.Prestidigitacao.SuspendOnMurder && pk.Kills == 1 && pk.NpcGuild == NpcGuild.ThievesGuild)
                                 {
                                     pk.SendLocalizedMessage(501562); // You have been suspended by the Thieves Guild.
                                 }
