@@ -31,7 +31,10 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(FletcherTools), 2, 20, 0x1022, 0));
+                Add(new GenericBuyInfo(typeof(FletcherTools), 50, 3, 0x1022, 0));
+                Add(new GenericBuyInfo(typeof(Bow), 150, 3, 0x13B2, 0));
+                Add(new GenericBuyInfo(typeof(Crossbow), 200, 3, 0xF50, 0));
+
             }
         }
 
@@ -40,6 +43,9 @@ namespace Server.Mobiles
             public InternalSellInfo()
             {
                 Add(typeof(FletcherTools), 1);
+                Add(typeof(HeavyCrossbow), 7);
+                Add(typeof(Bow), 5);
+                Add(typeof(Crossbow), 6);
             }
         }
     }

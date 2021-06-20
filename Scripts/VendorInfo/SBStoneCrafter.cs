@@ -31,23 +31,23 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(Nails), 3, 20, 0x102E, 0));
-                Add(new GenericBuyInfo(typeof(Axle), 2, 20, 0x105B, 0, true));
-                Add(new GenericBuyInfo(typeof(Board), 3, 20, 0x1BD7, 0, true));
-                Add(new GenericBuyInfo(typeof(DrawKnife), 10, 20, 0x10E4, 0));
-                Add(new GenericBuyInfo(typeof(Froe), 10, 20, 0x10E5, 0));
-                Add(new GenericBuyInfo(typeof(Scorp), 10, 20, 0x10E7, 0));
-                Add(new GenericBuyInfo(typeof(Inshave), 10, 20, 0x10E6, 0));
-                Add(new GenericBuyInfo(typeof(DovetailSaw), 12, 20, 0x1028, 0));
-                Add(new GenericBuyInfo(typeof(Saw), 15, 20, 0x1034, 0));
-                Add(new GenericBuyInfo(typeof(Hammer), 17, 20, 0x102A, 0));
-                Add(new GenericBuyInfo(typeof(MouldingPlane), 11, 20, 0x102C, 0));
-                Add(new GenericBuyInfo(typeof(SmoothingPlane), 10, 20, 0x1032, 0));
-                Add(new GenericBuyInfo(typeof(JointingPlane), 11, 20, 0x1030, 0));
+                Add(new GenericBuyInfo(typeof(Nails), 20, 20, 0x102E, 0));
+                Add(new GenericBuyInfo(typeof(Axle), 20, 20, 0x105B, 0, true));
+           //   Add(new GenericBuyInfo(typeof(Board), 30, 20, 0x1BD7, 0, true));
+                Add(new GenericBuyInfo(typeof(DrawKnife), 50, 3, 0x10E4, 0));
+                Add(new GenericBuyInfo(typeof(Froe), 50, 3, 0x10E5, 0));
+                Add(new GenericBuyInfo(typeof(Scorp), 50, 3, 0x10E7, 0));
+                Add(new GenericBuyInfo(typeof(Inshave), 50, 3, 0x10E6, 0));
+                Add(new GenericBuyInfo(typeof(DovetailSaw), 3, 20, 0x1028, 0));
+                Add(new GenericBuyInfo(typeof(Saw), 50, 3, 0x1034, 0));
+                Add(new GenericBuyInfo(typeof(Hammer), 50, 3, 0x102A, 0));
+                Add(new GenericBuyInfo(typeof(MouldingPlane), 50, 3, 0x102C, 0));
+                Add(new GenericBuyInfo(typeof(SmoothingPlane), 50, 3, 0x1032, 0));
+                Add(new GenericBuyInfo(typeof(JointingPlane), 50, 3, 0x1030, 0));
 
-                Add(new GenericBuyInfo("Making Valuables With Stonecrafting", typeof(MasonryBook), 10625, 10, 0xFBE, 0));
-                Add(new GenericBuyInfo("Mining For Quality Stone", typeof(StoneMiningBook), 10625, 10, 0xFBE, 0));
-                Add(new GenericBuyInfo("1044515", typeof(MalletAndChisel), 3, 50, 0x12B3, 0));
+              //  Add(new GenericBuyInfo("Making Valuables With Stonecrafting", typeof(MasonryBook), 10625, 10, 0xFBE, 0));
+              //  Add(new GenericBuyInfo("Mining For Quality Stone", typeof(StoneMiningBook), 10625, 10, 0xFBE, 0));
+             //   Add(new GenericBuyInfo("1044515", typeof(MalletAndChisel), 3, 50, 0x12B3, 0));
             }
         }
 
@@ -63,19 +63,19 @@ namespace Server.Mobiles
                 Add(typeof(SmallCrate), 5);
                 Add(typeof(MediumCrate), 6);
                 Add(typeof(LargeCrate), 7);
-                Add(typeof(WoodenChest), 15);
+                Add(typeof(WoodenChest), 8);
               
-                Add(typeof(LargeTable), 10);
+                Add(typeof(LargeTable), 8);
                 Add(typeof(Nightstand), 7);
-                Add(typeof(YewWoodTable), 10);
+                Add(typeof(YewWoodTable), 8);
 
-                Add(typeof(Throne), 24);
+                Add(typeof(Throne), 10);
                 Add(typeof(WoodenThrone), 6);
                 Add(typeof(Stool), 6);
                 Add(typeof(FootStool), 6);
 
-                Add(typeof(FancyWoodenChairCushion), 12);
-                Add(typeof(WoodenChairCushion), 10);
+                Add(typeof(FancyWoodenChairCushion), 8);
+                Add(typeof(WoodenChairCushion), 8);
                 Add(typeof(WoodenChair), 8);
                 Add(typeof(BambooChair), 6);
                 Add(typeof(WoodenBench), 6);
@@ -93,12 +93,12 @@ namespace Server.Mobiles
                 Add(typeof(Board), 2);
                 Add(typeof(Axle), 1);
 
-                Add(typeof(WoodenShield), 31);
-                Add(typeof(BlackStaff), 24);
-                Add(typeof(GnarledStaff), 12);
-                Add(typeof(QuarterStaff), 15);
-                Add(typeof(ShepherdsCrook), 12);
-                Add(typeof(Club), 13);
+                Add(typeof(WoodenShield), 5);
+                Add(typeof(BlackStaff), 5);
+                Add(typeof(GnarledStaff), 3);
+                Add(typeof(QuarterStaff), 3);
+                Add(typeof(ShepherdsCrook), 3);
+                Add(typeof(Club), 3);
 
                 Add(typeof(Log), 1);
             }

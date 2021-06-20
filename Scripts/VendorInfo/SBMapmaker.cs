@@ -31,9 +31,9 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(BlankMap), 5, 40, 0x14EC, 0));
-                Add(new GenericBuyInfo(typeof(MapmakersPen), 8, 20, 0x0FBF, 0));
-                Add(new GenericBuyInfo(typeof(BlankScroll), 12, 40, 0xEF3, 0));
+                Add(new GenericBuyInfo(typeof(BlankMap), 30, 40, 0x14EC, 0));
+                Add(new GenericBuyInfo(typeof(MapmakersPen), 50 3, 0x0FBF, 0));
+                Add(new GenericBuyInfo(typeof(BlankScroll), 15, 40 , 0xEF3, 0));
 				
                 for (int i = 0; i < PresetMapEntry.Table.Length; ++i)
                     Add(new PresetMapBuyInfo(PresetMapEntry.Table[i], Utility.RandomMinMax(7, 10), 20));
@@ -44,7 +44,7 @@ namespace Server.Mobiles
         {
             public InternalSellInfo()
             {
-                Add(typeof(BlankScroll), 6);
+                Add(typeof(BlankScroll), 5);
                 Add(typeof(MapmakersPen), 4);
                 Add(typeof(BlankMap), 2);
                 Add(typeof(CityMap), 3);
