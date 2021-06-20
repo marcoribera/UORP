@@ -31,10 +31,10 @@ namespace Server.Mobiles
         { 
             public InternalBuyInfo() 
             { 
-                Add(new GenericBuyInfo(typeof(Drums), 21, (10), 0x0E9C, 0)); 
-                Add(new GenericBuyInfo(typeof(Tambourine), 21, (10), 0x0E9E, 0)); 
-                Add(new GenericBuyInfo(typeof(LapHarp), 21, (10), 0x0EB2, 0)); 
-                Add(new GenericBuyInfo(typeof(Lute), 21, (10), 0x0EB3, 0)); 
+                Add(new GenericBuyInfo(typeof(Drums), 250, (2), 0x0E9C, 0)); 
+                Add(new GenericBuyInfo(typeof(Tambourine), 150, (2), 0x0E9E, 0)); 
+                Add(new GenericBuyInfo(typeof(LapHarp), 400, (2), 0x0EB2, 0)); 
+                Add(new GenericBuyInfo(typeof(Lute), 350, (2), 0x0EB3, 0)); 
             }
         }
 

@@ -560,6 +560,17 @@
     <Compile Include="Items\Addons\Craft Addons\EnchantedSculptingTool.cs" />
     <Compile Include="Items\Addons\EnchantedGraniteCart.cs" />
     <Compile Include="Items\Addons\JollyHolidayTree.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitamadera3Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitamaderaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casitapiedra2Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casita_madera4Addon.cs" />
+    <Compile Include="Items\Addons\moradias novas\casita_marmolAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\herreriaAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\JoustingpitAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\monglowAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\temploAddon.cs" />
+    <Compile Include="Items\Addons\moradias novas\tiendacasaAddon.cs" />
     <Compile Include="Items\Addons\SkullTiledFloor.cs" />
     <Compile Include="Items\Addons\TheKingsCollection\AlchemistsBookshelf.cs" />
     <Compile Include="Items\Addons\TheKingsCollection\TheTokenBox.cs" />

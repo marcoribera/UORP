@@ -31,10 +31,10 @@ namespace Server.Mobiles
         { 
             public InternalBuyInfo() 
             { 
-                Add(new GenericBuyInfo(typeof(ThighBoots), 15, 20, 0x1711, Utility.RandomNeutralHue())); 
-                Add(new GenericBuyInfo(typeof(Shoes), 8, 20, 0x170f, Utility.RandomNeutralHue())); 
-                Add(new GenericBuyInfo(typeof(Boots), 10, 20, 0x170b, Utility.RandomNeutralHue()));
-                Add(new GenericBuyInfo(typeof(Sandals), 5, 20, 0x170d, Utility.RandomNeutralHue())); 
+                Add(new GenericBuyInfo(typeof(ThighBoots), 100, 3, 0x1711, Utility.RandomNeutralHue())); 
+                Add(new GenericBuyInfo(typeof(Shoes), 70, 3, 0x170f, Utility.RandomNeutralHue())); 
+                Add(new GenericBuyInfo(typeof(Boots), 90, 3, 0x170b, Utility.RandomNeutralHue()));
+                Add(new GenericBuyInfo(typeof(Sandals), 50, 3, 0x170d, Utility.RandomNeutralHue())); 
             }
         }
 
@@ -42,9 +42,9 @@ namespace Server.Mobiles
         { 
             public InternalSellInfo() 
             { 
-                Add(typeof(Shoes), 4); 
-                Add(typeof(Boots), 5); 
-                Add(typeof(ThighBoots), 7); 
+                Add(typeof(Shoes), 2); 
+                Add(typeof(Boots), 2); 
+                Add(typeof(ThighBoots), 4); 
                 Add(typeof(Sandals), 2); 
             }
         }
