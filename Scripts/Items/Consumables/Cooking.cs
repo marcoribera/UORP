@@ -24,50 +24,25 @@ namespace Server.Items
     }
 
     // ********** Dough **********
-    public class Dough : Item, IQuality
+    public class Dough : Item
     {
-        private ItemQuality _Quality;
+        private int m_MinSkill;
+        private int m_MaxSkill;
+        private Food m_CookedFood;
 
-        [CommandProperty(AccessLevel.GameMaster)]
-        public ItemQuality Quality { get { return _Quality; } set { _Quality = value; InvalidateProperties(); } }
-
-        public bool PlayerConstructed { get { return true; } }
+        public int MinSkill { get { return m_MinSkill; } }
+        public int MaxSkill { get { return m_MaxSkill; } }
+        public Food CookedFood { get { return m_CookedFood; } }
 
         [Constructable]
-        public Dough()
-            : base(0x103d)
+        public Dough() : base(0x103d)
         {
-            Stackable = Core.ML;
-            Weight = 1.0;
+            m_MinSkill = 0;
+            m_MaxSkill = 10;
+            m_CookedFood = new BreadLoaf();
         }
 
-        public override bool WillStack(Mobile from, Item item)
-        {
-            if (item is IQuality && ((IQuality)item).Quality != _Quality)
-            {
-                return false;
-            }
-
-            return base.WillStack(from, item);
-        }
-
-        public int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
-        {
-            Quality = (ItemQuality)quality;
-
-            return quality;
-        }
-
-        public override void AddCraftedProperties(ObjectPropertyList list)
-        {
-            if (_Quality == ItemQuality.Exceptional)
-            {
-                list.Add(1060636); // Exceptional
-            }
-        }
-
-        public Dough(Serial serial)
-            : base(serial)
+        public Dough(Serial serial) : base(serial)
         {
         }
 
@@ -75,9 +50,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
-            writer.Write((int)_Quality);
+            writer.Write((int)0);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -85,76 +58,272 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            if (version > 0)
-                _Quality = (ItemQuality)reader.ReadInt();
         }
 
-        #if false
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( !Movable )
-				return;
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!Movable)
+                return;
 
-			from.Target = new InternalTarget( this );
-		}
-        #endif
+            from.Target = new InternalTarget(this);
+        }
 
         private class InternalTarget : Target
         {
-            private readonly Dough m_Item;
+            private Dough m_Item;
 
-            public InternalTarget(Dough item)
-                : base(1, false, TargetFlags.None)
+            public InternalTarget(Dough item) : base(1, false, TargetFlags.None)
             {
                 m_Item = item;
             }
 
+            public static bool IsHeatSource(object targeted)
+            {
+                int itemID;
+
+                if (targeted is Item)
+                    itemID = ((Item)targeted).ItemID & 0x3FFF;
+                else if (targeted is StaticTarget)
+                    itemID = ((StaticTarget)targeted).ItemID & 0x3FFF;
+                else
+                    return false;
+
+                if (itemID >= 0xDE3 && itemID <= 0xDE9)
+                    return true;
+                else if (itemID >= 0x461 && itemID <= 0x48E)
+                    return true;
+                else if (itemID >= 0x92B && itemID <= 0x96C)
+                    return true;
+                else if (itemID == 0xFAC)
+                    return true;
+                else if (itemID >= 0x398C && itemID <= 0x399F)
+                    return true;
+                else if (itemID == 0xFB1)
+                    return true;
+                else if (itemID >= 0x197A && itemID <= 0x19A9)
+                    return true;
+                else if (itemID >= 0x184A && itemID <= 0x184C)
+                    return true;
+                else if (itemID >= 0x184E && itemID <= 0x1850)
+                    return true;
+
+                return false;
+            }
+
             protected override void OnTarget(Mobile from, object targeted)
             {
-                if (m_Item.Deleted)
-                    return;
+                if (m_Item.Deleted) return;
 
-                if (targeted is Eggs)
+                if (IsHeatSource(targeted))
                 {
-                    m_Item.Delete();
+                    if (from.BeginAction(typeof(Item)))
+                    {
+                        from.PlaySound(0x225);
 
-                    ((Eggs)targeted).Consume();
+                        m_Item.Consume();
 
-                    from.AddToBackpack(new UnbakedQuiche());
-                    from.AddToBackpack(new Eggshells());
+                        InternalTimer t = new InternalTimer(from, targeted as IPoint3D, from.Map, m_Item.MinSkill, m_Item.MaxSkill, m_Item.CookedFood);
+                        t.Start();
+                    }
+                    else
+                    {
+                        from.SendLocalizedMessage(500119);
+                    }
                 }
-                else if (targeted is CheeseWheel)
+                else if (targeted is Eggs)
                 {
-                    m_Item.Delete();
-
-                    ((CheeseWheel)targeted).Consume();
-
-                    from.AddToBackpack(new CheesePizza());
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UnbakedQuiche().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedQuiche());
+                    if (m_Item.Parent == null)
+                        new Eggshells(m_Item.Hue).MoveToWorld(m_Item.Location, (m_Item.Map));
+                    else
+                        from.AddToBackpack(new Eggshells(m_Item.Hue));
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an unbaked quiche");
                 }
-                else if (targeted is Sausage)
+                else if (targeted is CheeseWedgeSmall)
                 {
-                    m_Item.Delete();
-
-                    ((Sausage)targeted).Consume();
-
-                    from.AddToBackpack(new SausagePizza());
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UncookedPizza("cheese").MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UncookedPizza("cheese"));
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an uncooked cheese pizza");
+                }
+                else if (targeted is JarHoney)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new SweetDough().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new SweetDough());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made a sweet dough");
+                }
+                else if (targeted is ChickenLeg || targeted is RawChickenLeg)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new SweetDough().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedChickenPotPie());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made a chicken pot pie");
                 }
                 else if (targeted is Apple)
                 {
-                    m_Item.Delete();
-
-                    ((Apple)targeted).Consume();
-
-                    from.AddToBackpack(new UnbakedApplePie());
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UnbakedApplePie().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedApplePie());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an unbaked apple pie");
                 }
                 else if (targeted is Peach)
                 {
-                    m_Item.Delete();
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UnbakedPeachCobbler().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedPeachCobbler());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an unbaked peach cobbler");
+                }
+                else if (targeted is Pumpkin)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UnbakedPumpkinPie().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedPumpkinPie());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an unbaked pumpkin pie");
+                }
+                else if (targeted is Lime)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UnbakedKeyLimePie().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UnbakedKeyLimePie());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You made an unbaked key lime pie");
+                }
+                else if (targeted is Dough)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UncookedFrenchBread().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UncookedFrenchBread());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You ... add some more dough onto the dough");
+                }
+                else if (targeted is UncookedFrenchBread)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    if (((Item)targeted).Parent == null)
+                        new UncookedDonuts().MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                    else
+                        from.AddToBackpack(new UncookedDonuts());
+                    m_Item.Consume();
+                    ((Item)targeted).Consume();
+                    from.SendMessage("You fumble around for a bit with even more dough, and eventually make these round doughy things");
+                }
 
-                    ((Peach)targeted).Consume();
+                try
+                {
+                    if (targeted is FromageDeVacheWedgeSmall)
+                    {
+                        if (!((Item)targeted).Movable) return;
+                        if (((Item)targeted).Parent == null)
+                            new UncookedPizza("cheese").MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                        else
+                            from.AddToBackpack(new UncookedPizza("cheese"));
+                        m_Item.Consume();
+                        ((Item)targeted).Consume();
+                        from.SendMessage("You made an uncooked cheese pizza");
+                    }
+                    else if (targeted is FromageDeBrebisWedgeSmall)
+                    {
+                        if (!((Item)targeted).Movable) return;
+                        if (((Item)targeted).Parent == null)
+                            new UncookedPizza("sheep cheese").MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                        else
+                            from.AddToBackpack(new UncookedPizza("sheep cheese"));
+                        m_Item.Consume();
+                        ((Item)targeted).Consume();
+                        from.SendMessage("You made an uncooked sheep cheese pizza");
+                    }
+                    else if (targeted is FromageDeChevreWedgeSmall)
+                    {
+                        if (!((Item)targeted).Movable) return;
+                        if (((Item)targeted).Parent == null)
+                            new UncookedPizza("goat cheese").MoveToWorld(((Item)targeted).Location, ((Item)targeted).Map);
+                        else
+                            from.AddToBackpack(new UncookedPizza("goat cheese"));
+                        m_Item.Consume();
+                        ((Item)targeted).Consume();
+                        from.SendMessage("You made an uncooked goat cheese pizza");
+                    }
+                }
+                catch
+                {
+                }
+            }
 
-                    from.AddToBackpack(new UnbakedPeachCobbler());
+            private class InternalTimer : Timer
+            {
+                private Mobile m_From;
+                private IPoint3D m_Point;
+                private Map m_Map;
+                private int Min;
+                private int Max;
+                private Food m_CookedFood;
+
+                public InternalTimer(Mobile from, IPoint3D p, Map map, int min, int max, Food cookedFood) : base(TimeSpan.FromSeconds(1.0))
+                {
+                    m_From = from;
+                    m_Point = p;
+                    m_Map = map;
+                    Min = min;
+                    Max = max;
+                    m_CookedFood = cookedFood;
+                }
+
+                protected override void OnTick()
+                {
+                    m_From.EndAction(typeof(Item));
+
+                    if (m_From.Map != m_Map || (m_Point != null && m_From.GetDistanceToSqrt(m_Point) > 3))
+                    {
+                        m_From.SendLocalizedMessage(500686);
+                        return;
+                    }
+
+                    if (m_From.CheckSkill(SkillName.Culinaria, Min, Max))
+                    {
+                        if (m_From.AddToBackpack(m_CookedFood))
+                            m_From.PlaySound(0x57);
+                    }
+                    else
+                    {
+                        m_From.SendLocalizedMessage(500686);
+                    }
                 }
             }
         }
@@ -163,38 +332,26 @@ namespace Server.Items
     // ********** SweetDough **********
     public class SweetDough : Item
     {
-        private ItemQuality _Quality;
+        public override int LabelNumber { get { return 1041340; } }
+        private int m_MinSkill;
+        private int m_MaxSkill;
+        private Food m_CookedFood;
 
-        [CommandProperty(AccessLevel.GameMaster)]
-        public ItemQuality Quality { get { return _Quality; } set { _Quality = value; InvalidateProperties(); } }
-
-        public override int LabelNumber
-        {
-            get
-            {
-                return 1041340;
-            }
-        }// sweet dough
+        public int MinSkill { get { return m_MinSkill; } }
+        public int MaxSkill { get { return m_MaxSkill; } }
+        public Food CookedFood { get { return m_CookedFood; } }
 
         [Constructable]
-        public SweetDough()
-            : base(0x103d)
+        public SweetDough() : base(0x103d)
         {
-            Stackable = Core.ML;
-            Weight = 1.0;
-            Hue = 150;
+            Hue = 51;
+            m_MinSkill = 5;
+            m_MaxSkill = 20;
+            m_CookedFood = new Muffins(3);
+
         }
 
-        public override void AddCraftedProperties(ObjectPropertyList list)
-        {
-            if (_Quality == ItemQuality.Exceptional)
-            {
-                list.Add(1060636); // Exceptional
-            }
-        }
-
-        public SweetDough(Serial serial)
-            : base(serial)
+        public SweetDough(Serial serial) : base(serial)
         {
         }
 
@@ -202,9 +359,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
-            writer.Write((int)_Quality);
+            writer.Write((int)0);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -212,83 +367,143 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            if (version > 0)
-                _Quality = (ItemQuality)reader.ReadInt();
-
-            if (Hue == 51)
-                Hue = 150;
         }
 
-        #if false
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( !Movable )
-				return;
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!Movable)
+                return;
 
-			from.Target = new InternalTarget( this );
-		}
-        #endif
+            from.Target = new InternalTarget(this);
+        }
 
         private class InternalTarget : Target
         {
-            private readonly SweetDough m_Item;
+            private SweetDough m_Item;
 
-            public InternalTarget(SweetDough item)
-                : base(1, false, TargetFlags.None)
+            public InternalTarget(SweetDough item) : base(1, false, TargetFlags.None)
             {
                 m_Item = item;
             }
 
+            public static bool IsHeatSource(object targeted)
+            {
+                int itemID;
+
+                if (targeted is Item)
+                    itemID = ((Item)targeted).ItemID & 0x3FFF;
+                else if (targeted is StaticTarget)
+                    itemID = ((StaticTarget)targeted).ItemID & 0x3FFF;
+                else
+                    return false;
+
+                if (itemID >= 0xDE3 && itemID <= 0xDE9)
+                    return true;
+                else if (itemID >= 0x461 && itemID <= 0x48E)
+                    return true;
+                else if (itemID >= 0x92B && itemID <= 0x96C)
+                    return true;
+                else if (itemID == 0xFAC)
+                    return true;
+                else if (itemID >= 0x398C && itemID <= 0x399F)
+                    return true;
+                else if (itemID == 0xFB1)
+                    return true;
+                else if (itemID >= 0x197A && itemID <= 0x19A9)
+                    return true;
+                else if (itemID >= 0x184A && itemID <= 0x184C)
+                    return true;
+                else if (itemID >= 0x184E && itemID <= 0x1850)
+                    return true;
+
+                return false;
+            }
+
             protected override void OnTarget(Mobile from, object targeted)
             {
-                if (m_Item.Deleted)
-                    return;
+                if (m_Item.Deleted) return;
 
                 if (targeted is BowlFlour)
                 {
-                    m_Item.Delete();
-                    ((BowlFlour)targeted).Delete();
-
-                    from.AddToBackpack(new CakeMix());
+                    if (!((Item)targeted).Movable) return;
+                    from.SendMessage("You made a cake mix");
+                    if (m_Item.Parent == null)
+                        new CakeMix().MoveToWorld(m_Item.Location, m_Item.Map);
+                    else
+                        from.AddToBackpack(new CakeMix());
+                    m_Item.Consume();
+                    ((BowlFlour)targeted).Use(from);
                 }
-                else if (targeted is Campfire)
+
+                else if (targeted is JarHoney)
                 {
-                    from.PlaySound(0x225);
-                    m_Item.Delete();
-                    InternalTimer t = new InternalTimer(from, (Campfire)targeted);
-                    t.Start();
+                    if (!((Item)targeted).Movable) return;
+                    from.SendMessage("You made a cookie mix");
+                    if (m_Item.Parent == null)
+                        new CookieMix().MoveToWorld(m_Item.Location, m_Item.Map);
+                    else
+                        from.AddToBackpack(new CookieMix());
+                    m_Item.Consume();
+                    ((JarHoney)targeted).Consume();
+                }
+                else if (IsHeatSource(targeted))
+                {
+                    if (from.BeginAction(typeof(Item)))
+                    {
+                        from.PlaySound(0x225);
+
+                        m_Item.Consume();
+
+                        InternalTimer t = new InternalTimer(from, targeted as IPoint3D, from.Map, m_Item.MinSkill, m_Item.MaxSkill, m_Item.CookedFood);
+                        t.Start();
+                    }
+                    else
+                    {
+                        from.SendLocalizedMessage(500119);
+                    }
                 }
             }
-			
+
             private class InternalTimer : Timer
             {
-                private readonly Mobile m_From;
-                private readonly Campfire m_Campfire;
-			
-                public InternalTimer(Mobile from, Campfire campfire)
-                    : base(TimeSpan.FromSeconds(5.0))
+                private Mobile m_From;
+                private IPoint3D m_Point;
+                private Map m_Map;
+                private int Min;
+                private int Max;
+                private Food m_CookedFood;
+
+                public InternalTimer(Mobile from, IPoint3D p, Map map, int min, int max, Food cookedFood) : base(TimeSpan.FromSeconds(1.0))
                 {
                     m_From = from;
-                    m_Campfire = campfire;
+                    m_Point = p;
+                    m_Map = map;
+                    Min = min;
+                    Max = max;
+                    m_CookedFood = cookedFood;
+
                 }
 
                 protected override void OnTick()
                 {
-                    if (m_From.GetDistanceToSqrt(m_Campfire) > 3)
+                    m_From.EndAction(typeof(Item));
+
+                    if (m_From.Map != m_Map || (m_Point != null && m_From.GetDistanceToSqrt(m_Point) > 3))
                     {
-                        m_From.SendLocalizedMessage(500686); // You burn the food to a crisp! It's ruined.
+                        m_From.SendLocalizedMessage(500686);
                         return;
                     }
 
-                    if (m_From.CheckSkill(SkillName.Culinaria, 0, 10))
+                    if (m_From.CheckSkill(SkillName.Culinaria, Min, Max))
                     {
-                        if (m_From.AddToBackpack(new Muffins()))
+                        if (m_From.AddToBackpack(m_CookedFood))
                             m_From.PlaySound(0x57);
                     }
                     else
                     {
-                        m_From.SendLocalizedMessage(500686); // You burn the food to a crisp! It's ruined.
+                        m_From.PlaySound(0x57);
+
+                        m_From.SendLocalizedMessage(500686);
                     }
                 }
             }
@@ -369,17 +584,58 @@ namespace Server.Items
     }
 
     // ********** BowlFlour **********
-    public class BowlFlour : Item
+    public class BowlFlour : Item, IUsesRemaining
     {
-        [Constructable]
-        public BowlFlour()
-            : base(0xa1e)
+        private int m_Uses;
+
+        public bool ShowUsesRemaining { get { return true; } set { } }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int Uses
         {
-            Weight = 1.0;
+            get { return m_Uses; }
+            set { m_Uses = value; InvalidateProperties(); }
         }
 
-        public BowlFlour(Serial serial)
-            : base(serial)
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int UsesRemaining
+        {
+            get { return m_Uses; }
+            set { m_Uses = value; InvalidateProperties(); }
+        }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+            list.Add(1060584, m_Uses.ToString());
+        }
+
+        public virtual void DisplayDurabilityTo(Mobile m)
+        {
+            LabelToAffix(m, 1017323, Network.AffixType.Append, ": " + m_Uses.ToString());
+        }
+
+        public override void OnSingleClick(Mobile from)
+        {
+            DisplayDurabilityTo(from);
+
+            base.OnSingleClick(from);
+        }
+
+        [Constructable]
+        public BowlFlour() : this(10)
+        {
+        }
+
+        [Constructable]
+        public BowlFlour(int StartingUses) : base(0xa1e)
+        {
+            Weight = 2.0;
+            m_Uses = StartingUses;
+        }
+
+        public BowlFlour(Serial serial) : base(serial)
         {
         }
 
@@ -387,7 +643,9 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)1);
+
+            writer.Write((int)m_Uses);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -395,6 +653,97 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            switch (version)
+            {
+                case 1:
+                    {
+                        m_Uses = reader.ReadInt();
+                        break;
+                    }
+            }
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!Movable)
+                return;
+
+            from.Target = new InternalTarget(this);
+        }
+
+        public void Use(Mobile from)
+        {
+            m_Uses--;
+            InvalidateProperties();
+
+            if (m_Uses <= 0)
+            {
+                if (Parent == null)
+                    new WoodenBowl().MoveToWorld(this.Location, this.Map);
+                else
+                    from.AddToBackpack(new WoodenBowl());
+                Consume();
+            }
+        }
+
+        private class InternalTarget : Target
+        {
+            private BowlFlour m_Item;
+
+            public InternalTarget(BowlFlour item) : base(1, false, TargetFlags.None)
+            {
+                m_Item = item;
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                if (m_Item.Deleted) return;
+
+                if (targeted is Pitcher)
+                {
+                    if (!((Item)targeted).Movable) return;
+
+                    if (BaseBeverage.ConsumeTotal(from.Backpack, typeof(Pitcher), BeverageType.Water, 1))
+                    {
+                        Effects.PlaySound(from.Location, from.Map, 0x240);
+                        from.AddToBackpack(new Dough());
+                        from.SendMessage("You made some dough and put it them in your backpack");
+                        m_Item.Use(from);
+                    }
+                }
+
+                if (targeted is SweetDough)
+                {
+                    if (!((Item)targeted).Movable) return;
+                    from.SendMessage("You made a cake mix");
+                    if (((SweetDough)targeted).Parent == null)
+                        new CakeMix().MoveToWorld(((SweetDough)targeted).Location, ((SweetDough)targeted).Map);
+                    else
+                        from.AddToBackpack(new CakeMix());
+                    ((SweetDough)targeted).Consume();
+                    m_Item.Use(from);
+                }
+
+                if (targeted is TribalBerry)
+                {
+                    if (!((Item)targeted).Movable) return;
+
+                    if (from.Skills[SkillName.Culinaria].Base >= 80.0)
+                    {
+                        m_Item.Use(from);
+                        ((TribalBerry)targeted).Delete();
+
+                        from.AddToBackpack(new TribalPaint());
+
+                        from.SendLocalizedMessage(1042002);
+                    }
+                    else
+                    {
+                        from.SendLocalizedMessage(1042003);
+                    }
+                }
+            }
         }
     }
 
@@ -429,75 +778,48 @@ namespace Server.Items
     }
 
     // ********** SackFlour **********
-    public class SackFlour : Item, IQuality
+    [TypeAlias("Server.Items.SackFlourOpen")]
+    public class SackFlour : Item, IHasQuantity
     {
-        private ItemQuality _Quality;
+        private int m_Quantity;
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public ItemQuality Quality { get { return _Quality; } set { _Quality = value; InvalidateProperties(); } }
-
-        public bool PlayerConstructed { get { return true; } }
-
-        [Constructable]
-        public SackFlour()
-            : this(1)
+        public int Quantity
         {
+            get { return m_Quantity; }
+            set
+            {
+                if (value < 0)
+                    value = 0;
+                else if (value > 20)
+                    value = 20;
+
+                m_Quantity = value;
+
+                InvalidateProperties();
+
+                if (m_Quantity == 0)
+                    Delete();
+                else if (m_Quantity < 20 && (ItemID == 0x1039 || ItemID == 0x1045))
+                    ++ItemID;
+
+            }
+        }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+            list.Add(1060584, m_Quantity.ToString());
         }
 
         [Constructable]
-        public SackFlour(int amount)
-            : base(0x1039)
+        public SackFlour() : base(0x1039)
         {
-            Weight = 5.0;
-
-            Stackable = true;
-            Amount = amount;
+            m_Quantity = 20;
         }
 
-        public override void OnDoubleClick(Mobile from)
-        {
-            if (!Movable)
-                return;
-
-            var flour = new SackFlourOpen();
-            flour.Location = Location;
-
-            if (Parent is Container)
-            {
-                ((Container)Parent).DropItem(flour);
-            }
-            else
-            {
-                flour.MoveToWorld(GetWorldLocation(), Map);
-            }
-
-            if (Amount > 1)
-            {
-                Amount--;
-            }
-            else
-            {
-                Delete();
-            }
-        }
-
-        public int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
-        {
-            Quality = (ItemQuality)quality;
-
-            return quality;
-        }
-
-        public override void AddCraftedProperties(ObjectPropertyList list)
-        {
-            if (_Quality == ItemQuality.Exceptional)
-            {
-                list.Add(1060636); // Exceptional
-            }
-        }
-
-        public SackFlour(Serial serial)
-            : base(serial)
+        public SackFlour(Serial serial) : base(serial)
         {
         }
 
@@ -505,9 +827,9 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)4); // version
+            writer.Write((int)1);
 
-            writer.Write((int)_Quality);
+            writer.Write((int)m_Quantity);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -516,22 +838,34 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
-                case 4:
-                    _Quality = (ItemQuality)reader.ReadInt();
-                    break;
-                case 3:
-                    _Quality = (ItemQuality)reader.ReadInt();
-                    reader.ReadInt();
-                    Stackable = true;
-                    break;
+                case 1:
+                    {
+                        m_Quantity = reader.ReadInt();
+                        break;
+                    }
+                case 0:
+                    {
+                        m_Quantity = 20;
+                        break;
+                    }
             }
         }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (!Movable)
+                return;
+
+            if ((ItemID == 0x1039 || ItemID == 0x1045))
+                ++ItemID;
+        }
+
     }
 
-	// ********** SackFlourOpen **********
-	public class SackFlourOpen : Item
+    // ********** SackFlourOpen **********
+    public class SackFlourOpen : Item
 	{
 		public override int LabelNumber{ get{ return 1024166; } } // open sack of flour
 
@@ -564,14 +898,18 @@ namespace Server.Items
     public class Eggshells : Item
     {
         [Constructable]
-        public Eggshells()
-            : base(0x9b4)
+        public Eggshells() : this(0)
         {
+        }
+
+        [Constructable]
+        public Eggshells(int hue) : base(0x9b4)
+        {
+            Hue = hue;
             Weight = 0.5;
         }
 
-        public Eggshells(Serial serial)
-            : base(serial)
+        public Eggshells(Serial serial) : base(serial)
         {
         }
 
@@ -579,7 +917,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)0);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -644,6 +982,46 @@ namespace Server.Items
             base.Serialize(writer);
 
             writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class FishHeads : Food
+    {
+        [Constructable]
+        public FishHeads() : this(1)
+        {
+        }
+
+        [Constructable]
+        public FishHeads(int amount) : base(Utility.Random(7705, 2))
+        {
+            Weight = 0.1;
+            Amount = amount;
+            this.FillFactor = 0;
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            from.SendMessage("*ugh*! That's cat food!");
+            return;
+        }
+
+        public FishHeads(Serial serial) : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0);
         }
 
         public override void Deserialize(GenericReader reader)

@@ -2,6 +2,7 @@ using System;
 
 namespace Server.Items
 {
+    [FlipableAttribute(0x1422, 0x1423)]
     public class Beeswax : Item
     {
         [Constructable]
