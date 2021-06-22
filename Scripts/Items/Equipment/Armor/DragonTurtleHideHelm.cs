@@ -24,12 +24,13 @@ namespace Server.Items
 
         public override ArmorMeditationAllowance DefMedAllowance { get { return ArmorMeditationAllowance.All; } }
 
-        public override int LabelNumber { get { return 1109637; } } // Dragon Turtle Hide Helm
+        public override int LabelNumber { get { return 1109637; } } // Dragon Turtle Hide Helm >> Galea
 
         [Constructable]
         public DragonTurtleHideHelm()
             : base(0x782D)
         {
+            Hue = 0x46A;
             Weight = 2.0;
         }
 
