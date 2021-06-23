@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles 
 { 
-    public class elfocobbler : BaseVendor 
+    public class ElfoCobbler : BaseVendor 
     { 
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfocobbler()
+        public ElfoCobbler()
             : base("o sapateiro")
         { 
             this.SetSkill(SkillName.Costura, 60.0, 83.0);
         }
 
-        public elfocobbler(Serial serial)
+        public ElfoCobbler(Serial serial)
             : base(serial)
         { 
         }

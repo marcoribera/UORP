@@ -4,7 +4,7 @@ using Server.Engines.BulkOrders;
 
 namespace Server.Mobiles
 {
-    public class elfotailor : BaseVendor
+    public class ElfoTailor : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         protected override List<SBInfo> SBInfos
@@ -24,7 +24,7 @@ namespace Server.Mobiles
         }
 
         [Constructable]
-        public elfotailor()
+        public ElfoTailor()
             : base("o costureiro")
         {
             this.SetSkill(SkillName.Costura, 64.0, 100.0);
@@ -103,7 +103,7 @@ namespace Server.Mobiles
 
         #endregion
 
-        public elfotailor(Serial serial)
+        public ElfoTailor(Serial serial)
             : base(serial)
         {
         }

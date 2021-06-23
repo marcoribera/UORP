@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class elfomage : BaseVendor
+    public class ElfoMage : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfomage()
+        public ElfoMage()
             : base("o mago")
         {
             this.SetSkill(SkillName.PoderMagico, 65.0, 88.0);
@@ -22,7 +22,7 @@ namespace Server.Mobiles
 
         }
 
-        public elfomage(Serial serial)
+        public ElfoMage(Serial serial)
             : base(serial)
         {
         }

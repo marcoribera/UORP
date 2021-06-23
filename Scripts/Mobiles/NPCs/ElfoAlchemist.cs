@@ -4,11 +4,11 @@ using Server.Engines.BulkOrders;
 
 namespace Server.Mobiles
 {
-    public class elfoalquimista : BaseVendor
+    public class ElfoAlchemist : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoalquimista()
+        public ElfoAlchemist()
             : base("o alquimista")
         {
             this.SetSkill(SkillName.Alquimia, 85.0, 100.0);
@@ -36,7 +36,7 @@ namespace Server.Mobiles
 
         #endregion
 
-        public elfoalquimista(Serial serial)
+        public ElfoAlchemist(Serial serial)
             : base(serial)
         {
         }

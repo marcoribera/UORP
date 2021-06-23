@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles 
 { 
-    public class elfoletherworker : BaseVendor 
+    public class ElfoLeatherWorker : BaseVendor 
     { 
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoletherworker()
+        public ElfoLeatherWorker()
             : base("o coureiro")
         { 
         }
 
-        public elfoletherworker(Serial serial)
+        public ElfoLeatherWorker(Serial serial)
             : base(serial)
         { 
         }

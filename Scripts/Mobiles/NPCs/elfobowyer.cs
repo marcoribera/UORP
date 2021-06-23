@@ -5,18 +5,18 @@ using Server.Engines.BulkOrders;
 namespace Server.Mobiles
 {
     [TypeAlias("Server.Mobiles.Bower")]
-    public class elfobowyer : BaseVendor
+    public class ElfoBowyer : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfobowyer()
+        public ElfoBowyer()
             : base("o arqueiro")
         {
             this.SetSkill(SkillName.Carpintaria, 80.0, 100.0);
             this.SetSkill(SkillName.Atirar, 80.0, 100.0);
         }
 
-        public elfobowyer(Serial serial)
+        public ElfoBowyer(Serial serial)
             : base(serial)
         {
         }

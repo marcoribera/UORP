@@ -1,27 +1,30 @@
 using System;
 using System.Collections.Generic;
 
-namespace Server.Mobiles 
-{ 
-    public class elfoinnkeeper : BaseVendor 
-    { 
+namespace Server.Mobiles
+{
+    public class ElfoFarmer : BaseVendor
+    {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoinnkeeper()
-            : base("o dono da taverna")
-        { 
+        public ElfoFarmer()
+            : base("o fazendeiro")
+        {
+            this.SetSkill(SkillName.Extracao, 36.0, 68.0);
+            this.SetSkill(SkillName.Alquimia, 36.0, 68.0);
+            this.SetSkill(SkillName.Culinaria, 36.0, 68.0);
         }
 
-        public elfoinnkeeper(Serial serial)
+        public ElfoFarmer(Serial serial)
             : base(serial)
-        { 
+        {
         }
 
         public override VendorShoeType ShoeType
         {
             get
             {
-                return Utility.RandomBool() ? VendorShoeType.Sandals : VendorShoeType.Shoes;
+                return VendorShoeType.ThighBoots;
             }
         }
         protected override List<SBInfo> SBInfos
@@ -31,26 +34,35 @@ namespace Server.Mobiles
                 return this.m_SBInfos;
             }
         }
-        public override void InitSBInfo() 
-        { 
-            this.m_SBInfos.Add(new SBInnKeeper()); 
-			
-            if (this.IsTokunoVendor)
-                this.m_SBInfos.Add(new SBSEFood());
+        public override void InitSBInfo()
+        {
+            this.m_SBInfos.Add(new SBFarmer());
         }
 
-        public override void Serialize(GenericWriter writer) 
-        { 
-            base.Serialize(writer); 
-
-            writer.Write((int)0); // version 
+        public override int GetShoeHue()
+        {
+            return 0;
         }
 
-        public override void Deserialize(GenericReader reader) 
-        { 
-            base.Deserialize(reader); 
+        public override void InitOutfit()
+        {
+            base.InitOutfit();
 
-            int version = reader.ReadInt(); 
+            this.AddItem(new Server.Items.WideBrimHat(Utility.RandomNeutralHue()));
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
         }
         public override void InitBody()
         {

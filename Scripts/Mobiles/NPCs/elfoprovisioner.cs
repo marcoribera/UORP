@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class elfoprovisioner : BaseVendor
+    public class ElfoProvisioner : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoprovisioner()
+        public ElfoProvisioner()
             : base("o vende tudo")
         {
             this.SetSkill(SkillName.Sobrevivencia, 45.0, 68.0);
             this.SetSkill(SkillName.Anatomia, 45.0, 68.0);
         }
 
-        public elfoprovisioner(Serial serial)
+        public ElfoProvisioner(Serial serial)
             : base(serial)
         {
         }
