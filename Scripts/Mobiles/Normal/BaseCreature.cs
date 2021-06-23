@@ -7483,9 +7483,9 @@ namespace Server.Mobiles
                 return;
             }
 
-            DetectHidden.OnUse(this);
+            Percepcao.OnUse(this);
 
-            if (Target is DetectHidden.InternalTarget)
+            if (Target is Percepcao.InternalTarget)
             {
                 Target.Invoke(this, this);
                 DebugSay("Checking for hidden players");

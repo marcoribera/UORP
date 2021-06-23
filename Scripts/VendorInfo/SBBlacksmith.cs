@@ -32,8 +32,9 @@ namespace Server.Mobiles
             public InternalBuyInfo() 
             {
                // this.Add(new GenericBuyInfo(typeof(IronIngot), 5, 16, 0x1BF2, 0, true));
-                this.Add(new GenericBuyInfo(typeof(Tongs), 50, 2, 0xFBB, 0)); 
- 
+                this.Add(new GenericBuyInfo(typeof(Tongs), 50, 2, 0xFBB, 0));
+                this.Add(new GenericBuyInfo(typeof(TinkersTools), 50, 2, 0x1EBC, 0));
+
                 this.Add(new GenericBuyInfo(typeof(BronzeShield), 150, 5, 0x1B72, 0));
              //   this.Add(new GenericBuyInfo(typeof(Buckler), 50, 20, 0x1B73, 0));
                // this.Add(new GenericBuyInfo(typeof(MetalKiteShield), 123, 20, 0x1B74, 0));

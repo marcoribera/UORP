@@ -11,6 +11,7 @@ namespace Server.Items
         public Leafblade()
             : base(0x2D22)
         {
+            this.Hue = 0x462;
             this.Weight = 8.0;
         }
 
