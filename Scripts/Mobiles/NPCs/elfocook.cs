@@ -4,18 +4,18 @@ using Server.Engines.BulkOrders;
 
 namespace Server.Mobiles
 {
-    public class elfocook : BaseVendor
+    public class ElfoCook : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfocook()
+        public ElfoCook()
             : base("o cozinheiro")
         {
             this.SetSkill(SkillName.Culinaria, 90.0, 100.0);
             this.SetSkill(SkillName.Alquimia, 75.0, 98.0);
         }
 
-        public elfocook(Serial serial)
+        public ElfoCook(Serial serial)
             : base(serial)
         {
         }

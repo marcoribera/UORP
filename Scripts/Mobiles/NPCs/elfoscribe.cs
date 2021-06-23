@@ -4,18 +4,18 @@ using Server.Engines.BulkOrders;
 
 namespace Server.Mobiles
 {
-    public class elfoscribe : BaseVendor
+    public class ElfoScribe : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoscribe()
+        public ElfoScribe()
             : base("o escriba")
         {
             this.SetSkill(SkillName.PoderMagico, 60.0, 83.0);
             this.SetSkill(SkillName.Erudicao, 90.0, 100.0);
         }
 
-        public elfoscribe(Serial serial)
+        public ElfoScribe(Serial serial)
             : base(serial)
         {
         }

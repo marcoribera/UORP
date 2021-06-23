@@ -13,16 +13,16 @@ using Acc = Server.Accounting.Account;
 
 namespace Server.Mobiles
 {
-    public class elfobanker : BaseVendor
+    public class ElfoBanker : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
 
         [Constructable]
-        public elfobanker()
+        public ElfoBanker()
             : base("o banqueiro")
         { }
 
-        public elfobanker(Serial serial)
+        public ElfoBanker(Serial serial)
             : base(serial)
         { }
 

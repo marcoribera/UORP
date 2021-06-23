@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles 
 { 
-    public class elfoherbalista : BaseVendor 
+    public class ElfoHerbalista : BaseVendor 
     { 
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfoherbalista()
+        public ElfoHerbalista()
             : base("o herbalista")
         { 
             this.SetSkill(SkillName.Alquimia, 80.0, 100.0);
@@ -15,7 +15,7 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Alquimia, 80.0, 100.0);
         }
 
-        public elfoherbalista(Serial serial)
+        public ElfoHerbalista(Serial serial)
             : base(serial)
         { 
         }

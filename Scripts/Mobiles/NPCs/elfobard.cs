@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class elfobard : BaseVendor
+    public class ElfoBard : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfobard()
+        public ElfoBard()
             : base("o bardo")
         {
             this.SetSkill(SkillName.Caos, 64.0, 100.0);
@@ -18,7 +18,7 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Cortante, 36.0, 68.0);
         }
 
-        public elfobard(Serial serial)
+        public ElfoBard(Serial serial)
             : base(serial)
         {
         }

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class elfotanner : BaseVendor
+    public class ElfoTanner : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public elfotanner()
+        public ElfoTanner()
             : base("o curtidor")
         {
             this.SetSkill(SkillName.Costura, 36.0, 68.0);
         }
 
-        public elfotanner(Serial serial)
+        public ElfoTanner(Serial serial)
             : base(serial)
         {
         }
