@@ -805,6 +805,7 @@
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\Items\Grape Vines\GrapeVines.cs" />
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\Items\Grape Vines\Tools\GrapevinePlacementTool.cs" />
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\VinePlacement.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoBlacksmith.cs" />
     <Compile Include="Services\Craft\DefBaking.cs" />
     <Compile Include="Services\Craft\DefBoiling.cs" />
     <Compile Include="Services\Craft\DefBrewing.cs" />
