@@ -10,6 +10,7 @@ namespace Server.Items
         public HeaterShield()
             : base(0x1B76)
         {
+            this.Hue = 0x72B;
             this.Weight = 8.0;
         }
 

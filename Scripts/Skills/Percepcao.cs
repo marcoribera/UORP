@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Server.Factions;
 using Server.Mobiles;
 using Server.Multis;
@@ -25,7 +24,7 @@ namespace Server.Items
 
 namespace Server.SkillHandlers
 {
-    public class DetectHidden
+    public class Percepcao
     {
         public static void Initialize()
         {
@@ -89,8 +88,8 @@ namespace Server.SkillHandlers
 
                             if (src.AccessLevel >= trg.AccessLevel && (ss >= ts || houseCheck) && Utility.RandomDouble() > shadow)
                             {
-                               if ((trg is ShadowKnight && (trg.X != p.X || trg.Y != p.Y)) ||
-                                    (!houseCheck && !CanDetect(src, trg)))
+                                if ((trg is ShadowKnight && (trg.X != p.X || trg.Y != p.Y)) ||
+                                     (!houseCheck && !CanDetect(src, trg)))
                                     continue;
 
                                 trg.RevealingAction();

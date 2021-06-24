@@ -1242,9 +1242,9 @@ namespace Server.Mobiles
 			Mobile from = e.Mobile;
             PlayerMobile player = (PlayerMobile)from;
 
-            player.m_FurtivoTimer = new FurtivoTimer(player, TimeSpan.FromSeconds(3.0)); //Inicializa o timer de furtividade
+            player.m_FurtivoTimer = new FurtivoTimer(player, TimeSpan.Zero, TimeSpan.FromSeconds(3.0)); //Inicializa o timer de furtividade
 
-            if (player.Hidden)
+            if (player.Hidden || player.IsStealthing)
             {
                 player.m_FurtivoTimer.Start();
             }
@@ -2151,7 +2151,7 @@ namespace Server.Mobiles
 
             if (!Siege.SiegeShard && Core.TickCount - NextPassiveDetectHidden >= 0)
             {
-                DetectHidden.DoPassiveDetect(this);
+                Percepcao.DoPassiveDetect(this);
                 NextPassiveDetectHidden = Core.TickCount + (int)TimeSpan.FromSeconds(2).TotalMilliseconds;
             }
 			return true;
@@ -5719,7 +5719,7 @@ namespace Server.Mobiles
                 {
                     RevealingAction();
                 }
-                else if (Skills.Furtividade.Value >= (20 + (armorRating * 2))) //Consegue correr vestindo peças de armadura se tiver skill suficiente
+                else if (Skills.Furtividade.Value >= (50 + (armorRating * 2))) //Consegue correr vestindo peças de armadura se tiver skill suficiente
                 {
                     bool running = (d & Direction.Running) != 0;
 
@@ -5737,16 +5737,14 @@ namespace Server.Mobiles
                         }
                     } 
                 }
-                else if (Skills.Furtividade.Value >= (armorRating * 2)) 
+                else if (Skills.Furtividade.Value >= 30 + (armorRating * 2)) 
                 {
                     bool running = (d & Direction.Running) != 0;
 
                     if (running)
                     {
-                        if ((AllowedStealthSteps -= 2) <= 0)
-                        {
-                            RevealingAction();
-                        }
+                        AllowedStealthSteps = 0;
+                        RevealingAction();
                     }
                     else if (AllowedStealthSteps-- <= 0)
                     {
@@ -7278,7 +7276,7 @@ namespace Server.Mobiles
 		}
 
 
-        public bool PermaneceOcultoPara(Mobile targ)
+        public bool PermaneceOcultoPara(Mobile targ, int armorRating)
         {
             if (!this.InLOS(targ))
             {
@@ -7287,20 +7285,26 @@ namespace Server.Mobiles
             else
             {
                 //Calcula dificuldade para não ser percebido passivamente
-                double dificuldade = targ.Skills.Percepcao.Value - ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de se manter despercebido é padrão. Mais perto é maior, mais longe é menor.
+                double dificuldade = (armorRating*2) + targ.Skills.Percepcao.Value - ((GetDistanceToSqrt(targ.Location) - 2.0) * 2.0);
                 dificuldade -= Math.Min(targ.LightLevel, LightCycle.ComputeLevelFor(targ)); //Se estiver mais escuro, fica mais fácil se manter despercebido
 
                 bool despercebido = (this.Skills.Furtividade.Value > dificuldade);
-                //this.SendMessage(targ.Name + " " + dificuldade.ToString());
+                this.SendMessage(targ.Name + "Dificuldade " + dificuldade.ToString() + "| Sua furtividade: " + this.Skills.Furtividade.Value.ToString());
                 if (!despercebido)
                 {
-                    //Calcula chance de perceber que foi percebido
-                    dificuldade = targ.Skills.Furtividade.Value + ((GetDistanceToSqrt(targ.Location) - 6.0) * 2.0); //A 6 tiles de distância a dificuldade de notar que foi percebido é padrão. Mais perto é menor, mais longe é maior.
-                    dificuldade += Math.Min(this.LightLevel, LightCycle.ComputeLevelFor(this)); //Se estiver mais escuro, fica dificil perceber que foi percebido
-                                                                                                //this.SendMessage(targ.Name + " Dificuldade: " + dificuldade.ToString());
-                    if (targ.Skills.Furtividade.Value > dificuldade)
+                    if(!(targ is PlayerMobile))
                     {
-                        if (targ is PlayerMobile)
+                        this.RevealingAction();
+                        this.m_FurtivoTimer.Stop();
+                        this.m_VisList.Clear();
+                        this.SendLocalizedMessage(500814); // You have been revealed!
+                    }
+                    else
+                    {
+                        //Calcula chance de perceber que foi percebido
+                        dificuldade = targ.Skills.Furtividade.Value + ((GetDistanceToSqrt(targ.Location) - 2.0) * 4.0);
+                        dificuldade += Math.Min(this.LightLevel, LightCycle.ComputeLevelFor(this)); //Se estiver mais escuro, fica dificil perceber que foi percebido
+                        if (this.Skills.Percepcao.Value > dificuldade)
                         {
                             PlayerMobile observador = (PlayerMobile)targ;
                             if ((!observador.Hidden) || observador.VisibilityList.Contains(this))
@@ -7325,23 +7329,31 @@ namespace Server.Mobiles
                 Priority = TimerPriority.EveryTick;
             }
 
+            public FurtivoTimer(PlayerMobile m, TimeSpan delay, TimeSpan interval)
+                : base(delay, interval)
+            {
+                m_Player = m;
+                Priority = TimerPriority.EveryTick;
+            }
+
             protected override void OnTick()
             {
                 if (m_Player.Hidden && m_Player.NetState != null)
                 {
-                    var eable = m_Player.Map.GetClientsInRange(m_Player.Location, 15); //Pega lista de Clients no alcance de atualização máximo definido
+                    var eable = m_Player.Map.GetClientsInRange(m_Player.Location, 18); //Pega lista de Clients no alcance de atualização máximo definido
 
                     m_Player.VisibilityList.Clear();
 
                     if (!m_Player.IsStaff())
                     {
+                        int armorRating = Furtividade.GetArmorRating(m_Player);
                         foreach (NetState state in eable) //Percorre a lista de clients no alcance verificando se os personagens deles conseguem ou não perceber você
                         {
                             Mobile m = state.Mobile;
 
                             if ((m.Serial != m_Player.Serial) && !m.IsStaff()) //Não verifica staff nem a si mesmo
                             {
-                                if (!m_Player.PermaneceOcultoPara(m))
+                                if (!m_Player.PermaneceOcultoPara(m, armorRating))
                                 {
                                     m_Player.VisibilityList.Add(m);
                                     m.SendEverything();

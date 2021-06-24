@@ -805,6 +805,37 @@
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\Items\Grape Vines\GrapeVines.cs" />
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\Items\Grape Vines\Tools\GrapevinePlacementTool.cs" />
     <Compile Include="Items\Addons\Food Extras\Winecrafting Craft\VinePlacement.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\futon.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperBedBody.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperBedBodyEquip.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperBedNameAttribute.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperElvenEW.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperElvenSouth.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperEW.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperFutonEW.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperFutonNS.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperNS.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperSmallEW.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperSmallSouth.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperTallElvenEast.cs" />
+    <Compile Include="Items\Addons\Sleepable Beds\SleeperTallElvenSouth.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoAnimalTrainer.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoAlchemist.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoBanker.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoBard.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoBlacksmith.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoBowyer.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoCobbler.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoCook.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoFarmer.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoHerbalista.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoInnKeeper.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoLeatherWorker.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoMage.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoProvisioner.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoScribe.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoTailor.cs" />
+    <Compile Include="Mobiles\NPCs\ElfoTanner.cs" />
     <Compile Include="Services\Craft\DefBaking.cs" />
     <Compile Include="Services\Craft\DefBoiling.cs" />
     <Compile Include="Services\Craft\DefBrewing.cs" />
@@ -11851,6 +11882,7 @@
     <Compile Include="Skills\Envenenamento.cs" />
     <Compile Include="Skills\Erudicao.cs" />
     <Compile Include="Skills\Furtividade.cs" />
+    <Compile Include="Skills\Percepcao.cs" />
     <Compile Include="Skills\Veterinaria.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -11861,9 +11893,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Carisma.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Skills\DetectHidden.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Discordance.cs">

@@ -1808,9 +1808,9 @@ namespace Server.Items
 
 				if (Core.ML)
 				{
-					int stamTicks = m.Stam / 30;
+					double stamTicks = m.Stam / 50.0; //int stamTicks = m.Stam / 30;
 
-					ticks = speed * 4;
+                    ticks = speed * 4;
 					ticks = Math.Floor((ticks - stamTicks) * (100.0 / (100 + bonus)));
 				}
 				else
@@ -2477,8 +2477,11 @@ namespace Server.Items
 
 			PlaySwingAnimation(attacker);
 
-            if(defender != null)
-			    PlayHurtAnimation(defender);
+            if (defender != null)
+            {
+                defender.RevealingAction();
+                PlayHurtAnimation(defender);
+            }
 
 			attacker.PlaySound(GetHitAttackSound(attacker, defender));
 
@@ -4007,17 +4010,19 @@ namespace Server.Items
 
 		public virtual double ScaleDamageAOS(Mobile attacker, double damage, bool checkSkills)
 		{
-			if (checkSkills)
+            SkillName skillCombate = GetAttUsedSkill(attacker, true);
+
+            if (checkSkills)
 			{
 				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
-					// Passively check tactics for gain
-				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
-					// Passively check Anatomy for gain
+                // Passively check tactics for gain
+                attacker.CheckSkill(skillCombate, 0.0, attacker.Skills[skillCombate].Cap);
+			    // Passively check Anatomy for gain
 
-				if (Type == WeaponType.Axe)
-				{
-					attacker.CheckSkill(SkillName.Extracao, 0.0, 100.0); // Passively check Lumberjacking for gain
-				}
+				//if (Type == WeaponType.Axe)
+				//{
+				//	attacker.CheckSkill(SkillName.Extracao, 0.0, 100.0); // Passively check Lumberjacking for gain
+				//}
 			}
 
 			#region Physical bonuses
@@ -4027,7 +4032,7 @@ namespace Server.Items
             */
 			double strengthBonus = GetBonus(attacker.Str, 0.300, 100.0, 5.00);
 			double anatomyBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.500, 100.0, 5.00);
-			double tacticsBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.625, 100.0, 6.25);
+			double tacticsBonus = GetBonus(attacker.Skills[skillCombate].Value, 0.625, 100.0, 6.25);
 			double lumberBonus = GetBonus(attacker.Skills[SkillName.Extracao].Value, 0.200, 100.0, 10.00);
 
 			if (Type != WeaponType.Axe)
@@ -4064,11 +4069,12 @@ namespace Server.Items
 
 		public virtual double ScaleDamageOld(Mobile attacker, double damage, bool checkSkills)
 		{
-			if (checkSkills)
+            SkillName skillCombate = GetAttUsedSkill(attacker, true);
+            if (checkSkills)
 			{
 				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check tactics for gain
-				attacker.CheckSkill(SkillName.Anatomia, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
+				attacker.CheckSkill(skillCombate, 0.0, attacker.Skills[SkillName.Anatomia].Cap);
 					// Passively check Anatomy for gain
 
 				if (Type == WeaponType.Axe)
@@ -4082,7 +4088,7 @@ namespace Server.Items
             * :  50.0 = unchanged
             * : 100.0 = 50% bonus
             */
-			damage += (damage * ((attacker.Skills[SkillName.Anatomia].Value - 50.0) / 100.0));
+			damage += (damage * ((attacker.Skills[skillCombate].Value - 50.0) / 100.0));
 
 			/* Compute strength modifier
             * : 1% bonus for every 5 strength
