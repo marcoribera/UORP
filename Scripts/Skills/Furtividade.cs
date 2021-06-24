@@ -124,9 +124,9 @@ namespace Server.SkillHandlers
             {
                 Targeting.Target.Cancel(m);
             }
-
-            double bonus = 0.0;
             /*
+            double bonus = 0.0;
+
             BaseHouse house = BaseHouse.FindHouseAt(m);
 
             if (house != null && house.IsFriend(m))
@@ -152,9 +152,10 @@ namespace Server.SkillHandlers
             }
             */
             //int range = 18 - (int)(m.Skills[SkillName.Furtividade].Value / 10);
-            int skill = Math.Min(100, (int)m.Skills[SkillName.Furtividade].Value);
-            int range = Math.Min((int)((100 - skill) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
+            int skill = Math.Min(150, (int)m.Skills[SkillName.Furtividade].Value);
+            int range = Math.Min((int)((100 - skill) / 10) + 8, 18); //de 18 com 0 (zero) de skill até 3 com 150 de skill
 
+            //Verifica se o atacante está no alcance
             bool badCombat = (!m_CombatOverride && m.Combatant is Mobile && m.InRange(m.Combatant.Location, range) && ((Mobile)m.Combatant).InLOS(m.Combatant));
 
             bool ok = (!badCombat /*&& m.CheckSkill( SkillName.Furtividade, 0.0 - bonus, 100.0 - bonus )*/);
@@ -179,7 +180,7 @@ namespace Server.SkillHandlers
                     eable.Free();
                 }
 
-                ok = (!badCombat && m.CheckSkill(SkillName.Furtividade, -20.0 + (armorRating * 2), (Core.AOS ? 60.0 : 80.0) + (armorRating * 2)));
+                ok = (!badCombat && m.CheckSkill(SkillName.Furtividade, 25.0 + (armorRating * 2), 50.0 + (armorRating * 2))); //Começa a ter chance de andar furtivo com 25 de skill
             }
 
             if (badCombat)
@@ -201,7 +202,7 @@ namespace Server.SkillHandlers
                     Server.Items.InvisibilityPotion.RemoveTimer(m);
                     m.LocalOverheadMessage(MessageType.Regular, 0x1F4, 501240); // You have hidden yourself well.
 
-                    int steps = 10 + (int) (m.Skills[SkillName.Furtividade].Value/5.0); //Grande quantidade de passos para dar sensação de que consegue andar sem ser percebido
+                    int steps = 1 + (int) (m.Skills[SkillName.Furtividade].Value/5.0);
 
                     m.AllowedStealthSteps = steps;
 
@@ -215,11 +216,11 @@ namespace Server.SkillHandlers
                     {
                         PlayerMobile player = (PlayerMobile)m;
 
-                        Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
-                        {
+                        //Timer.DelayCall(TimeSpan.FromSeconds(3), () =>
+                        //{
                             player.SendMessage("Verificando se alguem te enxerga, logo depois de se esconder");
                             player.m_FurtivoTimer.Start();
-                        });
+                        //});
                     }
                     
                 }
