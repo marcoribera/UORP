@@ -9,7 +9,12 @@ namespace Server.Mobiles
         public static double ChocolateIngredientChance = .20;// Chance that a paragon will drop a chocolatiering ingredient
         public static Map[] Maps = new Map[]                   // Maps that paragons will spawn on
         {
-            Map.Ilshenar
+            Map.Ilshenar,
+            Map.TerMur,
+            Map.Tokuno,
+            Map.Malas,
+            Map.Felucca,
+            Map.Trammel
         };
         public static Type[] Artifacts = new Type[]
         {
@@ -26,7 +31,7 @@ namespace Server.Mobiles
             typeof(WrathOfTheDryad), typeof(PixieSwatter),
             typeof(GlovesOfThePugilist)
         };
-        public static int Hue = 0x501;// Paragon hue
+        public static int Hue = 0x0;// Paragon hue
 
         // Buffs
         public static double HitsBuff = 5.0;
@@ -44,7 +49,7 @@ namespace Server.Mobiles
 				!bc.CanBeParagon)
                 return;
 
-            bc.Hue = Hue;
+            bc.Hue = 0;
 
             if (bc.HitsMaxSeed >= 0)
                 bc.HitsMaxSeed = (int)(bc.HitsMaxSeed * HitsBuff);
@@ -176,9 +181,9 @@ namespace Server.Mobiles
             Item item = (Item)Activator.CreateInstance(Artifacts[Utility.Random(Artifacts.Length)]);
 
             if (m.AddToBackpack(item))
-                m.SendMessage("As a reward for slaying the mighty paragon, an artifact has been placed in your backpack.");
+                m.SendMessage("Você percebe algo na sua bolsa.");
             else
-                m.SendMessage("As your backpack is full, your reward for destroying the legendary paragon has been placed at your feet.");
+                m.SendMessage("Você percebe algo aos seus pés.");
         }
     }
 }
