@@ -226,13 +226,13 @@ namespace Server.Commands
 			Closable = true; 
 			Dragable = true; 
 			AddPage( 0 );
-			AddBackground( 0, 65, 130, 360, 5054);
-			AddAlphaRegion( 10, 70, 110, 350 );
-			AddImageTiled( 10, 70, 110, 20, 9354);
+			AddBackground( 0, 65, 180, 360, 5054);
+			AddAlphaRegion( 10, 70, 160, 350 );
+			AddImageTiled( 10, 70, 160, 20, 9354);
 			AddLabel( 13, 70, 200, "Lista de Emotes");
-			AddImage( 100, 0, 10410);
-			AddImage( 100, 305, 10412);
-			AddImage( 100, 150, 10411);
+			AddImage( 150, 285, 10412);
+			AddImage( 150, 130, 10411);
+			AddImage( 150, 0, 10410);
 			switch ( page ) 
 			{
 				case EmotePage.P1:
@@ -249,7 +249,7 @@ namespace Server.Commands
 					AddButtonLabeled( 10, 315, GetButtonID( 1, 10 ), "Chorar");
 					AddButtonLabeled( 10, 340, GetButtonID( 1, 11 ), "Desmaiar");
 					AddButtonLabeled( 10, 365, GetButtonID( 1, 12 ), "Peidar");
-					AddButton( 70, 380, 4502, 0504, GetButtonID( 0,2 ), GumpButtonType.Reply, 0 );
+					AddButton( 120, 380, 4502, 0504, GetButtonID( 0,2 ), GumpButtonType.Reply, 0 );
 					break; 
 				}
 				case EmotePage.P2:
@@ -266,26 +266,26 @@ namespace Server.Commands
 					AddButtonLabeled( 10, 315, GetButtonID( 1, 22 ), "Não");
 					AddButtonLabeled( 10, 340, GetButtonID( 1, 23 ), "Oh");
 					AddButtonLabeled( 10, 365, GetButtonID( 1, 24 ), "Oooh");
-					AddButton( 10, 380, 4506, 4508, GetButtonID( 0,1 ), GumpButtonType.Reply, 0 );
-					AddButton( 70, 380, 4502, 0504, GetButtonID( 0,3 ), GumpButtonType.Reply, 0 );
+					AddButton( 60, 380, 4506, 4508, GetButtonID( 0,1 ), GumpButtonType.Reply, 0 );
+					AddButton( 120, 380, 4502, 0504, GetButtonID( 0,3 ), GumpButtonType.Reply, 0 );
 					break; 
 				} 
 				case EmotePage.P3:
 				{
 					AddButtonLabeled( 10, 90, GetButtonID( 1, 25 ), "Oops");
-					AddButtonLabeled(10, 90, GetButtonID(1, 26), "vazio");
-					AddButtonLabeled( 10, 140, GetButtonID( 1, 27 ), "Socar");
-					AddButtonLabeled( 10, 165, GetButtonID( 1, 28 ), "Berrar");
-					AddButtonLabeled( 10, 190, GetButtonID( 1, 29 ), "Xiu");
-					AddButtonLabeled( 10, 215, GetButtonID( 1, 30 ), "Suspirar");
-					AddButtonLabeled( 10, 240, GetButtonID( 1, 31 ), "Dar um Tapa");
-					AddButtonLabeled( 10, 265, GetButtonID( 1, 32 ), "Espirrar");
-					AddButtonLabeled( 10, 290, GetButtonID( 1, 33 ), "Fungar");
-					AddButtonLabeled( 10, 315, GetButtonID( 1, 34 ), "Roncar");
-					AddButtonLabeled( 10, 340, GetButtonID( 1, 35 ), "Cuspir");
-					AddButtonLabeled( 10, 365, GetButtonID( 1, 36 ), "Mostrar a Língua");
-					AddButton( 10, 380, 4506, 4508, GetButtonID( 0,2 ), GumpButtonType.Reply, 0 );
-					AddButton( 70, 380, 4502, 0504, GetButtonID( 0,4 ), GumpButtonType.Reply, 0 );
+					// AddButtonLabeled(10, 115, GetButtonID(1, 26), "vazio");
+					AddButtonLabeled( 10, 115, GetButtonID( 1, 27 ), "Socar");
+					AddButtonLabeled( 10, 140, GetButtonID( 1, 28 ), "Berrar");
+					AddButtonLabeled( 10, 165, GetButtonID( 1, 29 ), "Xiu");
+					AddButtonLabeled( 10, 190, GetButtonID( 1, 30 ), "Suspirar");
+					AddButtonLabeled( 10, 215, GetButtonID( 1, 31 ), "Dar um Tapa");
+					AddButtonLabeled( 10, 240, GetButtonID( 1, 32 ), "Espirrar");
+					AddButtonLabeled( 10, 265, GetButtonID( 1, 33 ), "Fungar");
+					AddButtonLabeled( 10, 290, GetButtonID( 1, 34 ), "Roncar");
+					AddButtonLabeled( 10, 315, GetButtonID( 1, 35 ), "Cuspir");
+					AddButtonLabeled( 10, 340, GetButtonID( 1, 36 ), "Mostrar a Língua");
+					AddButton( 60, 380, 4506, 4508, GetButtonID( 0,2 ), GumpButtonType.Reply, 0 );
+					AddButton( 120, 380, 4502, 0504, GetButtonID( 0,4 ), GumpButtonType.Reply, 0 );
 					break; 
 				} 
 				case EmotePage.P4:
@@ -296,7 +296,7 @@ namespace Server.Commands
 					AddButtonLabeled( 10, 165, GetButtonID( 1, 40 ), "Bocejar");
 					AddButtonLabeled( 10, 190, GetButtonID( 1, 41 ), "Sim");
 					AddButtonLabeled( 10, 215, GetButtonID( 1, 42 ), "Gritar");
-					AddButton( 10, 380, 4506, 4508, GetButtonID( 0,3 ), GumpButtonType.Reply, 0 );
+					AddButton( 60, 380, 4506, 4508, GetButtonID( 0,3 ), GumpButtonType.Reply, 0 );
 					break; 
 				} 
 			} 

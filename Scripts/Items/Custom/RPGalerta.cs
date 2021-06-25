@@ -21,7 +21,7 @@ namespace Server.Items
 		public bool IsPrivateMsg { get => m_MensagemPrivada; set => m_MensagemPrivada = value; }
 
 		[Constructable]
-		public RPalerta() :base(0x1640, 6, "!!!Mensagem de alerta!!!") //ID do shackles
+		public RPalerta() :base(0x1820, 6, "!!!Mensagem de alerta!!!") //ID do shackles
         {
             Visible = false;
             m_MensagemPrivada = true;
