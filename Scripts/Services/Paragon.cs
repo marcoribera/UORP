@@ -62,13 +62,19 @@ namespace Server.Mobiles
             bc.Mana = bc.ManaMax;
             bc.Stam = bc.StamMax;
 
+            double modifiedSkillBonus = (Utility.RandomDouble() <= 0.05) 
+            ? Utility.RandomMinMax(1.4, 1.8) 
+            : SkillsBuff;// ( MinMax(Random.nex Double() <= 0.05;
+
             for (int i = 0; i < bc.Skills.Length; i++)
             {
                 Skill skill = (Skill)bc.Skills[i];
 
                 if (skill.Base > 0.0)
-                    skill.Base *= SkillsBuff;
+                    skill.Base *= modifiedSkillBonus;
             }
+               
+            
 
             bc.PassiveSpeed /= SpeedBuff;
             bc.ActiveSpeed /= SpeedBuff;
