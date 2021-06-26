@@ -3284,7 +3284,7 @@ namespace Server
 					newLocation.m_Y = y;
 					newLocation.m_Z = newZ;
 
-					m_Pushing = false;
+					//m_Pushing = false;
 
 					Map map = m_Map;
 
@@ -3620,22 +3620,22 @@ namespace Server
 			return m.CheckShove(this);
 		}
 
-		public virtual bool CheckShove(Mobile shoved)
-		{
+        public virtual bool CheckShove(Mobile shoved)
+        {
             if (!m_IgnoreMobiles && (m_Map.Rules & MapRules.FreeMovement) == 0)
-			{
-				if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
-				{
-					return true;
-				}
-				else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
-				{
-					return true;
-				}
+            {
+                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
+                {
+                    return true;
+                }
+                else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
+                {
+                    return true;
+                }
 
-				if (!m_Pushing)
-				{
-					m_Pushing = true;
+                if (!m_Pushing)
+                {
+                    m_Pushing = true;
 
                     if (IsStaff())
                     {
@@ -3643,13 +3643,18 @@ namespace Server
                     }
                     else
                     {
+                        Timer t = Timer.DelayCall(TimeSpan.FromMilliseconds(1500), () => //Tempo entre as tentarivas de passar por cima
+                        {
+                            m_Pushing = false;
+                        });
+
                         double proporcao = this.Str / shoved.Str;
                         this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
                         shoved.Stam -= (int)(10 * proporcao); //quanto mais fraco o empurrado é comparado com quem empurra, mais stamina perde stamina perde.
 
                         if (Stam < (int)(10 / proporcao))
                         {
-                            SendLocalizedMessage(1019042); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
+                            SendLocalizedMessage(1030833); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
                             return false;
                         }
                         else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
@@ -3676,10 +3681,14 @@ namespace Server
                             }
                         }
                     }
-				}
-			}
-			return true;
-		}
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		/// <summary>
 		///     Overridable. Virtual event invoked when the Mobile sees another Mobile, <paramref name="m" />, move.
@@ -9236,7 +9245,7 @@ namespace Server
 		}
 
 		public virtual void OnConnected()
-		{ }
+		{ m_Pushing = false; }
 
 		public virtual void OnDisconnected()
 		{ }
