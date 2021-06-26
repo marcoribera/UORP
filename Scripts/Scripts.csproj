@@ -819,6 +819,8 @@
     <Compile Include="Items\Addons\Sleepable Beds\SleeperSmallSouth.cs" />
     <Compile Include="Items\Addons\Sleepable Beds\SleeperTallElvenEast.cs" />
     <Compile Include="Items\Addons\Sleepable Beds\SleeperTallElvenSouth.cs" />
+    <Compile Include="Items\Resource\LivroDeCampanha.cs" />
+    <Compile Include="Items\Resource\PergaminhoAtigo.cs" />
     <Compile Include="Mobiles\NPCs\ElfoAnimalTrainer.cs" />
     <Compile Include="Mobiles\NPCs\ElfoAlchemist.cs" />
     <Compile Include="Mobiles\NPCs\ElfoBanker.cs" />

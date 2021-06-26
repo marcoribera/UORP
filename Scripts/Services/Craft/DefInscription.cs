@@ -379,6 +379,11 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(RecallScroll), 1044445, 1, 1044253);
             AddRes(index, typeof(GateTravelScroll), 1044446, 1, 1044253);
 
+            //Pergaminho Antigo
+            index = AddCraft(typeof(LivroDeCampanha), 1044294, 1063515, 45.0, 95.0, typeof(BlankScroll), 1044377, 8, 1044378);
+            AddRes(index, typeof(PergaminhoAntigo), 1063503, 1, 1044253);
+
+
             #region TOL
             if (Core.TOL)
             {
