@@ -3654,24 +3654,24 @@ namespace Server
                         }
                         else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
                         {
-                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
                             return true;
                         }
                         else if (proporcao <= 0.5) //Quem empurra é bem mais fraco que quem é empurrado
                         {
-                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
                             return false;
                         }
                         else //Há uma disputa de força entre quem empurra é quem é empurrado
                         {
                             if (Utility.RandomMinMax(0.5, 1.5) < proporcao)
                             {
-                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
                                 return true;
                             }
                             else
                             {
-                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
                                 return false;
                             }
                         }
