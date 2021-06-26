@@ -5737,7 +5737,7 @@ namespace Server.Mobiles
                         }
                     } 
                 }
-                else if (Skills.Furtividade.Value >= 30 + (armorRating * 2)) 
+                else if (Skills.Furtividade.Value >= 30 + (armorRating * 2)) //Consegue andar, mas não correer, vestindo peças de armadura se tiver skill suficiente
                 {
                     bool running = (d & Direction.Running) != 0;
 
@@ -5757,8 +5757,47 @@ namespace Server.Mobiles
                 }
 			}
 
-			#region Mondain's Legacy
-			if (InvisibilityPotion.HasTimer(this))
+            if (Alive) //Calcula gasto de stamina
+            {
+                int staminaLoss = 0;
+                double proporcao = TotalWeight / MaxWeight;
+
+                if (proporcao <= 0.25)
+                    staminaLoss = 0;
+                else if (proporcao <= 0.50)
+                    staminaLoss = 1;
+                else if (proporcao <= 0.75)
+                    staminaLoss = 2;
+                else if (proporcao <= 1.0)
+                    staminaLoss = 4;
+                else if (proporcao <= 1.25)
+                    staminaLoss = 6;
+                else if (proporcao <= 1.50)
+                    staminaLoss = 10;
+                else
+                    return false; //Com carga 50% acima da capacidade máxima nem consegue tentar se mover
+
+                bool running = (d & Direction.Running) != 0;
+
+                if (running) //gasta mais stamina corredo
+                {
+                    staminaLoss = (staminaLoss + 1) * 2;
+                }
+
+                if (Stam < staminaLoss)
+                {
+                    Stam = 0;
+                    SendLocalizedMessage(501991); //Você está cansado demais para levantar um dedo.
+                    return false;
+                }
+                else
+                {
+                    Stam -= staminaLoss;
+                    return true;
+                }
+            }
+            #region Mondain's Legacy
+            if (InvisibilityPotion.HasTimer(this))
 			{
 				InvisibilityPotion.Iterrupt(this);
 			}

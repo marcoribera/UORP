@@ -3628,7 +3628,7 @@ namespace Server
 				{
 					return true;
 				}
-				else if (shoved.m_Hidden && shoved.IsStaff())
+				else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
 				{
 					return true;
 				}
@@ -3637,28 +3637,45 @@ namespace Server
 				{
 					m_Pushing = true;
 
-					int number;
+                    if (IsStaff())
+                    {
+                        SendLocalizedMessage(shoved.m_Hidden ? 1019041 : 1019040);
+                    }
+                    else
+                    {
+                        double proporcao = this.Str / shoved.Str;
+                        this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
+                        shoved.Stam -= (int)(10 * proporcao); //quanto mais fraco o empurrado é comparado com quem empurra, mais stamina perde stamina perde.
 
-					if (IsStaff())
-					{
-						number = shoved.m_Hidden ? 1019041 : 1019040;
-					}
-					else
-					{
-						if (Stam == StamMax)
-						{
-							number = shoved.m_Hidden ? 1019043 : 1019042;
-							Stam -= 10;
-
-							RevealingAction();
-						}
-						else
-						{
-							return false;
-						}
-					}
-
-					SendLocalizedMessage(number);
+                        if (Stam < (int)(10 / proporcao))
+                        {
+                            SendLocalizedMessage(1019042); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
+                            return false;
+                        }
+                        else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                            return true;
+                        }
+                        else if (proporcao <= 0.5) //Quem empurra é bem mais fraco que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                            return false;
+                        }
+                        else //Há uma disputa de força entre quem empurra é quem é empurrado
+                        {
+                            if (Utility.RandomMinMax(0.5, 1.5) < proporcao)
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                                return true;
+                            }
+                            else
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                                return false;
+                            }
+                        }
+                    }
 				}
 			}
 			return true;
