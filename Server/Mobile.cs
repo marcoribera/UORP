@@ -1042,7 +1042,7 @@ namespace Server
 
 		public static int MinPlayerResistance { get { return m_MinPlayerResistance; } set { m_MinPlayerResistance = value; } }
 
-		private static int m_MaxPlayerResistance = 70;
+		private static int m_MaxPlayerResistance = 90;
 
 		public static int MaxPlayerResistance { get { return m_MaxPlayerResistance; } set { m_MaxPlayerResistance = value; } }
 
@@ -3284,7 +3284,7 @@ namespace Server
 					newLocation.m_Y = y;
 					newLocation.m_Z = newZ;
 
-					m_Pushing = false;
+					//m_Pushing = false;
 
 					Map map = m_Map;
 
@@ -3620,22 +3620,22 @@ namespace Server
 			return m.CheckShove(this);
 		}
 
-		public virtual bool CheckShove(Mobile shoved)
-		{
+        public virtual bool CheckShove(Mobile shoved)
+        {
             if (!m_IgnoreMobiles && (m_Map.Rules & MapRules.FreeMovement) == 0)
-			{
-				if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
-				{
-					return true;
-				}
-				else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
-				{
-					return true;
-				}
+            {
+                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
+                {
+                    return true;
+                }
+                else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
+                {
+                    return true;
+                }
 
-				if (!m_Pushing)
-				{
-					m_Pushing = true;
+                if (!m_Pushing)
+                {
+                    m_Pushing = true;
 
                     if (IsStaff())
                     {
@@ -3643,43 +3643,52 @@ namespace Server
                     }
                     else
                     {
+                        Timer t = Timer.DelayCall(TimeSpan.FromMilliseconds(1500), () => //Tempo entre as tentarivas de passar por cima
+                        {
+                            m_Pushing = false;
+                        });
+
                         double proporcao = this.Str / shoved.Str;
                         this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
                         shoved.Stam -= (int)(10 * proporcao); //quanto mais fraco o empurrado é comparado com quem empurra, mais stamina perde stamina perde.
 
                         if (Stam < (int)(10 / proporcao))
                         {
-                            SendLocalizedMessage(1019042); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
+                            SendLocalizedMessage(1030833); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
                             return false;
                         }
                         else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
                         {
-                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
                             return true;
                         }
                         else if (proporcao <= 0.5) //Quem empurra é bem mais fraco que quem é empurrado
                         {
-                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
                             return false;
                         }
                         else //Há uma disputa de força entre quem empurra é quem é empurrado
                         {
                             if (Utility.RandomMinMax(0.5, 1.5) < proporcao)
                             {
-                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra em ~1_name~*
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
                                 return true;
                             }
                             else
                             {
-                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1019042, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
                                 return false;
                             }
                         }
                     }
-				}
-			}
-			return true;
-		}
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		/// <summary>
 		///     Overridable. Virtual event invoked when the Mobile sees another Mobile, <paramref name="m" />, move.
@@ -9236,7 +9245,7 @@ namespace Server
 		}
 
 		public virtual void OnConnected()
-		{ }
+		{ m_Pushing = false; }
 
 		public virtual void OnDisconnected()
 		{ }

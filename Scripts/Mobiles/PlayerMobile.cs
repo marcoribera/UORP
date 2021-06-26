@@ -1195,12 +1195,29 @@ namespace Server.Mobiles
 
 		public override int GetMinResistance(ResistanceType type)
 		{
-			int magicResist = (int)(Skills[SkillName.ResistenciaMagica].Value * 10);
+            int magicResist;
+
+            switch (type)
+            {
+                case ResistanceType.Physical:
+                case ResistanceType.Poison:
+                    magicResist = (int)(Skills[SkillName.PreparoFisico].Value * 10);
+                    break;
+                case ResistanceType.Energy:
+                case ResistanceType.Cold:
+                case ResistanceType.Fire:
+                    magicResist = (int)(Skills[SkillName.ResistenciaMagica].Value * 10);
+                    break;
+                default:
+                    magicResist = (int)(Skills[SkillName.ResistenciaMagica].Value * 10);
+                    break;
+            }
+
 			int min = int.MinValue;
 
 			if (magicResist >= 1000)
 			{
-				min = 40 + ((magicResist - 1000) / 50);
+				min = 40 + ((magicResist - 1000) / 10); //antes dividia por 50, mas coloquei pra a resistencia aumentar mais rapido quando passa de 100
 			}
 			else if (magicResist >= 400)
 			{
