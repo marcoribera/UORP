@@ -3845,6 +3845,10 @@ namespace Server.Mobiles
             {
                 return m_Idioma;
             }
+            set
+            {
+                m_Idioma = (SpeechType) value;
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
