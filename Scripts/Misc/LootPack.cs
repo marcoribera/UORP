@@ -1,14 +1,8 @@
 #region References
 using System;
-using System.Collections;
-using Server;
-using Server.Mobiles;
-using System.Collections.Generic;
-using Server.Network;
+
 using Server.Items;
-using System.Text;
-
-
+using Server.Mobiles;
 #endregion
 
 namespace Server
@@ -1079,21 +1073,16 @@ namespace Server
 
         public int Bonus { get { return m_Bonus; } set { m_Bonus = value; } }
 
-
-
-      public int Roll()
+        public int Roll()
         {
             int v = m_Bonus;
-            double eco_Modifier = 100;
-            double w;
 
             for (int i = 0; i < m_Count; ++i)
+            {
                 v += Utility.Random(1, m_Sides);
+            }
 
-
-           
-            w = v * (eco_Modifier * .01);
-            return (int)w;
+            return v;
         }
 
         public LootPackDice(string str)
