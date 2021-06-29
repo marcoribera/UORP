@@ -44,18 +44,8 @@ namespace Server.Mobiles
             Persuadable = true;
             ControlSlots = 3;
             MinPersuadeSkill = 65;
-
-            switch ( Utility.Random(2))
-            {
-                case 0:
-                    AddItem(new Shoes(Utility.RandomNeutralHue()));
-                    break;
-                case 1:
-                    AddItem(new Boots(Utility.RandomNeutralHue()));
-                    break;
-            }
-
-            AddItem(new Shirt());
+   
+            this.AddItem(new Sandals(Utility.RandomNeutralHue()));
             this.AddItem(new DragonTurtleHideHelm());
             this.AddItem(new HeaterShield());
             this.AddItem(new Leafblade());
