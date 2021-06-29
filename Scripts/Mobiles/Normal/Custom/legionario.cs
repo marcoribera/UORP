@@ -14,12 +14,12 @@ namespace Server.Mobiles
             if (Female = Utility.RandomBool())
             {
                 Body = 0x191;
-                Name = "Legionária";
+                Name = "Legionaria";
             }
             else
             {
                 Body = 0x190;
-                Name = "Legionário";
+                Name = "Legionario";
             }
 
             HairItemID = Race.RandomHair(Female);
