@@ -7345,7 +7345,7 @@ namespace Server.Mobiles
                 dificuldade -= Math.Min(targ.LightLevel, LightCycle.ComputeLevelFor(targ)); //Se estiver mais escuro, fica mais fácil se manter despercebido
 
                 bool despercebido = (this.Skills.Furtividade.Value > dificuldade);
-                this.SendMessage(targ.Name + "Dificuldade " + dificuldade.ToString() + "| Sua furtividade: " + this.Skills.Furtividade.Value.ToString());
+                //this.SendMessage(targ.Name + "Dificuldade " + dificuldade.ToString() + "| Sua furtividade: " + this.Skills.Furtividade.Value.ToString());
                 if (!despercebido)
                 {
                     if(!(targ is PlayerMobile))
