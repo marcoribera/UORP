@@ -7336,7 +7336,7 @@ namespace Server.Mobiles
         {
             if (!this.InLOS(targ))
             {
-                return false;
+                return true;
             }
             else
             {
