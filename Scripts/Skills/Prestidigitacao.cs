@@ -289,14 +289,18 @@ namespace Server.SkillHandlers
 				else
 				{
 					double w = toSteal.Weight + toSteal.TotalWeight;
+                    double thiefSkill = m_Thief.Skills[SkillName.Prestidigitacao].Value;
+                    double stealCapacity = thiefSkill <= 50.0? thiefSkill/10 : 2 * Math.Pow(1 + (thiefSkill/50), 2.0);
 
+                    /* //Removido peso máximo do item roubável
 					if (w > 10)
 					{
 						m_Thief.SendMessage("That is too heavy to steal.");
 					}
 					else
 					{
-						if (toSteal.Stackable && toSteal.Amount > 1)
+                    */
+                        if (toSteal.Stackable && toSteal.Amount > 1)
 						{
 							int maxAmount = (int)((m_Thief.Skills[SkillName.Prestidigitacao].Value / 10.0) / toSteal.Weight);
 
@@ -367,27 +371,27 @@ namespace Server.SkillHandlers
                             caught = false;
                         }
 
-                        if (stolen != null)
-						{
-							m_Thief.SendLocalizedMessage(502724); // You succesfully steal the item.
+                    if (stolen != null)
+                    {
+                        m_Thief.SendLocalizedMessage(502724); // You succesfully steal the item.
 
-							ItemFlags.SetTaken(stolen, true);
-							ItemFlags.SetStealable(stolen, false);
-							stolen.Movable = true;
+                        ItemFlags.SetTaken(stolen, true);
+                        ItemFlags.SetStealable(stolen, false);
+                        stolen.Movable = true;
 
-                            InvokeItemStoken(new ItemStolenEventArgs(stolen, m_Thief));
+                        InvokeItemStoken(new ItemStolenEventArgs(stolen, m_Thief));
 
-							if (si != null)
-							{
-								toSteal.Movable = true;
-								si.Item = null;
-							}
-						}
-						else
-						{
-							m_Thief.SendLocalizedMessage(502723); // You fail to steal the item.
-						}
-					}
+                        if (si != null)
+                        {
+                            toSteal.Movable = true;
+                            si.Item = null;
+                        }
+                    }
+                    else
+                    {
+                        m_Thief.SendLocalizedMessage(502723); // You fail to steal the item.
+                    }
+					//}
 				}
 
 				return stolen;

@@ -1536,41 +1536,42 @@ namespace Server.Items
                     double skVal = m.Skills[Skill].Value;
                     double sk2Val;
 
-                    if (m.FindItemOnLayer(Layer.OneHanded) != null)
+                    if (m.FindItemOnLayer(Layer.OneHanded) != null && m.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
                     {
                         // Quando um escudo estiver equipado, escolhe a maior dentre a skill de tipo de empunhadura e a skill de bloqueio
-                        if (m.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
-                        {
-                            sk2Val = m.Skills[SkillName.UmaMao].Value;
-                            double bloqueio = m.Skills[SkillName.Bloqueio].Value;
+                        sk2Val = m.Skills[SkillName.UmaMao].Value;
+                        double bloqueio = m.Skills[SkillName.Bloqueio].Value;
 
-                            if (bloqueio > sk2Val)
-                            {
-                                sk2 = SkillName.Bloqueio;
-                                sk2Val = m.Skills[SkillName.Bloqueio].Value;
-                            }
-                            else
-                            {
-                                sk2 = SkillName.UmaMao;
-                            }
+                        if (bloqueio > sk2Val)
+                        {
+                            sk2 = SkillName.Bloqueio;
+                            sk2Val = m.Skills[SkillName.Bloqueio].Value;
                         }
                         else
                         {
-                            sk2Val = m.Skills[SkillName.UmaMao].Value;
                             sk2 = SkillName.UmaMao;
                         }
-                        /*
-                        if (m is PlayerMobile)
-                        {
-                            m.SendMessage(String.Format("DEF | sk1: {0} sk2: {1}", m.Skills[Skill].Name, m.Skills[sk2].Name));
-                            m.SendMessage(String.Format("DEF | sk1: {0} sk2: {1}", m.Skills[Skill].Value, m.Skills[sk2].Value));
-                        }
-                        */
                     }
-                    else
+                    else if (m.FindItemOnLayer(Layer.OneHanded) != null)
+                    {
+                        sk2Val = m.Skills[SkillName.UmaMao].Value;
+                        sk2 = SkillName.UmaMao;
+                    }
+                    else if (m.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
+                    {
+                        // Quando um escudo estiver equipado, escolhe a maior dentre a skill de tipo de empunhadura e a skill de bloqueio
+                        sk2 = SkillName.Bloqueio;
+                        sk2Val = m.Skills[SkillName.Bloqueio].Value;
+                    }
+                    else if(m.FindItemOnLayer(Layer.TwoHanded) != null)
                     {
                         sk2Val = m.Skills[SkillName.DuasMaos].Value;
                         sk2 = SkillName.DuasMaos;
+                    }
+                    else
+                    {
+                        sk2Val = m.Skills[SkillName.Briga].Value;
+                        sk2 = SkillName.Briga;
                     }
 
                     //Usa a skill briga caso seja maior que as outras aplicáveis
