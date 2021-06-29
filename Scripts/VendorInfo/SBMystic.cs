@@ -51,20 +51,20 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(LesserCurePotion), 50, 5, 0xF07, 0, true));
             //    Add(new GenericBuyInfo(typeof(LesserExplosionPotion), 21, 10, 0xF0D, 0, true));
 
-                Add(new GenericBuyInfo(typeof(BlackPearl), 7, 40, 0xF7A, 0));
-                Add(new GenericBuyInfo(typeof(Bloodmoss), 7, 40, 0xF7B, 0));
-                Add(new GenericBuyInfo(typeof(Garlic), 7, 40, 0xF84, 0));
-                Add(new GenericBuyInfo(typeof(Ginseng), 7, 40, 0xF85, 0));
-                Add(new GenericBuyInfo(typeof(MandrakeRoot), 7, 40, 0xF86, 0));
-                Add(new GenericBuyInfo(typeof(Nightshade), 7, 40, 0xF88, 0));
-                Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 40, 0xF8C, 0));
-                Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 40, 0xF8D, 0));
+                Add(new GenericBuyInfo(typeof(BlackPearl), 7, 240, 0xF7A, 0));
+                Add(new GenericBuyInfo(typeof(Bloodmoss), 7, 240, 0xF7B, 0));
+                Add(new GenericBuyInfo(typeof(Garlic), 7, 240, 0xF84, 0));
+                Add(new GenericBuyInfo(typeof(Ginseng), 7, 240, 0xF85, 0));
+                Add(new GenericBuyInfo(typeof(MandrakeRoot), 7, 240, 0xF86, 0));
+                Add(new GenericBuyInfo(typeof(Nightshade), 7, 240, 0xF88, 0));
+                Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 240, 0xF8C, 0));
+                Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 240, 0xF8D, 0));
 
 
-                Add(new GenericBuyInfo(typeof(Bone), 7, 40, 0xf7e, 0));
-                Add(new GenericBuyInfo(typeof(FertileDirt), 7, 40, 0xF81, 0));
-                Add(new GenericBuyInfo(typeof(NetherBoltScroll), 7, 40, 0x2D9E, 0));
-                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 7, 40, 0x2D9F, 0));
+                Add(new GenericBuyInfo(typeof(Bone), 7, 340, 0xf7e, 0));
+                Add(new GenericBuyInfo(typeof(FertileDirt), 7, 340, 0xF81, 0));
+                Add(new GenericBuyInfo(typeof(NetherBoltScroll), 70, 10, 0x2D9E, 0));
+                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 70, 10, 0x2D9F, 0));
             }
         }
 
