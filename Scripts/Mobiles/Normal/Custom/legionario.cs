@@ -3,21 +3,65 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    public class Legionario : BaseEscortable
+    public class Legionario : BaseHire
     {
         [Constructable]
         public Legionario()
         {
-            this.Title = "Legionário";
+            SpeechHue = Utility.RandomDyedHue();
+            Hue = Utility.RandomSkinHue();
 
-            this.SetSkill(SkillName.Bloqueio, 20.0, 40.0);
-            this.SetSkill(SkillName.Perfurante, 20.0, 40.0);
-            this.SetSkill(SkillName.Anatomia, 20.0, 40.0);
+            if (Female = Utility.RandomBool())
+            {
+                Body = 0x191;
+                Name = "Legionária";
+            }
+            else
+            {
+                Body = 0x190;
+                Name = "Legionário";
+            }
+
+            HairItemID = Race.RandomHair(Female);
+            HairHue = Race.RandomHairHue();
+            Race.RandomFacialHair(this);
+
+            SetStr(91, 91);
+            SetDex(91, 91);
+            SetInt(50, 50);
+
+            SetDamage(7, 14);
+
+            SetSkill(SkillName.Anatomia, 36, 67);
+            SetSkill(SkillName.Perfurante, 64, 100);
+            SetSkill(SkillName.Bloqueio, 60, 82);
+            SetSkill(SkillName.PreparoFisico, 36, 67);
+            SetSkill(SkillName.Briga, 25, 47);
+
+            Fame = 100;
+            Karma = 100;
 
             Persuadable = true;
-            ControlSlots = 1;
-            MinPersuadeSkill = 40;
+            ControlSlots = 3;
+            MinPersuadeSkill = 65;
 
+            switch ( Utility.Random(2))
+            {
+                case 0:
+                    AddItem(new Shoes(Utility.RandomNeutralHue()));
+                    break;
+                case 1:
+                    AddItem(new Boots(Utility.RandomNeutralHue()));
+                    break;
+            }
+
+            AddItem(new Shirt());
+            this.AddItem(new DragonTurtleHideHelm());
+            this.AddItem(new HeaterShield());
+            this.AddItem(new Leafblade());
+            this.AddItem(new Tunic(Utility.RandomRedHue())); 
+
+            PackGold(25, 50);
         }
 
         public Legionario(Serial serial)
@@ -25,54 +69,18 @@ namespace Server.Mobiles
         {
         }
 
-        public override bool CanTeach
-        {
-            get
-            {
-                return true;
-            }
-        }
         public override bool ClickTitle
         {
             get
             {
                 return false;
             }
-        }// Do not display 'the noble' when single-clicking
-        public override void InitOutfit()
-        {
-            this.AddItem(new DragonTurtleHideHelm());
-            this.AddItem(new HeaterShield());
-            this.AddItem(new Leafblade());
-            this.AddItem(new Tunic(Utility.RandomRedHue()));
-       
-            int lowHue = GetRandomHue();
-
-            // this.AddItem(new ShortPants(lowHue));
-
-            if (this.Female)
-                this.AddItem(new Sandals(lowHue));
-            else
-                this.AddItem(new Sandals(lowHue));
-
-            // if (!this.Female)
-            //     this.AddItem(new BodySash(lowHue));
-
-            // this.AddItem(new Cloak(GetRandomHue()));
-
-            // if (!this.Female)
-            //     this.AddItem(new Longsword());
-
-            Utility.AssignRandomHair(this);
-
-            this.PackGold(5, 25);
         }
-
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)0);// version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -80,26 +88,6 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-        }
-
-        private static int GetRandomHue()
-        {
-            switch ( Utility.Random(6) )
-            {
-                default:
-                case 0:
-                    return 0;
-                case 1:
-                    return Utility.RandomBlueHue();
-                case 2:
-                    return Utility.RandomGreenHue();
-                case 3:
-                    return Utility.RandomRedHue();
-                case 4:
-                    return Utility.RandomYellowHue();
-                case 5:
-                    return Utility.RandomNeutralHue();
-            }
         }
     }
 }

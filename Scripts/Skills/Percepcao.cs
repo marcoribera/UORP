@@ -156,7 +156,7 @@ namespace Server.SkillHandlers
                 if (m == null || m == src || m is ShadowKnight || !CanDetect(src, m))
                     continue;
 
-                double ts = (m.Skills[SkillName.Furtividade].Value + m.Skills[SkillName.Furtividade].Value) / 2;
+                double ts = m.Skills[SkillName.Furtividade].Value;
 
                 if (src.Race == Race.Elf)
                     ss += 20;
