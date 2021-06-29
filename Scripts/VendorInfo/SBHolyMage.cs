@@ -46,14 +46,14 @@ namespace Server.Mobiles
               //  Add(new GenericBuyInfo(typeof(StrengthPotion), 15, 20, 0xF09, 0, true));
                 Add(new GenericBuyInfo(typeof(LesserCurePotion), 50, 10, 0xF07, 0, true));
 
-                Add(new GenericBuyInfo(typeof(BlackPearl), 7, 30, 0xF7A, 0));
-                Add(new GenericBuyInfo(typeof(Bloodmoss), 7, 30, 0xF7B, 0));
-                Add(new GenericBuyInfo(typeof(Garlic), 7, 30, 0xF84, 0));
-                Add(new GenericBuyInfo(typeof(Ginseng), 7, 30, 0xF85, 0));
-                Add(new GenericBuyInfo(typeof(MandrakeRoot), 7, 30, 0xF86, 0));
-                Add(new GenericBuyInfo(typeof(Nightshade), 7, 30, 0xF88, 0));
-                Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 30, 0xF8D, 0));
-                Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 30, 0xF8C, 0));
+                Add(new GenericBuyInfo(typeof(BlackPearl), 7, 230, 0xF7A, 0));
+                Add(new GenericBuyInfo(typeof(Bloodmoss), 7, 230, 0xF7B, 0));
+                Add(new GenericBuyInfo(typeof(Garlic), 7, 230, 0xF84, 0));
+                Add(new GenericBuyInfo(typeof(Ginseng), 7, 230, 0xF85, 0));
+                Add(new GenericBuyInfo(typeof(MandrakeRoot), 7, 230, 0xF86, 0));
+                Add(new GenericBuyInfo(typeof(Nightshade), 7, 230, 0xF88, 0));
+                Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 230, 0xF8D, 0));
+                Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 230, 0xF8C, 0));
 
                 Type[] types = Loot.RegularScrollTypes;
 
