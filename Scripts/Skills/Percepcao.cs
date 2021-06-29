@@ -42,7 +42,7 @@ namespace Server.SkillHandlers
         public class InternalTarget : Target
         {
             public InternalTarget()
-                : base(12, true, TargetFlags.None)
+                : base(4, true, TargetFlags.None)
             {
             }
 
