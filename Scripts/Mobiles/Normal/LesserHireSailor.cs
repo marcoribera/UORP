@@ -51,6 +51,7 @@ namespace Server.Mobiles
             Persuadable = true;
             ControlSlots = 1;
             MinPersuadeSkill = 40;
+            IdiomaNativo = Mobiles.SpeechType.Avlitir;
 
             this.AddItem(new Shoes(Utility.RandomNeutralHue()));
             this.AddItem(new Cutlass());
