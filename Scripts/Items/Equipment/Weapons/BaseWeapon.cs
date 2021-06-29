@@ -1434,7 +1434,7 @@ namespace Server.Items
                         m.SendMessage(String.Format("ATK | sk1: {0} sk2: {1}", m.Skills[Skill].Value, m.Skills[sk2].Value));
                     }
                     */
-                    if (sk2Val > skVal)
+                    if ((sk2Val > skVal) && !((m.Skills[Skill].Lock == SkillLock.Up) && (m.Skills[sk2].Lock != SkillLock.Up)))
                     {
                         sk = sk2;
                     }
@@ -1638,7 +1638,11 @@ namespace Server.Items
             /*
             if (attacker is PlayerMobile)
             {
-                attacker.SendMessage(String.Format("Atk sk: {0} Def sk: {1}", atkSkill.Name, defSkill.Name));
+                attacker.SendMessage(String.Format("Desfere ataque usando {0}", atkSkill.Name));
+            }
+            if (defender is PlayerMobile)
+            {
+                defender.SendMessage(String.Format("Tenta defender usando: {0}", defSkill.Name));
             }
             */
 
