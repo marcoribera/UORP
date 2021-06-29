@@ -1,4 +1,4 @@
-﻿using Server;
+using Server;
 using System;
 using System.Collections.Generic;
 using Server.Mobiles;
@@ -247,7 +247,7 @@ namespace Server.Items
 
             if (m_Owner != null && (!SpecialFishingNet.ValidateDeepWater(Map, X, Y) || m_Owner.Skills[SkillName.Sobrevivencia].Base >= 75.0))
             {
-                m_Owner.CheckSkill(SkillName.Sobrevivencia, 0, m_Owner.Skills[SkillName.Sobrevivencia].Cap);
+                m_Owner.CheckSkill(SkillName.Sobrevivencia, 0, 150);
             }
 
             if (!m_InUse)
