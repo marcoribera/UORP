@@ -42,7 +42,7 @@ namespace Server.SkillHandlers
         public class InternalTarget : Target
         {
             public InternalTarget()
-                : base(12, true, TargetFlags.None)
+                : base(4, true, TargetFlags.None)
             {
             }
 
@@ -66,13 +66,6 @@ namespace Server.SkillHandlers
                 if (!src.CheckSkill(SkillName.Percepcao, 0.0, 100.0))
                     range /= 2;
 
-                BaseHouse house = BaseHouse.FindHouseAt(p, src.Map, 16);
-
-                bool inHouse = house != null && house.IsFriend(src);
-
-                if (inHouse)
-                    range = 22;
-
                 if (range > 0)
                 {
                     IPooledEnumerable inRange = src.Map.GetMobilesInRange(p, range);
@@ -81,57 +74,72 @@ namespace Server.SkillHandlers
                     {
                         if (trg.Hidden && src != trg)
                         {
-                            double ss = srcSkill + Utility.Random(21) - 10;
-                            double ts = trg.Skills[SkillName.Furtividade].Value + Utility.Random(21) - 10;
                             double shadow = Server.Spells.SkillMasteries.ShadowSpell.GetDifficultyFactor(trg);
-                            bool houseCheck = inHouse && house.IsInside(trg);
 
-                            if (src.AccessLevel >= trg.AccessLevel && (ss >= ts || houseCheck) && Utility.RandomDouble() > shadow)
+                            if (src.AccessLevel >= trg.AccessLevel && Utility.RandomDouble() > shadow)
                             {
                                 if ((trg is ShadowKnight && (trg.X != p.X || trg.Y != p.Y)) ||
-                                     (!houseCheck && !CanDetect(src, trg)))
+                                     (!CanDetect(src, trg)))
                                     continue;
 
-                                trg.RevealingAction();
-                                trg.SendLocalizedMessage(500814); // You have been revealed!
-                                trg.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 500814, trg.NetState);
-                                foundAnyone = true;
+                                int armorRating = Furtividade.GetArmorRating(trg);
+
+                                //Calcula dificuldade para não ser percebido passivamente
+                                double dificuldade = -(armorRating * 2) + trg.Skills.Furtividade.Value + ((src.GetDistanceToSqrt(trg.Location) - 2.0) * 2.0);
+                                dificuldade += Math.Min(trg.LightLevel, LightCycle.ComputeLevelFor(trg)); //Se estiver mais escuro, fica mais fácil se manter despercebido
+
+                                if (src.CheckSkill(SkillName.Percepcao, dificuldade, dificuldade + 20))
+                                {
+                                    if (trg is PlayerMobile)
+                                    {
+                                        PlayerMobile targt = (PlayerMobile)trg;
+                                        targt.VisibilityList.Add(src);
+                                    }
+                                    else
+                                    {
+                                        trg.RevealingAction();
+                                        trg.SendLocalizedMessage(500814); // You have been revealed!
+                                    }
+                                    trg.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 500814, trg.NetState);
+                                    foundAnyone = true;
+                                }
                             }
                         }
-                    }
 
-                    inRange.Free();
 
-                    IPooledEnumerable itemsInRange = src.Map.GetItemsInRange(p, range);
+                        inRange.Free();
 
-                    foreach (Item item in itemsInRange)
-                    {
-                        if (item is LibraryBookcase && Server.Engines.Khaldun.GoingGumshoeQuest3.CheckBookcase(src, item))
+                        IPooledEnumerable itemsInRange = src.Map.GetItemsInRange(p, range);
+
+                        foreach (Item item in itemsInRange)
                         {
-                            foundAnyone = true;
-                        }
-                        else
-                        {
-                            IRevealableItem dItem = item as IRevealableItem;
-
-                            if (dItem == null || (item.Visible && dItem.CheckWhenHidden))
-                                continue;
-
-                            if (dItem.CheckReveal(src))
+                            if (item is LibraryBookcase && Server.Engines.Khaldun.GoingGumshoeQuest3.CheckBookcase(src, item))
                             {
-                                dItem.OnRevealed(src);
-
                                 foundAnyone = true;
                             }
+                            else
+                            {
+                                IRevealableItem dItem = item as IRevealableItem;
+
+                                if (dItem == null || (item.Visible && dItem.CheckWhenHidden))
+                                    continue;
+
+                                if (dItem.CheckReveal(src))
+                                {
+                                    dItem.OnRevealed(src);
+
+                                    foundAnyone = true;
+                                }
+                            }
                         }
+
+                        itemsInRange.Free();
                     }
 
-                    itemsInRange.Free();
-                }
-
-                if (!foundAnyone)
-                {
-                    src.SendLocalizedMessage(500817); // You can see nothing hidden there.
+                    if (!foundAnyone)
+                    {
+                        src.SendLocalizedMessage(500817); // You can see nothing hidden there.
+                    }
                 }
             }
         }
@@ -156,7 +164,7 @@ namespace Server.SkillHandlers
                 if (m == null || m == src || m is ShadowKnight || !CanDetect(src, m))
                     continue;
 
-                double ts = (m.Skills[SkillName.Furtividade].Value + m.Skills[SkillName.Furtividade].Value) / 2;
+                double ts = m.Skills[SkillName.Furtividade].Value;
 
                 if (src.Race == Race.Elf)
                     ss += 20;
