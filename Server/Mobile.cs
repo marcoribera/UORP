@@ -3654,7 +3654,7 @@ namespace Server
 
                         if (Stam < (int)(10 / proporcao))
                         {
-                            SendLocalizedMessage(1030833); //Criar um Cliloc dizendo: Falta fôlego para empurrar o alvo!
+                            SendLocalizedMessage(1030835); //Falta fôlego para empurrar o alvo!
                             return false;
                         }
                         else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
