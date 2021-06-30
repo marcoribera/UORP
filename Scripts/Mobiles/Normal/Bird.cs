@@ -13,23 +13,20 @@ namespace Server.Mobiles
             {
                 this.Hue = 0x901;
 
-                switch ( Utility.Random(3) )
+                switch ( Utility.Random(2) )
                 {
                     case 0:
-                        this.Name = "a crow";
+                        this.Name = "corvo";
                         break;
-                    case 2:
-                        this.Name = "a raven";
-                        break;
-                    case 1:
-                        this.Name = "a magpie";
+                       case 1:
+                        this.Name = "pombo";
                         break;
                 }
             }
             else
             {
                 this.Hue = Utility.RandomBirdHue();
-                this.Name = NameList.RandomName("bird");
+                this.Name = NameList.RandomName("passarinho");
             }
 
             this.Body = 6;
@@ -103,7 +100,7 @@ namespace Server.Mobiles
         }
     }
 
-    [CorpseName("a bird corpse")]
+    [CorpseName("corpo de passarinho")]
     public class TropicalBird : BaseCreature
     {
         [Constructable]
@@ -111,7 +108,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
             this.Hue = Utility.RandomBirdHue();
-            this.Name = "a tropical bird";
+            this.Name = "passaro tropical";
 
             this.Body = 6;
             this.BaseSoundID = 0xBF;
