@@ -180,7 +180,7 @@ namespace Server.SkillHandlers
                     eable.Free();
                 }
 
-                ok = (!badCombat && m.CheckSkill(SkillName.Furtividade, 25.0 + (armorRating * 2), 50.0 + (armorRating * 2))); //Começa a ter chance de andar furtivo com 25 de skill
+                ok = (!badCombat && m.CheckSkill(SkillName.Furtividade, 0.0 + (armorRating * 2), 100 + (armorRating * 2))); //Começa a ter chance de andar furtivo com 25 de skill
             }
 
             if (badCombat)
