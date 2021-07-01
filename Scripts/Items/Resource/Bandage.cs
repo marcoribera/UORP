@@ -345,7 +345,13 @@ namespace Server.Items
                 patientNumber = -1;
                 playSound = false;
             }
-            else if (!m_Healer.InRange(m_Patient, Bandage.Range))
+            else if (m_Patient.Alive && !m_Healer.InRange(m_Patient, Bandage.Range))
+            {
+                healerNumber = 500963; // You did not stay close enough to heal your target.
+                patientNumber = -1;
+                playSound = false;
+            }
+            else if (!m_Patient.Alive && !m_Healer.InRange(m_Patient.Corpse, Bandage.Range))
             {
                 healerNumber = 500963; // You did not stay close enough to heal your target.
                 patientNumber = -1;
