@@ -7847,7 +7847,7 @@ namespace Server.Mobiles
 
             Mobile owner = ControlMaster;
 
-            if (owner == null || owner.Deleted || owner.Map != Map || !owner.InRange(this, 12) || !CanSee(owner) || !InLOS(owner))
+            if (owner == null || owner.Deleted || !CanSee(owner) || !InLOS(owner))
             {
                 if (OwnerAbandonTime == DateTime.MinValue)
                 {

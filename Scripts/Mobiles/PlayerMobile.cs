@@ -3751,6 +3751,12 @@ namespace Server.Mobiles
                 {
                     PlaySound(0x435 + som.Next(9)); //0x435 a 0x43D (9 sons de oomph) male m_oomph_01.wav até m_oomph_09.wav
                 }
+
+                Blessed = true;
+                Timer.DelayCall(TimeSpan.FromSeconds(6.0), () =>
+                {
+                    Blessed = false;
+                });
             }
         }
 
@@ -5529,10 +5535,29 @@ namespace Server.Mobiles
 
         public virtual void OnConnected()
         {
-            if ((Desmaio < 1.0) && (!Alive))
+            if (!Alive)
             {
-                PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", NetState);
-                SendMessage(88, "*Este personagem está MORTO*", NetState); 
+                if (Desmaio < 1.0)
+                {
+                    PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", NetState);
+                    SendMessage(88, "*Este personagem está MORTO*", NetState);
+                }
+                else
+                {
+                    if(m_ExpireDeathTimer != null)
+                    {
+                        m_ExpireDeathTimer.Start();
+                    }
+                    else
+                    {
+                        m_ExpireDeathTimer = new ExpireDeathTimer(this);
+                        m_ExpireDeathTimer.Start();
+                    }
+                }
+            }
+            else
+            {
+                if (!IsStaff() && Blessed) { Blessed = false; }
             }
         }
 

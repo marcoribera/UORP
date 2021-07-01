@@ -8878,9 +8878,9 @@ namespace Server
                     return;
                 }
 
-                if (value < 1.0)
+                if (value < 0.0)
                 {
-                    value = 0.01;
+                    value = 0.0;
                 }
                 else if (value >= DesmaioMax)
                 {

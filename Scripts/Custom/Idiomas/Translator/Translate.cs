@@ -616,7 +616,7 @@ namespace Server.Custom
                             }
                             else
                             {
-                                creature.Emote("*Parece não entender o que foi dito*");
+                                //creature.Emote("*Parece não entender o que foi dito*");
                             }
                         }
                         else

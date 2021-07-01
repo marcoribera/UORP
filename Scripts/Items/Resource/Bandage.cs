@@ -20,7 +20,7 @@ namespace Server.Items
             EventSink.BandageTargetRequest += BandageTargetRequest;
         }
 
-		public static int Range = (Core.AOS ? 2 : 1);
+		public static int Range = (Core.AOS ? 1 : 1);
 
 		public override double DefaultWeight { get { return 0.1; } }
 
@@ -149,18 +149,33 @@ namespace Server.Items
 						from.SendLocalizedMessage(500295); // You are too far away to do that.
 					}
 				}
-				else if (targeted is PlagueBeastInnard)
-				{
-					if (((PlagueBeastInnard)targeted).OnBandage(from))
-					{
+                if (targeted is Corpse && (targeted as Corpse).Owner != null)
+                {
+                    if (from.InRange(m_Bandage.GetWorldLocation(), Bandage.Range))
+                    {
+                        if (BandageContext.BeginHeal(from, (targeted as Corpse).Owner, m_Bandage is EnhancedBandage) != null)
+                        {
+                            NegativeAttributes.OnCombatAction(from);
+                            m_Bandage.Consume();
+                        }
+                    }
+                    else
+                    {
+                        from.SendLocalizedMessage(500295); // You are too far away to do that.
+                    }
+                }
+                else if (targeted is PlagueBeastInnard)
+                {
+                    if (((PlagueBeastInnard)targeted).OnBandage(from))
+                    {
                         NegativeAttributes.OnCombatAction(from);
-						m_Bandage.Consume();
-					}
-				}
-				else
-				{
-					from.SendLocalizedMessage(500970); // Bandages can not be used on that.
-				}
+                        m_Bandage.Consume();
+                    }
+                }
+                else
+                {
+                    from.SendLocalizedMessage(500970); // Bandages can not be used on that.
+                }
 			}
 
 			protected override void OnNonlocalTarget(Mobile from, object targeted)
@@ -280,8 +295,8 @@ namespace Server.Items
 
             if (bleeding || poisoned)
             {
-                double healing = m_Healer.Skills[SkillName.Medicina].Value;
-                double anatomy = m_Healer.Skills[SkillName.Anatomia].Value;
+                double healing = m_Healer.Skills[GetPrimarySkill(m_Healer, m_Patient)].Value;
+                double anatomy = m_Healer.Skills[GetSecondarySkill(m_Healer, m_Patient)].Value;
                 double chance = ((healing + anatomy) - 120) * 25;
 
                 if (poisoned)
@@ -330,7 +345,13 @@ namespace Server.Items
                 patientNumber = -1;
                 playSound = false;
             }
-            else if (!m_Healer.InRange(m_Patient, Bandage.Range))
+            else if (m_Patient.Alive && !m_Healer.InRange(m_Patient, Bandage.Range))
+            {
+                healerNumber = 500963; // You did not stay close enough to heal your target.
+                patientNumber = -1;
+                playSound = false;
+            }
+            else if (!m_Patient.Alive && !m_Healer.InRange(m_Patient.Corpse, Bandage.Range))
             {
                 healerNumber = 500963; // You did not stay close enough to heal your target.
                 patientNumber = -1;
@@ -342,7 +363,7 @@ namespace Server.Items
                 double anatomy = m_Healer.Skills[secondarySkill].Value;
                 double chance = ((healing - 68.0) / 50.0) - (m_Slips * 0.02);
 
-                if (((checkSkills = (healing >= 80.0 && anatomy >= 80.0)) && chance > Utility.RandomDouble()) ||
+                if (((checkSkills = (healing >= 60.0 && anatomy >= 60.0)) && chance > Utility.RandomDouble()) ||
                     (Core.SE && petPatient is FactionWarHorse && petPatient.ControlMaster == m_Healer) ||
                     (Server.Engines.VvV.ViceVsVirtueSystem.Enabled && petPatient is Server.Engines.VvV.VvVMount && petPatient.ControlMaster == m_Healer))
                 //TODO: Dbl check doesn't check for faction of the horse here?
@@ -369,15 +390,17 @@ namespace Server.Items
                         {
                             Mobile master = petPatient.ControlMaster;
 
-                            if (master != null && m_Healer == master)
+                            if (master != null) // && m_Healer == master)
                             {
+                                double skillLoss = (m_Healer == master) ? 0.1 : 0.2;
                                 petPatient.ResurrectPet();
 
                                 for (int i = 0; i < petPatient.Skills.Length; ++i)
                                 {
-                                    petPatient.Skills[i].Base -= 0.1;
+                                    petPatient.Skills[i].Base -= skillLoss;
                                 }
                             }
+                            /*
                             else if (master != null && master.InRange(petPatient, 3))
                             {
                                 healerNumber = 1049658; // The owner has been asked to sanctify the resurrection.
@@ -411,6 +434,134 @@ namespace Server.Items
                                 {
                                     healerNumber = 1049659; // Neither the owner or friends of the pet are nearby to sanctify the resurrection.
                                 }
+                            }
+                            */
+                        }
+                        else if(m_Patient is PlayerMobile)
+                        {
+                            PlayerMobile alvo = m_Patient as PlayerMobile;
+
+                            Corpse corpoAlvo = null;
+                            if (!m_Patient.Alive)
+                            {
+                                corpoAlvo = m_Patient.Corpse as Corpse;
+                            }
+                            double recuperaDesmaio = Utility.RandomMinMax(0.0, (healing - 50.0) / 50.0);
+
+                            if (alvo.Desmaio != 0.0) //Desmaio 0.0 é morto de vez. Se não está morto e a recuperação de desmaio é suficiente
+                            {
+                                if (alvo.Desmaio < 1.0)
+                                {
+                                    if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                    {
+
+                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*começa a operar {0}*", alvo.Name));
+                                        m_Healer.SendMessage(38, "Realizando cirurgia");
+                                        alvo.SendMessage(38, "Estão tentando te ressuscitar");
+                                        Timer.DelayCall(TimeSpan.FromSeconds(4.0), () =>
+                                        {
+                                            if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                            {
+                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                patientNumber = -1;
+                                                playSound = false;
+                                            }
+                                            else
+                                            {
+                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*operando {0}*", alvo.Name));
+                                                Timer.DelayCall(TimeSpan.FromSeconds(4.0), () =>
+                                                {
+                                                    if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*parou operação*");
+                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                        patientNumber = -1;
+                                                        playSound = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*operando {0}*", alvo.Name));
+                                                        Timer.DelayCall(TimeSpan.FromSeconds(4.0), () =>
+                                                        {
+                                                            if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                                            {
+                                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false,"*parou operação*");
+                                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                                patientNumber = -1;
+                                                                playSound = false;
+                                                            }
+                                                            else
+                                                            {
+                                                                if ((alvo.Desmaio + recuperaDesmaio) >= 1.0)
+                                                                {
+                                                                    m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*termina operação*", alvo.Name));
+                                                                    m_Healer.SendMessage(38, "Sua intervenção salvou a vida do paciente!");
+                                                                    alvo.Desmaio += recuperaDesmaio;
+                                                                    alvo.Resurrect();
+                                                                }
+                                                                else
+                                                                {
+                                                                    alvo.Desmaio = 0.0;
+                                                                    m_Healer.SendMessage(38, "O paciente morreu durante a operação");
+                                                                    alvo.PublicOverheadMessage(MessageType.Emote, 38, false, "*não resistiu*");
+                                                                }
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                    else
+                                    {
+                                        healerNumber = 500963; // You did not stay close enough to heal your target.
+                                        patientNumber = -1;
+                                        playSound = false;
+                                    }
+                                }
+                                else
+                                {
+                                    if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                    {
+                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros em {0}*", alvo.Name));
+                                        alvo.SendMessage(38, "Estão tentando te reanimar");
+                                        Timer.DelayCall(TimeSpan.FromSeconds(3.0), () =>
+                                        {
+                                            if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                            {
+                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                patientNumber = -1;
+                                                playSound = false;
+                                            }
+                                            else
+                                            {
+                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros em {0}*", alvo.Name));
+                                                Timer.DelayCall(TimeSpan.FromSeconds(3.0), () =>
+                                                {
+                                                    if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*Interrompeu tratamento*");
+                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                        patientNumber = -1;
+                                                        playSound = false;
+                                                    }
+                                                    else
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*Terminou tratamento*");
+                                                        m_Healer.SendMessage(38, "Sua intervenção reanimou paciente!");
+                                                        alvo.Desmaio += recuperaDesmaio;
+                                                        alvo.Resurrect();
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                m_Healer.SendMessage(38, "Este paciente não tem mais salvação...");
+                                alvo.SendMessage(38, "Tentaram te ressuscitar, mas é impossível por meios normais");
                             }
                         }
                         else
@@ -661,7 +812,7 @@ namespace Server.Items
             {
                 healer.SendLocalizedMessage(500955); // That being is not damaged!
             }
-            else if (!patient.Alive && (patient.Map == null || !patient.Map.CanFit(patient.Location, 16, false, false)))
+            else if (!patient.Alive && (patient.Map == null)) // || !patient.Map.CanFit(patient.Location, 16, false, false)))
             {
                 healer.SendLocalizedMessage(501042); // Target cannot be resurrected at that location.
             }
