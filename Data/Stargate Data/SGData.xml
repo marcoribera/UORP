@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StargateAddresses>
+  <StargateEntry>
+    <SGX>6038</SGX>
+    <SGY>2984</SGY>
+    <SGZ>0</SGZ>
+    <SGFacing>S</SGFacing>
+    <SGStyle>1</SGStyle>
+    <SGCanBeUsed>True</SGCanBeUsed>
+    <SGBeingUsed>False</SGBeingUsed>
+    <SGEnergy>False</SGEnergy>
+    <SGHidden>False</SGHidden>
+    <SGDiscovered>ppizza</SGDiscovered>
+    <SGLocationName>Default Unnamed</SGLocationName>
+    <SGFacetCode>2</SGFacetCode>
+    <SGAddressCode1>1</SGAddressCode1>
+    <SGAddressCode2>2</SGAddressCode2>
+    <SGAddressCode3>3</SGAddressCode3>
+    <SGAddressCode4>4</SGAddressCode4>
+    <SGAddressCode5>5</SGAddressCode5>
+  </StargateEntry>
+</StargateAddresses>
