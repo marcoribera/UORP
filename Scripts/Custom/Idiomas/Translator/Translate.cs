@@ -74,7 +74,8 @@ namespace Server.Custom
 
             if (args.Type == MessageType.Emote)
             {
-                from.Emote(mySpeech);
+                //from.Emote(mySpeech);
+                return;
             }
             else
             {
