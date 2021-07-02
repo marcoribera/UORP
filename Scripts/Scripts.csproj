@@ -12664,6 +12664,7 @@
     </Compile>
     <Compile Include="Skills\ConhecimentoArmas.cs" />
     <Compile Include="Skills\Envenenamento.cs" />
+    <Compile Include="Skills\Extracao.cs" />
     <Compile Include="Skills\Erudicao.cs" />
     <Compile Include="Skills\Furtividade.cs" />
     <Compile Include="Skills\Percepcao.cs" />
@@ -12683,16 +12684,10 @@
     <Compile Include="Skills\Discordance.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\EvalInt.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Skills\ForensicEval.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Inscribe.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Skills\ItemIdentification.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\PoderMagico.cs">
@@ -12711,13 +12706,13 @@
     <Compile Include="Skills\Snooping.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\SpiritSpeak.cs">
+    <Compile Include="Skills\Necromancia.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Prestidigitacao.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Tracking.cs">
+    <Compile Include="Skills\Sobrevivencia.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\GiftGiving\GiftGiving.cs">
