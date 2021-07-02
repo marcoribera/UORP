@@ -7,7 +7,7 @@ namespace Server.SkillHandlers
     {
         public static void Initialize()
         {
-            SkillInfo.Table[22].Callback = new SkillUseCallback(OnUse); //Marcknight: Fazer personalizado pra cada skill mágica servir como meditation
+            SkillInfo.Table[(int)SkillName.PoderMagico].Callback = new SkillUseCallback(OnUse);
         }
 
         public static bool CheckOkayHolding(Item item)
@@ -75,7 +75,7 @@ namespace Server.SkillHandlers
                     return TimeSpan.FromSeconds(2.5);
                 }
 
-                double skillVal = m.Skills[SkillName.Arcanismo].Value; //Marcknight: Selecionar a skill de conhecimento magico mais alta
+                double skillVal = m.Skills[SkillName.PoderMagico].Value; //Marcknight: Selecionar a skill de conhecimento magico mais alta
                 double chance = (50.0 + ((skillVal - (m.ManaMax - m.Mana)) * 2)) / 100;
 
                 // must bypass normal checks so passive skill checks aren't triggered
@@ -83,7 +83,7 @@ namespace Server.SkillHandlers
 
                 if (chance > Utility.RandomDouble())
                 {
-                    m.CheckSkill(SkillName.Arcanismo, 0.0, 100.0); //Marcknight: Selecionar a skill de conhecimento magico mais alta
+                    m.CheckSkill(SkillName.PoderMagico, 0.0, 100.0); //Marcknight: Selecionar a skill de conhecimento magico mais alta
 
                     m.SendLocalizedMessage(501851); // You enter a meditative trance.
                     m.Meditating = true;

@@ -12695,7 +12695,7 @@
     <Compile Include="Skills\ItemIdentification.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Skills\Meditation.cs">
+    <Compile Include="Skills\PoderMagico.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Skills\Peacemaking.cs">
