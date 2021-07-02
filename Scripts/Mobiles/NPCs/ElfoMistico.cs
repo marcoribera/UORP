@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class Mystic : BaseVendor
+    public class ElfoMystic : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public Mystic()
+        public ElfoMystic()
             : base("- O Feiticeiro")
         {
             this.SetSkill(SkillName.PoderMagico, 65.0, 88.0);
@@ -22,7 +22,7 @@ namespace Server.Mobiles
 
         }
 
-        public Mystic(Serial serial)
+        public ElfoMystic(Serial serial)
             : base(serial)
         {
         }
@@ -65,6 +65,28 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+        }
+        public override void InitBody()
+        {
+            InitStats(100, 100, 25);
+            this.Race = Race.Elf;
+            Female = GetGender();
+            SpeechHue = Utility.RandomDyedHue();
+
+            if (Female)
+            {
+                Body = 0x25E;
+                Name = NameList.RandomName("female");
+            }
+            else
+            {
+                Body = 0x25D;
+                Name = NameList.RandomName("male");
+            }
+
+            Hue = Utility.RandomSkinHue();
+            Utility.AssignRandomHair(this);
+            Utility.AssignRandomFacialHair(this);
         }
     }
 }

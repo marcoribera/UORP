@@ -38,13 +38,15 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(AnimatedWeaponScroll), 250, 10, 0x2DA4, 0, true));
                 Add(new GenericBuyInfo(typeof(StoneFormScroll), 250, 10, 0x2DA5, 0, true));
                 Add(new GenericBuyInfo(typeof(MysticBook), 1000, 10, 0x2D9D, 0, true));
-                Add(new GenericBuyInfo(typeof(ScribesPen), 10, 50, 0xFBF, 0, true));
-                Add(new GenericBuyInfo(typeof(BlankScroll), 15, 20, 0x0E34, 0, true));
-           //     Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0, true));
+                Add(new GenericBuyInfo(typeof(ScribesPen), 50, 3, 0xFBF, 0, true));
+                Add(new GenericBuyInfo(typeof(BlankScroll), 50, 3, 0x0E34, 0, true));
+                Add(new GenericBuyInfo(typeof(NetherBoltScroll), 250, 10, 0x2D9E, 0));
+                                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 250, 10, 0x2D9F, 0));
+                //     Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0, true));
 
-            //    Add(new GenericBuyInfo(typeof(RefreshPotion), 15, 10, 0xF0B, 0, true));
-             //   Add(new GenericBuyInfo(typeof(AgilityPotion), 15, 10, 0xF08, 0, true));
-             //   Add(new GenericBuyInfo(typeof(NightSightPotion), 15, 10, 0xF06, 0, true));
+                //    Add(new GenericBuyInfo(typeof(RefreshPotion), 15, 10, 0xF0B, 0, true));
+                //   Add(new GenericBuyInfo(typeof(AgilityPotion), 15, 10, 0xF08, 0, true));
+                //   Add(new GenericBuyInfo(typeof(NightSightPotion), 15, 10, 0xF06, 0, true));
                 Add(new GenericBuyInfo(typeof(LesserHealPotion), 50, 5, 0xF0C, 0, true));
             //    Add(new GenericBuyInfo(typeof(StrengthPotion), 15, 10, 0xF09, 0, true));
            //     Add(new GenericBuyInfo(typeof(LesserPoisonPotion), 15, 10, 0xF0A, 0, true));
@@ -59,12 +61,10 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(Nightshade), 7, 240, 0xF88, 0));
                 Add(new GenericBuyInfo(typeof(SulfurousAsh), 7, 240, 0xF8C, 0));
                 Add(new GenericBuyInfo(typeof(SpidersSilk), 7, 240, 0xF8D, 0));
-
-
+                Add(new GenericBuyInfo(typeof(DaemonBone), 7, 340, 0xF80, 0));
+                Add(new GenericBuyInfo(typeof(DragonBlood), 7, 340, 0x4077, 0));
                 Add(new GenericBuyInfo(typeof(Bone), 7, 340, 0xf7e, 0));
                 Add(new GenericBuyInfo(typeof(FertileDirt), 7, 340, 0xF81, 0));
-                Add(new GenericBuyInfo(typeof(NetherBoltScroll), 70, 10, 0x2D9E, 0));
-                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 70, 10, 0x2D9F, 0));
             }
         }
 
