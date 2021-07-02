@@ -73,7 +73,7 @@ namespace Server.SkillHandlers
 
                     if (!c.IsDeadPet)
                     {
-                        if (c.Body.IsAnimal || c.Body.IsMonster || c.Body.IsSea)
+                        if (c.Tamable)
                         {
 							double skill = from.Skills[SkillName.Veterinaria].Value;
 							if(skill < 60.0)
