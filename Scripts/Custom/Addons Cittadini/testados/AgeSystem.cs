@@ -22,7 +22,7 @@ namespace Server.Commands
 
 		private static TimeSpan AutoRenewCheck = TimeSpan.FromMinutes( 30 ); // Check for new birthdays every 30 minutes.
 
-		public static bool AgeStatModEnabled = true; // Character's stats (Str,Dex,Int) are affected by the age?
+		public static bool AgeStatModEnabled = false; // Character's stats (Str,Dex,Int) are affected by the age?
 		
 		public static double maxBonus = 15;  // What is the bonus when the characters are at their best condition?
 
