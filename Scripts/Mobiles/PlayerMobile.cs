@@ -5544,11 +5544,11 @@ namespace Server.Mobiles
                 }
                 else
                 {
-                    if(m_ExpireDeathTimer != null)
+                    if(m_ExpireDeathTimer != null && !m_ExpireDeathTimer.Running)
                     {
                         m_ExpireDeathTimer.Start();
                     }
-                    else
+                    else if (m_ExpireDeathTimer == null)
                     {
                         m_ExpireDeathTimer = new ExpireDeathTimer(this);
                         m_ExpireDeathTimer.Start();
