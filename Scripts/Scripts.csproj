@@ -279,6 +279,7 @@
     <Compile Include="Items\Addons\MailboxSouthAddon.cs" />
     <Compile Include="Items\Addons\PotteryWheelAddon.cs" />
     <Compile Include="Items\Addons\RuinCastle2Addon.cs" />
+    <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
     <Compile Include="Items\Custom\AbbygifttobaleAddon.cs" />
     <Compile Include="Items\Custom\AddStairGump.cs" />
     <Compile Include="Items\Custom\AltarGods.cs" />
@@ -6945,7 +6946,7 @@
     <Compile Include="Items\Containers\BagOfAllReagents.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Items\Containers\BagOfNecroReagents.cs">
+    <Compile Include="Items\Containers\BagOfMysticismReagents.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Containers\BagOfReagents.cs">

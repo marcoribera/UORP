@@ -1404,7 +1404,9 @@ namespace Server.Misc
 				}
 				case SkillName.Misticismo:
 				{
-					PackItem(new MysticBook((ulong)0xAB));
+                        Container regs = new BagOfNecroReagents(50);
+                        PackItem(regs);
+                        PackItem(new MysticBook((ulong)0xAB));
 					break;
 				}
 			}
