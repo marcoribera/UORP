@@ -30,7 +30,7 @@ namespace Felladrin.Commands
         {
             if (Config.Enabled && SpeechLog.Enabled)
             {
-                CommandSystem.Register("History", AccessLevel.Player, new CommandEventHandler(OnCommand));
+                CommandSystem.Register("Historia", AccessLevel.Player, new CommandEventHandler(OnCommand));
 
                 if (Config.OpenGumpOnLogin)
                 {

@@ -6,16 +6,16 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("TimeStamp", AccessLevel.Player, new CommandEventHandler(CheckTime_OnCommand));
+            CommandSystem.Register("Hora", AccessLevel.Player, new CommandEventHandler(CheckTime_OnCommand));
         }
 
         [Usage("TimeStamp")]
-        [Description("Check's Your Servers Current Date And Time")]
+        [Description("Confira a hora do seu servidor")]
         public static void CheckTime_OnCommand(CommandEventArgs e)
         {
             Mobile m = e.Mobile;
             DateTime now = DateTime.UtcNow;
-            m.SendMessage("The Current Date And Time Is " + now + "(EST)");         
+            m.SendMessage("O horário atual é" + now + "(GMT+3)");         
         }
     }
 }

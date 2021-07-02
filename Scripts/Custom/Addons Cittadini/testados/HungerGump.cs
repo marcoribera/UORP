@@ -20,8 +20,7 @@ namespace Server.Commands
 		public static void Initialize()
 		{
 			CommandSystem.Register( "Fome", AccessLevel.Player, new CommandEventHandler( Hungry_OnCommand ) );
-			CommandSystem.Register( "Sede", AccessLevel.Player, new CommandEventHandler( Hungry_OnCommand ) );
-		}
+					}
 		
 		[Usage( "Fome || Sede" )]
 		[Description( "Mostra o seu nível de fome e sede." )]

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Organize Me by Tresdni
  * www.uofreedom.com
  * Instantly organize your backpack with a simple command.
@@ -19,7 +19,7 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("OrganizeMe", AccessLevel.Player, OrganizeMe_OnCommand);
+            CommandSystem.Register("OrganizeMe", AccessLevel.GameMaster, OrganizeMe_OnCommand);
         }
 
         //This command will not move spellbooks, runebooks, blessed, or insured items.

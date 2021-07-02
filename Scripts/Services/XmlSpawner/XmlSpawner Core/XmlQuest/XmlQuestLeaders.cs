@@ -151,7 +151,7 @@ namespace Server.Engines.XmlSpawner2
 		{
 
 			CommandSystem.Register( "QuestLeaderboardSave", AccessLevel.Administrator, new CommandEventHandler( QuestLeaderboardSave_OnCommand ) );
-			CommandSystem.Register( "QuestRanking", AccessLevel.Player, new CommandEventHandler( QuestRanking_OnCommand ) );
+			CommandSystem.Register( "QuestRanking", AccessLevel.GameMaster, new CommandEventHandler( QuestRanking_OnCommand ) );
 		}
 		
 		
