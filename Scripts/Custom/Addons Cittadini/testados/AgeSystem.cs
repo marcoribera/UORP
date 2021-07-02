@@ -40,7 +40,7 @@ namespace Server.Commands
 			CommandSystem.Register( "LimparSistemaDeIdade", AccessLevel.Administrator, new CommandEventHandler( ClearAgeSystem_OnCommand ) );
 			CommandSystem.Register( "SetarIdade", AccessLevel.Administrator, new CommandEventHandler( SetAge_OnCommand ) );
 			CommandSystem.Register( "NovaIdade", AccessLevel.Administrator, new CommandEventHandler( NewAge_OnCommand ) );
-			CommandSystem.Register( "Idade", AccessLevel.Player, new CommandEventHandler( MyAge_OnCommand ) );
+			CommandSystem.Register( "Idade", AccessLevel.GameMaster, new CommandEventHandler( MyAge_OnCommand ) );
 			
 			if ( AutoRenewAgeEnabled )
 			{

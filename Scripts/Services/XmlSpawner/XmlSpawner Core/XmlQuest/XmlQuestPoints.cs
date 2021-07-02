@@ -158,9 +158,9 @@ namespace Server.Engines.XmlSpawner2
 
 		public static new void Initialize()
 		{
-			CommandSystem.Register( "QuestPoints", AccessLevel.Player, new CommandEventHandler( CheckQuestPoints_OnCommand ) );
+			CommandSystem.Register( "QuestPoints", AccessLevel.GameMaster, new CommandEventHandler( CheckQuestPoints_OnCommand ) );
 
-			CommandSystem.Register( "QuestLog", AccessLevel.Player, new CommandEventHandler( QuestLog_OnCommand ) );
+			CommandSystem.Register( "QuestLog", AccessLevel.GameMaster, new CommandEventHandler( QuestLog_OnCommand ) );
 
 		}
 
