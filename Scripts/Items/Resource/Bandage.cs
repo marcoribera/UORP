@@ -149,7 +149,7 @@ namespace Server.Items
 						from.SendLocalizedMessage(500295); // You are too far away to do that.
 					}
 				}
-                if (targeted is Corpse && (targeted as Corpse).Owner != null)
+                else if (targeted is Corpse && (targeted as Corpse).Owner != null)
                 {
                     if (from.InRange(m_Bandage.GetWorldLocation(), Bandage.Range))
                     {
