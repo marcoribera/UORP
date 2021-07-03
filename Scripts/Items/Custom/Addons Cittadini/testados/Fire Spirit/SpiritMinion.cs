@@ -19,32 +19,31 @@ namespace Server.Mobiles
 			BaseSoundID = 0x467;
 		    Hue = 2519;
 
-			SetStr( 90, 110 );
-			SetDex( 301, 400 );
-			SetInt( 201, 250 );
+			SetStr( 20, 30 );
+			SetDex( 31, 40 );
+			SetInt( 21, 25 );
 
-			SetHits( 75, 100 );
+			SetHits( 50, 80 );
 
 			SetDamage( 5, 10 );
 
-			SetDamageType( ResistanceType.Physical, 100 );
+            SetResistance(ResistanceType.Physical, 10);
+            SetResistance(ResistanceType.Fire, 10);
+            SetResistance(ResistanceType.Cold, 10);
+            SetResistance(ResistanceType.Poison, 10);
+            SetResistance(ResistanceType.Energy, 10);
 
-			SetResistance( ResistanceType.Physical, 80, 90 );
-			SetResistance( ResistanceType.Fire, 40, 50 );
-			SetResistance( ResistanceType.Cold, 40, 50 );
-			SetResistance( ResistanceType.Poison, 40, 50 );
-			SetResistance( ResistanceType.Energy, 40, 50 );
+            SetSkill(SkillName.Briga, 50, 60);
+            SetSkill(SkillName.Anatomia, 60, 60.0);
+            SetSkill(SkillName.ResistenciaMagica, 20.0, 20.0);
+            SetSkill(SkillName.Arcanismo, 80.0, 80.0);
 
-			SetSkill( SkillName.Arcanismo, 80.1, 90.0 );
-			SetSkill( SkillName.Feiticaria, 60.1, 70.0 );
-			SetSkill( SkillName.Anatomia, 90.1, 100.0 );
-			SetSkill( SkillName.ResistenciaMagica, 100.5, 150.0 );
-			SetSkill( SkillName.Briga, 80.1, 90.0 );
-			SetSkill( SkillName.Medicina, 80.1, 90.5 );
+            SetSkill(SkillName.Bloqueio, 20.5, 20.0);
+            SetSkill(SkillName.Medicina, 20.0, 20.0);
 
-			Fame = 2000;
+            Fame = 50;
 
-			VirtualArmor = 60;
+			VirtualArmor = 10;
 
 		}
 

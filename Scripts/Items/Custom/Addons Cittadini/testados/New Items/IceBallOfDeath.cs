@@ -13,7 +13,7 @@ namespace Server.Items
       		[Constructable]
       		public IceBallOfDeath() : base( 0x913 )
       		{
-         		base.Name = "a ball of ice with a rock in it";
+         		base.Name = "uma bola de gelo com uma pedra dentro";
          		Hue = 0x481;
          		LootType = LootType.Regular;
 			base.Weight = 13.0;
@@ -36,11 +36,11 @@ namespace Server.Items
                				from.Target = new IceBallOfDeathTarget( from );
 					if( from.Hidden )
 						from.RevealingAction();
-              				from.SendMessage( "You carefully pack the ice around a big rock..." );
+              				from.SendMessage( "você cuidadosamente coloca gelo ao redor da pedra..." );
             			}
             			else
             			{
-               				from.SendMessage( "The rock is too warm for you to pack ice around.  Wait a bit..." );
+               				from.SendMessage( "A rocha está muito quente para colocar gelo ao redor dela.  Espere um pouquinho..." );
 					Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
             			}
 			}
@@ -83,12 +83,12 @@ namespace Server.Items
 				
 				if ( target is Item )
 				{
-               				from.SendMessage( "No vandalism, please." );
+               				from.SendMessage( "Sem vandalismo, por favor." );
 					Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 				}
 				else if ( target == from )
 				{
-               				from.SendMessage( "You hit yourself in the head with your own rock, dumbass..." );
+               				from.SendMessage( "Você acertou sua cabeça com a pedra, não parece uma boa ideia..." );
 					Timer.DelayCall( TimeSpan.FromSeconds( 10.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 				}
 				else if ( targetIsPM && pm.CheckAlive() )
@@ -97,7 +97,7 @@ namespace Server.Items
 
 		   			if ( targeticodnow == null || targeticodnow.Length == 0 )
 		   			{
-               					from.SendMessage( "It's not nice to throw iceballs at unarmed people..." );
+               					from.SendMessage( "Aquela pessoa está desarmada, isso não parece justo..." );
 						Timer.DelayCall( TimeSpan.FromSeconds( 10.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 					}
 					else if( checkHit() )
@@ -112,8 +112,8 @@ namespace Server.Items
 					}
 					else
 					{
-						from.SendMessage( "You MISSED!!!" );
-               					pm.SendMessage( "A hard, cold object goes flying by your head!" );
+						from.SendMessage( "Você errou!!!" );
+               					pm.SendMessage( "Um objeto pesado, acabou de passar voando pela sua cabeça!" );
 						Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 					}
 				}
@@ -121,12 +121,12 @@ namespace Server.Items
 				{
 					if( targetIsPM && !pm.CheckAlive() )
 					{
-						from.SendMessage( "Why would you try to hit an already dead player???" );
+						from.SendMessage( "Por que tentar acertar alguém que já está desmaiado???" );
 						Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 					}
 					else
 					{
-						from.SendMessage( "No vandalism, please." );
+						from.SendMessage( "Sem vandalismo, por favor." );
 						Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ReleaseIceBallLock ), from );
 					}
 				}
@@ -153,62 +153,62 @@ namespace Server.Items
 				{
 					case 0:
 					{
-               					attacker.SendMessage( "You throw the iceball and lucky for you, it bounced and hit them." );
-               					defender.SendMessage( "You have just been hit by a ricocheting rock!" );
+               					attacker.SendMessage("Você joga a bola de gelo e, para sua sorte, ela voa e os atinge.");
+               					defender.SendMessage("Você acaba de ser atingido por uma rocha que ricocheteou!");
 						damage += Utility.RandomMinMax( 1, 3 );
 						break;
 					}
 					case 1:
 					{
-               					attacker.SendMessage( "You throw the iceball and it glances off their arm." );
-               					defender.SendMessage( "You have just been hit a glancing blow by an iceball!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela acerta no braço deles.");
+               					defender.SendMessage("Você acaba de ser atingido por um golpe de raspão por uma bola de gelo!");
 						damage += Utility.RandomMinMax( 2, 6 );
 						break;
 					}
 					case 2:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them in the back!" );
-               					defender.SendMessage( "You have just been hit in the back by an iceball!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela os atinge nas costas!");
+               					defender.SendMessage("Você acaba de ser atingido nas costas por uma bola de gelo!");
 						damage += Utility.RandomMinMax( 4, 10 );
 						break;
 					}
 					case 3:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them in the kneecap!" );
-               					defender.SendMessage( "You have just been hit in the kneecap by an iceball!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela atinge a rótula!");
+               					defender.SendMessage("Você acaba de ser atingido na rótula por uma bola de gelo!");
 						damage += Utility.RandomMinMax( 6, 10 );
 						break;
 					}
 					case 4:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them square in the arm!" );
-               					defender.SendMessage( "You have just been hit in the arm by an iceball!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela os acerta em cheio no braço!");
+               					defender.SendMessage("Você acaba de ser atingido no braço por uma bola de gelo!");
 						damage += Utility.RandomMinMax( 6, 12 );
 						break;
 					}
 					case 5:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them in the chest, knocking the wind out of them!" );
-               					defender.SendMessage( "You have just been hit in the chest by an iceball, knocking the wind out of you!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela os atinge no peito, deixando-os sem fôlego!");
+               					defender.SendMessage("Você acaba de ser atingido no peito por uma bola de gelo. Você perde o ar!");
 						damage += Utility.RandomMinMax( 6, 15 );
 						break;
 					}
 					case 6:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them in the ankle, knocking them down!" );
-               					defender.SendMessage( "You have just been hit in the ankle by an iceball, knocking you down!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela atinge o tornozelo. Acho que alguém caius!");
+               					defender.SendMessage("Você acaba de ser atingido no tornozelo por uma bola de gelo. Você cai!");
 						damage += Utility.RandomMinMax( 6, 18 );
 						break;
 					}
 					case 7:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits smack in the forehead, knocking them senseless!" );
-               					defender.SendMessage( "You have just been hit smack in the forehead by an iceball, knocking you senseless!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela acerta na testa, deixando-os atordoados!");
+               					defender.SendMessage("Você acaba de ser atingido na testa por uma bola de gelo, você perde os sentidos por um momento!");
 						damage += Utility.RandomMinMax( 7, 21 );
 						if( isStunned )
 						{
 							
-               						attacker.SendMessage( "You have stunned your target!!!" );
+               						attacker.SendMessage("Você atordoou seu alvo!!!");
 							defender.SendLocalizedMessage( 1004014 ); // You have been stunned!
 							defender.Freeze( TimeSpan.FromSeconds( 2.0 ) );
 						}
@@ -216,8 +216,8 @@ namespace Server.Items
 					}
 					case 8:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them in the eye, swelling their eye shut!" );
-               					defender.SendMessage( "You have just been hit in the eye by an iceball, swelling your eye shut!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela atinge os olhos deles, deixando seus olhos fechados!");
+               					defender.SendMessage("Você acaba de ser atingido no olho por uma bola de gelo, ela te cega por alguns momentos!");
 						damage += Utility.RandomMinMax( 8, 25 );
 						if( isStunned )
 						{
@@ -228,8 +228,8 @@ namespace Server.Items
 					}
 					case 9:
 					{
-               					attacker.SendMessage( "You throw the iceball and it hits them right in the crotch. You can see their eyes crossing!" );
-               					defender.SendMessage( "You have just been hit right in the crotch by an iceball, You see double as you slump to your knees!" );
+               					attacker.SendMessage("Você joga a bola de gelo e ela acerta bem no meio das pernas. Você leva seu oponente a nocaute!");
+               					defender.SendMessage("Você acaba de ser atingido bem na virilha por uma bola de gelo, Você se dobra e cai de joelhos!");
 						damage += Utility.RandomMinMax( 9, 30 );
 						if( isStunned )
 						{
