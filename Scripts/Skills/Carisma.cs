@@ -431,7 +431,7 @@ namespace Server.SkillHandlers
                                 {
                                     m_eu.SendLocalizedMessage(500404); // They seem unwilling to give you any money.
                                 }
-                                else if (m_eu.CheckTargetSkill(SkillName.Carisma, targ, 0.0, 100.0))
+                                else if (m_eu.CheckSkill(SkillName.Carisma, 0.0, 100.0))
                                 {
                                     int disponivel = theirPack.GetAmount(typeof(Gold));
                                     int toConsume = (int)((double)disponivel * (carismaPower / 20.0)); //Se tiver mais de 100 de skill, o NPC tinha dinheiro extra de algum lugar e dá um extra.
@@ -526,7 +526,7 @@ namespace Server.SkillHandlers
                                 {
                                     m_eu.SendLocalizedMessage(500404);
                                 }
-                                else if (m_eu.CheckTargetSkill(SkillName.Carisma, targ, 0.0, 100.0))
+                                else if (m_eu.CheckSkill(SkillName.Carisma, 0.0, 100.0))
                                 {
                                     int disponivel = theirPack.GetAmount(typeof(Gold));
                                     int toConsume = (int)((double)disponivel * (carismaPower / 40.0));
@@ -815,7 +815,7 @@ namespace Server.SkillHandlers
 
                             if (!alreadyOwned)
                             {
-                                m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
+                                m_Tamer.CheckSkill(SkillName.Carisma, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 50.0);
                             }
 
                             if (m_Creature.Paralyzed)
@@ -843,7 +843,7 @@ namespace Server.SkillHandlers
 
                             //minSkill += 24.9;
 
-                            if (alreadyOwned || m_Tamer.CheckTargetSkill(SkillName.Carisma, m_Creature, minSkill, minSkill + 20.0))
+                            if (alreadyOwned || m_Tamer.CheckSkill(SkillName.Carisma,  minSkill, minSkill + 50.0))
                             {
                                 if (m_Creature.Owners.Count == 0) // First tame
                                 {
