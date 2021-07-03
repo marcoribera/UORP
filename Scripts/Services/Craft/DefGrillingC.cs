@@ -115,13 +115,14 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( CookedBird ), "Churrasco", "Peito de codorna", 10.0, 100.0, typeof( RawBird ), "Codorna Crua", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenLeg ), "Churrasco", "Coxa de Frango", 10.0, 100.0, typeof( RawChickenLeg ), "Coxa de Frango Cru, 1, 1044253 );
-			SetNeedOven( index, true );
+            index = AddCraft(typeof(CookedBird), "Churrasco", "Coxa de Frango", 10.0, 100.0, typeof( RawChickenLeg ), "Coxa de Frango Cru", 1, 1044253);
+            SetNeedOven(index, true);
 
+          
 			index = AddCraft( typeof( FishSteak ), "Churrasco", "Filé de Frango", 10.0, 100.0, typeof( RawFishSteak ), "Filé de Peixe Cru", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( LambLeg ), "Churrasco", "Coxa de Cordeiro", 10.0, 100.0, typeof( RawLambLeg ), "Coxa de Carneiro Crua, 1, 1044253 );
+			index = AddCraft( typeof( LambLeg ), "Churrasco", "Coxa de Cordeiro", 10.0, 100.0, typeof( RawLambLeg ), "Coxa de Carneiro Crua", 1, 1044253 );
 			SetNeedOven( index, true );
 
 			index = AddCraft( typeof( BeefBBQRibs ), "Jantar", "Costelas", 20.0, 100.0, typeof( RawRibs ), "Costelas Cruas", 1, 1044253 );
