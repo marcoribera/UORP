@@ -376,7 +376,7 @@ namespace Server.SkillHandlers
 
 						if (!alreadyOwned)
 						{
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 20.0);
+							m_Tamer.CheckSkill(SkillName.Adestramento, m_Creature.CurrentTameSkill, m_Creature.CurrentTameSkill + 50.0);
 						}
 
 						if (m_Creature.Paralyzed)
@@ -397,7 +397,7 @@ namespace Server.SkillHandlers
 
 						//if (!alreadyOwned) // Passively check animal lore for gain
 						//{
-						//     m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill- 10.0, m_Creature.CurrentTameSkill + 10.0);
+						//     m_Tamer.CheckSkill(SkillName.Adestramento, m_Creature, m_Creature.CurrentTameSkill- 10.0, m_Creature.CurrentTameSkill + 10.0);
 						//}
 
 						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
@@ -411,7 +411,7 @@ namespace Server.SkillHandlers
 						//minSkill += 24.9;
 
 						if (necroMastery || alreadyOwned ||
-							m_Tamer.CheckTargetSkill(SkillName.Adestramento, m_Creature, minSkill, minSkill + 20.0))
+							m_Tamer.CheckSkill(SkillName.Adestramento, minSkill, minSkill + 50.0))
 						{
                             if (m_Creature.Owners.Count == 0) // First tame
                             {
