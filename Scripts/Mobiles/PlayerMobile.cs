@@ -1697,7 +1697,44 @@ namespace Server.Mobiles
 				pm.BedrollLogout = false;
                 pm.BlanketOfDarknessLogout = false;
                 pm.LastOnline = DateTime.UtcNow;
-			}
+
+                Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
+                {
+                    if (!pm.Alive)
+                    {
+                        if (pm.Desmaio < 1.0)
+                        {
+                            pm.PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", pm.NetState);
+                           // pm.SendMessage(88, "*Este personagem está MORTO*");
+                        }
+                        else
+                        {
+                            if (pm.m_ExpireDeathTimer != null && !pm.m_ExpireDeathTimer.Running)
+                            {
+                                //pm.SendMessage(88, "Reiniciando contagem para acordar");
+                                pm.PrivateOverheadMessage(MessageType.Emote, 88, false, "Reiniciando contagem para acordar", pm.NetState);
+                                pm.m_ExpireDeathTimer.Start();
+                            }
+                            else if (pm.m_ExpireDeathTimer == null)
+                            {
+                                //pm.SendMessage(88, "Iniciando contagem para acordar");
+                                pm.PrivateOverheadMessage(MessageType.Emote, 88, false, "Iniciando contagem para acordar", pm.NetState);
+                                pm.m_ExpireDeathTimer = new ExpireDeathTimer(pm);
+                                pm.m_ExpireDeathTimer.Start();
+                            }
+                            else
+                            {
+                                //pm.SendMessage(88, "Continuando contagem para acordar");
+                                pm.PrivateOverheadMessage(MessageType.Emote, 88, false, "Continuando contagem para acordar", pm.NetState);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (!pm.IsStaff() && pm.Blessed) { pm.Blessed = false; }
+                    }
+                });
+            }
 
 			DisguiseTimers.StartTimer(e.Mobile);
 
@@ -5533,33 +5570,6 @@ namespace Server.Mobiles
 			DisguiseTimers.RemoveTimer(this);
 		}
 
-        public virtual void OnConnected()
-        {
-            if (!Alive)
-            {
-                if (Desmaio < 1.0)
-                {
-                    PrivateOverheadMessage(MessageType.Emote, 88, false, "*MORTO*", NetState);
-                    SendMessage(88, "*Este personagem está MORTO*", NetState);
-                }
-                else
-                {
-                    if(m_ExpireDeathTimer != null && !m_ExpireDeathTimer.Running)
-                    {
-                        m_ExpireDeathTimer.Start();
-                    }
-                    else if (m_ExpireDeathTimer == null)
-                    {
-                        m_ExpireDeathTimer = new ExpireDeathTimer(this);
-                        m_ExpireDeathTimer.Start();
-                    }
-                }
-            }
-            else
-            {
-                if (!IsStaff() && Blessed) { Blessed = false; }
-            }
-        }
 
         public override bool NewGuildDisplay { get { return Guilds.Guild.NewGuildSystem; } }
 
