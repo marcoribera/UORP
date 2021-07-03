@@ -3,15 +3,15 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("corpo de um goblin")]
-    public class GoblinMachado : BaseCreature
+    [CorpseName("corpo de um goblin arqueiro")]
+    public class GoblinArqueiro : BaseCreature
     {
         [Constructable]
-        public GoblinMachado()
-            : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
+        public GoblinArqueiro()
+            : base(AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "um goblin";
-            Body = 1780;
+            Name = "um goblin arqueiro";
+            Body = 1781;
             BaseSoundID = 0x600;
 
             SetStr(40, 60);
@@ -33,37 +33,17 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 10, 20);
 
             SetSkill(SkillName.ResistenciaMagica, 10, 30);
-            SetSkill(SkillName.Anatomia, 30, 50);
+            SetSkill(SkillName.Anatomia, 50, 70);
             SetSkill(SkillName.Atirar, 30, 50);
             SetSkill(SkillName.Briga, 30, 50);
-
 
             Fame = 1500;
             Karma = -1500;
 
             VirtualArmor = 28;
 
-            switch ( Utility.Random(20) )
-            {
-                case 0:
-                    PackItem(new Scimitar());
-                    break;
-                case 1:
-                    PackItem(new Katana());
-                    break;
-                case 2:
-                    PackItem(new WarMace());
-                    break;
-                case 3:
-                    PackItem(new WarHammer());
-                    break;
-                case 4:
-                    PackItem(new Kryss());
-                    break;
-                case 5:
-                    PackItem(new Pitchfork());
-                    break;
-            }
+            this.AddItem(new Bow());
+            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));            
 
             PackItem(new ThighBoots());
 
@@ -84,7 +64,7 @@ namespace Server.Mobiles
                 PackItem(new BolaBall());
         }
 
-        public GoblinMachado(Serial serial)
+        public GoblinArqueiro(Serial serial)
             : base(serial)
         {
         }

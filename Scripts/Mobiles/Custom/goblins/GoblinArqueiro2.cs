@@ -3,17 +3,15 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("corpo de um goblin elite")]
-    public class GoblinMachado2 : BaseCreature
+    [CorpseName("corpo de um goblin arqueiro elite")]
+    public class GoblinArqueiro2 : BaseCreature
     {
         [Constructable]
-        public GoblinMachado2()
-            : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
+        public GoblinArqueiro2()
+            : base(AIType.AI_Archer, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "um goblin Elite";
-
-            Body = 1782;
-            Hue = 0;
+            Name = "um goblin arqueiro elite";
+            Body = 1783;
             BaseSoundID = 0x600;
 
             SetStr(50, 70);
@@ -26,7 +24,6 @@ namespace Server.Mobiles
 
             SetDamage(15, 20);
 
-
             SetDamageType(ResistanceType.Physical, 100);
 
             SetResistance(ResistanceType.Physical, 20, 40);
@@ -36,36 +33,18 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 20, 40);
 
             SetSkill(SkillName.ResistenciaMagica, 20, 40);
-            SetSkill(SkillName.Anatomia, 40, 60);
+            SetSkill(SkillName.Anatomia, 60, 80);
             SetSkill(SkillName.Atirar, 40, 60);
             SetSkill(SkillName.Briga, 40, 60);
+
 
             Fame = 1500;
             Karma = -1500;
 
             VirtualArmor = 28;
 
-            switch ( Utility.Random(20) )
-            {
-                case 0:
-                    PackItem(new Scimitar());
-                    break;
-                case 1:
-                    PackItem(new Katana());
-                    break;
-                case 2:
-                    PackItem(new WarMace());
-                    break;
-                case 3:
-                    PackItem(new WarHammer());
-                    break;
-                case 4:
-                    PackItem(new Kryss());
-                    break;
-                case 5:
-                    PackItem(new Pitchfork());
-                    break;
-            }
+            this.AddItem(new Bow());
+            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));            
 
             PackItem(new ThighBoots());
 
@@ -86,12 +65,12 @@ namespace Server.Mobiles
                 PackItem(new BolaBall());
         }
 
-        public GoblinMachado2(Serial serial)
+        public GoblinArqueiro2(Serial serial)
             : base(serial)
         {
         }
-		
-		public override int GetAngerSound() { return 0x600; }
+
+        public override int GetAngerSound() { return 0x600; }
         public override int GetIdleSound() { return 0x600; }
         public override int GetAttackSound() { return 0x5FD; }
         public override int GetHurtSound() { return 0x5FF; }
@@ -107,22 +86,24 @@ namespace Server.Mobiles
             AddLoot(LootPack.Meager);
         }
 
+        public override void OnDeath(Container c)
+        {
+            base.OnDeath(c);
+
+            if (Utility.RandomDouble() < 0.01)
+                c.DropItem(new LuckyCoin());
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)1);
+            writer.Write((int)0);
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
-
-            if (version == 0)
-            {
-                Body = 723;
-                Hue = 1900;
-            }
         }
     }
 }
