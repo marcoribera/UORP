@@ -17,8 +17,8 @@ namespace Server
 		{
 			Core.Expansion = Expansion;
 
-			AccountGold.Enabled = Core.TOL;
-			AccountGold.ConvertOnBank = true;
+            AccountGold.Enabled = false;			//AccountGold.Enabled = Core.TOL;
+            AccountGold.ConvertOnBank = true;
 			AccountGold.ConvertOnTrade = false;
 			VirtualCheck.UseEditGump = true;
             

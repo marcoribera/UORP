@@ -96,7 +96,7 @@ namespace Server.Mobiles
         public static bool Withdraw(Mobile from, int amount, bool message = false)
         {
             // If for whatever reason the TOL checks fail, we should still try old methods for withdrawing currency.
-			if (AccountGold.Enabled && from.Account != null && from.Account.WithdrawGold(amount))
+            if (from.Account != null && from.Account.WithdrawGold(amount)) //if (AccountGold.Enabled && from.Account != null && from.Account.WithdrawGold(amount))
             {
                 if (message)
                     from.SendLocalizedMessage(1155856, amount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US"))); // ~1_AMOUNT~ gold has been removed from your bank box.
