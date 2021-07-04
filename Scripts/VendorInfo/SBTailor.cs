@@ -85,32 +85,24 @@ namespace Server.Mobiles
                 Add(typeof(SewingKit), 1);
                 Add(typeof(Dyes), 4);
                 Add(typeof(DyeTub), 4);
-
-                Add(typeof(BoltOfCloth), 10);
-                Add(typeof(Cloth), 1);
-                Add(typeof(UncutCloth), 1);
-
+              //  Add(typeof(BoltOfCloth), 10);
+              //  Add(typeof(Cloth), 1);
+             //   Add(typeof(UncutCloth), 1);
                 Add(typeof(FancyShirt), 5);
                 Add(typeof(Shirt), 6);
-
                 Add(typeof(ShortPants), 3);
                 Add(typeof(LongPants), 5);
-
                 Add(typeof(Cloak), 4);
                 Add(typeof(FancyDress), 8);
                 Add(typeof(Robe), 5);
                 Add(typeof(PlainDress), 5);
-
                 Add(typeof(Skirt), 5);
                 Add(typeof(Kilt), 5);
-
                 Add(typeof(Doublet), 7);
                 Add(typeof(Tunic), 9);
                 Add(typeof(JesterSuit), 9);
-
                 Add(typeof(FullApron), 5);
                 Add(typeof(HalfApron), 5);
-
                 Add(typeof(JesterHat), 6);
                 Add(typeof(FloppyHat), 3);
                 Add(typeof(WideBrimHat), 4);
@@ -123,11 +115,9 @@ namespace Server.Mobiles
                 Add(typeof(Bonnet), 4);
                 Add(typeof(FeatheredHat), 5);
                 Add(typeof(TricorneHat), 4);
-
-                Add(typeof(SpoolOfThread), 9);
-
-                Add(typeof(Flax), 20);
-                Add(typeof(Cotton), 20);
+             //   Add(typeof(SpoolOfThread), 9);
+            //    Add(typeof(Flax), 20);
+           //     Add(typeof(Cotton), 20);
               }
         }
     }
