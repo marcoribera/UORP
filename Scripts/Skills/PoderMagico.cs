@@ -79,7 +79,7 @@ namespace Server.SkillHandlers
                 double chance = (50.0 + ((skillVal - (m.ManaMax - m.Mana)) * 2)) / 100;
 
                 // must bypass normal checks so passive skill checks aren't triggered
-                CrystalBallOfKnowledge.TellSkillDifficultyActive(m, SkillName.Arcanismo, chance); //Marcknight: Selecionar a skill de conhecimento magico mais alta
+                CrystalBallOfKnowledge.TellSkillDifficultyActive(m, SkillName.PoderMagico, chance); //Marcknight: Selecionar a skill de conhecimento magico mais alta
 
                 if (chance > Utility.RandomDouble())
                 {
