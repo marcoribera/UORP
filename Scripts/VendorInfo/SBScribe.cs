@@ -37,10 +37,16 @@ namespace Server.Mobiles
             public InternalBuyInfo(Mobile m)
             {
                 Add(new GenericBuyInfo(typeof(ScribesPen), 50, 3, 0xFBF, 0));
-                Add(new GenericBuyInfo(typeof(BlankScroll), 15, 40, 0x0E34, 0));
+                Add(new GenericBuyInfo(typeof(BlankScroll), 15, 60, 0x0E34, 0));
                 Add(new GenericBuyInfo(typeof(BrownBook), 15, 10, 0xFEF, 0));
                 Add(new GenericBuyInfo(typeof(TanBook), 15, 10, 0xFF0, 0));
                 Add(new GenericBuyInfo(typeof(BlueBook), 15, 10, 0xFF2, 0));
+                Add(new GenericBuyInfo(typeof(BookOfNinjitsu), 1000, 10, 0x23A0, 0));
+                Add(new GenericBuyInfo(typeof(BookOfBushido), 1000, 10, 0x238C, 0));
+                Add(new GenericBuyInfo(typeof(MysticBook), 1000, 10, 0x2D9D, 0, true));
+                Add(new GenericBuyInfo(typeof(NecromancerSpellbook), 1000, 2, 0x2253, 0));
+                Add(new GenericBuyInfo(typeof(Spellbook), 1000, 2, 0xEFA, 0));
+                Add(new GenericBuyInfo(typeof(SpellweavingBook), 1000, 2, 0x2D50, 0));
 
                 if (m.Map == Map.Tokuno || m.Map == Map.TerMur)
                 {
