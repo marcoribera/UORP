@@ -58,42 +58,42 @@ namespace Server.Engines.Craft
 		public override void InitCraftList()
 		{
 			int index = -1;
-			string skillNotice = "You have no idea how to craft wine with this type of grape.";
+			string skillNotice = "Você não sabe fazer vinho com essa uva.";
 
-			index = AddCraft( typeof( WineKeg ), "Wines", "Keg of Wine", 80.0, 105.6, typeof( CabernetSauvignonGrapes ), "Cabernet Sauvignon Grapes", 50 );
-			AddRes( index, typeof( Keg ), "Keg", 1 );
-			AddRes( index, typeof ( WinecrafterSugar ), "Sugar", 1 );
-			AddRes( index, typeof ( WinecrafterYeast ), "Yeast", 1 );
+			index = AddCraft( typeof( WineKeg ), "Vinhos", "Barril de Vinho", 50.0, 105.6, typeof( CabernetSauvignonGrapes ), "Uva Cabernet Sauvignon", 50 );
+			AddRes( index, typeof( Keg ), "Barril", 1 );
+			AddRes( index, typeof ( WinecrafterSugar ), "Açucar", 1 );
+			AddRes( index, typeof ( WinecrafterYeast ), "Levedura", 1 );
 
-			SetSubRes( typeof( CabernetSauvignonGrapes ), "Cabernet Sauvignon Grapes" );
+			SetSubRes( typeof( CabernetSauvignonGrapes ), "Uvas Cabernet Sauvignon" );
 
-			AddSubRes(typeof(CabernetSauvignonGrapes), "Cabernet Sauvignon Grapes", 80.0, skillNotice);
-			AddSubRes(typeof(ChardonnayGrapes), "Chardonnay Grapes", 80.0, skillNotice);
-			AddSubRes(typeof(CheninBlancGrapes), "Chenin Blanc Grapes", 85.0, skillNotice);
-			AddSubRes(typeof(MerlotGrapes), "Merlot Grapes", 80.0, skillNotice);
-			AddSubRes(typeof(PinotNoirGrapes), "Pinot Noir Grapes", 80.0, skillNotice);
-			AddSubRes(typeof(RieslingGrapes), "Riesling Grapes", 85.0, skillNotice);
-			AddSubRes(typeof(SangioveseGrapes), "Sangiovese Grapes", 90.0, skillNotice);
-			AddSubRes(typeof(SauvignonBlancGrapes), "Sauvignon Blanc Grapes", 90.0, skillNotice);
-			AddSubRes(typeof(ShirazGrapes), "Shiraz Grapes", 90.0, skillNotice);
-			AddSubRes(typeof(ViognierGrapes), "Viognier Grapes", 99.0, skillNotice);
-			AddSubRes(typeof(ZinfandelGrapes), "Zinfandel Grapes", 80.0, skillNotice);
-			AddSubRes(typeof(Apple), "Apples", 60.0, skillNotice);
-			AddSubRes(typeof(Apricot), "Apricots", 70.0, skillNotice);
-			AddSubRes(typeof(Cherry), "Cherries", 80.0, skillNotice);
-			AddSubRes(typeof(Mango), "Mangos", 80.0, skillNotice);
-			AddSubRes(typeof(Orange), "Oranges", 70.0, skillNotice);
-			AddSubRes(typeof(Pear), "Pears", 60.0, skillNotice);
-			AddSubRes(typeof(Peach), "Peaches", 60.0, skillNotice);
-			AddSubRes(typeof(Blackberry), "Blackberries", 90.0, skillNotice);
-			AddSubRes(typeof(BlackRaspberry), "Black Raspberries", 90.0, skillNotice);
-			AddSubRes(typeof(Blueberry), "Blueberries", 90.0, skillNotice);
-			AddSubRes(typeof(Cranberry), "Cranberries", 90.0, skillNotice);
-			AddSubRes(typeof(RedRaspberry), "Red Raspberries", 90.0, skillNotice);
-			AddSubRes(typeof(Strawberry), "Strawberries", 90.0, skillNotice);
-			AddSubRes(typeof(Watermelon), "Watermelons", 90.0, skillNotice);
-			AddSubRes(typeof(RiceSheath), "Rice Sheathes", 100.0, skillNotice);
-			AddSubRes(typeof(Dandelion), "Dandelions", 125.0, skillNotice);
+			AddSubRes(typeof(CabernetSauvignonGrapes), "Uvas Cabernet Sauvignon", 50.0, skillNotice);
+			AddSubRes(typeof(ChardonnayGrapes), "Uvas Chardonnay", 55.0, skillNotice);
+			AddSubRes(typeof(CheninBlancGrapes), "Uvas Chenin Blanc", 58.0, skillNotice);
+			AddSubRes(typeof(MerlotGrapes), "Uvas Merlots", 60.0, skillNotice);
+			AddSubRes(typeof(PinotNoirGrapes), "Uvas Pinot Noir Grapes", 62.0, skillNotice);
+			AddSubRes(typeof(RieslingGrapes), "Uvas Riesling Grapes", 65.0, skillNotice);
+			AddSubRes(typeof(SangioveseGrapes), "Uvas Sangiovese Grapes", 67.0, skillNotice);
+			AddSubRes(typeof(SauvignonBlancGrapes), "Uvas Sauvignon Blanc Grapes", 69.0, skillNotice);
+			AddSubRes(typeof(ShirazGrapes), "Uvas Shiraz Grapes", 70.0, skillNotice);
+			AddSubRes(typeof(ViognierGrapes), "Uvas Viognier Grapes", 72.0, skillNotice);
+			AddSubRes(typeof(ZinfandelGrapes), "Uvas Zinfandel Grapes", 74.0, skillNotice);
+			AddSubRes(typeof(Apple), "Maça", 50.0, skillNotice);
+			AddSubRes(typeof(Apricot), "Damasco", 55.0, skillNotice);
+			AddSubRes(typeof(Cherry), "Cerejas", 58.0, skillNotice);
+			AddSubRes(typeof(Mango), "Manga", 60.0, skillNotice);
+			AddSubRes(typeof(Orange), "Laranja", 62.0, skillNotice);
+			AddSubRes(typeof(Pear), "Pera", 50.0, skillNotice);
+			AddSubRes(typeof(Peach), "Pêssego", 50.0, skillNotice);
+			AddSubRes(typeof(Blackberry), "Amora Silveste", 70.0, skillNotice);
+			AddSubRes(typeof(BlackRaspberry), "Frambroesa Prestas", 72.0, skillNotice);
+			AddSubRes(typeof(Blueberry), "Amoras", 75.0, skillNotice);
+			AddSubRes(typeof(Cranberry), "Cranberries", 79.0, skillNotice);
+			AddSubRes(typeof(RedRaspberry), "Framboesas Vermelhas", 80.0, skillNotice);
+			AddSubRes(typeof(Strawberry), "Morangos", 85.0, skillNotice);
+			AddSubRes(typeof(Watermelon), "Melância", 90.0, skillNotice);
+			AddSubRes(typeof(RiceSheath), "Arroz", 100.0, skillNotice);
+			AddSubRes(typeof(Dandelion), "Dente de Leão", 110.0, skillNotice);
 
 			MarkOption = true;
 			Repair = false;

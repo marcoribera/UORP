@@ -128,8 +128,7 @@ namespace Server.Mobiles
 
                 Add(typeof(Flax), 20);
                 Add(typeof(Cotton), 20);
-                Add(typeof(Wool), 20);
-            }
+              }
         }
     }
 }

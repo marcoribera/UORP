@@ -95,136 +95,137 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			index = AddCraft( typeof( Pancakes ), "Breakfast", "Pancakes", 0.0, 100.0, typeof( Batter ), "Batter", 1, 1044253 );
-			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
+			index = AddCraft( typeof( Pancakes ), "Desejum", "Massa com mel", 10.0, 100.0, typeof( Batter ), "Massa", 1, 1044253 );
+			AddRes( index, typeof( JarHoney ), "Mel", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Waffles ), "Breakfast", "Waffles", 0.0, 100.0, typeof( WaffleMix ), "Waffle Mix", 1, 1044253 );
-			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
+			index = AddCraft( typeof( Waffles ), "desjejum", "Massa frita com mel", 10.0, 100.0, typeof( WaffleMix ), "Mistura de Massa", 1, 1044253 );
+			AddRes( index, typeof( JarHoney ), "Mel", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( FriedEggs ), "Breakfast", "Fried Eggs", 0.0, 100.0, typeof( Eggs ), "Eggs", 1, 1044253 );
+			index = AddCraft( typeof( FriedEggs ), "desjejum", "Ovos fritos", 10.0, 100.0, typeof( Eggs ), "Ovo", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Bacon ), "Breakfast", "Bacon", 0.0, 100.0, typeof( RawBacon ), "Raw Bacon", 1, 1044253 );
+			index = AddCraft( typeof( Bacon ), "desjejum", "Bacon", 10.0, 100.0, typeof( RawBacon ), "Bacon Cru", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Ribs ), "Barbecue", "Ribs", 0.0, 100.0, typeof( RawRibs ), "Raw Ribs", 1, 1044253 );
+			index = AddCraft( typeof( Ribs ), "Churrasco", "Costela", 10.0, 100.0, typeof( RawRibs ), "Costelas Crua", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CookedBird ), "Barbecue", "Cooked Bird", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( CookedBird ), "Churrasco", "Peito de codorna", 10.0, 100.0, typeof( RawBird ), "Codorna Crua", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenLeg ), "Barbecue", "Chicken Leg", 0.0, 100.0, typeof( RawChickenLeg ), "Raw Chicken Leg", 1, 1044253 );
+            index = AddCraft(typeof(CookedBird), "Churrasco", "Coxa de Frango", 10.0, 100.0, typeof( RawChickenLeg ), "Coxa de Frango Cru", 1, 1044253);
+            SetNeedOven(index, true);
+
+          
+			index = AddCraft( typeof( FishSteak ), "Churrasco", "Filé de Frango", 10.0, 100.0, typeof( RawFishSteak ), "Filé de Peixe Cru", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( FishSteak ), "Barbecue", "Fish Steak", 0.0, 100.0, typeof( RawFishSteak ), "Raw Fish Steak", 1, 1044253 );
+			index = AddCraft( typeof( LambLeg ), "Churrasco", "Coxa de Cordeiro", 10.0, 100.0, typeof( RawLambLeg ), "Coxa de Carneiro Crua", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( LambLeg ), "Barbecue", "Lamb Leg", 0.0, 100.0, typeof( RawLambLeg ), "Raw Lamb Leg", 1, 1044253 );
+			index = AddCraft( typeof( BeefBBQRibs ), "Jantar", "Costelas", 20.0, 100.0, typeof( RawRibs ), "Costelas Cruas", 1, 1044253 );
+			AddRes( index, typeof( SoySauce ), "Molho de Soja", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BeefBBQRibs ), "Dinners", "Beef Barbecue Ribs", 0.0, 100.0, typeof( RawRibs ), "Raw Ribs", 1, 1044253 );
-			AddRes( index, typeof( BarbecueSauce ), "Barbecue Sauce", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( BeefBroccoli ), "Jantar", "Bife com Brócolis", 20.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( Broccoli ), "Brócolis", 4, 1044253 );
+			AddRes( index, typeof( SoySauce ), "Molho de Soja", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BeefBroccoli ), "Dinners", "Beef and Broccoli", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( Broccoli ), "Broccoli", 4, 1044253 );
-			AddRes( index, typeof( SoySauce ), "Soy Sauce", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
-			SetNeedOven( index, true );
-
-			index = AddCraft( typeof( ChoChoBeef ), "Dinners", "Cho Cho Beef", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
+			index = AddCraft( typeof( ChoChoBeef ), "Jantar", "Comida picante", 30.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
 			AddRes( index, typeof( Teriyaki ), "Teriyaki", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BeefSnowpeas ), "Dinners", "Beef and Snow Peas", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( SnowPeas ), "Snow Peas", 4, 1044253 );
-			AddRes( index, typeof( SoySauce ), "Soy Sauce", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( BeefSnowpeas ), "Jantar", "Carne com Ervilha", 30.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( SnowPeas ), "Ervilha", 4, 1044253 );
+			AddRes( index, typeof( SoySauce ), "Molho de Soja", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Hamburger ), "Dinners", "Hamburger", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( BreadLoaf ), "Bread", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( Hamburger ), "Jantar", "Pedaço de Carne Saborosa", 35.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( BreadLoaf ), "Pão", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
 
 
 
-			index = AddCraft( typeof( BeefLoMein ), "Dinners", "Beef Lo Mein", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( PastaNoodles ), "Pasta Noodles", 2, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( BeefLoMein ), "Jantar", "Massa com Carne e Vegetais", 40.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( PastaNoodles ), "Massa", 2, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BeefStirfry ), "Dinners", "Beef Stirfry", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( BeefStirfry ), "Jantar", "Carne com Vegetais", 45.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenStirfry ), "Dinners", "Chicken Stirfry", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( ChickenStirfry ), "Jantar", "Codorna com Vegetais", 45.0, 100.0, typeof( RawBird ), "Codorna Cru", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( MooShuPork ), "Dinners", "Moo Shu Pork", 0.0, 100.0, typeof( GroundPork ), "Ground Pork", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( MooShuPork ), "Jantar", "Porco com Vegetais", 55.0, 100.0, typeof( GroundPork ), "Carne de Porco Moída", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( MoPoTofu ), "Dinners", "Mo Po Tofu", 0.0, 100.0, typeof( Tofu ), "Tofu", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( ChiliPepper ), "Chili Pepper", 3, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( MoPoTofu ), "Jantar", "Queijo Vegetal Temperado", 60.0, 100.0, typeof( Tofu ), "Queijo Vegetal", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( ChiliPepper ), "Pimenta Forte", 3, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PorkStirfry ), "Dinners", "Pork Stirfry", 0.0, 100.0, typeof( GroundPork ), "Ground Pork", 1, 1044253 );
-			AddRes( index, typeof( BowlCookedVeggies ), "Cooked Mixed Vegetables", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( PorkStirfry ), "Jantar", "Pork Stirfry", 65.0, 100.0, typeof( GroundPork ), "Ground Pork", 1, 1044253 );
+			AddRes( index, typeof( BowlCookedVeggies ), "Vegetais Mistos Cozidos", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( SweetSourChicken ), "Dinners", "Sweet and Sour Chicken", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
-			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
-			AddRes( index, typeof( SoySauce ), "SoySauce", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( SweetSourChicken ), "Jantar", "Frango Agridoce", 70.0, 100.0, typeof( RawBird ), "Cordona Cru", 1, 1044253 );
+			AddRes( index, typeof( JarHoney ), "Mel", 1, 1044253 );
+			AddRes( index, typeof( SoySauce ), "Molho de Soja", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( SweetSourPork ), "Dinners", "Sweet and Sour Pork", 0.0, 100.0, typeof( GroundPork ), "Ground Pork", 1, 1044253 );
-			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
-			AddRes( index, typeof( SoySauce ), "SoySauce", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( SweetSourPork ), "Jantar", "Porco Agridoce", 70.0, 100.0, typeof( GroundPork ), "Carne de Porco Moída", 1, 1044253 );
+			AddRes( index, typeof( JarHoney ), "Mel", 1, 1044253 );
+			AddRes( index, typeof( SoySauce ), "Molho de Soja", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BaconAndEgg ), "Dinners", "Bacon and Eggs", 0.0, 100.0, typeof( Eggs ), "Eggs", 2, 1044253 );
-			AddRes( index, typeof ( RawBacon ), "Raw Bacon", 1, 1044253 );
-			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
+			index = AddCraft( typeof( BaconAndEgg ), "Jantar", "Bacon com ovos", 75.0, 100.0, typeof( Eggs ), "Ovos", 2, 1044253 );
+			AddRes( index, typeof ( RawBacon ), "Bacon Cru", 1, 1044253 );
+			AddRes( index, typeof( FoodPlate ), "Prato", 1, "Você precisa de um prato!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( GarlicBread ), "Other Food", "Garlic Bread", 0.0, 100.0, typeof( BreadLoaf ), "Bread", 1, 1044253 );
-			AddRes( index, typeof( Butter ), "Butter", 1, 1044253 );
-			AddRes( index, typeof( Garlic ), "Garlic", 2, 1044253 );
-			AddRes( index, typeof( BasketOfHerbs ), "Herbs", 1, 1044253 );
+			index = AddCraft( typeof( GarlicBread ), "Outras Comidas", "Pão com alho", 75.0, 100.0, typeof( BreadLoaf ), "Pão", 1, 1044253 );
+			AddRes( index, typeof( Butter ), "Mantega", 1, 1044253 );
+			AddRes( index, typeof( Garlic ), "Alho", 2, 1044253 );
+			AddRes( index, typeof( BasketOfHerbs ), "Ervas", 1, 1044253 );
 
-			index = AddCraft( typeof( GrilledHam ), "Other Food", "Grilled Ham", 0.0, 100.0, typeof( RawHamSlices ), "Raw Sliced Ham", 1, 1044253 );
+			index = AddCraft( typeof( GrilledHam ), "Outras Comidas", "Presunto Grelhado", 80.0, 100.0, typeof( RawHamSlices ), "Presunto Cru", 1, 1044253 );
 
-			index = AddCraft( typeof( Sausage ), "Other Food", "Sausage", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( GroundPork ), "Ground Pork", 1, 1044253 );
-			AddRes( index, typeof( BasketOfHerbs ), "Ground Pork", 1, 1044253 );
+			index = AddCraft( typeof( Sausage ), "Outras Comidas", "Salsicha", 90.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( GroundPork ), "Carne Moída de Porco", 1, 1044253 );
+			AddRes( index, typeof( BasketOfHerbs ), "Ervas", 1, 1044253 );
 
-			index = AddCraft( typeof( Hotwings ), "Other Food", "Hotwings", 0.0, 100.0, typeof ( RawChickenLeg ), "Raw Chicken Leg", 1, 1044253 );
-			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
-			AddRes( index, typeof( HotSauce ), "Hot Sauce", 1, 1044253 );
+			index = AddCraft( typeof( Hotwings ), "Outras Comidas", "Frango frito", 100.0, 100.0, typeof ( RawChickenLeg ), "Coxa de Frango Crua", 1, 1044253 );
+			AddRes( index, typeof( JarHoney ), "Mel", 1, 1044253 );
+			AddRes( index, typeof( HotSauce ), "Molho Picante", 1, 1044253 );
 
-			index = AddCraft( typeof( PotatoFries ), "Other Food", "Potato Fries", 0.0, 100.0, typeof( Potato ), "Potato", 3, 1044253 );
-			AddRes( index, typeof( Onion ), "Onion", 1, 1044253 );
-			AddRes( index, typeof( Butter ), "Butter", 1, 1044253 );
+			index = AddCraft( typeof( PotatoFries ), "Outras Comidas", "Batata Assada", 110.0, 100.0, typeof( Potato ), "Batata", 3, 1044253 );
+			AddRes( index, typeof( Onion ), "Cebola", 1, 1044253 );
+			AddRes( index, typeof( Butter ), "Mantega", 1, 1044253 );
 
-			index = AddCraft( typeof( Taco ), "Other Food", "Taco", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
-			AddRes( index, typeof( Tortilla ), "Tortilla", 1, 1044253 );
-			AddRes( index, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
+			index = AddCraft( typeof( Taco ), "Outras Comidas", "Pão de Milho", 120.0, 100.0, typeof( GroundBeef ), "Carne Moída", 1, 1044253 );
+			AddRes( index, typeof( Tortilla ), "Carne moída temperada", 1, 1044253 );
+			AddRes( index, typeof( CheeseWheel ), "Roda de Queijo", 1, 1044253 );
 
 		}
 	}

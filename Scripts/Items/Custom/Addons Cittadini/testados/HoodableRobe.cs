@@ -9,7 +9,7 @@ namespace Server.Items
     {
         private bool m_DonationItem;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Player)]
         public bool Donation
         { get { return m_DonationItem; } set { m_DonationItem = value; } }
 
@@ -18,7 +18,7 @@ namespace Server.Items
             : base(0x2683)
         {
             Weight = 5.0;
-            Name = "Desconhecido";
+            Name = "Manto Reforçado";
             Layer = Layer.OuterTorso;
         }
 

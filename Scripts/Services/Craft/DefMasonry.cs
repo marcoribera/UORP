@@ -122,22 +122,22 @@ namespace Server.Engines.Craft
         {
             // Decorations
             AddCraft(typeof(Vase), 1044501, 1022888, 52.5, 102.5, typeof(Granite), 1044514, 1, 1044513);
-            AddCraft(typeof(LargeVase), 1044501, 1022887, 52.5, 102.5, typeof(Granite), 1044514, 3, 1044513);
+            AddCraft(typeof(LargeVase), 1044501, 1022887, 65.5, 102.5, typeof(Granite), 1044514, 3, 1044513);
 			
             if (Core.SE)
             {
-                int index = AddCraft(typeof(SmallUrn), 1044501, 1029244, 82.0, 132.0, typeof(Granite), 1044514, 3, 1044513);
+                int index = AddCraft(typeof(SmallUrn), 1044501, 1029244, 72.0, 132.0, typeof(Granite), 1044514, 3, 1044513);
 
                 index = AddCraft(typeof(SmallTowerSculpture), 1044501, 1029242, 82.0, 132.0, typeof(Granite), 1044514, 3, 1044513);
             }
 
             if (Core.SA)
             {
-                int index = AddCraft(typeof(GargoylePainting), 1044501, 1095317, 83.0, 133.0, typeof(Granite), 1044514, 3, 1044513);
+                int index = AddCraft(typeof(GargoylePainting), 1044501, 1095317, 63.0, 133.0, typeof(Granite), 1044514, 3, 1044513);
  
-                index = AddCraft(typeof(GargishSculpture), 1044501, 1095319, 82.0, 132.0, typeof(Granite), 1044514, 3, 1044513);
+                index = AddCraft(typeof(GargishSculpture), 1044501, 1095319, 72.0, 132.0, typeof(Granite), 1044514, 3, 1044513);
  
-                index = AddCraft(typeof(GargoyleVase), 1044501, 1095322, 80.0, 126.0, typeof(Granite), 1044514, 3, 1044513); 
+                index = AddCraft(typeof(GargoyleVase), 1044501, 1095322, 70.0, 126.0, typeof(Granite), 1044514, 3, 1044513); 
             }
             
             if (Core.TOL)
@@ -150,17 +150,17 @@ namespace Server.Engines.Craft
             }
 
             // Furniture
-            AddCraft(typeof(StoneChair), 1044502, 1024635, 55.0, 105.0, typeof(Granite), 1044514, 4, 1044513);
-            AddCraft(typeof(MediumStoneTableEastDeed), 1044502, 1044508, 65.0, 115.0, typeof(Granite), 1044514, 6, 1044513);
-            AddCraft(typeof(MediumStoneTableSouthDeed), 1044502, 1044509, 65.0, 115.0, typeof(Granite), 1044514, 6, 1044513);
-            AddCraft(typeof(LargeStoneTableEastDeed), 1044502, 1044511, 75.0, 125.0, typeof(Granite), 1044514, 9, 1044513);
-            AddCraft(typeof(LargeStoneTableSouthDeed), 1044502, 1044512, 75.0, 125.0, typeof(Granite), 1044514, 9, 1044513);
-            AddCraft(typeof(RitualTableDeed), 1044502, 1097690, 94.7, 103.5, typeof(Granite), 1044514, 8, 1044513);
+            AddCraft(typeof(StoneChair), 1044502, 1024635, 45.0, 105.0, typeof(Granite), 1044514, 4, 1044513);
+            AddCraft(typeof(MediumStoneTableEastDeed), 1044502, 1044508, 55.0, 115.0, typeof(Granite), 1044514, 6, 1044513);
+            AddCraft(typeof(MediumStoneTableSouthDeed), 1044502, 1044509, 55.0, 115.0, typeof(Granite), 1044514, 6, 1044513);
+            AddCraft(typeof(LargeStoneTableEastDeed), 1044502, 1044511, 65.0, 125.0, typeof(Granite), 1044514, 9, 1044513);
+            AddCraft(typeof(LargeStoneTableSouthDeed), 1044502, 1044512, 65.0, 125.0, typeof(Granite), 1044514, 9, 1044513);
+            AddCraft(typeof(RitualTableDeed), 1044502, 1097690, 84.7, 103.5, typeof(Granite), 1044514, 8, 1044513);
 
             // Statues
-            AddCraft(typeof(StatueSouth), 1044503, 1044505, 60.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
-            AddCraft(typeof(StatueNorth), 1044503, 1044506, 60.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
-            AddCraft(typeof(StatueEast), 1044503, 1044507, 60.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
+            AddCraft(typeof(StatueSouth), 1044503, 1044505, 50.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
+            AddCraft(typeof(StatueNorth), 1044503, 1044506, 50.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
+            AddCraft(typeof(StatueEast), 1044503, 1044507, 50.0, 110.0, typeof(Granite), 1044514, 3, 1044513);
             AddCraft(typeof(StatuePegasusSouth), 1044503, 1044510, 70.0, 120.0, typeof(Granite), 1044514, 4, 1044513);
             AddCraft(typeof(StatueGargoyleEast), 1044503, 1097637, 54.5, 104.5, typeof(Granite), 1044514, 20, 1044513);
             AddCraft(typeof(StatueGryphonEast), 1044503, 1097619, 54.5, 104.5, typeof(Granite), 1044514, 15, 1044513);
@@ -177,19 +177,19 @@ namespace Server.Engines.Craft
 
             if (Core.SA)
             {
-                int index = AddCraft(typeof(LargeGargoyleBedSouthDeed), 1044290, 1111761, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
+                int index = AddCraft(typeof(LargeGargoyleBedSouthDeed), 1044290, 1111761, 66.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
                 AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
-                index = AddCraft(typeof(LargeGargoyleBedEastDeed), 1044290, 1111762, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
+                index = AddCraft(typeof(LargeGargoyleBedEastDeed), 1044290, 1111762, 66.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
                 AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
-                index = AddCraft(typeof(GargishCotEastDeed), 1044290, 1111921, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
+                index = AddCraft(typeof(GargishCotEastDeed), 1044290, 1111921, 66.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
                 AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
 
-                index = AddCraft(typeof(GargishCotSouthDeed), 1044290, 1111920, 76.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
+                index = AddCraft(typeof(GargishCotSouthDeed), 1044290, 1111920, 66.0, 126.0, typeof(Granite), 1044514, 3, 1044513);
                 AddSkill(index, SkillName.Costura, 70.0, 75.0);
                 AddRes(index, typeof(Cloth), 1044286, 100, 1044287);
             }
@@ -199,9 +199,9 @@ namespace Server.Engines.Craft
             {
                 int index = AddCraft(typeof(FemaleGargishStoneArms), 1111705, 1020643, 56.3, 106.3, typeof(Granite), 1044514, 8, 1044513);
 
-                index = AddCraft(typeof(FemaleGargishStoneChest), 1111705, 1020645, 55.0, 105.0, typeof(Granite), 1044514, 12, 1044513);
+                index = AddCraft(typeof(FemaleGargishStoneChest), 1111705, 1020645, 65.0, 105.0, typeof(Granite), 1044514, 12, 1044513);
 
-                index = AddCraft(typeof(FemaleGargishStoneLegs), 1111705, 1020649, 58.8, 108.8, typeof(Granite), 1044514, 10, 1044513);
+                index = AddCraft(typeof(FemaleGargishStoneLegs), 1111705, 1020649, 68.8, 108.8, typeof(Granite), 1044514, 10, 1044513);
 
                 index = AddCraft(typeof(FemaleGargishStoneKilt), 1111705, 1020647, 48.9, 98.9, typeof(Granite), 1044514, 6, 1044513);              
 
@@ -221,7 +221,7 @@ namespace Server.Engines.Craft
             // Stone Weapons
             if (Core.SA)
             {
-                int index = AddCraft(typeof(StoneWarSword), 1111719, 1022304, 55.0, 105.0, typeof(Granite), 1044514, 18, 1044513);
+                int index = AddCraft(typeof(StoneWarSword), 1111719, 1022304, 50.0, 105.0, typeof(Granite), 1044514, 18, 1044513);
             }
 
             // Stone Walls
@@ -315,11 +315,11 @@ namespace Server.Engines.Craft
                 SetData(index, CraftableItemType.LightPaver);
                 SetDisplayID(index, 1305);
 
-                index = AddCraft(typeof(CraftableHouseItem), 1155877, "Medium Paver", 60.0, 110.0, typeof(Granite), 1044514, 5, 1044513);
+                index = AddCraft(typeof(CraftableHouseItem), 1155877, "Medium Paver", 70.0, 110.0, typeof(Granite), 1044514, 5, 1044513);
                 SetData(index, CraftableItemType.MediumPaver);
                 SetDisplayID(index, 1309);
 
-                index = AddCraft(typeof(CraftableHouseItem), 1155877, "Dark Paver", 60.0, 110.0, typeof(Granite), 1044514, 5, 1044513);
+                index = AddCraft(typeof(CraftableHouseItem), 1155877, "Dark Paver", 75.0, 110.0, typeof(Granite), 1044514, 5, 1044513);
                 SetData(index, CraftableItemType.DarkPaver);
                 SetDisplayID(index, 1313);
             }

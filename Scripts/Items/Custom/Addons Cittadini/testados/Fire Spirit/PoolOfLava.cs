@@ -136,7 +136,7 @@ namespace Server.Items
 		{
 			Damage( m );
             m.PlaySound(841);
-            m.SendAsciiMessage("The lava beneath you is blistering your skin!");
+            m.SendAsciiMessage("A lava que você pisou está queimando a sua pele!");
 			return true;
 		}
 

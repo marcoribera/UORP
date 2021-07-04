@@ -25,30 +25,30 @@ namespace Server.Mobiles
 			Hue = Utility.RandomList(1157, 1, 32, 1175);
 			BaseSoundID = 0x482;
 
-			SetStr( 376, 405 );
-			SetDex( 176, 195 );
-			SetInt( 201, 225 );
+			SetStr( 76, 105 );
+			SetDex( 36, 55 );
+			SetInt( 61, 100 );
 
-			SetHits( 3000, 9000 );
+			SetHits( 100, 130 );
 
 			SetDamage( 8, 19 );
 
-			SetSkill( SkillName.Feiticaria, 80.1, 90.0 );
-			SetSkill( SkillName.Arcanismo, 80.1, 90.0 );
-			SetSkill( SkillName.ResistenciaMagica, 75.1, 85.0 );
-			SetSkill( SkillName.Anatomia, 80.1, 90.0 );
-			SetSkill( SkillName.Briga, 80.1, 100.0 );
+			SetSkill( SkillName.Feiticaria, 60.1, 70.0 );
+			SetSkill( SkillName.Arcanismo, 40.1, 60.0 );
+			SetSkill( SkillName.ResistenciaMagica, 45.1, 55.0 );
+			SetSkill( SkillName.Anatomia, 30.1, 40.0 );
+			SetSkill( SkillName.Briga, 40.1, 50.0 );
 
-			SetResistance( ResistanceType.Physical, 55, 65 );
-			SetResistance( ResistanceType.Fire, 10, 20 );
-			SetResistance( ResistanceType.Cold, 60, 70 );
-			SetResistance( ResistanceType.Poison, 20, 30 );
-			SetResistance( ResistanceType.Energy, 30, 40 );
+            SetResistance(ResistanceType.Physical, 10);
+            SetResistance(ResistanceType.Fire, 10);
+            SetResistance(ResistanceType.Cold, 10);
+            SetResistance(ResistanceType.Poison, 10);
+            SetResistance(ResistanceType.Energy, 10);
 
-			Fame = 18000;
-			Karma = -18000;
+            Fame = 180;
+			Karma = -180;
 
-			VirtualArmor = 60;
+			VirtualArmor = 24;
 		}
 
 		public override void GenerateLoot()
@@ -67,7 +67,7 @@ namespace Server.Mobiles
 			base.OnDamage(amount, attacker, willKill);	
 		}
 
-		public override int TreasureMapLevel{ get{ return 4; } }
+		public override int TreasureMapLevel{ get{ return 2; } }
 		public override int Meat{ get{ return 1; } }
 		public override bool BardImmune{ get{ return true; } }
 		public override bool Unprovokable{ get{ return true; } }

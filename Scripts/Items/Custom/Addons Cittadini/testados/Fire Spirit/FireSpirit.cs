@@ -20,35 +20,35 @@ namespace Server.Mobiles
             Hue = 0; 
             //BaseSoundID = ; 
 
-			SetStr( 600, 620 );
-			SetDex( 240, 260 );
-			SetInt( 900, 920 );
+			SetStr( 150, 150 );
+			SetDex(150, 150);
+			SetInt(150, 150);
 
-			SetHits( 9000, 9500 );
-			SetStam( 2222, 2333 );
-			SetMana( 5200, 5555 );
+			SetHits( 200, 200 );
+			SetStam( 100, 100 );
+			SetMana( 100, 100 );
 
-			SetDamage( 4, 95 );
+			SetDamage( 15, 20 );
 
-			SetResistance( ResistanceType.Physical, 85 );
-			SetResistance( ResistanceType.Fire, 56 );
-			SetResistance( ResistanceType.Cold, 44 );
-			SetResistance( ResistanceType.Poison, 54);
-			SetResistance( ResistanceType.Energy, 47 );
+			SetResistance( ResistanceType.Physical, 10 );
+			SetResistance( ResistanceType.Fire, 10 );
+			SetResistance( ResistanceType.Cold, 10 );
+			SetResistance( ResistanceType.Poison, 10);
+			SetResistance( ResistanceType.Energy, 10 );
 
-			SetSkill( SkillName.Briga, 200.0, 225.0);
-			SetSkill( SkillName.Anatomia, 160.0, 190.0 );
-			SetSkill( SkillName.ResistenciaMagica, 200.0, 220.0 );
-            SetSkill(SkillName.Arcanismo, 200.0, 220.0);
+			SetSkill( SkillName.Briga, 50, 60);
+			SetSkill( SkillName.Anatomia, 60, 60.0 );
+			SetSkill( SkillName.ResistenciaMagica, 20.0, 20.0 );
+            SetSkill(SkillName.Arcanismo, 80.0, 80.0);
 
-			SetSkill( SkillName.Bloqueio, 201.5, 220.0 );
-            SetSkill(SkillName.Medicina, 205.0, 220.0); 
+			SetSkill( SkillName.Bloqueio, 20.5, 20.0 );
+            SetSkill(SkillName.Medicina, 20.0, 20.0); 
             
-            Fame = 22000;
-            Karma = -18000; 
+            Fame = 220;
+            Karma = -180; 
         
 
-            VirtualArmor = 128;
+            VirtualArmor = 28;
         }
          
         public override bool BardImmune { get { return !Core.AOS; } }
@@ -137,7 +137,7 @@ namespace Server.Mobiles
         {
             if (Hits < 3000 && Utility.RandomDouble() < 0.33)
             {
-                PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "* The Fire Spirit Erupts! *");
+                PublicOverheadMessage(MessageType.Regular, 0x3B2, true, "* O Espirito de fogo entra em erupção! *");
                 m_LavaBurst = true;
                 SpillLava(TimeSpan.FromSeconds(10), 5, 20, from);
                 Effects.SendLocationEffect(new Point3D(X, Y, Z), Map, 0x3709, 20);
