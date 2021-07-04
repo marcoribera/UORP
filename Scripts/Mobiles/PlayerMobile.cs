@@ -3790,7 +3790,7 @@ namespace Server.Mobiles
                 }
 
                 Blessed = true;
-                Timer.DelayCall(TimeSpan.FromSeconds(6.0), () =>
+                Timer.DelayCall(TimeSpan.FromSeconds(12.0), () =>
                 {
                     Blessed = false;
                 });
