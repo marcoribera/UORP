@@ -307,7 +307,7 @@ namespace Server.Items
                     if (User.Skills[skill] == sk)
                         return false;
                 }
-
+                /*
                 if (skill == SkillName.Feiticaria && !User.Spellweaving)
                     return false;
 
@@ -316,7 +316,7 @@ namespace Server.Items
 
                 if (skill == SkillName.Atirar && User.Race == Race.Gargoyle)
                     return false;
-
+                */
                 return true;
             }
         }

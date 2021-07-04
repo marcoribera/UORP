@@ -111,7 +111,7 @@ namespace Server.Spells.SkillMasteries
             Infos.Add(new MasteryInfo(null, 732, SkillName.Perfurante,         PassiveSpell.SavingThrow));           // Saving Throw
             Infos.Add(new MasteryInfo(null, 732, SkillName.Cortante,          PassiveSpell.SavingThrow));            // Saving Throw
             Infos.Add(new MasteryInfo(null, 732, SkillName.Contusivo,          PassiveSpell.SavingThrow));            // Saving Throw
-            Infos.Add(new MasteryInfo(null, 732, SkillName.Atirar,        PassiveSpell.SavingThrow));          // Saving Throw
+            //Infos.Add(new MasteryInfo(null, 732, SkillName.Atirar,        PassiveSpell.SavingThrow));          // Saving Throw
 
             Infos.Add(new MasteryInfo(null, 738, SkillName.Envenenamento,       PassiveSpell.Potency));         // Potency
             Infos.Add(new MasteryInfo(null, 741, SkillName.Briga,       PassiveSpell.Knockout));         // Knockout

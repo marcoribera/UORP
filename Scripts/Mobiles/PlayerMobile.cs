@@ -3912,6 +3912,14 @@ namespace Server.Mobiles
             if (Core.ML && Race == Race.Human)
                 return 20.0;
 
+            if (Core.SA && Race == Race.Elf)
+            {
+                if (skill == SkillName.Atirar)
+                    return 30.0;
+                if (skill == SkillName.PoderMagico)
+                    return 20.0;
+            }
+
             if (Core.SA && Race == Race.Gargoyle)
             {
                 if (skill == SkillName.ImbuirMagica)
