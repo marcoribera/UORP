@@ -3927,7 +3927,16 @@ namespace Server.Items
 			return bonus / 100;
 		}
 
-		public virtual int GetHitChanceBonus()
+        public virtual double GetBonusExperimental(double value, double scalar, double threshold, double offset)
+        {
+            double bonus = value * scalar;
+
+            bonus += offset * (value / threshold);
+
+            return bonus / 100;
+        }
+
+        public virtual int GetHitChanceBonus()
 		{
 			if (!Core.AOS)
 			{
@@ -4043,12 +4052,19 @@ namespace Server.Items
             * These are the bonuses given by the physical characteristics of the mobile.
             * No caps apply.
             */
-			double strengthBonus = GetBonus(attacker.Str, 0.300, 100.0, 5.00);
-			double anatomyBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.500, 100.0, 5.00);
-			double tacticsBonus = GetBonus(attacker.Skills[skillCombate].Value, 0.625, 100.0, 6.25);
-			double lumberBonus = GetBonus(attacker.Skills[SkillName.Extracao].Value, 0.200, 100.0, 10.00);
+			double strengthBonus = GetBonusExperimental(attacker.Str, 0.200, 10.0, 3.00); 
+			double anatomyBonus = GetBonusExperimental(attacker.Skills[SkillName.Anatomia].Value, 0.400, 10.0, 6.00);
+			double tacticsBonus = GetBonusExperimental(attacker.Skills[skillCombate].Value, 0.200, 10.0, 4.0);
+			double lumberBonus = GetBonusExperimental(attacker.Skills[SkillName.Extracao].Value, 0.100, 10.0, 2.00);
 
-			if (Type != WeaponType.Axe)
+            /* //OLD
+            double strengthBonus = GetBonus(attacker.Str, 0.300, 100.0, 10.00);
+            double anatomyBonus = GetBonus(attacker.Skills[SkillName.Anatomia].Value, 0.700, 100.0, 25.00);
+            double tacticsBonus = GetBonus(attacker.Skills[skillCombate].Value, 0.500, 100.0, 10.0);
+            double lumberBonus = GetBonus(attacker.Skills[SkillName.Extracao].Value, 0.200, 100.0, 10.00);
+            */
+
+            if (Type != WeaponType.Axe)
 			{
 				lumberBonus = 0.0;
 			}
@@ -4070,7 +4086,17 @@ namespace Server.Items
 			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + lumberBonus +
 								((GetDamageBonus() + damageBonus) / 100.0);
 
-			return damage + (int)(damage * totalBonus);
+            /*
+            if (attacker is PlayerMobile)
+            {
+                attacker.SendMessage(String.Format("Bonus Força: {0}", strengthBonus));
+                attacker.SendMessage(String.Format("Bonus Anatomia: {0}", anatomyBonus));
+                attacker.SendMessage(String.Format("Bonus {1}: {0}", tacticsBonus, skillCombate.ToString()));
+                attacker.SendMessage(String.Format("Bonus Extração: {0}", lumberBonus));
+                attacker.SendMessage(String.Format("Bonus Total", totalBonus));
+            }
+            */
+            return damage + (int)(damage * totalBonus);
 		}
 
 		public virtual int VirtualDamageBonus { get { return 0; } }
