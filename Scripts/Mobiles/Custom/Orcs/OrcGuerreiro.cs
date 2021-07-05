@@ -11,7 +11,7 @@ namespace Server.Mobiles
         public OrcGuerreiro()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = NameList.RandomName("Orc Guerreiro");
+            this.Name = "Orc Guerreiro";
             this.Body = 1648;
             this.BaseSoundID = 0x45A;
 

@@ -4,14 +4,14 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("corpo do Orc Paje")]
+    [CorpseName("corpo do Cacique Orc")]
     public class OrcCacique : BaseCreature
     {
         [Constructable]
         public OrcCacique()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "Orc Paje";
+            this.Name = "Cacique Orc";
             this.Body = 1645;
             this.BaseSoundID = 0x45A;
 
