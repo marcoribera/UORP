@@ -54,44 +54,44 @@ namespace Server.Engines.Craft
 			int index = -1;
 			string skillNotice = "You have no idea how to brew with this type of hops.";
 
-			index = AddCraft( typeof( MeadKeg ), "Alchoholic Beverages", "Keg of Mead", 80.0, 105.6, typeof( BitterHops ), "Bitter Hops", 50, "You need more Hops" );
+			index = AddCraft( typeof( MeadKeg ), "Alchoholic Beverages", "Keg of Mead", 65.0, 105.6, typeof( BitterHops ), "Bitter Hops", 50, "You need more Hops" );
 			AddRes( index, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 			AddRes( index, typeof( Malt ), "Malt", 3, "You need more malt" );
 			AddRes( index, typeof( BrewersYeast ), "Brewers Yeast", 3, "You need more Brewers Yeast" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( AleKeg ), "Alchoholic Beverages", "Keg of Ale", 80.0, 105.6, typeof( BitterHops ), "Bitter Hops", 50, "You need more Hops" );
+			index = AddCraft( typeof( AleKeg ), "Alchoholic Beverages", "Keg of Ale", 65.0, 105.6, typeof( BitterHops ), "Bitter Hops", 50, "You need more Hops" );
 			AddRes( index, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 			AddRes( index, typeof( Barley ), "Barley", 3, "You need more Barley" );
 			AddRes( index, typeof( BrewersYeast ), "Brewers Yeast", 3, "You need more Brewers Yeast" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CiderKeg ), "Alchoholic Beverages", "Keg of Cider", 80.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
+			index = AddCraft( typeof( CiderKeg ), "Alchoholic Beverages", "Keg of Cider", 70.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( Apple ), "Apples", 100, "You need more apples" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 			AddRes( index, typeof( BagOfSugar ), "Bag of Sugar", 1, "You need more sugar" );
 
-			index = AddCraft( typeof( CoffeeKeg ), "Non Alchoholic Beverages", "Keg of Coffee", 80.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
+			index = AddCraft( typeof( CoffeeKeg ), "Non Alchoholic Beverages", "Keg of Coffee", 30.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( BagOfCoffee ), "Bag of Coffee", 5, "You need more coffee" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 
-			index = AddCraft( typeof( TeaKeg ), "Non Alchoholic Beverages", "Keg of Tea", 80.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
+			index = AddCraft( typeof( TeaKeg ), "Non Alchoholic Beverages", "Keg of Tea", 40.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( TeaLeaves ), "Tea Leaves", 20, "You need more Tea Leaves" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 
-			index = AddCraft( typeof( CocoaKeg ), "Non Alchoholic Beverages", "Keg of Cocoa", 80.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
+			index = AddCraft( typeof( CocoaKeg ), "Non Alchoholic Beverages", "Keg of Cocoa", 50.0, 105.6, typeof( Keg ), "Keg", 1, "You need a keg" );
 			AddRes( index, typeof( BagOfCocoa ), "Bag of Cocoa", 5, "You need more Cocoa" );
 			AddRes( index, typeof( BaseBeverage ), "Water", 20, "You need more water" );
 			AddRes( index, typeof( BagOfSugar ), "Bag of Sugar", 1, "You need more sugar" );
 
 			SetSubRes( typeof( BitterHops ),	"Bitter Hops" );
 
-			AddSubRes( typeof( BitterHops ),	"Bitter Hops", 40.0, skillNotice);
-			AddSubRes( typeof( SnowHops ),	"Snow Hops", 120.0, skillNotice);
-			AddSubRes( typeof( ElvenHops ),	"Elven Hops", 140.0, skillNotice);
-			AddSubRes( typeof( SweetHops ),	"Sweet Hops", 160.0, skillNotice);
+			AddSubRes( typeof( BitterHops ),	"Bitter Hops", 70.0, skillNotice);
+			AddSubRes( typeof( SnowHops ),	"Snow Hops", 80.0, skillNotice);
+			AddSubRes( typeof( ElvenHops ),	"Elven Hops", 90.0, skillNotice);
+			AddSubRes( typeof( SweetHops ),	"Sweet Hops", 100.0, skillNotice);
 
 			MarkOption = true;
 			Repair = false;
