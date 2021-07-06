@@ -106,7 +106,7 @@ namespace Server.Engines.Harvest
             {
                 oreAndStone.BonusResources = new BonusHarvestResource[]
                 {
-                    new BonusHarvestResource(0, 99.2, null, null), //Nothing
+                    new BonusHarvestResource(0, 96.2, null, null), //Nothing
                     new BonusHarvestResource(110, .1, 1072562, typeof(BlueDiamond)),
                     new BonusHarvestResource(100, .1, 1072567, typeof(DarkSapphire)),
                     new BonusHarvestResource(95, .1, 1072570, typeof(EcruCitrine)),
@@ -114,7 +114,9 @@ namespace Server.Engines.Harvest
                     new BonusHarvestResource(85, .1, 1072566, typeof(PerfectEmerald)),
                     new BonusHarvestResource(80, .1, 1072568, typeof(Turquoise)),
                     new BonusHarvestResource(70, .1, 1077180, typeof(SmallPieceofBlackrock)),
-                    new BonusHarvestResource(60, .1, 1113344, typeof(CrystallineBlackrock))
+                    new BonusHarvestResource(60, .1, 1113344, typeof(CrystallineBlackrock)),
+                    new BonusHarvestResource(40, 3.0, 1063527, typeof(Brita))
+
 				};
             }
 

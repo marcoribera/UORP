@@ -412,6 +412,8 @@ namespace Server.Engines.Craft
             AddCraft(typeof(Lantern), 1044050, 1022597, 30.0, 80.0, typeof(IronIngot), 1044036, 2, 1044037);
             AddCraft(typeof(HeatingStand), 1044050, 1026217, 60.0, 110.0, typeof(IronIngot), 1044036, 4, 1044037);
 
+
+
             if (Core.SE)
             {
                 index = AddCraft(typeof(ShojiLantern), 1044050, 1029404, 65.0, 115.0, typeof(IronIngot), 1044036, 10, 1044037);
@@ -778,6 +780,13 @@ namespace Server.Engines.Craft
                 AddRecipe(index, (int)TinkerRecipes.BraceletOfPrimalConsumption);
                 ForceNonExceptional(index);
             }
+            #endregion
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(PregosReforcados), 1063522, 1063510, 40.0, 40.0, typeof(IronIngot), 1044036, 10, 1044037);
+            AddRes(index, typeof(Carvao), 1063508, 1, 1044253);
+
             #endregion
 
             // Set the overridable material

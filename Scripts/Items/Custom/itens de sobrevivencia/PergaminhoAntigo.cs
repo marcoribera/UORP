@@ -1,8 +1,9 @@
-using System;
+    using Server.Engines.Craft;
+    using System;
 
 namespace Server.Items
 {
-    public class PergaminhoAntigo : Item, ICommodity
+    public class PergaminhoAntigo : Item, ICommodity, ICraftable
     {
         [Constructable]
         public PergaminhoAntigo()
@@ -12,7 +13,7 @@ namespace Server.Items
 
         [Constructable]
         public PergaminhoAntigo(int amount)
-            : base(0xEF3)
+            : base(0x0FBD)
         {
             this.Weight = 1.0;
             Name = "Pergaminho Antigo";
@@ -29,7 +30,7 @@ namespace Server.Items
         {
             get
             {
-                return 1063503; //Pergaminho Antigo
+                return 1063503;
             }
         }
         bool ICommodity.IsDeedable
@@ -39,6 +40,14 @@ namespace Server.Items
                 return false;
             }
         }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+            list.Add(1072351); // Quest Item
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -51,6 +60,12 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+        }
+
+        public int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
+        {
+            Amount = 1;
+            return 1;
         }
     }
 }

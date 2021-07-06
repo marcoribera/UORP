@@ -183,35 +183,36 @@ namespace Server.Engines.Craft
         {
             int index = -1;
 
-            #region Materials
 
-            index = AddCraft(typeof(CutUpCloth), 1044457, 1044458, 0.0, 0.0, typeof(BoltOfCloth), 1044453, 1, 1044253);
+           #region Materials
+
+            index = AddCraft(typeof(CutUpCloth), 1015283, 1044458, 0.0, 0.0, typeof(BoltOfCloth), 1044453, 1, 1044253);
             AddCraftAction(index, CutUpCloth);
 
-            index = AddCraft(typeof(CombineCloth), 1044457, 1044459, 0.0, 0.0, typeof(Cloth), 1044455, 1, 1044253);
+            index = AddCraft(typeof(CombineCloth), 1015283, 1044459, 0.0, 0.0, typeof(Cloth), 1044455, 1, 1044253);
             AddCraftAction(index, CombineCloth);
 
             if (Core.HS)
             {
                 if (Core.EJ)
                 {
-                    index = AddCraft(typeof(PowderCharge), 1044457, 1116160, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
+                    index = AddCraft(typeof(PowderCharge), 1015283, 1116160, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
                     AddRes(index, typeof(BlackPowder), 1095826, 4, 1044253);
                     SetUseAllRes(index, true);
                 }
                 else
                 {
-                    index = AddCraft(typeof(LightPowderCharge), 1044457, 1116159, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
+                    index = AddCraft(typeof(LightPowderCharge), 1015283, 1116159, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
                     AddRes(index, typeof(BlackPowder), 1095826, 1, 1044253);
 
-                    index = AddCraft(typeof(HeavyPowderCharge), 1044457, 1116160, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
+                    index = AddCraft(typeof(HeavyPowderCharge), 1015283, 1116160, 0.0, 50.0, typeof(Cloth), 1044455, 1, 1044253);
                     AddRes(index, typeof(BlackPowder), 1095826, 4, 1044253);
                 }
             }
 
             if (Core.SA)
             {
-                index = AddCraft(typeof(AbyssalCloth), 1044457, 1113350, 100.0, 160.0, typeof(Cloth), 1044455, 50, 1044253);
+                index = AddCraft(typeof(AbyssalCloth), 1015283, 1113350, 100.0, 160.0, typeof(Cloth), 1044455, 50, 1044253);
                 AddRes(index, typeof(CrystallineBlackrock), 1077568, 1, 1044253);
                 SetItemHue(index, 2075);
             }
@@ -830,6 +831,15 @@ namespace Server.Engines.Craft
                 AddRecipe(index, (int)TailorRecipe.CuffsOfTheArchmage);
             }
             #endregion
+
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(MantoCamuflado), 1063522, 1063513, 40.0, 40.0, typeof(Cloth), 1044455, 10, 1044287);
+            AddRes(index, typeof(GlandulaViscosa), 1063502, 1, 1044253);
+
+            #endregion
+
 
             // Set the overridable material
             SetSubRes(typeof(Leather), 1049150);

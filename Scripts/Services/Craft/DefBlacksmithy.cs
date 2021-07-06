@@ -842,35 +842,35 @@ namespace Server.Engines.Craft
             {
                 if (Core.EJ)
                 {
-                    index = AddCraft(typeof(Cannonball), 1116354, 1116029, 10.0, 60.0, typeof(IronIngot), 1044036, 12, 1044037);
+                    index = AddCraft(typeof(Cannonball), 1011173, 1116029, 10.0, 60.0, typeof(IronIngot), 1044036, 12, 1044037);
                     SetUseAllRes(index, true);
                 }
                 else
                 {
-                    AddCraft(typeof(LightCannonball), 1116354, 1116266, 0.0, 50.0, typeof(IronIngot), 1044036, 6, 1044037);
-                    AddCraft(typeof(HeavyCannonball), 1116354, 1116267, 18.0, 60.0, typeof(IronIngot), 1044036, 12, 1044037);
+                    AddCraft(typeof(LightCannonball), 1011173, 1116266, 0.0, 50.0, typeof(IronIngot), 1044036, 6, 1044037);
+                    AddCraft(typeof(HeavyCannonball), 1011173, 1116267, 18.0, 60.0, typeof(IronIngot), 1044036, 12, 1044037);
                 }
 
                 if (Core.EJ)
                 {
-                    index = AddCraft(typeof(Grapeshot), 1116354, 1116030, 20.0, 70.0, typeof(IronIngot), 1044036, 12, 1044037);
+                    index = AddCraft(typeof(Grapeshot), 1011173, 1116030, 20.0, 70.0, typeof(IronIngot), 1044036, 12, 1044037);
                     AddRes(index, typeof(Cloth), 1044286, 2, 1044287);
                     SetUseAllRes(index, true);
                 }
                 else
                 {
-                    index = AddCraft(typeof(LightGrapeshot), 1116354, 1116030, 1.0, 50.0, typeof(IronIngot), 1044036, 6, 1044037);
+                    index = AddCraft(typeof(LightGrapeshot), 1011173, 1116030, 1.0, 50.0, typeof(IronIngot), 1044036, 6, 1044037);
                     AddRes(index, typeof(Cloth), 1044286, 1, 1044287);
 
-                    index = AddCraft(typeof(HeavyGrapeshot), 1116354, 1116166, 25.0, 70.0, typeof(IronIngot), 1044036, 12, 1044037);
+                    index = AddCraft(typeof(HeavyGrapeshot), 1011173, 1116166, 25.0, 70.0, typeof(IronIngot), 1044036, 12, 1044037);
                     AddRes(index, typeof(Cloth), 1044286, 2, 1044287);
                 }
 
-                index = AddCraft(typeof(LightShipCannonDeed), 1116354, 1095790, 55.0, 120.0, typeof(IronIngot), 1044036, 900, 1044037);
+                index = AddCraft(typeof(LightShipCannonDeed), 1011173, 1095790, 55.0, 120.0, typeof(IronIngot), 1044036, 900, 1044037);
                 AddRes(index, typeof(Board), 1044041, 50, 1044351);
                 AddSkill(index, SkillName.Carpintaria, 65.0, 100.0);
 
-                index = AddCraft(typeof(HeavyShipCannonDeed), 1116354, 1095794, 70.0, 120.0, typeof(IronIngot), 1044036, 1800, 1044037);
+                index = AddCraft(typeof(HeavyShipCannonDeed), 1011173, 1095794, 70.0, 120.0, typeof(IronIngot), 1044036, 1800, 1044037);
                 AddRes(index, typeof(Board), 1044041, 75, 1044351);
                 AddSkill(index, SkillName.Carpintaria, 70.0, 100.0);
             }
@@ -933,9 +933,17 @@ namespace Server.Engines.Craft
                 AddRes(index, typeof(BloodOfTheDarkFather), 1157343, 5, 1053098);
                 AddRecipe(index, (int)SmithRecipes.GlovesOfFeudalGrip);
                 ForceNonExceptional(index);
-            }
+
+             }
+            #endregion
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(TijoloReforcado), 1063522, 1063514, 40.0, 40.0, typeof(IronIngot), 1044036, 10, 1044037);
+            AddRes(index, typeof(Brita), 1063507, 1, 1044253);
 
             #endregion
+
 
             // Set the overridable material
             SetSubRes(typeof(IronIngot), 1044022);

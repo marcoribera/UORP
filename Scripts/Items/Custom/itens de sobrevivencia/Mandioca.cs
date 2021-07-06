@@ -3,24 +3,25 @@
 
 namespace Server.Items
 {
-    public class LivroDeCampanha : Item, ICommodity, ICraftable
+    public class Mandioca : Item, ICommodity, ICraftable
     {
         [Constructable]
-        public LivroDeCampanha()
+        public Mandioca()
             : this(1)
         {
         }
 
         [Constructable]
-        public LivroDeCampanha(int amount)
-            : base(0x0FBD)
+        public Mandioca(int amount)
+            : base(0x0C77)
         {
             this.Weight = 1.0;
-            Name = "Livro de Campanha";
+            Name = "Mandioca";
             Stackable = true;
+            Hue = 1141;
         }
 
-        public LivroDeCampanha(Serial serial)
+        public Mandioca(Serial serial)
             : base(serial)
         {
         }
@@ -29,7 +30,7 @@ namespace Server.Items
         {
             get
             {
-                return 1063515;
+                return 1063506;
             }
         }
         bool ICommodity.IsDeedable
@@ -39,6 +40,14 @@ namespace Server.Items
                 return false;
             }
         }
+
+        public override void GetProperties(ObjectPropertyList list)
+        {
+            base.GetProperties(list);
+
+            list.Add(1072351); // Quest Item
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -55,7 +64,7 @@ namespace Server.Items
 
         public int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
         {
-            Amount = 5;
+            Amount = 1;
             return 1;
         }
     }

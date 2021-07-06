@@ -157,7 +157,10 @@ namespace Server.Engines.Craft
                 AddRes(index, typeof(MyrmidexEggsac), 1156725, 5, 1044253);
                 AddRecipe(index, (int)AlchemyRecipes.BarrabHemolymphConcentrate);
             }
-                
+
+            
+
+
             // Enhancement
             index = AddCraft(typeof(AgilityPotion), 1116349, 1044540, 15.0, 65.0, typeof(Bloodmoss), 1044354, 1, 1044362);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
@@ -351,6 +354,13 @@ namespace Server.Engines.Craft
                 index = AddCraft(typeof(BottleIchor), 1044495, 1113361, 90.0, 100.0, typeof(DarkglowPotion), 1072849, 1, 1113755);
                 AddRes(index, typeof(SpidersSilk), 1044360, 1, 1044368);
                 AddSkill(index, SkillName.Arcanismo, 75.0, 100.0);
+
+                #region Sobrevivência
+
+                index = AddCraft(typeof(SacoDeConcreto), 1063522, 1063509, 40.0, 40.0, typeof(SpidersSilk), 1044360, 10, 1044368);
+                AddRes(index, typeof(Brita), 1063507, 1, 1044253);
+
+                #endregion
             }
 
             if (Core.HS)

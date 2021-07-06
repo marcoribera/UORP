@@ -172,6 +172,10 @@ namespace Server.Engines.Craft
                 AddRes(index, typeof(Cloth), 1044286, 5, 1044287);
             }
 
+
+
+
+
             #region Mondain's Legacy
             if (Core.ML)
             {
@@ -959,21 +963,29 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(IronIngot), 1044036, 150, 1044037);
 
             // Training
-            index = AddCraft(typeof(TrainingDummyEastDeed), 1044297, 1044335, 45.4, 93.4, typeof(Board), 1044041, 55, 1044351);
+            index = AddCraft(typeof(TrainingDummyEastDeed), 1044290, 1044335, 45.4, 93.4, typeof(Board), 1044041, 55, 1044351);
             AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
-            index = AddCraft(typeof(TrainingDummySouthDeed), 1044297, 1044336, 45.4, 93.4, typeof(Board), 1044041, 55, 1044351);
+            index = AddCraft(typeof(TrainingDummySouthDeed), 1044290, 1044336, 45.4, 93.4, typeof(Board), 1044041, 55, 1044351);
             AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
-            index = AddCraft(typeof(PickpocketDipEastDeed), 1044297, 1044337, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+            index = AddCraft(typeof(PickpocketDipEastDeed), 1044290, 1044337, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
             AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
 
-            index = AddCraft(typeof(PickpocketDipSouthDeed), 1044297, 1044338, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+            index = AddCraft(typeof(PickpocketDipSouthDeed), 1044290, 1044338, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
             AddSkill(index, SkillName.Costura, 50.0, 55.0);
             AddRes(index, typeof(Cloth), 1044286, 60, 1044287);
+
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(CercasReforcadas), 1063522, 1063512, 40.0, 40.0, typeof(Board), 1044041, 10, 1044351);
+            AddRes(index, typeof(NoDaMadeira), 1063505, 1, 1044253);
+
+            #endregion  
 
             MarkOption = true;
             Repair = Core.AOS;

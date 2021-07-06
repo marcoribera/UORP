@@ -379,9 +379,7 @@ namespace Server.Engines.Craft
             //AddRes(index, typeof(RecallScroll), 1044445, 1, 1044253);
             //AddRes(index, typeof(GateTravelScroll), 1044446, 1, 1044253);
 
-            //Pergaminho Antigo
-            index = AddCraft(typeof(LivroDeCampanha), 1044294, 1063515, 45.0, 95.0, typeof(BlankScroll), 1044377, 8, 1044378);
-            AddRes(index, typeof(PergaminhoAntigo), 1063503, 1, 1044253);
+           ;
 
 
           //  #region TOL
@@ -468,6 +466,12 @@ namespace Server.Engines.Craft
                 AddMysticSpell(1031692, 50, 75.0, typeof(NetherCycloneScroll), Reg.Bloodmoss, Reg.Nightshade, Reg.SulfurousAsh, Reg.MandrakeRoot);
                 AddMysticSpell(1031693, 50, 75.0, typeof(RisingColossusScroll), Reg.DaemonBone, Reg.FertileDirt, Reg.DragonBlood, Reg.Nightshade, Reg.MandrakeRoot);
             }
+            #endregion
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(LivroDeHistoria), 1063522, 1063515, 40.0, 40.0, typeof(BlankScroll), 1044377, 8, 1044378);
+            AddRes(index, typeof(PergaminhoAntigo), 1063503, 1, 1044253);
             #endregion
 
             MarkOption = true;
