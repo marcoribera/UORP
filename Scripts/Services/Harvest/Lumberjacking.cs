@@ -104,6 +104,7 @@ namespace Server.Engines.Harvest
                 {
                     new BonusHarvestResource(0, 72.0, null, null), //Nothing
                     new BonusHarvestResource(35, 20.0, 1072548, typeof(BarkFragment)),
+                    new BonusHarvestResource(40, 3.0, 1063526, typeof(NoDaMadeira)),
                     new BonusHarvestResource(60, 03.0, 1072550, typeof(LuminescentFungi)),
                     new BonusHarvestResource(75, 02.0, 1072547, typeof(SwitchItem)),
                     new BonusHarvestResource(90, 01.0, 1072549, typeof(ParasiticPlant)),
