@@ -3610,30 +3610,30 @@ namespace Server.Mobiles
 			{
 				return true;
 			}
-            if (!m_IgnoreMobiles && (m_Map.Rules & MapRules.FreeMovement) == 0)
+            if (!IgnoreMobiles && (Map.Rules & MapRules.FreeMovement) == 0)
             {
                 if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
                 {
                     return true;
                 }
-                else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
+                else if (shoved.Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
                 {
                     return true;
                 }
 
-                if (!m_Pushing)
+                if (!Pushing)
                 {
-                    m_Pushing = true;
+                    Pushing = true;
 
                     if (IsStaff())
                     {
-                        SendLocalizedMessage(shoved.m_Hidden ? 1019041 : 1019040);
+                        SendLocalizedMessage(shoved.Hidden ? 1019041 : 1019040);
                     }
                     else
                     {
                         Timer t = Timer.DelayCall(TimeSpan.FromSeconds(3.0), () => //Tempo entre as tentarivas de passar por cima
                         {
-                            m_Pushing = false;
+                            Pushing = false;
                         });
 
                         double proporcao = this.Str / shoved.Str;
@@ -3642,7 +3642,7 @@ namespace Server.Mobiles
                             BaseCreature pet = shoved as BaseCreature;
                             if (pet.Controlled && pet.Owners.Contains(this))
                             {
-                                double proporcao = (100 + this.Str) / shoved.Str;
+                                proporcao = (100 + this.Str) / shoved.Str;
                             }
                         }
                         this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
