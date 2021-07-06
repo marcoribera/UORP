@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("an elf corpse")]
+    [CorpseName("corpo de Elfo")]
     public class ElfBrigand : BaseCreature
     {
         [Constructable]
@@ -16,13 +16,13 @@ namespace Server.Mobiles
             {
                 Body = 606;
                 Name = NameList.RandomName("Elf female");
-                Title = "Salteadora";
+                Title = "a Salteadora";
             }
             else
             {
                 Body = 605;
                 Name = NameList.RandomName("Elf male");
-                Title = "Salteador";
+                Title = "o Salteador";
             }
 
             
@@ -32,20 +32,26 @@ namespace Server.Mobiles
             SetDex(65, 95);
             SetInt(50, 75);
 
-            SetDamage(10, 23);
+            SetDamage(10, 20);
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetResistance(ResistanceType.Physical, 10, 15);
+            SetResistance(ResistanceType.Physical, 10, 30);
             SetResistance(ResistanceType.Fire, 10, 15);
             SetResistance(ResistanceType.Poison, 10, 15);
             SetResistance(ResistanceType.Energy, 10, 15);
 
             SetSkill(SkillName.ResistenciaMagica, 25.0, 47.5);
             SetSkill(SkillName.Anatomia, 45.0, 60.5);
-            SetSkill(SkillName.Briga, 30.0, 50.0);
+            SetSkill(SkillName.Briga, 30.0, 60.0);
             SetSkill(SkillName.Feiticaria, 40.0, 60.0);
-            SetSkill(SkillName.PreparoFisico, 40.0, 60.0);
+            SetSkill(SkillName.PreparoFisico, 30.0, 60.0);
+            SetSkill(SkillName.Contusivo, 30.0, 60.0);
+            SetSkill(SkillName.Cortante, 30.0, 60.0);
+            SetSkill(SkillName.Perfurante, 30.0, 60.0);
+            SetSkill(SkillName.DuasMaos, 30.0, 60.0);
+            SetSkill(SkillName.UmaMao, 30.0, 60.0);
+            SetSkill(SkillName.Bloqueio, 30.0, 60.0);
 
             Fame = 1000;
             Karma = -1000;
