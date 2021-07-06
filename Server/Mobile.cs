@@ -3624,7 +3624,7 @@ namespace Server
         {
             if (!m_IgnoreMobiles && (m_Map.Rules & MapRules.FreeMovement) == 0)
             {
-                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet || shoved.Body.IsAnimal)
+                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
                 {
                     return true;
                 }
