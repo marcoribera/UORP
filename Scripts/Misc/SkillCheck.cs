@@ -319,11 +319,13 @@ namespace Server.Misc
 			if (from is PlayerMobile)
 			{
 				#region SA
+                /*
 				if (skill.Info.SkillID == (int)SkillName.Atirar && from.Race == Race.Gargoyle)
 					return false;
 
 				if (skill.Info.SkillID == (int)SkillName.Atirar && @from.Race != Race.Gargoyle)
 					return false;
+                */
 				#endregion
 
 				if (_AntiMacroCode && UseAntiMacro[skill.Info.SkillID])

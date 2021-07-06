@@ -16,19 +16,21 @@ namespace Server.Mobiles
             {
                 Body = 606;
                 Name = NameList.RandomName("Elf female");
+                Title = "Salteadora";
             }
             else
             {
                 Body = 605;
                 Name = NameList.RandomName("Elf male");
+                Title = "Salteador";
             }
 
-            Title = "the brigand";
+            
             Hue = Race.RandomSkinHue();
 
-            SetStr(86, 100);
-            SetDex(81, 95);
-            SetInt(61, 75);
+            SetStr(70, 100);
+            SetDex(65, 95);
+            SetInt(50, 75);
 
             SetDamage(10, 23);
 
@@ -40,10 +42,10 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 10, 15);
 
             SetSkill(SkillName.ResistenciaMagica, 25.0, 47.5);
-            SetSkill(SkillName.Anatomia, 65.0, 87.5);
-            SetSkill(SkillName.Briga, 15.0, 37.5);
-            SetSkill(SkillName.Feiticaria, 50.0, 75.0);
-            SetSkill(SkillName.PreparoFisico, 50.0, 75.0);
+            SetSkill(SkillName.Anatomia, 45.0, 60.5);
+            SetSkill(SkillName.Briga, 30.0, 50.0);
+            SetSkill(SkillName.Feiticaria, 40.0, 60.0);
+            SetSkill(SkillName.PreparoFisico, 40.0, 60.0);
 
             Fame = 1000;
             Karma = -1000;

@@ -3643,7 +3643,7 @@ namespace Server
                     }
                     else
                     {
-                        Timer t = Timer.DelayCall(TimeSpan.FromMilliseconds(1500), () => //Tempo entre as tentarivas de passar por cima
+                        Timer t = Timer.DelayCall(TimeSpan.FromSeconds(3.0), () => //Tempo entre as tentarivas de passar por cima
                         {
                             m_Pushing = false;
                         });
