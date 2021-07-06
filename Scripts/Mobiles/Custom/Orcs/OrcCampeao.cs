@@ -16,12 +16,12 @@ namespace Server.Mobiles
             BaseSoundID = 0x45A;
 
             SetStr(150, 190);
-            SetDex(80, 10);
-            SetInt(50, 70);
+            SetDex(100, 120);
+            SetInt(40, 60);
 
             //SetHits(476, 552);
 
-            SetDamage(20, 25);
+            SetDamage(10, 15);
 
             SetDamageType(ResistanceType.Physical, 100);
 
@@ -31,10 +31,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Poison, 25, 35);
             SetResistance(ResistanceType.Energy, 25, 35);
 
-            SetSkill(SkillName.Contusivo, 90.1, 100.0);
+            SetSkill(SkillName.Contusivo, 85, 100.0);
             SetSkill(SkillName.ResistenciaMagica, 125.1, 140.0);
             SetSkill(SkillName.Anatomia, 90.1, 100.0);
-            SetSkill(SkillName.Briga, 90.1, 100.0);
+            SetSkill(SkillName.Briga, 85, 100.0);
+            SetSkill(SkillName.DuasMaos, 85, 100.0);
+            SetSkill(SkillName.Cortante, 85, 100.0);
+            SetSkill(SkillName.Bloqueio, 80.0, 100.0);
 
             Fame = 15000;
             Karma = -15000;

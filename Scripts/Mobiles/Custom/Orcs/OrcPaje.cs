@@ -4,14 +4,14 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corpo do Orc Shaman")]
+    [CorpseName("Corpo do Orc Paje")]
     public class OrcPaje : BaseCreature
     {
         [Constructable]
         public OrcPaje()
             : base(AIType.AI_Spellweaving, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "Orc Shaman";
+            this.Name = "Orc Paje";
             this.Body = 1647;
             this.BaseSoundID = 0x45A;
 
@@ -48,7 +48,7 @@ namespace Server.Mobiles
             MinPersuadeSkill = 75;
 
             this.PackReg(6);
-
+            this.AddItem(new QuarterStaff());
 			switch (Utility.Random(8))
             {
                 case 0: PackItem(new CorpseSkinScroll()); break;

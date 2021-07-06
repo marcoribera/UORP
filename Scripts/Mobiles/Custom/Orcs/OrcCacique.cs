@@ -15,17 +15,17 @@ namespace Server.Mobiles
             this.Body = 1645;
             this.BaseSoundID = 0x45A;
 
-            this.SetStr(140, 160);
+            this.SetStr(140, 180);
             this.SetDex(100, 115);
             this.SetInt(80, 100);
 
             //this.SetHits(70, 90);
 
-            this.SetDamage(4, 14);
+            this.SetDamage(10, 15);
 
             this.SetDamageType(ResistanceType.Physical, 100);
 
-            this.SetResistance(ResistanceType.Physical, 25, 50);
+            this.SetResistance(ResistanceType.Physical, 40, 50);
             this.SetResistance(ResistanceType.Fire, 30, 50);
             this.SetResistance(ResistanceType.Cold, 30, 50);
             this.SetResistance(ResistanceType.Poison, 30, 50);
@@ -36,6 +36,9 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.ResistenciaMagica, 60.1, 75.0);
             this.SetSkill(SkillName.Anatomia, 50.1, 65.0);
             this.SetSkill(SkillName.Briga, 50, 80);
+            this.SetSkill(SkillName.Contusivo, 50, 80);
+            this.SetSkill(SkillName.DuasMaos, 50, 80.0);
+            SetSkill(SkillName.Bloqueio, 50.0, 80.0);
 
             Fame = 15000;
             Karma = -15000;
@@ -48,6 +51,8 @@ namespace Server.Mobiles
 
             this.PackReg(6);
 
+
+            this.AddItem(new BlackStaff()); 
 			switch (Utility.Random(8))
             {
                 case 0: PackItem(new CorpseSkinScroll()); break;
