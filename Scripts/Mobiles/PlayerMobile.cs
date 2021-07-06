@@ -3610,9 +3610,81 @@ namespace Server.Mobiles
 			{
 				return true;
 			}
+            if (!m_IgnoreMobiles && (m_Map.Rules & MapRules.FreeMovement) == 0)
+            {
+                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
+                {
+                    return true;
+                }
+                else if (shoved.m_Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
+                {
+                    return true;
+                }
 
-			return base.CheckShove(shoved);
-		}
+                if (!m_Pushing)
+                {
+                    m_Pushing = true;
+
+                    if (IsStaff())
+                    {
+                        SendLocalizedMessage(shoved.m_Hidden ? 1019041 : 1019040);
+                    }
+                    else
+                    {
+                        Timer t = Timer.DelayCall(TimeSpan.FromSeconds(3.0), () => //Tempo entre as tentarivas de passar por cima
+                        {
+                            m_Pushing = false;
+                        });
+
+                        double proporcao = this.Str / shoved.Str;
+                        if (shoved is BaseCreature)
+                        {
+                            BaseCreature pet = shoved as BaseCreature;
+                            if (pet.Controlled && pet.Owners.Contains(this))
+                            {
+                                double proporcao = (100 + this.Str) / shoved.Str;
+                            }
+                        }
+                        this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
+                        shoved.Stam -= (int)(10 * proporcao); //quanto mais fraco o empurrado é comparado com quem empurra, mais stamina perde stamina perde.
+
+                        if (Stam < (int)(10 / proporcao))
+                        {
+                            SendLocalizedMessage(1030835); //Falta fôlego para empurrar o alvo!
+                            return false;
+                        }
+                        else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
+                            return true;
+                        }
+                        else if (proporcao <= 0.5) //Quem empurra é bem mais fraco que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                            return false;
+                        }
+                        else //Há uma disputa de força entre quem empurra é quem é empurrado
+                        {
+                            if (Utility.RandomMinMax(0.5, 1.5) < proporcao)
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
+                                return true;
+                            }
+                            else
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                                return false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		protected override void OnMapChange(Map oldMap)
 		{
@@ -5821,6 +5893,9 @@ namespace Server.Mobiles
             {
                 int staminaLoss = 0;
                 double proporcao = TotalWeight / MaxWeight;
+                //Se está montado diminui a dificuldade de andar
+                if (FindItemOnLayer(Layer.Mount) != null)
+                    proporcao /= 2;
 
                 if (proporcao <= 0.25)
                     staminaLoss = 0;
@@ -5841,7 +5916,7 @@ namespace Server.Mobiles
 
                 if (running) //gasta mais stamina corredo
                 {
-                    staminaLoss = (staminaLoss + 1) * 2;
+                    staminaLoss = (staminaLoss *2) + 1;
                 }
 
                 if (Stam < staminaLoss)
