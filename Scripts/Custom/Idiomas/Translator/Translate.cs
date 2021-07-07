@@ -611,7 +611,12 @@ namespace Server.Custom
                         {
                             //Trata o envio de texto para criaturas que entendem o Idioma utilizado
                             BaseCreature creature = m as BaseCreature;
-                            if (creature.IdiomaNativo == from.LanguageSpeaking)
+
+                            if (creature.GetMaster() == args.Mobile) //Se já é seu companheiro/pet ela entende seus comandos em qualquer idioma
+                            {
+                                creature.OnSpeech(args);
+                            }
+                            else if(creature.IdiomaNativo == from.LanguageSpeaking)
                             {
                                 creature.OnSpeech(args);
                             }
