@@ -13,12 +13,12 @@ namespace Server.Items
 
         [Constructable]
         public MacaVerde(int amount)
-            : base(0x0FBD)
+            : base(0x09D0)
         {
             this.Weight = 1.0;
             Name = "Maça Verde";
             Stackable = true;
-            Hue = 264;
+            Hue = 168;
         }
 
         public MacaVerde(Serial serial)
@@ -30,7 +30,7 @@ namespace Server.Items
         {
             get
             {
-                return 1063501;
+                return 1063506;
             }
         }
         bool ICommodity.IsDeedable
