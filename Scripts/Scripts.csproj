@@ -273,8 +273,6 @@
     <Compile Include="Custom\Addons Cittadini\testados\SteelCanopySetAddon.cs" />
     <Compile Include="Custom\Addons Cittadini\testados\SwarmOfFlies.cs" />
     <Compile Include="Custom\Addons Cittadini\testados\SwimmingPoolAddon.cs" />
-    <Compile Include="Custom\AddWallGump.cs" />
-    <Compile Include="Custom\Afk.cs" />
     <Compile Include="Items\Addons\MailboxEastAddon.cs" />
     <Compile Include="Items\Addons\MailboxSouthAddon.cs" />
     <Compile Include="Items\Addons\PotteryWheelAddon.cs" />
@@ -723,12 +721,9 @@
     <Compile Include="Mobiles\Custom\ARVORE\OakTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\Tree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\YewTree.cs" />
-    <Compile Include="Custom\ChangeSeason.cs" />
     <Compile Include="Custom\Classes\RPClasse.cs" />
     <Compile Include="Custom\Classes\ClassePersonagem.cs" />
     <Compile Include="Custom\Classes\Classes.cs" />
-    <Compile Include="Custom\CloneCharacterOnLogout.cs" />
-    <Compile Include="Custom\EndOfTimeAddon.cs" />
     <Compile Include="Custom\Idiomas\PolyglotMobile.cs" />
     <Compile Include="Custom\Idiomas\Translator\SelecionarIdioma.cs" />
     <Compile Include="Custom\Idiomas\Translator\Translate.cs" />
@@ -928,8 +923,6 @@
     <Compile Include="Items\Equipment\Weapons\Special Weapons\ToxicBow.cs" />
     <Compile Include="Items\Equipment\Weapons\Special Weapons\Weapons\AxeOfTheGrove.cs" />
     <Compile Include="Items\Equipment\Weapons\Special Weapons\WoodBardiche.cs" />
-    <Compile Include="Custom\TestCustomShield.cs" />
-    <Compile Include="Custom\TestCustomWeapon.cs" />
     <Compile Include="Custom\teste\DarkFirePitAddon.cs" />
     <Compile Include="Custom\teste\GroveGraveyardAddon.cs" />
     <Compile Include="Custom\teste\GroveLightHouseAddon.cs" />
@@ -13589,7 +13582,6 @@
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style1.jpg" />
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style2.jpg" />
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style3.jpg" />
-    <Content Include="Custom\customattacks.xml" />
     <Content Include="Items\Addons\custom\tent\README.txt" />
     <Content Include="Items\Addons\Food Extras\MilkandCheese\Milk and Cheese Readme.txt" />
     <Content Include="Items\Custom\Addons Cittadini\Stargate System v3\Images\adminpanel.jpg" />
