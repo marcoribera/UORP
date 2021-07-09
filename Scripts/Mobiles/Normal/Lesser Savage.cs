@@ -50,6 +50,13 @@ namespace Server.Mobiles
             this.AddItem(new BoneArms());
             this.AddItem(new BoneLegs());
 
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
+
             if (0.5 > Utility.RandomDouble())
                 this.AddItem(new SavageMask());
             else if (0.1 > Utility.RandomDouble())

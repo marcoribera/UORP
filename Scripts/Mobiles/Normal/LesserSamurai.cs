@@ -12,7 +12,12 @@ namespace Server.Mobiles
             this.Title = "";
 
             this.InitStats(100, 100, 25);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
+            SetHits(150, 180);
+            SetMana(80, 100);
             this.SetSkill(SkillName.ConhecimentoArmas, 20.0, 40.0);
             this.SetSkill(SkillName.Bushido, 20.0, 40.0);
             this.SetSkill(SkillName.Bloqueio, 20.0, 40.0);

@@ -46,7 +46,12 @@ namespace Server.Mobiles
             this.AddItem(new LeatherNinjaBelt());
             this.AddItem(new LeatherNinjaJacket());
             this.AddItem(new NinjaTabi());
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
+            SetHits(150, 180);
+            SetMana(80, 100);
             int hairHue = Utility.RandomNondyedHue();
 
             Utility.AssignRandomHair(this, hairHue);
