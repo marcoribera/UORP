@@ -970,7 +970,22 @@ namespace Server.Mobiles
 
 				if (disp is Item)
 				{
-					opls.Add(((Item)disp).PropertyList);
+                    if (disp is BasePotion)
+                    {
+                        BasePotion t = (BasePotion)disp;
+                        t.Identified = true;
+                        opls.Add(((Item)t).PropertyList);
+                    }
+                    else if (disp is SpellScroll)
+                    {
+                        SpellScroll t = (SpellScroll)disp;
+                        t.Identified = true;
+                        opls.Add(((Item)t).PropertyList);
+                    }
+                    else
+                    {
+                        opls.Add(((Item)disp).PropertyList);
+                    }
 				}
 				else if (disp is Mobile)
 				{
