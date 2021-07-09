@@ -43,3 +43,5 @@
 !/Data/*
 !/bin/rosyln/*
 Config/DataPath.cfg
+Config/Accounts.cfg
+Config/DataPath.cfg
