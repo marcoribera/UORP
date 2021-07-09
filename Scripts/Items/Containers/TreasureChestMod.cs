@@ -20,7 +20,7 @@ namespace Server.Items
 		[Constructable] 
 		public TreasureLevel1() : base( Utility.RandomList( 0xE3C, 0xE3E, 0x9a9 ) )
 		{ 
-			RequiredSkill = 52;
+			RequiredSkill = 35;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
 			MaxLockLevel = this.RequiredSkill;
 			TrapType = TrapType.MagicTrap;
@@ -67,7 +67,7 @@ namespace Server.Items
 		[Constructable] 
 		public TreasureLevel1h() : base( Utility.RandomList( 0xE3C, 0xE3E, 0x9a9 ) ) 
 		{ 
-			RequiredSkill = 56;
+			RequiredSkill = 35;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
 			MaxLockLevel = this.RequiredSkill;
 			TrapType = TrapType.MagicTrap;
@@ -118,7 +118,7 @@ namespace Server.Items
 		[Constructable] 
 		public TreasureLevel2() : base( Utility.RandomList( 0xe3c, 0xE3E, 0x9a9, 0xe42, 0x9ab, 0xe40, 0xe7f, 0xe77 ) ) 
 		{ 
-			RequiredSkill = 72;
+			RequiredSkill = 55;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
 			MaxLockLevel = this.RequiredSkill;
 			TrapType = TrapType.MagicTrap;
@@ -171,7 +171,7 @@ namespace Server.Items
 		[Constructable] 
 		public TreasureLevel3() : base( Utility.RandomList( 0x9ab, 0xe40, 0xe42 ) ) 
 		{ 
-			RequiredSkill = 84;
+			RequiredSkill = 75;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
 			MaxLockLevel = this.RequiredSkill;
 			TrapType = TrapType.MagicTrap;
@@ -266,7 +266,7 @@ namespace Server.Items
 		[Constructable] 
 		public TreasureLevel4() : base( Utility.RandomList( 0xe40, 0xe42, 0x9ab ) )
 		{ 
-			RequiredSkill = 92;
+			RequiredSkill = 90;
 			LockLevel = this.RequiredSkill - Utility.Random( 1, 10 );
 			MaxLockLevel = this.RequiredSkill;
 			TrapType = TrapType.MagicTrap;
