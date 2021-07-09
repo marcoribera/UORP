@@ -11,6 +11,7 @@ using Server.Items;
 using Server.Network;
 using Server.Regions;
 using Server.Spells;
+using Server.Targeting;
 using Server.Targets;
 
 using MoveImpl = Server.Movement.MovementImpl;
@@ -59,14 +60,15 @@ namespace Server.Mobiles
 		private long m_NextStopGuard;
 
 		public BaseCreature m_Mobile;
+        public Point3D m_point;
 
-		/// <summary>
-		///     Prevent AI from altering the Mobile's Direction.
-		///     This does not prevent direct modification of a Mobile's Direction.
-		///     Can be useful when processing long sequence attacks for monsters
-		///     where the effect requires Direction manipulation.
-		/// </summary>
-		public bool DirectionLocked { get; set; }
+        /// <summary>
+        ///     Prevent AI from altering the Mobile's Direction.
+        ///     This does not prevent direct modification of a Mobile's Direction.
+        ///     Can be useful when processing long sequence attacks for monsters
+        ///     where the effect requires Direction manipulation.
+        /// </summary>
+        public bool DirectionLocked { get; set; }
 
         public BaseAI(BaseCreature m)
 		{
@@ -167,7 +169,7 @@ namespace Server.Mobiles
 					{
 						return;
 					}
-					if (isFriend && m_Order != OrderType.Follow && m_Order != OrderType.Stay && m_Order != OrderType.Stop)
+					if (isFriend && m_Order != OrderType.Go && m_Order != OrderType.Follow && m_Order != OrderType.Stay && m_Order != OrderType.Stop)
 					{
 						return;
 					}
@@ -179,7 +181,8 @@ namespace Server.Mobiles
 						case OrderType.Transfer:
 						case OrderType.Friend:
 						case OrderType.Unfriend:
-						{
+                        case OrderType.Go:
+                        {
 							if (m_Order == OrderType.Transfer && m_From.HasTrade)
 							{
 								m_From.SendLocalizedMessage(1010507); // You cannot transfer a pet with a trade pending
@@ -233,7 +236,8 @@ namespace Server.Mobiles
 				if (from == m_Mobile.ControlMaster)
 				{
 					list.Add(new InternalEntry(from, 6111, 14, m_Mobile, this, OrderType.Attack)); // Command: Kill
-					list.Add(new InternalEntry(from, 6108, 14, m_Mobile, this, OrderType.Follow)); // Command: Follow
+                    list.Add(new InternalEntry(from, 6098, 14, m_Mobile, this, OrderType.Go)); // Commando: Vá //Inserir no cliloc 3006098
+                    list.Add(new InternalEntry(from, 6108, 14, m_Mobile, this, OrderType.Follow)); // Command: Follow
 					list.Add(new InternalEntry(from, 6107, 14, m_Mobile, this, OrderType.Guard)); // Command: Guard
 
 					if (m_Mobile.IsBonded)
@@ -262,7 +266,8 @@ namespace Server.Mobiles
 				}
 				else if (m_Mobile.IsPetFriend(from))
 				{
-					list.Add(new InternalEntry(from, 6108, 14, m_Mobile, this, OrderType.Follow)); // Command: Follow
+                    list.Add(new InternalEntry(from, 6098, 14, m_Mobile, this, OrderType.Go)); // Commando: Vá //Inserir no cliloc 3006098
+                    list.Add(new InternalEntry(from, 6108, 14, m_Mobile, this, OrderType.Follow)); // Command: Follow
 					list.Add(new InternalEntry(from, 6112, 14, m_Mobile, this, OrderType.Stop)); // Command: Stop
 					list.Add(new InternalEntry(from, 6114, 14, m_Mobile, this, OrderType.Stay)); // Command: Stay
 				}
@@ -288,12 +293,20 @@ namespace Server.Mobiles
 			{
 				return;
 			}
-			if (isFriend && order != OrderType.Follow && order != OrderType.Stay && order != OrderType.Stop)
+			if (isFriend && order != OrderType.Go && order != OrderType.Follow && order != OrderType.Stay && order != OrderType.Stop)
 			{
 				return;
 			}
 
-			if (from.Target == null)
+            if(order == OrderType.Go)
+            {
+                from.SendMessage("Escolha um local como destino.");
+                from.Target = new AILocationTarget(this, order);
+                ((AILocationTarget)from.Target).AddAI(this);
+
+
+            }
+            else if (from.Target == null)
 			{
 				if (order == OrderType.Transfer)
 				{
@@ -319,7 +332,7 @@ namespace Server.Mobiles
 					t.AddAI(this);
 				}
 			}
-		}
+        }
 
 		public virtual void OnAggressiveAction(Mobile aggressor)
 		{
@@ -332,58 +345,87 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual void EndPickTarget(Mobile from, IDamageable target, OrderType order)
+		public virtual void EndPickTarget(Mobile from, Object targ, OrderType order)
 		{
-			if (m_Mobile.Deleted || !m_Mobile.Controlled || !from.InRange(m_Mobile, 14) || from.Map != m_Mobile.Map ||
-				!from.CheckAlive())
-			{
-				return;
-			}
+            if (targ is IDamageable)
+            {
+                IDamageable target = (IDamageable)targ;
 
-			var isOwner = (from == m_Mobile.ControlMaster);
-			var isFriend = (!isOwner && m_Mobile.IsPetFriend(from));
+                if (m_Mobile.Deleted || !m_Mobile.Controlled || !from.InRange(m_Mobile, 14) || from.Map != m_Mobile.Map ||
+                    !from.CheckAlive())
+                {
+                    return;
+                }
 
-			if (!isOwner && !isFriend)
-			{
-				return;
-			}
-			if (isFriend && order != OrderType.Follow && order != OrderType.Stay && order != OrderType.Stop)
-			{
-				return;
-			}
+                var isOwner = (from == m_Mobile.ControlMaster);
+                var isFriend = (!isOwner && m_Mobile.IsPetFriend(from));
 
-			if (order == OrderType.Attack)
-			{
-				if (target is BaseCreature)
-				{
-					var bc = (BaseCreature)target;
+                if (!isOwner && !isFriend)
+                {
+                    return;
+                }
+                if (isFriend && order != OrderType.Go && order != OrderType.Follow && order != OrderType.Stay && order != OrderType.Stop)
+                {
+                    return;
+                }
 
-					if (bc.IsScaryToPets && m_Mobile.IsScaredOfScaryThings)
-					{
-						m_Mobile.SayTo(from, "Your pet refuses to attack this creature!");
-						return;
-					}
+                if (order == OrderType.Attack)
+                {
+                    if (target is BaseCreature)
+                    {
+                        var bc = (BaseCreature)target;
 
-					if ((bc is IBlackSolen && SolenHelper.CheckBlackFriendship(from)) ||
-						(bc is IRedSolen && SolenHelper.CheckRedFriendship(from)))
-					{
-						from.SendAsciiMessage("You can not force your pet to attack a creature you are protected from.");
-						return;
-					}
+                        if (bc.IsScaryToPets && m_Mobile.IsScaredOfScaryThings)
+                        {
+                            m_Mobile.SayTo(from, "Your pet refuses to attack this creature!");
+                            return;
+                        }
 
-					if (bc is BaseFactionGuard)
-					{
-						m_Mobile.SayTo(from, "Your pet refuses to attack the guard.");
-						return;
-					}
-				}
-			}
+                        if ((bc is IBlackSolen && SolenHelper.CheckBlackFriendship(from)) ||
+                            (bc is IRedSolen && SolenHelper.CheckRedFriendship(from)))
+                        {
+                            from.SendAsciiMessage("You can not force your pet to attack a creature you are protected from.");
+                            return;
+                        }
 
-			if (m_Mobile.CheckControlChance(from))
-			{
-				m_Mobile.ControlTarget = target;
-				m_Mobile.ControlOrder = order;
-			}
+                        if (bc is BaseFactionGuard)
+                        {
+                            m_Mobile.SayTo(from, "Your pet refuses to attack the guard.");
+                            return;
+                        }
+                    }
+                }
+
+                if (m_Mobile.CheckControlChance(from))
+                {
+                    m_Mobile.ControlTarget = target;
+                    m_Mobile.ControlOrder = order;
+                    if (order == OrderType.Go)
+                    {
+                        m_Mobile.ControlDest = ((AILocationTarget)targ).p_local;
+                    }
+                }
+            }
+            else
+            {
+                var isOwner = (from == m_Mobile.ControlMaster);
+                var isFriend = (!isOwner && m_Mobile.IsPetFriend(from));
+
+                if (isFriend && order != OrderType.Go)
+                {
+                    return;
+                }
+
+                if (m_Mobile.CheckControlChance(from))
+                {
+                    m_Mobile.ControlTarget = null;
+                    m_Mobile.ControlOrder = order;
+                    if (order == OrderType.Go)
+                    {
+                        m_Mobile.ControlDest = ((AILocationTarget)targ).p_local;
+                    }
+                }
+            }
 		}
 
 		public virtual bool HandlesOnSpeech(Mobile from)
@@ -879,7 +921,20 @@ namespace Server.Mobiles
 							}
 						}
 					}
-				}
+                    if (speech.ToLower().Contains(" vá"))
+                    {
+                        if (WasNamed(speech) && m_Mobile.CheckControlChance(e.Mobile))
+                        {
+                            BeginPickTarget(e.Mobile, OrderType.Go);
+                        }
+                        return;
+                    }
+                    if (speech.ToLower().Contains("todos vão"))
+                    {
+                        BeginPickTarget(e.Mobile, OrderType.Go);
+                        return;
+                    }
+                }
 			}
 			else
 			{
@@ -1244,7 +1299,10 @@ namespace Server.Mobiles
 				case OrderType.Stop:
 					return DoOrderStop();
 
-				case OrderType.Follow:
+                case OrderType.Go:
+                    return DoOrderGo();
+
+                case OrderType.Follow:
 					return DoOrderFollow();
 
 				case OrderType.Transfer:
@@ -1337,7 +1395,17 @@ namespace Server.Mobiles
 					m_Mobile.Warmode = false;
 					m_Mobile.Combatant = null;
 					break;
-				case OrderType.Follow:
+                case OrderType.Go:
+
+                    m_Mobile.PlaySound(m_Mobile.GetIdleSound());
+
+                    m_Mobile.Warmode = false;
+                    m_Mobile.Combatant = null;
+                    m_Mobile.AdjustSpeeds();
+
+                    m_Mobile.CurrentSpeed = m_Mobile.ActiveSpeed;
+                    break;
+                case OrderType.Follow:
 					
 					m_Mobile.PlaySound(m_Mobile.GetIdleSound());
 
@@ -1485,7 +1553,73 @@ namespace Server.Mobiles
 			return true;
 		}
 
-		public virtual bool DoOrderFollow()
+        public virtual bool DoOrderGo()
+        {
+            if (CheckHerding())
+            {
+                m_Mobile.DebugSay("Praise the shepherd!");
+            }
+            else if (m_Mobile.ControlDest != Point3D.Zero)
+            {
+                var iCurrDist = (int)m_Mobile.GetDistanceToSqrt(m_Mobile.ControlDest);
+
+                if (iCurrDist > m_Mobile.RangePerception * 5)
+                {
+                    m_Mobile.DebugSay("I don't remeber where that place is.");
+
+                    if (m_Mobile.Combatant is Mobile && !m_Mobile.Combatant.Deleted && m_Mobile.Combatant.Alive &&
+                        (!(m_Mobile.Combatant is Mobile) || !((Mobile)m_Mobile.Combatant).IsDeadBondedPet))
+                    {
+                        m_Mobile.Warmode = true;
+
+                        //if (!DirectionLocked)
+                        //	m_Mobile.Direction = m_Mobile.GetDirectionTo(m_Mobile.Combatant);
+                    }
+                    else
+                    {
+                        m_Mobile.Warmode = false;
+                    }
+                }
+                else
+                {
+                    m_Mobile.DebugSay("My master told me to go to: {0}", m_Mobile.ControlDest.ToString());
+
+                    // Not exactly OSI style, but better than nothing.
+                    var bRun = (iCurrDist > 5);
+
+                    if (WalkMobileRange(m_Mobile.ControlDest, 1, bRun, 0, 0))
+                    {
+                        if (m_Mobile.Combatant != null && !m_Mobile.Combatant.Deleted && m_Mobile.Combatant.Alive &&
+                            (!(m_Mobile.Combatant is Mobile) || !((Mobile)m_Mobile.Combatant).IsDeadBondedPet))
+                        {
+                            m_Mobile.Warmode = true;
+
+                            //if (!DirectionLocked)
+                            //	m_Mobile.Direction = m_Mobile.GetDirectionTo(m_Mobile.Combatant);
+                        }
+                        else
+                        {
+                            m_Mobile.Warmode = false;
+
+                            if (Core.AOS)
+                            {
+                                m_Mobile.CurrentSpeed = m_Mobile.ActiveSpeed;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                m_Mobile.DebugSay("I have nowhere to go");
+                //m_Mobile.ControlDest = Point3D.Zero;
+                m_Mobile.ControlOrder = OrderType.None;
+            }
+
+            return true;
+        }
+
+        public virtual bool DoOrderFollow()
 		{
 			if (CheckHerding())
 			{
@@ -3156,5 +3290,40 @@ namespace Server.Mobiles
 				m_Owner.AfterThink();
 			}
 		}
-	}
+        /*
+        public class GoTarget : Target
+        {
+            public Point3D p_local;
+            
+            public GoTarget()
+                : base(-1, true, TargetFlags.None)
+            {
+                p_local = Point3D.Zero;
+            }
+
+            protected override void OnTarget(Mobile from, object target)
+            {
+                if (target is Mobile)
+                {
+                    p_local = ((Mobile)target).Location; 
+                }
+                else if (target is Item)
+                {
+                    Item alvo = (Item)target;
+                    p_local = ((Item)target).Location;
+                }
+                else if (target is StaticTarget)
+                {
+                    StaticTarget alvo = (StaticTarget)target;
+                    p_local = ((StaticTarget)target).Location;
+                }
+                else if (target is LandTarget)
+                {
+                    LandTarget alvo = (LandTarget)target;
+                    p_local = ((LandTarget)target).Location;
+                }
+            }
+        }
+        */
+    }
 }

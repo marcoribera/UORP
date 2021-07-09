@@ -51,4 +51,54 @@ namespace Server.Targets
 			}
 		}
 	}
+
+    public class AILocationTarget : Target
+    {
+        private readonly List<BaseAI> m_List;
+        private readonly OrderType m_Order;
+        public Point3D p_local;
+
+        public AILocationTarget(BaseAI ai, OrderType order)
+            : base(-1, true, (order == OrderType.Attack ? TargetFlags.Harmful : TargetFlags.None))
+        {
+            m_List = new List<BaseAI>();
+            m_Order = order;
+            p_local = Point3D.Zero;
+
+            AddAI(ai);
+        }
+
+        public OrderType Order { get { return m_Order; } }
+
+        public void AddAI(BaseAI ai)
+        {
+            if (!m_List.Contains(ai))
+                m_List.Add(ai);
+        }
+
+        protected override void OnTarget(Mobile from, object o)
+        {
+            if (o is Mobile)
+            {
+                p_local = ((Mobile)o).Location;
+            }
+            else if (o is Item)
+            {
+                Item alvo = (Item)o;
+                p_local = ((Item)o).Location;
+            }
+            else if (o is StaticTarget)
+            {
+                StaticTarget alvo = (StaticTarget)o;
+                p_local = ((StaticTarget)o).Location;
+            }
+            else if (o is LandTarget)
+            {
+                LandTarget alvo = (LandTarget)o;
+                p_local = ((LandTarget)o).Location;
+            }
+            for (var i = 0; i < m_List.Count; ++i)
+                m_List[i].EndPickTarget(from, this, m_Order);
+        }
+    }
 }
