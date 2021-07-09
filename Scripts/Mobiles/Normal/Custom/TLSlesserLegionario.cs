@@ -3,10 +3,10 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    public class Legionario : BaseHire
+    public class TLSlesserLegionario : BaseHire
     {
         [Constructable]
-        public Legionario()
+        public TLSlesserLegionario()
         {
             SpeechHue = Utility.RandomDyedHue();
             Hue = Utility.RandomSkinHue();
@@ -54,7 +54,7 @@ namespace Server.Mobiles
             PackGold(25, 50);
         }
 
-        public Legionario(Serial serial)
+        public TLSlesserLegionario(Serial serial)
             : base(serial)
         {
         }
