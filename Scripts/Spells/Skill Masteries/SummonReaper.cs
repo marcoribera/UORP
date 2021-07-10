@@ -39,13 +39,13 @@ namespace Server.Spells.SkillMasteries
         {
             if (!base.CheckCast())
                 return false;
-
+            /*
             if (Caster is PlayerMobile && !((PlayerMobile)Caster).Spellweaving)
             {
                 Caster.SendLocalizedMessage(1073220); // You must have completed the epic arcanist quest to use this ability.
                 return false;
             }
-            else if (Caster.Followers + 5 > Caster.FollowersMax)
+            else*/ if (Caster.Followers + 5 > Caster.FollowersMax)
             {
                 Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;

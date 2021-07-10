@@ -105,13 +105,13 @@ namespace Server.Spells.Spellweaving
 				Caster.SendLocalizedMessage(1042753, "Spellweaving"); // ~1_SOMETHING~ has been temporarily disabled.
 				return false;
 			}
-
+            /*
 			if (Caster is PlayerMobile && !((PlayerMobile)Caster).Spellweaving)
 			{
 				Caster.SendLocalizedMessage(1073220); // You must have completed the epic arcanist quest to use this ability.
 				return false;
 			}
-
+            */
 			int mana = ScaleMana(RequiredMana);
 
 			if (Caster.Mana < mana)
