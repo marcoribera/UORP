@@ -298,17 +298,9 @@ namespace Server.Mobiles
 				return;
 			}
 
-            if(order == OrderType.Go)
-            {
-                from.SendMessage("Escolha um local como destino.");
-                from.Target = new AILocationTarget(this, order);
-                ((AILocationTarget)from.Target).AddAI(this);
-
-
-            }
-            else if (from.Target == null)
+            if (from.Target == null)
 			{
-				if (order == OrderType.Transfer)
+                if (order == OrderType.Transfer)
 				{
 					from.SendLocalizedMessage(502038); // Click on the person to transfer ownership to.
 				}
@@ -320,10 +312,26 @@ namespace Server.Mobiles
 				{
 					from.SendLocalizedMessage(1070948); // Click on the player whom you wish to remove as a co-owner.
 				}
-
-				from.Target = new AIControlMobileTarget(this, order);
+                else if (order == OrderType.Go)
+                {
+                    from.SendMessage("Escolha um local como destino.");
+                    from.Target = new AILocationTarget(this, order);
+                }
+                else
+                {
+                    from.Target = new AIControlMobileTarget(this, order);
+                }
 			}
-			else if (from.Target is AIControlMobileTarget)
+            else if (from.Target is AILocationTarget)
+            {
+                var t = (AILocationTarget)from.Target;
+
+                if (t.Order == order)
+                {
+                    t.AddAI(this);
+                }
+            }
+            else if (from.Target is AIControlMobileTarget)
 			{
 				var t = (AIControlMobileTarget)from.Target;
 
