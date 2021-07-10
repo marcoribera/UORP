@@ -14,14 +14,14 @@ namespace Server.Mobiles
             Body = 334;
             BaseSoundID = 0x600;
 
-            SetStr(321, 321);
-            SetDex(64, 64);
-            SetInt(147, 147);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
-            SetHits(179, 179);
-            SetStam(64, 64);
-            SetMana(147, 147);
+            SetHits(150, 180);
+            SetMana(80, 100);
 
+            
             SetDamage(5, 7);
 
             SetDamageType(ResistanceType.Physical, 100);

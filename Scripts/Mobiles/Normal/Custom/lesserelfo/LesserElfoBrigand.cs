@@ -55,9 +55,12 @@ namespace Server.Mobiles
             this.Race.RandomFacialHair(this);
 
 
-            SetStr(86, 100);
-            SetDex(81, 95);
-            SetInt(61, 75);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             SetDamage(10, 23);
 

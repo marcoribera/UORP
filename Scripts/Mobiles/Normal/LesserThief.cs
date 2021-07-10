@@ -18,6 +18,13 @@ namespace Server.Mobiles
             SetSkill(SkillName.Veterinaria, 60.0, 83.0);
             SetSkill(SkillName.Mecanica, 20, 40.0);
 
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
+
             Persuadable = true;
             ControlSlots = 1;
             MinPersuadeSkill = 40;

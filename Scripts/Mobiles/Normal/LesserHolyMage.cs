@@ -20,7 +20,12 @@ namespace Server.Mobiles
             Persuadable = true;
             ControlSlots = 3;
             MinPersuadeSkill = 51;
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
+            SetHits(150, 180);
+            SetMana(80, 100);
         }
 
         public LesserHolyMage(Serial serial)

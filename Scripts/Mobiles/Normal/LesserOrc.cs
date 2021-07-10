@@ -15,11 +15,12 @@ namespace Server.Mobiles
             this.Body = 17;
             this.BaseSoundID = 0x45A;
 
-            this.SetStr(96, 120);
-            this.SetDex(81, 105);
-            this.SetInt(36, 60);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
-            this.SetHits(58, 72);
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             this.SetDamage(5, 7);
 

@@ -14,11 +14,12 @@ namespace Server.Mobiles
             Body = Utility.RandomList(35, 36);
             BaseSoundID = 417;
 
-            SetStr(96, 120);
-            SetDex(86, 105);
-            SetInt(36, 60);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
-            SetHits(58, 72);
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             SetDamage(5, 7);
 
