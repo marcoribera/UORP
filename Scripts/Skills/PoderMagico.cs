@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.SkillHandlers
 {
-    class Meditation
+    class PoderMagico
     {
         public static void Initialize()
         {

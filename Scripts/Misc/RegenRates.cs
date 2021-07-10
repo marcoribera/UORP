@@ -116,14 +116,14 @@ namespace Server.Misc
                 return Mobile.DefaultManaRate;
 
             if (!from.Meditating)
-                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Arcanismo); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.PoderMagico); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
             double rate;
             double armorPenalty = GetArmorOffset(from);
 
             if (Core.ML)
             {
-                double med = from.Skills[SkillName.Arcanismo].Value; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                double med = from.Skills[SkillName.PoderMagico].Value; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
                 double focus = from.Skills[SkillName.PreparoFisico].Value;
 
                 double focusBonus = focus / 200;
@@ -156,9 +156,9 @@ namespace Server.Misc
             }
             else if (Core.AOS)
             {
-                double medPoints = from.Int + (from.Skills[SkillName.Arcanismo].Value * 3); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                double medPoints = from.Int + (from.Skills[SkillName.PoderMagico].Value * 3); //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
-                medPoints *= (from.Skills[SkillName.Arcanismo].Value < 100.0) ? 0.025 : 0.0275; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                medPoints *= (from.Skills[SkillName.PoderMagico].Value < 100.0) ? 0.025 : 0.0275; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
                 CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.PreparoFisico);
 
@@ -181,7 +181,7 @@ namespace Server.Misc
             }
             else
             {
-                double medPoints = (from.Int + from.Skills[SkillName.Arcanismo].Value) * 0.5; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
+                double medPoints = (from.Int + from.Skills[SkillName.PoderMagico].Value) * 0.5; //Marcknight: Fazer escolher a maior dentre as skills de conhecimento mágico
 
                 if (medPoints <= 0)
                     rate = 7.0;
