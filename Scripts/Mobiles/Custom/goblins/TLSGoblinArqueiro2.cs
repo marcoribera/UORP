@@ -33,13 +33,13 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 20, 40);
 
             SetSkill(SkillName.ResistenciaMagica, 20, 40);
-            SetSkill(SkillName.Anatomia, 60, 80);
+            SetSkill(SkillName.Anatomia, 30, 50);
             SetSkill(SkillName.Atirar, 40, 60);
             SetSkill(SkillName.Briga, 40, 60);
 
 
-            Fame = 1500;
-            Karma = -1500;
+            Fame = 2600;
+            Karma = -2600;
 
             VirtualArmor = 28;
 
@@ -80,11 +80,6 @@ namespace Server.Mobiles
         public override int TreasureMapLevel { get { return 1; } }
         public override int Meat { get { return 1; } }
         public override TribeType Tribe { get { return TribeType.GreenGoblin; } }
-
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Meager);
-        }
 
         public override void OnDeath(Container c)
         {

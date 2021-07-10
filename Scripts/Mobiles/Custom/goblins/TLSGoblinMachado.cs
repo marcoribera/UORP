@@ -18,11 +18,11 @@ namespace Server.Mobiles
             SetDex(30, 60);
             SetInt(15, 20);
 
-            SetHits(90, 100);
-            SetStam(60, 74);
-            SetMana(30, 30);
+            //SetHits(90, 100);
+            //SetStam(60, 74);
+            //SetMana(30, 30);
 
-            SetDamage(10, 15);
+            SetDamage(1, 7);
 
             SetDamageType(ResistanceType.Physical, 100);
 
@@ -33,13 +33,15 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 10, 20);
 
             SetSkill(SkillName.ResistenciaMagica, 10, 30);
-            SetSkill(SkillName.Anatomia, 30, 50);
-            SetSkill(SkillName.Atirar, 30, 50);
-            SetSkill(SkillName.Briga, 30, 50);
+            SetSkill(SkillName.Anatomia, 10, 30);
+            SetSkill(SkillName.Atirar, 20, 40);
+            SetSkill(SkillName.Briga, 20, 40);
+            SetSkill(SkillName.UmaMao, 20, 40);
+            SetSkill(SkillName.DuasMaos, 20, 40);
 
 
-            Fame = 1500;
-            Karma = -1500;
+            Fame = 1000;
+            Karma = -1000;
 
             VirtualArmor = 28;
 
@@ -100,10 +102,6 @@ namespace Server.Mobiles
         public override int Meat { get { return 1; } }
         public override TribeType Tribe { get { return TribeType.GreenGoblin; } }
 
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Meager);
-        }
 
         public override void OnDeath(Container c)
         {

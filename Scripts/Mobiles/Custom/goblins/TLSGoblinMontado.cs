@@ -16,31 +16,34 @@ namespace Server.Mobiles
             Hue = 0;
             BaseSoundID = 0x600;
 
-            SetStr(258, 327);
-            SetDex(62, 80);
-            SetInt(103, 150);
+            SetStr(60, 80);
+            SetDex(50, 70);
+            SetInt(15, 20);
 
-            SetHits(159, 194);
-            SetStam(62, 80);
-            SetMana(103, 150);
+            //SetHits(100, 120);
+            //SetStam(60, 80);
+            //SetMana(30, 30);
 
-            SetDamage(5, 7);
+            SetDamage(10, 20);
+
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetResistance(ResistanceType.Physical, 40, 50);
-            SetResistance(ResistanceType.Fire, 30, 40);
-            SetResistance(ResistanceType.Cold, 25, 32);
-            SetResistance(ResistanceType.Poison, 10, 19);
-            SetResistance(ResistanceType.Energy, 10, 20);
+            SetResistance(ResistanceType.Physical, 20, 40);
+            SetResistance(ResistanceType.Fire, 20, 40);
+            SetResistance(ResistanceType.Cold, 20, 40);
+            SetResistance(ResistanceType.Poison, 20, 40);
+            SetResistance(ResistanceType.Energy, 20, 40);
 
-            SetSkill(SkillName.ResistenciaMagica, 120.9, 129.1);
-            SetSkill(SkillName.Anatomia, 80.6, 89.4);
-            SetSkill(SkillName.Anatomia, 80.3, 89.4);
-            SetSkill(SkillName.Briga, 96.1, 105.5);
+            SetSkill(SkillName.ResistenciaMagica, 20, 40);
+            SetSkill(SkillName.Anatomia, 40, 60);
+            SetSkill(SkillName.Atirar, 40, 60);
+            SetSkill(SkillName.Briga, 50, 70);
+            SetSkill(SkillName.UmaMao, 50, 70);
+            SetSkill(SkillName.DuasMaos,50, 70);
 
-            Fame = 1500;
-            Karma = -1500;
+            Fame = 5100;
+            Karma = -5100;
 
             VirtualArmor = 28;
 
@@ -101,11 +104,7 @@ namespace Server.Mobiles
         public override int Meat { get { return 1; } }
         public override TribeType Tribe { get { return TribeType.GreenGoblin; } }
 
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Meager);
-        }
-
+  
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
