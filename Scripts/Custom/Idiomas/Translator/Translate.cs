@@ -616,7 +616,7 @@ namespace Server.Custom
                             {
                                 creature.OnSpeech(args);
                             }
-                            else if(creature.IdiomaNativo == from.LanguageSpeaking)
+                            else if (creature.IdiomaNativo == from.LanguageSpeaking)
                             {
                                 creature.OnSpeech(args);
                             }
@@ -738,15 +738,42 @@ namespace Server.Custom
                     }
                 case SpeechType.Eorin:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaEorin(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Faeris:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaFaeris(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Ihluv:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaIhluv(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Infaris:
                     {
@@ -763,7 +790,16 @@ namespace Server.Custom
                     }
                 case SpeechType.Kahlur:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaKahlur(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Kriktik:
                     {
@@ -780,15 +816,142 @@ namespace Server.Custom
                     }
                 case SpeechType.Krusk:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaKrusk(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Ladvek:
                     {
-                        return texto;
+                        int rand = Utility.Random(0, 17);
+                        switch (rand)
+                        {
+                            case 0:
+                                resultado += "*Gesticula com a mão direita*";
+                                break;
+                            case 1:
+                                resultado += "*Gesticula com a mão esquerda*";
+                                break;
+                            case 2:
+                                resultado += "*Gesticula com as duas mãos*";
+                                break;
+                            case 3:
+                                resultado += "*Movimenta as sobrancelhas*";
+                                break;
+                            case 4:
+                                resultado += "*Movimenta a boca*";
+                                break;
+                            case 5:
+                                resultado += "*Olha para o pé direito*";
+                                break;
+                            case 6:
+                                resultado += "*Olha para o pé esquerdo*";
+                                break;
+                            case 7:
+                                resultado += "*Coça o nariz*";
+                                break;
+                            case 8:
+                                resultado += "*Mexe na cabeça*";
+                                break;
+                            case 9:
+                                resultado += "*Funga*";
+                                break;
+                            case 10:
+                                resultado += "*Coça a orelha direita*";
+                                break;
+                            case 11:
+                                resultado += "*Coça a orelha esquerda*";
+                                break;
+                            case 12:
+                                resultado += "*Coça o pescoço*";
+                                break;
+                            case 13:
+                                resultado += "*Inspira lentamente*";
+                                break;
+                            case 14:
+                                resultado += "*Expira lentamente*";
+                                break;
+                            case 15:
+                                resultado += "*Coça o rosto*";
+                                break;
+                            case 16:
+                                resultado += "*Coça a barriga*";
+                                break;
+
+                            default:
+                                resultado += "*Coça a cabeça*";
+                                break;
+                        }
+                        return resultado;
                     }
                 case SpeechType.Morfat:
                     {
-                        return texto;
+                        int rand = Utility.Random(0, 17);
+                        switch (rand)
+                        {
+                            case 0:
+                                resultado += "*Geme alto*";
+                                break;
+                            case 1:
+                                resultado += "*Geme e murmura*";
+                                break;
+                            case 2:
+                                resultado += "Raaaoooorrroaaarrrrrrrrr.";
+                                break;
+                            case 3:
+                                resultado += "Uhhhhhhhhhhh.....";
+                                break;
+                            case 4:
+                                resultado += "OOOOoOOoO OOooo ooOOo!";
+                                break;
+                            case 5:
+                                resultado += "AHHHHRRRRR!";
+                                break;
+                            case 6:
+                                resultado += "*Rosna terrivelmente!*";
+                                break;
+                            case 7:
+                                resultado += "Mããããm!";
+                                break;
+                            case 8:
+                                resultado += "Aaaaaarrrrg!";
+                                break;
+                            case 9:
+                                resultado += "Ashhhhhhaaarrr...!";
+                                break;
+                            case 10:
+                                resultado += "Ummmm...";
+                                break;
+                            case 11:
+                                resultado += "*Geme*!";
+                                break;
+                            case 12:
+                                resultado += "*Rosna alto*!";
+                                break;
+                            case 13:
+                                resultado += "*Risada sinistra*!";
+                                break;
+                            case 14:
+                                resultado += "Gurrrahhh...!";
+                                break;
+                            case 15:
+                                resultado += "Grrrr!";
+                                break;
+                            case 16:
+                                resultado += "OooooOOoo ooOoooo OOooooOOo.";
+                                break;
+
+                            default:
+                                resultado += "Ugh...";
+                                break;
+                        }
+                        return resultado;
                     }
                 case SpeechType.Nanuk:
                     {
@@ -805,7 +968,66 @@ namespace Server.Custom
                     }
                 case SpeechType.Nukan:
                     {
-                        return texto;
+                        int rand = Utility.Random(0, 17);
+                        switch (rand)
+                        {
+                            case 0:
+                                resultado += "*Gesticula com a mão direita*";
+                                break;
+                            case 1:
+                                resultado += "*Gesticula com a mão esquerda*";
+                                break;
+                            case 2:
+                                resultado += "*Gesticula com as duas mãos*";
+                                break;
+                            case 3:
+                                resultado += "*Gesticula tocando as sobrancelhas*";
+                                break;
+                            case 4:
+                                resultado += "*Gesticula tocando boca*";
+                                break;
+                            case 5:
+                                resultado += "*Gesticula apontando para o pé direito*";
+                                break;
+                            case 6:
+                                resultado += "Gesticula apontando para o pé esquerdo*";
+                                break;
+                            case 7:
+                                resultado += "*Gesticula tocando o nariz*";
+                                break;
+                            case 8:
+                                resultado += "*Gesticula apontando balançando a cabeça*";
+                                break;
+                            case 9:
+                                resultado += "*Gesticula coçando o nariz *";
+                                break;
+                            case 10:
+                                resultado += "*Gesticula tocando a orelha direita*";
+                                break;
+                            case 11:
+                                resultado += "*Gesticula tocando a orelha esquerda*";
+                                break;
+                            case 12:
+                                resultado += "*Gesticula tocando passando as mãos no pescoço*";
+                                break;
+                            case 13:
+                                resultado += "*Gesticula apontando os olhos*";
+                                break;
+                            case 14:
+                                resultado += "*Gesticula e faz movimentos com a boca*";
+                                break;
+                            case 15:
+                                resultado += "*Gesticula tocando o rosto*";
+                                break;
+                            case 16:
+                                resultado += "*Gesticula tocando a barriga*";
+                                break;
+
+                            default:
+                                resultado += "*Gesticula tocando os ombros*";
+                                break;
+                        }
+                        return resultado;
                     }
                 case SpeechType.Poolik:
                     {
@@ -835,15 +1057,42 @@ namespace Server.Custom
                     }
                 case SpeechType.Shakshar:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaShakshar(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Tahare:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaTahare(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado;
                     }
                 case SpeechType.Taract:
                     {
-                        return texto;
+                        for (int i = 0; i < palavras.Length; i++)
+                        {
+                            var silabas = SepararSilabas(palavras[i]);
+                            foreach (string silaba in silabas)
+                            {
+                                resultado += TraduzirParaTaract(silaba);
+                            }
+                            resultado += (i == ultimaPalavra ? "" : " ");
+                        }
+                        return resultado; ;
                     }
                 default:
                     {
@@ -852,6 +1101,2126 @@ namespace Server.Custom
 
             }
             return resultado;
+        }
+
+        private static string TraduzirParaEorin(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "ua";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "ev";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "ed";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "u";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "a";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "ips";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "sphi";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "spo";
+                            break;
+                        case "d":
+                            traduzido = "fef";
+                            break;
+                        case "f":
+                            traduzido = "gad";
+                            break;
+                        case "g":
+                            traduzido = "hre";
+                            break;
+                        case "h":
+                            traduzido = "jod";
+                            break;
+                        case "j":
+                            traduzido = "kas";
+                            break;
+                        case "k":
+                            traduzido = "quib";
+                            break;
+                        case "l":
+                            traduzido = "nea";
+                            break;
+                        case "m":
+                            traduzido = "nen";
+                            break;
+                        case "n":
+                            traduzido = "poj";
+                            break;
+                        case "p":
+                            traduzido = "quis";
+                            break;
+                        case "q":
+                            traduzido = "rau";
+                            break;
+                        case "r":
+                            traduzido = "set";
+                            break;
+                        case "s":
+                            traduzido = "tir";
+                            break;
+                        case "t":
+                            traduzido = "vao";
+                            break;
+                        case "v":
+                            traduzido = "xim";
+                            break;
+                        case "w":
+                            traduzido = "api";
+                            break;
+                        case "x":
+                            traduzido = "quo";
+                            break;
+                        case "z":
+                            traduzido = "go";
+                            break;
+                        default:
+                            traduzido = "los";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "coma";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "deva";
+                            break;
+                        case "d":
+                            traduzido = "vis de";
+                            break;
+                        case "f":
+                            traduzido = "goev";
+                            break;
+                        case "g":
+                            traduzido = "huva";
+                            break;
+                        case "h":
+                            traduzido = "junu";
+                            break;
+                        case "j":
+                            traduzido = "kudu";
+                            break;
+                        case "k":
+                            traduzido = "ruibs";
+                            break;
+                        case "l":
+                            traduzido = "miza";
+                            break;
+                        case "m":
+                            traduzido = "nehme";
+                            break;
+                        case "n":
+                            traduzido = "pevas";
+                            break;
+                        case "p":
+                            traduzido = "quem";
+                            break;
+                        case "q":
+                            traduzido = "raem";
+                            break;
+                        case "r":
+                            traduzido = "sevo";
+                            break;
+                        case "s":
+                            traduzido = "tequi";
+                            break;
+                        case "t":
+                            traduzido = "uin";
+                            break;
+                        case "v":
+                            traduzido = "xipov";
+                            break;
+                        case "w":
+                            traduzido = "aphum";
+                            break;
+                        case "x":
+                            traduzido = "qtovi";
+                            break;
+                        case "z":
+                            traduzido = "godo";
+                            break;
+                        default:
+                            traduzido = "luove";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "cipi";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "dipvan";
+                            break;
+                        case "d":
+                            traduzido = "fimivas";
+                            break;
+                        case "f":
+                            traduzido = "gahov";
+                            break;
+                        case "g":
+                            traduzido = "huexo";
+                            break;
+                        case "h":
+                            traduzido = "jipiv";
+                            break;
+                        case "j":
+                            traduzido = "katvei";
+                            break;
+                        case "k":
+                            traduzido = "raunufe";
+                            break;
+                        case "l":
+                            traduzido = "mihiqt";
+                            break;
+                        case "m":
+                            traduzido = "nemi";
+                            break;
+                        case "n":
+                            traduzido = "pinopi";
+                            break;
+                        case "p":
+                            traduzido = "quevos";
+                            break;
+                        case "q":
+                            traduzido = "raupeiv";
+                            break;
+                        case "r":
+                            traduzido = "safot";
+                            break;
+                        case "s":
+                            traduzido = "tomocet";
+                            break;
+                        case "t":
+                            traduzido = "vepuan";
+                            break;
+                        case "v":
+                            traduzido = "xeimu";
+                            break;
+                        case "w":
+                            traduzido = "aphifje";
+                            break;
+                        case "x":
+                            traduzido = "qtahae";
+                            break;
+                        case "z":
+                            traduzido = "edktach";
+                            break;
+                        default:
+                            traduzido = "ioven";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaAvlitir(silaba.Substring(0, 3)) + TraduzirParaAvlitir(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaFaeris(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "a";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "é";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "ï";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "ò";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "ù";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "ú";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "br";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ka";
+                            break;
+                        case "d":
+                            traduzido = "dae";
+                            break;
+                        case "f":
+                            traduzido = "fa";
+                            break;
+                        case "g":
+                            traduzido = "gl";
+                            break;
+                        case "h":
+                            traduzido = "h";
+                            break;
+                        case "j":
+                            traduzido = "j";
+                            break;
+                        case "k":
+                            traduzido = "ku";
+                            break;
+                        case "l":
+                            traduzido = "lae";
+                            break;
+                        case "m":
+                            traduzido = "ma";
+                            break;
+                        case "n":
+                            traduzido = "na";
+                            break;
+                        case "p":
+                            traduzido = "pe";
+                            break;
+                        case "q":
+                            traduzido = "qu";
+                            break;
+                        case "r":
+                            traduzido = "ri";
+                            break;
+                        case "s":
+                            traduzido = "st";
+                            break;
+                        case "t":
+                            traduzido = "ti";
+                            break;
+                        case "v":
+                            traduzido = "va";
+                            break;
+                        case "w":
+                            traduzido = "wy";
+                            break;
+                        case "x":
+                            traduzido = "xa";
+                            break;
+                        case "z":
+                            traduzido = "ze";
+                            break;
+                        default:
+                            traduzido = "ae";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "bri";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "kal";
+                            break;
+                        case "d":
+                            traduzido = "dil";
+                            break;
+                        case "f":
+                            traduzido = "fae";
+                            break;
+                        case "g":
+                            traduzido = "gu";
+                            break;
+                        case "h":
+                            traduzido = "hi";
+                            break;
+                        case "j":
+                            traduzido = "je";
+                            break;
+                        case "k":
+                            traduzido = "ki";
+                            break;
+                        case "l":
+                            traduzido = "lay";
+                            break;
+                        case "m":
+                            traduzido = "mor";
+                            break;
+                        case "n":
+                            traduzido = "nar";
+                            break;
+                        case "p":
+                            traduzido = "per";
+                            break;
+                        case "q":
+                            traduzido = "que";
+                            break;
+                        case "r":
+                            traduzido = "ru";
+                            break;
+                        case "s":
+                            traduzido = "sta";
+                            break;
+                        case "t":
+                            traduzido = "tie";
+                            break;
+                        case "v":
+                            traduzido = "val";
+                            break;
+                        case "w":
+                            traduzido = "wyi";
+                            break;
+                        case "x":
+                            traduzido = "xae";
+                            break;
+                        case "z":
+                            traduzido = "zeh";
+                            break;
+                        default:
+                            traduzido = "ay";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "ran";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "cae";
+                            break;
+                        case "d":
+                            traduzido = "da";
+                            break;
+                        case "f":
+                            traduzido = "for";
+                            break;
+                        case "g":
+                            traduzido = "glin";
+                            break;
+                        case "h":
+                            traduzido = "hîe";
+                            break;
+                        case "j":
+                            traduzido = "jay";
+                            break;
+                        case "k":
+                            traduzido = "kuru";
+                            break;
+                        case "l":
+                            traduzido = "lor";
+                            break;
+                        case "m":
+                            traduzido = "maev";
+                            break;
+                        case "n":
+                            traduzido = "nae";
+                            break;
+                        case "p":
+                            traduzido = "pal";
+                            break;
+                        case "q":
+                            traduzido = "qaes";
+                            break;
+                        case "r":
+                            traduzido = "ray";
+                            break;
+                        case "s":
+                            traduzido = "sata";
+                            break;
+                        case "t":
+                            traduzido = "tye";
+                            break;
+                        case "v":
+                            traduzido = "val";
+                            break;
+                        case "w":
+                            traduzido = "wir";
+                            break;
+                        case "x":
+                            traduzido = "xor";
+                            break;
+                        case "z":
+                            traduzido = "zir";
+                            break;
+                        default:
+                            traduzido = "aon";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaFaeris(silaba.Substring(0, 3)) + TraduzirParaFaeris(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaIhluv(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "â";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "aw";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "î";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "ó";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "é";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "îe";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "lâ";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ché";
+                            break;
+                        case "d":
+                            traduzido = "dhî";
+                            break;
+                        case "f":
+                            traduzido = "féâ";
+                            break;
+                        case "g":
+                            traduzido = "ríe";
+                            break;
+                        case "h":
+                            traduzido = "hó";
+                            break;
+                        case "j":
+                            traduzido = "pâ";
+                            break;
+                        case "k":
+                            traduzido = "chéâ";
+                            break;
+                        case "l":
+                            traduzido = "lé";
+                            break;
+                        case "m":
+                            traduzido = "mbú";
+                            break;
+                        case "n":
+                            traduzido = "nó";
+                            break;
+                        case "p":
+                            traduzido = "pé";
+                            break;
+                        case "q":
+                            traduzido = "qî";
+                            break;
+                        case "r":
+                            traduzido = "réa";
+                            break;
+                        case "s":
+                            traduzido = "sî";
+                            break;
+                        case "t":
+                            traduzido = "th";
+                            break;
+                        case "v":
+                            traduzido = "vié";
+                            break;
+                        case "w":
+                            traduzido = "wê";
+                            break;
+                        case "x":
+                            traduzido = "xâ";
+                            break;
+                        case "z":
+                            traduzido = "ssî";
+                            break;
+                        default:
+                            traduzido = "íe";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "mbî";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "gâw";
+                            break;
+                        case "d":
+                            traduzido = "dhó";
+                            break;
+                        case "f":
+                            traduzido = "fîg";
+                            break;
+                        case "g":
+                            traduzido = "gaw";
+                            break;
+                        case "h":
+                            traduzido = "châî";
+                            break;
+                        case "j":
+                            traduzido = "cîh";
+                            break;
+                        case "k":
+                            traduzido = "chéâ";
+                            break;
+                        case "l":
+                            traduzido = "lódh";
+                            break;
+                        case "m":
+                            traduzido = "bmâw";
+                            break;
+                        case "n":
+                            traduzido = "nae";
+                            break;
+                        case "p":
+                            traduzido = "pé";
+                            break;
+                        case "q":
+                            traduzido = "gîó";
+                            break;
+                        case "r":
+                            traduzido = "lîdh";
+                            break;
+                        case "s":
+                            traduzido = "saw";
+                            break;
+                        case "t":
+                            traduzido = "thsó";
+                            break;
+                        case "v":
+                            traduzido = "óné";
+                            break;
+                        case "w":
+                            traduzido = "wêsî";
+                            break;
+                        case "x":
+                            traduzido = "xâéh";
+                            break;
+                        case "z":
+                            traduzido = "thós";
+                            break;
+                        default:
+                            traduzido = "sé";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "áléâ";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "chînâ";
+                            break;
+                        case "d":
+                            traduzido = "dós";
+                            break;
+                        case "f":
+                            traduzido = "séré";
+                            break;
+                        case "g":
+                            traduzido = "oté";
+                            break;
+                        case "h":
+                            traduzido = "chàvî";
+                            break;
+                        case "j":
+                            traduzido = "nîéw";
+                            break;
+                        case "k":
+                            traduzido = "téas";
+                            break;
+                        case "l":
+                            traduzido = "dóîg";
+                            break;
+                        case "m":
+                            traduzido = "mbâw";
+                            break;
+                        case "n":
+                            traduzido = "veadh";
+                            break;
+                        case "p":
+                            traduzido = "ldié";
+                            break;
+                        case "q":
+                            traduzido = "îóls";
+                            break;
+                        case "r":
+                            traduzido = "tíes";
+                            break;
+                        case "s":
+                            traduzido = "qéâ";
+                            break;
+                        case "t":
+                            traduzido = "thsón";
+                            break;
+                        case "v":
+                            traduzido = "nrâs";
+                            break;
+                        case "w":
+                            traduzido = "wéâl";
+                            break;
+                        case "x":
+                            traduzido = "xânó";
+                            break;
+                        case "z":
+                            traduzido = "naédh";
+                            break;
+                        default:
+                            traduzido = "svîe";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaTahare(silaba.Substring(0, 3)) + TraduzirParaTahare(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaKahlur(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "äe";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "er";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "ie";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "ur";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "ta";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "kh";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "ka";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ss";
+                            break;
+                        case "d":
+                            traduzido = "l";
+                            break;
+                        case "f":
+                            traduzido = "k";
+                            break;
+                        case "g":
+                            traduzido = "h";
+                            break;
+                        case "h":
+                            traduzido = "z";
+                            break;
+                        case "j":
+                            traduzido = "nd";
+                            break;
+                        case "k":
+                            traduzido = "s";
+                            break;
+                        case "l":
+                            traduzido = "t";
+                            break;
+                        case "m":
+                            traduzido = "p";
+                            break;
+                        case "n":
+                            traduzido = "q";
+                            break;
+                        case "p":
+                            traduzido = "tü";
+                            break;
+                        case "q":
+                            traduzido = "n";
+                            break;
+                        case "r":
+                            traduzido = "g";
+                            break;
+                        case "s":
+                            traduzido = "o";
+                            break;
+                        case "t":
+                            traduzido = "tr";
+                            break;
+                        case "v":
+                            traduzido = "ë";
+                            break;
+                        case "w":
+                            traduzido = "ï";
+                            break;
+                        case "x":
+                            traduzido = "ü";
+                            break;
+                        case "z":
+                            traduzido = "ö";
+                            break;
+                        default:
+                            traduzido = "lil'";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "'lur";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "kha";
+                            break;
+                        case "d":
+                            traduzido = "thi";
+                            break;
+                        case "f":
+                            traduzido = "kör";
+                            break;
+                        case "g":
+                            traduzido = "hwn";
+                            break;
+                        case "h":
+                            traduzido = "hur";
+                            break;
+                        case "j":
+                            traduzido = "dür";
+                            break;
+                        case "k":
+                            traduzido = "lel";
+                            break;
+                        case "l":
+                            traduzido = "ski";
+                            break;
+                        case "m":
+                            traduzido = "sha";
+                            break;
+                        case "n":
+                            traduzido = "lah";
+                            break;
+                        case "p":
+                            traduzido = "drä";
+                            break;
+                        case "q":
+                            traduzido = "liv";
+                            break;
+                        case "r":
+                            traduzido = "rhu";
+                            break;
+                        case "s":
+                            traduzido = "aly";
+                            break;
+                        case "t":
+                            traduzido = "kel";
+                            break;
+                        case "v":
+                            traduzido = "ang";
+                            break;
+                        case "w":
+                            traduzido = "bal";
+                            break;
+                        case "x":
+                            traduzido = "bel";
+                            break;
+                        case "z":
+                            traduzido = "div";
+                            break;
+                        default:
+                            traduzido = "elv";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "akor";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "alak";
+                            break;
+                        case "d":
+                            traduzido = "kron";
+                            break;
+                        case "f":
+                            traduzido = "dris";
+                            break;
+                        case "g":
+                            traduzido = "erth";
+                            break;
+                        case "h":
+                            traduzido = "ethe";
+                            break;
+                        case "j":
+                            traduzido = "quil'";
+                            break;
+                        case "k":
+                            traduzido = "quav'";
+                            break;
+                        case "l":
+                            traduzido = "ril'";
+                            break;
+                        case "m":
+                            traduzido = "olor";
+                            break;
+                        case "n":
+                            traduzido = "nhil'";
+                            break;
+                        case "p":
+                            traduzido = "tsab";
+                            break;
+                        case "q":
+                            traduzido = "shi'n";
+                            break;
+                        case "r":
+                            traduzido = "shar";
+                            break;
+                        case "s":
+                            traduzido = "ssz'";
+                            break;
+                        case "t":
+                            traduzido = "faer";
+                            break;
+                        case "v":
+                            traduzido = "ilzt";
+                            break;
+                        case "w":
+                            traduzido = "houn";
+                            break;
+                        case "x":
+                            traduzido = "vier";
+                            break;
+                        case "z":
+                            traduzido = "zjhel";
+                            break;
+                        default:
+                            traduzido = "les";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaNanuk(silaba.Substring(0, 3)) + TraduzirParaNanuk(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaKrusk(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "a";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "u";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "i";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "au";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "ai";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "o";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "ba";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ti";
+                            break;
+                        case "d":
+                            traduzido = "do";
+                            break;
+                        case "f":
+                            traduzido = "fu";
+                            break;
+                        case "g":
+                            traduzido = "g";
+                            break;
+                        case "h":
+                            traduzido = "ah";
+                            break;
+                        case "j":
+                            traduzido = "g";
+                            break;
+                        case "k":
+                            traduzido = "kau";
+                            break;
+                        case "l":
+                            traduzido = "li";
+                            break;
+                        case "m":
+                            traduzido = "mo";
+                            break;
+                        case "n":
+                            traduzido = "ni";
+                            break;
+                        case "p":
+                            traduzido = "pu";
+                            break;
+                        case "q":
+                            traduzido = "rza";
+                            break;
+                        case "r":
+                            traduzido = "zgi";
+                            break;
+                        case "s":
+                            traduzido = "ski";
+                            break;
+                        case "t":
+                            traduzido = "thu";
+                            break;
+                        case "v":
+                            traduzido = "sna";
+                            break;
+                        case "w":
+                            traduzido = "ìá";
+                            break;
+                        case "x":
+                            traduzido = "wa";
+                            break;
+                        case "z":
+                            traduzido = "zo";
+                            break;
+                        default:
+                            traduzido = "ma";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "bago";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "bûba";
+                            break;
+                        case "d":
+                            traduzido = "dura";
+                            break;
+                        case "f":
+                            traduzido = "furâ";
+                            break;
+                        case "g":
+                            traduzido = "ghâs";
+                            break;
+                        case "h":
+                            traduzido = "hai";
+                            break;
+                        case "j":
+                            traduzido = "gûl";
+                            break;
+                        case "k":
+                            traduzido = "krim";
+                            break;
+                        case "l":
+                            traduzido = "lug";
+                            break;
+                        case "m":
+                            traduzido = "mora";
+                            break;
+                        case "n":
+                            traduzido = "nazgi";
+                            break;
+                        case "p":
+                            traduzido = "puho";
+                            break;
+                        case "q":
+                            traduzido = "rusa";
+                            break;
+                        case "r":
+                            traduzido = "ruka";
+                            break;
+                        case "s":
+                            traduzido = "snga";
+                            break;
+                        case "t":
+                            traduzido = "thra";
+                            break;
+                        case "v":
+                            traduzido = "vang";
+                            break;
+                        case "w":
+                            traduzido = "um";
+                            break;
+                        case "x":
+                            traduzido = "wara";
+                            break;
+                        case "z":
+                            traduzido = "zako";
+                            break;
+                        default:
+                            traduzido = "buzu";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "porak";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ouk";
+                            break;
+                        case "d":
+                            traduzido = "karak";
+                            break;
+                        case "f":
+                            traduzido = "taka";
+                            break;
+                        case "g":
+                            traduzido = "ikem";
+                            break;
+                        case "h":
+                            traduzido = "batuk";
+                            break;
+                        case "j":
+                            traduzido = "mok";
+                            break;
+                        case "k":
+                            traduzido = "burpi";
+                            break;
+                        case "l":
+                            traduzido = "haaki";
+                            break;
+                        case "m":
+                            traduzido = "pixo";
+                            break;
+                        case "n":
+                            traduzido = "utaxi";
+                            break;
+                        case "p":
+                            traduzido = "fugor";
+                            break;
+                        case "q":
+                            traduzido = "borca";
+                            break;
+                        case "r":
+                            traduzido = "kaita";
+                            break;
+                        case "s":
+                            traduzido = "mojai";
+                            break;
+                        case "t":
+                            traduzido = "knolu";
+                            break;
+                        case "v":
+                            traduzido = "tulûk";
+                            break;
+                        case "w":
+                            traduzido = "nazgo";
+                            break;
+                        case "x":
+                            traduzido = "karvu";
+                            break;
+                        case "z":
+                            traduzido = "omiu";
+                            break;
+                        default:
+                            traduzido = "ghaal";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaKrusk(silaba.Substring(0, 3)) + TraduzirParaKrusk(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaShakshar(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "a";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "e";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "i";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "y";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "il";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "ú";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "s";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ss";
+                            break;
+                        case "d":
+                            traduzido = "l";
+                            break;
+                        case "f":
+                            traduzido = "f";
+                            break;
+                        case "g":
+                            traduzido = "sl";
+                            break;
+                        case "h":
+                            traduzido = "sh";
+                            break;
+                        case "j":
+                            traduzido = "j";
+                            break;
+                        case "k":
+                            traduzido = "st";
+                            break;
+                        case "l":
+                            traduzido = "l";
+                            break;
+                        case "m":
+                            traduzido = "sm";
+                            break;
+                        case "n":
+                            traduzido = "sn";
+                            break;
+                        case "p":
+                            traduzido = "s";
+                            break;
+                        case "q":
+                            traduzido = "s";
+                            break;
+                        case "r":
+                            traduzido = "s";
+                            break;
+                        case "s":
+                            traduzido = "sa";
+                            break;
+                        case "t":
+                            traduzido = "t";
+                            break;
+                        case "v":
+                            traduzido = "s";
+                            break;
+                        case "w":
+                            traduzido = "s";
+                            break;
+                        case "x":
+                            traduzido = "ss";
+                            break;
+                        case "z":
+                            traduzido = "se";
+                            break;
+                        default:
+                            traduzido = "s";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "si";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ssa";
+                            break;
+                        case "d":
+                            traduzido = "li";
+                            break;
+                        case "f":
+                            traduzido = "fi";
+                            break;
+                        case "g":
+                            traduzido = "sle";
+                            break;
+                        case "h":
+                            traduzido = "shi";
+                            break;
+                        case "j":
+                            traduzido = "ja";
+                            break;
+                        case "k":
+                            traduzido = "sti";
+                            break;
+                        case "l":
+                            traduzido = "la";
+                            break;
+                        case "m":
+                            traduzido = "smi";
+                            break;
+                        case "n":
+                            traduzido = "sna";
+                            break;
+                        case "p":
+                            traduzido = "si";
+                            break;
+                        case "q":
+                            traduzido = "sa";
+                            break;
+                        case "r":
+                            traduzido = "si";
+                            break;
+                        case "s":
+                            traduzido = "saa";
+                            break;
+                        case "t":
+                            traduzido = "ti";
+                            break;
+                        case "v":
+                            traduzido = "ss";
+                            break;
+                        case "w":
+                            traduzido = "sis";
+                            break;
+                        case "x":
+                            traduzido = "sas";
+                            break;
+                        case "z":
+                            traduzido = "sse";
+                            break;
+                        default:
+                            traduzido = "ss";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "syl";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ssas";
+                            break;
+                        case "d":
+                            traduzido = "lys";
+                            break;
+                        case "f":
+                            traduzido = "fys";
+                            break;
+                        case "g":
+                            traduzido = "slys";
+                            break;
+                        case "h":
+                            traduzido = "sis";
+                            break;
+                        case "j":
+                            traduzido = "sja";
+                            break;
+                        case "k":
+                            traduzido = "stis";
+                            break;
+                        case "l":
+                            traduzido = "sla";
+                            break;
+                        case "m":
+                            traduzido = "smys";
+                            break;
+                        case "n":
+                            traduzido = "snas";
+                            break;
+                        case "p":
+                            traduzido = "ssis";
+                            break;
+                        case "q":
+                            traduzido = "sas";
+                            break;
+                        case "r":
+                            traduzido = "syls";
+                            break;
+                        case "s":
+                            traduzido = "sasa";
+                            break;
+                        case "t":
+                            traduzido = "tsys";
+                            break;
+                        case "v":
+                            traduzido = "ssa";
+                            break;
+                        case "w":
+                            traduzido = "syts";
+                            break;
+                        case "x":
+                            traduzido = "sahs";
+                            break;
+                        case "z":
+                            traduzido = "ssel";
+                            break;
+                        default:
+                            traduzido = "ssus";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaShakshar(silaba.Substring(0, 3)) + TraduzirParaShakshar(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaTahare(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "á";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "éa";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "í";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "ó";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "é";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "íe";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "lá";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "sé";
+                            break;
+                        case "d":
+                            traduzido = "hí";
+                            break;
+                        case "f":
+                            traduzido = "féa";
+                            break;
+                        case "g":
+                            traduzido = "ríe";
+                            break;
+                        case "h":
+                            traduzido = "hó";
+                            break;
+                        case "j":
+                            traduzido = "pá";
+                            break;
+                        case "k":
+                            traduzido = "céa";
+                            break;
+                        case "l":
+                            traduzido = "lé";
+                            break;
+                        case "m":
+                            traduzido = "kú";
+                            break;
+                        case "n":
+                            traduzido = "nó";
+                            break;
+                        case "p":
+                            traduzido = "pé";
+                            break;
+                        case "q":
+                            traduzido = "qì";
+                            break;
+                        case "r":
+                            traduzido = "réa";
+                            break;
+                        case "s":
+                            traduzido = "sì";
+                            break;
+                        case "t":
+                            traduzido = "tó";
+                            break;
+                        case "v":
+                            traduzido = "vié";
+                            break;
+                        case "w":
+                            traduzido = "ví";
+                            break;
+                        case "x":
+                            traduzido = "ssá";
+                            break;
+                        case "z":
+                            traduzido = "ssì";
+                            break;
+                        default:
+                            traduzido = "íe";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "mbi";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "cá";
+                            break;
+                        case "d":
+                            traduzido = "dó";
+                            break;
+                        case "f":
+                            traduzido = "fíò";
+                            break;
+                        case "g":
+                            traduzido = "gíe";
+                            break;
+                        case "h":
+                            traduzido = "hàí";
+                            break;
+                        case "j":
+                            traduzido = "íh";
+                            break;
+                        case "k":
+                            traduzido = "céa";
+                            break;
+                        case "l":
+                            traduzido = "ló";
+                            break;
+                        case "m":
+                            traduzido = "méa";
+                            break;
+                        case "n":
+                            traduzido = "nae";
+                            break;
+                        case "p":
+                            traduzido = "pé";
+                            break;
+                        case "q":
+                            traduzido = "íó";
+                            break;
+                        case "r":
+                            traduzido = "lí";
+                            break;
+                        case "s":
+                            traduzido = "só";
+                            break;
+                        case "t":
+                            traduzido = "tsó";
+                            break;
+                        case "v":
+                            traduzido = "óné";
+                            break;
+                        case "w":
+                            traduzido = "si";
+                            break;
+                        case "x":
+                            traduzido = "iéh";
+                            break;
+                        case "z":
+                            traduzido = "tós";
+                            break;
+                        default:
+                            traduzido = "sé";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "áléa";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "mínà";
+                            break;
+                        case "d":
+                            traduzido = "nósó";
+                            break;
+                        case "f":
+                            traduzido = "séré";
+                            break;
+                        case "g":
+                            traduzido = "oté";
+                            break;
+                        case "h":
+                            traduzido = "vàví";
+                            break;
+                        case "j":
+                            traduzido = "níné";
+                            break;
+                        case "k":
+                            traduzido = "téas";
+                            break;
+                        case "l":
+                            traduzido = "dócí";
+                            break;
+                        case "m":
+                            traduzido = "géal";
+                            break;
+                        case "n":
+                            traduzido = "veas";
+                            break;
+                        case "p":
+                            traduzido = "ldié";
+                            break;
+                        case "q":
+                            traduzido = "íóls";
+                            break;
+                        case "r":
+                            traduzido = "tíes";
+                            break;
+                        case "s":
+                            traduzido = "qéa";
+                            break;
+                        case "t":
+                            traduzido = "tsón";
+                            break;
+                        case "v":
+                            traduzido = "nrás";
+                            break;
+                        case "w":
+                            traduzido = "néal";
+                            break;
+                        case "x":
+                            traduzido = "minó";
+                            break;
+                        case "z":
+                            traduzido = "nahtéa";
+                            break;
+                        default:
+                            traduzido = "svíe";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaTahare(silaba.Substring(0, 3)) + TraduzirParaTahare(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
+        }
+
+        private static string TraduzirParaTaract(string silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
+            switch (tamanho)
+            {
+                case 0: //String vazio
+                    break;
+                case 1: //String com 1 caractere
+                    switch (primeiraLetra)
+                    {
+                        case "a":
+                        case "à":
+                        case "á":
+                        case "â":
+                        case "ã":
+                        case "ä":
+                            return "ah";
+                        case "e":
+                        case "é":
+                        case "è":
+                        case "ê":
+                        case "ë":
+                            return "ih";
+                        case "i":
+                        case "í":
+                        case "ì":
+                        case "î":
+                        case "ï":
+                            return "eh";
+                        case "o":
+                        case "ó":
+                        case "ò":
+                        case "ô":
+                        case "õ":
+                        case "ö":
+                            return "oh";
+                        case "u":
+                        case "ú":
+                        case "ù":
+                        case "û":
+                        case "ü":
+                            return "uh";
+                        case "y":
+                        case "ý":
+                        case "ÿ":
+                            return "is";
+                        default:
+                            return silaba;
+                    }
+                case 2: //String com 2 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "ba";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "ce";
+                            break;
+                        case "d":
+                            traduzido = "di";
+                            break;
+                        case "f":
+                            traduzido = "bi";
+                            break;
+                        case "g":
+                            traduzido = "ci";
+                            break;
+                        case "h":
+                            traduzido = "hi";
+                            break;
+                        case "j":
+                            traduzido = "bo";
+                            break;
+                        case "k":
+                            traduzido = "co";
+                            break;
+                        case "l":
+                            traduzido = "do";
+                            break;
+                        case "m":
+                            traduzido = "ta";
+                            break;
+                        case "n":
+                            traduzido = "te";
+                            break;
+                        case "p":
+                            traduzido = "ti";
+                            break;
+                        case "q":
+                            traduzido = "pa";
+                            break;
+                        case "r":
+                            traduzido = "pe";
+                            break;
+                        case "s":
+                            traduzido = "pi";
+                            break;
+                        case "t":
+                            traduzido = "qa";
+                            break;
+                        case "v":
+                            traduzido = "qe";
+                            break;
+                        case "w":
+                            traduzido = "qi";
+                            break;
+                        case "x":
+                            traduzido = "ga";
+                            break;
+                        case "z":
+                            traduzido = "ge";
+                            break;
+                        default:
+                            traduzido = "gi";
+                            break;
+                    }
+                    break;
+                case 3: //String com 3 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "bha";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "chë";
+                            break;
+                        case "d":
+                            traduzido = "dhï";
+                            break;
+                        case "f":
+                            traduzido = "bhï";
+                            break;
+                        case "g":
+                            traduzido = "chi";
+                            break;
+                        case "h":
+                            traduzido = "hhi";
+                            break;
+                        case "j":
+                            traduzido = "bho";
+                            break;
+                        case "k":
+                            traduzido = "cho";
+                            break;
+                        case "l":
+                            traduzido = "dhö";
+                            break;
+                        case "m":
+                            traduzido = "thä";
+                            break;
+                        case "n":
+                            traduzido = "thë";
+                            break;
+                        case "p":
+                            traduzido = "thï";
+                            break;
+                        case "q":
+                            traduzido = "pha";
+                            break;
+                        case "r":
+                            traduzido = "phe";
+                            break;
+                        case "s":
+                            traduzido = "phi";
+                            break;
+                        case "t":
+                            traduzido = "qha";
+                            break;
+                        case "v":
+                            traduzido = "qhe";
+                            break;
+                        case "w":
+                            traduzido = "qhï";
+                            break;
+                        case "x":
+                            traduzido = "ghä";
+                            break;
+                        case "z":
+                            traduzido = "ghë";
+                            break;
+                        default:
+                            traduzido = "ghï";
+                            break;
+                    }
+                    break;
+                case 4: //String com 4 caracteres
+                    switch (primeiraLetra)
+                    {
+                        case "b":
+                            traduzido = "bähr";
+                            break;
+                        case "c":
+                        case "ç":
+                            traduzido = "cehr";
+                            break;
+                        case "d":
+                            traduzido = "dihr";
+                            break;
+                        case "f":
+                            traduzido = "bïhr";
+                            break;
+                        case "g":
+                            traduzido = "cihr";
+                            break;
+                        case "h":
+                            traduzido = "hhis";
+                            break;
+                        case "j":
+                            traduzido = "bohs";
+                            break;
+                        case "k":
+                            traduzido = "cohs";
+                            break;
+                        case "l":
+                            traduzido = "döhs";
+                            break;
+                        case "m":
+                            traduzido = "tähr";
+                            break;
+                        case "n":
+                            traduzido = "tëhr";
+                            break;
+                        case "p":
+                            traduzido = "tïhs";
+                            break;
+                        case "q":
+                            traduzido = "pahr";
+                            break;
+                        case "r":
+                            traduzido = "pëhr";
+                            break;
+                        case "s":
+                            traduzido = "pihs";
+                            break;
+                        case "t":
+                            traduzido = "qahr";
+                            break;
+                        case "v":
+                            traduzido = "qehr";
+                            break;
+                        case "w":
+                            traduzido = "qïhs";
+                            break;
+                        case "x":
+                            traduzido = "gähr";
+                            break;
+                        case "z":
+                            traduzido = "gëhr";
+                            break;
+                        default:
+                            traduzido = "gïhs";
+                            break;
+                    }
+                    break;
+                default: // String com mais de 4 caracteres
+                    traduzido = TraduzirParaTaract(silaba.Substring(0, 3)) + TraduzirParaTaract(silaba.Substring(3));
+                    break;
+            }
+            return traduzido;
         }
 
         private static String TraduzirParaAvlitir(String silaba)
@@ -2171,11 +4540,11 @@ namespace Server.Custom
             }
             return traduzido;
         }
-private static String TraduzirParaPoolik(String silaba)
-{
-    int tamanho = silaba.Length;
-    string traduzido = "";
-    string primeiraLetra = silaba.Substring(0, 1).ToLower();
+        private static String TraduzirParaPoolik(String silaba)
+        {
+            int tamanho = silaba.Length;
+            string traduzido = "";
+            string primeiraLetra = silaba.Substring(0, 1).ToLower();
             switch (tamanho)
             {
                 case 0: //String vazio
@@ -2964,97 +5333,7 @@ private static String TraduzirParaPoolik(String silaba)
             }
             return traduzido;
         }
-        /*
-        switch (idioma)
-        {
-            case SpeechType.Avlitir:
-                {
-                    return TraduzirParaAvlitir(String texto);
-                }
-            case SpeechType.Celirus:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Comum:
-                {
-                    return texto;
-                }
-            case SpeechType.Drakir:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Eorin:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Faeris:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Ihluv:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Infaris:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Kahlur:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Kriktik:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Krusk:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Ladvek:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Morfat:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Nanuk:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Nukan:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Poolik:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Prokbum:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Shakshar:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Tahare:
-                {
-                    return TraduzirPara(String texto);
-                }
-            case SpeechType.Taract:
-                {
-                    return TraduzirPara(String texto);
-                }
-            default:
-                {
-                    return texto;
-                }
-
-        }
-        */
-
+       
         /*
             // Capitalize the first word of sentence
             if ((mySpeechTranslated != "") && (mySpeechTranslated != null))
