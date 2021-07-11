@@ -20,7 +20,7 @@ namespace Server.Spells.Spellweaving
 		public abstract double RequiredSkill { get; }
 		public abstract int RequiredMana { get; }
 		public override SkillName CastSkill { get { return SkillName.Feiticaria; } }
-		public override SkillName DamageSkill { get { return SkillName.Feiticaria; } }
+		public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 		public override bool ClearHandsOnCast { get { return false; } }
 		public virtual int FocusLevel { get { return m_CastTimeFocusLevel; } }
 

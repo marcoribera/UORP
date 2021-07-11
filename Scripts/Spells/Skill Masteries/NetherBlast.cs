@@ -32,10 +32,9 @@ namespace Server.Spells.SkillMasteries
         {
             get
             {
-                if (Caster.Skills[SkillName.PreparoFisico].Value > Caster.Skills[SkillName.ImbuirMagica].Value)
-                    return SkillName.PreparoFisico;
-
-                return SkillName.ImbuirMagica;
+                if (Caster.Skills[SkillName.ImbuirMagica].Value >= Caster.Skills[SkillName.PoderMagico].Value)
+                    return SkillName.ImbuirMagica;
+                return SkillName.PoderMagico;
             }
         }
 
