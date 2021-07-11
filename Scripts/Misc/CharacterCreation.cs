@@ -1309,7 +1309,18 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Ninjitsu:
+                case SkillName.Feiticaria:
+                    {
+                        // RunUO fix
+                        Spellbook
+                            book = new SpellweavingBook(
+                                (ulong)0x0007); // Arcane Circle, Gift of Renewal, Immolating Weapon
+                        book.LootType = LootType.Blessed;
+                        PackItem(book);
+
+                        break;
+                    }
+                case SkillName.Ninjitsu:
 				{
 					if (human || elf)
 					{
