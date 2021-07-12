@@ -43,7 +43,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(NetherBoltScroll), 250, 10, 0x2D9E, 0));
                 Add(new GenericBuyInfo(typeof(HealingStoneScroll), 250, 10, 0x2D9F, 0));
                 Add(new GenericBuyInfo(typeof(ArcaneCircleScroll), 250, 10, 0x2D51, 0));
-                Add(new GenericBuyInfo(typeof(GiftOfLifeScroll), 250, 10, 0x2D5F, 0));
+                Add(new GenericBuyInfo(typeof(GiftOfRenewalScroll), 250, 10, 0x2D52, 0));
                 Add(new GenericBuyInfo(typeof(ImmolatingWeaponScroll), 250, 10, 0x2D53, 0));
                 Add(new GenericBuyInfo(typeof(AttuneWeaponScroll), 250, 10, 0x2D54, 0));
 

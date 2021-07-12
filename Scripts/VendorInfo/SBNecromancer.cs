@@ -44,8 +44,13 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(BlankScroll), 15, 40, 0x0E34, 0));
 				//Add( new GenericBuyInfo( typeof( RecallRune ), 25, 10, 0x1f14, 0 ) );
 				Add( new GenericBuyInfo( typeof( Spellbook ), 1000, 3, 0xEFA, 0 ) );
-			
-				Type[] types = Loot.RegularScrollTypes;
+                Add(new GenericBuyInfo(typeof(CurseWeaponScroll), 250, 10, 0x2263, 0));
+                Add(new GenericBuyInfo(typeof(BloodOathScroll), 250, 10, 0x2261, 0));
+                Add(new GenericBuyInfo(typeof(CorpseSkinScroll), 250, 10, 0x2262, 0));
+                Add(new GenericBuyInfo(typeof(EvilOmenScroll), 250, 10, 0x2264, 0));
+
+
+                /*Type[] types = Loot.RegularScrollTypes;
 			
 				for (int i = 0; i < types.Length && i < 8; ++i)
                 {
@@ -57,8 +62,8 @@ namespace Server.Mobiles
                         --itemID;
 
                     Add(new GenericBuyInfo(types[i], 12 + ((i / 8) * 10), 20, itemID, 0, true));
-                }
-			}
+                }*/
+            }
 		}
 
 		public class InternalSellInfo : GenericSellInfo
