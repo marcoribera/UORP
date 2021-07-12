@@ -892,6 +892,8 @@ namespace Server.Engines.Craft
             
             #region Miscellaneous
 
+
+
             index = AddCraft(typeof(DragonGloves), 1011173, 1029795, 60.0, 118.9, typeof(RedScales), 1060883, 16, 1060884);
             SetUseSubRes2(index, true);
 
