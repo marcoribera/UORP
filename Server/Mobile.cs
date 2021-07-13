@@ -12132,7 +12132,12 @@ namespace Server
 			PublicOverheadMessage(type, hue, ascii, text, true);
 		}
 
-		public void PublicOverheadMessage(MessageType type, int hue, bool ascii, string text, bool noLineOfSight)
+        public void OverheadMessage(string msg)
+        {
+            PublicOverheadMessage(MessageType.Regular, 0, true, msg);
+        }
+
+        public void PublicOverheadMessage(MessageType type, int hue, bool ascii, string text, bool noLineOfSight)
 		{
 			if (m_Map != null)
 			{
