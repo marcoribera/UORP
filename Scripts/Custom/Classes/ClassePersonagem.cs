@@ -45,8 +45,9 @@ namespace Server.Custom.Classes
                     player.SendMessage("Requisitos:");
                     foreach (KeyValuePair<SkillName, double> requisito in Requisitos)
                     {
-                        player.SendMessage(String.Format("({2}/{1}) {0}", player.Skills[requisito.Key].Name, requisito.Value, player.Skills[requisito.Key].Value));
-                        if (player.Skills[requisito.Key].Value >= requisito.Value)
+                        player.SendMessage(String.Format("({0}/{1}) {2}", player.Skills[requisito.Key].Base, requisito.Value, player.Skills[requisito.Key].Name));
+                        //Console.WriteLine("-> "+requisito.Key + " " + player.Skills[requisito.Key].Name);
+                        if (player.Skills[requisito.Key].Base >= requisito.Value)
                         {
                             atendidos++;
                         }
@@ -95,7 +96,7 @@ namespace Server.Custom.Classes
                     foreach (KeyValuePair<SkillName, double> beneficio in Beneficios)
                     {
                         player.SendMessage(String.Format("({2}/{1}) {0}", player.Skills[beneficio.Key].Name, player.Skills[beneficio.Key].Cap - beneficio.Value, player.Skills[beneficio.Key].Value));
-                        if (player.Skills[beneficio.Key].Value > player.Skills[beneficio.Key].Cap - beneficio.Value)
+                        if (player.Skills[beneficio.Key].Base > player.Skills[beneficio.Key].Cap - beneficio.Value)
                         {
                             esquece = false;
                         }
