@@ -127,10 +127,10 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(LesserHealPotion), 1116348, 1044543, -25.0, 25.0, typeof(Ginseng), 1044356, 1, 1044364);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
-            index = AddCraft(typeof(HealPotion), 1116348, 1044544, 15.0, 65.0, typeof(Ginseng), 1044356, 3, 1044364);
+            index = AddCraft(typeof(HealPotion), 1116348, 1044544, 15.0, 55.0, typeof(Ginseng), 1044356, 3, 1044364);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
-            index = AddCraft(typeof(GreaterHealPotion), 1116348, 1044545, 55.0, 105.0, typeof(Ginseng), 1044356, 7, 1044364);
+            index = AddCraft(typeof(GreaterHealPotion), 1116348, 1044545, 45.0, 105.0, typeof(Ginseng), 1044356, 7, 1044364);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
             index = AddCraft(typeof(LesserCurePotion), 1116348, 1044552, -10.0, 40.0, typeof(Garlic), 1044355, 1, 1044363);
@@ -139,12 +139,12 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(CurePotion), 1116348, 1044553, 25.0, 75.0, typeof(Garlic), 1044355, 3, 1044363);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
-            index = AddCraft(typeof(GreaterCurePotion), 1116348, 1044554, 65.0, 115.0, typeof(Garlic), 1044355, 6, 1044363);
+            index = AddCraft(typeof(GreaterCurePotion), 1116348, 1044554, 55.0, 115.0, typeof(Garlic), 1044355, 6, 1044363);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
             if (Core.SA)
             {
-                index = AddCraft(typeof(ElixirOfRebirth), 1116348, 1112762, 65.0, 115.0, typeof(MedusaBlood), 1031702, 1, 1044253);
+                index = AddCraft(typeof(ElixirOfRebirth), 1116348, 1112762, 55.0, 115.0, typeof(MedusaBlood), 1031702, 1, 1044253);
                 AddRes(index, typeof(SpidersSilk), 1044360, 3, 1044368);
                 AddRes(index, typeof(Bottle), 1044529, 1, 500315);
             }
@@ -179,7 +179,7 @@ namespace Server.Engines.Craft
 
             if (Core.ML)
             {
-                index = AddCraft(typeof(InvisibilityPotion), 1116349, 1074860, 65.0, 115.0, typeof(Bottle), 1044529, 1, 500315);
+                index = AddCraft(typeof(InvisibilityPotion), 1116349, 1074860, 60, 115.0, typeof(Bottle), 1044529, 1, 500315);
                 AddRes(index, typeof(Bloodmoss), 1044354, 4, 1044362);
                 AddRes(index, typeof(Nightshade), 1044358, 3, 1044366);
                 AddRecipe(index, (int)TinkerRecipes.InvisibilityPotion);
@@ -230,20 +230,20 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(GreaterPoisonPotion), 1116350, 1044550, 55.0, 105.0, typeof(Nightshade), 1044358, 4, 1044366);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
-            index = AddCraft(typeof(DeadlyPoisonPotion), 1116350, 1044551, 90.0, 140.0, typeof(Nightshade), 1044358, 8, 1044366);
+            index = AddCraft(typeof(DeadlyPoisonPotion), 1116350, 1044551, 80.0, 140.0, typeof(Nightshade), 1044358, 8, 1044366);
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
 
             if (Core.ML)
             {
-                index = AddCraft(typeof(ParasiticPotion), 1116350, 1072942, 65.0, 115.0, typeof(Bottle), 1044529, 1, 500315);
+                index = AddCraft(typeof(ParasiticPotion), 1116350, 1072942, 55.0, 115.0, typeof(Bottle), 1044529, 1, 500315);
                 AddRes(index, typeof(ParasiticPlant), 1073474, 5, 1044253);
                 AddRecipe(index, (int)TinkerRecipes.ParasiticPotion);
 
-                index = AddCraft(typeof(DarkglowPotion), 1116350, 1072943, 65.0, 115.0, typeof(Bottle), 1044529, 1, 500315);
+                index = AddCraft(typeof(DarkglowPotion), 1116350, 1072943, 55.0, 115.0, typeof(Bottle), 1044529, 1, 500315);
                 AddRes(index, typeof(LuminescentFungi), 1073475, 5, 1044253);
                 AddRecipe(index, (int)TinkerRecipes.DarkglowPotion);
 
-                index = AddCraft(typeof(ScouringToxin), 1116350, 1112292, 75.0, 100.0, typeof(ToxicVenomSac), 1112291, 1, 1044253);
+                index = AddCraft(typeof(ScouringToxin), 1116350, 1112292, 65.0, 100.0, typeof(ToxicVenomSac), 1112291, 1, 1044253);
                 AddRes(index, typeof(Bottle), 1044529, 1, 500315);
             }
 
@@ -288,7 +288,7 @@ namespace Server.Engines.Craft
                     AddRes(index, typeof(Potash), 1116319, 1, 1044253);
                 }
 
-                index = AddCraft(typeof(FuseCord), 1116351, 1116305, 55.0, 105.0, typeof(DarkYarn), 1023615, 1, 1044253);
+                index = AddCraft(typeof(FuseCord), 1116351, 1116305, 45.0, 105.0, typeof(DarkYarn), 1023615, 1, 1044253);
                 AddRes(index, typeof(BlackPowder), 1095826, 1, 1044253);
                 AddRes(index, typeof(Potash), 1116319, 1, 1044253);
                 SetNeedWater(index, true);
@@ -297,7 +297,7 @@ namespace Server.Engines.Craft
             // Strange Brew
             if (Core.SE)
             {                
-                index = AddCraft(typeof(SmokeBomb), 1116353, 1030248, 90.0, 120.0, typeof(Eggs), 1044477, 1, 1044253);
+                index = AddCraft(typeof(SmokeBomb), 1116353, 1030248, 80.0, 120.0, typeof(Eggs), 1044477, 1, 1044253);
                 AddRes(index, typeof(Ginseng), 1044356, 3, 1044364);
             }
 
@@ -311,12 +311,12 @@ namespace Server.Engines.Craft
 
             if (Core.SA)
             {
-                index = AddCraft(typeof(NaturalDye), 1116353, 1112136, 75.0, 100.0, typeof(PlantPigment), 1112132, 1, 1044253);
+                index = AddCraft(typeof(NaturalDye), 1116353, 1112136, 65.0, 100.0, typeof(PlantPigment), 1112132, 1, 1044253);
                 AddRes(index, typeof(ColorFixative), 1112135, 1, 1044253);
                 SetItemHue(index, 2101);
                 SetRequireResTarget(index);
 
-                index = AddCraft(typeof(NexusCore), 1116353, 1153501, 90.0, 120.0, typeof(MandrakeRoot), 1015013, 10, 1044253);
+                index = AddCraft(typeof(NexusCore), 1116353, 1153501, 80.0, 120.0, typeof(MandrakeRoot), 1015013, 10, 1044253);
                 AddRes(index, typeof(SpidersSilk), 1015007, 10, 1044253);
                 AddRes(index, typeof(DarkSapphire), 1032690, 5, 1044253);
                 AddRes(index, typeof(CrushedGlass), 1113351, 5, 1044253);
@@ -332,26 +332,26 @@ namespace Server.Engines.Craft
                 SetItemHue(index, 2101);
                 SetRequireResTarget(index);
 
-                index = AddCraft(typeof(ColorFixative), 1044495, 1112135, 75.0, 100.0, typeof(SilverSerpentVenom), 1112173, 1, 1044253);
+                index = AddCraft(typeof(ColorFixative), 1044495, 1112135, 65.0, 100.0, typeof(SilverSerpentVenom), 1112173, 1, 1044253);
                 AddRes(index, typeof(BaseBeverage), 1022503, 1, 1044253);
                 SetBeverageType(index, BeverageType.Wine);
 
-                index = AddCraft(typeof(CrystalGranules), 1044495, 1112329, 75.0, 100.0, typeof(ShimmeringCrystals), 1075095, 1, 1044253);
+                index = AddCraft(typeof(CrystalGranules), 1044495, 1112329, 55.0, 100.0, typeof(ShimmeringCrystals), 1075095, 1, 1044253);
                 SetItemHue(index, 2625);
 
-                index = AddCraft(typeof(CrystalDust), 1044495, 1112328, 75.0, 100.0, typeof(CrystallineFragments), 1153988, 4, 1044253);
+                index = AddCraft(typeof(CrystalDust), 1044495, 1112328, 55.0, 100.0, typeof(CrystallineFragments), 1153988, 4, 1044253);
                 SetItemHue(index, 2103);               
 
-                index = AddCraft(typeof(SoftenedReeds), 1044495, 1112249, 75.0, 100.0, typeof(DryReeds), 1112248, 1, 1112250);
+                index = AddCraft(typeof(SoftenedReeds), 1044495, 1112249, 65.0, 100.0, typeof(DryReeds), 1112248, 1, 1112250);
                 AddRes(index, typeof(ScouringToxin), 1112292, 2, 1112326);
                 SetRequireResTarget(index);
                 SetRequiresBasketWeaving(index);
 
-                index = AddCraft(typeof(VialOfVitriol), 1044495, 1113331, 90.0, 100.0, typeof(ParasiticPotion), 1072848, 1, 1113754);
+                index = AddCraft(typeof(VialOfVitriol), 1044495, 1113331, 80.0, 100.0, typeof(ParasiticPotion), 1072848, 1, 1113754);
                 AddRes(index, typeof (Nightshade), 1044358, 30, 1044366);
                 AddSkill(index, SkillName.Arcanismo, 75.0, 100.0);
 
-                index = AddCraft(typeof(BottleIchor), 1044495, 1113361, 90.0, 100.0, typeof(DarkglowPotion), 1072849, 1, 1113755);
+                index = AddCraft(typeof(BottleIchor), 1044495, 1113361, 80.0, 100.0, typeof(DarkglowPotion), 1072849, 1, 1113755);
                 AddRes(index, typeof(SpidersSilk), 1044360, 1, 1044368);
                 AddSkill(index, SkillName.Arcanismo, 75.0, 100.0);
 
@@ -380,7 +380,7 @@ namespace Server.Engines.Craft
 
             if (Core.SA)
             {
-                index = AddCraft(typeof(GoldDust), 1044495, 1153504, 90.0, 120.0, typeof(Gold), 3000083, 1000, 1150747);
+                index = AddCraft(typeof(GoldDust), 1044495, 1153504, 70.0, 120.0, typeof(Gold), 3000083, 1000, 1150747);
                 ForceNonExceptional(index);
             }
         }

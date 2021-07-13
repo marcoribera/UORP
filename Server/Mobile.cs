@@ -609,9 +609,39 @@ namespace Server
 
 			return modules;
 		}
-		#endregion
+        #endregion
 
-		private static bool m_DragEffects = true;
+        private Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();
+
+        public void SetCooldown(string name, TimeSpan span)
+        {
+            if (cooldowns.ContainsKey(name))
+                cooldowns.Remove(name);
+
+            var data = DateTime.UtcNow + span;
+            cooldowns.Add(name, data);
+        }
+
+        public void SetCooldown(string name)
+        {
+            SetCooldown(name, TimeSpan.FromHours(6));
+        }
+
+        public int TimeRemaining(string name)
+        {
+            if (!cooldowns.ContainsKey(name))
+                return 0;
+            return (cooldowns[name] - DateTime.UtcNow).Seconds;
+        }
+
+        public bool IsCooldown(string name)
+        {
+            if (!cooldowns.ContainsKey(name))
+                return false;
+            return cooldowns[name] > DateTime.UtcNow;
+        }
+
+        private static bool m_DragEffects = true;
 
 		public static bool DragEffects { get { return m_DragEffects; } set { m_DragEffects = value; } }
 

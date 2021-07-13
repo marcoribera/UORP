@@ -91,265 +91,265 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			index = AddCraft( typeof( BreadLoaf ), "Breads", "Bread", 0.0, 100.0, typeof( Dough ), "Dough", 1, 1044253 );
+			index = AddCraft( typeof( BreadLoaf ), "Breads", "Bread", 0.0, 50.0, typeof( Dough ), "Dough", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Muffins ), "Breads", "Muffins", 0.0, 100.0, typeof( Batter ), "Batter", 1, 1044253 );
+			index = AddCraft( typeof( Muffins ), "Breads", "Muffins", 0.0, 50.0, typeof( Batter ), "Batter", 1, 1044253 );
 			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BananaBread ), "Breads", "Banana Bread", 0.0, 100.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
+			index = AddCraft( typeof( BananaBread ), "Breads", "Banana Bread", 0.0, 50.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
 			AddRes( index, typeof( Banana ), "Banana", 6, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BlueberryMuffins), "Breads", "Blueberry Muffins", 0.0, 100.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
+			index = AddCraft( typeof( BlueberryMuffins), "Breads", "Blueberry Muffins", 0.0, 50.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
 			AddRes( index, typeof( Blueberry ), "Blueberry", 6, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CornBread ), "Breads", "Corn Bread", 0.0, 100.0, typeof( BagOfCornmeal ), "Bag of Cornmeal", 1, 1044253 );
+			index = AddCraft( typeof( CornBread ), "Breads", "Corn Bread", 20.0, 50.0, typeof( BagOfCornmeal ), "Bag of Cornmeal", 1, 1044253 );
 			AddRes( index, typeof( Batter ), "Batter", 1, 1044253 );
 			AddRes( index, typeof( BagOfSugar ), "Bag of Sugar", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Donuts ), "Breads", "Donuts", 0.0, 100.0, typeof( SweetDough ), "Sweet Dough", 2, 1044253 );
+			index = AddCraft( typeof( Donuts ), "Breads", "Donuts", 20.0, 50.0, typeof( SweetDough ), "Sweet Dough", 2, 1044253 );
 			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PumpkinBread ), "Breads", "Pumpkin Bread", 0.0, 100.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
+			index = AddCraft( typeof( PumpkinBread ), "Breads", "Pumpkin Bread", 20.0, 50.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
 			AddRes( index, typeof( Pumpkin ), "Pumpkin", 3, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PumpkinMuffins ), "Breads", "Pumpkin Muffins", 0.0, 100.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
+			index = AddCraft( typeof( PumpkinMuffins ), "Breads", "Pumpkin Muffins", 20.0, 50.0, typeof( SweetDough ), "Sweet Dough", 1, 1044253 );
 			AddRes( index, typeof( Pumpkin ), "Pumpkin", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( AlmondCookies ), "Cookies", "Almond Cookies", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( AlmondCookies ), "Cookies", "Almond Cookies", 4.0, 50.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( Almond ), "Almond", 12, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChocChipCookies ), "Cookies", "Chocolate Chip Cookies", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( ChocChipCookies ), "Cookies", "Chocolate Chip Cookies", 40.0, 50.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( BagOfCocoa ), "Bag of Cocoa", 1, "YUou need a bag of cocoa" );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( GingerSnaps ), "Cookies", "Ginger Snaps", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( GingerSnaps ), "Cookies", "Ginger Snaps", 50.0, 70.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( TanGinger ), "Tan Ginger", 12, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( OatmealCookies ), "Cookies", "Oatmeal Cookies", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( OatmealCookies ), "Cookies", "Oatmeal Cookies", 50.0, 70.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( BagOfOats ), "Bag of Oats", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PeanutButterCookies ), "Cookies", "Peanut Butter Cookies", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( PeanutButterCookies ), "Cookies", "Peanut Butter Cookies", 50.0, 70.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( PeanutButter ), "Peanut Butter", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PumpkinCookies ), "Cookies", "Pumpkin Cookies", 0.0, 100.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
+			index = AddCraft( typeof( PumpkinCookies ), "Cookies", "Pumpkin Cookies", 60.0, 70.0, typeof( CookieMix ), "Cookie Mix", 1, 1044253 );
 			AddRes( index, typeof( Pumpkin ), "Pumpkin", 6, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ApplePie ), "Desserts", "Apple Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( ApplePie ), "Desserts", "Apple Pie", 60.0, 70.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Apple ), "Apple", 8, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BlueberryPie ), "Desserts", "Blueberry Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( BlueberryPie ), "Desserts", "Blueberry Pie", 70.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Blueberry ), "Blueberry", 8, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CherryPie ), "Desserts", "Cherry Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( CherryPie ), "Desserts", "Cherry Pie", 70.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Cherry ), "Cherry", 8, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( FruitPie ), "Desserts", "Fruit Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( FruitPie ), "Desserts", "Fruit Pie", 70.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( FruitBasket ), "Fruit Basket", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( KeyLimePie ), "Desserts", "Key Lime Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( KeyLimePie ), "Desserts", "Key Lime Pie", 70.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Lime ), "Lime", 12, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( LemonMerenguePie ), "Desserts", "Lemon Merengue Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( LemonMerenguePie ), "Desserts", "Lemon Merengue Pie", 80.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Lemon ), "Lemon", 12, 1044253 );
 			AddRes( index, typeof( Cream ), "Cream", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PumpkinPie ), "Desserts", "Pumpkin Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( PumpkinPie ), "Desserts", "Pumpkin Pie", 80.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Pumpkin ), "Pumpkin", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BlackberryCobbler ), "Desserts", "Blackberry Cobbler", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( BlackberryCobbler ), "Desserts", "Blackberry Cobbler", 80.0, 90.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Blackberry ), "Blackberry", 10, 1044253 );
 			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PeachCobbler ), "Desserts", "Peach Cobbler", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( PeachCobbler ), "Desserts", "Peach Cobbler", 90.0, 120.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Peach ), "Peach", 10, 1044253 );
 			AddRes( index, typeof( JarHoney ), "Honey", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Brownies ), "Desserts", "Brownies", 0.0, 100.0, typeof( ChocolateMix ), "Chocolate Mix", 1, 1044253 );
+			index = AddCraft( typeof( Brownies ), "Desserts", "Brownies", 90.0, 120.0, typeof( ChocolateMix ), "Chocolate Mix", 1, 1044253 );
 			AddRes( index, typeof( Eggs ), "Eggs", 2, 1044253 );
 			AddRes( index, typeof( CookingOil ), "Cooking Oil", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChocSunflowerSeeds ), "Desserts", "Chocolate Sunflower Seeds", 0.0, 100.0, typeof( EdibleSun ), "Sunflower Seeds", 1, 1044253 );
+			index = AddCraft( typeof( ChocSunflowerSeeds ), "Desserts", "Chocolate Sunflower Seeds", 90.0, 120.0, typeof( EdibleSun ), "Sunflower Seeds", 1, 1044253 );
 			AddRes( index, typeof( BagOfCocoa ), "Bag of Cocoa", 1, "you need a bag oc cocoa" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( RiceKrispTreat ), "Desserts", "RiceKrispTreat", 0.0, 100.0, typeof( BowlRiceKrisps ), "Bowl Of Rice Krips", 1, 1044253 );
+			index = AddCraft( typeof( RiceKrispTreat ), "Desserts", "RiceKrispTreat", 90.0, 120.0, typeof( BowlRiceKrisps ), "Bowl Of Rice Krips", 1, 1044253 );
 			AddRes( index, typeof( Butter ), "Butter", 1, 1044253 );
 			AddRes( index, typeof( BagOfSugar ), "Bag of Sugar", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BananaCake ), "Cakes", "Banana Cake", 0.0, 100.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
+			index = AddCraft( typeof( BananaCake ), "Cakes", "Banana Cake", 100.0, 120.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
 			AddRes( index, typeof( Banana ), "Banana", 4, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CarrotCake ), "Cakes", "Carrot Cake", 0.0, 100.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
+			index = AddCraft( typeof( CarrotCake ), "Cakes", "Carrot Cake", 100.0, 120.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
 			AddRes( index, typeof( Carrot ), "Carrot", 6, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChocolateCake ), "Cakes", "Chocolate Cake", 0.0, 100.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
+			index = AddCraft( typeof( ChocolateCake ), "Cakes", "Chocolate Cake", 110.0, 120.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
 			AddRes( index, typeof( BagOfCocoa ), "Bag of Cocoa", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CoconutCake ), "Cakes", "Coconut Cake", 0.0, 100.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
+			index = AddCraft( typeof( CoconutCake ), "Cakes", "Coconut Cake", 110.0, 120.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
 			AddRes( index, typeof( Coconut ), "Coconut", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( LemonCake ), "Cakes", "Lemon Cake", 0.0, 100.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
+			index = AddCraft( typeof( LemonCake ), "Cakes", "Lemon Cake", 110.0, 120.0, typeof( CakeMix ), "Cake Mix", 1, 1044253 );
 			AddRes( index, typeof( Lemon ), "Lemon", 4, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenParmesian ), "Dinners", "Chicken Parmesian", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( ChickenParmesian ), "Dinners", "Chicken Parmesian", 110.0, 140.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
 			AddRes( index, typeof( TomatoSauce ), "Tomato Sauce", 1, 1044253 );
 			AddRes( index, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CheeseEnchilada ), "Dinners", "Cheese Enchilada", 0.0, 100.0, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
+			index = AddCraft( typeof( CheeseEnchilada ), "Dinners", "Cheese Enchilada", 110.0, 140.0, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
 			AddRes( index, typeof( Tortilla ),"Tortilla", 1, 1044253 );
 			AddRes( index, typeof( EnchiladaSauce ),"Enchilada Sauce", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenEnchilada ), "Dinners", "Chicken Enchilada", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( ChickenEnchilada ), "Dinners", "Chicken Enchilada", 110.0, 140.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
 			AddRes( index, typeof( Tortilla ), "Tortilla",1, 1044253 );
 			AddRes( index, typeof( EnchiladaSauce ),"Enchilada Sauce", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Lasagna ), "Dinners", "Lasagna", 0.0, 100.0, typeof( PastaNoodles ), "Pasta Noodles", 3, 1044253 );
+			index = AddCraft( typeof( Lasagna ), "Dinners", "Lasagna", 110.0, 140.0, typeof( PastaNoodles ), "Pasta Noodles", 3, 1044253 );
 			AddRes( index, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
 			AddRes( index, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( LemonChicken ), "Dinners", "Lemon Chicken", 0.0, 100.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( LemonChicken ), "Dinners", "Lemon Chicken", 110.0, 140.0, typeof( RawBird ), "Raw Bird", 1, 1044253 );
 			AddRes( index, typeof( Lemon ), "Lemon", 1, 1044253 );
 			AddRes( index, typeof( BasketOfHerbs ), "Herbs", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( OrangeChicken ), "Dinners", "Orange Chicken", 0.0, 100.0, typeof( RawBird), "Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( OrangeChicken ), "Dinners", "Orange Chicken", 110.0, 140.0, typeof( RawBird), "Raw Bird", 1, 1044253 );
 			AddRes( index, typeof( Orange ), "Orange", 1, 1044253 );
 			AddRes( index, typeof( BasketOfHerbs ), "Herbs", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( VealParmesian ), "Dinners", "Veal Parmesian", 0.0, 100.0, typeof( RawLambLeg ), "Raw Lamb Leg", 2, 1044253 );
+			index = AddCraft( typeof( VealParmesian ), "Dinners", "Veal Parmesian", 120.0, 140.0, typeof( RawLambLeg ), "Raw Lamb Leg", 2, 1044253 );
 			AddRes( index, typeof( TomatoSauce ), "Tomato Sauce", 1, 1044253 );
 			AddRes( index, typeof( CheeseWheel ), "Cheese Wheel", 1, 1044253 );
 			AddRes( index, typeof( FoodPlate ), "Plate", 1, "You need a plate!" );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BroccoliCheese ), "Food", "Broccoli and Cheese", 0.0, 100.0, typeof( Broccoli ), "Broccoli", 5, 1044253 );
+			index = AddCraft( typeof( BroccoliCheese ), "Food", "Broccoli and Cheese", 120.0, 140.0, typeof( Broccoli ), "Broccoli", 5, 1044253 );
 			AddRes( index, typeof( CheeseSauce ), "Cheese Sauce", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BroccoliCaulCheese ), "Food", "Broccoli, Cauliflower and Cheese", 0.0, 100.0, typeof( Broccoli ), "Broccoli", 5, 1044253 );
+			index = AddCraft( typeof( BroccoliCaulCheese ), "Food", "Broccoli, Cauliflower and Cheese", 120.0, 140.0, typeof( Broccoli ), "Broccoli", 5, 1044253 );
 			AddRes( index, typeof( Cauliflower ), "Cauliflower", 2, 1044253 );
 			AddRes( index, typeof( CheeseSauce ), "Cheese Sauce", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CauliflowerCheese ), "Food", "Cauliflower and Cheese", 0.0, 100.0, typeof( Cauliflower ), "Cauliflower", 5, 1044253 );
+			index = AddCraft( typeof( CauliflowerCheese ), "Food", "Cauliflower and Cheese", 120.0, 140.0, typeof( Cauliflower ), "Cauliflower", 5, 1044253 );
 			AddRes( index, typeof( CheeseSauce ), "Cheese Sauce", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ChickenPie ), "Food", "Chicken Pie", 0.0, 100.0, typeof( RawBird ),"Raw Bird", 1, 1044253 );
+			index = AddCraft( typeof( ChickenPie ), "Food", "Chicken Pie", 120.0, 140.0, typeof( RawBird ),"Raw Bird", 1, 1044253 );
 			AddRes( index, typeof( PieMix ),"Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( MixedVegetables ), "Mixed Vegetables", 1, 1044253 );
 			AddRes( index, typeof( Gravy ), "Gravy", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( BeefPie ), "Food", "Beef Pie", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
+			index = AddCraft( typeof( BeefPie ), "Food", "Beef Pie", 120.0, 140.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
 			AddRes( index, typeof( PieMix ),"Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( MixedVegetables ),"Mixed Vegetables", 1, 1044253 );
 			AddRes( index, typeof( Gravy ), "Gravy",1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Meatballs ), "Food", "Meatballs", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
+			index = AddCraft( typeof( Meatballs ), "Food", "Meatballs", 120.0, 140.0, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
 			AddRes( index, typeof( BreadLoaf ), "Bread", 1, 1044253 );
 			AddRes( index, typeof( Eggs ), "Eggs", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Meatloaf ), "Food", "Meatloaf", 0.0, 100.0, typeof( GroundBeef ), "Ground Beef", 2, 1044253 );
+			index = AddCraft( typeof( Meatloaf ), "Food", "Meatloaf", 120.0, 140.0, typeof( GroundBeef ), "Ground Beef", 2, 1044253 );
 			AddRes( index, typeof( Eggs ), "Eggs", 2, 1044253 );
 			AddRes( index, typeof( Onion ), "Onion", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( PotatoStrings ), "Food", "Potato Strings", 0.0, 100.0, typeof( Potato ), "Potato", 1, 1044253 );
+			index = AddCraft( typeof( PotatoStrings ), "Food", "Potato Strings", 120.0, 140.0, typeof( Potato ), "Potato", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( Quiche ), "Food", "Quiche", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( Quiche ), "Food", "Quiche", 120.0, 140.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( Eggs ), "Eggs", 1, 1044253 );
 			AddRes( index, typeof( RawHamSlices ), "Raw Ham Slices", 3, 1044253 );
 			AddRes( index, typeof( Onion ), "Onion", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( ShepherdsPie ), "Food", "Shepherds Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( ShepherdsPie ), "Food", "Shepherds Pie", 120.0, 140.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( GroundBeef ), "Ground Beef", 1, 1044253 );
 			AddRes( index, typeof( BowlMashedPotatos ), "Bowl of Mashed Potatos", 1, 1044253 );
 			AddRes( index, typeof( Corn ), "Corn", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( TurkeyPie ), "Food", "Turkey Pie", 0.0, 100.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
+			index = AddCraft( typeof( TurkeyPie ), "Food", "Turkey Pie", 120.0, 140.0, typeof( PieMix ), "Pie Mix", 1, 1044253 );
 			AddRes( index, typeof( SlicedTurkey ), "Sliced Turkey", 2, 1044253 );
 			AddRes( index, typeof( MixedVegetables ), "Mixed Vegetables", 1, 1044253 );
 			AddRes( index, typeof( Gravy ), "Gravy", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( CheesePizza ), "Pizzas", "Cheese Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( CheesePizza ), "Pizzas", "Cheese Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( HamPineapplePizza ), "Pizzas", "Ham and Pineapple Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( HamPineapplePizza ), "Pizzas", "Ham and Pineapple Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			AddRes( index, typeof( RawHamSlices ), "Raw Ham Slices", 1, 1044253 );
 			AddRes( index, typeof( Pineapple), "Pineapple", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( MushroomOnionPizza ), "Pizzas", "Mushroom and Onion Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( MushroomOnionPizza ), "Pizzas", "Mushroom and Onion Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			AddRes( index, typeof( TanMushroom ), "Tan Mushrooms", 3, 1044253 );
 			AddRes( index, typeof( Onion ), "Onion", 3, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( SausOnionMushPizza ), "Pizzas", "Sausage Onion and Mushroom Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( SausOnionMushPizza ), "Pizzas", "Sausage Onion and Mushroom Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			AddRes( index, typeof( Sausage ), "Sausage", 2, 1044253 );
 			AddRes( index, typeof( Onion ), "Onion", 2, 1044253 );
 			AddRes( index, typeof( RedMushroom ), "Red Mushrooms", 2, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( TacoPizza ), "Pizzas", "Taco Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( TacoPizza ), "Pizzas", "Taco Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			AddRes( index, typeof( GroundBeef ),"Ground Beef", 1, 1044253 );
 			AddRes( index, typeof( CheeseWheel ),"CheeseWheel", 1, 1044253 );
 			AddRes( index, typeof( EnchiladaSauce ), "Enchilada Sauce", 1, 1044253 );
 			SetNeedOven( index, true );
 
-			index = AddCraft( typeof( VeggiePizza ), "Pizzas", "Vegetable Pizza", 0.0, 100.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
+			index = AddCraft( typeof( VeggiePizza ), "Pizzas", "Vegetable Pizza", 120.0, 140.0, typeof( UncookedPizza ), "Uncooked Pizza", 1, 1044253 );
 			AddRes( index, typeof( MixedVegetables ),"Mixed Vegetables", 1, 1044523 );
 			SetNeedOven( index, true );
 
