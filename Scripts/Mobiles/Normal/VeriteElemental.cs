@@ -16,7 +16,7 @@ namespace Server.Mobiles
         public VeriteElemental(int oreAmount)
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a verite elemental";
+            Name = "elemental de lazurita";
             Body = 113;
             BaseSoundID = 268;
 
@@ -46,8 +46,9 @@ namespace Server.Mobiles
 
             VirtualArmor = 35;
 
-            Item ore = new VeriteOre(oreAmount);
+            Item ore = new ShadowIronOre(oreAmount);
             ore.ItemID = 0x19B9;
+            Hue = ore.Hue;
             PackItem(ore);
         }
 

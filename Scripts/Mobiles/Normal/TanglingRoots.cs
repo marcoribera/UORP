@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-
 using Server.Items;
-using Server.Spells;
-using Server.Spells.Spellweaving;
+using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
@@ -14,42 +11,42 @@ namespace Server.Mobiles
         public TanglingRoots()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a tangling root";
-            Body = 8;
-            BaseSoundID = 684;
+            this.Name = "a tangling root";
+            this.Body = 8;
+            this.BaseSoundID = 684;
 
-            SetStr(157, 189);
-            SetDex(51, 64);
-            SetInt(26, 39);
+            this.SetStr(157, 189);
+            this.SetDex(51, 64);
+            this.SetInt(26, 39);
 
-            SetHits(231, 246);
-            SetMana(0);
+            this.SetHits(231, 246);
+            this.SetMana(0);
 
-            SetDamage(10, 23);
+            this.SetDamage(10, 23);
 
-            SetDamageType(ResistanceType.Physical, 60);
-            SetDamageType(ResistanceType.Poison, 40);
+            this.SetDamageType(ResistanceType.Physical, 60);
+            this.SetDamageType(ResistanceType.Poison, 40);
 
-            SetResistance(ResistanceType.Physical, 35, 40);
-            SetResistance(ResistanceType.Cold, 10, 20);
-            SetResistance(ResistanceType.Poison, 100);
-            SetResistance(ResistanceType.Energy, 10, 20);
+            this.SetResistance(ResistanceType.Physical, 35, 40);
+            this.SetResistance(ResistanceType.Cold, 10, 20);
+            this.SetResistance(ResistanceType.Poison, 100);
+            this.SetResistance(ResistanceType.Energy, 10, 20);
 
-            SetSkill(SkillName.ResistenciaMagica, 15.1, 20.0);
-            SetSkill(SkillName.Anatomia, 45.1, 60.0);
-            SetSkill(SkillName.Briga, 45.1, 60.0);
+            this.SetSkill(SkillName.ResistenciaMagica, 15.1, 20.0);
+            this.SetSkill(SkillName.Anatomia, 45.1, 60.0);
+            this.SetSkill(SkillName.Briga, 45.1, 60.0);
 
-            Fame = 3000;
-            Karma = -3000;
+            this.Fame = 3000;
+            this.Karma = -3000;
 
-            VirtualArmor = 18;
+            this.VirtualArmor = 18;
 
             if (0.25 > Utility.RandomDouble())
-                PackItem(new Board(10));
+                this.PackItem(new Board(10));
             else
-                PackItem(new Log(10));
+                this.PackItem(new Log(10));
 
-            PackItem(new MandrakeRoot(3));
+            this.PackItem(new MandrakeRoot(3));
         }
 
         public TanglingRoots(Serial serial)
@@ -66,9 +63,9 @@ namespace Server.Mobiles
 
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {
-            if (m.Alive && !m.IsDeadBondedPet && m.AccessLevel == AccessLevel.Player && !m.Hidden && !TransformationSpellHelper.UnderTransformation(m, typeof(EtherealVoyageSpell)))
+            if (m.Alive && !m.IsDeadBondedPet && m.AccessLevel <= AccessLevel.VIP && !m.Hidden)
             {
-                if (0.2 > Utility.RandomDouble() && !m_TangleCooldown.Contains(m) && InRange(m, 6) && !FountainOfFortune.UnderProtection(m))
+                if (0.2 > Utility.RandomDouble() && !m_TangleCooldown.Contains(m) && this.InRange(m, 6) && !FountainOfFortune.UnderProtection(m))
                 {
                     m.Frozen = true;
                     m.MoveToWorld(Location, Map);
@@ -128,7 +125,7 @@ namespace Server.Mobiles
 
         public override void GenerateLoot()
         {
-            AddLoot(LootPack.FilthyRich);
+            this.AddLoot(LootPack.FilthyRich);
         }
 
         public override void Serialize(GenericWriter writer)

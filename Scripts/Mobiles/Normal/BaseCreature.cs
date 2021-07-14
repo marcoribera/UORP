@@ -1106,6 +1106,11 @@ namespace Server.Mobiles
         public virtual bool TaintedLifeAura { get { return false; } }
         public virtual bool BreathImmune { get { return false; } }
 
+        #region Special Abilities and Area Effects overrides
+        public virtual int AreaPoisonDamage { get { return 0; } }
+        public virtual Poison HitAreaPoison { get { return Poison.Deadly; } }
+        #endregion
+
         #region Spill Acid
         public void SpillAcid(int Amount)
         {
@@ -4984,6 +4989,11 @@ namespace Server.Mobiles
             return true;
 
         }
+
+        public virtual void OnStartCombat(Mobile m) { }
+
+        public virtual void OnTarget(Mobile m) { }
+
 
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {

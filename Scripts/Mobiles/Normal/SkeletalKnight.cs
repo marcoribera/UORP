@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public SkeletalKnight()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a skeletal knight";
+            Name = "cavaleiro esqueleto";
             Body = 147;
             BaseSoundID = 451;
 
@@ -39,7 +39,7 @@ namespace Server.Mobiles
             Karma = -3000;
 
             VirtualArmor = 40;
-
+            PackItem(new Bone());
             switch ( Utility.Random(6) )
             {
                 case 0:
@@ -76,6 +76,32 @@ namespace Server.Mobiles
             get
             {
                 return true;
+            }
+        }
+
+        public override void OnThink()
+        {
+            base.OnThink();
+            //Console.WriteLine("TICK " + this.Aggressors == null);
+            if (this.Combatant != null)
+            {
+                if (!IsCooldown("bonethrow"))
+                {
+                    if (this.Combatant is PlayerMobile)
+                    {
+                        var player = (PlayerMobile)this.Combatant;
+                        if (player.GetDistanceToSqrt(this.Location) <= 3 || !this.InLOS(player))
+                        {
+                            return;
+                        }
+                        SetCooldown("bonethrow", TimeSpan.FromSeconds(6));
+                        this.MovingParticles(player, 0xF7E, 9, 0, false, false, 9502, 4019, 0x160);
+                        AOS.Damage(player, 2 + Utility.Random(5), 0, 0, 0, 0, 0);
+                        PublicOverheadMessage(Network.MessageType.Emote, 0, false, "* joga um osso *");
+                    }
+
+
+                }
             }
         }
 

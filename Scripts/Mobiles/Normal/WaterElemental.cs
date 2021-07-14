@@ -15,7 +15,7 @@ namespace Server.Mobiles
         public WaterElemental()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a water elemental";
+            this.Name = "elemental da agua";
             this.Body = 16;
             this.BaseSoundID = 278;
 
@@ -36,7 +36,7 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Energy, 5, 10);
 
             this.SetSkill(SkillName.PoderMagico, 60.1, 75.0);
-            this.SetSkill(SkillName.Arcanismo, 60.1, 75.0);
+            this.SetSkill(SkillName.Arcanismo, 70, 80);
             this.SetSkill(SkillName.ResistenciaMagica, 100.1, 115.0);
             this.SetSkill(SkillName.Anatomia, 50.1, 70.0);
             this.SetSkill(SkillName.Briga, 50.1, 70.0);
@@ -44,7 +44,7 @@ namespace Server.Mobiles
             this.Fame = 4500;
             this.Karma = -4500;
 
-            this.VirtualArmor = 40;
+            this.VirtualArmor = 0;
             this.ControlSlots = 3;
             this.CanSwim = true;
 
@@ -54,6 +54,57 @@ namespace Server.Mobiles
         public WaterElemental(Serial serial)
             : base(serial)
         {
+        }
+
+        public override void OnBeforeDamage(Mobile from, ref int totalDamage, DamageType type)
+        {
+
+            if (from == null)
+                return;
+
+            if (!this.Alive)
+                return;
+
+            if (type != DamageType.Melee)
+                return;
+
+            bool bonus = false;
+            base.OnBeforeDamage(from, ref totalDamage, type);
+
+            if (!from.Player)
+                return;
+
+            var arma = from.FindItemOnLayer(Layer.OneHanded);
+            if (arma != null && arma is BaseSword)
+            {
+                totalDamage += 10;
+                bonus = true;
+            }
+
+            arma = from.FindItemOnLayer(Layer.TwoHanded);
+            if (arma != null && arma is BaseSword)
+            {
+                bonus = true;
+                totalDamage += 10;
+            }
+
+            if (!bonus)
+            {
+                totalDamage /= 3;
+                if (!from.IsCooldown("dicabas2"))
+                {
+                    from.SetCooldown("dicabas2", TimeSpan.FromMinutes(10));
+                    from.SendMessage("Seu ataque nao foi muito efetivo contra este ser aquoso por conta do tipo de sua arma");
+                }
+            }
+            else if (bonus)
+            {
+                if (!from.IsCooldown("dicabas"))
+                {
+                    from.SetCooldown("dicabas", TimeSpan.FromMinutes(10));
+                    from.SendMessage("Sua arma foi muito efetiva contra " + this.Name);
+                }
+            }
         }
 
         public override double DispelDifficulty

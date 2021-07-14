@@ -5,21 +5,22 @@ namespace Server.Mobiles
     [CorpseName("a trapdoor spider corpse")]
     public class TrapdoorSpider : BaseCreature
     {
-        public override bool CanStealth { get { return true; } } 
+
+        public override bool CanStealth { get { return true; } } //Stays Hidden until Combatant in range.
 
         [Constructable]
         public TrapdoorSpider()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a trapdoor spider";
+            Name = "aranha da areia";
             Body = 737;
-            Hidden = true; 
+            Hidden = true; //Spawns Hidden
 
             SetStr(100, 104);
             SetDex(162, 165);
             SetInt(29, 50);
 
-            SetHits(125, 144);
+            SetHits(200, 250);
 
             SetDamage(15, 18);
 
@@ -38,7 +39,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomia, 73.3, 78.9);
             SetSkill(SkillName.Briga, 92.5, 94.6);
             SetSkill(SkillName.Furtividade, 110.3, 119.9);
-            SetSkill(SkillName.Furtividade, 110.5, 119.6);
         }
 
         public TrapdoorSpider(Serial serial)
@@ -46,6 +46,7 @@ namespace Server.Mobiles
         {
         }
 
+        //Can Flush them out of Hiding
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
             RevealingAction();
@@ -103,7 +104,7 @@ namespace Server.Mobiles
             {
                 double chance = 0.05;
 
-                if (this.Hits < 20)
+                if (this.Hits < 50)
                 {
                     chance = 0.1;
                 }

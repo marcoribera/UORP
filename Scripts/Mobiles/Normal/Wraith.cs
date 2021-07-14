@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Wraith()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a wraith";
+            this.Name = "Espectro";
             this.Body = 26;
             this.Hue = 0x4001;
             this.BaseSoundID = 0x482;
@@ -47,6 +47,47 @@ namespace Server.Mobiles
         public Wraith(Serial serial)
             : base(serial)
         {
+        }
+
+        public virtual void OnTarget(Mobile m)
+        {
+            base.OnTarget(m);
+            if(m != FocusMob && m != null && m is PlayerMobile)
+            {
+                var player = (PlayerMobile)m;
+                if(!player.IsCooldown("specfreeze"))
+                {
+                    player.SetCooldown("specfreeze", TimeSpan.FromSeconds(40));
+                    PublicOverheadMessage(Network.MessageType.Emote, 0, false, "An Ex Por");
+                    new FreezeTimer(this, m).Start();
+                }
+            }
+        }
+
+        public class FreezeTimer : Timer
+        {
+            private BaseCreature mob;
+            private int ct = 0;
+            private Mobile from;
+
+            int dMin = 0;
+            int dMax = 0;
+            int hue = 0;
+
+            public FreezeTimer(BaseCreature defender, Mobile from)
+                : base(TimeSpan.FromSeconds(1))
+            {
+                mob = defender;
+                this.from = from;
+            }
+
+            protected virtual void OnTick()
+            {
+                from.PlaySound(0x204);
+                from.Freeze(TimeSpan.FromSeconds(6));
+                mob.MovingParticles(from, 0x376A, 9, 0, false, false, 9502, 0x376A, 0x204);
+                mob.SendMessage("o monstro lançou um olhar petrificante");
+            }
         }
 
         public override bool BleedImmune
