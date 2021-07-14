@@ -73,55 +73,58 @@ namespace Server.Mobiles
 
         public override void OnThink()
         {
-            var dist = ((Mobile)this.Combatant).GetDistanceToSqrt(this.Location);
-            if (this.Combatant != null && this.Combatant is Mobile && dist < 9)
+            base.OnThink();
+            if (this.Combatant != null)
             {
-                if (dist <= 2)
-                    return;
-
-                if (!this.IsCooldown("omnoma"))
+                var dist = ((Mobile)this.Combatant).GetDistanceToSqrt(this.Location);
+                if (this.Combatant is Mobile && dist < 9)
                 {
-                    this.SetCooldown("omnoma", TimeSpan.FromSeconds(1.5));
-                }
-                else
-                {
-                    return;
-                }
+                    if (dist <= 2)
+                        return;
 
-                if (!this.InLOS(this.Combatant))
-                {
-                    return;
-                }
-
-                var defender = (Mobile)this.Combatant;
-                if (defender == null || defender.Map == null || !defender.Alive)
-                    return;
-
-                SpellHelper.Turn(this, defender);
-                var locPlayerGo = GetPoint(defender, this.Direction);
-                if (defender.Map.CanFit(locPlayerGo, locPlayerGo.Z))
-                {
-                   // this.PlayAttackAnimation();
-                    this.MovingParticles(defender, 0x0D3B, 11, 0, false, false, 9502, 4019, 0x160);
-                    Timer.DelayCall(TimeSpan.FromMilliseconds(400), () =>
+                    if (!this.IsCooldown("omnoma"))
                     {
-                        defender.Freeze(TimeSpan.FromMilliseconds(600));
+                        this.SetCooldown("omnoma", TimeSpan.FromSeconds(1.5));
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    if (!this.InLOS(this.Combatant))
+                    {
+                        return;
+                    }
+
+                    var defender = (Mobile)this.Combatant;
+                    if (defender == null || defender.Map == null || !defender.Alive)
+                        return;
+
+                    SpellHelper.Turn(this, defender);
+                    var locPlayerGo = GetPoint(defender, this.Direction);
+                    if (defender.Map.CanFit(locPlayerGo, locPlayerGo.Z))
+                    {
+                        // this.PlayAttackAnimation();
+                        this.MovingParticles(defender, 0x0D3B, 11, 0, false, false, 9502, 4019, 0x160);
                         Timer.DelayCall(TimeSpan.FromMilliseconds(400), () =>
                         {
-                            defender.MovingParticles(this, 0x0D3B, 15, 0, false, false, 9502, 4019, 0x160);
-                            defender.SendMessage("A planta carnivora te puxa");
-                            defender.MoveToWorld(locPlayerGo, defender.Map);
-                            if (!this.IsCooldown("omnom"))
+                            defender.Freeze(TimeSpan.FromMilliseconds(600));
+                            Timer.DelayCall(TimeSpan.FromMilliseconds(400), () =>
                             {
-                                this.SetCooldown("omnom", TimeSpan.FromSeconds(10));
+                                defender.MovingParticles(this, 0x0D3B, 15, 0, false, false, 9502, 4019, 0x160);
+                                defender.SendMessage("A planta carnivora te puxa");
+                                defender.MoveToWorld(locPlayerGo, defender.Map);
+                                if (!this.IsCooldown("omnom"))
+                                {
+                                    this.SetCooldown("omnom", TimeSpan.FromSeconds(10));
                                 //this.OverheadMessage("* Nhom nom nom *");
                             }
+                            });
                         });
-                    });
 
+                    }
                 }
-            }
-            base.OnThink();
+            }            
         }
 
         public override void OnGaveMeleeAttack(Mobile defender)
