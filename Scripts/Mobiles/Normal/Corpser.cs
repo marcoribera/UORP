@@ -73,6 +73,8 @@ namespace Server.Mobiles
 
         public override void OnThink()
         {
+            if (this.Combatant == null)
+                return;
             var dist = ((Mobile)this.Combatant).GetDistanceToSqrt(this.Location);
             if (this.Combatant != null && this.Combatant is Mobile && dist < 9)
             {
