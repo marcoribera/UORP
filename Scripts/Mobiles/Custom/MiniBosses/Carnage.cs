@@ -12,7 +12,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Ninja, FightMode.Closest, 10, 1, 0.05, 0.2)
         {
             Name = "Carnage";
-            Body = 719;
+            Body = 105;
             BaseSoundID = 0x5ED;
 
             SetStr(200, 200);
@@ -110,7 +110,7 @@ namespace Server.Mobiles
                     lobim.Combatant = from;
                 lobim.OverheadMessage("* grrr *");
                 from.PlaySound(lobim.GetAngerSound());
-                from.SendMessage("Um lobo sai da tocaia lhe atacando");
+                from.SendMessage("Um horrível som pode ser ouvido");
             }
         }
 

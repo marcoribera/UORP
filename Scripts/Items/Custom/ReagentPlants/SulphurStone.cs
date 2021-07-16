@@ -27,7 +27,7 @@ namespace Server.Items
 		[Constructable]
 		public SulfurStone() : base(Utility.RandomList(4965, 4966))
 		{
-			Name = "Volcanic Rock";
+			Name = "Rocha Vulcânica";
 			Weight = 0;
 			Hue = 1175;
 			Movable = false;
@@ -48,12 +48,12 @@ namespace Server.Items
 			else
 			{
 				if(this.Map == Map.Felucca) amt = 8;
-				else amt = 6;
+				else amt = 3;
 			
 				if(from.Race == Race.Human) bonus = 2;
 				else bonus = 0;
 			
-				from.Say("* You smash open the volcanic rock and retrieve some sulfurous ash *");
+				from.Say("* Você quebra a rocha vulcânica e recupera algumas cinzas sulfurosas *");
 				from.AddToBackpack(new SulfurousAsh(amt + bonus));
 				from.PlaySound(776);
 				this.Delete();

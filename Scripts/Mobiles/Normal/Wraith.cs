@@ -49,7 +49,7 @@ namespace Server.Mobiles
         {
         }
 
-        public virtual void OnTarget(Mobile m)
+        public override void OnTarget(Mobile m)
         {
             base.OnTarget(m);
             if(m != FocusMob && m != null && m is PlayerMobile)

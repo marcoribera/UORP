@@ -70,6 +70,32 @@ namespace Server.Mobiles
                 return 4;
             }
         }
+
+        public override void OnThink()
+        {
+            base.OnThink();
+            //Console.WriteLine("TICK " + this.Aggressors == null);
+            if (this.Combatant != null)
+            {
+                if (!IsCooldown("stonethrow"))
+                {
+                    if (this.Combatant is PlayerMobile)
+                    {
+                        var player = (PlayerMobile)this.Combatant;
+                        if (player.GetDistanceToSqrt(this.Location) <= 3 || !this.InLOS(player))
+                        {
+                            return;
+                        }
+                        SetCooldown("stonethrow", TimeSpan.FromSeconds(6));
+                        this.MovingParticles(player, 0x1363, 9, 5, false, false, 9502, 4019, 0x160);
+                        AOS.Damage(player, 3 + Utility.Random(25), 5, 5, 5, 5, 5);
+                        PublicOverheadMessage(Network.MessageType.Emote, 0, false, "* Arremessa uma pedra *");
+                    }
+
+
+                }
+            }
+        }
         public override void GenerateLoot()
         {
             this.AddLoot(LootPack.Meager);

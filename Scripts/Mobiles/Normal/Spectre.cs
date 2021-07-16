@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Spectre()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "Espectro";
+            this.Name = "spectro";
             this.Body = 26;
             this.Hue = 0x4001;
             this.BaseSoundID = 0x482;
@@ -49,7 +49,7 @@ namespace Server.Mobiles
         {
         }
 
-        public virtual void OnTarget(Mobile m)
+        public override void OnTarget(Mobile m)
         {
             base.OnTarget(m);
             if (m != FocusMob && m != null && m is PlayerMobile)
