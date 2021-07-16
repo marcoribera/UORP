@@ -70,6 +70,7 @@ namespace Server.Mobiles
             }
 
             PackItem(new ThighBoots());
+            this.PackItem(new Gold(Utility.RandomMinMax(50, 100)));
 
             switch ( Utility.Random(3) )
             {
@@ -121,6 +122,10 @@ namespace Server.Mobiles
                 Body = 723;
                 Hue = 1900;
             }
+        }
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Rich);
         }
     }
 }

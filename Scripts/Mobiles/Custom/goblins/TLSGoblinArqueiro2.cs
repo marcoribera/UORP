@@ -100,5 +100,9 @@ namespace Server.Mobiles
             base.Deserialize(reader);
             int version = reader.ReadInt();
         }
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Average);
+        }
     }
 }

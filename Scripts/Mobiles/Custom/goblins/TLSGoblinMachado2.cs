@@ -46,7 +46,7 @@ namespace Server.Mobiles
             Karma = -2600;
 
             VirtualArmor = 28;
-
+            
             switch ( Utility.Random(20) )
             {
                 case 0:
@@ -70,7 +70,8 @@ namespace Server.Mobiles
             }
 
             PackItem(new ThighBoots());
-
+            this.PackItem(new Gold(Utility.RandomMinMax(10, 20)));
+            
             switch ( Utility.Random(3) )
             {
                 case 0:
@@ -121,6 +122,10 @@ namespace Server.Mobiles
                 Body = 723;
                 Hue = 1900;
             }
+        }
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Average);
         }
     }
 }
