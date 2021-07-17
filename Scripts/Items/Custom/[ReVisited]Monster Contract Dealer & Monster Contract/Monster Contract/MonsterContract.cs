@@ -52,13 +52,13 @@ namespace Server.Items
 			int price = MonsterContractType.Get[Monster].Rarety;
 			double scalar = Utility.RandomDouble();
 			if(scalar < 0.6)scalar = 0.6;
-			Reward = (int)((price * (price/2)) * scalar) * AmountToKill;
+			Reward = (int)((price * (price/4)) * scalar) * AmountToKill;
 			Name = "Contrato: " + AmountToKill + " " + MonsterContractType.Get[Monster].Name;
 			AmountKilled = 0;
 		}
 		
 		[Constructable]
-		public MonsterContract( int monster, int atk, int gpreward ) : base( 0x14F0 )
+		public MonsterContract( int monster, int atk, int gpreward ) : base(0xA1E5)
 		{
 			Weight = 1;
 			Movable = true;

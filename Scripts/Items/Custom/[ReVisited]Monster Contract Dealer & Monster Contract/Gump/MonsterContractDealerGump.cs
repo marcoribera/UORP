@@ -39,10 +39,10 @@ namespace Server.Gumps
 
 			AddHtml( 107, 140, 300, 230, "<BODY>" +
 //----------------------/----------------------------------------------/
-"<BASEFONT COLOR=YELLOW>Hello there. Can I speak with you one second? I have a favor to ask and I wonder if you could help me.<BR><BR>I have in my possesion contracts to rid the land of evil and drive the monsters out. But alas I am too old to do this myself. But I will gladly give you the contracts and only keep a small commission for myself if you could fill the contracts for me.<BR>" +
-"<BASEFONT COLOR=YELLOW>Will you help me fill my contracts?<BR><BR>Oh, Thank you my friend. The contract will tell you which monsters to purge from the lands." + "</BODY>", false, true);
+"<BASEFONT COLOR=YELLOW>Ei! Você... venha aqui. Será que você poderia nos ajudar? Os anciões me instruiram a buscar ajuda e eu tenho um favor a lhe pedir.<BR><BR>As terras ao redor de nossa gruta sagrada tem se tornado cada vez mais perigosas. Eu tenho em minha posse, contratos para livrar a terra do mal e expulsar aqueles que vêm atacando nosso povo. Eu, infelizmente, meus dias de combate já passaram, mas terei o maior prazer em lhe dar os contratos e só ficarei com uma pequena comissão para mim se você conseguir concluí-los.<BR>" +
+"<BASEFONT COLOR=YELLOW>Você tem interesse em um contrato??<BR><BR>Oh, Oh, muito obrigado! O contrato dirá quais perigos você deve eliminar de nossas terras. " + " </BODY>", false, true);
 
-			AddImage( 430, 9, 10441);
+            AddImage( 430, 9, 10441);
 			AddImageTiled( 40, 38, 17, 391, 9263 );
 			AddImage( 6, 25, 10421 );
 			AddImage( 34, 12, 10420 );
