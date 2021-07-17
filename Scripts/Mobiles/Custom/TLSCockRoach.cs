@@ -8,11 +8,11 @@ using Server.Items;
 namespace Server.Mobiles
 {
     [CorpseName("a corpse of a cock roach")]
-    public class CockRoach : BaseCreature
+    public class TLSCockRoach : BaseCreature
     {
 
         [Constructable]
-        public CockRoach() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.15, 0.4 )
+        public TLSCockRoach() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.15, 0.4 )
         {
 
 	    Body = 169;
@@ -53,7 +53,7 @@ namespace Server.Mobiles
         public override FoodType FavoriteFood { get { return FoodType.Fish | FoodType.Meat; } } // added so it can eat - GreyWolf79
         public override int Meat { get { return 1; } } // added so you get meat when it is killed - GreyWolf79
 
-        public CockRoach(Serial serial) : base(serial)
+        public TLSCockRoach(Serial serial) : base(serial)
         {
         }
 

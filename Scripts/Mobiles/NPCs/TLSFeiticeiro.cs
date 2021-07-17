@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class Mystic : BaseVendor
+    public class TLSFeiticeiro : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public Mystic()
-            : base("- O Místico")
+        public TLSFeiticeiro()
+            : base("- O Feiticeiro")
         {
-            this.SetSkill(SkillName.PoderMagico, 65.0, 88.0);
+            this.SetSkill(SkillName.ImbuirMagica, 65.0, 88.0);
             this.SetSkill(SkillName.Erudicao, 60.0, 83.0);
-            this.SetSkill(SkillName.Misticismo, 64.0, 100.0);
+            this.SetSkill(SkillName.Feiticaria, 64.0, 100.0);
             this.SetSkill(SkillName.ResistenciaMagica, 65.0, 88.0);
             this.SetSkill(SkillName.Briga, 36.0, 68.0);
 
@@ -22,7 +22,7 @@ namespace Server.Mobiles
 
         }
 
-        public Mystic(Serial serial)
+        public TLSFeiticeiro(Serial serial)
             : base(serial)
         {
         }
@@ -43,14 +43,26 @@ namespace Server.Mobiles
         }
         public override void InitSBInfo()
         {
-            this.m_SBInfos.Add(new SBMystic());
+            this.m_SBInfos.Add(new SBFeiticeiro());
         }
 
         public override void InitOutfit()
         {
-            base.InitOutfit();
+            Item item = (Utility.RandomBool() ? null : new Server.Items.BoneHelm());
 
-            this.AddItem(new Server.Items.Robe(Utility.RandomBlueHue()));
+            if (item != null && !EquipItem(item))
+            {
+                item.Delete();
+                item = null;
+            }
+
+            if (item == null)
+                AddItem(new Server.Items.MaskOfKhalAnkur());
+            AddItem(new Server.Items.BoneLegs());
+            AddItem(new Server.Items.BoneChest());
+            AddItem(new Server.Items.GlassStaff());
+
+            base.InitOutfit();
         }
 
         public override void Serialize(GenericWriter writer)
