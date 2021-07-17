@@ -392,7 +392,7 @@ namespace Server.Mobiles
                     regen = 4;
 
                 if (IsParagon)
-                    regen += 40;
+                    regen += 20;
 
                 regen += HumilityVirtue.GetRegenBonus(this);
 

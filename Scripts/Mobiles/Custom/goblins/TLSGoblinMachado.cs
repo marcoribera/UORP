@@ -81,7 +81,8 @@ namespace Server.Mobiles
                     PackItem(new Candle());
                     break;
             }
-
+            
+            this.PackItem(new Gold(Utility.RandomMinMax(0, 15)));
             if (0.2 > Utility.RandomDouble())
                 PackItem(new BolaBall());
         }
@@ -121,6 +122,10 @@ namespace Server.Mobiles
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+        }
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Meager);
         }
     }
 }

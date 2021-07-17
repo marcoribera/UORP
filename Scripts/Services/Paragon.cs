@@ -160,7 +160,7 @@ namespace Server.Mobiles
             if (fame > 32000)
                 fame = 32000;
 
-            double chance = 1 / Math.Round(20.0 - (fame / 3200));
+            double chance = 1 / Math.Round(40.0 - (fame / 3200));
 
             return (chance > Utility.RandomDouble());
         }

@@ -43,7 +43,10 @@ namespace Server.Mobiles
             VirtualArmor = 28;
 
             this.AddItem(new Bow());
-            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));            
+            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));   
+            this.PackItem(new Gold(Utility.RandomMinMax(0, 15)));
+            
+            
 
             PackItem(new ThighBoots());
 
@@ -100,5 +103,10 @@ namespace Server.Mobiles
             base.Deserialize(reader);
             int version = reader.ReadInt();
         }
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Meager);
+        }
     }
+    
 }
