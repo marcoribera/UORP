@@ -579,10 +579,10 @@ namespace Server
 
         public static double FACILIMO = 0.8f;
         public static double FACIL = 0.6f;
-        public static double MEDIO = 0.4f;
-        public static double DIFICIL = 0.2f;
-        public static double DIFICILIMO = 0.1f;
-        public static double INSANO = 0.01f;
+        public static double MEDIO = 0.5f;
+        public static double DIFICIL = 0.4f;
+        public static double DIFICILIMO = 0.3f;
+        public static double INSANO = 0.05f;
 
         private static SkillInfo[] m_Table = new SkillInfo[44]
 		{
