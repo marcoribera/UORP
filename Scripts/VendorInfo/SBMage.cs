@@ -39,14 +39,15 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(ScribesPen), 50, 3, 0xFBF, 0));
 
                 Add(new GenericBuyInfo(typeof(BlankScroll), 10, 40, 0x0E34, 0));
+                Add(new GenericBuyInfo(typeof(TelekinisisScroll), 240, 3, 0x1F41, 0));
 
-           //     Add(new GenericBuyInfo("1041072", typeof(MagicWizardsHat), 11, 10, 0x1718, Utility.RandomDyedHue()));
+                //     Add(new GenericBuyInfo("1041072", typeof(MagicWizardsHat), 11, 10, 0x1718, Utility.RandomDyedHue()));
 
-             //   Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0));
+                //   Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0));
 
-             //   Add(new GenericBuyInfo(typeof(RefreshPotion), 15, 10, 0xF0B, 0, true));
-              //  Add(new GenericBuyInfo(typeof(AgilityPotion), 15, 10, 0xF08, 0, true));
-             //   Add(new GenericBuyInfo(typeof(NightSightPotion), 15, 10, 0xF06, 0, true));
+                //   Add(new GenericBuyInfo(typeof(RefreshPotion), 15, 10, 0xF0B, 0, true));
+                //  Add(new GenericBuyInfo(typeof(AgilityPotion), 15, 10, 0xF08, 0, true));
+                //   Add(new GenericBuyInfo(typeof(NightSightPotion), 15, 10, 0xF06, 0, true));
                 Add(new GenericBuyInfo(typeof(LesserHealPotion), 50, 5, 0xF0C, 0, true));
              //   Add(new GenericBuyInfo(typeof(StrengthPotion), 15, 10, 0xF09, 0, true));
               //  Add(new GenericBuyInfo(typeof(LesserPoisonPotion), 15, 10, 0xF0A, 0, true));
