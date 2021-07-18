@@ -44,7 +44,8 @@ namespace Server.Mobiles
             VirtualArmor = 28;
 
             this.AddItem(new Bow());
-            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));            
+            this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));
+            this.PackItem(new Gold(Utility.RandomMinMax(10, 20)));            
 
             PackItem(new ThighBoots());
 
