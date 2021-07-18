@@ -31,7 +31,7 @@ namespace Server.Mobiles
             typeof(WrathOfTheDryad), typeof(PixieSwatter),
             typeof(GlovesOfThePugilist)
         };
-        public static int Hue = 0x0;// Paragon hue
+        public static int Hue = 0x07AC;// Paragon hue
 
         // Buffs
         public static double HitsBuff = 5.0;
@@ -49,7 +49,7 @@ namespace Server.Mobiles
 				!bc.CanBeParagon)
                 return;
 
-            bc.Hue = 0;
+            bc.Hue = 0x07AC;
 
             if (bc.HitsMaxSeed >= 0)
                 bc.HitsMaxSeed = (int)(bc.HitsMaxSeed * HitsBuff);

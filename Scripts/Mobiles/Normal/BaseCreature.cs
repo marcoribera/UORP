@@ -1491,17 +1491,17 @@ namespace Server.Mobiles
 
         public override string ApplyNameSuffix(string suffix)
         {
-            // if (IsParagon && !GivesMLMinorArtifact)
-            // {
-            //     if (suffix.Length == 0)
-            //     {
-            //         suffix = "(Paragon)";
-            //     }
-            //     else
-            //     {
-            //         suffix = String.Concat( suffix, " (Paragon)" );
-            //     }
-            // }
+             if (IsParagon)
+             {
+                 if (suffix.Length == 0)
+                 {
+                     suffix = "Corrompido";
+                 }
+                 else
+                 {
+                     suffix = String.Concat( suffix, "Corrompido" );
+                 }
+             }
 
             return base.ApplyNameSuffix(suffix);
         }
