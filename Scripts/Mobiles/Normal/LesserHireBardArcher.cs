@@ -59,18 +59,21 @@ namespace Server.Mobiles
             this.Karma = 100;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 35;
 
             this.AddItem(new Shoes(Utility.RandomNeutralHue()));
 
-            switch ( Utility.Random(2) )
+            switch ( Utility.Random(3) )
             {
                 case 0:
                     this.AddItem(new Doublet(Utility.RandomDyedHue()));
                     break;
                 case 1:
                     this.AddItem(new Shirt(Utility.RandomDyedHue()));
+                    break;
+                case 2:
+                    this.AddItem(new ShortPants(Utility.RandomDyedHue()));
                     break;
             }
             switch ( Utility.Random(4) )

@@ -42,7 +42,7 @@ namespace Server.Mobiles
             this.VirtualArmor = 28;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 35;
 
             switch ( Utility.Random(20) )

@@ -10,11 +10,11 @@ namespace Server.Mobiles
     {
         private int m_Pay = 1;
         private bool m_IsHired;
-        private int m_HoldGold = 8;
+        private int m_HoldGold = 1;
         private Timer m_PayTimer;
 
-        public override bool IsBondable { get { return false; } }
-        public override bool CanAutoStable { get { return false; } }
+        public override bool IsBondable { get { return true; } }
+        public override bool CanAutoStable { get { return true; } }
         public override bool CanDetectHidden { get { return false; } }
 
         public BaseHire(AIType AI)
@@ -174,7 +174,7 @@ namespace Server.Mobiles
             m_Pay += (int)m.Skills[SkillName.Feiticaria].Value + (int)m.Skills[SkillName.Misticismo].Value;
             m_Pay += (int)m.Skills[SkillName.Caos].Value + (int)m.Skills[SkillName.Ordem].Value;
             m_Pay += (int)m.Skills[SkillName.Furtividade].Value + (int)m.Skills[SkillName.Bloqueio].Value;
-            m_Pay /= 35;
+            m_Pay /= 150;
             m_Pay += 1;
             return true;
         }

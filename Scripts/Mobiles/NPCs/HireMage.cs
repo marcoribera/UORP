@@ -43,6 +43,10 @@ namespace Server.Mobiles
             Fame = 100;
             Karma = 100;
 
+            Persuadable = true;
+            ControlSlots = 3;
+            MinPersuadeSkill = 100;
+
             AddItem(new Shirt());
 
             AddItem(new Robe(Utility.RandomNeutralHue()));

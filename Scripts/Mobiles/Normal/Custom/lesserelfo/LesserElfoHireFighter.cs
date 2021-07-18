@@ -76,7 +76,7 @@ namespace Server.Mobiles
             this.Karma = 100;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 19;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 
