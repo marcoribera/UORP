@@ -20,38 +20,37 @@ namespace Server.Mobiles
             BodyValue = 1775;
             //Hue = 1175;
 
-            SetStr(500, 555);
-            SetDex(89, 125);
-            SetInt(100, 160);
+             SetStr(296, 325);
+            SetDex(96, 115);
+            SetInt(186, 225);
 
-            SetHits(555, 650);
+            SetHits(191, 210);
 
-            SetDamage(20, 26);
+            SetDamage(16, 22);
 
-            SetDamageType(ResistanceType.Physical, 40);
-            SetDamageType(ResistanceType.Poison, 20);
-            SetDamageType(ResistanceType.Energy, 40);
+            SetDamageType(ResistanceType.Physical, 75);
+            SetDamageType(ResistanceType.Energy, 25);
 
-            SetResistance(ResistanceType.Physical, 65, 75);
-            SetResistance(ResistanceType.Fire, 20, 40);
-            SetResistance(ResistanceType.Cold, 20, 40);
-            SetResistance(ResistanceType.Poison, 50, 60);
-            SetResistance(ResistanceType.Energy, 40, 50);
+            SetResistance(ResistanceType.Physical, 55, 65);
+            SetResistance(ResistanceType.Fire, 25, 40);
+            SetResistance(ResistanceType.Cold, 25, 40);
+            SetResistance(ResistanceType.Poison, 55, 65);
+            SetResistance(ResistanceType.Energy, 25, 40);
 
-            SetSkill(SkillName.PoderMagico, 15.2, 19.3);
-            SetSkill(SkillName.Arcanismo, 39.5, 49.5);
-            SetSkill(SkillName.ResistenciaMagica, 91.4, 93.4);
-            SetSkill(SkillName.Anatomia, 108.1, 110.0);
-            SetSkill(SkillName.Briga, 97.3, 98.2);
+            SetSkill(SkillName.PoderMagico, 80.1, 90.0);
+            SetSkill(SkillName.Arcanismo, 60.2, 80.0);
+            SetSkill(SkillName.ResistenciaMagica, 75.3, 90.0);
+            SetSkill(SkillName.Anatomia, 20.1, 22.5);
+            SetSkill(SkillName.Briga, 80.5, 92.5);
 
-            Fame = 15000;
-            Karma = -15000;
-
-            VirtualArmor = 60;
+            Fame = 9000;
+            Karma = 9000;
 
             Tamable = true;
-            ControlSlots = 3;
-            MinTameSkill = 108.0;
+            ControlSlots = 2;
+            MinTameSkill = 95.1;
+
+            SetWeaponAbility(WeaponAbility.ArmorIgnore);
         }
 
         public TLSAntilopeMagico(Serial serial)
@@ -59,11 +58,56 @@ namespace Server.Mobiles
         {
         }
 
+        public override bool AllowMaleRider
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool AllowMaleTamer
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool InitialInnocent
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override TimeSpan MountAbilityDelay
+        {
+            get
+            {
+                return TimeSpan.FromHours(1.0);
+            }
+        }
+
+        public override TribeType Tribe { get { return TribeType.Fey; } }
+
+        public override OppositionGroup OppositionGroup
+        {
+            get
+            {
+                return OppositionGroup.FeyAndUndead;
+            }
+        }
+        public override Poison PoisonImmune
+        {
+            get
+            {
+                return Poison.Lethal;
+            }
+        }
         public override int Meat
         {
             get
             {
-                return 5;
+                return 3;
             }
         }
         public override int Hides
@@ -77,37 +121,59 @@ namespace Server.Mobiles
         {
             get
             {
-                return HideType.Barbed;
+                return HideType.Horned;
             }
         }
         public override FoodType FavoriteFood
         {
             get
             {
-                return FoodType.Meat;
+                return FoodType.FruitsAndVegies | FoodType.GrainsAndHay;
             }
         }
-        public override bool CanAngerOnTame
+        public override void OnDisallowedRider(Mobile m)
         {
-            get
+            m.SendLocalizedMessage(1042318); // The unicorn refuses to allow you to ride it.
+        }
+
+        public override bool DoMountAbility(int damage, Mobile attacker)
+        {
+            if (Rider == null || attacker == null)	//sanity
+                return false;
+
+            if (Rider.Poisoned && ((Rider.Hits - damage) < 40))
             {
-                return true;
+                Poison p = Rider.Poison;
+
+                if (p != null)
+                {
+                    int chanceToCure = 10000 + (int)(Skills[SkillName.Arcanismo].Value * 75) - ((p.RealLevel + 1) * (Core.AOS ? (p.RealLevel < 4 ? 3300 : 3100) : 1750));
+                    chanceToCure /= 100;
+
+                    if (chanceToCure > Utility.Random(100))
+                    {
+                        if (Rider.CurePoison(this))	//TODO: Confirm if mount is the one flagged for curing it or the rider is
+                        {
+                            Rider.LocalOverheadMessage(Server.Network.MessageType.Regular, 0x3B2, true, "Your mount senses you are in danger and aids you with magic.");
+                            Rider.FixedParticles(0x373A, 10, 15, 5012, EffectLayer.Waist);
+                            Rider.PlaySound(0x1E0);	// Cure spell effect.
+                            Rider.PlaySound(0xA9);		// Unicorn's whinny.
+
+                            return true;
+                        }
+                    }
+                }
             }
-        }
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Rich);
-            AddLoot(LootPack.Average);
-            AddLoot(LootPack.LowScrolls);
-            AddLoot(LootPack.Potions);
+
+            return false;
         }
 
-        public override int GetAngerSound()
+		public override void OnDeath(Container c)
         {
-            if (!Controlled)
-                return 0x16A;
+            base.OnDeath(c);
 
-            return base.GetAngerSound();
+            if (!Controlled && Utility.RandomDouble() < 0.3)
+                c.DropItem(new UnicornRibs());
         }
 
         public override void Serialize(GenericWriter writer)
@@ -125,7 +191,7 @@ namespace Server.Mobiles
 
             if (version == 0)
             {
-                SetDamageType(ResistanceType.Physical, 40);
+                SetWeaponAbility(WeaponAbility.ArmorIgnore);
             }
         }
     }

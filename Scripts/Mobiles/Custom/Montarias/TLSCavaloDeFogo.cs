@@ -20,38 +20,45 @@ namespace Server.Mobiles
             BodyValue = 1777;
             //Hue = 1175;
 
-            SetStr(500, 555);
-            SetDex(89, 125);
-            SetInt(100, 160);
+            SetStr(496, 525);
+            SetDex(86, 105);
+            SetInt(86, 125);
 
-            SetHits(555, 650);
+            //SetHits(298, 315);
 
-            SetDamage(20, 26);
+            SetDamage(16, 22);
 
             SetDamageType(ResistanceType.Physical, 40);
-            SetDamageType(ResistanceType.Poison, 20);
-            SetDamageType(ResistanceType.Energy, 40);
+            SetDamageType(ResistanceType.Fire, 40);
+            SetDamageType(ResistanceType.Energy, 20);
 
-            SetResistance(ResistanceType.Physical, 65, 75);
-            SetResistance(ResistanceType.Fire, 20, 40);
-            SetResistance(ResistanceType.Cold, 20, 40);
-            SetResistance(ResistanceType.Poison, 50, 60);
-            SetResistance(ResistanceType.Energy, 40, 50);
+            SetResistance(ResistanceType.Physical, 55, 65);
+            SetResistance(ResistanceType.Fire, 30, 40);
+            SetResistance(ResistanceType.Cold, 30, 40);
+            SetResistance(ResistanceType.Poison, 30, 40);
+            SetResistance(ResistanceType.Energy, 20, 30);
 
-            SetSkill(SkillName.PoderMagico, 15.2, 19.3);
-            SetSkill(SkillName.Arcanismo, 39.5, 49.5);
-            SetSkill(SkillName.ResistenciaMagica, 91.4, 93.4);
-            SetSkill(SkillName.Anatomia, 108.1, 110.0);
-            SetSkill(SkillName.Briga, 97.3, 98.2);
+            SetSkill(SkillName.PoderMagico, 10.4, 50.0);
+            SetSkill(SkillName.Arcanismo, 10.4, 50.0);
+            SetSkill(SkillName.ResistenciaMagica, 85.3, 100.0);
+            SetSkill(SkillName.Anatomia, 97.6, 100.0);
+            SetSkill(SkillName.Briga, 80.5, 92.5);
 
-            Fame = 15000;
-            Karma = -15000;
+            Fame = 14000;
+            Karma = -14000;
 
             VirtualArmor = 60;
 
             Tamable = true;
-            ControlSlots = 3;
-            MinTameSkill = 108.0;
+            ControlSlots = 2;
+            MinTameSkill = 95.1;
+
+
+            if (Utility.RandomDouble() < 0.05)
+                //Hue = 1910;
+
+            PackItem(new SulfurousAsh(Utility.RandomMinMax(3, 5)));
+            SetSpecialAbility(SpecialAbility.DragonBreath);
         }
 
         public TLSCavaloDeFogo(Serial serial)
@@ -94,14 +101,6 @@ namespace Server.Mobiles
                 return true;
             }
         }
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Rich);
-            AddLoot(LootPack.Average);
-            AddLoot(LootPack.LowScrolls);
-            AddLoot(LootPack.Potions);
-        }
-
         public override int GetAngerSound()
         {
             if (!Controlled)
@@ -114,7 +113,7 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
+            writer.Write((int)0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -122,11 +121,6 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            if (version == 0)
-            {
-                SetDamageType(ResistanceType.Physical, 40);
-            }
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Server.Mobiles
         {
             get
             {
-                return 4;
+                return 1;
             }
         }
         public override FoodType FavoriteFood

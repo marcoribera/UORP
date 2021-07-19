@@ -54,23 +54,12 @@ namespace Server.Mobiles
                 return 1;
             }
         }
-        public override int Hides
-        {
-            get
-            {
-                return 4;
-            }
-        }
         public override FoodType FavoriteFood
         {
             get
             {
                 return FoodType.Fish | FoodType.Meat;
             }
-        }
-        public override void GenerateLoot()
-        {
-            AddLoot(LootPack.Poor);
         }
 
         public override void Serialize(GenericWriter writer)
