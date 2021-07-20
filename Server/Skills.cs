@@ -781,7 +781,7 @@ namespace Server
 		public int Cap {
             get
             {
-                return Math.Min(m_Cap + 500 + (100 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
+                return 7000; // Math.Min(m_Cap + 500 + (100 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
             }
             set
             {
