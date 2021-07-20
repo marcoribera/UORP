@@ -577,12 +577,12 @@ namespace Server
 
         public int Localization { get { return 1044060 + SkillID; } }
 
-        public static double FACILIMO = 0.8f;
-        public static double FACIL = 0.6f;
-        public static double MEDIO = 0.5f;
-        public static double DIFICIL = 0.4f;
-        public static double DIFICILIMO = 0.3f;
-        public static double INSANO = 0.05f;
+        public static double FACILIMO = 1.0f;
+        public static double FACIL = 0.9f;
+        public static double MEDIO = 0.8f;
+        public static double DIFICIL = 0.7f;
+        public static double DIFICILIMO = 0.6f;
+        public static double INSANO = 0.2f;
 
         private static SkillInfo[] m_Table = new SkillInfo[44]
 		{
