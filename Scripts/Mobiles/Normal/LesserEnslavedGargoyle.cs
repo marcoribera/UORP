@@ -39,7 +39,7 @@ namespace Server.Mobiles
             VirtualArmor = 35;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 35;
 
             if (0.2 > Utility.RandomDouble())

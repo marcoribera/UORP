@@ -36,7 +36,7 @@ namespace Server.Mobiles
             this.Karma = -1000;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 45;
 
             this.PackItem(new Bandage(Utility.RandomMinMax(1, 15)));

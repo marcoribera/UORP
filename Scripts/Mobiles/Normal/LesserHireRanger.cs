@@ -49,7 +49,7 @@ namespace Server.Mobiles
             Karma = 125;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 49;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));

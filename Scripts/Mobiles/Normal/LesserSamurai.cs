@@ -24,7 +24,7 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Cortante, 20.0, 40.0);
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 40;
 
             this.SpeechHue = Utility.RandomDyedHue();

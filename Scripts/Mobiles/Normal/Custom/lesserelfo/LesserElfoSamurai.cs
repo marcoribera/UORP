@@ -47,7 +47,7 @@ namespace Server.Mobiles
             SetMana(80, 100);
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 40;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 

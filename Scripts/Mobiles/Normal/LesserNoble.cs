@@ -21,7 +21,7 @@ namespace Server.Mobiles
             SetHits(150, 180);
             SetMana(80, 100);
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 40;
 
         }

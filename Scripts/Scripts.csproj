@@ -13874,6 +13874,8 @@
     <Compile Include="VendorInfo\SBPoleArmWeapon.cs" />
     <Compile Include="VendorInfo\SBProvisioner.cs" />
     <Compile Include="VendorInfo\SBRancher.cs" />
+    <Compile Include="VendorInfo\SBEstalajadeiro.cs" />
+    <Compile Include="VendorInfo\SBFeiticeiro.cs" />
     <Compile Include="VendorInfo\SBRangedWeapon.cs" />
     <Compile Include="VendorInfo\SBRanger.cs" />
     <Compile Include="VendorInfo\SBRealEstateBroker.cs" />

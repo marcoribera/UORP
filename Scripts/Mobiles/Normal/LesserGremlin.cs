@@ -35,7 +35,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomia, 35);
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 35;
 
             AddItem(new Bow());

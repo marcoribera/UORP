@@ -52,7 +52,7 @@ namespace Server.Mobiles
             Karma = -1000;
 
             Tamable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinTameSkill = 35;
 
 

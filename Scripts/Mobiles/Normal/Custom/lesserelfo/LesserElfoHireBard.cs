@@ -59,7 +59,7 @@ namespace Server.Mobiles
             this.SetDex(80, 90);
             this.SetInt(26, 40);
 
-            SetHits(150, 180);
+            SetHits(100, 120);
             SetMana(80, 100);
 
             this.SetDamage(5, 10);
@@ -76,14 +76,16 @@ namespace Server.Mobiles
             this.Karma = 100;
 
             Persuadable = true;
-                     ControlSlots = 1;
+                     ControlSlots = 2;
             MinPersuadeSkill = 19;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 
 
             this.AddItem(new Shoes(Utility.RandomNeutralHue()));
+           
 
-            switch ( Utility.Random(2) )
+
+            switch ( Utility.Random(3) )
             {
                 case 0:
                     this.AddItem(new Doublet(Utility.RandomDyedHue()));

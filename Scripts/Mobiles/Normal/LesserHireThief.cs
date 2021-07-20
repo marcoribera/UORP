@@ -62,7 +62,7 @@ namespace Server.Mobiles
 
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 49;
 
             this.AddItem(new Sandals(Utility.RandomNeutralHue()));

@@ -54,7 +54,7 @@ namespace Server.Mobiles
 			Karma = -8500;
 
 			Persuadable = true;
-			ControlSlots = 1;
+			ControlSlots = 2;
 			MinPersuadeSkill = 40;
 
 			AddItem( new SamuraiTabi() );

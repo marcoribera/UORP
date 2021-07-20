@@ -47,6 +47,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(NecromancerSpellbook), 1000, 2, 0x2253, 0));
                 Add(new GenericBuyInfo(typeof(Spellbook), 1000, 2, 0xEFA, 0));
                 Add(new GenericBuyInfo(typeof(SpellweavingBook), 1000, 2, 0x2D50, 0));
+                Add(new GenericBuyInfo(typeof(MonsterContractBook), 200, 5, 0x2259, 0));
 
                 if (m.Map == Map.Tokuno || m.Map == Map.TerMur)
                 {
