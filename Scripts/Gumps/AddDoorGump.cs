@@ -19,7 +19,7 @@ namespace Server.Gumps
             new DoorInfo(typeof(MetalDoor), -1),
             new DoorInfo(typeof(MetalDoor), -1),
             new DoorInfo(typeof(MetalDoor), -1),
-            new DoorInfo(typeof(BarredMetalDoor), 0x685),
+           new DoorInfo(typeof(BarredMetalDoor), 0x685),
             new DoorInfo(typeof(MediumWoodDoor), 0x6B5),
             new DoorInfo(typeof(MetalDoor2), 0x6C5),
             new DoorInfo(typeof(MetalDoor), -1),
