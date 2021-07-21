@@ -159,7 +159,7 @@ namespace Server.Items
         }
     }
 
-    public class BarredMetalDoor : BaseDoor
+   /* public class BarredMetalDoor : BaseDoor
     {
         [Constructable]
         public BarredMetalDoor(DoorFacing facing)
@@ -185,7 +185,7 @@ namespace Server.Items
 
             int version = reader.ReadInt();
         }
-    }
+    }*/
 
     public class BarredMetalDoor2 : BaseDoor
     {

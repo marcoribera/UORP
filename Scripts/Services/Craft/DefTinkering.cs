@@ -349,7 +349,8 @@ namespace Server.Engines.Craft
             AddCraft(typeof(MapmakersPen), 1044046, 1044167, 25.0, 75.0, typeof(IronIngot), 1044036, 1, 1044037);
             AddCraft(typeof(ScribesPen), 1044046, 1044168, 25.0, 75.0, typeof(IronIngot), 1044036, 1, 1044037);
             AddCraft(typeof(Clippers), 1044046, 1112117, 50.0, 50.0, typeof(IronIngot), 1044036, 4, 1044037);
-            
+            AddCraft(typeof(LocksmithTools), 1044046, 1021653, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+
             if (Core.ML)
             {
                 index = AddCraft(typeof(MetalContainerEngraver), 1044046, 1072154, 75.0, 100.0, typeof(IronIngot), 1044036, 4, 1044037);
@@ -677,7 +678,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ExplosionTrapCraft), 1044052, 1044597, 55.0, 105.0, typeof(IronIngot), 1044036, 1, 1044037);
             AddRes(index, typeof(BaseExplosionPotion), 1044569, 1, 1044253);
 
-            // Faction Gas Trap
+           /* // Faction Gas Trap
             index = AddCraft(typeof(FactionGasTrapDeed), 1044052, 1044598, 65.0, 115.0, typeof(Silver), 1044572, Core.AOS ? 250 : 1000, 1044253);
             AddRes(index, typeof(IronIngot), 1044036, 10, 1044037);
             AddRes(index, typeof(BasePoisonPotion), 1044571, 1, 1044253);
@@ -700,8 +701,29 @@ namespace Server.Engines.Craft
             // Faction trap removal kit
             index = AddCraft(typeof(FactionTrapRemovalKit), 1044052, 1046445, 90.0, 115.0, typeof(Silver), 1044572, 500, 1044253);
             AddRes(index, typeof(IronIngot), 1044036, 10, 1044037);
-            #endregion
+            */
 
+            index = this.AddCraft(typeof(DoorArrowTrapInstaller), 1044052, "Armadilha de Flechas para Portas", 75.0, 95.0, typeof(IronIngot), "iron ingot", 2, 1044253);
+            this.AddRes(index, typeof(Springs), "springs", 1, 1044253);
+            this.AddRes(index, typeof(Arrow), "arrows", 8, 1044253);
+
+            index = this.AddCraft(typeof(DoorDartTrapInstaller), 1044052, "Armadilha de Dardos para Portas", 65.0, 85.0, typeof(IronIngot), "iron ingot", 2, 1044253);
+            this.AddRes(index, typeof(Springs), "springs", 1, 1044253);
+            this.AddRes(index, typeof(Bolt), "bolts", 8, 1044253);
+
+            index = this.AddCraft(typeof(DoorExplosionTrapInstaller), 1044052, "Armadilha Explosiva para Portas", 90.0, 110.0, typeof(IronIngot), "iron ingot", 2, 1044253);
+            this.AddRes(index, typeof(SulfurousAsh), "sulfurous ash", 4, 1044253);
+            this.AddRes(index, typeof(BaseExplosionPotion), "explosion potion", 2, 1044253);
+
+            index = this.AddCraft(typeof(DoorPoisonTrapInstaller), 1044052, "Armadilha de Veneno para Portas", 80.0, 100.0, typeof(IronIngot), "iron ingot", 2, 1044253);
+            this.AddRes(index, typeof(Gears), "gears", 2, 1044253);
+            this.AddRes(index, typeof(BasePoisonPotion), "poison potion", 1, 1044253);
+
+            index = this.AddCraft(typeof(DoorGuillotineTrapInstaller), 1044052, "Armadilha de Lâmina para Portas", 80.0, 100.0, typeof(IronIngot), "iron ingot", 2, 1044253);
+            this.AddRes(index, typeof(Gears), "gears", 2, 1044253);
+            this.AddRes(index, typeof(Halberd), "katana", 1, 1025183);
+
+            #endregion
             #region Magic Jewlery
             if (Core.ML)
             {

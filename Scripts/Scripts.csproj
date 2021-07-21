@@ -702,6 +702,8 @@
     <Compile Include="Items\Custom\GreySouthFirePlaceShortAddon.cs" />
     <Compile Include="Items\Custom\GreySouthFirePlaceTallAddon.cs" />
     <Compile Include="Items\Custom\GreySouthFirePlaceThinAddon.cs" />
+    <Compile Include="Items\Custom\guarda com chave e force field\ForceField.cs" />
+    <Compile Include="Items\Custom\guarda com chave e force field\GuardSpawner.cs" />
     <Compile Include="Items\Custom\HalloweenBloodFountainAddon.cs" />
     <Compile Include="Items\Custom\HalloweenCasketTempleAddon.cs" />
     <Compile Include="Items\Custom\HalloweenGhoulPicnicAddon.cs" />
@@ -777,6 +779,24 @@
     <Compile Include="Items\Custom\LakeFishingAddon.cs" />
     <Compile Include="Items\Custom\LargePondAddon.cs" />
     <Compile Include="Items\Custom\LargeSpiderWebAddon.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\basedoor.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\BaseDoorTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\DoorArrowTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\DoorDartTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\DoorExplosionTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\DoorGuillotineTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\DoorPoisonTrap.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorArrowTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorDartTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorExplosionTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorGuillotineTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorPoisonTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\Door Traps\Installers\DoorTrapInstaller.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\HouseDoors.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\HouseFoundation.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\ITrapable.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\LocksmithTools.cs" />
+    <Compile Include="Items\Custom\Lockpickable Doors 0.7\TimedItem.cs" />
     <Compile Include="Items\Custom\MarbleItems.cs" />
     <Compile Include="Items\Custom\MediumSpiderWebAddon.cs" />
     <Compile Include="Items\Custom\MedusasFloortileAddon.cs" />
@@ -1030,6 +1050,7 @@
     <Compile Include="Items\Custom\WeddingLadderArchEastAddon.cs" />
     <Compile Include="Items\Custom\WeddingLadderArchSouthAddon.cs" />
     <Compile Include="Items\Custom\WellAddon.cs" />
+    <Compile Include="Items\Custom\WetClothes.cs" />
     <Compile Include="Items\Custom\witchsbroom.cs" />
     <Compile Include="Items\Custom\WoodBrickHouseAddon.cs" />
     <Compile Include="Items\Custom\Yard System\Core\ContextMenuEntries.cs" />
@@ -10992,6 +11013,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\Craft\DefMasonry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Craft\DefLocksmithing.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Services\Craft\DefTailoring.cs">
