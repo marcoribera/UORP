@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-    public class Jeweler : BaseVendor
+    public class TLSElfoJeweler : BaseVendor
     {
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
-        public Jeweler()
+        public TLSElfoJeweler()
             : base("Especialista em Gemas")
         {
             this.SetSkill(SkillName.Erudicao, 64.0, 100.0);
         }
 
-        public Jeweler(Serial serial)
+        public TLSElfoJeweler(Serial serial)
             : base(serial)
         {
         }
@@ -42,6 +42,28 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+        }
+        public override void InitBody()
+        {
+            InitStats(100, 100, 25);
+            this.Race = Race.Elf;
+            Female = GetGender();
+            SpeechHue = Utility.RandomDyedHue();
+
+            if (Female)
+            {
+                Body = 0x25E;
+                Name = NameList.RandomName("female");
+            }
+            else
+            {
+                Body = 0x25D;
+                Name = NameList.RandomName("male");
+            }
+
+            Hue = Utility.RandomSkinHue();
+            Utility.AssignRandomHair(this);
+            Utility.AssignRandomFacialHair(this);
         }
     }
 }
