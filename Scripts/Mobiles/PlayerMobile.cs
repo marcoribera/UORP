@@ -5610,7 +5610,7 @@ namespace Server.Mobiles
 			return base.CanSee(m);
 		}
 
-		public override bool CanSee(Item item)
+        /*public override bool CanSee(Item item)
 		{
             if (item is IConditionalVisibility && !((IConditionalVisibility)item).CanBeSeenBy(this))
                 return false;
@@ -5630,9 +5630,19 @@ namespace Server.Mobiles
             }
 
 			return base.CanSee(item);
-		}
+		}*/
 
-		public override void OnAfterDelete()
+        public override bool CanSee(Item item)
+        {
+            if (m_DesignContext != null && m_DesignContext.Foundation.IsHiddenToCustomizer(item))
+            {
+                return false;
+            }
+
+            return base.CanSee(item);
+        }
+
+        public override void OnAfterDelete()
 		{
 			base.OnAfterDelete();
 

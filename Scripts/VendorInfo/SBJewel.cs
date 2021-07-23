@@ -35,7 +35,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(Necklace), 60, 2, 0x1085, 0));
                 Add(new GenericBuyInfo(typeof(GoldNecklace), 120, 2, 0x1088, 0));
                 Add(new GenericBuyInfo(typeof(GoldBeadNecklace), 150, 2, 0x1089, 0));
-                Add(new GenericBuyInfo(typeof(Beads), 50, 5, 0x108B, 0, true));
+                Add(new GenericBuyInfo(typeof(Beads), 50, 5, 0x108B, 0));
                 Add(new GenericBuyInfo(typeof(GoldBracelet), 100, 5, 0x1086, 0));
                 Add(new GenericBuyInfo(typeof(GoldEarrings), 100, 5, 0x1087, 0));
 
@@ -45,15 +45,15 @@ namespace Server.Mobiles
 
            //     Add(new GenericBuyInfo("1060740", typeof(ReceiverCrystal), 6, 20, 0x1ED0, 0));
 
-                Add(new GenericBuyInfo(typeof(StarSapphire), 125, 20, 0x0F0F, 0, true));
-                Add(new GenericBuyInfo(typeof(Emerald), 100, 20, 0xF10, 0, true));
-                Add(new GenericBuyInfo(typeof(Sapphire), 100, 20, 0xF19, 0, true));
-                Add(new GenericBuyInfo(typeof(Ruby), 75, 20, 0xF13, 0, true));
-                Add(new GenericBuyInfo(typeof(Citrine), 50, 20, 0xF15, 0, true));
-                Add(new GenericBuyInfo(typeof(Amethyst), 100, 20, 0xF16, 0, true));
-                Add(new GenericBuyInfo(typeof(Tourmaline), 75, 20, 0x0F18, 0, true));
-                Add(new GenericBuyInfo(typeof(Amber), 50, 20, 0xF25, 0, true));
-                Add(new GenericBuyInfo(typeof(Diamond), 200, 20, 0xF26, 0, true));
+                Add(new GenericBuyInfo(typeof(StarSapphire), 125, 3, 0x0F0F, 0));
+                Add(new GenericBuyInfo(typeof(Emerald), 100, 3, 0xF10, 0));
+                Add(new GenericBuyInfo(typeof(Sapphire), 100, 3, 0xF19, 0));
+                Add(new GenericBuyInfo(typeof(Ruby), 75, 3, 0xF13, 0));
+                Add(new GenericBuyInfo(typeof(Citrine), 50, 3, 0xF15, 0));
+                Add(new GenericBuyInfo(typeof(Amethyst), 100, 3, 0xF16, 0));
+                Add(new GenericBuyInfo(typeof(Tourmaline), 75, 3, 0x0F18, 0));
+                Add(new GenericBuyInfo(typeof(Amber), 50, 3, 0xF25, 0));
+                Add(new GenericBuyInfo(typeof(Diamond), 200, 3, 0xF26, 0));
             }
         }
 

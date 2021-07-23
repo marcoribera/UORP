@@ -397,7 +397,7 @@ namespace Server.Multis
         // Contents will not decay
         public virtual bool CheckContentsDecay(Item item)
         {
-            if (_NoDecayItems.Any(x => item.GetType() == x ||item.GetType().IsSubclassOf(x)))
+            if (_NoDecayItems.Any(x => item.GetType() == x || item.GetType().IsSubclassOf(x)))
             {
                 return false;
             }
@@ -590,7 +590,7 @@ namespace Server.Multis
             }
         }
         #endregion
-        
+
         public List<Mobile> AvailableVendorsFor(Mobile m)
         {
             List<Mobile> list = new List<Mobile>();
@@ -1127,7 +1127,7 @@ namespace Server.Multis
 
             SecureAccessResult res = house.CheckSecureAccess(m, item);
 
-            switch ( res )
+            switch (res)
             {
                 case SecureAccessResult.Insecure:
                     break;
@@ -1197,7 +1197,7 @@ namespace Server.Multis
         {
             SecureAccessResult res = CheckSecureAccess(from, item);
 
-            switch ( res )
+            switch (res)
             {
                 case SecureAccessResult.Insecure:
                     break;
@@ -1255,7 +1255,7 @@ namespace Server.Multis
         private Type[] _AccessibleToAll =
         {
             typeof(TenthAnniversarySculpture), typeof(RewardBrazier), typeof(VendorRentalContract), typeof(Dyes), typeof(DyeTub),
-            typeof(BaseInstrument), typeof(Clock), typeof(TreasureMap), typeof(RecallRune), typeof(Dices), typeof(BaseBoard), 
+            typeof(BaseInstrument), typeof(Clock), typeof(TreasureMap), typeof(RecallRune), typeof(Dices), typeof(BaseBoard),
             typeof(Runebook)
         };
 
@@ -1956,7 +1956,7 @@ namespace Server.Multis
             if (i is BaseAddonContainer)
                 i.Movable = false;
             else
-            	i.Movable = !locked;
+                i.Movable = !locked;
 
             i.IsLockedDown = locked;
 
@@ -2372,13 +2372,13 @@ namespace Server.Multis
 
         public bool CheckLockdownOwnership(Mobile m, Item item)
         {
-            if(item == null)
+            if (item == null)
                 return false;
 
-            if(IsOwner(m))
+            if (IsOwner(m))
                 return true;
 
-            if(item is BaseContainer || item.Parent is BaseContainer)
+            if (item is BaseContainer || item.Parent is BaseContainer)
             {
                 Item check = item.Parent is BaseContainer ? (Item)item.Parent : item;
 
@@ -2469,7 +2469,7 @@ namespace Server.Multis
 
                 if (info != null)
                 {
-                    m.CloseGump(typeof (SetSecureLevelGump));
+                    m.CloseGump(typeof(SetSecureLevelGump));
                     m.SendGump(new SetSecureLevelGump(m, info, this));
                 }
                 else if (item.Parent != null)
@@ -2503,7 +2503,7 @@ namespace Server.Multis
 
                     Secures.Add(info);
 
-                    if(LockDowns.ContainsKey(item))
+                    if (LockDowns.ContainsKey(item))
                         LockDowns.Remove(item);
 
                     item.Movable = false;
@@ -2525,7 +2525,7 @@ namespace Server.Multis
                         ad.Movable = false;
                     }
 
-                    m.CloseGump(typeof (SetSecureLevelGump));
+                    m.CloseGump(typeof(SetSecureLevelGump));
                     m.SendGump(new SetSecureLevelGump(m, info, this));
                 }
             }
@@ -2905,8 +2905,8 @@ namespace Server.Multis
             CoOwners.Add(targ);
 
             List<Mobile> remove = new List<Mobile>();
-            
-            foreach(Mobile m in CoOwners)
+
+            foreach (Mobile m in CoOwners)
             {
                 if (AccountHandler.CheckAccount(m, targ) && m != targ)
                     remove.Add(m);
@@ -2946,7 +2946,7 @@ namespace Server.Multis
 
                 targ.Delta(MobileDelta.Noto);
 
-                if(fromMessage)
+                if (fromMessage)
                     from.SendLocalizedMessage(501299); // Co-owner removed from list.
 
                 targ.SendLocalizedMessage(501300); // You have been removed as a house co-owner.
@@ -3027,7 +3027,7 @@ namespace Server.Multis
 
                 targ.Delta(MobileDelta.Noto);
 
-                if(fromMessage)
+                if (fromMessage)
                     from.SendLocalizedMessage(501298); // Friend removed from list.
 
                 targ.SendLocalizedMessage(1060751); // You are no longer a friend of this house.
@@ -3129,16 +3129,16 @@ namespace Server.Multis
 
             writer.Write(LockDowns.Count);
             ColUtility.ForEach(LockDowns, (key, value) =>
-                {
-                    writer.Write(key);
-                    writer.Write(value);
-                });
+            {
+                writer.Write(key);
+                writer.Write(value);
+            });
 
             writer.Write((int)MaxLockDowns);
             writer.Write((int)MaxSecures);
 
             // Items in locked down containers that aren't locked down themselves must decay!
-            foreach(KeyValuePair<Item, Mobile> kvp in LockDowns)
+            foreach (KeyValuePair<Item, Mobile> kvp in LockDowns)
             {
                 Item item = kvp.Key;
 
@@ -3500,7 +3500,7 @@ namespace Server.Multis
 
             foreach (var item in Region.GetEnumeratedItems().Where(i => i is IAddon))
             {
-                if(Addons.ContainsKey(item))
+                if (Addons.ContainsKey(item))
                     continue;
 
                 Addons[item] = Owner;
@@ -3516,7 +3516,7 @@ namespace Server.Multis
         {
             Dictionary<Item, Mobile> lockDowns = new Dictionary<Item, Mobile>();
 
-            foreach(KeyValuePair<Item, Mobile> kvp in LockDowns)
+            foreach (KeyValuePair<Item, Mobile> kvp in LockDowns)
             {
                 if (kvp.Key is Container)
                     lockDowns.Add(kvp.Key, kvp.Value);
@@ -3604,8 +3604,8 @@ namespace Server.Multis
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int TotalVisits
-        { 
-            get { return Visits.Count; } 
+        {
+            get { return Visits.Count; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -3688,7 +3688,7 @@ namespace Server.Multis
 
             if (LockDowns != null)
             {
-                foreach(KeyValuePair<Item, Mobile> kvp in LockDowns)
+                foreach (KeyValuePair<Item, Mobile> kvp in LockDowns)
                 {
                     Item item = kvp.Key;
 
@@ -3898,7 +3898,7 @@ namespace Server.Multis
 
             if (LockDowns != null)
             {
-                foreach(KeyValuePair<Item, Mobile> kvp in LockDowns)
+                foreach (KeyValuePair<Item, Mobile> kvp in LockDowns)
                 {
                     Item item = kvp.Key;
 
@@ -3962,7 +3962,7 @@ namespace Server.Multis
 
             if (Addons != null)
             {
-                foreach(var kvp in Addons)
+                foreach (var kvp in Addons)
                 {
                     Item item = kvp.Key;
 
@@ -4087,7 +4087,7 @@ namespace Server.Multis
         public static int GetAccountHouseLimit(Mobile m)
         {
             var max = AccountHouseLimit;
-            
+
             return max;
         }
 
@@ -4563,7 +4563,7 @@ namespace Server.Multis
                             m_House.ReleaseSecure(from, component.Addon);
                     }
                     else
-                    #endregion
+                        #endregion
 
                         m_House.ReleaseSecure(from, (Item)targeted);
                 }
@@ -4585,7 +4585,7 @@ namespace Server.Multis
                                 m_House.AddSecure(from, component.Addon);
                         }
                         else
-                        #endregion
+                            #endregion
 
                             m_House.AddSecure(from, (Item)targeted);
                     }
@@ -4847,7 +4847,7 @@ namespace Server.Multis
 
             if (house != null && sec != null)
             {
-                Owner.From.CloseGump(typeof (SetSecureLevelGump));
+                Owner.From.CloseGump(typeof(SetSecureLevelGump));
                 Owner.From.SendGump(new SetSecureLevelGump(Owner.From, sec, house));
             }
         }
@@ -4952,7 +4952,7 @@ namespace Server.Multis
             {
                 from.SendLocalizedMessage(500979); // You cannot see that location.
             }
-        }        
+        }
     }
 
     public class ReleaseEntry : ContextMenuEntry
