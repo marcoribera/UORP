@@ -237,6 +237,15 @@ namespace Server.Mobiles
 
         public FurtivoTimer m_FurtivoTimer;
 
+        private int m_TrapsActive = 0;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int TrapsActive
+        {
+            get { return m_TrapsActive; }
+            set { m_TrapsActive = value; }
+        }
+
         private int m_NonAutoreinsuredItems;
 		// number of items that could not be automaitically reinsured because gold in bank was not enough
 
@@ -723,7 +732,8 @@ namespace Server.Mobiles
 			return ret;
 		}
 
-		public override bool OnDroppedItemToWorld(Item item, Point3D location)
+        
+        public override bool OnDroppedItemToWorld(Item item, Point3D location)
 		{
 			if (!base.OnDroppedItemToWorld(item, location))
 			{
