@@ -349,7 +349,12 @@ namespace Server.Engines.Craft
             AddCraft(typeof(MapmakersPen), 1044046, 1044167, 25.0, 75.0, typeof(IronIngot), 1044036, 1, 1044037);
             AddCraft(typeof(ScribesPen), 1044046, 1044168, 25.0, 75.0, typeof(IronIngot), 1044036, 1, 1044037);
             AddCraft(typeof(Clippers), 1044046, 1112117, 50.0, 50.0, typeof(IronIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(LocksmithTools), 1044046, 1021653, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+            AddCraft(typeof(LocksmithTools), 1044046, 1031240, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+            AddCraft(typeof(TrapCraftingKit), 1044046, 1031240, 55.6, 98.6, typeof(Board), 1044041, 65, 1044351);
+            index = AddCraft(typeof(SewingShears), "1044046", "Sewing Shears", 89.9, 100.0, typeof(SpoolOfThread), "Spool Of Thread", 15);
+            AddSkill(index, SkillName.Mecanica, 70.0, 85.0);
+            AddRes(index, typeof(Cloth), "Cut Cloth", 10);
+            AddRes(index, typeof(IronIngot), 1044036, 5, 1044037);
 
             if (Core.ML)
             {
