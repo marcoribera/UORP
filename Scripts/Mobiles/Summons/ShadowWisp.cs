@@ -43,6 +43,12 @@ namespace Server.Mobiles
         {
         }
 
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Rich);
+         //   PackItem(new CrystalisedEnergy(Utility.RandomMinMax(2, 6)));
+        }
+
         public override void OnThink()
         {
             base.OnThink();
