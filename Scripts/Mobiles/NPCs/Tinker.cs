@@ -12,7 +12,7 @@ namespace Server.Mobiles
 
         [Constructable]
         public Tinker()
-            : base("the tinker")
+            : base("o funileiro")
         {
             SetSkill(SkillName.Mecanica, 60.0, 83.0);
             SetSkill(SkillName.Mecanica, 75.0, 98.0);
