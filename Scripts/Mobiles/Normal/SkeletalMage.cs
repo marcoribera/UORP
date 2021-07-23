@@ -40,7 +40,7 @@ namespace Server.Mobiles
 
             Fame = 3000;
             Karma = -3000;
-
+ PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
             VirtualArmor = 38;
             PackReg(3);
             PackNecroReg(3, 10);

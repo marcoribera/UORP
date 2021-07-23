@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -43,6 +44,7 @@ namespace Server.Mobiles
             Persuadable = true;
             ControlSlots = 3;
             MinPersuadeSkill = 100;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public OphidianMatriarch(Serial serial)

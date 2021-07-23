@@ -42,7 +42,9 @@ namespace Server.Mobiles
             Fame = 775;
             Karma = -775;
 
-            VirtualArmor = 28; 
+            VirtualArmor = 28;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
+             PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
 
             Tamable = true;
             ControlSlots = 1;

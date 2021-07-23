@@ -35,7 +35,8 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 25;
 
-            this.PackItem(new Nightshade(Utility.RandomMinMax(2, 3)));
+            PackItem(new Nightshade(Utility.RandomMinMax(2, 3)));
+            PackItem(new GazerEye(Utility.RandomMinMax(0, 1)));
         }
 
         public GazerLarva(Serial serial)

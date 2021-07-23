@@ -42,6 +42,8 @@ namespace Server.Mobiles
             VirtualArmor = 100;
             if (0.02 > Utility.RandomDouble())
                 PackStatue();
+            
+            PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public Pixie(Serial serial)

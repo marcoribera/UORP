@@ -55,6 +55,7 @@ namespace Server.Mobiles
             get
             {
                 return FoodType.Meat;
+                PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
             }
         }
         public override PackInstinct PackInstinct
@@ -81,6 +82,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Poor);
+            PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
         }
 
         public override void Serialize(GenericWriter writer)

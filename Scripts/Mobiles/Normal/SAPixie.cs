@@ -46,7 +46,7 @@ namespace Server.Mobiles
 
             this.Fame = 4000;
             this.Karma = -4000;
-
+            PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
             this.VirtualArmor = 100;
             if (0.02 > Utility.RandomDouble())
                 this.PackStatue();				

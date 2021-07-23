@@ -49,7 +49,7 @@ namespace Server.Mobiles
 			Persuadable = true;
 			ControlSlots = 3;
 			MinPersuadeSkill = 95;
-
+ PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
 			PackReg(10, 15);
 			PackItem(new Bandage(Utility.RandomMinMax(1, 15)));
 

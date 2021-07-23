@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -41,6 +42,9 @@ namespace Server.Mobiles
             this.Karma = -12500;
 
             this.VirtualArmor = 50;
+            PackItem(new GazerEye(Utility.RandomMinMax(0, 1)));
+ PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
+
         }
 
         public ElderGazer(Serial serial)
@@ -48,6 +52,7 @@ namespace Server.Mobiles
         {
         }
 
+        
         public override int TreasureMapLevel
         {
             get
@@ -58,6 +63,8 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             this.AddLoot(LootPack.FilthyRich);
+            
+          
         }
 
         public override void Serialize(GenericWriter writer)

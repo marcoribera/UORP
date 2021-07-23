@@ -42,6 +42,7 @@ namespace Server.Mobiles
             this.VirtualArmor = 28;
 
             this.PackReg(10);
+            PackItem(new BottledHolyWater(Utility.RandomMinMax(0, 1)));
         }
 
         public Spectre(Serial serial)

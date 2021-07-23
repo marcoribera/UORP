@@ -45,7 +45,7 @@ namespace Server.Mobiles
             Persuadable = true;
             ControlSlots = 2;
             MinPersuadeSkill = 85;
-
+ PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
             this.PackReg(6);
 
             if (0.02 > Utility.RandomDouble())

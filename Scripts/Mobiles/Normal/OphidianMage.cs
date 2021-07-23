@@ -52,6 +52,7 @@ namespace Server.Mobiles
             MinPersuadeSkill = 100;
 
             this.PackReg(10);
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
 
 			switch (Utility.Random(6))
             {

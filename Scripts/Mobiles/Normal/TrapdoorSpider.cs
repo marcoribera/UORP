@@ -39,6 +39,8 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomia, 73.3, 78.9);
             SetSkill(SkillName.Briga, 92.5, 94.6);
             SetSkill(SkillName.Furtividade, 110.3, 119.9);
+
+             PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
         }
 
         public TrapdoorSpider(Serial serial)
