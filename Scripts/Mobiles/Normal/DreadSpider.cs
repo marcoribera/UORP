@@ -67,6 +67,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.FilthyRich);
+            PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
         }
 
         public override void Serialize(GenericWriter writer)

@@ -42,6 +42,7 @@ namespace Server.Mobiles
             Karma = -15000;
 
             VirtualArmor = 58;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
 
             switch (Utility.Random(20))
             {

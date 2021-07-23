@@ -52,6 +52,7 @@ namespace Server.Mobiles
             Tamable = true;
             ControlSlots = 3;
             MinTameSkill = 108.0;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public TLSDragaoSemAsas(Serial serial)

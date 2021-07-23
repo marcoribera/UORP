@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -36,6 +37,7 @@ namespace Server.Mobiles
             this.Karma = -450;
 
             this.VirtualArmor = 38;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
         }
 
         public FrostOoze(Serial serial)

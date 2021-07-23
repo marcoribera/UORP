@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -42,6 +43,7 @@ namespace Server.Mobiles
             VirtualArmor = 70;
 
             SetSpecialAbility(SpecialAbility.DragonBreath);
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public AncientWyrm(Serial serial)

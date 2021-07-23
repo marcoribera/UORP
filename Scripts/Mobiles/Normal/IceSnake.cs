@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -40,6 +41,7 @@ namespace Server.Mobiles
             this.Karma = -900;
 
             this.VirtualArmor = 30;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
         }
 
         public IceSnake(Serial serial)

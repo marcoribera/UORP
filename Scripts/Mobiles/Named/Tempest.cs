@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -42,6 +43,7 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 40;
             this.ControlSlots = 2;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public override bool GivesMLMinorArtifact

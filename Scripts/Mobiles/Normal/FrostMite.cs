@@ -40,6 +40,7 @@ namespace Server.Mobiles
             Tamable = true;
             ControlSlots = 3;
             MinTameSkill = 102.0;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
 
             SetWeaponAbility(WeaponAbility.ColdWind);
             SetAreaEffect(AreaEffect.AuraDamage);

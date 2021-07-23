@@ -41,6 +41,7 @@ namespace Server.Mobiles
             this.Karma = -10000;
 
             this.VirtualArmor = 56;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public Efreet(Serial serial)

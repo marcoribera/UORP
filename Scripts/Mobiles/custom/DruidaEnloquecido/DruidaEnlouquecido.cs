@@ -81,6 +81,7 @@ namespace Server.Mobiles
             AddItem(new LeatherArms());
             AddItem(new LeatherLegs());
 
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
             switch (Utility.Random(3))
             {
                 case 0: AddItem(new QuarterStaff()); break;
@@ -93,6 +94,7 @@ namespace Server.Mobiles
             hair.Layer = Layer.Hair;
             hair.Movable = false;
             AddItem(hair);
+            PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 		
 

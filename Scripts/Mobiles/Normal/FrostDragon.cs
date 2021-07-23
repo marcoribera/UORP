@@ -43,6 +43,7 @@ namespace Server.Mobiles
             Karma = -25000;
 
             VirtualArmor = 60;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
 
             Tamable = true;
             ControlSlots = 5;

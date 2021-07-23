@@ -43,8 +43,9 @@ namespace Server.Mobiles
             Karma = -4500;
 
             this.VirtualArmor = 40;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
 
-			switch (Utility.Random(24))
+            switch (Utility.Random(24))
             {
                 case 0: PackItem(new PainSpikeScroll()); break;
                 case 1: PackItem(new PoisonStrikeScroll()); break;

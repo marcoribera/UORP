@@ -39,7 +39,7 @@ namespace Server.Mobiles
 
             Fame = 4000;
             Karma = -4000;
-
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
             VirtualArmor = 40;
 
             PackItem(new BlackPearl());

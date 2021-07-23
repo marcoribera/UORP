@@ -40,6 +40,7 @@ namespace Server.Mobiles
 			Karma = -775;
 
 			VirtualArmor = 28;
+			 PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
 
             SetWeaponAbility(WeaponAbility.ArmorIgnore);
 		}
