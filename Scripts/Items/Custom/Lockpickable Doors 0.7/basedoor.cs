@@ -163,6 +163,7 @@ namespace Server.Items
         public BaseDoor(Serial serial)
             : base(serial)
         {
+            m_Timer = new InternalTimer(this);
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -794,7 +795,6 @@ namespace Server.Items
 
             switch (version)
             {
-
                 case 2:
                     {
                         _lockLevel = reader.ReadInt();
