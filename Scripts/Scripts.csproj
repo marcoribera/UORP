@@ -1060,7 +1060,7 @@
     <Compile Include="Items\Custom\shards novos\immagination\funcionando\precisa achar o id\Hood.cs" />
     <Compile Include="Items\Custom\shards novos\immagination\funcionando\precisa achar o id\WindmillAddon.cs" />
     <Compile Include="Items\Custom\shards novos\oldsonoma\funcionando\flashnade.cs" />
-    <Compile Include="Items\Custom\shards novos\uoadventure\BasePotion.cs" />
+    <Compile Include="Items\Consumables\BasePotion.cs" />
     <Compile Include="Items\Custom\shards novos\uoadventure\EvilSkull.cs" />
     <Compile Include="Items\Custom\shards novos\uoadventure\HolyWater.cs" />
     <Compile Include="Items\Custom\shards novos\uoadventure\PackGrenade.cs" />
@@ -3109,9 +3109,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Equipment\Weapons\BasePoleArm.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Items\Consumables\BasePotion.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Equipment\Quivers\BaseQuiver.cs">

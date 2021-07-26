@@ -1143,7 +1143,9 @@ namespace Server.Misc
 				}
 				case SkillName.Erudicao:
 				{
-					PackItem(new BlankMap());
+                    PackItem(new PenAndInk());
+                    PackItem(new ScribesPen());
+                    PackItem(new BlankMap());
 					PackItem(new BlankMap());
 					PackItem(new BlankMap());
 					PackItem(new BlankMap());

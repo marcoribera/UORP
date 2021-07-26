@@ -1,4 +1,5 @@
 using System;
+using Server.SkillHandlers;
 
 namespace Server.Items
 {
@@ -490,6 +491,12 @@ namespace Server.Items
         public PenAndInk(Serial serial)
             : base(serial)
         {
+        }
+
+        public override void OnItemUsed(Mobile from, Item item)
+        {
+            Inscribe.OnUse(from);
+            base.OnItemUsed(from, item);
         }
 
         public override void Serialize(GenericWriter writer)
