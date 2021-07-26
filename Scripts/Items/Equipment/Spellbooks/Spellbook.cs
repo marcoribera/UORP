@@ -655,7 +655,7 @@ namespace Server.Items
 				}
 				else
 				{
-                    from.SendMessage("Escreveu uma magia no livro.");
+                    from.SendMessage("A magia foi adicionada ao livro."); //TODO Marcknight: Adicionar ao cliloc
                     int val = scroll.SpellID - BookOffset;
 
 					if (val >= 0 && val < BookCount)

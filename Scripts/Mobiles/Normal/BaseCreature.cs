@@ -4648,11 +4648,16 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if (m is BaseCreature && !((BaseCreature)m).Controlled)
-            {
-                return (!Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet) || (Hidden && IsStaff());
+            if (m is BaseCreature) {
+                if (!((BaseCreature)m).Controlled)
+                {
+                    return (!Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet) || (Hidden && IsStaff());
+                }
+                else if(this.GetMaster() == ((BaseCreature)m).GetMaster())
+                {
+                    return true;
+                }
             }
-
             return base.OnMoveOver(m);
         }
 
