@@ -45,7 +45,6 @@ namespace Server.SkillHandlers
                     else if (from.CheckTargetSkill(SkillName.Alquimia, targeted, 0, 100))
                     {
                         potion.Identified = true;
-                        potion.Revelar_Original_ItemID();
                         potion.Hue = 0;
                         from.SendMessage("Você identificou a poção");
                     }

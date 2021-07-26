@@ -14,7 +14,12 @@ namespace Server.ContextMenus
         public override void OnClick()
         {
             if (this.Owner.From.CheckAlive() && this.Owner.Target is SpellScroll)
-                this.Owner.From.Target = new InternalTarget((SpellScroll)this.Owner.Target);
+            {
+                if (((SpellScroll)this.Owner.Target).Identified)
+                    this.Owner.From.Target = new InternalTarget((SpellScroll)this.Owner.Target);
+                else
+                    this.Owner.From.SendMessage("Você não consegue adicionar pergaminhos não identificados.");
+            }
         }
 
         private class InternalTarget : Target
@@ -45,6 +50,7 @@ namespace Server.ContextMenus
                         }
                         else
                         {
+                            from.SendMessage("A magia foi adicionada ao livro."); //TODO Marcknight: Adicionar ao cliloc
                             int val = this.m_Scroll.SpellID - book.BookOffset;
 
                             if (val >= 0 && val < book.BookCount)

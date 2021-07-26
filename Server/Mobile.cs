@@ -4877,13 +4877,14 @@ namespace Server
 					oldItem.GetType().Name);
 				return null;
 			}
-
-			item.Visible = oldItem.Visible;
+            Console.WriteLine("Identified: "+ oldItem.Identified);
+            item.Identified = oldItem.Identified;
+            item.Visible = oldItem.Visible;
 			item.Movable = oldItem.Movable;
 			item.LootType = oldItem.LootType;
 			item.Direction = oldItem.Direction;
 			item.Hue = oldItem.Hue;
-			item.ItemID = oldItem.ItemID;
+			item.ItemID = oldItem.ActualItemID;
 			item.Location = oldItem.Location;
 			item.Layer = oldItem.Layer;
 			item.Name = oldItem.Name;
@@ -4893,9 +4894,8 @@ namespace Server
 			item.Map = oldItem.Map;
 
 			oldItem.Amount = amount;
-			oldItem.OnAfterDuped(item);
-
-			if (oldItem.Parent is Mobile)
+            oldItem.OnAfterDuped(item);
+            if (oldItem.Parent is Mobile)
 			{
 				((Mobile)oldItem.Parent).AddItem(item);
 			}

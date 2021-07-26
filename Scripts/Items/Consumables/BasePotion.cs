@@ -65,20 +65,41 @@ namespace Server.Items
             }
         }
 
-        private int m_Original_ItemID;
-        private bool m_Identified;
-
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool Identified
+        public override int ItemID
         {
             get
             {
-                return m_Identified;
+                if (Identified)
+                {
+                    Hue = 0;
+                    return m_ItemID;
+                }
+                else
+                {
+                    Hue = 2050;
+                    return 3849;
+                }
             }
             set
             {
-                m_Identified = value;
-                InvalidateProperties();
+                if (m_ItemID != value)
+                {
+                    int oldPileWeight = PileWeight;
+
+                    m_ItemID = value;
+
+                    ReleaseWorldPackets();
+
+                    int newPileWeight = PileWeight;
+
+                    UpdateTotal(this, TotalType.Weight, newPileWeight - oldPileWeight);
+
+                    UpdateLight();
+
+                    InvalidateProperties();
+                    Delta(ItemDelta.Update);
+                }
             }
         }
 
@@ -101,7 +122,7 @@ namespace Server.Items
         {
             get
             {
-                if (m_Identified)
+                if (Identified)
                 {
                     return 1041314 + (int)this.m_PotionEffect;
                 }
@@ -113,11 +134,10 @@ namespace Server.Items
         }
 
         public BasePotion(int itemID, PotionEffect effect)
-            : base(3849)
+            : base(itemID)
         {
-            this.m_Original_ItemID = itemID; //Imagem da White Potion
+            this.Identified = false;
             this.m_PotionEffect = effect;
-
             this.Stackable = Core.ML;
             this.Weight = 1.0;
             this.Hue = 2050;
@@ -126,14 +146,21 @@ namespace Server.Items
         public BasePotion(Serial serial)
             : base(serial)
         {
+            Identified = true;
         }
 
-        public void Revelar_Original_ItemID()
+        [CommandProperty(AccessLevel.GameMaster)]
+        public PotionEffect Efeito
         {
-            this.ItemID = this.m_Original_ItemID;
+            get
+            {
+                return m_PotionEffect;
+            }
+            set
+            {
+                m_PotionEffect = value;
+            }
         }
-
-
 
         public virtual bool RequireFreeHand
         {
@@ -217,9 +244,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)3); // version
-            writer.Write((int)m_Original_ItemID);
-            writer.Write((bool)m_Identified);
+            writer.Write((int)5); // version
             writer.Write((int)this.m_PotionEffect);
         }
 
@@ -231,11 +256,19 @@ namespace Server.Items
 
             switch (version)
             {
+                case 5:
+                    {
+                        goto case 1;
+                    }
+                case 4:
+                    {
+                        this.ItemID = reader.ReadInt();
+                        goto case 1;
+                    }
                 case 3:
-                    this.m_Original_ItemID = reader.ReadInt();
-                    goto case 2;
                 case 2:
                     {
+                        this.ItemID = reader.ReadInt();
                         this.m_Identified = reader.ReadBool();
                         goto case 1;
                     }
