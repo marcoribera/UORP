@@ -7,7 +7,7 @@ namespace Server.Engines.Craft
 	{
 		public override SkillName MainSkill
 		{
-			get	{ return SkillName.Envenenamento; }
+			get	{ return SkillName.Culinaria; }
 		}
 
 		public override int GumpTitleNumber
