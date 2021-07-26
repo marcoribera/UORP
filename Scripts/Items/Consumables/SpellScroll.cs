@@ -39,22 +39,6 @@ namespace Server.Items
             }
         }
 
-        private bool m_Identified;
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool Identified
-        {
-            get
-            {
-                return m_Identified;
-            }
-            set
-            {
-                m_Identified = value;
-                InvalidateProperties();
-            }
-        }
-
         TextDefinition ICommodity.Description
         {
             get
