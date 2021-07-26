@@ -86,6 +86,7 @@ namespace Server.Engines.Harvest
             res = new HarvestResource[]
             {
                 new HarvestResource(00.0, 00.0, 120.0, 1043297, typeof(Fish))
+
             };
 
             veins = new HarvestVein[]
@@ -100,9 +101,10 @@ namespace Server.Engines.Harvest
             {
                 fish.BonusResources = new BonusHarvestResource[]
                 {
-                    new BonusHarvestResource(0, 97.0, null, null), //set to same chance as mining ml gems
+                    new BonusHarvestResource(0, 92.0, null, null), //set to same chance as mining ml gems
 			        new BonusHarvestResource(80.0, 2.0, 1113764, typeof(DelicateScales)),
-                	new BonusHarvestResource(80.0, 1.0, 1072597, typeof(WhitePearl))
+                	new BonusHarvestResource(80.0, 1.0, 1072597, typeof(WhitePearl)),
+                    new BonusHarvestResource(80.0, 5.0, 1072597, typeof(DriftWood))
                 };
             }
 
