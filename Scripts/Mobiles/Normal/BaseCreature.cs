@@ -4653,7 +4653,7 @@ namespace Server.Mobiles
                 {
                     return (!Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet) || (Hidden && IsStaff());
                 }
-                else if(this.GetMaster == ((BaseCreature)m).GetMaster)
+                else if(this.GetMaster() == ((BaseCreature)m).GetMaster())
                 {
                     return true;
                 }
