@@ -10,7 +10,7 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class BBQSouthAddon : BaseAddon
+	public class BBQSouthAddon1 : BaseAddon
 	{
 		public override BaseAddonDeed Deed
 		{
@@ -21,7 +21,7 @@ namespace Server.Items
 		}
 
 		[ Constructable ]
-		public BBQSouthAddon()
+		public BBQSouthAddon1()
 		{
 			AddonComponent ac = null;
 			ac = new AddonComponent( 52 );
@@ -104,7 +104,7 @@ namespace Server.Items
 
 		}
 
-		public BBQSouthAddon( Serial serial ) : base( serial )
+		public BBQSouthAddon1( Serial serial ) : base( serial )
 		{
 		}
 
@@ -121,7 +121,7 @@ namespace Server.Items
 		}
 	}
 
-	public class BBQSouthAddonDeed : BaseAddonDeed
+	public class BBQSouthAddonDeed1 : BaseAddonDeed
 	{
 		public override BaseAddon Addon
 		{
@@ -132,12 +132,12 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BBQSouthAddonDeed()
+		public BBQSouthAddonDeed1()
 		{
 			Name = "BBQSouth";
 		}
 
-		public BBQSouthAddonDeed( Serial serial ) : base( serial )
+		public BBQSouthAddonDeed1( Serial serial ) : base( serial )
 		{
 		}
 
