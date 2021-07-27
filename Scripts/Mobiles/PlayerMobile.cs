@@ -88,6 +88,7 @@ namespace Server.Mobiles
         ToggleCutTopiaries = 0x10000000,
         HasValiantStatReward = 0x20000000,
         RefuseTrades = 0x40000000,
+        FireRockMining = 0x06000000
     }
 
     [Flags]
@@ -469,7 +470,15 @@ namespace Server.Mobiles
 		public PlayerFlag Flags { get { return m_Flags; } set { m_Flags = value; } }
         public ExtendedPlayerFlag ExtendedFlags { get { return m_ExtendedFlags; } set { m_ExtendedFlags = value; } }
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool FireRockMining
+        {
+            get { return GetFlag(PlayerFlag.FireRockMining); }
+            set { SetFlag(PlayerFlag.FireRockMining, value); }
+        }
+
+
+        [CommandProperty(AccessLevel.GameMaster)]
 		public bool PagingSquelched { get { return GetFlag(PlayerFlag.PagingSquelched); } set { SetFlag(PlayerFlag.PagingSquelched, value); } }
 
 		[CommandProperty(AccessLevel.GameMaster)]
