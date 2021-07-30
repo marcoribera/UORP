@@ -44,6 +44,7 @@ namespace Server.Mobiles
             Tamable = true;
             ControlSlots = 2;
             MinTameSkill = 59.1;
+             PackItem(new GiantSpiderVenom(Utility.RandomMinMax(0, 2)));
         }
 
         public WolfSpider(Serial serial)

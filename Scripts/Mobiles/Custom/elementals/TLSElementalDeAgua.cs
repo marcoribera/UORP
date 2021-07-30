@@ -48,7 +48,9 @@ namespace Server.Mobiles
             this.ControlSlots = 3;
             this.CanSwim = true;
 
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
             this.PackItem(new BlackPearl(3));
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public TLSElementalDeAgua(Serial serial)

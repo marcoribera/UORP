@@ -73,11 +73,11 @@ namespace Server.Mobiles
             Hue = 2713;
             BaseSoundID = 0x5A;
 
-            SetStr(103, 250);
-            SetDex(151, 220);
-            SetInt(101, 121);
+            SetStr(120, 250);
+            SetDex(150, 250);
+            SetInt(100, 150);
 
-            SetHits(651, 700);
+            SetHits(650, 700);
             SetStam(150);
 
             SetDamage(13, 24);
@@ -85,15 +85,15 @@ namespace Server.Mobiles
             SetDamageType(ResistanceType.Physical, 50);
             SetDamageType(ResistanceType.Energy, 50);
 
-            SetResistance(ResistanceType.Physical, 45, 55);
+            SetResistance(ResistanceType.Physical, 40, 55);
             SetResistance(ResistanceType.Fire, 50, 60);
-            SetResistance(ResistanceType.Cold, 45, 55);
+            SetResistance(ResistanceType.Cold, 40, 55);
             SetResistance(ResistanceType.Poison, 35, 45);
-            SetResistance(ResistanceType.Energy, 85, 90);
+            SetResistance(ResistanceType.Energy, 80, 90);
 
             SetSkill(SkillName.ResistenciaMagica, 150.0, 190.0);
             SetSkill(SkillName.Anatomia, 80.0, 95.0);
-            SetSkill(SkillName.Briga, 110.0, 130.0);
+            SetSkill(SkillName.Briga, 85.0, 130.0);
             SetSkill(SkillName.Medicina, 70.0, 99.0);
             SetSkill(SkillName.Percepcao, 50.1);
             SetSkill(SkillName.Bloqueio, 55.0, 70.0);

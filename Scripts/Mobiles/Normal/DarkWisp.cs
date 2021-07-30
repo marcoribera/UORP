@@ -85,6 +85,8 @@ namespace Server.Mobiles
         {
             AddLoot(LootPack.Rich);
             AddLoot(LootPack.Average);
+
+            PackItem(new CrystalisedEnergy(Utility.RandomMinMax(4, 8)));
         }
 
         public override void Serialize(GenericWriter writer)

@@ -413,7 +413,7 @@ namespace Server.Commands
 						pm.Animate( 33, 5, 1, true, false, 0 );
 					break;
 				case 8:
-					pm.PlaySound( pm.Female ? 748 : 1055 );
+					pm.PlaySound( pm.Female ? 785 : 1055 );
 					pm.Say( "*Limpando a Garganta*" );
 					if ( !pm.Mounted )
 						pm.Animate( 33, 5, 1, true, false, 0 );
@@ -471,7 +471,7 @@ namespace Server.Commands
 					pm.Say( "*Beijando*" );
 					break;
 				case 21:
-					pm.PlaySound( pm.Female ? 801 : 1073 );
+					pm.PlaySound( pm.Female ? 794 : 1073 );
 					pm.Say( "*Gargalhando*" );
 					break;
 				case 22:
@@ -571,7 +571,7 @@ namespace Server.Commands
 					pm.Say( "*Sim!*" );
 					break;
 				case 42:
-					pm.PlaySound( pm.Female ? 823 : 1098 );
+					pm.PlaySound( pm.Female ? 824 : 1098 );
 					pm.Say( "*Gritando*" );
 					break;
 			}

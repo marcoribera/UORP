@@ -577,11 +577,12 @@ namespace Server
 
         public int Localization { get { return 1044060 + SkillID; } }
 
-        public static double FACILIMO = 0.8f;
-        public static double FACIL = 0.6f;
-        public static double MEDIO = 0.4f;
-        public static double DIFICIL = 0.2f;
-        public static double DIFICILIMO = 0.1f;
+        public static double FACILIMO = 1.0f;
+        public static double FACIL = 0.9f;
+        public static double MEDIO = 0.8f;
+        public static double DIFICIL = 0.7f;
+        public static double DIFICILIMO = 0.6f;
+        public static double INSANO = 0.2f;
 
         private static SkillInfo[] m_Table = new SkillInfo[44]
 		{
@@ -596,7 +597,7 @@ namespace Server
             new SkillInfo(8, "Envenenamento", 0.0, 5.0, 5.0, "Assassino(a)", null, 0.0, 0.5, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
             new SkillInfo(9, "Ninjitsu", 0.0, 5.0, 0.0, "Ninja", null, 0.0, 1.0, 0.0, DIFICILIMO, StatCode.Dex, StatCode.Int),
             new SkillInfo(10, "Armas Perfurantes", 0.0, 10.0, 0.0, "Empalador(a)", null, 0.0, 2.0, 0.0, DIFICIL, StatCode.Dex, StatCode.Int),
-            new SkillInfo(11, "Preparo Físico", 0.0, 5.0, 0.0, "Atleta", null, 0.0, 1.0, 0.0, DIFICILIMO, StatCode.Dex, StatCode.Str),
+            new SkillInfo(11, "Preparo Físico", 0.0, 5.0, 0.0, "Atleta", null, 0.0, 1.0, 0.0, INSANO, StatCode.Dex, StatCode.Str),
             new SkillInfo(12, "Armas de Uma Mão", 5.0, 5.0, 0.0, "Destruidor(a)", null, 1.0, 1.0, 0.0, DIFICIL, StatCode.Str, StatCode.Dex),
             new SkillInfo(13, "Carisma", 0.0, 0.0, 10.0, "Influenciador(a)", null, 0.0, 0.0, 2.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
             new SkillInfo(14, "Furtividade", 0.0, 10.0, 0.0, "Infiltrador(a)", null, 0.0, 2.0, 0.0, MEDIO, StatCode.Dex, StatCode.Int),
@@ -614,21 +615,21 @@ namespace Server
             new SkillInfo(26, "Misticismo", 0.0, 0.0, 10.0, "do Misticismo", null, 0.0, 0.0, 2.0, DIFICIL, StatCode.Int, StatCode.Dex),
             new SkillInfo(27, "Necromancia", 0.0, 0.0, 10.0, "Necromante", null, 0.0, 0.0, 2.0, DIFICIL, StatCode.Int, StatCode.Dex),
             new SkillInfo(28, "Ordem", 0.0, 0.0, 10.0, "Clérigo(a)", null, 0.0, 0.0, 2.0, DIFICIL, StatCode.Int, StatCode.Dex),
-            new SkillInfo(29, "Poder Mágico", 0.0, 0.0, 10.0, "do Poder", null, 0.0, 0.0, 2.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
+            new SkillInfo(29, "Poder Mágico", 0.0, 0.0, 10.0, "do Poder", null, 0.0, 0.0, 2.0, INSANO, StatCode.Int, StatCode.Dex),
             new SkillInfo(30, "Resistência Mágica", 0.0, 0.0, 20.0, "Anti-mago(a)", null, 0.0, 0.0, 4.0, DIFICILIMO, StatCode.Int, StatCode.Str),
             new SkillInfo(31, "Adestramento", 0.0, 5.0, 5.0, "Domador(a)", null, 0.0, 1.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
             new SkillInfo(32, "Agricultura", 10.0, 10.0, 0.0, "Fazendeiro(a)", null, 2.0, 2.0, 0.0, MEDIO, StatCode.Str, StatCode.Dex),
             new SkillInfo(33, "Alquimia", 0.0, 5.0, 5.0, "Alquimista", null, 0.0, 1.0, 1.0, MEDIO, StatCode.Int, StatCode.Dex),
             new SkillInfo(34, "Carpintaria", 10.0, 10.0, 5.0, "Carpinteiro(a)", null, 2.0, 2.0, 1.0, MEDIO, StatCode.Str, StatCode.Dex),
             new SkillInfo(35, "Conhecimento Armas", 0.0, 0.0, 5.0, "Artífice de Armas", null, 0.0, 0.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
-            new SkillInfo(36, "Conhecimento Armaduras", 0.0, 0.0, 5.0, "Artífice de Armaduras", null, 0.0, 0.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
-            new SkillInfo(37, "Costura", 0.0, 10.0, 5.0, "Alfaiate", null, 0.0, 2.0, 1.0, MEDIO, StatCode.Dex, StatCode.Int),
-            new SkillInfo(38, "Culinára", 0.0, 10.0, 5.0, "Cozinheiro(a)", null, 0.0, 2.0, 1.0, MEDIO, StatCode.Dex, StatCode.Int),
-            new SkillInfo(39, "Erudição", 0.0, 0.0, 20.0, "Estudioso(a)", null, 0.0, 0.0, 4.0, DIFICIL, StatCode.Int, StatCode.Dex),
-            new SkillInfo(40, "Extração", 20.0, 5.0, 0.0, "Extrator(a)", null, 4.0, 1.0, 0.0, MEDIO, StatCode.Str, StatCode.Dex),
-            new SkillInfo(41, "Ferraria", 20.0, 5.0, 0.0, "Ferreiro(a)", null, 4.0, 1.0, 0.0, MEDIO, StatCode.Str, StatCode.Dex),
-            new SkillInfo(42, "Medicina", 0.0, 5.0, 5.0, "Médico(a)", null, 0.0, 1.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
-            new SkillInfo(43, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex)
+            new SkillInfo(36, "Costura", 0.0, 10.0, 5.0, "Alfaiate", null, 0.0, 2.0, 1.0, MEDIO, StatCode.Dex, StatCode.Int),
+            new SkillInfo(37, "Culinára", 0.0, 10.0, 5.0, "Cozinheiro(a)", null, 0.0, 2.0, 1.0, MEDIO, StatCode.Dex, StatCode.Int),
+            new SkillInfo(38, "Erudição", 0.0, 0.0, 20.0, "Estudioso(a)", null, 0.0, 0.0, 4.0, DIFICIL, StatCode.Int, StatCode.Dex),
+            new SkillInfo(39, "Extração", 20.0, 5.0, 0.0, "Extrator(a)", null, 4.0, 1.0, 0.0, MEDIO, StatCode.Str, StatCode.Dex),
+            new SkillInfo(40, "Ferraria", 20.0, 5.0, 0.0, "Ferreiro(a)", null, 4.0, 1.0, 0.0, MEDIO, StatCode.Str, StatCode.Dex),
+            new SkillInfo(41, "Medicina", 0.0, 5.0, 5.0, "Médico(a)", null, 0.0, 1.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
+            new SkillInfo(42, "Veterinária", 0.0, 5.0, 5.0, "Veterinário(a)", null, 0.0, 1.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex),
+            new SkillInfo(43, "Conhecimento Armaduras", 0.0, 0.0, 5.0, "Artífice de Armaduras", null, 0.0, 0.0, 1.0, DIFICILIMO, StatCode.Int, StatCode.Dex)
         };
 
 		public static SkillInfo[] Table { get { return m_Table; } set { m_Table = value; } }
@@ -780,7 +781,7 @@ namespace Server
 		public int Cap {
             get
             {
-                return Math.Min(m_Cap + (50 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
+                return 7000; // Math.Min(m_Cap + 500 + (100 * (Convert.ToInt32(Math.Floor((DateTime.Now.Subtract(m_Owner.CreationTime)).TotalDays)))), 7000);
             }
             set
             {

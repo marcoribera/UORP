@@ -107,52 +107,52 @@ namespace Server.Engines.Craft
 
         public override void InitCraftList()
         {
-            int index = AddCraft(typeof(Bottle), 1044050, 1023854, 52.5, 102.5, typeof(Sand), 1044625, 1, 1044627);
+            int index = AddCraft(typeof(Bottle), 1044050, 1023854, 35.5, 102.5, typeof(Sand), 1044625, 1, 1044627);
             SetUseAllRes(index, true);
 
-            AddCraft(typeof(SmallFlask), 1044050, 1044610, 52.5, 102.5, typeof(Sand), 1044625, 2, 1044627);
-            AddCraft(typeof(MediumFlask), 1044050, 1044611, 52.5, 102.5, typeof(Sand), 1044625, 3, 1044627);
-            AddCraft(typeof(CurvedFlask), 1044050, 1044612, 55.0, 105.0, typeof(Sand), 1044625, 2, 1044627);
-            AddCraft(typeof(LongFlask), 1044050, 1044613, 57.5, 107.5, typeof(Sand), 1044625, 4, 1044627);
-            AddCraft(typeof(LargeFlask), 1044050, 1044623, 60.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
-            AddCraft(typeof(AniSmallBlueFlask), 1044050, 1044614, 60.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
-            AddCraft(typeof(AniLargeVioletFlask), 1044050, 1044615, 60.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
-            AddCraft(typeof(AniRedRibbedFlask), 1044050, 1044624, 60.0, 110.0, typeof(Sand), 1044625, 7, 1044627);
-            AddCraft(typeof(EmptyVialsWRack), 1044050, 1044616, 65.0, 115.0, typeof(Sand), 1044625, 8, 1044627);
-            AddCraft(typeof(FullVialsWRack), 1044050, 1044617, 65.0, 115.0, typeof(Sand), 1044625, 9, 1044627);
-            AddCraft(typeof(SpinningHourglass), 1044050, 1044618, 75.0, 125.0, typeof(Sand), 1044625, 10, 1044627);
+            AddCraft(typeof(SmallFlask), 1044050, 1044610, 37.5, 102.5, typeof(Sand), 1044625, 2, 1044627);
+            AddCraft(typeof(MediumFlask), 1044050, 1044611, 42.5, 102.5, typeof(Sand), 1044625, 3, 1044627);
+            AddCraft(typeof(CurvedFlask), 1044050, 1044612, 50.0, 105.0, typeof(Sand), 1044625, 2, 1044627);
+            AddCraft(typeof(LongFlask), 1044050, 1044613, 52.5, 107.5, typeof(Sand), 1044625, 4, 1044627);
+            AddCraft(typeof(LargeFlask), 1044050, 1044623, 54.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
+            AddCraft(typeof(AniSmallBlueFlask), 1044050, 1044614, 55.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
+            AddCraft(typeof(AniLargeVioletFlask), 1044050, 1044615, 55.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
+            AddCraft(typeof(AniRedRibbedFlask), 1044050, 1044624, 55.0, 110.0, typeof(Sand), 1044625, 7, 1044627);
+            AddCraft(typeof(EmptyVialsWRack), 1044050, 1044616, 60.0, 115.0, typeof(Sand), 1044625, 8, 1044627);
+            AddCraft(typeof(FullVialsWRack), 1044050, 1044617, 60.0, 115.0, typeof(Sand), 1044625, 9, 1044627);
+            AddCraft(typeof(SpinningHourglass), 1044050, 1044618, 68.0, 125.0, typeof(Sand), 1044625, 10, 1044627);
             
             if (Core.ML)
             {
-                index = AddCraft(typeof(HollowPrism), 1044050, 1072895, 100.0, 150.0, typeof(Sand), 1044625, 8, 1044627);
+                index = AddCraft(typeof(HollowPrism), 1044050, 1072895, 85.0, 150.0, typeof(Sand), 1044625, 8, 1044627);
             }
 
             if (Core.SA)
             {
-                index = AddCraft(typeof(GargoyleFloorMirror), 1044050, 1095314, 75.0, 125.0, typeof(Sand), 1044625, 20, 1044627);
+                index = AddCraft(typeof(GargoyleFloorMirror), 1044050, 1095314, 67.0, 125.0, typeof(Sand), 1044625, 20, 1044627);
 
-                index = AddCraft(typeof(GargoyleWallMirror), 1044050, 1095324, 70.0, 120.0, typeof(Sand), 1044625, 10, 1044627);
+                index = AddCraft(typeof(GargoyleWallMirror), 1044050, 1095324, 68.0, 120.0, typeof(Sand), 1044625, 10, 1044627);
 
-                index = AddCraft(typeof(SoulstoneFragment), 1044050, 1071000, 70.0, 120.0, typeof(CrystalGranules), 1112329, 2, 1044253);
+                index = AddCraft(typeof(SoulstoneFragment), 1044050, 1071000, 60.0, 120.0, typeof(CrystalGranules), 1112329, 2, 1044253);
                 AddRes(index, typeof(VoidEssence), 1112327, 2, 1044253);
                 SetItemHue(index, 1150);
 
-                index = AddCraft(typeof(EmptyVenomVial), 1044050, 1112215, 52.5, 102.5, typeof(Sand), 1044625, 1, 1044627);
+                index = AddCraft(typeof(EmptyVenomVial), 1044050, 1112215, 42.5, 102.5, typeof(Sand), 1044625, 1, 1044627);
 
-                index = AddCraft(typeof(EmptyOilFlask), 1044050, 1150866, 60.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
+                index = AddCraft(typeof(EmptyOilFlask), 1044050, 1150866, 45.0, 110.0, typeof(Sand), 1044625, 5, 1044627);
 
-                index = AddCraft(typeof(WorkableGlass), 1044050, 1154170, 55.0, 105.0, typeof(Sand), 1044625, 10, 1044627);
+                index = AddCraft(typeof(WorkableGlass), 1044050, 1154170, 40.0, 105.0, typeof(Sand), 1044625, 10, 1044627);
 
                 if (Core.EJ)
-                {
-                    index = AddCraft(typeof(EtherealSoulbinder), 1044050, 1159167, 100.0, 190.0, typeof(Sand), 1044625, 20, 1044627);
-                    AddRes(index, typeof(EtherealSand), 1125984, 5, 1159169);
-                }
+               // {
+                    //index = AddCraft(typeof(EtherealSoulbinder), 1044050, 1159167, 100.0, 190.0, typeof(Sand), 1044625, 20, 1044627);
+                   // AddRes(index, typeof(EtherealSand), 1125984, 5, 1159169);
+               // }
 
                 //Glass Weapons
-                index = AddCraft(typeof(GlassSword), 1111745, 1022316, 55.0, 105.0, typeof(Sand), 1044625, 14, 1044627);
+                index = AddCraft(typeof(GlassSword), 1111745, 1022316, 42.0, 105.0, typeof(Sand), 1044625, 14, 1044627);
 
-                index = AddCraft(typeof(GlassStaff), 1111745, 1095368, 53.6, 103.6, typeof(Sand), 1044625, 10, 1044627);
+                index = AddCraft(typeof(GlassStaff), 1111745, 1095368, 44.6, 103.6, typeof(Sand), 1044625, 10, 1044627);
             }
 
             Repair = Core.SA;

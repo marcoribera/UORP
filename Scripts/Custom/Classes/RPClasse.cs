@@ -27,6 +27,14 @@ namespace Server.Commands
         {
             PlayerMobile player = e.Mobile as PlayerMobile; //Personagem que chamou o comando
 
+            foreach (Skill skill in player.Skills)
+            {
+                skill.Cap = 120.0;
+            }
+            player.SendMessage("Caps das skills ajustados para 120.");
+
+
+            /*
             if (e.ArgString == "")
             {
                 ClasseGump gump = new ClasseGump(player);
@@ -39,6 +47,7 @@ namespace Server.Commands
                 player.SendGump(gump);
                 return;
             }
+            */
         }
 
         private class ClasseGump : Gump

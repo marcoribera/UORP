@@ -28,9 +28,12 @@ namespace Server.Mobiles
             this.HairHue = this.Race.RandomHairHue();
             this.Race.RandomFacialHair(this);
 
-            this.SetStr(86);
-            this.SetDex(66);
-            this.SetInt(41);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             this.SetDamage(10, 23);
 
@@ -49,7 +52,7 @@ namespace Server.Mobiles
             this.Karma = 0;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 40;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 

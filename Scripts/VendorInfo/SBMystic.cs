@@ -41,7 +41,15 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(ScribesPen), 50, 3, 0xFBF, 0, true));
                 Add(new GenericBuyInfo(typeof(BlankScroll), 50, 3, 0x0E34, 0, true));
                 Add(new GenericBuyInfo(typeof(NetherBoltScroll), 250, 10, 0x2D9E, 0));
-                                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 250, 10, 0x2D9F, 0));
+                Add(new GenericBuyInfo(typeof(HealingStoneScroll), 250, 10, 0x2D9F, 0));
+                Add(new GenericBuyInfo(typeof(ArcaneCircleScroll), 250, 10, 0x2D51, 0));
+                Add(new GenericBuyInfo(typeof(GiftOfRenewalScroll), 250, 10, 0x2D52, 0));
+                Add(new GenericBuyInfo(typeof(ImmolatingWeaponScroll), 250, 10, 0x2D53, 0));
+                Add(new GenericBuyInfo(typeof(AttuneWeaponScroll), 250, 10, 0x2D54, 0));
+
+             
+
+
                 //     Add(new GenericBuyInfo(typeof(RecallRune), 15, 10, 0x1F14, 0, true));
 
                 //    Add(new GenericBuyInfo(typeof(RefreshPotion), 15, 10, 0xF0B, 0, true));

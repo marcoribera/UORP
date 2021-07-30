@@ -39,8 +39,15 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.Bloqueio, 20.0, 40.0);
             this.SetSkill(SkillName.Cortante, 20.0, 40.0);
 
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
+
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 40;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 

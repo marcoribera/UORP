@@ -20,7 +20,7 @@ namespace Server.Spells.Spellweaving
 		public abstract double RequiredSkill { get; }
 		public abstract int RequiredMana { get; }
 		public override SkillName CastSkill { get { return SkillName.Feiticaria; } }
-		public override SkillName DamageSkill { get { return SkillName.Feiticaria; } }
+		public override SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 		public override bool ClearHandsOnCast { get { return false; } }
 		public virtual int FocusLevel { get { return m_CastTimeFocusLevel; } }
 
@@ -105,13 +105,13 @@ namespace Server.Spells.Spellweaving
 				Caster.SendLocalizedMessage(1042753, "Spellweaving"); // ~1_SOMETHING~ has been temporarily disabled.
 				return false;
 			}
-
+            /*
 			if (Caster is PlayerMobile && !((PlayerMobile)Caster).Spellweaving)
 			{
 				Caster.SendLocalizedMessage(1073220); // You must have completed the epic arcanist quest to use this ability.
 				return false;
 			}
-
+            */
 			int mana = ScaleMana(RequiredMana);
 
 			if (Caster.Mana < mana)

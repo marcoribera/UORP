@@ -8,7 +8,7 @@ namespace Server.Mobiles
         private readonly List<SBInfo> m_SBInfos = new List<SBInfo>();
         [Constructable]
         public Mystic()
-            : base("- O Feiticeiro")
+            : base("- O Místico")
         {
             this.SetSkill(SkillName.PoderMagico, 65.0, 88.0);
             this.SetSkill(SkillName.Erudicao, 60.0, 83.0);

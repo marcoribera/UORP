@@ -609,9 +609,39 @@ namespace Server
 
 			return modules;
 		}
-		#endregion
+        #endregion
 
-		private static bool m_DragEffects = true;
+        private Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();
+
+        public void SetCooldown(string name, TimeSpan span)
+        {
+            if (cooldowns.ContainsKey(name))
+                cooldowns.Remove(name);
+
+            var data = DateTime.UtcNow + span;
+            cooldowns.Add(name, data);
+        }
+
+        public void SetCooldown(string name)
+        {
+            SetCooldown(name, TimeSpan.FromHours(6));
+        }
+
+        public int TimeRemaining(string name)
+        {
+            if (!cooldowns.ContainsKey(name))
+                return 0;
+            return (cooldowns[name] - DateTime.UtcNow).Seconds;
+        }
+
+        public bool IsCooldown(string name)
+        {
+            if (!cooldowns.ContainsKey(name))
+                return false;
+            return cooldowns[name] > DateTime.UtcNow;
+        }
+
+        private static bool m_DragEffects = true;
 
 		public static bool DragEffects { get { return m_DragEffects; } set { m_DragEffects = value; } }
 
@@ -3643,7 +3673,7 @@ namespace Server
                     }
                     else
                     {
-                        Timer t = Timer.DelayCall(TimeSpan.FromMilliseconds(1500), () => //Tempo entre as tentarivas de passar por cima
+                        Timer t = Timer.DelayCall(TimeSpan.FromSeconds(3.0), () => //Tempo entre as tentarivas de passar por cima
                         {
                             m_Pushing = false;
                         });
@@ -4847,13 +4877,14 @@ namespace Server
 					oldItem.GetType().Name);
 				return null;
 			}
-
-			item.Visible = oldItem.Visible;
+            Console.WriteLine("Identified: "+ oldItem.Identified);
+            item.Identified = oldItem.Identified;
+            item.Visible = oldItem.Visible;
 			item.Movable = oldItem.Movable;
 			item.LootType = oldItem.LootType;
 			item.Direction = oldItem.Direction;
 			item.Hue = oldItem.Hue;
-			item.ItemID = oldItem.ItemID;
+			item.ItemID = oldItem.ActualItemID;
 			item.Location = oldItem.Location;
 			item.Layer = oldItem.Layer;
 			item.Name = oldItem.Name;
@@ -4863,9 +4894,8 @@ namespace Server
 			item.Map = oldItem.Map;
 
 			oldItem.Amount = amount;
-			oldItem.OnAfterDuped(item);
-
-			if (oldItem.Parent is Mobile)
+            oldItem.OnAfterDuped(item);
+            if (oldItem.Parent is Mobile)
 			{
 				((Mobile)oldItem.Parent).AddItem(item);
 			}
@@ -12132,7 +12162,12 @@ namespace Server
 			PublicOverheadMessage(type, hue, ascii, text, true);
 		}
 
-		public void PublicOverheadMessage(MessageType type, int hue, bool ascii, string text, bool noLineOfSight)
+        public void OverheadMessage(string msg)
+        {
+            PublicOverheadMessage(MessageType.Regular, 0, true, msg);
+        }
+
+        public void PublicOverheadMessage(MessageType type, int hue, bool ascii, string text, bool noLineOfSight)
 		{
 			if (m_Map != null)
 			{

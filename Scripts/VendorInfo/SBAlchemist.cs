@@ -58,7 +58,16 @@ namespace Server.Mobiles
 
                 Add(new GenericBuyInfo(typeof(Bottle), 10, 50, 0xF0E, 0, true)); 
                 Add(new GenericBuyInfo(typeof(HeatingStand), 50, 2, 0x1849, 0));
-              //  Add(new GenericBuyInfo(typeof(SkinTingeingTincture), 1255, 20, 0xEFF, 90));
+                //  Add(new GenericBuyInfo(typeof(SkinTingeingTincture), 1255, 20, 0xEFF, 90));
+
+
+                // Trapcrafting Components
+                Add(new GenericBuyInfo(typeof(BottledLightning), 300, 3, 0xF0E, 0));
+                Add(new GenericBuyInfo(typeof(CrystalisedEnergy), 300, 5, 0x2AAA, 0));
+                Add(new GenericBuyInfo(typeof(DryIce), 300, 3, 0xF8F, 0));
+                Add(new GenericBuyInfo(typeof(GazerEye), 300, 3, 0xF0E, 0));
+                Add(new GenericBuyInfo(typeof(GiantSpiderVenom), 200, 5, 0xF8E, 0));
+
 
                 if (m.Map != Map.TerMur)
                 {
@@ -106,6 +115,12 @@ namespace Server.Mobiles
 				Add(typeof(LesserExplosionPotion), 10);
 				Add(typeof(ExplosionPotion), 15);
 				Add(typeof(GreaterExplosionPotion), 25);
+
+                Add(typeof(BottledLightning), 10);
+                Add(typeof(CrystalisedEnergy), 10);
+                Add(typeof(DryIce), 10);
+                Add(typeof(GazerEye), 10);
+                Add(typeof(GiantSpiderVenom), 6);
             }
         }
     }

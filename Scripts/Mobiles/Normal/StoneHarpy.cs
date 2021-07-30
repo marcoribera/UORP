@@ -1,3 +1,4 @@
+using Server.Items;
 using System;
 
 namespace Server.Mobiles
@@ -9,7 +10,7 @@ namespace Server.Mobiles
         public StoneHarpy()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a stone harpy";
+            this.Name = "harpia de pedra";
             this.Body = 73;
             this.BaseSoundID = 402;
 
@@ -31,14 +32,14 @@ namespace Server.Mobiles
             this.SetResistance(ResistanceType.Poison, 30, 40);
             this.SetResistance(ResistanceType.Energy, 30, 40);
 
-            this.SetSkill(SkillName.ResistenciaMagica, 50.1, 65.0);
+            this.SetSkill(SkillName.PoderMagico, 200, 300);
             this.SetSkill(SkillName.Anatomia, 70.1, 100.0);
             this.SetSkill(SkillName.Briga, 70.1, 100.0);
 
             this.Fame = 4500;
             this.Karma = -4500;
 
-            this.VirtualArmor = 50;
+            this.VirtualArmor = 100;
         }
 
         public StoneHarpy(Serial serial)
@@ -96,6 +97,58 @@ namespace Server.Mobiles
         public override int GetIdleSound()
         {
             return 918;
+        }
+
+        public override void OnBeforeDamage(Mobile from, ref int totalDamage, DamageType type)
+        {
+            if (from == null)
+                return;
+
+            if (!this.Alive)
+                return;
+
+            if (type != DamageType.Melee)
+                return;
+
+            bool bonus = false;
+            base.OnBeforeDamage(from, ref totalDamage, type);
+            var arma = from.FindItemOnLayer(Layer.OneHanded);
+            if (arma != null && arma is BaseBashing)
+            {
+                totalDamage += 10;
+                bonus = true;
+            }
+
+            arma = from.FindItemOnLayer(Layer.TwoHanded);
+            if (arma != null && arma is BaseBashing)
+            {
+                bonus = true;
+                totalDamage += 10;
+            }
+
+            if (!bonus)
+            {
+                totalDamage /= 10;
+                if (!from.IsCooldown("dicabas2"))
+                {
+                    from.SetCooldown("dicabas2", TimeSpan.FromMinutes(10));
+                    from.SendMessage("Seu ataque nao foi muito efetivo");
+
+                }
+            }
+            else if (bonus)
+            {
+                if(Utility.RandomDouble() > 0.25)
+                {
+                    var ore = new IronOre();
+                    ore.MoveToWorld(this.Location);
+                }
+                if(!from.IsCooldown("dicabas"))
+                {
+                    from.SetCooldown("dicabas", TimeSpan.FromMinutes(10));
+                    from.SendMessage("Seu ataque foi muito efetivo contra " + this.Name);
+                }    
+            }
         }
 
         public override void Serialize(GenericWriter writer)

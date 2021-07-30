@@ -13,11 +13,12 @@ namespace Server.Mobiles
             Name = "Gremlin";
             Body = 724;
 
-            SetStr(106);
-            SetDex(130);
-            SetInt(36);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
-            SetHits(70);
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             SetDamage(5, 7);
 
@@ -34,7 +35,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomia, 35);
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 35;
 
             AddItem(new Bow());

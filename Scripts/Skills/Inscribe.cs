@@ -8,11 +8,12 @@ namespace Server.SkillHandlers
     public class Inscribe
     {
         private static readonly Hashtable m_UseTable = new Hashtable();
+
         public static void Initialize()
         {
-            SkillInfo.Table[(int)SkillName.Erudicao].Callback = new SkillUseCallback(OnUse);
+            //SkillInfo.Table[(int)SkillName.Erudicao].Callback = new SkillUseCallback(OnUse);
         }
-
+        
         public static TimeSpan OnUse(Mobile m)
         {
             Target target = new InternalTargetSrc();

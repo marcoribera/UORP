@@ -46,6 +46,7 @@ namespace Server.Mobiles
             Karma = -5100;
 
             VirtualArmor = 28;
+            PackItem(new DryIce(Utility.RandomMinMax(0, 1)));
 
             switch ( Utility.Random(20) )
             {

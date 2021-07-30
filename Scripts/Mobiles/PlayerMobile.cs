@@ -237,6 +237,15 @@ namespace Server.Mobiles
 
         public FurtivoTimer m_FurtivoTimer;
 
+        private int m_TrapsActive = 0;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int TrapsActive
+        {
+            get { return m_TrapsActive; }
+            set { m_TrapsActive = value; }
+        }
+
         private int m_NonAutoreinsuredItems;
 		// number of items that could not be automaitically reinsured because gold in bank was not enough
 
@@ -723,7 +732,8 @@ namespace Server.Mobiles
 			return ret;
 		}
 
-		public override bool OnDroppedItemToWorld(Item item, Point3D location)
+        
+        public override bool OnDroppedItemToWorld(Item item, Point3D location)
 		{
 			if (!base.OnDroppedItemToWorld(item, location))
 			{
@@ -3610,9 +3620,81 @@ namespace Server.Mobiles
 			{
 				return true;
 			}
+            if (!IgnoreMobiles && (Map.Rules & MapRules.FreeMovement) == 0)
+            {
+                if (!shoved.Alive || !Alive || shoved.IsDeadBondedPet || IsDeadBondedPet)
+                {
+                    return true;
+                }
+                else if (shoved.Hidden) // && shoved.IsStaff()) //Se o alvo estiver escondido, passa por cima sem empurrar
+                {
+                    return true;
+                }
 
-			return base.CheckShove(shoved);
-		}
+                if (!Pushing)
+                {
+                    Pushing = true;
+
+                    if (IsStaff())
+                    {
+                        SendLocalizedMessage(shoved.Hidden ? 1019041 : 1019040);
+                    }
+                    else
+                    {
+                        Timer t = Timer.DelayCall(TimeSpan.FromSeconds(3.0), () => //Tempo entre as tentarivas de passar por cima
+                        {
+                            Pushing = false;
+                        });
+
+                        double proporcao = this.Str / shoved.Str;
+                        if (shoved is BaseCreature)
+                        {
+                            BaseCreature pet = shoved as BaseCreature;
+                            if (pet.Controlled && pet.Owners.Contains(this))
+                            {
+                                proporcao = (100 + this.Str) / shoved.Str;
+                            }
+                        }
+                        this.Stam -= (int)(10 / proporcao); //quanto mais forte quem empurra é comparado com o empurrado, menos stamina perde.
+                        shoved.Stam -= (int)(10 * proporcao); //quanto mais fraco o empurrado é comparado com quem empurra, mais stamina perde stamina perde.
+
+                        if (Stam < (int)(10 / proporcao))
+                        {
+                            SendLocalizedMessage(1030835); //Falta fôlego para empurrar o alvo!
+                            return false;
+                        }
+                        else if (proporcao >= 1.5) //Quem empurra é bem mais forte que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
+                            return true;
+                        }
+                        else if (proporcao <= 0.5) //Quem empurra é bem mais fraco que quem é empurrado
+                        {
+                            LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                            return false;
+                        }
+                        else //Há uma disputa de força entre quem empurra é quem é empurrado
+                        {
+                            if (Utility.RandomMinMax(0.5, 1.5) < proporcao)
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030831, shoved.Name); //TODO: usar um Cliloc dizendo: *Empurra ~1_name~*
+                                return true;
+                            }
+                            else
+                            {
+                                LocalOverheadMessage(MessageType.Emote, this.EmoteHue, 1030832, shoved.Name); //TODO: usar um Cliloc dizendo: *Esbarra em ~1_name~*
+                                return false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		protected override void OnMapChange(Map oldMap)
 		{
@@ -3790,7 +3872,7 @@ namespace Server.Mobiles
                 }
 
                 Blessed = true;
-                Timer.DelayCall(TimeSpan.FromSeconds(6.0), () =>
+                Timer.DelayCall(TimeSpan.FromSeconds(12.0), () =>
                 {
                     Blessed = false;
                 });
@@ -3911,6 +3993,14 @@ namespace Server.Mobiles
         {
             if (Core.ML && Race == Race.Human)
                 return 20.0;
+
+            if (Core.SA && Race == Race.Elf)
+            {
+                if (skill == SkillName.Atirar)
+                    return 30.0;
+                if (skill == SkillName.PoderMagico)
+                    return 20.0;
+            }
 
             if (Core.SA && Race == Race.Gargoyle)
             {
@@ -5530,7 +5620,7 @@ namespace Server.Mobiles
 			return base.CanSee(m);
 		}
 
-		public override bool CanSee(Item item)
+        /*public override bool CanSee(Item item)
 		{
             if (item is IConditionalVisibility && !((IConditionalVisibility)item).CanBeSeenBy(this))
                 return false;
@@ -5550,9 +5640,19 @@ namespace Server.Mobiles
             }
 
 			return base.CanSee(item);
-		}
+		}*/
 
-		public override void OnAfterDelete()
+        public override bool CanSee(Item item)
+        {
+            if (m_DesignContext != null && m_DesignContext.Foundation.IsHiddenToCustomizer(item))
+            {
+                return false;
+            }
+
+            return base.CanSee(item);
+        }
+
+        public override void OnAfterDelete()
 		{
 			base.OnAfterDelete();
 
@@ -5813,6 +5913,9 @@ namespace Server.Mobiles
             {
                 int staminaLoss = 0;
                 double proporcao = TotalWeight / MaxWeight;
+                //Se está montado diminui a dificuldade de andar
+                if (FindItemOnLayer(Layer.Mount) != null)
+                    proporcao /= 2;
 
                 if (proporcao <= 0.25)
                     staminaLoss = 0;
@@ -5833,7 +5936,7 @@ namespace Server.Mobiles
 
                 if (running) //gasta mais stamina corredo
                 {
-                    staminaLoss = (staminaLoss + 1) * 2;
+                    staminaLoss = (staminaLoss *2) + 1;
                 }
 
                 if (Stam < staminaLoss)

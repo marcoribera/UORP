@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -41,6 +42,7 @@ namespace Server.Mobiles
             this.Karma = -12500;
 
             this.VirtualArmor = 60;
+             PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public BloodElemental(Serial serial)

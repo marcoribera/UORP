@@ -127,11 +127,13 @@ namespace Server.Items
 
         public void OnTick()
         {
+            //Console.WriteLine("Tick da pedra de cura: MaxHeal " + m_MaxHeal + "Total MaxHeal" + m_MaxHealTotal);
             if (m_MaxHeal < m_MaxHealTotal)
             {
                 int maxToHeal = m_MaxHealTotal - m_MaxHeal;
-                m_MaxHeal += Math.Min(maxToHeal, m_MaxHealTotal / 15);
-
+                //Console.WriteLine("maxToHeal: " + maxToHeal);
+                m_MaxHeal += Math.Min(maxToHeal, Math.Max(1, m_MaxHealTotal / 15));
+                //Console.WriteLine("m_MaxHeal: " + m_MaxHeal);
                 if (m_MaxHeal > m_MaxHealTotal)
                     m_MaxHeal = m_MaxHealTotal;
             }
@@ -153,8 +155,8 @@ namespace Server.Items
             {
                 m_Ticks++;
 
-                m_Stone.OnTick();
-
+                if (m_Ticks > 2)
+                    m_Stone.OnTick();
                 if (m_Ticks >= 15)
                     this.Stop();
             }

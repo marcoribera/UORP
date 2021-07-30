@@ -26,9 +26,12 @@ namespace Server.Mobiles
             Title = "";
             Hue = Race.RandomSkinHue();
 
-            SetStr(86, 100);
-            SetDex(81, 95);
-            SetInt(61, 75);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             SetDamage(10, 23);
 
@@ -49,7 +52,7 @@ namespace Server.Mobiles
             Karma = -1000;
 
             Tamable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinTameSkill = 35;
 
 

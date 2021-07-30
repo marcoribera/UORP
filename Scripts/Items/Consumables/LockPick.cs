@@ -67,6 +67,114 @@ namespace Server.Items
         {
         }
 
+        private class InternalTarget : Target
+        {
+            private readonly Lockpick m_Item;
+            public InternalTarget(Lockpick item)
+                : base(1, false, TargetFlags.None)
+            {
+                this.m_Item = item;
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                if (this.m_Item.Deleted)
+                    return;
+
+                if (targeted is ILockpickable)
+                {
+                    Item item = (Item)targeted;
+                    from.Direction = from.GetDirectionTo(item);
+
+                    if (((ILockpickable)targeted).Locked)
+                    {
+                        from.PlaySound(0x241);
+
+                        new InternalTimer(from, (ILockpickable)targeted, this.m_Item).Start();
+                    }
+                    else
+                    {
+                        // The door is not locked
+                        from.SendLocalizedMessage(502069); // This does not appear to be locked
+                    }
+                }
+                else
+                {
+                    from.SendLocalizedMessage(501666); // You can't unlock that!
+                }
+            }
+
+            private class InternalTimer : Timer
+            {
+                private readonly Mobile m_From;
+                private readonly ILockpickable m_Item;
+                private readonly Lockpick m_Lockpick;
+                public InternalTimer(Mobile from, ILockpickable item, Lockpick lockpick)
+                    : base(TimeSpan.FromSeconds(3.0))
+                {
+                    this.m_From = from;
+                    this.m_Item = item;
+                    this.m_Lockpick = lockpick;
+                    this.Priority = TimerPriority.TwoFiftyMS;
+                }
+
+                protected void BrokeLockPickTest()
+                {
+                    // When failed, a 25% chance to break the lockpick
+                    if (Utility.Random(4) == 0)
+                    {
+                        Item item = (Item)this.m_Item;
+
+                        // You broke the lockpick.
+                        item.SendLocalizedMessageTo(this.m_From, 502074);
+
+                        this.m_From.PlaySound(0x3A4);
+                        this.m_Lockpick.Consume();
+                    }
+                }
+
+                protected override void OnTick()
+                {
+                    Item item = (Item)this.m_Item;
+
+                    if (!this.m_From.InRange(item.GetWorldLocation(), 1))
+                        return;
+
+                    if (this.m_Item.LockLevel == 0 || this.m_Item.LockLevel == -255)
+                    {
+                        // LockLevel of 0 means that the door can't be picklocked
+                        // LockLevel of -255 means it's magic locked
+                        item.SendLocalizedMessageTo(this.m_From, 502073); // This lock cannot be picked by normal means
+                        return;
+                    }
+
+                    if (this.m_From.Skills[SkillName.Prestidigitacao].Value < this.m_Item.RequiredSkill)
+                    {
+                        /*
+                        // Do some training to gain skills
+                        m_From.CheckSkill( SkillName.Lockpicking, 0, m_Item.LockLevel );*/
+                        // The LockLevel is higher thant the LockPicking of the player
+                        item.SendLocalizedMessageTo(this.m_From, 502072); // You don't see how that lock can be manipulated.
+                        return;
+                    }
+
+                    if (this.m_From.CheckTargetSkill(SkillName.Prestidigitacao, this.m_Item, this.m_Item.LockLevel, this.m_Item.MaxLockLevel))
+                    {
+                        // Success! Pick the lock!
+                        item.SendLocalizedMessageTo(this.m_From, 502076); // The lock quickly yields to your skill.
+                        this.m_From.PlaySound(0x4A);
+                        this.m_Item.LockPick(this.m_From);
+                    }
+                    else
+                    {
+                        // The player failed to pick the lock
+                        this.BrokeLockPickTest();
+                        item.SendLocalizedMessageTo(this.m_From, 502075); // You are unable to pick the lock.
+                    }
+                }
+            }
+        }
+
         protected virtual void BeginLockpick(Mobile from, ILockpickable item)
         {
             if (item.Locked)
@@ -180,30 +288,52 @@ namespace Server.Items
             }
         }
 
-        private class InternalTarget : Target
-        {
-            private Lockpick m_Item;
-
-            public InternalTarget(Lockpick item)
-                : base(1, false, TargetFlags.None)
-            {
-                m_Item = item;
-            }
-
-            protected override void OnTarget(Mobile from, object targeted)
-            {
-                if (m_Item.Deleted)
-                    return;
-
-                if (targeted is ILockpickable)
-                {
-                    m_Item.BeginLockpick(from, (ILockpickable)targeted);
-                }
-                else
-                {
-                    from.SendLocalizedMessage(501666); // You can't unlock that!
-                }
-            }
-        }
+       
     }
 }
+
+
+
+/*
+
+{
+    if (m_Item.Deleted)
+        return;
+
+    if (targeted is ILockpickable)
+    {
+        m_Item.BeginLockpick(from, (ILockpickable)targeted);
+    }
+    else
+    {
+        from.SendLocalizedMessage(501666); // You can't unlock that!
+    }
+}*/
+
+
+/*if (this.m_Item.Deleted)
+    return;
+
+if (targeted is ILockpickable)
+{
+    Item item = (Item)targeted;
+    from.Direction = from.GetDirectionTo(item);
+
+    if (((ILockpickable)targeted).Locked)
+    {
+        from.PlaySound(0x241);
+
+        //new InternalTimer(from, (ILockpickable)targeted, this.m_Item).Start();
+        new InternalTimer(from, (ILockpickable)targeted, this, typeRes, tool, iRandom).Start();
+    }
+    else
+    {
+        // The door is not locked
+        from.SendLocalizedMessage(502069); // This does not appear to be locked
+    }
+}
+else
+{
+    from.SendLocalizedMessage(501666); // You can't unlock that!
+}
+*/

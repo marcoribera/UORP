@@ -774,6 +774,32 @@ namespace Server
 
         private Packet m_OPLPacket;
         private ObjectPropertyList m_PropertyList;
+        protected bool m_Identified;
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Identified
+        {
+            get
+            {
+                return m_Identified;
+            }
+            set
+            {
+                if (m_Identified != value)
+                {
+                    m_Identified = value;
+
+                    ReleaseWorldPackets();
+
+                    UpdateLight();
+
+                    InvalidateProperties();
+                    Delta(ItemDelta.Update);
+
+                }
+            }
+        }
+
         #endregion
 
         public int TempFlags
@@ -2650,9 +2676,11 @@ namespace Server
 
         public virtual void Serialize(GenericWriter writer)
         {
-			writer.Write(15); // version
+			writer.Write(16); // version
 
-			writer.Write(m_Label1);
+            writer.Write(m_Identified);
+
+            writer.Write(m_Label1);
 			writer.Write(m_Label2);
 			writer.Write(m_Label3);
 
@@ -3161,7 +3189,12 @@ namespace Server
 
             switch (version)
             {
-				case 15:
+                case 16:
+                    {
+                        m_Identified = reader.ReadBool();
+                        goto case 15;
+                    }
+                case 15:
 					{
 						m_Label1 = reader.ReadString();
 						m_Label2 = reader.ReadString();
@@ -4057,6 +4090,7 @@ namespace Server
 
             item.Parent = this;
             item.Map = m_Map;
+            item.Identified = this.Identified;
 
             var items = AcquireItems();
 
@@ -4894,7 +4928,7 @@ namespace Server
         public int Z { get { return m_Location.m_Z; } set { Location = new Point3D(m_Location.m_X, m_Location.m_Y, value); } }
         #endregion
 
-        [CommandProperty(AccessLevel.Decorator)]
+        [CommandProperty(AccessLevel.GameMaster)]
         public virtual int ItemID
         {
             get { return m_ItemID; }
@@ -4918,6 +4952,12 @@ namespace Server
                     Delta(ItemDelta.Update);
                 }
             }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public virtual int ActualItemID
+        {
+            get { return m_ItemID; }
         }
 
         public virtual string DefaultName { get { return null; } }
@@ -6223,6 +6263,7 @@ namespace Server
 
         public Item()
         {
+            m_Identified = true;
             m_Serial = Serial.NewItem;
             m_Map = Map.Internal;
             
@@ -6253,6 +6294,7 @@ namespace Server
         public Item(int itemID)
             : this()
         {
+            m_Identified = true;
             m_ItemID = itemID;
 
             UpdateLight();
@@ -6260,6 +6302,7 @@ namespace Server
 
         public Item(Serial serial)
         {
+
             m_Serial = serial;
 
             Type ourType = GetType();

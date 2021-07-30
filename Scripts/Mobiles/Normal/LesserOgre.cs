@@ -41,7 +41,7 @@ namespace Server.Mobiles
             this.VirtualArmor = 32;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 45;
 
             this.PackItem(new Club());

@@ -40,7 +40,25 @@ namespace Server.Engines.Craft
         /// For use for abnormal crafting, ie combine cloth, etc.
         /// </summary>
         public Action<Mobile, CraftItem, ITool> TryCraft { get; set; }
+        public static void Initialize()
+        {
+            CraftSystem sys;
 
+            sys = DefAlchemy.CraftSystem;
+            sys = DefBlacksmithy.CraftSystem;
+            sys = DefBowFletching.CraftSystem;
+            sys = DefLocksmithing.CraftSystem;
+
+            sys = DefCarpentry.CraftSystem;
+            sys = DefCartography.CraftSystem;
+            sys = DefCooking.CraftSystem;
+            sys = DefGlassblowing.CraftSystem;
+            sys = DefInscription.CraftSystem;
+            sys = DefMasonry.CraftSystem;
+            sys = DefTailoring.CraftSystem;
+            sys = DefTinkering.CraftSystem;
+          //  sys = DefBasketweaving.CraftSystem;
+        }
         /// <summary>
         /// this func will create complex items that may require args, or other
         /// things to create that Activator may not be able to accomidate.
@@ -424,7 +442,7 @@ namespace Server.Engines.Craft
 			typeof(BaseContainer), typeof(CraftableFurniture),
 			#endregion
 
-			typeof(BaseArmor), typeof(BaseWeapon), typeof(BaseClothing), typeof(BaseInstrument), typeof(BaseTool),
+			typeof(BaseArmor),   typeof(BaseWeapon), typeof(BaseClothing), typeof(BaseInstrument), typeof(BaseTool),
 			typeof(BaseHarvestTool), typeof(BaseQuiver), typeof(DragonBardingDeed), typeof(Fukiya), typeof(FukiyaDarts),
 			typeof(Shuriken), typeof(Spellbook), typeof(Runebook), typeof(ShortMusicStandLeft), typeof(ShortMusicStandRight),
             typeof(TallMusicStandLeft), typeof(TallMusicStandRight), typeof(EasleNorth), typeof(EasleEast), typeof(EasleSouth),

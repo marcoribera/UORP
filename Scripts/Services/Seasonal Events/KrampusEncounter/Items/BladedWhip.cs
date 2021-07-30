@@ -20,7 +20,7 @@ namespace Server.Items
         {
         }
 		
-		public override bool CanBeWornByGargoyles { get { return true; } }
+		//public override bool CanBeWornByGargoyles { get { return true; } }
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.BleedAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override int AosStrengthReq { get { return 20; } }

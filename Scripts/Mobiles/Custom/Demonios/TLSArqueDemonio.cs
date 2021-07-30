@@ -45,6 +45,7 @@ namespace Server.Mobiles
             this.Karma = -24000;
 
             this.VirtualArmor = 90;
+            PackItem(new BottledLightning(Utility.RandomMinMax(0, 1)));
         }
 
         public TLSArqueDemonio(Serial serial)

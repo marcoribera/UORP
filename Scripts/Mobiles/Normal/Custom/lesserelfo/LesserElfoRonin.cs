@@ -43,14 +43,14 @@ namespace Server.Mobiles
 
             Hue = Utility.RandomSkinHue();
 
-			SetStr( 326, 375 );
-			SetDex( 31, 45 );
-			SetInt( 101, 110 );
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
 
-	        SetHits( 301, 400 );
-			SetMana( 101, 110 );
+            SetHits(150, 180);
+            SetMana(80, 100);
 
-			SetDamage( 17, 25 );
+            SetDamage( 17, 25 );
 
 			SetDamageType( ResistanceType.Physical, 90 );
 			SetDamageType( ResistanceType.Poison, 10 );
@@ -76,7 +76,7 @@ namespace Server.Mobiles
 			Karma = -8500;
 
 			Persuadable = true;
-			ControlSlots = 1;
+			ControlSlots = 2;
 			MinPersuadeSkill = 40;
             IdiomaNativo = Mobiles.SpeechType.Avlitir;
 

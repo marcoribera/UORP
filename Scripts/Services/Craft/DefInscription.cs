@@ -338,23 +338,23 @@ namespace Server.Engines.Craft
 
             if (Core.SE)
             {
-                AddNecroSpell(0, 23, 39.6, typeof(AnimateDeadScroll), Reg.GraveDust, Reg.DaemonBlood);
+                AddNecroSpell(0, 23, 30.6, typeof(AnimateDeadScroll), Reg.GraveDust, Reg.DaemonBlood);
                 AddNecroSpell(1, 13, 19.6, typeof(BloodOathScroll), Reg.DaemonBlood);
                 AddNecroSpell(2, 11, 19.6, typeof(CorpseSkinScroll), Reg.BatWing, Reg.GraveDust);
                 AddNecroSpell(3, 7, 19.6, typeof(CurseWeaponScroll), Reg.PigIron);
                 AddNecroSpell(4, 11, 19.6, typeof(EvilOmenScroll), Reg.BatWing, Reg.NoxCrystal);
-                AddNecroSpell(5, 11, 39.6, typeof(HorrificBeastScroll), Reg.BatWing, Reg.DaemonBlood);
-                AddNecroSpell(6, 23, 69.6, typeof(LichFormScroll), Reg.GraveDust, Reg.DaemonBlood, Reg.NoxCrystal);
+                AddNecroSpell(5, 11, 30.6, typeof(HorrificBeastScroll), Reg.BatWing, Reg.DaemonBlood);
+                AddNecroSpell(6, 23, 50.6, typeof(LichFormScroll), Reg.GraveDust, Reg.DaemonBlood, Reg.NoxCrystal);
                 AddNecroSpell(7, 17, 29.6, typeof(MindRotScroll), Reg.BatWing, Reg.DaemonBlood, Reg.PigIron);
                 AddNecroSpell(8, 5, 19.6, typeof(PainSpikeScroll), Reg.GraveDust, Reg.PigIron);
-                AddNecroSpell(9, 17, 49.6, typeof(PoisonStrikeScroll), Reg.NoxCrystal);
-                AddNecroSpell(10, 29, 64.6, typeof(StrangleScroll), Reg.DaemonBlood, Reg.NoxCrystal);
+                AddNecroSpell(9, 17, 39.6, typeof(PoisonStrikeScroll), Reg.NoxCrystal);
+                AddNecroSpell(10, 29, 55.6, typeof(StrangleScroll), Reg.DaemonBlood, Reg.NoxCrystal);
                 AddNecroSpell(11, 17, 29.6, typeof(SummonFamiliarScroll), Reg.BatWing, Reg.GraveDust, Reg.DaemonBlood);
-                AddNecroSpell(12, 23, 98.6, typeof(VampiricEmbraceScroll), Reg.BatWing, Reg.NoxCrystal, Reg.PigIron);
-                AddNecroSpell(13, 41, 79.6, typeof(VengefulSpiritScroll), Reg.BatWing, Reg.GraveDust, Reg.PigIron);
-                AddNecroSpell(14, 23, 59.6, typeof(WitherScroll), Reg.GraveDust, Reg.NoxCrystal, Reg.PigIron);
+                AddNecroSpell(12, 23, 80.6, typeof(VampiricEmbraceScroll), Reg.BatWing, Reg.NoxCrystal, Reg.PigIron);
+                AddNecroSpell(13, 41, 70.6, typeof(VengefulSpiritScroll), Reg.BatWing, Reg.GraveDust, Reg.PigIron);
+                AddNecroSpell(14, 23, 49.6, typeof(WitherScroll), Reg.GraveDust, Reg.NoxCrystal, Reg.PigIron);
                 AddNecroSpell(15, 17, 19.6, typeof(WraithFormScroll), Reg.NoxCrystal, Reg.PigIron);
-                AddNecroSpell(16, 40, 79.6, typeof(ExorcismScroll), Reg.NoxCrystal, Reg.GraveDust);
+                AddNecroSpell(16, 40, 65.6, typeof(ExorcismScroll), Reg.NoxCrystal, Reg.GraveDust);
             }
 
             int index;
@@ -374,30 +374,28 @@ namespace Server.Engines.Craft
                 ForceNonExceptional(index);
             }
 
-            // Runebook
-            index = AddCraft(typeof(Runebook), 1044294, 1041267, 45.0, 95.0, typeof(BlankScroll), 1044377, 8, 1044378);
-            AddRes(index, typeof(RecallScroll), 1044445, 1, 1044253);
-            AddRes(index, typeof(GateTravelScroll), 1044446, 1, 1044253);
+            // Runebook DESATIVEI
+            //index = AddCraft(typeof(Runebook), 1044294, 1041267, 45.0, 95.0, typeof(BlankScroll), 1044377, 8, 1044378);
+            //AddRes(index, typeof(RecallScroll), 1044445, 1, 1044253);
+            //AddRes(index, typeof(GateTravelScroll), 1044446, 1, 1044253);
 
-            //Pergaminho Antigo
-            index = AddCraft(typeof(LivroDeCampanha), 1044294, 1063515, 45.0, 95.0, typeof(BlankScroll), 1044377, 8, 1044378);
-            AddRes(index, typeof(PergaminhoAntigo), 1063503, 1, 1044253);
+           ;
 
 
-            #region TOL
-            if (Core.TOL)
-            {
-                index = AddCraft(typeof(RunicAtlas), 1044294, 1156443, 45.0, 95.0, typeof(BlankScroll), 1044377, 24, 1044378);
-                AddRes(index, typeof(RecallRune), 1044447, 3, 1044253);
-                AddRes(index, typeof(RecallScroll), 1044445, 3, 1044253);
-                AddRes(index, typeof(GateTravelScroll), 1044446, 3, 1044253);
-                AddRecipe(index, (int)InscriptionRecipes.RunicAtlas);
-            }
-            #endregion
+          //  #region TOL
+          //  if (Core.TOL)
+          //  {
+           //     index = AddCraft(typeof(RunicAtlas), 1044294, 1156443, 45.0, 95.0, typeof(BlankScroll), 1044377, 24, 1044378);
+           //   AddRes(index, typeof(RecallRune), 1044447, 3, 1044253);
+           //     AddRes(index, typeof(RecallScroll), 1044445, 3, 1044253);
+            //    AddRes(index, typeof(GateTravelScroll), 1044446, 3, 1044253);
+            //    AddRecipe(index, (int)InscriptionRecipes.RunicAtlas);
+           // }
+           // #endregion
 
             if (Core.AOS)
             {
-                AddCraft(typeof(Engines.BulkOrders.BulkOrderBook), 1044294, 1028793, 65.0, 115.0, typeof(BlankScroll), 1044377, 10, 1044378);
+                AddCraft(typeof(Engines.BulkOrders.BulkOrderBook), 1044294, 1028793, 45.0, 115.0, typeof(BlankScroll), 1044377, 10, 1044378);
             }
 
             if (Core.SE)
@@ -415,13 +413,15 @@ namespace Server.Engines.Craft
                 AddRecipe(index, (int)TinkerRecipes.ScrappersCompendium);
                 ForceNonExceptional(index);
 
-                index = AddCraft(typeof(SpellbookEngraver), 1044294, 1072151, 75.0, 100.0, typeof(Feather), 1044562, 1, 1044563);
+                index = AddCraft(typeof(SpellbookEngraver), 1044294, 1072151, 60.0, 100.0, typeof(Feather), 1044562, 1, 1044563);
                 AddRes(index, typeof(BlackPearl), 1015001, 7, 1044253);
 
 
                 AddCraft(typeof(NecromancerSpellbook), 1044294, 1074909, 50.0, 100.0, typeof(BlankScroll), 1044377, 10, 1044378);
 
                 AddCraft(typeof(MysticBook), 1044294, 1031677, 50.0, 100.0, typeof(BlankScroll), 1044377, 10, 1044378);
+
+                AddCraft(typeof(SpellweavingBook), 1044294, 1031600, 50.0, 100.0, typeof(BlankScroll), 1044377, 10, 1044378);
             }
             #endregion
 
@@ -438,15 +438,15 @@ namespace Server.Engines.Craft
                 AddRes(index, typeof(WoodPulp), 1113136, 10, 1113289);
                 AddRes(index, typeof(Beeswax), 1025154, 5, 1044253);
 
-                AddCraft(typeof(BlankScroll), 1044294, 1023636, 50.0, 100.0, typeof(WoodPulp), 1113136, 1, 1044378);
+                AddCraft(typeof(BlankScroll), 1044294, 1023636, 40.0, 100.0, typeof(WoodPulp), 1113136, 1, 1044378);
 
                 index = AddCraft(typeof(ScrollBinderDeed), 1044294, 1113135, 75.0, 125.0, typeof(WoodPulp), 1113136, 1, 1044253);
                 SetItemHue(index, 1641);
 
-                index = AddCraft(typeof(GargoyleBook100), 1044294, 1113290, 60.0, 100.0, typeof(BlankScroll), 1044377, 40, 1044378);
+                index = AddCraft(typeof(GargoyleBook100), 1044294, 1113290, 30.0, 100.0, typeof(BlankScroll), 1044377, 40, 1044378);
                 AddRes(index, typeof(Beeswax), 1025154, 2, "You do not have enough beeswax.");
 
-                index = AddCraft(typeof(GargoyleBook200), 1044294, 1113291, 72.0, 100.0, typeof(BlankScroll), 1044377, 40, 1044378);
+                index = AddCraft(typeof(GargoyleBook200), 1044294, 1113291, 45.0, 100.0, typeof(BlankScroll), 1044377, 40, 1044378);
                 AddRes(index, typeof(Beeswax), 1025154, 4, "You do not have enough beeswax.");
 
                 AddMysticSpell(1031678, 4, 0.0, typeof(NetherBoltScroll), Reg.SulfurousAsh, Reg.BlackPearl);
@@ -466,6 +466,12 @@ namespace Server.Engines.Craft
                 AddMysticSpell(1031692, 50, 75.0, typeof(NetherCycloneScroll), Reg.Bloodmoss, Reg.Nightshade, Reg.SulfurousAsh, Reg.MandrakeRoot);
                 AddMysticSpell(1031693, 50, 75.0, typeof(RisingColossusScroll), Reg.DaemonBone, Reg.FertileDirt, Reg.DragonBlood, Reg.Nightshade, Reg.MandrakeRoot);
             }
+            #endregion
+
+            #region Sobrevivência
+
+            index = AddCraft(typeof(LivroDeHistoria), 1063522, 1063515, 40.0, 40.0, typeof(BlankScroll), 1044377, 8, 1044378);
+            AddRes(index, typeof(PergaminhoAntigo), 1063503, 1, 1044253);
             #endregion
 
             MarkOption = true;

@@ -79,11 +79,11 @@ namespace Server.Engines.Harvest
                 new HarvestResource(15.0, 15.0, 65.0, 1007073, typeof(DullCopperOre),	typeof(DullCopperGranite), typeof(DullCopperElemental)),
                 new HarvestResource(25.0, 25.0, 75.0, 1007074, typeof(ShadowIronOre),	typeof(ShadowIronGranite), typeof(ShadowIronElemental)),
                 new HarvestResource(35.0, 35.0, 85.0, 1007075, typeof(CopperOre), typeof(CopperGranite), typeof(CopperElemental)),
-                new HarvestResource(40.0, 45.0, 95.0, 1007076, typeof(BronzeOre), typeof(BronzeGranite), typeof(BronzeElemental)),
-                new HarvestResource(55.0, 50.0, 105.0, 1007077, typeof(GoldOre), typeof(GoldGranite), typeof(GoldenElemental)),
-                new HarvestResource(65.0, 55.0, 125.0, 1007078, typeof(AgapiteOre), typeof(AgapiteGranite), typeof(AgapiteElemental)),
-                new HarvestResource(75.0, 60.0, 135.0, 1007079, typeof(VeriteOre), typeof(VeriteGranite), typeof(VeriteElemental)),
-                new HarvestResource(85.0, 65.0, 145.0, 1007080, typeof(ValoriteOre), typeof(ValoriteGranite), typeof(ValoriteElemental))
+                new HarvestResource(45.0, 45.0, 95.0, 1007076, typeof(BronzeOre), typeof(BronzeGranite), typeof(BronzeElemental)),
+                new HarvestResource(55.0, 55.0, 105.0, 1007077, typeof(GoldOre), typeof(GoldGranite), typeof(GoldenElemental)),
+                new HarvestResource(65.0, 65.0, 115.0, 1007078, typeof(AgapiteOre), typeof(AgapiteGranite), typeof(AgapiteElemental)),
+                new HarvestResource(75.0, 75.0, 125.0, 1007079, typeof(VeriteOre), typeof(VeriteGranite), typeof(VeriteElemental)),
+                new HarvestResource(85.0, 85.0, 135.0, 1007080, typeof(ValoriteOre), typeof(ValoriteGranite), typeof(ValoriteElemental))
             };
 
             veins = new HarvestVein[]
@@ -106,7 +106,7 @@ namespace Server.Engines.Harvest
             {
                 oreAndStone.BonusResources = new BonusHarvestResource[]
                 {
-                    new BonusHarvestResource(0, 99.2, null, null), //Nothing
+                    new BonusHarvestResource(0, 96.2, null, null), //Nothing
                     new BonusHarvestResource(110, .1, 1072562, typeof(BlueDiamond)),
                     new BonusHarvestResource(100, .1, 1072567, typeof(DarkSapphire)),
                     new BonusHarvestResource(95, .1, 1072570, typeof(EcruCitrine)),
@@ -114,7 +114,9 @@ namespace Server.Engines.Harvest
                     new BonusHarvestResource(85, .1, 1072566, typeof(PerfectEmerald)),
                     new BonusHarvestResource(80, .1, 1072568, typeof(Turquoise)),
                     new BonusHarvestResource(70, .1, 1077180, typeof(SmallPieceofBlackrock)),
-                    new BonusHarvestResource(60, .1, 1113344, typeof(CrystallineBlackrock))
+                    new BonusHarvestResource(60, .1, 1113344, typeof(CrystallineBlackrock)),
+                    new BonusHarvestResource(40, 3.0, 1063527, typeof(Brita))
+
 				};
             }
 

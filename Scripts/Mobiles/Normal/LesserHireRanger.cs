@@ -28,9 +28,12 @@ namespace Server.Mobiles
             HairHue = Race.RandomHairHue();
             Race.RandomFacialHair(this);
 
-            SetStr(91, 91);
-            SetDex(76, 76);
-            SetInt(61, 61);
+            this.SetStr(80, 96);
+            this.SetDex(80, 90);
+            this.SetInt(26, 40);
+
+            SetHits(150, 180);
+            SetMana(80, 100);
 
             SetDamage(13, 24);
 
@@ -46,7 +49,7 @@ namespace Server.Mobiles
             Karma = 125;
 
             Persuadable = true;
-            ControlSlots = 1;
+            ControlSlots = 2;
             MinPersuadeSkill = 49;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));

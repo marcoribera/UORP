@@ -1,5 +1,6 @@
 using System;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Mobiles
 {
@@ -44,7 +45,7 @@ namespace Server.Mobiles
             this.PackReg(3);
             this.PackItem(new FertileDirt(Utility.RandomMinMax(1, 10)));
 
-            if (0.2 >= Utility.RandomDouble())
+            if (0.5 >= Utility.RandomDouble())
                 this.PackItem(new ExecutionersCap());
 
             PackItem(new Vines());  //this is correct
@@ -52,10 +53,112 @@ namespace Server.Mobiles
 
             if (Utility.RandomDouble() < 0.10)
             {
+              
                 PackItem(new DecorativeVines());
             }
         }
 
+        public override void OnThink()
+        {
+            base.OnThink();
+            if (this.Combatant != null)
+            {
+                var dist = ((Mobile)this.Combatant).GetDistanceToSqrt(this.Location);
+                if (this.Combatant is Mobile && dist < 9)
+                {
+                    if (dist <= 2)
+                        return;
+
+                    if (!this.IsCooldown("omnoma"))
+                    {
+                        this.SetCooldown("omnoma", TimeSpan.FromSeconds(1.5));
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                    if (!this.InLOS(this.Combatant))
+                    {
+                        return;
+                    }
+
+                    var defender = (Mobile)this.Combatant;
+                    if (defender == null || defender.Map == null || !defender.Alive)
+                        return;
+
+                    SpellHelper.Turn(this, defender);
+                    var locPlayerGo = GetPoint(defender, this.Direction);
+                    if (defender.Map.CanFit(locPlayerGo, locPlayerGo.Z))
+                    {
+                        // this.PlayAttackAnimation();
+                        this.MovingParticles(defender, 0x0D3B, 11, 0, false, false, 9502, 4019, 0x160);
+                        Timer.DelayCall(TimeSpan.FromMilliseconds(400), () =>
+                        {
+                            defender.Freeze(TimeSpan.FromMilliseconds(600));
+                            Timer.DelayCall(TimeSpan.FromMilliseconds(400), () =>
+                            {
+                                defender.MovingParticles(this, 0x0D3B, 15, 0, false, false, 9502, 4019, 0x160);
+                                defender.SendMessage("A planta carnivora te puxa");
+                                defender.MoveToWorld(locPlayerGo, defender.Map);
+                                if (!this.IsCooldown("omnom"))
+                                {
+                                    this.SetCooldown("omnom", TimeSpan.FromSeconds(10));
+                                    //this.OverheadMessage("* Nhom nom nom *");
+                                }
+                            });
+                        });
+
+                    }
+                }
+            }
+        }
+
+        public override void OnGaveMeleeAttack(Mobile defender)
+        {
+
+        }
+
+        public static Point3D GetPoint(Mobile m, Direction d)
+        {
+            var loc = new Point3D(m.Location);
+            var x = 0;
+            var y = 0;
+            switch (d & Direction.Mask)
+            {
+                case Direction.North:
+                    --y;
+                    break;
+                case Direction.Right:
+                    ++x;
+                    --y;
+                    break;
+                case Direction.East:
+                    ++x;
+                    break;
+                case Direction.Down:
+                    ++x;
+                    ++y;
+                    break;
+                case Direction.South:
+                    ++y;
+                    break;
+                case Direction.Left:
+                    --x;
+                    ++y;
+                    break;
+                case Direction.West:
+                    --x;
+                    break;
+                case Direction.Up:
+                    --x;
+                    --y;
+                    break;
+            }
+            loc.X -= x * 2;
+            loc.Y -= y * 2;
+            return loc;
+        }
         public WhippingVine(Serial serial)
             : base(serial)
         {

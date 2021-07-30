@@ -40,9 +40,9 @@ namespace Server.Spells.Mysticism
         {
             get
             {
-                if (Caster.Skills[SkillName.ImbuirMagica].Value >= Caster.Skills[SkillName.PreparoFisico].Value)
+                if (Caster.Skills[SkillName.ImbuirMagica].Value >= Caster.Skills[SkillName.PoderMagico].Value)
                     return SkillName.ImbuirMagica;
-                return SkillName.PreparoFisico;
+                return SkillName.PoderMagico;
             }
         }
 

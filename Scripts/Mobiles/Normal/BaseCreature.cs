@@ -65,7 +65,8 @@ namespace Server.Mobiles
         Release, //"(Name) release"  Releases pet back into the wild (removes "tame" status).
         Stay, //"(All/Name) stay" All or the specified pet(s) will stop and stay in current spot.
         Stop, //"(All/Name) stop Cancels any current orders to attack, guard or follow.
-        Transfer //"(Name) transfer" Transfers complete ownership to targeted player.
+        Transfer, //"(Name) transfer" Transfers complete ownership to targeted player.
+        Go
     }
 
     [Flags]
@@ -1104,6 +1105,11 @@ namespace Server.Mobiles
 
         public virtual bool TaintedLifeAura { get { return false; } }
         public virtual bool BreathImmune { get { return false; } }
+
+        #region Special Abilities and Area Effects overrides
+        public virtual int AreaPoisonDamage { get { return 0; } }
+        public virtual Poison HitAreaPoison { get { return Poison.Deadly; } }
+        #endregion
 
         #region Spill Acid
         public void SpillAcid(int Amount)
@@ -4642,11 +4648,16 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if (m is BaseCreature && !((BaseCreature)m).Controlled)
-            {
-                return (!Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet) || (Hidden && IsStaff());
+            if (m is BaseCreature) {
+                if (!((BaseCreature)m).Controlled)
+                {
+                    return (!Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet) || (Hidden && IsStaff());
+                }
+                else if(this.GetMaster() == ((BaseCreature)m).GetMaster())
+                {
+                    return true;
+                }
             }
-
             return base.OnMoveOver(m);
         }
 
@@ -4983,6 +4994,11 @@ namespace Server.Mobiles
             return true;
 
         }
+
+        public virtual void OnStartCombat(Mobile m) { }
+
+        public virtual void OnTarget(Mobile m) { }
+
 
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {

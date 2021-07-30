@@ -98,7 +98,7 @@ namespace Server.Items
             from.Direction = from.GetDirectionTo(this.GetWorldLocation());
             weapon.PlaySwingAnimation(from);
 
-            from.CheckSkill(weapon.Skill, this.m_MinSkill, this.m_MaxSkill);
+            from.CheckSkill(weapon.GetAttUsedSkill(from, false), this.m_MinSkill, this.m_MaxSkill);
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -111,7 +111,7 @@ namespace Server.Items
                 this.SendLocalizedMessageTo(from, 501816); // You are too far away to do that.
             else if (this.Swinging)
                 this.SendLocalizedMessageTo(from, 501815); // You have to wait until it stops swinging.
-            else if (from.Skills[weapon.Skill].Base >= this.m_MaxSkill)
+            else if (from.Skills[weapon.GetAttUsedSkill(from,false)].Base >= this.m_MaxSkill)
                 this.SendLocalizedMessageTo(from, 501828); // Your skill cannot improve any further by simply practicing with a dummy.
             else if (from.Mounted)
                 this.SendLocalizedMessageTo(from, 501829); // You can't practice on this while on a mount.
