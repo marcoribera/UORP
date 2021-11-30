@@ -462,35 +462,15 @@ namespace Server.Items
                                         {
                                             if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
                                             {
-                                                healerNumber = 500963; // You did not stay close enough to heal your target.
-                                                patientNumber = -1;
-                                                playSound = false;
-                                            }
-                                            else
-                                            {
                                                 m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*operando {0}*", alvo.Name));
                                                 Timer.DelayCall(TimeSpan.FromSeconds(4.0), () =>
                                                 {
                                                     if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
                                                     {
-                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*parou operação*");
-                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
-                                                        patientNumber = -1;
-                                                        playSound = false;
-                                                    }
-                                                    else
-                                                    {
-                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*operando {0}*", alvo.Name));
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*continua operando {0}*", alvo.Name));
                                                         Timer.DelayCall(TimeSpan.FromSeconds(4.0), () =>
                                                         {
                                                             if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
-                                                            {
-                                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false,"*parou operação*");
-                                                                healerNumber = 500963; // You did not stay close enough to heal your target.
-                                                                patientNumber = -1;
-                                                                playSound = false;
-                                                            }
-                                                            else
                                                             {
                                                                 if ((alvo.Desmaio + recuperaDesmaio) >= 1.0)
                                                                 {
@@ -506,9 +486,30 @@ namespace Server.Items
                                                                     alvo.PublicOverheadMessage(MessageType.Emote, 38, false, "*não resistiu*");
                                                                 }
                                                             }
+                                                            else
+                                                            {
+                                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*parou operação*");
+                                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                                patientNumber = -1;
+                                                                playSound = false;
+                                                            }
                                                         });
                                                     }
+                                                    else
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*parou operação*");
+                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                        patientNumber = -1;
+                                                        playSound = false;
+                                                    }
                                                 });
+                                            }
+                                            else
+                                            {
+                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                patientNumber = -1;
+                                                playSound = false;
+                                                
                                             }
                                         });
                                     }
@@ -523,36 +524,37 @@ namespace Server.Items
                                 {
                                     if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
                                     {
-                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros em {0}*", alvo.Name));
+                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros Socorros em {0}*", alvo.Name));
                                         alvo.SendMessage(38, "Estão tentando te reanimar");
                                         Timer.DelayCall(TimeSpan.FromSeconds(3.0), () =>
                                         {
                                             if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
                                             {
-                                                healerNumber = 500963; // You did not stay close enough to heal your target.
-                                                patientNumber = -1;
-                                                playSound = false;
-                                            }
-                                            else
-                                            {
-                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros em {0}*", alvo.Name));
+                                                m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, String.Format("*Realizando Primeiros Socorros em {0}*", alvo.Name));
                                                 Timer.DelayCall(TimeSpan.FromSeconds(3.0), () =>
                                                 {
                                                     if (!m_Patient.Alive && corpoAlvo != null && m_Healer.Alive && m_Healer.InRange(corpoAlvo.Location, Bandage.Range))
-                                                    {
-                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*Interrompeu tratamento*");
-                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
-                                                        patientNumber = -1;
-                                                        playSound = false;
-                                                    }
-                                                    else
                                                     {
                                                         m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*Terminou tratamento*");
                                                         m_Healer.SendMessage(38, "Sua intervenção reanimou paciente!");
                                                         alvo.Desmaio += recuperaDesmaio;
                                                         alvo.Resurrect();
                                                     }
+                                                    else
+                                                    {
+                                                        m_Healer.PublicOverheadMessage(MessageType.Emote, 38, false, "*Interrompeu tratamento*");
+                                                        healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                        patientNumber = -1;
+                                                        playSound = false;
+                                                    }
                                                 });
+                                            }
+                                            else
+                                            {
+                                                healerNumber = 500963; // You did not stay close enough to heal your target.
+                                                patientNumber = -1;
+                                                playSound = false;
+
                                             }
                                         });
                                     }
