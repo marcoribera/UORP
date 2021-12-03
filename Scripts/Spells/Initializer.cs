@@ -231,6 +231,34 @@ namespace Server.Spells
                     Register(743, typeof(SkillMasteries.CombatTrainingSpell));
                 }
             }
+
+            // MAGIAS NOVAS
+            // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)
+
+            // First circle
+            Register(420, typeof(First.OlhosDaCorujaSpell));
+            
+            // Second circle
+            
+
+            // Third circle
+            
+
+            // Fourth circle
+            
+
+            // Fifth circle
+            
+
+            // Sixth circle
+            
+
+            // Seventh circle
+            
+
+            // Eighth circle
+            
+
         }
 
         public static void Register(int spellID, Type type)

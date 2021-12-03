@@ -5,7 +5,7 @@ namespace Server.Spells
 {
     public class SpellRegistry
     {
-        private static readonly Type[] m_Types = new Type[745];
+        private static readonly Type[] m_Types = new Type[899];
         private static int m_Count;
 
         public static Type[] Types
@@ -135,14 +135,16 @@ namespace Server.Spells
 
         private static readonly string[] m_CircleNames = new string[]
         {
-            "First",
+            "Fist",
             "Second",
             "Third",
-            "Fourth",
-            "Fifth",
-            "Sixth",
+            "Forth",
+            "Fith",
+            "Sexth",
             "Seventh",
             "Eighth",
+            "Ninth",
+            "Tenth",
             "Necromancy",
             "Chivalry",
             "Bushido",
@@ -152,7 +154,7 @@ namespace Server.Spells
             "Mystic",
             #endregion
             #region TOL
-            "SkillMasteries"
+            "SkillMasteries",
             #endregion
         };
 

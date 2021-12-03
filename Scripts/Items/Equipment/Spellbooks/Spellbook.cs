@@ -26,7 +26,13 @@ namespace Server.Items
 		Samurai,
 		Arcanist,
 		Mystic,
-        SkillMasteries
+        SkillMasteries,
+        Arcanismo, //Magias novas a partir dessa linha
+        Caos,
+        Feiticaria,
+        Misticismo,
+        Necromancia,
+        Ordem
 	}
 
 	public enum BookQuality
@@ -416,23 +422,43 @@ namespace Server.Items
 			{
 				return SpellbookType.Necromancer;
 			}
-			else if (spellID >= 200 && spellID < 210)
+            else if (spellID >= 120 && spellID < 199) //Espaço livre usado para novas magias da skill Necromancia
+            {
+                return SpellbookType.Necromancia;
+            }
+            else if (spellID >= 200 && spellID < 210)
 			{
 				return SpellbookType.Paladin;
 			}
-			else if (spellID >= 400 && spellID < 406)
+            else if (spellID >= 220 && spellID < 299) //Espaço livre usado para novas magias da skill Ordem
+            {
+                return SpellbookType.Ordem;
+            }
+            else if (spellID >= 320 && spellID < 399)  //Espaço livre usado para novas magias da skill Caos
+            {
+                return SpellbookType.Caos;
+            }
+            else if (spellID >= 400 && spellID < 406)
 			{
 				return SpellbookType.Samurai;
 			}
-			else if (spellID >= 500 && spellID < 508)
+            else if (spellID >= 420 && spellID < 499)  //Espaço livre usado para novas magias da skill Feiticaria
+            {
+                return SpellbookType.Feiticaria;
+            }
+            else if (spellID >= 500 && spellID < 508)
 			{
 				return SpellbookType.Ninja;
 			}
-			else if (spellID >= 600 && spellID < 617)
+            else if (spellID >= 520 && spellID < 599)  //Espaço livre usado para novas magias da skill Arcanismo
+            {
+                return SpellbookType.Arcanismo;
+            }
+            else if (spellID >= 600 && spellID < 617)
 			{
 				return SpellbookType.Arcanist;
 			}
-			else if (spellID >= 677 && spellID < 693)
+            else if (spellID >= 677 && spellID < 693)
 			{
 				return SpellbookType.Mystic;
 			}
@@ -440,8 +466,11 @@ namespace Server.Items
             {
                 return SpellbookType.SkillMasteries;
             }
-
-			return SpellbookType.Invalid;
+            else if (spellID >= 820 && spellID < 899)  //Espaço livre usado para novas magias da skill Misticismo
+            {
+                return SpellbookType.Misticismo;
+            }
+            return SpellbookType.Invalid;
 		}
 
 		public static Spellbook FindRegular(Mobile from)
@@ -474,12 +503,36 @@ namespace Server.Items
 			return Find(from, -1, SpellbookType.Arcanist);
 		}
 
-		public static Spellbook FindMystic(Mobile from)
-		{
-			return Find(from, -1, SpellbookType.Mystic);
-		}
+        public static Spellbook FindMystic(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Mystic);
+        }
+        public static Spellbook FindNecromancia(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Necromancia);
+        }
+        public static Spellbook FindOrdem(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Ordem);
+        }
+        public static Spellbook FindCaos(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Caos);
+        }
+        public static Spellbook FindFeiticaria(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Feiticaria);
+        }
+        public static Spellbook FindArcanismo(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Arcanismo);
+        }
+        public static Spellbook FindMisticismo(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Misticismo);
+        }
 
-		public static Spellbook Find(Mobile from, int spellID)
+        public static Spellbook Find(Mobile from, int spellID)
 		{
 			return Find(from, spellID, GetTypeForSpell(spellID));
 		}
@@ -1360,7 +1413,14 @@ namespace Server.Items
 				case 7:
 					type = SpellbookType.Mystic;
 					break;
-			}
+                case 9:
+                    type = SpellbookType.Arcanismo;
+                    break;
+                case 10:
+                    type = SpellbookType.Feiticaria;
+                    break;
+            }
+
 
 			Spellbook book = Find(from, -1, type);
 
