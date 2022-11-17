@@ -441,7 +441,7 @@ namespace Server.Spells
             if (curse)
             {
                 double resistFixed = target.Skills.ResistenciaMagica.Fixed - (EvilOmenSpell.GetResistMalus(target) * 10);
-                percent = 8 + (caster.Skills.PoderMagico.Fixed / 100) - (resistFixed / 100);
+                percent = 5 + (caster.Skills.PoderMagico.Fixed / 100) - (resistFixed / 100);
             }
             else
                 percent = 1 + (caster.Skills.PoderMagico.Fixed / 100);
@@ -480,7 +480,7 @@ namespace Server.Spells
                 }
             }
 
-            return 1 + (int)(caster.Skills[SkillName.Arcanismo].Value * 0.1);
+            return 1 + (int)(caster.Skills[SkillName.PoderMagico].Value * 0.1);
         }
 
         public static Guild GetGuildFor(Mobile m)

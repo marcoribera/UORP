@@ -295,6 +295,11 @@
     <Compile Include="Custom\Addons Cittadini\testados\SteelCanopySetAddon.cs" />
     <Compile Include="Custom\Addons Cittadini\testados\SwarmOfFlies.cs" />
     <Compile Include="Custom\Addons Cittadini\testados\SwimmingPoolAddon.cs" />
+    <Compile Include="Custom\CharacterCreationRP\CharDetailsA.cs" />
+    <Compile Include="Custom\CharacterCreationRP\CharDetailsB.cs" />
+    <Compile Include="Custom\CharacterCreationRP\ClassSelection.cs" />
+    <Compile Include="Custom\CharacterCreationRP\FinishChar.cs" />
+    <Compile Include="Custom\CharacterCreationRP\RaceSelection.cs" />
     <Compile Include="Custom\HairGrowth with FacialHairGrowth\FacialHairGrowth.cs" />
     <Compile Include="Custom\HairGrowth with FacialHairGrowth\HairGrowth.cs" />
     <Compile Include="Custom\Hunger\HitsDecay.cs" />
@@ -304,6 +309,7 @@
     <Compile Include="Items\Addons\MailboxSouthAddon.cs" />
     <Compile Include="Items\Addons\PotteryWheelAddon.cs" />
     <Compile Include="Items\Addons\RuinCastle2Addon.cs" />
+    <Compile Include="Items\Consumables\EmbasbacarScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
     <Compile Include="Items\custom2\FarmCow.cs" />
@@ -1058,7 +1064,9 @@
     <Compile Include="Items\Custom\[ReVisited]Monster Contract Dealer &amp; Monster Contract\Monster Contract\MonsterContractType.cs" />
     <Compile Include="Items\Custom\[ReVisited]Monster Contract Dealer &amp; Monster Contract\MonsterContractDealer.cs" />
     <Compile Include="Items\Custom\[ServUO.com]-SmallVendorBuilding1Addon.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\AlgozSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\LivroFeiticaria.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\AlgozSpellbook .cs" />
     <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\BloodwoodTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\FrostwoodTree.cs" />
@@ -13264,6 +13272,8 @@
     <Compile Include="Items\Internal\ResGate.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spells\Algoz\AlgozSpell.cs" />
+    <Compile Include="Spells\Algoz\Embasbacar.cs" />
     <Compile Include="Spells\Base\DisturbType.cs">
       <SubType>Code</SubType>
     </Compile>

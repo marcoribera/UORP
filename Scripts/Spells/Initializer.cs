@@ -233,6 +233,8 @@ namespace Server.Spells
             }
 
             // MAGIAS NOVAS
+            // Algoz
+            Register(70, typeof(Algoz.EmbasbacarSpell));
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)
 
             // First circle

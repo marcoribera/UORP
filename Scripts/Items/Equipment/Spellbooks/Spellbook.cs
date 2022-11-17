@@ -27,13 +27,25 @@ namespace Server.Items
 		Arcanist,
 		Mystic,
         SkillMasteries,
-        Arcanismo, //Magias novas a partir dessa linha
+        Arcanismo,
         Caos,
         Feiticaria,
         Misticismo,
         Necromancia,
-        Ordem
-	}
+        Ordem,
+        Xama, //Skill Feiticaria //Facetas dos 4 elementos, seus espiritos e elementais - Não usa reagentes, mas tem maior custo de mana
+        Bruxo, //Skill Feiticaria //Maldições e invocações demonios
+        Paladino, //Skill Ordem //Magias de cura menores, buffs fortes de combate para si, em especial contra criaturas malignas
+        Algoz, //Skill Ordem //Magias de dreno menores, buffs fortes de combate para si, em especial contra criaturas benignas
+        ClerigoBom, //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
+        ClerigoMal, //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
+        Mago, //Skill Arcanismo //Ataques mágicos diretos, magias de deslocamento, diversas magias utilitárias como telecinese, arrombar, etc
+        Metamorfo, //Skill Arcanismo //Os mais diversos tipo de Metamorfose e buffs para si
+        Druida, //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais
+        Monge, //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
+        Bardo, //Skill Caos //buffs e debuffs, invocações festivas
+        Trapaceiro //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+    }
 
 	public enum BookQuality
 	{
@@ -418,7 +430,11 @@ namespace Server.Items
 			{
 				return SpellbookType.Regular;
 			}
-			else if (spellID >= 100 && spellID < 117)
+            else if (spellID >= 70 && spellID < 88) //Magias de Algoz (18)
+            {
+                return SpellbookType.Algoz;
+            }
+            else if (spellID >= 100 && spellID < 117)
 			{
 				return SpellbookType.Necromancer;
 			}
@@ -537,7 +553,12 @@ namespace Server.Items
 			return Find(from, spellID, GetTypeForSpell(spellID));
 		}
 
-		public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
+        public static Spellbook FindAlgoz(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Algoz);
+        }
+
+        public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
 		{
 			if (from == null)
 			{
@@ -1416,11 +1437,43 @@ namespace Server.Items
                 case 9:
                     type = SpellbookType.Arcanismo;
                     break;
-                case 10:
-                    type = SpellbookType.Feiticaria;
+                case 11:
+                    type = SpellbookType.Xama;
+                    break;
+                case 12:
+                    type = SpellbookType.Bruxo;
+                    break;
+                case 13:
+                    type = SpellbookType.Paladino;
+                    break;
+                case 14:
+                    type = SpellbookType.Algoz;
+                    break;
+                case 15:
+                    type = SpellbookType.ClerigoBom;
+                    break;
+                case 16:
+                    type = SpellbookType.ClerigoMal;
+                    break;
+                case 17:
+                    type = SpellbookType.Mago;
+                    break;
+                case 18:
+                    type = SpellbookType.Metamorfo;
+                    break;
+                case 19:
+                    type = SpellbookType.Druida;
+                    break;
+                case 20:
+                    type = SpellbookType.Monge;
+                    break;
+                case 21:
+                    type = SpellbookType.Bardo;
+                    break;
+                case 22:
+                    type = SpellbookType.Trapaceiro;
                     break;
             }
-
 
 			Spellbook book = Find(from, -1, type);
 

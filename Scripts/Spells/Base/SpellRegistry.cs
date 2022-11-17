@@ -143,8 +143,6 @@ namespace Server.Spells
             "Sexth",
             "Seventh",
             "Eighth",
-            "Ninth",
-            "Tenth",
             "Necromancy",
             "Chivalry",
             "Bushido",
@@ -156,6 +154,19 @@ namespace Server.Spells
             #region TOL
             "SkillMasteries",
             #endregion
+            //Tipos novos de Magias:
+            "Xama", //Skill Feiticaria //Facetas dos 4 elementos, seus espiritos e elementais - Não usa reagentes, mas tem maior custo de mana
+            "Bruxo", //Skill Feiticaria //Maldições e invocações demonios
+            "Paladino", //Skill Ordem //Magias de cura menores, buffs fortes de combate para si, em especial contra criaturas malignas
+            "Algoz", //Skill Ordem //Magias de dreno menores, buffs fortes de combate para si, em especial contra criaturas benignas
+            "ClerigoBom", //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
+            "ClerigoMal", //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
+            "Mago", //Skill Arcanismo //Ataques mágicos diretos, magias de deslocamento, diversas magias utilitárias como telecinese, arrombar, etc
+            "Metamorfo", //Skill Arcanismo //Os mais diversos tipo de Metamorfose e buffs para si
+            "Druida", //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais
+            "Monge", //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
+            "Bardo", //Skill Caos //buffs e debuffs, invocações festivas
+            "Trapaceiro" //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
         };
 
         public static Spell NewSpell(string name, Mobile caster, Item scroll)

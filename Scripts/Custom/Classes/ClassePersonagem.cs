@@ -25,6 +25,15 @@ namespace Server.Custom.Classes
         Dictionary<SkillName, double> Requisitos;
         Dictionary<SkillName, double> Beneficios;
 
+        public Dictionary<SkillName, double> getRequisitos()
+        {
+            return Requisitos;
+        }
+        public Dictionary<SkillName, double> getBeneficios()
+        {
+            return Beneficios;
+        }
+
         public ClassePersonagem(int identificador, string nome, string descricao, TierClasse tier, Dictionary<SkillName, double> requisitos, Dictionary<SkillName, double> beneficios)
         {
             this.Nome = nome;

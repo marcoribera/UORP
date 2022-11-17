@@ -13,6 +13,7 @@ namespace Server.Spells
         Seventh,
         Eighth,
         Ninth,
-        Tenth
+        Tenth,
+        Eleventh
     }
 }
