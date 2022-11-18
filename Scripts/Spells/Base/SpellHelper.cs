@@ -444,7 +444,7 @@ namespace Server.Spells
                 percent = 5 + (caster.Skills.PoderMagico.Fixed / 100) - (resistFixed / 100);
             }
             else
-                percent = 1 + (caster.Skills.PoderMagico.Fixed / 100);
+                percent = 4 + (caster.Skills.PoderMagico.Fixed / 100);
 
             percent *= 0.01;
 

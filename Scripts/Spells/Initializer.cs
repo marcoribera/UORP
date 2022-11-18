@@ -235,7 +235,16 @@ namespace Server.Spells
             // MAGIAS NOVAS
             // Algoz
             Register(70, typeof(Algoz.EmbasbacarSpell));
+            Register(71, typeof(Algoz.IntelectoDoAcolitoSpell));
+            Register(72, typeof(Algoz.EnfraquecerSpell));
+            Register(73, typeof(Algoz.ForcaDoAcolitoSpell));
+            Register(74, typeof(Algoz.AtrapalharSpell));
+            Register(75, typeof(Algoz.AgilidadeDoAcolitoSpell));
+            Register(76, typeof(Algoz.ToqueDaDorSpell));
+
+
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)
+
 
             // First circle
             Register(420, typeof(First.OlhosDaCorujaSpell));

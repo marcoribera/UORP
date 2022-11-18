@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace Server.Spells.Algoz
 {
-    public class EmbasbacarSpell : AlgozSpell
+    public class AtrapalharSpell : AlgozSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Embasbacar", "Intelis Cort",
+            "Atrapalhar", "Agilis Cort",
             212,
             9031,
-            Reagent.Ginseng,
+            Reagent.Bloodmoss,
             Reagent.Nightshade);
 
         private static int EficienciaMagica = 1;
-        public EmbasbacarSpell(Mobile caster, Item scroll)
+        public AtrapalharSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -37,10 +37,10 @@ namespace Server.Spells.Algoz
                     t.Stop();
                 }
 
-                BuffInfo.RemoveBuff(m, BuffIcon.FeebleMind);
+                BuffInfo.RemoveBuff(m, BuffIcon.Clumsy);
 
                 if (removeMod)
-                    m.RemoveStatMod("[Magic] Int Curse");
+                    m.RemoveStatMod("[Magic] Dex Curse");
 
                 m_Table.Remove(m);
             }
@@ -50,24 +50,24 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return SpellCircle.First;
+                return SpellCircle.Third;
             }
         }
         public override void OnCast()
         {
-            Caster.Target = new InternalTarget(this);
+            this.Caster.Target = new InternalTarget(this);
         }
 
         public void Target(Mobile m)
         {
-            if (!Caster.CanSee(m))
+            if (!this.Caster.CanSee(m))
             {
-                Caster.SendLocalizedMessage(500237); // Target can not be seen.
+                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (CheckHSequence(m))
+            else if (this.CheckHSequence(m))
             {
-                SpellHelper.Turn(Caster, m);
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                SpellHelper.Turn(this.Caster, m);
+                SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
 
                 if (Mysticism.StoneFormSpell.CheckImmunity(m))
                 {
@@ -75,10 +75,8 @@ namespace Server.Spells.Algoz
                     return;
                 }
 
-                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Int);
-                //Console.WriteLine("oldOffset:" + oldOffset.ToString());
-                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Int, true, false);  // Efeito muito baixo: 5-10% de redução
-                //Console.WriteLine("newOffset:" + newOffset.ToString());
+                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Dex);
+                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Dex, true, false);
 
                 if (-newOffset > oldOffset || newOffset == 0)
                 {
@@ -91,53 +89,53 @@ namespace Server.Spells.Algoz
 
                     m.Paralyzed = false;
 
-                    // m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head); //Efeito base anteror
-                    m.FixedParticles(0x3779, 10, 15, 5002, 31, 3, EffectLayer.Head); //é pra ser um vermelho 31
+                    m.FixedParticles(0x3779, 10, 15, 5002, 31, 3, EffectLayer.Head);
                     m.PlaySound(0x1DF);
 
                     HarmfulSpell(m);
 
                     if (-newOffset < oldOffset)
                     {
-                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Int, false, newOffset);
+                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Dex, false, newOffset);
+
                         int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, true) * 100);
                         TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
-                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.FeebleMind, 1075833, length, m, percentage.ToString())); //TODO: Criar Cliloc com as descrição do debuff
+                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Clumsy, 1075831, length, m, percentage.ToString()));
 
                         if (m_Table.ContainsKey(m))
                             m_Table[m].Stop();
 
                         m_Table[m] = Timer.DelayCall(length, () =>
-                        {
-                            RemoveEffects(m);
-                        });
+                            {
+                                RemoveEffects(m);
+                            });
                     }
                 }
             }
 
-            FinishSequence();
+            this.FinishSequence();
         }
 
         private class InternalTarget : Target
         {
-            private readonly EmbasbacarSpell m_Owner;
-            public InternalTarget(EmbasbacarSpell owner)
+            private readonly AtrapalharSpell m_Owner;
+            public InternalTarget(AtrapalharSpell owner)
                 : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
             {
-                m_Owner = owner;
+                this.m_Owner = owner;
             }
 
             protected override void OnTarget(Mobile from, object o)
             {
                 if (o is Mobile)
                 {
-                    m_Owner.Target((Mobile)o);
+                    this.m_Owner.Target((Mobile)o);
                 }
             }
 
             protected override void OnTargetFinish(Mobile from)
             {
-                m_Owner.FinishSequence();
+                this.m_Owner.FinishSequence();
             }
         }
     }

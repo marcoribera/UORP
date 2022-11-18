@@ -4,20 +4,16 @@ using System.Collections.Generic;
 
 namespace Server.Spells.Algoz
 {
-    public class EmbasbacarSpell : AlgozSpell
+    public class EnfraquecerSpell : AlgozSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Embasbacar", "Intelis Cort",
+            "Enfraquecer", "Forcis Cort",
             212,
             9031,
-            Reagent.Ginseng,
+            Reagent.Garlic,
             Reagent.Nightshade);
 
         private static int EficienciaMagica = 1;
-        public EmbasbacarSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
-        {
-        }
 
         public static Dictionary<Mobile, Timer> m_Table = new Dictionary<Mobile, Timer>();
 
@@ -37,20 +33,25 @@ namespace Server.Spells.Algoz
                     t.Stop();
                 }
 
-                BuffInfo.RemoveBuff(m, BuffIcon.FeebleMind);
+                BuffInfo.RemoveBuff(m, BuffIcon.Weaken);
 
-                if (removeMod)
-                    m.RemoveStatMod("[Magic] Int Curse");
+                if(removeMod)
+                    m.RemoveStatMod("[Magic] Str Curse");
 
                 m_Table.Remove(m);
             }
+        }
+
+        public EnfraquecerSpell(Mobile caster, Item scroll)
+            : base(caster, scroll, m_Info)
+        {
         }
 
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.First;
+                return SpellCircle.Second;
             }
         }
         public override void OnCast()
@@ -75,10 +76,8 @@ namespace Server.Spells.Algoz
                     return;
                 }
 
-                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Int);
-                //Console.WriteLine("oldOffset:" + oldOffset.ToString());
-                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Int, true, false);  // Efeito muito baixo: 5-10% de redução
-                //Console.WriteLine("newOffset:" + newOffset.ToString());
+                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Str);
+                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Str, true, false);
 
                 if (-newOffset > oldOffset || newOffset == 0)
                 {
@@ -91,18 +90,18 @@ namespace Server.Spells.Algoz
 
                     m.Paralyzed = false;
 
-                    // m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head); //Efeito base anteror
-                    m.FixedParticles(0x3779, 10, 15, 5002, 31, 3, EffectLayer.Head); //é pra ser um vermelho 31
+                    m.FixedParticles(0x3779, 10, 15, 5002, 31, 3, EffectLayer.Waist);
+                    
                     m.PlaySound(0x1DF);
 
                     HarmfulSpell(m);
 
                     if (-newOffset < oldOffset)
                     {
-                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Int, false, newOffset);
+                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Str, false, newOffset);
                         int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, true) * 100);
                         TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
-                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.FeebleMind, 1075833, length, m, percentage.ToString())); //TODO: Criar Cliloc com as descrição do debuff
+                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Weaken, 1075837, length, m, percentage.ToString()));
 
                         if (m_Table.ContainsKey(m))
                             m_Table[m].Stop();
@@ -118,10 +117,10 @@ namespace Server.Spells.Algoz
             FinishSequence();
         }
 
-        private class InternalTarget : Target
+        public class InternalTarget : Target
         {
-            private readonly EmbasbacarSpell m_Owner;
-            public InternalTarget(EmbasbacarSpell owner)
+            private readonly EnfraquecerSpell m_Owner;
+            public InternalTarget(EnfraquecerSpell owner)
                 : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
             {
                 m_Owner = owner;

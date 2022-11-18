@@ -309,7 +309,13 @@
     <Compile Include="Items\Addons\MailboxSouthAddon.cs" />
     <Compile Include="Items\Addons\PotteryWheelAddon.cs" />
     <Compile Include="Items\Addons\RuinCastle2Addon.cs" />
-    <Compile Include="Items\Consumables\EmbasbacarScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\AtrapalharScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\EnfraquecerScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\ForcaDoAcolitoScroll .cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\AgilidadeDoAcolitoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\ToqueDaDorScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\IntelectoDoAcolitoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
     <Compile Include="Items\custom2\FarmCow.cs" />
@@ -13272,8 +13278,14 @@
     <Compile Include="Items\Internal\ResGate.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spells\Algoz\AgilidadeDoAcolito.cs" />
     <Compile Include="Spells\Algoz\AlgozSpell.cs" />
+    <Compile Include="Spells\Algoz\Atrapalhar.cs" />
+    <Compile Include="Spells\Algoz\ToqueDaDor.cs" />
+    <Compile Include="Spells\Algoz\IntelectoDoAcolito.cs" />
     <Compile Include="Spells\Algoz\Embasbacar.cs" />
+    <Compile Include="Spells\Algoz\Enfraquecer.cs" />
+    <Compile Include="Spells\Algoz\ForcaDoAcolito.cs" />
     <Compile Include="Spells\Base\DisturbType.cs">
       <SubType>Code</SubType>
     </Compile>
