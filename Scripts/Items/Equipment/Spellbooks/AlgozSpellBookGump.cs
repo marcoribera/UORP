@@ -86,7 +86,7 @@ namespace Server.Gumps
                                 SpellName = "Toque da Dor";
                                 break;
                             case 77:
-                                SpellName = "Embasbacar";
+                                SpellName = "Banimento Profano";
                                 break;
                             case 78:
                                 SpellName = "Embasbacar";
@@ -237,9 +237,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 77))
                 {
                     AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Profano</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Expulsão contra criaturas benignas.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Expelle Bonum</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -253,7 +253,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Mandrake Root, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -425,6 +425,9 @@ namespace Server.Gumps
                         break;
                     case 76:
                         new ToqueDaDorSpell(from, null).Cast();
+                        break;
+                    case 77:
+                        new BanimentoProfanoSpell(from, null).Cast();
                         break;
                     default:
                         break;

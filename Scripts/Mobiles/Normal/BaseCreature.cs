@@ -1075,8 +1075,8 @@ namespace Server.Mobiles
         public virtual bool GivesFameAndKarmaAward { get { return true; } }
 
         //TODO: Find the pub 31 tweaks to the DispelDifficulty and apply them of course.
-        public virtual double DispelDifficulty { get { return 0.0; } } // at this skill level we dispel 50% chance
-        public virtual double DispelFocus { get { return 20.0; } }
+        public virtual double DispelDifficulty { get { return 70.0; } } // at this skill level we dispel 50% chance
+        public virtual double DispelFocus { get { return 30.0; } }
         // at difficulty - focus we have 0%, at difficulty + focus we have 100%
         public virtual bool DisplayWeight { get { return Backpack is StrongBackpack; } }
 

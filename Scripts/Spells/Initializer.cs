@@ -241,6 +241,7 @@ namespace Server.Spells
             Register(74, typeof(Algoz.AtrapalharSpell));
             Register(75, typeof(Algoz.AgilidadeDoAcolitoSpell));
             Register(76, typeof(Algoz.ToqueDaDorSpell));
+            Register(77, typeof(Algoz.BanimentoProfanoSpell));
 
 
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)

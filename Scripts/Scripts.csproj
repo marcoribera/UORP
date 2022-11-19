@@ -313,6 +313,7 @@
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EnfraquecerScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\ForcaDoAcolitoScroll .cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\AgilidadeDoAcolitoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosAlgoz\BanimentoProfanoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\ToqueDaDorScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\IntelectoDoAcolitoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
@@ -13281,6 +13282,7 @@
     <Compile Include="Spells\Algoz\AgilidadeDoAcolito.cs" />
     <Compile Include="Spells\Algoz\AlgozSpell.cs" />
     <Compile Include="Spells\Algoz\Atrapalhar.cs" />
+    <Compile Include="Spells\Algoz\BanimentoProfano.cs" />
     <Compile Include="Spells\Algoz\ToqueDaDor.cs" />
     <Compile Include="Spells\Algoz\IntelectoDoAcolito.cs" />
     <Compile Include="Spells\Algoz\Embasbacar.cs" />
