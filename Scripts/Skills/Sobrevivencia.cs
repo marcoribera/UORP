@@ -258,6 +258,7 @@ namespace Server.SkillHandlers
             else if (TransformationSpellHelper.UnderTransformation(m, typeof(WraithFormSpell)) && divisor <= 2000)
                 divisor += 200;
 
+
             int chance;
             if (divisor > 0)
             {

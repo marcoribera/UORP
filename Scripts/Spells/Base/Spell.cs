@@ -9,6 +9,7 @@ using Server.Spells.Bushido;
 using Server.Spells.Necromancy;
 using Server.Spells.Chivalry;
 using Server.Spells.Ninjitsu;
+using Server.Spells.Paladino;
 using Server.Spells.First;
 using Server.Spells.Second;
 using Server.Spells.Third;
@@ -752,7 +753,8 @@ namespace Server.Spells
 			{
 				m_Caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
 			}
-			else if (!(m_Scroll is BaseWand) && (m_Caster.Paralyzed || m_Caster.Frozen))
+           
+            else if (!(m_Scroll is BaseWand) && (m_Caster.Paralyzed || m_Caster.Frozen))
 			{
 				m_Caster.SendLocalizedMessage(502643); // You can not cast a spell while frozen.
 			}

@@ -482,6 +482,10 @@ namespace Server.Items
             {
                 return SpellbookType.SkillMasteries;
             }
+            else if (spellID >= 800 && spellID < 819)
+            {
+                return SpellbookType.Paladino;
+            }
             else if (spellID >= 820 && spellID < 899)  //Espaço livre usado para novas magias da skill Misticismo
             {
                 return SpellbookType.Misticismo;
@@ -556,6 +560,11 @@ namespace Server.Items
         public static Spellbook FindAlgoz(Mobile from)
         {
             return Find(from, -1, SpellbookType.Algoz);
+        }
+
+        public static Spellbook FindPaladino(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Paladino);
         }
 
         public static Spellbook Find(Mobile from, int spellID, SpellbookType type)

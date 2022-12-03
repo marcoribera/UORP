@@ -1,4 +1,5 @@
 using System;
+using Server.Spells.Paladino;
 
 namespace Server.Spells.Necromancy
 {

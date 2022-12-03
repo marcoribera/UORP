@@ -246,7 +246,25 @@ namespace Server.Spells
 
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)
 
-
+            // MAGIAS DE PALADINO
+            Register(800, typeof(Paladino.ToqueCicatrizanteSpell));
+            Register(801, typeof(Paladino.IntelectoDoDevotoSpell));
+            Register(802, typeof(Paladino.AgilidadeDoDevotoSpell));
+            Register(803, typeof(Paladino.ToqueCurativoSpell));
+            Register(804, typeof(Paladino.BanimentoSagradoSpell));
+            Register(805, typeof(Paladino.FuriaSagradaSpell));
+            Register(806, typeof(Paladino.ForcaDoDevotoSpell));
+            Register(807, typeof(Paladino.ArmaSagradaSpell));
+            Register(808, typeof(Paladino.BencaoSagradaSpell));
+            Register(809, typeof(Paladino.ToqueRegeneradorSpell));
+            Register(810, typeof(Paladino.DesafioSagradoSpell));
+            Register(811, typeof(Paladino.EmanacaoPuraSpell));
+            Register(812, typeof(Paladino.BanimentoCelestialSpell));
+            Register(813, typeof(Paladino.SacrificioSantoSpell));
+            Register(814, typeof(Paladino.SaudeDivinaSpell));
+            Register(815, typeof(Paladino.HaloDivinoSpell));
+            Register(816, typeof(Paladino.EspiritoBenignoSpell));
+      
             // First circle
             Register(420, typeof(First.OlhosDaCorujaSpell));
             

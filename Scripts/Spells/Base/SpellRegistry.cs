@@ -146,6 +146,7 @@ namespace Server.Spells
             "Necromancy",
             "Chivalry",
             "Bushido",
+            "Paladino",
             "Ninjitsu",
             "Spellweaving",
             #region Stygian Abyss

@@ -14,6 +14,7 @@ using Server.Spells.Bushido;
 using Server.Spells.Ninjitsu;
 using Server.Spells.Seventh;
 using Server.Spells.Chivalry;
+using Server.Spells.Paladino;
 using Server.Spells.Necromancy;
 using Server.Spells.Spellweaving;
 using Server.SkillHandlers;
@@ -108,7 +109,7 @@ namespace Server
 
             if (!Core.AOS)
             {
-                if(m != null)
+                if (m != null)
                     m.Damage(damage, from);
 
                 return damage;
@@ -193,7 +194,7 @@ namespace Server
                 }
 
                 if (totalDamage < 1)
-                    totalDamage = 1;           
+                    totalDamage = 1;
             }
             else if (Core.ML && m is PlayerMobile)
             {
@@ -456,16 +457,18 @@ namespace Server
             }
         }
 
+
+
         #region AOS Status Bar
-        public static int GetStatus( Mobile from, int index )
-		{
-			switch ( index )
-			{
-				case 0: return from.GetMaxResistance( ResistanceType.Physical );
-				case 1: return from.GetMaxResistance( ResistanceType.Fire );
-				case 2: return from.GetMaxResistance( ResistanceType.Cold );
-				case 3: return from.GetMaxResistance( ResistanceType.Poison );
-				case 4: return from.GetMaxResistance( ResistanceType.Energy );
+        public static int GetStatus(Mobile from, int index)
+        {
+            switch (index)
+            {
+                case 0: return from.GetMaxResistance(ResistanceType.Physical);
+                case 1: return from.GetMaxResistance(ResistanceType.Fire);
+                case 2: return from.GetMaxResistance(ResistanceType.Cold);
+                case 3: return from.GetMaxResistance(ResistanceType.Poison);
+                case 4: return from.GetMaxResistance(ResistanceType.Energy);
                 case 5: return Math.Min(45 + BaseArmor.GetRefinedDefenseChance(from), AosAttributes.GetValue(from, AosAttribute.DefendChance));
                 case 6: return 45 + BaseArmor.GetRefinedDefenseChance(from);
                 case 7: return Math.Min(from.Race == Race.Gargoyle ? 50 : 45, AosAttributes.GetValue(from, AosAttribute.AttackChance));
@@ -476,7 +479,7 @@ namespace Server
                 case 12: return Math.Min(6, AosAttributes.GetValue(from, AosAttribute.CastRecovery));
                 case 13: return Math.Min(4, AosAttributes.GetValue(from, AosAttribute.CastSpeed));
                 case 14: return Math.Min(40, AosAttributes.GetValue(from, AosAttribute.LowerManaCost)) + BaseArmor.GetInherentLowerManaCost(from);
-                
+
                 case 15: return (int)RegenRates.HitPointRegen(from); // HP   REGEN
                 case 16: return (int)RegenRates.StamRegen(from); // Stam REGEN
                 case 17: return (int)RegenRates.ManaRegen(from); // MANA REGEN
@@ -494,8 +497,8 @@ namespace Server
                 case 26: return AosAttributes.GetValue(from, AosAttribute.BonusHits); // hits inc
                 case 27: return AosAttributes.GetValue(from, AosAttribute.BonusStam); // stam inc
                 case 28: return AosAttributes.GetValue(from, AosAttribute.BonusMana); // mana inc
-				default: return 0;
-			}
+                default: return 0;
+            }
         }
         #endregion
     }
@@ -765,7 +768,7 @@ namespace Server
                     value -= 60;
 
                 if (DivineFurySpell.UnderEffect(m))
-                    value += DivineFurySpell.GetAttackBonus(m);                   
+                    value += DivineFurySpell.GetAttackBonus(m);
 
                 if (BaseWeapon.CheckAnimal(m, typeof(GreyWolf)) || BaseWeapon.CheckAnimal(m, typeof(BakeKitsune)))
                     value += 20; // attacker gets 20% bonus when under Wolf or Bake Kitsune form
@@ -1362,7 +1365,7 @@ namespace Server
         HitFatigue = 0x10000000,
         HitManaDrain = 0x20000000,
         SplinteringWeapon = 0x40000000,
-        ReactiveParalyze =  0x80000000,
+        ReactiveParalyze = 0x80000000,
     }
 
     public sealed class AosWeaponAttributes : BaseAttributes
@@ -1494,7 +1497,7 @@ namespace Server
                 if (wep is BaseRanged)
                     newhits /= 2;
 
-                if(HitLeechHits > newhits)
+                if (HitLeechHits > newhits)
                     HitLeechHits = newhits;
             }
 
@@ -1508,7 +1511,7 @@ namespace Server
                 if (wep is BaseRanged)
                     newmana /= 2;
 
-                if(HitLeechMana > newmana)
+                if (HitLeechMana > newmana)
                     HitLeechMana = newmana;
             }
         }
@@ -1940,14 +1943,14 @@ namespace Server
     [Flags]
     public enum ExtendedWeaponAttribute
     {
-        BoneBreaker     = 0x00000001,
-        HitSwarm        = 0x00000002,
-        HitSparks       = 0x00000004,
-        Bane            = 0x00000008,
-        MysticWeapon    = 0x00000010,
-        AssassinHoned   = 0x00000020,
-        Focus           = 0x00000040,
-        HitExplosion    = 0x00000080
+        BoneBreaker = 0x00000001,
+        HitSwarm = 0x00000002,
+        HitSparks = 0x00000004,
+        Bane = 0x00000008,
+        MysticWeapon = 0x00000010,
+        AssassinHoned = 0x00000020,
+        Focus = 0x00000040,
+        HitExplosion = 0x00000080
     }
 
     public sealed class ExtendedWeaponAttributes : BaseAttributes
@@ -3530,4 +3533,5 @@ namespace Server
             return index;
         }
     }
+
 }

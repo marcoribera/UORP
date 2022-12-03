@@ -13,6 +13,7 @@ using Server.Mobiles;
 using Server.Multis;
 using Server.SkillHandlers;
 using Server.Spells.Chivalry;
+using Server.Spells.Paladino;
 using Server.Spells.Seventh;
 #endregion
 
@@ -342,8 +343,10 @@ namespace Server.Misc
 				if (target is PlayerVendor || target is TownCrier)
 					return Notoriety.Invulnerable;
 			}
+            var context = DesafioSagradoSpell.GetContext(source);
 
-			var context = EnemyOfOneSpell.GetContext(source);
+
+          //  var context = EnemyOfOneSpell.GetContext(source);
 
 			if (context != null && context.IsEnemy(target))
 				return Notoriety.Enemy;

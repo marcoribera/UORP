@@ -3696,7 +3696,7 @@ namespace Server.Mobiles
             return true;
         }
 
-		protected override void OnMapChange(Map oldMap)
+        protected override void OnMapChange(Map oldMap)
 		{
             ViceVsVirtueSystem.OnMapChange(this);
 

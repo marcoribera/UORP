@@ -15,6 +15,7 @@ using Server.SkillHandlers;
 using Server.Spells;
 using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
+using Server.Spells.Paladino;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
 using Server.Spells.Sixth;
@@ -402,7 +403,10 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public ConsecratedWeaponContext ConsecratedContext { get; set; }
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
+        public ArmaSagradaContext ArmaSagradaContext { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
 		public bool Identified
 		{
 			get { return m_Identified; }
@@ -2467,7 +2471,7 @@ namespace Server.Items
 		}
 
         public virtual void OnHit(Mobile attacker, IDamageable damageable, double damageBonus)
-		{
+        {
             if (EndDualWield)
             {
                 ProcessingMultipleHits = false;
@@ -2487,7 +2491,7 @@ namespace Server.Items
                 defender = clone;
             }
 
-			PlaySwingAnimation(attacker);
+            PlaySwingAnimation(attacker);
 
             if (defender != null)
             {
@@ -2495,12 +2499,12 @@ namespace Server.Items
                 PlayHurtAnimation(defender);
             }
 
-			attacker.PlaySound(GetHitAttackSound(attacker, defender));
+            attacker.PlaySound(GetHitAttackSound(attacker, defender));
 
-            if(defender != null)
-			    defender.PlaySound(GetHitDefendSound(attacker, defender));
+            if (defender != null)
+                defender.PlaySound(GetHitDefendSound(attacker, defender));
 
-			int damage = ComputeDamage(attacker, defender);
+            int damage = ComputeDamage(attacker, defender);
 
             WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
             SpecialMove move = SpecialMove.GetCurrentMove(attacker);
@@ -2637,22 +2641,22 @@ namespace Server.Items
                 return;
             }
 
-			#region Damage Multipliers
-			/*
+            #region Damage Multipliers
+            /*
             * The following damage bonuses multiply damage by a factor.
             * Capped at x3 (300%).
             */
-			int percentageBonus = 0;
+            int percentageBonus = 0;
 
-			if (a != null)
-			{
-				percentageBonus += (int)(a.DamageScalar * 100) - 100;
-			}
+            if (a != null)
+            {
+                percentageBonus += (int)(a.DamageScalar * 100) - 100;
+            }
 
-			if (move != null)
-			{
-				percentageBonus += (int)(move.GetDamageScalar(attacker, defender) * 100) - 100;
-			}
+            if (move != null)
+            {
+                percentageBonus += (int)(move.GetDamageScalar(attacker, defender) * 100) - 100;
+            }
 
             if (ConsecratedContext != null && ConsecratedContext.Owner == attacker)
             {
@@ -2661,7 +2665,7 @@ namespace Server.Items
 
             percentageBonus += (int)(damageBonus * 100) - 100;
 
-			CheckSlayerResult cs1 = CheckSlayers(attacker, defender, Slayer);
+            CheckSlayerResult cs1 = CheckSlayers(attacker, defender, Slayer);
             CheckSlayerResult cs2 = CheckSlayers(attacker, defender, Slayer2);
             CheckSlayerResult suit = CheckSlayers(attacker, defender, SetHelper.GetSetSlayer(attacker));
             CheckSlayerResult tal = CheckTalismanSlayer(attacker, defender);
@@ -2671,8 +2675,8 @@ namespace Server.Items
                 cs1 = CheckSlayers(attacker, defender, SlayerSocket.GetSlayer(this));
             }
 
-			if (cs1 != CheckSlayerResult.None)
-			{
+            if (cs1 != CheckSlayerResult.None)
+            {
                 if (cs1 == CheckSlayerResult.SuperSlayer)
                     percentageBonus += 100;
                 else if (cs1 == CheckSlayerResult.Slayer)
@@ -2707,8 +2711,8 @@ namespace Server.Items
                 defender.FixedEffect(0x37B9, 10, 5);
             }
 
-			#region Enemy of One
-			var enemyOfOneContext = EnemyOfOneSpell.GetContext(defender);
+            #region Enemy of One
+            var enemyOfOneContext = EnemyOfOneSpell.GetContext(defender);
 
             if (enemyOfOneContext != null && !enemyOfOneContext.IsWaitingForEnemy && !enemyOfOneContext.IsEnemy(attacker))
             {
@@ -2729,9 +2733,39 @@ namespace Server.Items
                     }
                 }
             }
-			#endregion
+            #endregion
 
-			int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
+            #region Desafio Sagrado
+           
+            var DesafioSagradoContext = DesafioSagradoSpell.GetContext(defender);
+
+            if (DesafioSagradoContext != null && !DesafioSagradoContext.IsWaitingForEnemy && !DesafioSagradoContext.IsEnemy(attacker))
+            {
+                percentageBonus += 100;
+            }
+            else
+            {
+                DesafioSagradoContext = DesafioSagradoSpell.GetContext(attacker);
+
+                if (DesafioSagradoContext != null)
+                {
+                    DesafioSagradoContext.OnHit(defender);
+
+                    if (DesafioSagradoContext.IsEnemy(defender))
+                    {
+                        defender.FixedEffect(0x37B9, 10, 5, 1160, 0);
+                        percentageBonus += DesafioSagradoContext.DamageScalar;
+                    }
+                }
+            }
+            #endregion = DesafioSagradoContext.GetContext(defender);
+
+          
+          
+               
+       
+
+            int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
 
 			if (packInstinctBonus != 0)
 			{
