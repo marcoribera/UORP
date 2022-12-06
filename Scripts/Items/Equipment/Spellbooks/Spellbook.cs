@@ -482,9 +482,9 @@ namespace Server.Items
             {
                 return SpellbookType.SkillMasteries;
             }
-            else if (spellID >= 800 && spellID < 819)
+            else if (spellID >= 800 && spellID < 819) //Espaço livre usado para novas magias da skill Paladino
             {
-                return SpellbookType.Paladino;
+                return SpellbookType.Paladino; 
             }
             else if (spellID >= 820 && spellID < 899)  //Espaço livre usado para novas magias da skill Misticismo
             {

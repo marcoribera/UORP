@@ -7,23 +7,24 @@ namespace Server.Items
     {
         [Constructable]
         public PaladinoSpellbook()
-            : this((ulong)0)
+            : this((ulong)0x3FF)
         {
-            Hue = 2038;
+            Name = "Livro do Paladino";
+            Hue = 1719;
         }
 
         [Constructable]
         public PaladinoSpellbook(ulong content)
-            : base(content, 0xA92F)
+            : base(content, 0x2252)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
-            Hue = 2038;
+            Hue = 1719;
         }
 
         [Constructable]
         public PaladinoSpellbook(ulong content, Mobile gifted) : base(content, 0xA92F)
         {
-            Hue = 2038;
+            Hue = 1719;
         }
         public PaladinoSpellbook(Serial serial)
             : base(serial)
@@ -66,7 +67,7 @@ namespace Server.Items
         {
             get
             {
-                return 70;
+                return 800;
             }
         }
         public override int BookCount
@@ -113,6 +114,8 @@ namespace Server.Items
             //: base((ulong)0x1FFFF)
             : base((ulong)0xA92F)
         {
+            Name = "Livro do Paladino Completo";
+            Hue = 1719;
         }
 
         public CompletePaladinoSpellbook(Serial serial)

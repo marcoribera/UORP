@@ -199,6 +199,46 @@ namespace Server.Items
     }
 }
 
+/*--Full Paladino Spellbook Start
+namespace Server.Items
+{
+    public class FullPaladinoSpellbook : Spellbook
+    {
+        public override SpellbookType SpellbookType { get { return SpellbookType.Paladino; } }
+        public override int BookOffset { get { return 800; } }
+        public override int BookCount { get { return 16; } }
+
+        [Constructable]
+        public FullPaladinoSpellbook() : this((ulong)0xFF)
+        {
+            this.Content = (ulong)0xFF;
+        }
+        [Constructable]
+        public FullPaladinoSpellbook(ulong content)
+            : base(content, 0x23A0)
+        {
+            Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
+        }
+
+        public FullPaladinoSpellbook(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+            Layer = Layer.Invalid;
+        }
+    }
+}*/
 //--Full Spellweaving Spellbook Start--------------------------------------------------------
 
 namespace Server.Items

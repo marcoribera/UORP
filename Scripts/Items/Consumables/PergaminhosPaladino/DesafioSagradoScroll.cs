@@ -2,29 +2,26 @@ using System;
 
 namespace Server.Items
 {
-    public class AgilidadeDoDevotoScroll : SpellScroll
+    public class DesafioSagradoScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public AgilidadeDoDevotoScroll()
+        public DesafioSagradoScroll()
             : this(1)
         {
-            
         }
 
         [Constructable]
-        public AgilidadeDoDevotoScroll(int amount)
+        public DesafioSagradoScroll(int amount)
             : base(802, 0x1F30, amount)
         {
-            Name = "Agilidade do Devoto";
+            Name = "Desafio Sagrado";
             Movable = true;
             Hue = 1719;
-
         }
 
-        public AgilidadeDoDevotoScroll(Serial serial)
+        public DesafioSagradoScroll(Serial serial)
             : base(serial)
         {
-           
         }
         public override int LabelNumber  //TODO: Adicionar os nomes dos novos itens no cliloc
         {

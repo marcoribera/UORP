@@ -319,6 +319,7 @@
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
+    <Compile Include="Items\Containers\BagOfPaladinoPergaminhos.cs" />
     <Compile Include="Items\custom2\FarmCow.cs" />
     <Compile Include="Items\custom2\Sewing\BearSkin.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast1.cs" />
@@ -7496,9 +7497,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Containers\BagOfMysticismReagents.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Items\Containers\BagOfReagents.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Resource\BatWing.cs">

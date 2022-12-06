@@ -29,7 +29,7 @@ namespace Server.Gumps
             this.Resizable = false;
 
             AddPage(0);
-            AddImage(41, 42, 11008);
+            AddImage(41, 42, 11009);
 
             int PriorPage = page - 1;
             if (PriorPage < 1) { PriorPage = 19; }
@@ -42,9 +42,9 @@ namespace Server.Gumps
 
             if (page == 1)
             {
-                int SpellsInBook = 17;
+                int SpellsInBook = 16;
                 int SafetyCatch = 0;
-                int SpellsListed = 69;
+                int SpellsListed = 799;
                 string SpellName = "";
 
                 int nHTMLx = 111;
@@ -121,14 +121,14 @@ namespace Server.Gumps
                         AddHtml(nHTMLx, nHTMLy, 182, 26, @"<BODY><BASEFONT Color=#111111><BIG>" + SpellName + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                         AddButton(nBUTTONx, nBUTTONy, 30008, 30008, SpellsListed, GumpButtonType.Reply, 0);
 
-                        nHTMLy = nHTMLy + 17;
+                        nHTMLy = nHTMLy + 16;
                         if (SpellsInBook == 9) { nHTMLx = 382; nHTMLy = 108; }
 
-                        nBUTTONy = nBUTTONy + 17;
+                        nBUTTONy = nBUTTONy + 16;
                         if (SpellsInBook == 9) { nBUTTONx = 360; nBUTTONy = 112; }
                     }
 
-                    if (SafetyCatch > 14) { SpellsInBook = 0; }
+                    if (SafetyCatch > 32) { SpellsInBook = 0; }
                 }
             }
 
@@ -150,7 +150,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 801))
                 {
-                    AddButton(143, 76, 2242, 2242, 71, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Intelecto do Devoto</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais perspicaz.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelec Devot</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Mandrake Root, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -196,7 +196,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Sagrado</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Tenta banir criaturas malignas.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanct Exili</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Garlic, Mandrake Root, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanct Exili</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Garlic, Ginseng, Spiders' Silk.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -380,7 +380,7 @@ namespace Server.Gumps
         {
             Mobile from = state.Mobile;
 
-            if (info.ButtonID < 88 && info.ButtonID > 0)
+            if (info.ButtonID < 800 && info.ButtonID > 0)
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
@@ -388,7 +388,7 @@ namespace Server.Gumps
                 if (page > 18) { page = 1; }
                 from.SendGump(new PaladinoSpellbookGump(from, m_Book, page));
             }
-            else if (info.ButtonID > 69)
+            else if (info.ButtonID > 799)
             {
                 switch (info.ButtonID)
                 {
