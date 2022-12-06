@@ -11,7 +11,7 @@ namespace Server.Spells.Algoz
             Reagent.Bloodmoss,
             Reagent.MandrakeRoot);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public AgilidadeDoAcolitoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -33,7 +33,7 @@ namespace Server.Spells.Algoz
             if (this.CheckBSequence(m))
             {
                 int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
-                int newDex = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Dex, false, true);
+                int newDex = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Dex, false, true); //multiplica a eficiencia mágica pelo efeito base
 
                 if (newDex < oldDex || newDex == 0)
                 {

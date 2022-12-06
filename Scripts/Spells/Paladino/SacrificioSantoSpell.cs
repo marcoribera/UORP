@@ -16,7 +16,7 @@ namespace Server.Spells.Paladino
             : base(caster, scroll, m_Info)
         {
         }
-
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
         public override TimeSpan CastDelayBase
         {
             get

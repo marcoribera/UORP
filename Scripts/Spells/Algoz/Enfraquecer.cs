@@ -13,7 +13,7 @@ namespace Server.Spells.Algoz
             Reagent.Garlic,
             Reagent.Nightshade);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public static Dictionary<Mobile, Timer> m_Table = new Dictionary<Mobile, Timer>();
 
@@ -77,7 +77,7 @@ namespace Server.Spells.Algoz
                 }
 
                 int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Str);
-                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Str, true, false);
+                int newOffset = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Str, true, false);
 
                 if (-newOffset > oldOffset || newOffset == 0)
                 {

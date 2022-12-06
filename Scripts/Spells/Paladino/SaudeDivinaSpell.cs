@@ -14,7 +14,7 @@ namespace Server.Spells.Paladino
             Reagent.SulfurousAsh);
         private static readonly Hashtable m_Table = new Hashtable();
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
 
         public SaudeDivinaSpell(Mobile caster, Item scroll)

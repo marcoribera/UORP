@@ -18,7 +18,7 @@ namespace Server.Spells.Paladino
             Reagent.Bloodmoss,
             Reagent.MandrakeRoot);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public BanimentoSagradoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

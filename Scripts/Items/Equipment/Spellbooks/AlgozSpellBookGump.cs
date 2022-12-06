@@ -42,7 +42,8 @@ namespace Server.Gumps
 
             if (page == 1)
             {
-                int SpellsInBook = 18;
+                int SpellsInBook = book.SpellCount;
+                int MagiasPorPagina = SpellsInBook / 2;
                 int SafetyCatch = 0;
                 int SpellsListed = 69;
                 string SpellName = "";
@@ -124,10 +125,10 @@ namespace Server.Gumps
                         AddButton(nBUTTONx, nBUTTONy, 30008, 30008, SpellsListed, GumpButtonType.Reply, 0);
 
                         nHTMLy = nHTMLy + 17;
-                        if (SpellsInBook == 9) { nHTMLx = 382; nHTMLy = 108; }
+                        if (SpellsInBook == 10) { nHTMLx = 382; nHTMLy = 108; }
 
                         nBUTTONy = nBUTTONy + 17;
-                        if (SpellsInBook == 9) { nBUTTONx = 360; nBUTTONy = 112; }
+                        if (SpellsInBook == 10) { nBUTTONx = 360; nBUTTONy = 112; }
                     }
 
                     if (SafetyCatch > 14) { SpellsInBook = 0; }
@@ -166,7 +167,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 72))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 72, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Enfraquecer</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  O medo deixa seu oponente enfraquecido.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Garlic, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -180,7 +181,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 73))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 73, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Força do Acólito</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais forte.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Forcis Sup</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -194,7 +195,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 74))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 74, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Atrapalhar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  O medo deixa seu oponente mais lerdo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Agilis Cort</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 20%<BR>Reagentes: Bloodmoss, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -208,7 +209,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 75))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 75, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Agilidade do Acólito</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais ágil.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Agilis Sup</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Bloodmoss, Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -222,7 +223,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 76))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 76, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque da Dor</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Inimigo ao alcance de toque sofre dano direto.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Levi Dolore</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Nightshade, SpidersSilk.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -236,7 +237,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 77))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 77, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Profano</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Expulsão contra criaturas benignas.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Expelle Bonum</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -250,7 +251,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 78))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 78, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Mandrake Root, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -264,7 +265,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 79))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 79, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -278,7 +279,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 80))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 80, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -292,7 +293,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 81))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 81, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -306,7 +307,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 82))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 82, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -320,7 +321,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 83))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 83, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -335,7 +336,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 84))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 84, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -349,7 +350,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 85))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 85, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -363,7 +364,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 86))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 86, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -377,7 +378,7 @@ namespace Server.Gumps
             {
                 if (this.HasSpell(from, 87))
                 {
-                    AddButton(143, 76, 2242, 2242, 70, GumpButtonType.Reply, 0);
+                    AddButton(143, 76, 2242, 2242, 87, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);

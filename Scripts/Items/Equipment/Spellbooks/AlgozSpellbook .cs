@@ -109,8 +109,8 @@ namespace Server.Items
     public class CompleteAlgozSpellbook : AlgozSpellbook
     {
         [Constructable]
-        public CompleteAlgozSpellbook()
-            : base((ulong)0x1FFFF)
+        public CompleteAlgozSpellbook() //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
+            : base((ulong)0x3FFFF)
         {
         }
 

@@ -13,8 +13,7 @@ namespace Server.Spells.Paladino
             Reagent.Garlic,
             Reagent.MandrakeRoot);
 
-        private static int EficienciaMagica = 1;
-
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         private static Dictionary<Mobile, InternalTimer> _Table;
 

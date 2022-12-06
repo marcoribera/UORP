@@ -12,7 +12,7 @@ namespace Server.Spells.Algoz
             Reagent.Nightshade,
             Reagent.SpidersSilk);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public ToqueDaDorSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -85,7 +85,7 @@ namespace Server.Spells.Algoz
                         damage *= this.GetDamageScalar(mob);
                     }
 
-                    damage *= EficienciaMagica; //Aplica o multiplicador de eficiência da magia
+                    damage *= EficienciaMagica(this.Caster); //Aplica o multiplicador de eficiência da magia
 
                     if (Core.AOS)
                     {

@@ -37,7 +37,8 @@ namespace Server.Spells
 
 		public SpellState State { get { return m_State; } set { m_State = value; } }
 
-		public Mobile Caster { get { return m_Caster; } }
+        public virtual int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
+        public Mobile Caster { get { return m_Caster; } }
 		public SpellInfo Info { get { return m_Info; } }
 		public string Name { get { return m_Info.Name; } }
 		public string Mantra { get { return m_Info.Mantra; } }

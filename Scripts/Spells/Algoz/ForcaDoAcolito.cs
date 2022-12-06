@@ -12,7 +12,7 @@ namespace Server.Spells.Algoz
             Reagent.MandrakeRoot,
             Reagent.Nightshade);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
         public ForcaDoAcolitoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
@@ -34,7 +34,7 @@ namespace Server.Spells.Algoz
                 SpellHelper.Turn(this.Caster, m);
 
                 int oldStr = SpellHelper.GetBuffOffset(m, StatType.Str);
-                int newStr = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Str, false, true);
+                int newStr = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Str, false, true);
 
                 if (newStr < oldStr || newStr == 0)
                 {

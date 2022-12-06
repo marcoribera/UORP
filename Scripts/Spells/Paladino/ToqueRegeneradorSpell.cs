@@ -12,7 +12,7 @@ namespace Server.Spells.Paladino
             -1,
             9002);
 
-        private static int EficienciaMagica = 3;
+        public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
 
         public ToqueRegeneradorSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

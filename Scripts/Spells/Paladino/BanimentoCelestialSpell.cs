@@ -17,7 +17,7 @@ namespace Server.Spells.Paladino
             Reagent.BlackPearl,
             Reagent.SulfurousAsh);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public BanimentoCelestialSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

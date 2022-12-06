@@ -19,8 +19,7 @@ namespace Server.Spells.Paladino
             Reagent.GraveDust,
             Reagent.PigIron);
 
-        private static int EficienciaMagica = 1;
-
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public HaloDivinoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

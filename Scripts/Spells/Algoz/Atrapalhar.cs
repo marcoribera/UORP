@@ -13,7 +13,7 @@ namespace Server.Spells.Algoz
             Reagent.Bloodmoss,
             Reagent.Nightshade);
 
-        private static int EficienciaMagica = 1;
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
         public AtrapalharSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
@@ -76,7 +76,7 @@ namespace Server.Spells.Algoz
                 }
 
                 int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Dex);
-                int newOffset = EficienciaMagica * SpellHelper.GetOffset(Caster, m, StatType.Dex, true, false);
+                int newOffset = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Dex, true, false);
 
                 if (-newOffset > oldOffset || newOffset == 0)
                 {
