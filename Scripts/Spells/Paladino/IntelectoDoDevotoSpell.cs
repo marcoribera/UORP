@@ -24,7 +24,7 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.First;
             }
         }
         
@@ -33,30 +33,7 @@ namespace Server.Spells.Paladino
             this.Caster.Target = new InternalTarget(this);
         }
         
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060722;
-            }
-        }
-
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-
+        
         public void Target(Mobile m)
         {
             if (!this.Caster.CanSee(m))

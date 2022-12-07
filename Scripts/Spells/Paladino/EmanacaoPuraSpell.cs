@@ -26,34 +26,14 @@ namespace Server.Spells.Paladino
                 return TimeSpan.FromSeconds(1.75);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 55.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 10;
-            }
-        }
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Seventh;
+                return SpellCircle.Sixth;
             }
         }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060724;
-            }
-        }// Augus Luminos
+       
         public override bool BlocksMovement
         {
             get
@@ -76,7 +56,7 @@ namespace Server.Spells.Paladino
                 {
                     Mobile m = id as Mobile;
 
-                    int damage = ComputePowerValue(10) + Utility.RandomMinMax(0, 2);
+                    int damage = 10;// ComputePowerValue(10) + Utility.RandomMinMax(0, 2);
 
                     // TODO: Should caps be applied?
                     if (damage < 8)

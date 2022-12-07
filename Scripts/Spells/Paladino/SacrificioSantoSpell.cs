@@ -24,34 +24,15 @@ namespace Server.Spells.Paladino
                 return TimeSpan.FromSeconds(1.5);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 65.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 20;
-            }
-        }
+       
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.Tenth;
             }
         }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060725;
-            }
-        }// Dium Prostra
+        
         public override bool BlocksMovement
         {
             get
@@ -127,7 +108,7 @@ namespace Server.Spells.Paladino
 
                         if (m.Hits < m.HitsMax)
                         {
-                            int toHeal = ComputePowerValue(10) + Utility.RandomMinMax(0, 2);
+                            int toHeal = 10;// ComputePowerValue(10) + Utility.RandomMinMax(0, 2);
 
                             // TODO: Should caps be applied?
                             if (toHeal < 8)

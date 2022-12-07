@@ -20,41 +20,15 @@ namespace Server.Spells.Paladino
         {
         }
 
-        public override TimeSpan CastDelayBase
-        {
-            get
-            {
-                return TimeSpan.FromSeconds(1.0);
-            }
-        }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 25.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
+       
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.Third;
             }
         }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060722;
-            }
-        }// Divinum Furis
+        
         public override bool BlocksMovement
         {
             get
@@ -87,7 +61,7 @@ namespace Server.Spells.Paladino
                         t.Stop();
                 }
 
-                int delay = ComputePowerValue(10);
+                int delay = 10; // ComputePowerValue(10);
 
                 // TODO: Should caps be applied?
                 if (delay < 7)

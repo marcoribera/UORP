@@ -45,28 +45,7 @@ namespace Server.Spells.Paladino
                 _Table.Remove(m);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }
+        
         public BencaoSagradaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
@@ -76,7 +55,7 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                return SpellCircle.Third;
+                return SpellCircle.Fourth;
             }
         }
 

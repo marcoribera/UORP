@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Mobiles;
 using Server.Spells.Necromancy;
 
+// TODO: reformular essa magia que não está como PaladinoSpell
 namespace Server.Spells.Paladino
 {
     public class EspiritoBenignoSpell : TransformationSpell
@@ -20,7 +21,13 @@ namespace Server.Spells.Paladino
             : base(caster, scroll, m_Info)
         {
         }
-
+        public SpellCircle Circle
+        {
+            get
+            {
+                return SpellCircle.Tenth;
+            }
+        }
         public override TimeSpan CastDelayBase
         {
             get

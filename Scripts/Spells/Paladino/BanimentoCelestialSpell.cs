@@ -24,35 +24,11 @@ namespace Server.Spells.Paladino
         {
         }
 
-
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-
-        }
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Seventh;
+                return SpellCircle.Ninth;
             }
         }
 

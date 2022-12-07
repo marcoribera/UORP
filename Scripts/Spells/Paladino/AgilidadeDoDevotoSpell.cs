@@ -18,27 +18,7 @@ namespace Server.Spells.Paladino
             : base(caster, scroll, m_Info)
         {
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }// Obsu Vulni
+
         public override SpellCircle Circle
         {
             get

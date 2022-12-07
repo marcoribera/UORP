@@ -36,30 +36,7 @@ namespace Server.Spells.Paladino
                 return SpellCircle.Fourth;
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }
-
-     
+             
 
         public override bool ConsumeReagents()
         {
@@ -117,7 +94,7 @@ namespace Server.Spells.Paladino
                 IEntity to = new Entity(Serial.Zero, new Point3D(this.Caster.X, this.Caster.Y, this.Caster.Z + 50), this.Caster.Map);
                 Effects.SendMovingParticles(from, to, itemID, 1, 0, false, false, 33, 3, 9501, 1, 0, EffectLayer.Head, 0x100);
 
-                double seconds = this.ComputePowerValue(20);
+                double seconds = 10;// this.ComputePowerValue(20);
 
                 // TODO: Should caps be applied?
 

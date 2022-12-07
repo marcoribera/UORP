@@ -20,10 +20,6 @@ namespace Server.Spells.Paladino
 
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
 
-        public override double RequiredSkill { get { return 45.0; } }
-        public override int RequiredMana { get { return 20; } }
-
-        public override int MantraNumber { get { return 1060723; } } // Forul Solum
         public override bool BlocksMovement { get { return false; } }
 
         public override TimeSpan GetCastDelay()
@@ -45,7 +41,7 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                return SpellCircle.Third;
+                return SpellCircle.Eighth;
             }
         }
         public override void OnCast()
@@ -63,7 +59,7 @@ namespace Server.Spells.Paladino
                 PlayEffects();
 
                 // TODO: validate formula
-                var seconds = ComputePowerValue(1);
+                var seconds = 1;// ComputePowerValue(1);
                 Utility.FixMinMax(ref seconds, 67, 228);
 
                 var delay = TimeSpan.FromSeconds(seconds);

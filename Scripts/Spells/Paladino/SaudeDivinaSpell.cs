@@ -22,32 +22,12 @@ namespace Server.Spells.Paladino
         {
         }
 
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 20.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 17;
-            }
-        }
-             public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }
+        
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.First;
+                return SpellCircle.Second;
             }
         }
         public static void EndArmor(Mobile m)

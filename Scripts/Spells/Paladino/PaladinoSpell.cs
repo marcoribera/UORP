@@ -1,27 +1,17 @@
 using System;
 using Server.Items;
-using Server.Network;
 
 namespace Server.Spells.Paladino
 {
     public abstract class PaladinoSpell : Spell
     {
         //                                            Circulo:  1  2  3   4   5   6   7   8   9   10   11
-        private static readonly int[] m_ManaTable = new int[] { 4, 6, 9, 13, 19, 28, 42, 63, 94, 141, 211};
+        private static readonly int[] m_ManaTable = new int[] { 4, 6, 9, 13, 19, 28, 42, 63, 94, 141, 211 };
         private const double ChanceOffset = 20.0, ChanceLength = 120.0 / 10.0; //originalmente era: ChanceOffset = 20.0, ChanceLength = 100.0 /7.0
         public PaladinoSpell(Mobile caster, Item scroll, SpellInfo info)
             : base(caster, scroll, info)
         {
         }
-
-        public abstract double RequiredSkill { get; }
-        public abstract int RequiredMana { get; }
-     //   public abstract int RequiredTithing { get; }
-        public abstract int MantraNumber { get; }
-       
-       
-     
-        public override int CastRecoveryBase { get { return 7; } }
 
         public override SkillName CastSkill
         {
@@ -46,25 +36,12 @@ namespace Server.Spells.Paladino
             }
         }
 
-        public static int ComputePowerValue(Mobile from, int div)
-        {
-            if (from == null)
-            {
-                return 0;
-            }
-
-            int v = (int)Math.Sqrt(from.Karma + 20000 + (from.Skills.Ordem.Fixed * 10));
-
-            return v / div;
-        }
-
-
         public abstract SpellCircle Circle { get; }
         public override TimeSpan CastDelayBase
         {
             get
             {
-                return TimeSpan.FromMilliseconds(((4 + (int)Circle) * CastDelaySecondsPerTick)  * 1000);
+                return TimeSpan.FromMilliseconds(((4 + (int)Circle) * CastDelaySecondsPerTick) * 1000);
             }
         }
         public override bool ConsumeReagents()
@@ -94,12 +71,6 @@ namespace Server.Spells.Paladino
                 return 0;
 
             return m_ManaTable[(int)Circle];
-        }
-
-        public override void SayMantra()
-        {
-            if (Caster.Player)
-                Caster.PublicOverheadMessage(MessageType.Regular, 0x3B2, MantraNumber, "", false);
         }
 
         public virtual bool CheckResisted(Mobile target)
@@ -147,42 +118,5 @@ namespace Server.Spells.Paladino
 
             return base.GetCastDelay();
         }
-        public override void DoFizzle()
-        {
-            Caster.PlaySound(0x1D6);
-            Caster.NextSpellTime = Core.TickCount;
-        }
-
-        public override void DoHurtFizzle()
-        {
-            Caster.PlaySound(0x1D6);
-        }
-
-        public override bool CheckDisturb(DisturbType type, bool firstCircle, bool resistable)
-        {
-            // Cannot disturb Chivalry spells
-            return false;
-        }
-
-        public override void SendCastEffect()
-        {
-            if (Caster.Player)
-                Caster.FixedEffect(0x37C4, 87, (int)(GetCastDelay().TotalSeconds * 28), 4, 3);
-        }
-
-        //public override void GetCastSkills(out double min, out double max)
-        //{
-        //  min = RequiredSkill;
-        //max = RequiredSkill + 50.0;
-
-
-        //  }
-
-        public int ComputePowerValue(int div)
-        {
-            return ComputePowerValue(Caster, div);
-        }
-
-
     }
 }

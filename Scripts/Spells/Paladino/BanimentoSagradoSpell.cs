@@ -36,33 +36,11 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                return SpellCircle.Fourth;
+                return SpellCircle.Third;
             }
         }
 
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 35.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 10;
-            }
-        }
-
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060721;
-            }
-        }
-
+       
         public override bool ConsumeReagents()
         {
             if (base.ConsumeReagents())
@@ -98,7 +76,7 @@ namespace Server.Spells.Paladino
                 Caster.PlaySound(0x299);
                 Caster.FixedParticles(0x37C4, 1, 25, 9922, 14, 3, EffectLayer.Head);
 
-                int dispelSkill = ComputePowerValue(2);
+                int dispelSkill = 10;//ComputePowerValue(2);
                 double chiv = Caster.Skills.Ordem.Value;
 
                 foreach (var m in AcquireIndirectTargets(Caster.Location, 8).OfType<Mobile>())

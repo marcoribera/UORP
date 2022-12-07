@@ -26,35 +26,15 @@ namespace Server.Spells.Paladino
                 return TimeSpan.FromSeconds(1.5);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 45;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 30;
-            }
-        }
+       
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Third;
+                return SpellCircle.Sixth;
             }
         }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }// Obsu Vulni
-        
+                
         public override bool CheckDisturb(DisturbType type, bool firstCircle, bool resistable)
         {
             return true;
@@ -95,7 +75,7 @@ namespace Server.Spells.Paladino
                 * The caster's Karma affects the amount of damage healed.
                 */
 
-                int toHeal = this.ComputePowerValue(6) + Utility.RandomMinMax(0, 2);
+                int toHeal = 10; //this.ComputePowerValue(6) + Utility.RandomMinMax(0, 2);
 
                 // TODO: Should caps be applied?
                 if (toHeal < 10)

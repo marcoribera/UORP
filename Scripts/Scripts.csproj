@@ -1092,7 +1092,9 @@
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\LivroFeiticaria.cs" />
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellbook .cs" />
+    <Compile Include="Items\Equipment\Spellbooks\ExemploSpellbook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellbook.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\ExemploSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellBookGump.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\BloodwoodTree.cs" />

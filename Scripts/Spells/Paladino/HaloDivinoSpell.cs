@@ -33,34 +33,15 @@ namespace Server.Spells.Paladino
                 return TimeSpan.FromSeconds(1.5);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 60.0;
-            }
-        }
+        
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.Eleventh;
             }
         }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060722;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 23;
-            }
-        }
+       
         public override bool DelayedDamage
         {
             get

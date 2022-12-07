@@ -23,30 +23,10 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.Third;
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 20.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 17;
-            }
-        }
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }
+        
         public override void OnCast()
         {
             this.Caster.Target = new InternalTarget(this);

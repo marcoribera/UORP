@@ -21,41 +21,12 @@ namespace Server.Spells.Paladino
         {
         }
 
-        public override TimeSpan CastDelayBase
-        {
-            get
-            {
-                return TimeSpan.FromSeconds(1.5);
-            }
-        }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 0.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 15;
-            }
-        }
-      
-        public override int MantraNumber
-        {
-            get
-            {
-                return 1060719;
-            }
-        }
 
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Third;
+                return SpellCircle.First;
             }
         }
 
@@ -99,7 +70,7 @@ namespace Server.Spells.Paladino
                 * The caster's Karma affects the amount of damage healed.
                 */
 
-                int toHeal = this.ComputePowerValue(6) + Utility.RandomMinMax(0, 2);
+                int toHeal = 10; // this.ComputePowerValue(6) + Utility.RandomMinMax(0, 2);
 
                 // TODO: Should caps be applied?
                 if (toHeal < 3)
