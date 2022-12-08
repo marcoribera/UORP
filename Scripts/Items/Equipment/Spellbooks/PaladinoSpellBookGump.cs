@@ -65,7 +65,7 @@ namespace Server.Gumps
                         switch (i)
                         {
                             case 800:
-                                SpellName = "Toque cicatrizante";
+                                SpellName = "Toque Cicatrizante";
                                 break;
                             case 801:
                                 SpellName = "Intelecto do Devoto";
@@ -74,7 +74,7 @@ namespace Server.Gumps
                                 SpellName = "Agilidade do Devoto";
                                 break;
                             case 803:
-                                SpellName = "Toque curativo";
+                                SpellName = "Toque Curativo";
                                 break;
                             case 804:
                                 SpellName = "Banimento Sagrado";
@@ -92,13 +92,14 @@ namespace Server.Gumps
                                 SpellName = "Benção Sagrada";
                                 break;
                             case 809:
-                                SpellName = "Toque regenarador";
+                                SpellName = "Toque Regenerador";
                                 break;
                             case 810:
                                 SpellName = "Desafio Sagrado";
                                 break;
                             case 811:
                                 SpellName = "Emanação pura";
+
                                 break;
                             case 812:
                                 SpellName = "Banimento Celestial";
