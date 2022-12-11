@@ -134,12 +134,15 @@ namespace Server.Engines.Craft
 
         private int m_Circle, m_Mana;
 
-        private enum Reg { BlackPearl, Bloodmoss, Garlic, Ginseng, MandrakeRoot, Nightshade, SulfurousAsh, SpidersSilk, BatWing, GraveDust, DaemonBlood, NoxCrystal, PigIron, Bone, DragonBlood, FertileDirt, DaemonBone }
+        private enum Reg { BlackPearl, Incenso, Vela, PenaETinteiro, Bloodmoss, Garlic, Ginseng, MandrakeRoot, Nightshade, SulfurousAsh, SpidersSilk, BatWing, GraveDust, DaemonBlood, NoxCrystal, PigIron, Bone, DragonBlood, FertileDirt, DaemonBone }
 
         private readonly Type[] m_RegTypes = new Type[]
         {
             typeof( BlackPearl ),
             typeof( Bloodmoss ),
+            typeof( Incenso ),
+            typeof( Vela ),
+            typeof( PenaETinteiro ),
             typeof( Garlic ),
             typeof( Ginseng ),
             typeof( MandrakeRoot ),

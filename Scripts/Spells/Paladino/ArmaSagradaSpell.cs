@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Targeting;
+
 
 namespace Server.Spells.Paladino
 {
@@ -10,8 +12,8 @@ namespace Server.Spells.Paladino
             "Arma Sagrada", "Sanct Arm",
             -1,
             9002,
-             Reagent.Bloodmoss,
-            Reagent.MandrakeRoot);
+             Reagent.Incenso,
+            Reagent.Vela);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

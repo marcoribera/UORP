@@ -202,11 +202,15 @@ namespace Server
         private static readonly Type[] m_RegTypes = new[]
 		{
 			typeof(BlackPearl), typeof(Bloodmoss), typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(Nightshade),
-			typeof(SulfurousAsh), typeof(SpidersSilk)
-		};
+			typeof(SulfurousAsh), typeof(SpidersSilk), typeof(Incenso), typeof(Vela), typeof(PenaETinteiro)
+        };
 
         public static Type[] NecroRegTypes { get { return m_NecroRegTypes; } }
         private static readonly Type[] m_NecroRegTypes = new[] { typeof(BatWing), typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal), typeof(PigIron) };
+
+        public static Type[] PaladinoRegTypes { get { return m_PaladinoRegTypes; } }
+        private static readonly Type[] m_PaladinoRegTypes = new[] { typeof(Incenso), typeof(Vela), typeof(PenaETinteiro) };
+
 
         public static Type[] MysticRegTypes { get { return m_MysticRegTypes; } }
         private static readonly Type[] m_MysticRegTypes = new[] { typeof(Bone), typeof(DragonBlood), typeof(FertileDirt), typeof(DaemonBone) };

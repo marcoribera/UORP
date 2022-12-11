@@ -239,9 +239,21 @@ namespace Server.Spells
             Register(72, typeof(Algoz.EnfraquecerSpell));
             Register(73, typeof(Algoz.ForcaDoAcolitoSpell));
             Register(74, typeof(Algoz.AtrapalharSpell));
-            Register(75, typeof(Algoz.AgilidadeDoAcolitoSpell));
+            Register(75, typeof(Algoz.AgilidadeDoAcolitoSpell)); 
             Register(76, typeof(Algoz.ToqueDaDorSpell));
             Register(77, typeof(Algoz.BanimentoProfanoSpell));
+            Register(78, typeof(Algoz.ArmaVampiricaSpell));
+            Register(79, typeof(Algoz.BanimentoDemoniacoSpell));
+            Register(80, typeof(Algoz.BencaoProfanaSpell));
+            Register(81, typeof(Algoz.DesafioProfanoSpell));
+            Register(82, typeof(Algoz.EspiritoMalignoSpell));
+            Register(83, typeof(Algoz.FormaVampiricaSpell));
+            Register(84, typeof(Algoz.FuriaProfanaSpell));
+            Register(85, typeof(Algoz.HaloProfanoSpell));
+            Register(86, typeof(Algoz.PeleCadavericaSpell));
+            Register(87, typeof(Algoz.SaudeProfanaSpell));
+            
+
 
 
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)

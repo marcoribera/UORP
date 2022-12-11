@@ -1,23 +1,23 @@
 using System;
 using System.Collections.Generic;
 
-namespace Server.Spells.Paladino
+namespace Server.Spells.Algoz
 {
-    public class FuriaSagradaSpell : PaladinoSpell
+    public class FuriaProfanaSpell : AlgozSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Furia Divina", "Sanctus Furor",
+            "Furia Profana", "Profanus Furor",
             -1,
             9002,
-           Reagent.Vela,
-            Reagent.Incenso);
+            Reagent.NoxCrystal,
+            Reagent.PigIron);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
 
         private static readonly Dictionary<Mobile, Timer> m_Table = new Dictionary<Mobile, Timer>();
 
-        public FuriaSagradaSpell(Mobile caster, Item scroll)
+        public FuriaProfanaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }

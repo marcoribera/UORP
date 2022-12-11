@@ -9,7 +9,7 @@ namespace Server.Spells.Paladino
             "Agilidade do Devoto", "Devot Agilitas",
             212,
             9061,
-            Reagent.Bloodmoss,
+            Reagent.Vela,
             Reagent.MandrakeRoot);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias

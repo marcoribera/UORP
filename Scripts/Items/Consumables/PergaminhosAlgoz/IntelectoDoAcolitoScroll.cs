@@ -14,6 +14,7 @@ namespace Server.Items
         public IntelectoDoAcolitoScroll(int amount)
             : base(71, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public IntelectoDoAcolitoScroll(Serial serial)

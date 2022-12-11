@@ -14,6 +14,7 @@ namespace Server.Items
         public ForcaDoAcolitoScroll(int amount)
             : base(73, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public ForcaDoAcolitoScroll(Serial serial)
