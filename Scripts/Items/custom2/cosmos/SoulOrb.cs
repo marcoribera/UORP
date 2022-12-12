@@ -6,6 +6,7 @@ using Server.Prompts;
 using Server.Network;
 using System.Collections;
 using System.Collections.Generic;
+using Server.Misc;
 
 namespace Server.Items
 {
@@ -34,11 +35,10 @@ namespace Server.Items
         }
 
         [Constructable]
-        public SoulOrb() : base( 0x2C84 ) 
+        public SoulOrb() : base(0x1F1C) 
         {
-            Name = "soul orb";
-            LootType = LootType.Blessed;
-			Movable = false;
+            Name = "Cristal da Alma";
+            Movable = false;
             Weight = 1.0;
 		}
 
@@ -96,8 +96,8 @@ namespace Server.Items
 				else if ( arp.Name == "cloning crystal" ){ owner.SendMessage("The crystal forms a clone of your body, restoring your life."); }
                 else { owner.SendMessage("The orb glows, releasing your soul."); }
                 owner.Resurrect();
-                owner.FixedEffect( 0x376A, 10, 16, Server.Items.CharacterDatabase.GetMySpellHue( owner, 0 ), 0 );
-                Server.Misc.Death.Penalty( owner, false );
+                owner.FixedEffect( 0x376A, 10, 16);
+             
                 BuffInfo.RemoveBuff(owner, BuffIcon.GiftOfLife);
                 arp.Delete();
             }

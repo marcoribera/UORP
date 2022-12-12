@@ -17,7 +17,7 @@ namespace Server.Items
         {
             Name = "Defletir";
             Movable = true;
-            Hue = 1719;
+            Hue = 2748;
 
         }
 

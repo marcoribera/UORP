@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public MiragemScroll(int amount)
-            : base(754, 0x1F30, amount)
+            : base(753, 0x1F30, amount)
         {
             Name = "Miragem";
             Movable = true;
-            Hue = 1719;
+            Hue = 2748;
 
         }
 
@@ -32,7 +32,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 754; //Criar entrada no CLILOC
+                    return 2000000 + 753; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

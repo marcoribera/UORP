@@ -38,7 +38,7 @@ namespace Server.Gumps
             AddButton(91, 50, 2235, 2235, PriorPage, GumpButtonType.Reply, 0);
             AddButton(362, 50, 2236, 2236, NextPage, GumpButtonType.Reply, 0);
 
-            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Guerreiro do Cosmos</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Cosmos</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
             if (page == 1)
             {
@@ -74,24 +74,21 @@ namespace Server.Gumps
                                 SpellName = "Mão Cósmica";
                                 break;
                             case 753:
-                                SpellName = "Olho da Mente";
-                                break;
-                            case 754:
                                 SpellName = "Miragem";
                                 break;
-                            case 755:
+                            case 754:
                                 SpellName = "Aura Psiquica";
                                 break;
-                            case 756:
+                            case 755:
                                 SpellName = "Replicar";
                                 break;
-                            case 757:
+                            case 756:
                                 SpellName = "Toque Calmante";
                                 break;
-                            case 758:
+                            case 757:
                                 SpellName = "Campo de Êxtase";
                                 break;
-                            case 759:
+                            case 758:
                                 SpellName = "Arremesso";
                                 break;
                             
@@ -153,29 +150,29 @@ namespace Server.Gumps
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                 }
             }
+                 
             else if (page == 5)
             {
                 if (this.HasSpell(from, 753))
                 {
                     AddButton(143, 76, 2242, 2242, 753, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Olho da Mente</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Permite que o Guerreiro Cosmico se concentre e veja o que não pode ser visto. Ele pode perceber algo escondido ou uma armadilha escondida."".</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Mentalis Oculos</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Miragem</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma copia exata do guerreiro do cosmos com energia física.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Fictus Imago</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                 }
             }
-       
             else if (page == 6)
             {
                 if (this.HasSpell(from, 754))
                 {
                     AddButton(143, 76, 2242, 2242, 754, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Miragem</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma copia exata do guerreiro do cosmos com energia física.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Fictus Imago</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Aura Psiquica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> O cosmos protege seu corpo e mente, entretanto o deixa vulneravel a outros elementos..</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychica  Aureola</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -187,9 +184,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 755))
                 {
                     AddButton(143, 76, 2242, 2242, 755, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Aura Psiquica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> O cosmos protege seu corpo e mente, entretanto o deixa vulneravel a outros elementos..</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychica  Aureola</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Replicar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um cristal com a essencia do mago.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Replicare</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -201,9 +198,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 756))
                 {
                     AddButton(143, 76, 2242, 2242, 756, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Replicar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um cristal com a essencia do mago.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Replicare</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Calmante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o comos regenera o corpo ferido.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -215,9 +212,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 757))
                 {
                     AddButton(143, 76, 2242, 2242, 757, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Calmante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o comos regenera o corpo ferido.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo de Êxtase</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Um Guerreiro do Cosmos pode criar um campo ao redor de si que o colocará em êxtase por um período de tempo, onde ninguém poderá realizar nenhuma ação por um curto período de tempo.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -229,20 +226,6 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 758))
                 {
                     AddButton(143, 76, 2242, 2242, 758, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo de Êxtase</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Um Guerreiro do Cosmos pode criar um campo ao redor de si que o colocará em êxtase por um período de tempo, onde ninguém poderá realizar nenhuma ação por um curto período de tempo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 11)
-            {
-                if (this.HasSpell(from, 759))
-                {
-                    AddButton(143, 76, 2242, 2242, 759, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Arremesso</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A energia do cosmos é canalizada na sua arma e ela é arremessada na direção do seu alvo, voltando para a mão do guerreiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Remissum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -263,8 +246,8 @@ namespace Server.Gumps
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
-                if (page < 1) { page = 11; }
-                if (page > 11) { page = 1; }
+                if (page < 1) { page = 10; }
+                if (page > 10) { page = 1; }
                 from.SendGump(new CosmosSpellbookGump(from, m_Book, page));
             }
             else if (info.ButtonID > 749)
@@ -281,24 +264,21 @@ namespace Server.Gumps
                         new MaoCosmicaSpell(from, null).Cast();
                         break;
                     case 753:
-                        new OlhoDaMenteSpell(from, null).Cast();
-                        break;
-                    case 754:
                         new MiragemSpell(from, null).Cast();
                         break;
-                    case 755:
+                    case 754:
                         new AuraPsiquicaSpell(from, null).Cast();
                         break;
-                    case 756:
+                    case 755:
                         new ReplicarSpell(from, null).Cast();
                         break;
-                    case 757:
+                    case 756:
                         new ToqueCalmanteSpell(from, null).Cast();
                         break;
-                    case 758:
+                    case 757:
                         new CampoDeExtaseSpell(from, null).Cast();
                         break;
-                    case 759:
+                    case 758:
                         new ArremessoSpell(from, null).Cast();
                         break;
                    

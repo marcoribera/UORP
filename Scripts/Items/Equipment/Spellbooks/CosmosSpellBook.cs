@@ -10,7 +10,7 @@ namespace Server.Items
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
             Name = "Livro do Cosmos";
-            Hue = 1719;
+            Hue = 2748;
         }
 
         [Constructable]
@@ -18,7 +18,7 @@ namespace Server.Items
             : base(content, 0x42BF)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
-            Hue = 1719;
+            Hue = 2748;
         }
 
         [Constructable]
@@ -115,7 +115,7 @@ namespace Server.Items
             : base((ulong)0x1FFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
         {
             Name = "Livro do Cosmos Completo";
-            Hue = 1719;
+            Hue = 2748;
         }
 
         public CompleteCosmosSpellbook(Serial serial)

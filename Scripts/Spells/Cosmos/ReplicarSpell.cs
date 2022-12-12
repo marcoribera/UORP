@@ -61,11 +61,11 @@ namespace Server.Spells.Cosmos
 
 				Caster.PlaySound( 0x244 );
 				Effects.SendLocationEffect(Caster.Location, Caster.Map, 0x373A, 15, 0, 0);
-				Caster.SendMessage("Você cria um cristal de replicação com seu padrão genético.");
+				Caster.SendMessage("Você cria um cristal de replicação com seu essência cósmica.");
 				SoulOrb iOrb = new SoulOrb();
 				iOrb.m_Owner = Caster;
 				iOrb.Name = "Cristal de Replicação";
-				iOrb.ItemID = 0x703;
+				iOrb.ItemID = 0x1F1C;
 				Caster.AddToBackpack( iOrb );
 				Server.Items.SoulOrb.OnSummoned( Caster, iOrb );
 			}

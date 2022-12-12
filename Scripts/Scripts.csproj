@@ -362,7 +362,6 @@
 	  <Compile Include="Items\Consumables\PergaminhosCosmos\DefletirScrolll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosCosmos\MaoCosmicaScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosCosmos\MiragemScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\OlhoDaMenteScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosCosmos\ReplicarScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosCosmos\ToqueCalmanteScroll.cs" />
 
@@ -13723,7 +13722,7 @@
 	<Compile Include="Spells\Cosmos\DefletirSpell.cs" />
 	<Compile Include="Spells\Cosmos\MaoCosmicaSpell.cs" />
 	<Compile Include="Spells\Cosmos\MiragemSpell.cs" />
-	<Compile Include="Spells\Cosmos\OlhoDaMenteSpell.cs" />
+	
 	<Compile Include="Spells\Cosmos\ReplicarSpell.cs" />
 	<Compile Include="Spells\Cosmos\ToqueCalmanteSpell.cs" />
 

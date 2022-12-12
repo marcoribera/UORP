@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public CampoDeExtaseScroll(int amount)
-            : base(758, 0x1F30, amount)
+            : base(757, 0x1F30, amount)
         {
             Name = "Campo De Extase";
             Movable = true;
-            Hue = 1719;
+            Hue = 2748;
 
         }
 
@@ -32,7 +32,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 758; //Criar entrada no CLILOC
+                    return 2000000 + 757; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

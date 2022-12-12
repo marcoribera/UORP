@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public ReplicarScroll(int amount)
-            : base(756, 0x1F30, amount)
+            : base(755, 0x1F30, amount)
         {
             Name = "Replicar";
             Movable = true;
-            Hue = 1719;
+            Hue = 2748;
 
         }
 
@@ -32,7 +32,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 756; //Criar entrada no CLILOC
+                    return 2000000 + 755; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {
