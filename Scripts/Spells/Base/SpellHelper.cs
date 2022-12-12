@@ -14,6 +14,8 @@ using Server.Spells.Fifth;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
 using Server.Spells.Paladino;
+using Server.Spells.Cosmos;
+
 using Server.Spells.Seventh;
 using Server.Spells.Fourth;
 using Server.Targeting;

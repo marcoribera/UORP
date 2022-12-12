@@ -252,8 +252,19 @@ namespace Server.Spells
             Register(85, typeof(Algoz.HaloProfanoSpell));
             Register(86, typeof(Algoz.PeleCadavericaSpell));
             Register(87, typeof(Algoz.SaudeProfanaSpell));
-            
 
+            // MAGIAS DO COSMOS
+            Register(750, typeof(Cosmos.AceleracaoSpell));
+            Register(751, typeof(Cosmos.ArremessoSpell));
+            Register(752, typeof(Cosmos.AuraPsiquicaSpell));
+            Register(753, typeof(Cosmos.CampoDeExtaseSpell));
+            Register(754, typeof(Cosmos.DefletirSpell));
+            Register(755, typeof(Cosmos.MaoCosmicaSpell));
+            Register(756, typeof(Cosmos.MiragemSpell));
+            Register(757, typeof(Cosmos.OlhoDaMenteSpell));
+            Register(758, typeof(Cosmos.ReplicarSpell));
+            Register(759, typeof(Cosmos.ToqueCalmanteSpell));
+            
 
 
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)

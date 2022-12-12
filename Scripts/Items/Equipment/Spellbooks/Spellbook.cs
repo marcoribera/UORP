@@ -36,6 +36,7 @@ namespace Server.Items
         Xama, //Skill Feiticaria //Facetas dos 4 elementos, seus espiritos e elementais - Não usa reagentes, mas tem maior custo de mana
         Bruxo, //Skill Feiticaria //Maldições e invocações demonios
         Paladino, //Skill Ordem //Magias de cura menores, buffs fortes de combate para si, em especial contra criaturas malignas
+        Logos, //Skill Arcanismo //Magias de conexão com a energia que envolve o mundo
         Algoz, //Skill Ordem //Magias de dreno menores, buffs fortes de combate para si, em especial contra criaturas benignas
         ClerigoBom, //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
         ClerigoMal, //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
@@ -44,7 +45,8 @@ namespace Server.Items
         Druida, //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais
         Monge, //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
         Bardo, //Skill Caos //buffs e debuffs, invocações festivas
-        Trapaceiro //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+        Trapaceiro, //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+        Cosmos
     }
 
 	public enum BookQuality
@@ -482,6 +484,10 @@ namespace Server.Items
             {
                 return SpellbookType.SkillMasteries;
             }
+            else if (spellID >= 750 && spellID < 770)
+            {
+                return SpellbookType.Cosmos;
+            }
             else if (spellID >= 800 && spellID < 819) //Espaço livre usado para novas magias da skill Paladino
             {
                 return SpellbookType.Paladino; 
@@ -565,6 +571,11 @@ namespace Server.Items
         public static Spellbook FindPaladino(Mobile from)
         {
             return Find(from, -1, SpellbookType.Paladino);
+        }
+
+        public static Spellbook FindCosmos(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Cosmos);
         }
 
         public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
@@ -1481,6 +1492,9 @@ namespace Server.Items
                     break;
                 case 22:
                     type = SpellbookType.Trapaceiro;
+                    break;
+                case 23:
+                    type = SpellbookType.Cosmos;
                     break;
             }
 

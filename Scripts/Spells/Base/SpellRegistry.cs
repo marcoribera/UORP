@@ -146,6 +146,7 @@ namespace Server.Spells
             "Necromancy",
             "Chivalry",
             "Bushido",
+            "Cosmos", // Skill Ordem // magias que usam habilidades de luta 
             "Paladino",
             "Ninjitsu",
             "Spellweaving",
@@ -168,6 +169,7 @@ namespace Server.Spells
             "Monge", //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
             "Bardo", //Skill Caos //buffs e debuffs, invocações festivas
             "Trapaceiro" //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+
         };
 
         public static Spell NewSpell(string name, Mobile caster, Item scroll)

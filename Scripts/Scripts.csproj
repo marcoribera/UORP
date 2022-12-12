@@ -351,7 +351,23 @@
     <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueRegeneradorScroll.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
     <Compile Include="Items\Containers\BagOfPaladinoPergaminhos.cs" />
-    <Compile Include="Items\custom2\FarmCow.cs" />
+	  <Compile Include="Items\Containers\BagOfCosmosPergaminhos.cs" />
+	  <Compile Include="Items\Containers\BagOfAlgozPergaminhos.cs" />
+
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\AceleracaoScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\ArremessoScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\AuraPsiquicaScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\CampoDeExtaseScroll.cs" />
+	
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\DefletirScrolll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\MaoCosmicaScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\MiragemScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\OlhoDaMenteScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\ReplicarScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmos\ToqueCalmanteScroll.cs" />
+
+
+	  <Compile Include="Items\custom2\FarmCow.cs" />
     <Compile Include="Items\custom2\Sewing\BearSkin.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast1.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast2.cs" />
@@ -1110,7 +1126,10 @@
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellbook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ExemploSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellBookGump.cs" />
-    <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
+	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellbook.cs" />
+	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellBookGump.cs" />
+
+	  <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\BloodwoodTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\FrostwoodTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\HeartwoodTree.cs" />
@@ -13693,7 +13712,24 @@
     <Compile Include="Spells\Paladino\ToqueCurativoSpell.cs" />
     <Compile Include="Spells\Paladino\ToqueRegeneradorSpell.cs" />
     <Compile Include="Spells\Reagent.cs">
-      <SubType>Code</SubType>
+
+		<SubType>Code</SubType>
+	</Compile>
+	<Compile Include="Spells\Cosmos\AceleracaoSpell.cs" />
+	<Compile Include="Spells\Cosmos\ArremessoSpell.cs" />
+	<Compile Include="Spells\Cosmos\AuraPsiquicaSpell.cs" />
+	<Compile Include="Spells\Cosmos\CampoDeExtaseSpell.cs" />
+	<Compile Include="Spells\Cosmos\CosmosSpell.cs" />
+	<Compile Include="Spells\Cosmos\DefletirSpell.cs" />
+	<Compile Include="Spells\Cosmos\MaoCosmicaSpell.cs" />
+	<Compile Include="Spells\Cosmos\MiragemSpell.cs" />
+	<Compile Include="Spells\Cosmos\OlhoDaMenteSpell.cs" />
+	<Compile Include="Spells\Cosmos\ReplicarSpell.cs" />
+	<Compile Include="Spells\Cosmos\ToqueCalmanteSpell.cs" />
+
+	
+		
+		<SubType>Code</SubType>
     </Compile>
     <Compile Include="Spells\Second\Agility.cs">
       <SubType>Code</SubType>
