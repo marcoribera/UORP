@@ -1805,6 +1805,11 @@
 					<object type="Server.Items.NoxCrystal" gfx="3982" />
 					<object type="Server.Items.PigIron" gfx="3978" />
 				</category>
+				<category title="Paladino">
+				<object type="Server.Items.Incenso" gfx="3622" hue="981" />
+				<object type="Server.Items.Vela" gfx="5168"  />
+				<object type="Server.Items.PenaETinteiro" gfx="4031"  />
+				</category>
 				<category title="Standard">
 					<object type="Server.Items.BlackPearl" gfx="3962" />
 					<object type="Server.Items.Bloodmoss" gfx="3963" />
@@ -1814,6 +1819,9 @@
 					<object type="Server.Items.Nightshade" gfx="3976" />
 					<object type="Server.Items.SpidersSilk" gfx="3981" />
 					<object type="Server.Items.SulfurousAsh" gfx="3980" />
+					<object type="Server.Items.Incenso" gfx="3622" hue="981" />
+					<object type="Server.Items.Vela" gfx="5168"  />
+					<object type="Server.Items.PenaETinteiro" gfx="4031"  />
 				</category>
 				<object type="Server.Items.DaemonBone" gfx="3968" />
 				<object type="Server.Items.DeadWood" gfx="3984" />

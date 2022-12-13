@@ -14,6 +14,7 @@ namespace Server.Items
         public AtrapalharScroll(int amount)
             : base(74, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public AtrapalharScroll(Serial serial)

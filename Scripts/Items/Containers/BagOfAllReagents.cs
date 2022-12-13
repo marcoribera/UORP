@@ -26,6 +26,11 @@ namespace Server.Items
             this.DropItem(new DaemonBlood(amount));
             this.DropItem(new NoxCrystal(amount));
             this.DropItem(new PigIron(amount));
+            this.DropItem(new Incenso(amount));
+            this.DropItem(new Vela(amount));
+            this.DropItem(new PenaETinteiro(amount));
+
+
         }
 
         public BagOfAllReagents(Serial serial)

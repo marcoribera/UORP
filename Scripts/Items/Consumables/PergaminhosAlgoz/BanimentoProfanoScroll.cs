@@ -14,6 +14,7 @@ namespace Server.Items
         public BanimentoProfanoScroll(int amount)
             : base(77, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public BanimentoProfanoScroll(Serial serial)

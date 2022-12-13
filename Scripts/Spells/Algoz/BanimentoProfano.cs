@@ -5,6 +5,8 @@ using System.Linq;
 using Server.Items;
 using Server.Mobiles;
 using Server.Spells.Necromancy;
+using Server.Spells.SkillMasteries;
+
 
 namespace Server.Spells.Algoz
 {

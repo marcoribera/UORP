@@ -5,20 +5,20 @@ using System.Linq;
 using Server.Items;
 using Server.Mobiles;
 
-namespace Server.Spells.Paladino
+namespace Server.Spells.Algoz
 {
-    public class DesafioSagradoSpell : PaladinoSpell
+    public class DesafioProfanoSpell : AlgozSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Desafio Sagrado", "Sanctus Provoca",
+            "Desafio Profano", "Profanus Provoca",
             -1,
             9002,
-            Reagent.Vela,
-            Reagent.PenaETinteiro);
+            Reagent.GraveDust,
+            Reagent.NoxCrystal);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
-        public DesafioSagradoSpell(Mobile caster, Item scroll)
+        public DesafioProfanoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -73,7 +73,7 @@ namespace Server.Spells.Paladino
 
                 var expire = DateTime.UtcNow + delay;
 
-                var context = new DesafioSagradoContext(Caster, timer, expire);
+                var context = new DesafioProfanoContext(Caster, timer, expire);
                 context.OnCast();
                 m_Table[Caster] = context;
             }
@@ -90,9 +90,9 @@ namespace Server.Spells.Paladino
             Caster.FixedParticles(0x37B9, 1, 30, 9502, 43, 3, EffectLayer.Head);
         }
 
-        private static readonly Dictionary<Mobile, DesafioSagradoContext> m_Table = new Dictionary<Mobile, DesafioSagradoContext>();
+        private static readonly Dictionary<Mobile, DesafioProfanoContext> m_Table = new Dictionary<Mobile, DesafioProfanoContext>();
 
-        public static DesafioSagradoContext GetContext(Mobile m)
+        public static DesafioProfanoContext GetContext(Mobile m)
         {
             if (!m_Table.ContainsKey(m))
                 return null;
@@ -177,7 +177,7 @@ namespace Server.Spells.Paladino
         }
     }
 
-    public class DesafioSagradoContext
+    public class DesafioProfanoContext
     {
         private Mobile m_Owner;
         private Timer m_Timer;
@@ -194,7 +194,7 @@ namespace Server.Spells.Paladino
         public int DamageScalar { get { return m_DamageScalar; } }
         public string TypeName { get { return m_TypeName; } }
 
-        public DesafioSagradoContext(Mobile owner, Timer timer, DateTime expire)
+        public DesafioProfanoContext(Mobile owner, Timer timer, DateTime expire)
         {
             m_Owner = owner;
             m_Timer = timer;
@@ -257,7 +257,7 @@ namespace Server.Spells.Paladino
         {
             if (m_TargetType == null)
             {
-                m_TypeName = DesafioSagradoSpell.GetTypeName(defender);
+                m_TypeName = DesafioProfanoSpell.GetTypeName(defender);
 
                 if (defender is PlayerMobile || (defender is BaseCreature && ((BaseCreature)defender).GetMaster() is PlayerMobile))
                 {
@@ -275,7 +275,7 @@ namespace Server.Spells.Paladino
                         m_Timer = null;
                     }
 
-                    m_Timer = Timer.DelayCall(duration, DesafioSagradoSpell.RemoveEffect, m_Owner);
+                    m_Timer = Timer.DelayCall(duration, DesafioProfanoSpell.RemoveEffect, m_Owner);
                 }
                 else
                 {

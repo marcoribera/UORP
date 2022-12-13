@@ -5,7 +5,7 @@ namespace Server.Spells
 {
     public class Reagent
     {
-        private static readonly Type[] m_Types = new Type[17]
+        private static readonly Type[] m_Types = new Type[20]
         {
             typeof(BlackPearl),
             typeof(Bloodmoss),
@@ -23,7 +23,10 @@ namespace Server.Spells
             typeof(Bone),
             typeof(DragonBlood),
             typeof(FertileDirt),
-            typeof(DaemonBone)
+            typeof(DaemonBone),
+             typeof(Vela),
+            typeof(Incenso),
+            typeof(PenaETinteiro)
         };
         public static Type BlackPearl
         {
@@ -210,6 +213,39 @@ namespace Server.Spells
             set
             {
                 m_Types[16] = value;
+            }
+        }
+        public static Type Vela
+        {
+            get
+            {
+                return m_Types[17];
+            }
+            set
+            {
+                m_Types[17] = value;
+            }
+        }
+        public static Type Incenso
+        {
+            get
+            {
+                return m_Types[18];
+            }
+            set
+            {
+                m_Types[18] = value;
+            }
+        }
+        public static Type PenaETinteiro
+        {
+            get
+            {
+                return m_Types[19];
+            }
+            set
+            {
+                m_Types[19] = value;
             }
         }
         public Type[] Types

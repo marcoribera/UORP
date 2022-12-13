@@ -1,19 +1,30 @@
 using System;
 using Server.Items;
 
-namespace Server.Spells.Necromancy
+using System.Collections.Generic;
+using Server.Mobiles;
+
+using Server.Spells.Necromancy;
+
+
+
+
+
+namespace Server.Spells.Algoz
 {
-    public class VampiricEmbraceSpell : TransformationSpell
+    public class FormaVampiricaSpell : TransformationSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Vampiric Embrace", "Rel Xen An Sanct",
+            "Forma Vampirica", "Sanguis Corpus",
             203,
             9031,
             Reagent.BatWing,
             Reagent.NoxCrystal,
             Reagent.PigIron);
 
-        public VampiricEmbraceSpell(Mobile caster, Item scroll)
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
+
+        public FormaVampiricaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -32,6 +43,13 @@ namespace Server.Spells.Necromancy
                 return 99.0;
             }
         }
+        /*public override SpellCircle Circle
+        {
+            get
+            {
+                return SpellCircle.Tenth;
+            }
+        }*/
         public override int RequiredMana
         {
             get

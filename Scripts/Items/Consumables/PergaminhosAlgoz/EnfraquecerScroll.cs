@@ -14,6 +14,7 @@ namespace Server.Items
         public EnfraquecerScroll(int amount)
             : base(72, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public EnfraquecerScroll(Serial serial)

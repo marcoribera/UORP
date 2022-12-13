@@ -14,6 +14,7 @@ namespace Server.Items
         public EmbasbacarScroll(int amount)
             : base(70, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public EmbasbacarScroll(Serial serial)

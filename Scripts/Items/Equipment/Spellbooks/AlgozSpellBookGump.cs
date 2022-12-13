@@ -29,7 +29,7 @@ namespace Server.Gumps
             this.Resizable = false;
 
             AddPage(0);
-            AddImage(41, 42, 11008);
+            AddImage(41, 42, 11009);
 
             int PriorPage = page - 1;
             if (PriorPage < 1) { PriorPage = 19; }
@@ -42,11 +42,9 @@ namespace Server.Gumps
 
             if (page == 1)
             {
-                int SpellsInBook = book.SpellCount;
-                int MagiasPorPagina = SpellsInBook / 2;
-                int SafetyCatch = 0;
-                int SpellsListed = 69;
-                string SpellName = "";
+                int TotalMagias = book.BookCount; //Numero máximo de magias do livro
+
+                //int MagiasNoLivro = book.SpellCount; //Numero atual de magias do livro
 
                 int nHTMLx = 111;
                 int nHTMLy = 81;
@@ -54,16 +52,17 @@ namespace Server.Gumps
                 int nBUTTONx = 94;
                 int nBUTTONy = 82;
 
-                while (SpellsInBook > 0)
+                int MagiaInicialID = book.BookOffset;  //ID da primeira magia do livro
+                int AcabaContagem = MagiaInicialID + TotalMagias ;  //ID da ultima magia do livro
+                int UltimoPaginaUm = MagiaInicialID + 8; //Posição da magia do meio da livro
+                int temp = 0;
+                string SpellName = "";
+
+                for (int i = MagiaInicialID; i < AcabaContagem; i++)
                 {
-                    SpellsListed++;
-                    SafetyCatch++;
-
-                    if (this.HasSpell(from, SpellsListed))
+                    if (this.HasSpell(from, i))
                     {
-                        SpellsInBook--;
-
-                        switch (SpellsListed)
+                        switch (i)
                         {
                             case 70:
                                 SpellName = "Embasbacar";
@@ -90,48 +89,49 @@ namespace Server.Gumps
                                 SpellName = "Banimento Profano";
                                 break;
                             case 78:
-                                SpellName = "Embasbacar";
+                                SpellName = "Arma Vampirica";
                                 break;
                             case 79:
-                                SpellName = "Embasbacar";
+                                SpellName = "Banimento Demoniaco";
                                 break;
                             case 80:
-                                SpellName = "Embasbacar";
+                                SpellName = "Benção Profana";
                                 break;
                             case 81:
-                                SpellName = "Embasbacar";
+                                SpellName = "Desafio Profano";
                                 break;
                             case 82:
-                                SpellName = "Embasbacar";
+                                SpellName = "Espirito Maligno";
                                 break;
                             case 83:
-                                SpellName = "Embasbacar";
+                                SpellName = "Forma Vampírica";
                                 break;
                             case 84:
-                                SpellName = "Embasbacar";
+                                SpellName = "Fúria Profana";
                                 break;
                             case 85:
-                                SpellName = "Embasbacar";
+                                SpellName = "Halo Profano";
                                 break;
                             case 86:
-                                SpellName = "Embasbacar";
+                                SpellName = "Pele Cadavérica";
                                 break;
                             case 87:
-                                SpellName = "Embasbacar";
+                                SpellName = "Saúde Profana";
                                 break;
+
                         }
-
-                        AddHtml(nHTMLx, nHTMLy, 182, 26, @"<BODY><BASEFONT Color=#111111><BIG>" + SpellName + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                        AddButton(nBUTTONx, nBUTTONy, 30008, 30008, SpellsListed, GumpButtonType.Reply, 0);
-
-                        nHTMLy = nHTMLy + 17;
-                        if (SpellsInBook == 10) { nHTMLx = 382; nHTMLy = 108; }
-
-                        nBUTTONy = nBUTTONy + 17;
-                        if (SpellsInBook == 10) { nBUTTONx = 360; nBUTTONy = 112; }
+                        AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111><BIG>" + SpellName + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                        AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30008, i, GumpButtonType.Reply, 0);
+                        temp += 16; //representa o quãp pra baixo no gump está a magia
                     }
-
-                    if (SafetyCatch > 14) { SpellsInBook = 0; }
+                    if (i == UltimoPaginaUm)
+                    {
+                        nHTMLx = 267;
+                        nHTMLy = 81;
+                        nBUTTONx = 250;
+                        nBUTTONy = 82;
+                        temp = 0;
+                    }
                 }
             }
 
@@ -252,9 +252,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 78))
                 {
                     AddButton(143, 76, 2242, 2242, 78, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Mandrake Root, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Arma Vampirica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Adiciona o efeito de drenar vida na arma.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanguis Arma</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Pig iron.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -266,9 +266,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 79))
                 {
                     AddButton(143, 76, 2242, 2242, 79, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Demoniaco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Bane criaturas celestiais em uma area.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Daemon Exsil</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -280,9 +280,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 80))
                 {
                     AddButton(143, 76, 2242, 2242, 80, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Bencão Profana</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção melhora todos os seus atributos.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Benedic Profanus</I><BR>Skill: 70<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Mandrake Root, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -294,9 +294,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 81))
                 {
                     AddButton(143, 76, 2242, 2242, 81, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Desafio Profano</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Torna-se mais poderoso conta um tipo de inimigo especifico, mas enfraquecido contra os demais.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Profanus Provoca</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Grave Dust, Nox Crystal.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -308,9 +308,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 82))
                 {
                     AddButton(143, 76, 2242, 2242, 82, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Espirito Maligno</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Usa as forças das trevas para assumir a forma de uma poderosa assombração.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Espiritus Malus</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Nox Crystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -322,9 +322,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 83))
                 {
                     AddButton(143, 76, 2242, 2242, 83, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Forma Vampirica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Usa as forças das trevas para assumir a forma de um vampiro.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanguis Corpus</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Batwing, Nox Crystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -337,9 +337,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 84))
                 {
                     AddButton(143, 76, 2242, 2242, 84, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Fúria Profana</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Melhora seu ataque e dano as custas de sua defesa.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Profanus Furor</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: NoxCrystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -351,9 +351,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 85))
                 {
                     AddButton(143, 76, 2242, 2242, 85, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Halo Profano</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Emana energia sombria causando dano aos inimigos próximos.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Profanus Aureola</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Grave Dust, Nox Crystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -365,9 +365,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 86))
                 {
                     AddButton(143, 76, 2242, 2242, 86, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Pele Cadavérica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Resseca a pele do alvo tornando-o mais vuneravel a danos de fogo e venenoses e mais resistente a danos gélidos e físicos.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Cutis Mortum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Batwing, Grave Dust.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -379,9 +379,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 87))
                 {
                     AddButton(143, 76, 2242, 2242, 87, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Embasbacar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Saúde Profana</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Aumenta sua resistência fisica e a energia e reduz as demais resistências.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Profanus Sanit</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Spiders' Silk, Sulphurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -429,6 +429,36 @@ namespace Server.Gumps
                         break;
                     case 77:
                         new BanimentoProfanoSpell(from, null).Cast();
+                        break;
+                    case 78:
+                        new ArmaVampiricaSpell(from, null).Cast();
+                        break;
+                    case 79:
+                        new BanimentoDemoniacoSpell(from, null).Cast();
+                        break;
+                    case 80:
+                        new BencaoProfanaSpell(from, null).Cast();
+                        break;
+                    case 81:
+                        new DesafioProfanoSpell(from, null).Cast();
+                        break;
+                    case 82:
+                        new EspiritoMalignoSpell(from, null).Cast();
+                        break;
+                    case 83:
+                        new FormaVampiricaSpell(from, null).Cast();
+                        break;
+                    case 84:
+                        new FuriaProfanaSpell(from, null).Cast();
+                        break;
+                    case 85:
+                        new HaloProfanoSpell(from, null).Cast();
+                        break;
+                    case 86:
+                        new PeleCadavericaSpell(from, null).Cast();
+                        break;
+                    case 87:
+                        new SaudeProfanaSpell(from, null).Cast();
                         break;
                     default:
                         break;

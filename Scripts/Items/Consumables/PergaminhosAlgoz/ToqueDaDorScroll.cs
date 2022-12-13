@@ -14,6 +14,7 @@ namespace Server.Items
         public ToqueDaDorScroll(int amount)
             : base(76, 0x1F30, amount)
         {
+            Hue = 31;
         }
 
         public ToqueDaDorScroll(Serial serial)

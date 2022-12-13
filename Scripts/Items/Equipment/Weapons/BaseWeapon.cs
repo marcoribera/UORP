@@ -16,6 +16,7 @@ using Server.Spells;
 using Server.Spells.Bushido;
 using Server.Spells.Chivalry;
 using Server.Spells.Paladino;
+using Server.Spells.Algoz;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
 using Server.Spells.Sixth;
@@ -405,6 +406,15 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.GameMaster)]
         public ArmaSagradaContext ArmaSagradaContext { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public DesafioProfanoContext DesafioProfanoContext { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public DesafioSagradoContext DesafioSagradoContext { get; set; }
+
+      
+
 
         [CommandProperty(AccessLevel.GameMaster)]
 		public bool Identified
@@ -2760,10 +2770,34 @@ namespace Server.Items
             }
             #endregion = DesafioSagradoContext.GetContext(defender);
 
-          
-          
-               
-       
+
+            #region Desafio Profano
+
+            var DesafioProfanoContext = DesafioProfanoSpell.GetContext(defender);
+
+            if (DesafioProfanoContext != null && !DesafioProfanoContext.IsWaitingForEnemy && !DesafioProfanoContext.IsEnemy(attacker))
+            {
+                percentageBonus += 100;
+            }
+            else
+            {
+                DesafioProfanoContext = DesafioProfanoSpell.GetContext(attacker);
+
+                if (DesafioProfanoContext != null)
+                {
+                    DesafioProfanoContext.OnHit(defender);
+
+                    if (DesafioProfanoContext.IsEnemy(defender))
+                    {
+                        defender.FixedEffect(0x37B9, 10, 5, 1160, 0);
+                        percentageBonus += DesafioProfanoContext.DamageScalar;
+                    }
+                }
+            }
+            #endregion = DesafioProfanoContext.GetContext(defender);
+
+
+
 
             int packInstinctBonus = GetPackInstinctBonus(attacker, defender);
 

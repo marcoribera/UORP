@@ -2,22 +2,22 @@ using System;
 
 namespace Server.Items
 {
-    public class AgilidadeDoAcolitoScroll : SpellScroll
+    public class BencaoProfanaScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public AgilidadeDoAcolitoScroll()
+        public BencaoProfanaScroll()
             : this(1)
         {
         }
 
         [Constructable]
-        public AgilidadeDoAcolitoScroll(int amount)
-            : base(75, 0x1F30, amount)
+        public BencaoProfanaScroll(int amount)
+            : base(80, 0x1F30, amount)
         {
             Hue = 31;
         }
-
-        public AgilidadeDoAcolitoScroll(Serial serial)
+        
+        public BencaoProfanaScroll(Serial serial)
             : base(serial)
         {
         }
@@ -27,7 +27,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 75; //Criar entrada no CLILOC
+                    return 2000000 + 80; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

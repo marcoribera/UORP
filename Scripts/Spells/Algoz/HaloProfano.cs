@@ -5,14 +5,14 @@ using System.Linq;
 using Server.Items;
 using Server.Mobiles;
 
-namespace Server.Spells.Paladino
+namespace Server.Spells.Algoz
 {
-    public class HaloDivinoSpell : PaladinoSpell
+    public class HaloProfanoSpell : AlgozSpell
     {
         public override DamageType SpellDamageType { get { return DamageType.SpellAOE; } }
 
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Halo Divino", "Divina Aureola",
+            "Halo Profano", "Profanus Aureola",
             203,
             9031,
             Reagent.NoxCrystal,
@@ -21,7 +21,7 @@ namespace Server.Spells.Paladino
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
-        public HaloDivinoSpell(Mobile caster, Item scroll)
+        public HaloProfanoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
