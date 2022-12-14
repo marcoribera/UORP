@@ -14,8 +14,8 @@ namespace Server.Spells.Cosmos
            "Aceleração", "Remissum",
            203,
            0,
-          Reagent.Bloodmoss,
-           Reagent.Garlic);
+          Reagent.DragonBlood,
+           Reagent.Vela);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

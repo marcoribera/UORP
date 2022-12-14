@@ -115,7 +115,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 750, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Aceleração</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o cosmos aumenta sua velocidade de movimentação.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Celeritas</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Celeritas</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Sulfurous Ash, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -128,8 +128,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 751, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Defletir</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o cosmos permite você desviar de feitiços magicos prejudiciais e lançar ele de volta ao seus inimigos.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Deflectere</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Você desvia de feitiços magicos prejudiciais e os lança de volta.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Deflectere</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Vela, Incenso, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -142,8 +142,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 752, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Mão Cósmica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Permite que o guerreiro cosmico use ou mova um objeto que esteja fora de alcance. Também pode ser usado para ativar algumas Armadilhas de Baú de uma distância segura.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Manus Logos</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Move um objeto que esteja fora de alcance.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Manus Logos</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Vela, Incenso.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -158,7 +158,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 753, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Miragem</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma copia exata do guerreiro do cosmos com energia física.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Fictus Imago</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Fictus Imago</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Bloodmoss, Dragon Blood.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -171,8 +171,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 754, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Aura Psiquica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> O cosmos protege seu corpo e mente, entretanto o deixa vulneravel a outros elementos..</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychica  Aureola</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> O cosmos protege seu corpo e mente, deixa-o vulneravel a outros elementos.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychica  Aureola</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Incenso, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -185,8 +185,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 755, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Replicar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um cristal com a essencia do mago.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Replicare</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um cristal com a essencia do guerreiro.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Replicare</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Dragon Blood, Vela, Incenso, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -200,7 +200,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 756, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Calmante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o comos regenera o corpo ferido.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Vela, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -213,8 +213,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 757, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo de Êxtase</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Um Guerreiro do Cosmos pode criar um campo ao redor de si que o colocará em êxtase por um período de tempo, onde ninguém poderá realizar nenhuma ação por um curto período de tempo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um campo ao redor de si onde ninguém poderá realizar nenhuma ação.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Dragon Blood,Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -227,8 +227,8 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 758, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Arremesso</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A energia do cosmos é canalizada na sua arma e ela é arremessada na direção do seu alvo, voltando para a mão do guerreiro.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Remissum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Sua espada pode ser arremessada na direção do seu alvo, voltando para a sua mão.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Remissum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Dragon Blood, Vela.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {

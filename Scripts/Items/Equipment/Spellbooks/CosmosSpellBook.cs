@@ -22,9 +22,9 @@ namespace Server.Items
         }
 
         [Constructable]
-        public CosmosSpellbook(ulong content, Mobile gifted) : base(content, 0xA92F)
+        public CosmosSpellbook(ulong content, Mobile gifted) : base(content, 0x42BF)
         {
-            Hue = 1719;
+            Hue = 2748;
         }
         public CosmosSpellbook(Serial serial)
             : base(serial)
@@ -74,7 +74,7 @@ namespace Server.Items
         {
             get
             {
-                return 10;
+                return 9;
             }
         }
 

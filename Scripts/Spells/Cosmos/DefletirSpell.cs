@@ -12,10 +12,11 @@ namespace Server.Spells.Cosmos
 
         private static readonly SpellInfo m_Info = new SpellInfo(
           "Defletir", "Deflectere",
-          -1,
-          9002,
-          Reagent.Bloodmoss,
-          Reagent.Garlic);
+          203,
+          0,
+          Reagent.Vela,
+          Reagent.Incenso,
+          Reagent.PenaETinteiro);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

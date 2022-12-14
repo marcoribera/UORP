@@ -22,9 +22,9 @@ namespace Server.Spells.Cosmos
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Aceleração", "Celeritas Fort",
            -1,
-           9002,
-           Reagent.Bloodmoss,
-           Reagent.Garlic);
+           0,
+           Reagent.SulfurousAsh,
+           Reagent.PenaETinteiro);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

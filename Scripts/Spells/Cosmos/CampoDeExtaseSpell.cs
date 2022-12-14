@@ -10,10 +10,10 @@ namespace Server.Spells.Cosmos
 	{
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Aceleração", "Campus Immobilio",
-           -1,
-           9002,
-           Reagent.Bloodmoss,
-           Reagent.Garlic);
+           218,
+           0,
+           Reagent.DragonBlood,
+           Reagent.PenaETinteiro);
       
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
         public int CirclePower = 5;

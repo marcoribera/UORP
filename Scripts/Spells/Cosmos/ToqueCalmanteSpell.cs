@@ -15,8 +15,8 @@ namespace Server.Spells.Cosmos
                   "Toque Calmante", "Tactus Quietantis",
                   204,
                   0,
-                  Reagent.Bloodmoss,
-                  Reagent.Garlic);
+                  Reagent.Vela, 
+                  Reagent.SulfurousAsh);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

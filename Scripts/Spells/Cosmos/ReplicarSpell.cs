@@ -14,8 +14,10 @@ namespace Server.Spells.Cosmos
            "Replicar", "Replicare",
            203,
            0,
-           Reagent.Bloodmoss,
-           Reagent.Garlic);
+           Reagent.DragonBlood, 
+           Reagent.Vela,
+           Reagent.Incenso,
+           Reagent.PenaETinteiro);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

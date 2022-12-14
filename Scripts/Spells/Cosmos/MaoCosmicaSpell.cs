@@ -12,8 +12,8 @@ namespace Server.Spells.Cosmos
            "Mão Cósmica", "Manus Logos",
            203,
            0,
-           Reagent.Bloodmoss,
-           Reagent.Garlic);
+           Reagent.Vela,
+           Reagent.Incenso);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

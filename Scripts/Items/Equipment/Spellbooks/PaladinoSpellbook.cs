@@ -22,7 +22,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public PaladinoSpellbook(ulong content, Mobile gifted) : base(content, 0xA92F)
+        public PaladinoSpellbook(ulong content, Mobile gifted) : base(content, 0x2252)
         {
             Hue = 1719;
         }

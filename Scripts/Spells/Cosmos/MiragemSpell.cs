@@ -5,10 +5,14 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
+using System.Collections;
+using Server.Multis;
+
 using System.Collections.Generic;
 using Server.Spells;
 using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
+
 
 namespace Server.Spells.Cosmos
 {
@@ -19,24 +23,27 @@ namespace Server.Spells.Cosmos
            -1,
            0,
            Reagent.Bloodmoss,
-           Reagent.Garlic);
+           Reagent.DragonBlood);
 
-    public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
+    
+
+        public MiragemSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		{
+		}
+
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
 
-        public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.75 ); } }
+        public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.75); } }
 
         public override SpellCircle Circle
+
         {
             get
             {
                 return SpellCircle.Third;
             }
         }
-
-        public MiragemSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
-		{
-		}
 
         public override bool CheckCast()
 		{
@@ -69,8 +76,9 @@ namespace Server.Spells.Cosmos
 			else if ( CheckSequence() && CheckFizzle() )
 			{
 				new MiragemCosmica ( Caster ).MoveToWorld( Caster.Location, Caster.Map );
-				Caster.Hidden = true;
-			}
+				Caster.Hidden = false;
+               
+            }
 
 			FinishSequence();
 		}

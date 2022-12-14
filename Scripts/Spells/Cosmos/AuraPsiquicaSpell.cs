@@ -10,10 +10,10 @@ namespace Server.Spells.Cosmos
 
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Aceleração", "Psychica  Aureola",
-           -1,
-           9002,
+           236,
+           0,
            Reagent.Bloodmoss,
-           Reagent.Garlic);
+           Reagent.PenaETinteiro);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
