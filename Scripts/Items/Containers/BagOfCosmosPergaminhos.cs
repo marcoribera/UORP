@@ -2,16 +2,16 @@ using System;
 
 namespace Server.Items
 {
-    public class BagOfCosmosPergaminhos : Bag
+    public class BagOfCosmosSolarPergaminhos : Bag
     {
         [Constructable]
-        public BagOfCosmosPergaminhos()
+        public BagOfCosmosSolarPergaminhos()
             : this(1)
         {
         }
 
         [Constructable]
-        public BagOfCosmosPergaminhos(int amount)
+        public BagOfCosmosSolarPergaminhos(int amount)
         {
             this.DropItem(new AceleracaoScroll(amount));
             this.DropItem(new ArremessoScroll(amount));
@@ -20,7 +20,7 @@ namespace Server.Items
             this.DropItem(new DefletirScroll(amount));
             this.DropItem(new MaoCosmicaScroll(amount));
             this.DropItem(new MiragemScroll(amount));
-            this.DropItem(new ReplicarScroll(amount));
+           
             this.DropItem(new ToqueCalmanteScroll(amount));
             
 
@@ -29,7 +29,7 @@ namespace Server.Items
 
         }
 
-        public BagOfCosmosPergaminhos(Serial serial)
+        public BagOfCosmosSolarPergaminhos(Serial serial)
             : base(serial)
         {
         }

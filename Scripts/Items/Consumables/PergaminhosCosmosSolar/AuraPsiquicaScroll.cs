@@ -2,24 +2,28 @@ using System;
 
 namespace Server.Items
 {
-    public class BanimentoDemoniacoScroll : SpellScroll
+    public class AuraPsiquicaScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public BanimentoDemoniacoScroll()
+        public AuraPsiquicaScroll()
             : this(1)
         {
+            
         }
 
         [Constructable]
-        public BanimentoDemoniacoScroll(int amount)
-            : base(79, 0x1F30, amount)
+        public AuraPsiquicaScroll(int amount)
+            : base(754, 0x1F30, amount)
         {
-            Hue = 31;
+            Name = "Aura Psiquica";
+            Movable = true;
+            Hue = 54;
         }
-        
-        public BanimentoDemoniacoScroll(Serial serial)
+
+        public AuraPsiquicaScroll(Serial serial)
             : base(serial)
         {
+           
         }
         public override int LabelNumber  //TODO: Adicionar os nomes dos novos itens no cliloc
         {
@@ -27,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 79; //Criar entrada no CLILOC
+                    return 2000000 + 754; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

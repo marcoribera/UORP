@@ -92,7 +92,7 @@ namespace Server.Gumps
                                 SpellName = "Arma Vampirica";
                                 break;
                             case 79:
-                                SpellName = "Banimento Demoniaco";
+                                SpellName = "Banir Demônio";
                                 break;
                             case 80:
                                 SpellName = "Benção Profana";
@@ -266,7 +266,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 79))
                 {
                     AddButton(143, 76, 2242, 2242, 79, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Demoniaco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banir Demônio</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Bane criaturas celestiais em uma area.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Daemon Exsil</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Ginseng, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -295,7 +295,7 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 81, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Desafio Profano</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Torna-se mais poderoso conta um tipo de inimigo especifico, mas enfraquecido contra os demais.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Torna-se mais poderoso conta um tipo de inimigo especifico.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Profanus Provoca</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Grave Dust, Nox Crystal.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
@@ -366,7 +366,7 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 86, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Pele Cadavérica</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Resseca a pele do alvo tornando-o mais vuneravel a danos de fogo e venenoses e mais resistente a danos gélidos e físicos.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Sua pele o torna mais resistente a danos gélidos e físicos.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Cutis Mortum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Batwing, Grave Dust.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
@@ -434,7 +434,7 @@ namespace Server.Gumps
                         new ArmaVampiricaSpell(from, null).Cast();
                         break;
                     case 79:
-                        new BanimentoDemoniacoSpell(from, null).Cast();
+                        new BanirDemonioSpell(from, null).Cast();
                         break;
                     case 80:
                         new BencaoProfanaSpell(from, null).Cast();

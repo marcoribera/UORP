@@ -14,10 +14,10 @@ using System.Collections;
 
 
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-	public class AceleracaoSpell : CosmosSpell
-	{
+	public class AceleracaoSpell : CosmosSolarSpell
+    {
 
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Aceleração", "Celeritas Fort",
@@ -47,22 +47,22 @@ namespace Server.Spells.Cosmos
 		{
 		}
 
-		public static Hashtable TableCosmosRunning = new Hashtable();
+		public static Hashtable TableCosmosSolarRunning = new Hashtable();
 
 		public static bool HasEffect( Mobile m )
 		{
-			return (TableCosmosRunning[m] != null );
+			return (TableCosmosSolarRunning[m] != null );
 		}
 
 		public static bool UnderEffect( Mobile m )
 		{
-			return TableCosmosRunning.Contains( m );
+			return TableCosmosSolarRunning.Contains( m );
 		}
 
 		public static void RemoveEffect( Mobile m )
 		{
 			m.Send(SpeedControl.Disable);
-            TableCosmosRunning.Remove( m );
+            TableCosmosSolarRunning.Remove( m );
 			m.EndAction( typeof(AceleracaoSpell) );
 		}
 
@@ -82,9 +82,9 @@ namespace Server.Spells.Cosmos
                     AceleracaoSpell.RemoveEffect( Caster );
 				}
 
-				int TotalTime = (int)(GetCosmosDamage( Caster ) * 4 );
+				int TotalTime = (int)(GetCosmosSolarDamage( Caster ) * 4 );
 					if ( TotalTime < 600 ){ TotalTime = 600; }
-                TableCosmosRunning[Caster] = SpeedControl.MountSpeed;
+                TableCosmosSolarRunning[Caster] = SpeedControl.MountSpeed;
 				Caster.Send(SpeedControl.MountSpeed);
 				new InternalTimer( Caster, TimeSpan.FromSeconds( TotalTime ) ).Start();
 				Caster.BeginAction( typeof(AceleracaoSpell) );

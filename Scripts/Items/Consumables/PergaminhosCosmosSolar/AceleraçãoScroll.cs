@@ -2,26 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class CampoDeExtaseScroll : SpellScroll
+    public class AceleracaoScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public CampoDeExtaseScroll()
+        public AceleracaoScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public CampoDeExtaseScroll(int amount)
-            : base(757, 0x1F30, amount)
+        public AceleracaoScroll(int amount)
+            : base(750, 0x1F30, amount)
         {
-            Name = "Campo De Extase";
+            Name = "Aceleração";
             Movable = true;
-            Hue = 2748;
-
+            Hue = 54;
         }
 
-        public CampoDeExtaseScroll(Serial serial)
+        public AceleracaoScroll(Serial serial)
             : base(serial)
         {
            
@@ -32,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 757; //Criar entrada no CLILOC
+                    return 2000000 + 750; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

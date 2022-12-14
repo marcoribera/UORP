@@ -6,9 +6,9 @@ using Server.Mobiles;
 using Server.Items;
 using Server.Misc;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-    public class ToqueCalmanteSpell : CosmosSpell
+    public class ToqueCalmanteSpell : CosmosSolarSpell
 	{
 
         private static readonly SpellInfo m_Info = new SpellInfo(
@@ -65,7 +65,7 @@ namespace Server.Spells.Cosmos
 			}
 			else if ( MortalStrike.IsWounded( m ) )
 			{
-				if ( GetCosmosDamage( Caster ) > Utility.RandomMinMax( 185, 750 ) )
+				if ( GetCosmosSolarDamage( Caster ) > Utility.RandomMinMax( 185, 750 ) )
 				{
 					MortalStrike.EndWound( m );
 					BuffInfo.RemoveBuff( m, BuffIcon.MortalStrike );
@@ -78,7 +78,7 @@ namespace Server.Spells.Cosmos
 			else if ( m.Poisoned )
 			{
 				double healing = Caster.Skills[SkillName.PoderMagico].Value;
-				double anatomy = (double)( GetCosmosDamage( Caster ) / 2 );
+				double anatomy = (double)( GetCosmosSolarDamage( Caster ) / 2 );
 				double chance = ((healing - 30.0) / 50.0) - (m.Poison.Level * 0.1);
 
 				if ( healing >= 60.0 && anatomy >= 60.0 && chance > Utility.RandomDouble() )
@@ -96,7 +96,7 @@ namespace Server.Spells.Cosmos
 			}
 			else if ( BleedAttack.IsBleeding( m ) )
 			{
-				if ( GetCosmosDamage( Caster ) > Utility.RandomMinMax( 185, 750 ) )
+				if ( GetCosmosSolarDamage( Caster ) > Utility.RandomMinMax( 185, 750 ) )
 				{
 					BleedAttack.EndBleed( m, false );
 				}
@@ -109,7 +109,7 @@ namespace Server.Spells.Cosmos
 			{
 				SpellHelper.Turn( Caster, m );
 
-				int toHeal = (int)( Caster.Skills[SkillName.PoderMagico].Value * 0.2 ) + (int)( GetCosmosDamage( Caster ) * 0.1 );
+				int toHeal = (int)( Caster.Skills[SkillName.PoderMagico].Value * 0.2 ) + (int)( GetCosmosSolarDamage( Caster ) * 0.1 );
 				toHeal += Utility.Random( 1, 10 );
 			
 

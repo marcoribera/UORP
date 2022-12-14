@@ -5,21 +5,21 @@ using Server.Items;
 using Server.Misc;
 using Server.Network;
 using Server.Spells;
-using Server.Spells.Cosmos;
+using Server.Spells.CosmosSolar;
 using Server.Prompts;
 
 namespace Server.Gumps
 { //TODO: Achar o fundo certo do GUMP e ajustar a aparência
-    public class CosmosSpellbookGump : Gump
+    public class CosmosSolarSpellbookGump : Gump
     {
-        private CosmosSpellbook m_Book;
+        private CosmosSolarSpellbook m_Book;
 
         public bool HasSpell(Mobile from, int spellID)
         {
             return (m_Book.HasSpell(spellID));
         }
 
-        public CosmosSpellbookGump(Mobile from, CosmosSpellbook book, int page) : base(100, 100)
+        public CosmosSolarSpellbookGump(Mobile from, CosmosSolarSpellbook book, int page) : base(100, 100)
         {
             m_Book = book;
 
@@ -38,7 +38,7 @@ namespace Server.Gumps
             AddButton(91, 50, 2235, 2235, PriorPage, GumpButtonType.Reply, 0);
             AddButton(362, 50, 2236, 2236, NextPage, GumpButtonType.Reply, 0);
 
-            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Cosmos</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Cosmos Solar</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
             if (page == 1)
             {
@@ -79,16 +79,13 @@ namespace Server.Gumps
                             case 754:
                                 SpellName = "Aura Psiquica";
                                 break;
-                            case 755:
-                                SpellName = "Replicar";
-                                break;
-                            case 756:
+                           case 755:
                                 SpellName = "Toque Calmante";
                                 break;
-                            case 757:
+                            case 756:
                                 SpellName = "Campo de Êxtase";
                                 break;
-                            case 758:
+                            case 757:
                                 SpellName = "Arremesso";
                                 break;
                             
@@ -179,14 +176,15 @@ namespace Server.Gumps
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                 }
             }
+           
             else if (page == 7)
             {
                 if (this.HasSpell(from, 755))
                 {
                     AddButton(143, 76, 2242, 2242, 755, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Replicar</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um cristal com a essencia do guerreiro.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Replicare</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Dragon Blood, Vela, Incenso, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Calmante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o comos regenera o corpo ferido.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Vela, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -198,9 +196,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 756))
                 {
                     AddButton(143, 76, 2242, 2242, 756, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Calmante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A sua conexão com o comos regenera o corpo ferido.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tactus Quietantis</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Vela, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo de Êxtase</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um campo ao redor de si onde ninguém poderá realizar nenhuma ação.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Dragon Blood,Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -212,20 +210,6 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 757))
                 {
                     AddButton(143, 76, 2242, 2242, 757, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo de Êxtase</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria um campo ao redor de si onde ninguém poderá realizar nenhuma ação.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Campus Immobilio</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Dragon Blood,Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 10)
-            {
-                if (this.HasSpell(from, 758))
-                {
-                    AddButton(143, 76, 2242, 2242, 758, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Arremesso</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Sua espada pode ser arremessada na direção do seu alvo, voltando para a sua mão.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Remissum</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Dragon Blood, Vela.</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -246,9 +230,9 @@ namespace Server.Gumps
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
-                if (page < 1) { page = 10; }
-                if (page > 10) { page = 1; }
-                from.SendGump(new CosmosSpellbookGump(from, m_Book, page));
+                if (page < 1) { page = 9; }
+                if (page > 9) { page = 1; }
+                from.SendGump(new CosmosSolarSpellbookGump(from, m_Book, page));
             }
             else if (info.ButtonID > 749)
             {
@@ -270,15 +254,12 @@ namespace Server.Gumps
                         new AuraPsiquicaSpell(from, null).Cast();
                         break;
                     case 755:
-                        new ReplicarSpell(from, null).Cast();
-                        break;
-                    case 756:
                         new ToqueCalmanteSpell(from, null).Cast();
                         break;
-                    case 757:
+                    case 756:
                         new CampoDeExtaseSpell(from, null).Cast();
                         break;
-                    case 758:
+                    case 757:
                         new ArremessoSpell(from, null).Cast();
                         break;
                    
@@ -302,7 +283,7 @@ namespace Server.Gumps
 				else if ( info.ButtonID == 762 ){ new SuccubusSkinSpell( from, null ).Cast(); }
 				else if ( info.ButtonID == 763 ){ new WrathSpell( from, null ).Cast(); }
                 */
-                from.SendGump(new CosmosSpellbookGump(from, m_Book, 1));
+                from.SendGump(new CosmosSolarSpellbookGump(from, m_Book, 1));
             }
         }
     }

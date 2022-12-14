@@ -46,7 +46,8 @@ namespace Server.Items
         Monge, //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
         Bardo, //Skill Caos //buffs e debuffs, invocações festivas
         Trapaceiro, //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
-        Cosmos
+        CosmosSolar, // Kitah solar
+           CosmosLunar // Kitah Lunar
     }
 
 	public enum BookQuality
@@ -486,7 +487,7 @@ namespace Server.Items
             }
             else if (spellID >= 750 && spellID < 770)
             {
-                return SpellbookType.Cosmos;
+                return SpellbookType.CosmosSolar;
             }
             else if (spellID >= 800 && spellID < 819) //Espaço livre usado para novas magias da skill Paladino
             {
@@ -573,9 +574,9 @@ namespace Server.Items
             return Find(from, -1, SpellbookType.Paladino);
         }
 
-        public static Spellbook FindCosmos(Mobile from)
+        public static Spellbook FindCosmosSolar(Mobile from)
         {
-            return Find(from, -1, SpellbookType.Cosmos);
+            return Find(from, -1, SpellbookType.CosmosSolar);
         }
 
         public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
@@ -1494,7 +1495,7 @@ namespace Server.Items
                     type = SpellbookType.Trapaceiro;
                     break;
                 case 23:
-                    type = SpellbookType.Cosmos;
+                    type = SpellbookType.CosmosSolar;
                     break;
             }
 

@@ -3,9 +3,9 @@ using System.Collections;
 using Server.Targeting;
 using Server.Network;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-    public class AuraPsiquicaSpell : CosmosSpell
+    public class AuraPsiquicaSpell : CosmosSolarSpell
 	{
 
         private static readonly SpellInfo m_Info = new SpellInfo(
@@ -52,8 +52,8 @@ namespace Server.Spells.Cosmos
 					targ.PlaySound( 0x1E9 );
 					targ.FixedParticles( 0x376A, 9, 32, 5008, 0xB41, 0, EffectLayer.Waist );
 
-					int phys = (int)( (targ.Skills[SkillName.Erudicao].Value / 15) + (GetCosmosDamage(Caster) / 50) );
-					int engy = (int)( (targ.Skills[SkillName.Erudicao].Value / 25) + (GetCosmosDamage(Caster) / 75) );
+					int phys = (int)( (targ.Skills[SkillName.Erudicao].Value / 15) + (GetCosmosSolarDamage(Caster) / 50) );
+					int engy = (int)( (targ.Skills[SkillName.Erudicao].Value / 25) + (GetCosmosSolarDamage(Caster) / 75) );
 
 					mods = new ResistanceMod[5]
 						{

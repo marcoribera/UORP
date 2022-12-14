@@ -16,7 +16,7 @@ namespace Server.Spells.Paladino
             -1,
             9002,
             Reagent.Bloodmoss,
-            Reagent.MandrakeRoot);
+            Reagent.Incenso);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

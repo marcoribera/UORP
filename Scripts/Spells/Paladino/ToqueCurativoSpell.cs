@@ -10,7 +10,10 @@ namespace Server.Spells.Paladino
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Toque Curativo", "Convulaio Tact",
             -1,
-            9002);
+            9002,
+            Reagent.Garlic,
+            Reagent.Ginseng,
+            Reagent.SpidersSilk);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

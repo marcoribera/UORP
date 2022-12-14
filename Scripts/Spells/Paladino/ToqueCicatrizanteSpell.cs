@@ -11,7 +11,9 @@ namespace Server.Spells.Paladino
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Toque Cicatrizante", "Sanita Tact",
             -1,
-            9002);
+            9002,
+            Reagent.Garlic,
+            Reagent.SpidersSilk);
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 

@@ -11,7 +11,14 @@ namespace Server.Spells.Paladino
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Sacrificio Santo", "Sacrificium Sanct",
             -1,
-            9002);
+            9002,
+              Reagent.Vela,
+            Reagent.Ginseng,
+            Reagent.PenaETinteiro,
+            Reagent.Incenso);
+
+
+
         public SacrificioSantoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

@@ -22,7 +22,7 @@ namespace Server.Items
             this.DropItem(new ToqueDaDorScroll(amount));
             this.DropItem(new BanimentoProfanoScroll(amount));
             this.DropItem(new ArmaVampiricaScroll(amount));
-            this.DropItem(new BanimentoDemoniacoScroll(amount));
+            this.DropItem(new BanirDemonioScroll(amount));
             this.DropItem(new BencaoProfanaScroll(amount));
             this.DropItem(new DesafioProfanoScroll(amount));
             this.DropItem(new EspiritoMalignoScroll(amount));

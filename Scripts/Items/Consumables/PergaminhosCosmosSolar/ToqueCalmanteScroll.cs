@@ -2,26 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class AuraPsiquicaScroll : SpellScroll
+    public class ToqueCalmanteScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public AuraPsiquicaScroll()
+        public ToqueCalmanteScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public AuraPsiquicaScroll(int amount)
-            : base(754, 0x1F30, amount)
+        public ToqueCalmanteScroll(int amount)
+            : base(756, 0x1F30, amount)
         {
-            Name = "Aura Psiquica";
+            Name = "Toque Calmante";
             Movable = true;
-            Hue = 2748;
-
+            Hue = 54;
         }
 
-        public AuraPsiquicaScroll(Serial serial)
+        public ToqueCalmanteScroll(Serial serial)
             : base(serial)
         {
            
@@ -32,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 754; //Criar entrada no CLILOC
+                    return 2000000 + 756; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

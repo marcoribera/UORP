@@ -2,26 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class MaoCosmicaScroll : SpellScroll
+    public class ArremessoScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public MaoCosmicaScroll()
+        public ArremessoScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public MaoCosmicaScroll(int amount)
-            : base(752, 0x1F30, amount)
+        public ArremessoScroll(int amount)
+            : base(758, 0x1F30, amount)
         {
-            Name = "Mão Cósmica";
+            Name = "Arremesso";
             Movable = true;
-            Hue = 2748;
-
+            Hue = 54;
         }
 
-        public MaoCosmicaScroll(Serial serial)
+        public ArremessoScroll(Serial serial)
             : base(serial)
         {
            
@@ -32,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 752; //Criar entrada no CLILOC
+                    return 2000000 + 758; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

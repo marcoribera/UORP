@@ -11,7 +11,10 @@ namespace Server.Spells.Paladino
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Emanação Pura", "Pura Emanat",
             -1,
-            9002);
+            9002,
+              Reagent.Vela,
+            Reagent.MandrakeRoot,
+            Reagent.Incenso);
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public EmanacaoPuraSpell(Mobile caster, Item scroll)

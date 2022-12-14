@@ -4,9 +4,9 @@ using Server.Network;
 using Server.Regions;
 using Server.Items;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-    public class MaoCosmicaSpell : CosmosSpell
+    public class MaoCosmicaSpell : CosmosSolarSpell
 	{
        private static readonly SpellInfo m_Info = new SpellInfo(
            "Mão Cósmica", "Manus Logos",

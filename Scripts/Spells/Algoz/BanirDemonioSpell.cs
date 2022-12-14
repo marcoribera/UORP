@@ -6,10 +6,10 @@ using Server.Targeting;
 
 namespace Server.Spells.Algoz
 {
-    public class BanimentoDemoniacoSpell : AlgozSpell
+    public class BanirDemonioSpell : AlgozSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Banimento Celestial", "Daemon Exsil",
+            "Banir Demônio", "Daemon Exsil",
             263,
             9002,
             Reagent.Garlic,
@@ -19,7 +19,7 @@ namespace Server.Spells.Algoz
 
         public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
-        public BanimentoDemoniacoSpell(Mobile caster, Item scroll)
+        public BanirDemonioSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -99,8 +99,8 @@ namespace Server.Spells.Algoz
 
         public class InternalTarget : Target
         {
-            private readonly BanimentoDemoniacoSpell m_Owner;
-            public InternalTarget(BanimentoDemoniacoSpell owner)
+            private readonly BanirDemonioSpell m_Owner;
+            public InternalTarget(BanirDemonioSpell owner)
                 : base(Core.ML ? 10 : 12, true, TargetFlags.None)
             {
                 this.m_Owner = owner;

@@ -146,7 +146,9 @@ namespace Server.Spells
             "Necromancy",
             "Chivalry",
             "Bushido",
-            "Cosmos", // Skill Ordem // magias que usam habilidades de luta 
+            "CosmosSolar", // Skill Ordem // magias que usam habilidades de luta tipo kitah
+            "CosmosLunar", // Skill Ordem // magias que usam habilidades de luta tipo kitah
+
             "Paladino",
             "Ninjitsu",
             "Spellweaving",

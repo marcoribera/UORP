@@ -5,9 +5,9 @@ using Server.Targeting;
 using Server.Network;
 using Server.Items;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-	public class DefletirSpell : CosmosSpell
+	public class DefletirSpell : CosmosSolarSpell
 	{
 
         private static readonly SpellInfo m_Info = new SpellInfo(
@@ -34,6 +34,23 @@ namespace Server.Spells.Cosmos
         public DefletirSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
+
+        public static void EndReflect(Mobile m)
+        {
+            if (m_Table.Contains(m))
+            {
+                ResistanceMod[] mods = (ResistanceMod[])m_Table[m];
+
+                if (mods != null)
+                {
+                    for (int i = 0; i < mods.Length; ++i)
+                        m.RemoveResistanceMod(mods[i]);
+                }
+
+                m_Table.Remove(m);
+                BuffInfo.RemoveBuff(m, BuffIcon.MagicReflection);
+            }
+        }
 
         public override bool CheckCast()
 		{
@@ -71,7 +88,7 @@ namespace Server.Spells.Cosmos
 				if ( Caster.BeginAction( typeof( DefensiveSpell ) ) && CheckFizzle() )
 				{
 					int min = 15;
-					int max = (int)( GetCosmosDamage( Caster ) / 4 );
+					int max = (int)( GetCosmosSolarDamage( Caster ) / 4 );
 					Caster.MagicDamageAbsorb = Utility.RandomMinMax( min, max );
 					Point3D air = new Point3D( ( Caster.X+1 ), ( Caster.Y+1 ), ( Caster.Z+5 ) );
 					Effects.SendLocationParticles(EffectItem.Create(air, Caster.Map, EffectItem.DefaultDuration), 0x376A, 9, 32, 0xB41, 0, 5022, 0);

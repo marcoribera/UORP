@@ -4,9 +4,9 @@ using Server.Targeting;
 using Server.Network;
 using Server.Spells.Chivalry;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-    public class CampoDeExtaseSpell : CosmosSpell
+    public class CampoDeExtaseSpell : CosmosSolarSpell
 	{
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Aceleração", "Campus Immobilio",
@@ -55,7 +55,7 @@ namespace Server.Spells.Cosmos
 
 				double duration;
 
-				int secs = (int)((GetCosmosDamage( Caster )/25) - (GetResistSkill( m ) / 10) + (Caster.Skills[SkillName.PoderMagico].Value / 2) );
+				int secs = (int)((GetCosmosSolarDamage( Caster )/25) - (GetResistSkill( m ) / 10) + (Caster.Skills[SkillName.PoderMagico].Value / 2) );
 				
 				if( !Core.SE )
 					secs += 2;

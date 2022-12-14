@@ -243,7 +243,7 @@ namespace Server.Spells
             Register(76, typeof(Algoz.ToqueDaDorSpell));
             Register(77, typeof(Algoz.BanimentoProfanoSpell));
             Register(78, typeof(Algoz.ArmaVampiricaSpell));
-            Register(79, typeof(Algoz.BanimentoDemoniacoSpell));
+            Register(79, typeof(Algoz.BanirDemonioSpell));
             Register(80, typeof(Algoz.BencaoProfanaSpell));
             Register(81, typeof(Algoz.DesafioProfanoSpell));
             Register(82, typeof(Algoz.EspiritoMalignoSpell));
@@ -253,16 +253,16 @@ namespace Server.Spells
             Register(86, typeof(Algoz.PeleCadavericaSpell));
             Register(87, typeof(Algoz.SaudeProfanaSpell));
 
-            // MAGIAS DO COSMOS
-            Register(750, typeof(Cosmos.AceleracaoSpell));
-            Register(751, typeof(Cosmos.DefletirSpell));
-            Register(752, typeof(Cosmos.MaoCosmicaSpell));
-            Register(753, typeof(Cosmos.MiragemSpell));
-            Register(754, typeof(Cosmos.AuraPsiquicaSpell));
-            Register(755, typeof(Cosmos.ReplicarSpell));
-            Register(756, typeof(Cosmos.ToqueCalmanteSpell));
-            Register(757, typeof(Cosmos.CampoDeExtaseSpell));
-            Register(758, typeof(Cosmos.ArremessoSpell));
+            // MAGIAS DO COSMOS Solar
+            Register(750, typeof(CosmosSolar.AceleracaoSpell));
+            Register(751, typeof(CosmosSolar.DefletirSpell));
+            Register(752, typeof(CosmosSolar.MaoCosmicaSpell));
+            Register(753, typeof(CosmosSolar.MiragemSpell));
+            Register(754, typeof(CosmosSolar.AuraPsiquicaSpell));
+         
+            Register(756, typeof(CosmosSolar.ToqueCalmanteSpell));
+            Register(757, typeof(CosmosSolar.CampoDeExtaseSpell));
+            Register(758, typeof(CosmosSolar.ArremessoSpell));
             
 
 

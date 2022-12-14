@@ -14,9 +14,9 @@ using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
 
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-	public class MiragemSpell : CosmosSpell
+	public class MiragemSpell : CosmosSolarSpell
 	{
         private static readonly SpellInfo m_Info = new SpellInfo(
            "Miragem", "Fictus Imago",
@@ -129,7 +129,7 @@ namespace Server.Mobiles
 			SummonMaster = caster;
 
 			int min = 60;
-			int max = (int)(Server.Spells.Cosmos.CosmosSpell.GetCosmosDamage( m_Caster ) );
+			int max = (int)(Server.Spells.CosmosSolar.CosmosSolarSpell.GetCosmosSolarDamage( m_Caster ) );
 				if ( max < min ){ max = min; }
 
 			int hits = Utility.RandomMinMax( min, max );
@@ -151,7 +151,7 @@ namespace Server.Mobiles
 
 			ControlSlots = 3;
 
-			TimeSpan duration = TimeSpan.FromSeconds( Server.Spells.Cosmos.CosmosSpell.GetCosmosDamage( m_Caster ) / 2 );
+			TimeSpan duration = TimeSpan.FromSeconds( Server.Spells.CosmosSolar.CosmosSolarSpell.GetCosmosSolarDamage( m_Caster ) / 2 );
 
 			new UnsummonTimer( caster, this, duration ).Start();
 			SummonEnd = DateTime.UtcNow + duration;

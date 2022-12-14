@@ -2,26 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class ToqueCalmanteScroll : SpellScroll
+    public class DefletirScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public ToqueCalmanteScroll()
+        public DefletirScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public ToqueCalmanteScroll(int amount)
-            : base(756, 0x1F30, amount)
+        public DefletirScroll(int amount)
+            : base(751, 0x1F30, amount)
         {
-            Name = "Toque Calmante";
+            Name = "Defletir";
             Movable = true;
-            Hue = 2748;
-
+            Hue = 54;
         }
 
-        public ToqueCalmanteScroll(Serial serial)
+        public DefletirScroll(Serial serial)
             : base(serial)
         {
            
@@ -32,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 756; //Criar entrada no CLILOC
+                    return 2000000 + 751; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

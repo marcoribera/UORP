@@ -10,7 +10,11 @@ namespace Server.Spells.Paladino
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Toque Regenerador", "Regenerans Tac",
             -1,
-            9002);
+            9002,
+            Reagent.Garlic,
+            Reagent.Ginseng,
+            Reagent.MandrakeRoot,
+            Reagent.SpidersSilk);
 
         public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
 

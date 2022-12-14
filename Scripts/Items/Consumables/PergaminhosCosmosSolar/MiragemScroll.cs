@@ -2,26 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class ReplicarScroll : SpellScroll
+    public class MiragemScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public ReplicarScroll()
+        public MiragemScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public ReplicarScroll(int amount)
-            : base(755, 0x1F30, amount)
+        public MiragemScroll(int amount)
+            : base(753, 0x1F30, amount)
         {
-            Name = "Replicar";
+            Name = "Miragem";
             Movable = true;
-            Hue = 2748;
-
+            Hue = 54;
         }
 
-        public ReplicarScroll(Serial serial)
+        public MiragemScroll(Serial serial)
             : base(serial)
         {
            
@@ -32,7 +31,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 755; //Criar entrada no CLILOC
+                    return 2000000 + 753; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

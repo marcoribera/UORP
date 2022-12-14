@@ -2,29 +2,24 @@ using System;
 
 namespace Server.Items
 {
-    public class AceleracaoScroll : SpellScroll
+    public class BanirDemonioScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public AceleracaoScroll()
+        public BanirDemonioScroll()
             : this(1)
         {
-            
         }
 
         [Constructable]
-        public AceleracaoScroll(int amount)
-            : base(750, 0x1F30, amount)
+        public BanirDemonioScroll(int amount)
+            : base(79, 0x1F30, amount)
         {
-            Name = "Aceleração";
-            Movable = true;
-            Hue = 2748;
-
+            Hue = 31;
         }
-
-        public AceleracaoScroll(Serial serial)
+        
+        public BanirDemonioScroll(Serial serial)
             : base(serial)
         {
-           
         }
         public override int LabelNumber  //TODO: Adicionar os nomes dos novos itens no cliloc
         {
@@ -32,7 +27,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 750; //Criar entrada no CLILOC
+                    return 2000000 + 79; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

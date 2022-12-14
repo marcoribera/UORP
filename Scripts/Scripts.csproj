@@ -318,7 +318,7 @@
     <Compile Include="Items\Consumables\PergaminhosAlgoz\IntelectoDoAcolitoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosAlgoz\ArmaVampiricaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\BanimentoDemoniacoScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosAlgoz\BanirDemonioScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosAlgoz\BencaoProfanaScroll .cs" />
 	  <Compile Include="Items\Consumables\PergaminhosAlgoz\DesafioProfanoScroll.cs" />
 	  <Compile Include="Items\Consumables\PergaminhosAlgoz\EspiritoMalignoScroll.cs" />
@@ -351,19 +351,17 @@
     <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueRegeneradorScroll.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
     <Compile Include="Items\Containers\BagOfPaladinoPergaminhos.cs" />
-	  <Compile Include="Items\Containers\BagOfCosmosPergaminhos.cs" />
+	  <Compile Include="Items\Containers\BagOfCosmosSolarPergaminhos.cs" />
 	  <Compile Include="Items\Containers\BagOfAlgozPergaminhos.cs" />
 
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\AceleracaoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\ArremessoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\AuraPsiquicaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\CampoDeExtaseScroll.cs" />
-	
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\DefletirScrolll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\MaoCosmicaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\MiragemScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\ReplicarScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmos\ToqueCalmanteScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\AceleracaoScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\ArremessoScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\AuraPsiquicaScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\CampoDeExtaseScroll.cs" />
+	<Compile Include="Items\Consumables\PergaminhosCosmosSolar\DefletirScrolll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MaoCosmicaScroll.cs" />
+	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MiragemScroll.cs" />
+		  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\ToqueCalmanteScroll.cs" />
 
 
 	  <Compile Include="Items\custom2\FarmCow.cs" />
@@ -1125,8 +1123,8 @@
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellbook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ExemploSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellBookGump.cs" />
-	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellbook.cs" />
-	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellBookGump.cs" />
+	  <Compile Include="Items\Equipment\Spellbooks\CosmosSolarSpellbook.cs" />
+	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellSolarBookGump.cs" />
 
 	  <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\BloodwoodTree.cs" />
@@ -13351,7 +13349,7 @@
      <Compile Include="Spells\Algoz\IntelectoDoAcolitoScroll.cs" />
 	  <Compile Include="Spells\Algoz\EmbasbacarScroll.cs" />
 	  <Compile Include="Spells\Algoz\ArmaVampiricaScroll.cs" />
-	  <Compile Include="Spells\Algoz\BanimentoDemoniacoScroll.cs" />
+	  <Compile Include="Spells\Algoz\BanirDemonioScroll.cs" />
 	  <Compile Include="Spells\Algoz\BencaoProfanaScroll .cs" />
 	  <Compile Include="Spells\Algoz\DesafioProfanoScroll.cs" />
 	  <Compile Include="Spells\Algoz\EspiritoMalignoScroll.cs" />
@@ -13714,17 +13712,15 @@
 
 		<SubType>Code</SubType>
 	</Compile>
-	<Compile Include="Spells\Cosmos\AceleracaoSpell.cs" />
-	<Compile Include="Spells\Cosmos\ArremessoSpell.cs" />
-	<Compile Include="Spells\Cosmos\AuraPsiquicaSpell.cs" />
-	<Compile Include="Spells\Cosmos\CampoDeExtaseSpell.cs" />
-	<Compile Include="Spells\Cosmos\CosmosSpell.cs" />
-	<Compile Include="Spells\Cosmos\DefletirSpell.cs" />
-	<Compile Include="Spells\Cosmos\MaoCosmicaSpell.cs" />
-	<Compile Include="Spells\Cosmos\MiragemSpell.cs" />
-	
-	<Compile Include="Spells\Cosmos\ReplicarSpell.cs" />
-	<Compile Include="Spells\Cosmos\ToqueCalmanteSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\AceleracaoSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\ArremessoSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\AuraPsiquicaSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\CampoDeExtaseSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\CosmosSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\DefletirSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\MaoCosmicaSpell.cs" />
+	<Compile Include="Spells\CosmosSolar\MiragemSpell.cs" />
+		<Compile Include="Spells\CosmosSolar\ToqueCalmanteSpell.cs" />
 
 	
 		

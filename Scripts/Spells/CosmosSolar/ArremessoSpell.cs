@@ -4,9 +4,9 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Items;
 
-namespace Server.Spells.Cosmos
+namespace Server.Spells.CosmosSolar
 {
-	public class ArremessoSpell : CosmosSpell
+	public class ArremessoSpell : CosmosSolarSpell
 	{
         //public static int spellID = 283;
 
@@ -69,7 +69,7 @@ namespace Server.Spells.Cosmos
 					BaseWeapon bw = (BaseWeapon)sword;
 
 					int min = bw.MinDamage + 10;
-					int max = (int)(bw.MaxDamage + (GetCosmosDamage( Caster ) / 7 ));
+					int max = (int)(bw.MaxDamage + (GetCosmosSolarDamage( Caster ) / 7 ));
 
 					int phys = bw.AosElementDamages.Physical;
 					int cold = bw.AosElementDamages.Cold;

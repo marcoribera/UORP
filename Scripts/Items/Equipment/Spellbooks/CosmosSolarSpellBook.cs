@@ -3,30 +3,30 @@ using Server.Gumps;
 
 namespace Server.Items
 {
-    public class CosmosSpellbook : Spellbook
+    public class CosmosSolarSpellbook : Spellbook
     {
         [Constructable]
-        public CosmosSpellbook()
+        public CosmosSolarSpellbook()
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
-            Name = "Livro do Cosmos";
-            Hue = 2748;
+            Name = "Livro do Cosmos Solar";
+            Hue = 54;
         }
 
         [Constructable]
-        public CosmosSpellbook(ulong content)
+        public CosmosSolarSpellbook(ulong content)
             : base(content, 0x42BF)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
-            Hue = 2748;
+            Hue = 54;
         }
 
         [Constructable]
-        public CosmosSpellbook(ulong content, Mobile gifted) : base(content, 0x42BF)
+        public CosmosSolarSpellbook(ulong content, Mobile gifted) : base(content, 0x42BF)
         {
             Hue = 2748;
         }
-        public CosmosSpellbook(Serial serial)
+        public CosmosSolarSpellbook(Serial serial)
             : base(serial)
         {
         }
@@ -60,7 +60,7 @@ namespace Server.Items
         {
             get
             {
-                return SpellbookType.Cosmos;
+                return SpellbookType.CosmosSolar;
             }
         }
         public override int BookOffset
@@ -74,7 +74,7 @@ namespace Server.Items
         {
             get
             {
-                return 9;
+                return 8;
             }
         }
 
@@ -84,8 +84,8 @@ namespace Server.Items
             if (Parent == from || (pack != null && Parent == pack))
             {
                 from.SendSound(0x55);
-                from.CloseGump(typeof(CosmosSpellbookGump));
-                from.SendGump(new CosmosSpellbookGump(from, this, 1));
+                from.CloseGump(typeof(CosmosSolarSpellbookGump));
+                from.SendGump(new CosmosSolarSpellbookGump(from, this, 1));
             }
             else from.SendLocalizedMessage(500207); // The spellbook must be in your backpack (and not in a container within) to open.
         }
@@ -107,18 +107,18 @@ namespace Server.Items
         }
     }
 
-    public class CompleteCosmosSpellbook : CosmosSpellbook
+    public class CompleteCosmosSolarSpellbook : CosmosSolarSpellbook
     {
         [Constructable]
-        public CompleteCosmosSpellbook()
+        public CompleteCosmosSolarSpellbook()
             //: base((ulong)0x1FFFF)
             : base((ulong)0x1FFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
         {
-            Name = "Livro do Cosmos Completo";
-            Hue = 2748;
+            Name = "Livro do Cosmos Solar Completo";
+            Hue = 54;
         }
 
-        public CompleteCosmosSpellbook(Serial serial)
+        public CompleteCosmosSolarSpellbook(Serial serial)
             : base(serial)
         {
         }
