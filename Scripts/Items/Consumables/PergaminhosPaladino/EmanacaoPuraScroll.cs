@@ -12,7 +12,7 @@ namespace Server.Items
 
         [Constructable]
         public EmanacaoPuraScroll(int amount)
-            : base(802, 0x1F30, amount)
+            : base(811, 0x1F30, amount)
         {
             Name = "Emanacao Pura";
             Movable = true;
@@ -29,7 +29,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 802; //Criar entrada no CLILOC
+                    return 2000000 + 811; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

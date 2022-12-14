@@ -12,7 +12,7 @@ namespace Server.Items
 
         [Constructable]
         public SaudeDivinaScroll(int amount)
-            : base(802, 0x1F30, amount)
+            : base(814, 0x1F30, amount)
         {
             Name = "Saude Divina";
             Movable = true;
@@ -29,7 +29,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 802; //Criar entrada no CLILOC
+                    return 2000000 + 814; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {
