@@ -317,54 +317,9 @@
     <Compile Include="Items\Consumables\PergaminhosAlgoz\ToqueDaDorScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\IntelectoDoAcolitoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\ArmaVampiricaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\BanirDemonioScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\BencaoProfanaScroll .cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\DesafioProfanoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\EspiritoMalignoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\FormaVampiricaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\FuriaProfanaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\HaloProfanoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\PeleCadavericaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosAlgoz\SaudeProfanaScroll.cs" />
-	  
-	  
-	  
-	  
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\AgilidadeDoDevotoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\ArmaSagradaScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\BanimentoCelestialScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\BanimentoSagradoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\BencaoSagradaScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\DesafioSagradoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\EmanacaoPuraScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\EspiritoBenignoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\ForcaDoDevotoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\FuriaSagradaScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\HaloDivinoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\IntelectoDoDevotoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\SacrificioSantoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\SaudeDivinaScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueCircatrizanteScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueCurativoScroll.cs" />
-    <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueRegeneradorScroll.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
-    <Compile Include="Items\Containers\BagOfPaladinoPergaminhos.cs" />
-	  <Compile Include="Items\Containers\BagOfCosmosSolarPergaminhos.cs" />
-	  <Compile Include="Items\Containers\BagOfAlgozPergaminhos.cs" />
-
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\AceleracaoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\ArremessoScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\AuraPsiquicaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\CampoDeExtaseScroll.cs" />
-	<Compile Include="Items\Consumables\PergaminhosCosmosSolar\DefletirScrolll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MaoCosmicaScroll.cs" />
-	  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MiragemScroll.cs" />
-		  <Compile Include="Items\Consumables\PergaminhosCosmosSolar\ToqueCalmanteScroll.cs" />
-
-
-	  <Compile Include="Items\custom2\FarmCow.cs" />
+    <Compile Include="Items\custom2\FarmCow.cs" />
     <Compile Include="Items\custom2\Sewing\BearSkin.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast1.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast2.cs" />
@@ -1119,14 +1074,7 @@
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\LivroFeiticaria.cs" />
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellbook .cs" />
-    <Compile Include="Items\Equipment\Spellbooks\ExemploSpellbook.cs" />
-    <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellbook.cs" />
-    <Compile Include="Items\Equipment\Spellbooks\ExemploSpellBookGump.cs" />
-    <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellBookGump.cs" />
-	  <Compile Include="Items\Equipment\Spellbooks\CosmosSolarSpellbook.cs" />
-	  <Compile Include="Items\Equipment\Spellbooks\CosmosSpellSolarBookGump.cs" />
-
-	  <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
+    <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\BloodwoodTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\FrostwoodTree.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\HeartwoodTree.cs" />
@@ -7550,22 +7498,16 @@
     <Compile Include="Items\Containers\BagOfMysticismReagents.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Items\Containers\BagOfReagents.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Items\Resource\BatWing.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Resource\BlackPearl.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Items\Resource\Incenso.cs">
-	  <SubType>Code</SubType>
-	</Compile>
-	<Compile Include="Items\Resource\Vela.cs">
-	  <SubType>Code</SubType>
-	</Compile>
-    <Compile Include="Items\Resource\PenaETinteiro.cs">
-	  <SubType>Code</SubType>
-	</Compile>
-	  <Compile Include="Items\Resource\Bloodmoss.cs">
+    <Compile Include="Items\Resource\Bloodmoss.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Items\Resource\DaemonBlood.cs">
@@ -13346,18 +13288,6 @@
     <Compile Include="Spells\Algoz\Embasbacar.cs" />
     <Compile Include="Spells\Algoz\Enfraquecer.cs" />
     <Compile Include="Spells\Algoz\ForcaDoAcolito.cs" />
-     <Compile Include="Spells\Algoz\IntelectoDoAcolitoScroll.cs" />
-	  <Compile Include="Spells\Algoz\EmbasbacarScroll.cs" />
-	  <Compile Include="Spells\Algoz\ArmaVampiricaScroll.cs" />
-	  <Compile Include="Spells\Algoz\BanirDemonioScroll.cs" />
-	  <Compile Include="Spells\Algoz\BencaoProfanaScroll .cs" />
-	  <Compile Include="Spells\Algoz\DesafioProfanoScroll.cs" />
-	  <Compile Include="Spells\Algoz\EspiritoMalignoScroll.cs" />
-	  <Compile Include="Spells\Algoz\FormaVampiricaScroll.cs" />
-	  <Compile Include="Spells\Algoz\\FuriaProfanaScroll.cs" />
-	  <Compile Include="Spells\Algoz\HaloProfanoScroll.cs" />
-	  <Compile Include="Spells\Algoz\PeleCadavericaScroll.cs" />
-	  <Compile Include="Spells\Algoz\SaudeProfanaScroll.cs" />
     <Compile Include="Spells\Base\DisturbType.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -13690,41 +13620,8 @@
     <Compile Include="Spells\Ninjitsu\SurpriseAttack.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Spells\Paladino\AgilidadeDoDevotoSpell.cs" />
-    <Compile Include="Spells\Paladino\ArmaSagradaSpell.cs" />
-    <Compile Include="Spells\Paladino\BanimentoCelestialSpell.cs" />
-    <Compile Include="Spells\Paladino\BanimentoSagradoSpell.cs" />
-    <Compile Include="Spells\Paladino\BencaoSagradaSpell.cs" />
-    <Compile Include="Spells\Paladino\DesafioSagradoSpell.cs" />
-    <Compile Include="Spells\Paladino\EmanacaoPuraSpell.cs" />
-    <Compile Include="Spells\Paladino\EspiritoBenignoSpell.cs" />
-    <Compile Include="Spells\Paladino\ForcaDoDevotoSpell.cs" />
-    <Compile Include="Spells\Paladino\FuriaSagradaSpell.cs" />
-    <Compile Include="Spells\Paladino\HaloDivinoSpell.cs" />
-    <Compile Include="Spells\Paladino\IntelectoDoDevotoSpell.cs" />
-    <Compile Include="Spells\Paladino\PaladinoSpell.cs" />
-    <Compile Include="Spells\Paladino\SacrificioSantoSpell.cs" />
-    <Compile Include="Spells\Paladino\SaudeDivinaSpell.cs" />
-    <Compile Include="Spells\Paladino\ToqueCicatrizanteSpell.cs" />
-    <Compile Include="Spells\Paladino\ToqueCurativoSpell.cs" />
-    <Compile Include="Spells\Paladino\ToqueRegeneradorSpell.cs" />
     <Compile Include="Spells\Reagent.cs">
-
-		<SubType>Code</SubType>
-	</Compile>
-	<Compile Include="Spells\CosmosSolar\AceleracaoSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\ArremessoSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\AuraPsiquicaSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\CampoDeExtaseSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\CosmosSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\DefletirSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\MaoCosmicaSpell.cs" />
-	<Compile Include="Spells\CosmosSolar\MiragemSpell.cs" />
-		<Compile Include="Spells\CosmosSolar\ToqueCalmanteSpell.cs" />
-
-	
-		
-		<SubType>Code</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Spells\Second\Agility.cs">
       <SubType>Code</SubType>
