@@ -55,7 +55,31 @@ namespace Server.Spells
 		public virtual SkillName CastSkill { get { return SkillName.Arcanismo; } }
 		public virtual SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
-		public virtual bool RevealOnCast { get { return true; } }
+        public virtual int EfeitoValorAbsoluto(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
+        {
+            double valor = (5.0 + (double)circulo) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0);
+            return (int)valor;
+        }
+        protected virtual double EfeitoValorAbsolutoExato(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
+        {
+            return (5.0 + (double)circulo) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + ((double)EficienciaMagica(caster) / 10.0), 3.0);
+        }
+
+        public virtual double EfeitoValorRelativo(Mobile caster, SpellCircle circulo) //Calcula o valor relativo do efeito da magia (Usar para percentuais de buffs, percentuais de debuffs ou similares)
+        {
+            return (5.0 + (EfeitoValorAbsolutoExato(caster, circulo) * 0.35)) / 100.0;
+        }
+        public virtual int EfeitoNumeroTicks(SpellCircle circulo)
+        {
+            return 4 + (int)circulo;
+        }
+        public virtual int EfeitoValorAbsolutoPorTick(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto por tick do efeito da magia (Usar para dano ao longo do tempo, cura ao longo do tempo ou similares)
+        {
+            double valor = EfeitoValorAbsolutoExato(caster, circulo) * (1 + ((double)circulo + 1.0) / 10.0);
+            return (int) valor / EfeitoNumeroTicks(circulo);
+        }
+
+        public virtual bool RevealOnCast { get { return true; } }
 		public virtual bool ClearHandsOnCast { get { return true; } }
 		public virtual bool ShowHandMovement { get { return true; } }
 
