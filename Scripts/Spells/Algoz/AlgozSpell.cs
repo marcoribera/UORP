@@ -36,7 +36,6 @@ namespace Server.Spells.Algoz
             }
         }
 
-        public abstract SpellCircle Circle { get; }
         public override TimeSpan CastDelayBase
         {
             get

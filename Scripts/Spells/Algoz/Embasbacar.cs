@@ -77,7 +77,7 @@ namespace Server.Spells.Algoz
 
                 int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Int);
                 //Console.WriteLine("oldOffset:" + oldOffset.ToString());
-                int newOffset = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Int, true, false);  // Efeito muito baixo: 5-10% de redução
+                int newOffset = SpellHelper.GetOffset(this,Caster, m, StatType.Int, true, false);  // Efeito muito baixo: 5-10% de redução
                 //Console.WriteLine("newOffset:" + newOffset.ToString());
 
                 if (-newOffset > oldOffset || newOffset == 0)
@@ -99,8 +99,8 @@ namespace Server.Spells.Algoz
 
                     if (-newOffset < oldOffset)
                     {
-                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Int, false, newOffset);
-                        int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, true) * 100);
+                        SpellHelper.AddStatCurse(this, this.Caster, m, StatType.Int, false, newOffset);
+                        int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, true) * 100);
                         TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                         BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.FeebleMind, 1075833, length, m, percentage.ToString())); //TODO: Criar Cliloc com as descrição do debuff
 

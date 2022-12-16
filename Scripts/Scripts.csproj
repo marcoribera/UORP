@@ -343,7 +343,10 @@
     <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueCircatrizanteScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueCurativoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\ToqueRegeneradorScroll.cs" />
+    <Compile Include="Items\Containers\BagOfAlgozPergaminhos.cs" />
+    <Compile Include="Items\Containers\BagOfCosmosPergaminhos.cs" />
     <Compile Include="Items\Containers\BagOfNecroReagents .cs" />
+    <Compile Include="Items\Containers\BagOfPaladinoPergaminhos.cs" />
     <Compile Include="Items\custom2\FarmCow.cs" />
     <Compile Include="Items\custom2\Sewing\BearSkin.cs" />
     <Compile Include="Items\custom2\Sewing\Craftables\Curtains\RedCurtainEast1.cs" />

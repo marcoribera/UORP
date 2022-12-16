@@ -76,7 +76,7 @@ namespace Server.Spells.Algoz
                 }
 
                 int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Dex);
-                int newOffset = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Dex, true, false);
+                int newOffset = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, true, false);
 
                 if (-newOffset > oldOffset || newOffset == 0)
                 {
@@ -96,9 +96,9 @@ namespace Server.Spells.Algoz
 
                     if (-newOffset < oldOffset)
                     {
-                        SpellHelper.AddStatCurse(this.Caster, m, StatType.Dex, false, newOffset);
+                        SpellHelper.AddStatCurse(this, this.Caster, m, StatType.Dex, false, newOffset);
 
-                        int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, true) * 100);
+                        int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, true) * 100);
                         TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                         BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Clumsy, 1075831, length, m, percentage.ToString()));
 

@@ -3587,7 +3587,7 @@ namespace Server.Items
 			defender.AddStatMod(
                 new StatMod(StatType.Int, String.Format("[Magic] {0} Curse", StatType.Int), -10, duration));
 
-			int percentage = -10; //(int)(SpellHelper.GetOffsetScalar(Caster, m, true) * 100);
+			int percentage = -10; //(int)(SpellHelper.GetOffsetScalar(this,Caster, m, true) * 100);
 			string args = String.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}", percentage, percentage, percentage, 10, 10, 10, 10);
 
             Server.Spells.Fourth.CurseSpell.AddEffect(defender, duration, 10, 10, 10);

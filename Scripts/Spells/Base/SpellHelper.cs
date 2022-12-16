@@ -350,9 +350,9 @@ namespace Server.Spells
             return true;
         }
 
-        public static bool AddStatBonus(Mobile caster, Mobile target, bool blockSkill, StatType type)
+        public static bool AddStatBonus(Spell magia, Mobile caster, Mobile target, bool blockSkill, StatType type)
         {
-            return AddStatBonus(caster, target, type, GetOffset(caster, target, type, false, blockSkill), GetDuration(caster, target));
+            return AddStatBonus(caster, target, type, GetOffset(magia, caster, target, type, false, blockSkill), GetDuration(caster, target));
         }
 
         public static bool AddStatBonus(Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration)
@@ -382,17 +382,17 @@ namespace Server.Spells
             return mod != null ? mod.Offset : 0;
         }
 
-        public static bool AddStatCurse(Mobile caster, Mobile target, StatType type)
+        public static bool AddStatCurse(Spell magia, Mobile caster, Mobile target, StatType type)
         {
-            return AddStatCurse(caster, target, type, true);
+            return AddStatCurse(magia, caster, target, type, true);
         }
 
-        public static bool AddStatCurse(Mobile caster, Mobile target, StatType type, bool blockSkill)
+        public static bool AddStatCurse(Spell magia, Mobile caster, Mobile target, StatType type, bool blockSkill)
         {
-            return AddStatCurse(caster, target, type, GetOffset(caster, target, type, true, blockSkill), TimeSpan.Zero);
+            return AddStatCurse(caster, target, type, GetOffset(magia, caster, target, type, true, blockSkill), TimeSpan.Zero);
         }
 
-        public static bool AddStatCurse(Mobile caster, Mobile target, StatType type, bool blockSkill, int offset)
+        public static bool AddStatCurse(Spell magia, Mobile caster, Mobile target, StatType type, bool blockSkill, int offset)
         {
             return AddStatCurse(caster, target, type, offset, TimeSpan.Zero);
         }
@@ -437,18 +437,19 @@ namespace Server.Spells
             return mod != null ? mod.Offset : 0;
         }
 
-        public static double GetOffsetScalar(Mobile caster, Mobile target, bool curse)
+        public static double GetOffsetScalar(Spell magia, Mobile caster, Mobile target, bool curse)
         {
             double percent;
 
             if (curse)
             {
-                double resistFixed = target.Skills.ResistenciaMagica.Fixed - (EvilOmenSpell.GetResistMalus(target) * 10);
-                percent = 5 + (caster.Skills.PoderMagico.Fixed / 100) - (resistFixed / 100);
+                double resistFixed = target.Skills.ResistenciaMagica.Value;// - (EvilOmenSpell.GetResistMalus(target));
+                percent = magia.EfeitoValorRelativo(caster, magia.Circle, resistFixed);
             }
             else
-                percent = 4 + (caster.Skills.PoderMagico.Fixed / 100);
-
+            {
+                percent = magia.EfeitoValorRelativo(caster, magia.Circle, 0.0);
+            }
             percent *= 0.01;
 
             if (percent < 0)
@@ -457,7 +458,7 @@ namespace Server.Spells
             return percent;
         }
 
-        public static int GetOffset(Mobile caster, Mobile target, StatType type, bool curse, bool blockSkill)
+        public static int GetOffset(Spell magia, Mobile caster, Mobile target, StatType type, bool curse, bool blockSkill)
         {
             if (Core.AOS)
             {
@@ -470,7 +471,7 @@ namespace Server.Spells
                         target.CheckSkill(SkillName.ResistenciaMagica, 0.0, 120.0);
                 }
 
-                double percent = GetOffsetScalar(caster, target, curse);
+                double percent = GetOffsetScalar(magia, caster, target, curse);
 
                 switch( type )
                 {

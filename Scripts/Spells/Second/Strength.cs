@@ -40,7 +40,7 @@ namespace Server.Spells.Second
                 SpellHelper.Turn(this.Caster, m);
 
                 int oldStr = SpellHelper.GetBuffOffset(m, StatType.Str);
-                int newStr = SpellHelper.GetOffset(Caster, m, StatType.Str, false, true);
+                int newStr = SpellHelper.GetOffset(this,Caster, m, StatType.Str, false, true);
 
                 if (newStr < oldStr || newStr == 0)
                 {
@@ -48,8 +48,8 @@ namespace Server.Spells.Second
                 }
                 else
                 {
-                    SpellHelper.AddStatBonus(this.Caster, m, false, StatType.Str);
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, false) * 100);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Str);
+                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Strength, 1075845, length, m, percentage.ToString()));
 

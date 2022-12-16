@@ -97,7 +97,7 @@ namespace Server.Spells.Fourth
             Caster.Target = new InternalTarget(this);
         }
 
-        public static bool DoCurse(Mobile caster, Mobile m, bool masscurse)
+        public virtual bool DoCurse(Mobile caster, Mobile m, bool masscurse)
         {
             if (Mysticism.StoneFormSpell.CheckImmunity(m))
             {
@@ -109,9 +109,9 @@ namespace Server.Spells.Fourth
             int oldDex = SpellHelper.GetCurseOffset(m, StatType.Dex);
             int oldInt = SpellHelper.GetCurseOffset(m, StatType.Int);
 
-            int newStr = SpellHelper.GetOffset(caster, m, StatType.Str, true, true);
-            int newDex = SpellHelper.GetOffset(caster, m, StatType.Dex, true, true);
-            int newInt = SpellHelper.GetOffset(caster, m, StatType.Int, true, true);
+            int newStr = SpellHelper.GetOffset(this, caster, m, StatType.Str, true, true);
+            int newDex = SpellHelper.GetOffset(this, caster, m, StatType.Dex, true, true);
+            int newInt = SpellHelper.GetOffset(this, caster, m, StatType.Int, true, true);
 
             if ((-newStr > oldStr && -newDex > oldDex && -newInt > oldInt) || 
                 (newStr == 0 && newDex == 0 && newInt == 0))
@@ -119,11 +119,11 @@ namespace Server.Spells.Fourth
                 return false;
             }
 
-            SpellHelper.AddStatCurse(caster, m, StatType.Str, false);
-            SpellHelper.AddStatCurse(caster, m, StatType.Dex, true);
-            SpellHelper.AddStatCurse(caster, m, StatType.Int, true);
+            SpellHelper.AddStatCurse(this, caster, m, StatType.Str, false);
+            SpellHelper.AddStatCurse(this, caster, m, StatType.Dex, true);
+            SpellHelper.AddStatCurse(this, caster, m, StatType.Int, true);
 
-            int percentage = (int)(SpellHelper.GetOffsetScalar(caster, m, true) * 100);
+            int percentage = (int)(SpellHelper.GetOffsetScalar(this, caster, m, true) * 100);
             TimeSpan length = SpellHelper.GetDuration(caster, m);
             string args;
 

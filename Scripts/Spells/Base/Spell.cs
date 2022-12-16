@@ -33,8 +33,15 @@ namespace Server.Spells
 		private SpellState m_State;
 		private long m_StartCastTime;
         private IDamageable m_InstantTarget;
+        public virtual SpellCircle Circle
+        {
+            get
+            {
+                return SpellCircle.Sixth;
+            }
+        }
 
-		public int ID { get { return SpellRegistry.GetRegistryNumber(this); } }
+        public int ID { get { return SpellRegistry.GetRegistryNumber(this); } }
 
 		public SpellState State { get { return m_State; } set { m_State = value; } }
 
@@ -55,29 +62,35 @@ namespace Server.Spells
 		public virtual SkillName CastSkill { get { return SkillName.Arcanismo; } }
 		public virtual SkillName DamageSkill { get { return SkillName.PoderMagico; } }
 
-        public virtual int EfeitoValorAbsoluto(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
+        //Início das Definições personalizadas para o server
+        public virtual int EfeitoValorAbsoluto_int(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
         {
-            double valor = (5.0 + (double)circulo) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0);
+            double valor = (4.0 + (double)(circulo+1)) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0);
             return (int)valor;
         }
-        protected virtual double EfeitoValorAbsolutoExato(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
+        protected virtual double EfeitoValorAbsoluto_double(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto do efeito da magia (Usar para dano único, cura única ou similares)
         {
-            return (5.0 + (double)circulo) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + ((double)EficienciaMagica(caster) / 10.0), 3.0);
+            return (4.0 + (double)(circulo+1)) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0);
         }
 
-        public virtual double EfeitoValorRelativo(Mobile caster, SpellCircle circulo) //Calcula o valor relativo do efeito da magia (Usar para percentuais de buffs, percentuais de debuffs ou similares)
+        public virtual double EfeitoValorRelativo(Mobile caster, SpellCircle circulo, double resistencia) //Calcula o valor relativo do efeito da magia (Usar para percentuais de buffs, percentuais de debuffs ou similares)
         {
-            return (5.0 + (EfeitoValorAbsolutoExato(caster, circulo) * 0.35)) / 100.0;
+            double valor = (4.0 + (double)(circulo+1)) * Math.Pow(1.0 + (Math.Max(caster.Skills[DamageSkill].Value - resistencia, 0.0) / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0); // É pra ser similar à fórmulado "EfeitoValorAbsoluto_double"
+            Console.WriteLine("Valor Efeito base: "+valor);
+            Console.WriteLine("Percentual: " + Math.Ceiling(Math.Min((5.0 + (valor * 0.35)), 90.0)));
+            return Math.Ceiling(Math.Min((5.0 + (valor * 0.35)), 90.0)); //Multiplica pelo fator de conversão para percentual e define um teto
         }
         public virtual int EfeitoNumeroTicks(SpellCircle circulo)
         {
             return 4 + (int)circulo;
         }
-        public virtual int EfeitoValorAbsolutoPorTick(Mobile caster, SpellCircle circulo) //Calcula o valor absoluto por tick do efeito da magia (Usar para dano ao longo do tempo, cura ao longo do tempo ou similares)
+        public virtual int EfeitoValorAbsolutoPorTick(Mobile caster, SpellCircle circulo, double resistencia) //Calcula o valor absoluto por tick do efeito da magia (Usar para dano ao longo do tempo, cura ao longo do tempo ou similares)
         {
-            double valor = EfeitoValorAbsolutoExato(caster, circulo) * (1 + ((double)circulo + 1.0) / 10.0);
-            return (int) valor / EfeitoNumeroTicks(circulo);
+            double valor = (4.0 + (double)(circulo+1)) * Math.Pow(1.0 + (caster.Skills[DamageSkill].Value / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0);
+            return (int) (valor * (1.0 + ( (double)(circulo+1) / 10.0)) / EfeitoNumeroTicks(circulo));
         }
+
+        //Fim das Definições personalizadas para o server
 
         public virtual bool RevealOnCast { get { return true; } }
 		public virtual bool ClearHandsOnCast { get { return true; } }

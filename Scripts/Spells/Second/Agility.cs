@@ -38,7 +38,7 @@ namespace Server.Spells.Second
             else if (this.CheckBSequence(m))
             {
                 int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
-                int newDex = SpellHelper.GetOffset(Caster, m, StatType.Dex, false, true);
+                int newDex = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, false, true);
 
                 if (newDex < oldDex || newDex == 0)
                 {
@@ -48,8 +48,8 @@ namespace Server.Spells.Second
                 {
                     SpellHelper.Turn(this.Caster, m);
 
-                    SpellHelper.AddStatBonus(this.Caster, m, false, StatType.Dex);
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, false) * 100);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Dex);
+                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Agility, 1075841, length, m, percentage.ToString()));
 

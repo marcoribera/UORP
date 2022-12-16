@@ -32,7 +32,7 @@ namespace Server.Spells.Algoz
             if (this.CheckBSequence(m))
             {
                 int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
-                int newInt = EficienciaMagica(this.Caster) * SpellHelper.GetOffset(Caster, m, StatType.Int, false, true);
+                int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
 
                 if (newInt < oldInt || newInt == 0)
                 {
@@ -42,8 +42,8 @@ namespace Server.Spells.Algoz
                 {
                     SpellHelper.Turn(this.Caster, m);
 
-                    SpellHelper.AddStatBonus(this.Caster, m, false, StatType.Int);
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, true) * 100);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Int);
+                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Cunning, 1075843, length, m, percentage.ToString()));
 

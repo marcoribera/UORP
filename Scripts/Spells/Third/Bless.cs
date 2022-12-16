@@ -76,9 +76,9 @@ namespace Server.Spells.Third
                 int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
                 int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
 
-                int newStr = SpellHelper.GetOffset(Caster, m, StatType.Str, false, true);
-                int newDex = SpellHelper.GetOffset(Caster, m, StatType.Dex, false, true);
-                int newInt = SpellHelper.GetOffset(Caster, m, StatType.Int, false, true);
+                int newStr = SpellHelper.GetOffset(this,Caster, m, StatType.Str, false, true);
+                int newDex = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, false, true);
+                int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
 
                 if ((newStr < oldStr && newDex < oldDex && newInt < oldInt) || 
                     (newStr == 0 && newDex == 0 && newInt == 0))
@@ -87,11 +87,11 @@ namespace Server.Spells.Third
                 }
                 else
                 {
-                    SpellHelper.AddStatBonus(this.Caster, m, false, StatType.Str);
-                    SpellHelper.AddStatBonus(this.Caster, m, true, StatType.Dex);
-                    SpellHelper.AddStatBonus(this.Caster, m, true, StatType.Int);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Str);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Dex);
+                    SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Int);
 
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this.Caster, m, false) * 100);
+                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     string args = String.Format("{0}\t{1}\t{2}", percentage, percentage, percentage);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Bless, 1075847, 1075848, length, m, args.ToString()));
