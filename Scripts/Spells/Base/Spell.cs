@@ -76,8 +76,8 @@ namespace Server.Spells
         public virtual double EfeitoValorRelativo(Mobile caster, SpellCircle circulo, double resistencia) //Calcula o valor relativo do efeito da magia (Usar para percentuais de buffs, percentuais de debuffs ou similares)
         {
             double valor = (4.0 + (double)(circulo+1)) * Math.Pow(1.0 + (Math.Max(caster.Skills[DamageSkill].Value - resistencia, 0.0) / 120.0) + (EficienciaMagica(caster) / 10.0), 3.0); // É pra ser similar à fórmulado "EfeitoValorAbsoluto_double"
-            Console.WriteLine("Valor Efeito base: "+valor);
-            Console.WriteLine("Percentual: " + Math.Ceiling(Math.Min((5.0 + (valor * 0.35)), 90.0)));
+            //Console.WriteLine("Valor Efeito base: "+valor);
+            //Console.WriteLine("Percentual: " + Math.Ceiling(Math.Min((5.0 + (valor * 0.35)), 90.0)));
             return Math.Ceiling(Math.Min((5.0 + (valor * 0.35)), 90.0)); //Multiplica pelo fator de conversão para percentual e define um teto
         }
         public virtual int EfeitoNumeroTicks(SpellCircle circulo)
