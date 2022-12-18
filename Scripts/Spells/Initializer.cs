@@ -286,7 +286,32 @@ namespace Server.Spells
             Register(814, typeof(Paladino.SaudeDivinaSpell));
             Register(815, typeof(Paladino.HaloDivinoSpell));
             Register(816, typeof(Paladino.EspiritoBenignoSpell));
-      
+
+
+            // CLERIGO BOM
+            Register(900, typeof(ClerigoDaVida.AlimentoDaVidaSpell));
+            Register(901, typeof(ClerigoDaVida.ElevarAgilidadeSpell));
+            Register(902, typeof(ClerigoDaVida.ElevarForcaSpell));
+            Register(903, typeof(ClerigoDaVida.ElevarInteligenciaSpell));
+            Register(904, typeof(ClerigoDaVida.AscencaoCompletaSpell));
+            Register(905, typeof(ClerigoDaVida.AuraPurificadoraSpell));
+            Register(906, typeof(ClerigoDaVida.ClarearVistaSpell));
+            Register(907, typeof(ClerigoDaVida.CuraLeveSpell));
+            Register(908, typeof(ClerigoDaVida.CuraMininaSpell));
+            Register(909, typeof(ClerigoDaVida.CuraModeradaSpell));
+            Register(910, typeof(ClerigoDaVida.FogoDeVidaSpell));
+            Register(911, typeof(ClerigoDaVida.ProtecaoDaLuzSpell));
+            Register(912, typeof(ClerigoDaVida.PurificarAreaSpell));
+            Register(913, typeof(ClerigoDaVida.PurificarSpell));
+            Register(914, typeof(ClerigoDaVida.ReanimarMortoSpell));
+            Register(915, typeof(ClerigoDaVida.RecuperacaoBreveSpell));
+            Register(916, typeof(ClerigoDaVida.RemoverMaldicaoSpell));
+            Register(917, typeof(ClerigoDaVida.ReviverSpell));
+            Register(918, typeof(ClerigoDaVida.VidaEternaSpell));
+
+
+
+
             // First circle
             Register(420, typeof(First.OlhosDaCorujaSpell));
             

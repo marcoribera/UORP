@@ -1,33 +1,38 @@
 using System;
 using System.Collections;
 
-namespace Server.Spells.Paladino
+namespace Server.Spells.ClerigoDaVida
 {
-    public class SaudeDivinaSpell : PaladinoSpell
+    public class ProtecaoDaLuzSpell : ClerigoDaVidaSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Saude Divina", "Divina Sanit",
+            "Proteção da Luz", "Tuta Lux",
             236,
             9011,
             Reagent.Garlic,
             Reagent.SpidersSilk,
             Reagent.SulfurousAsh);
+
         private static readonly Hashtable m_Table = new Hashtable();
-
-        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
-
-
-        public SaudeDivinaSpell(Mobile caster, Item scroll)
+        public ProtecaoDaLuzSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
 
-        
+        public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
+
+        public override double RequiredSkill
+        {
+            get
+            {
+                return 30.0;
+            }
+        }
         public override SpellCircle Circle
         {
             get
             {
-                return SpellCircle.Second;
+                return SpellCircle.First;
             }
         }
         public static void EndArmor(Mobile m)
@@ -91,10 +96,10 @@ namespace Server.Spells.Paladino
                         mods = new ResistanceMod[5]
                         {
                             new ResistanceMod(ResistanceType.Physical, 15 + (int)(targ.Skills[SkillName.Erudicao].Value / 20)),
-                            new ResistanceMod(ResistanceType.Fire, -5),
-                            new ResistanceMod(ResistanceType.Cold, -5),
-                            new ResistanceMod(ResistanceType.Poison, -5),
-                            new ResistanceMod(ResistanceType.Energy, -5)
+                            new ResistanceMod(ResistanceType.Fire, 0),
+                            new ResistanceMod(ResistanceType.Cold, 0),
+                            new ResistanceMod(ResistanceType.Poison, 0),
+                            new ResistanceMod(ResistanceType.Energy, 0)
                         };
 
                         m_Table[targ] = mods;
@@ -137,7 +142,7 @@ namespace Server.Spells.Paladino
                 {
                     if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                     {
-                        int value = (int)(this.Caster.Skills[SkillName.Ordem].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
+                        int value = (int)(this.Caster.Skills[SkillName.Necromancia].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
                         value /= 2;
 
                         if (value < 0)

@@ -2208,6 +2208,7 @@
     <Compile Include="Mobiles\NPCs\ElfoScribe.cs" />
     <Compile Include="Mobiles\NPCs\ElfoTailor.cs" />
     <Compile Include="Mobiles\NPCs\ElfoTanner.cs" />
+    <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Services\Craft\DefBaking.cs" />
     <Compile Include="Services\Craft\DefBoiling.cs" />
     <Compile Include="Services\Craft\DefBrewing.cs" />
@@ -13416,6 +13417,26 @@
     <Compile Include="Spells\Chivalry\SacredJourney.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spells\ClerigoDaVida\AlimentoDaVidaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\AscencaoCompletaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\AuraPurificadoraSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ClarearVistaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ClerigoDaVidaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\CuraLeveSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\CuraMinimaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\CuraModeradaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ElevarAgilidadeSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ElevarForcaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ElevarInteligenciaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\FogoDeVidaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ProtecaoDaLuzSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\PurificarAreaSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\PurificarSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ReanimarMortoSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\RecuperacaoBreveSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\RemoverMaldicaoSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\ReviverSpell.cs" />
+    <Compile Include="Spells\ClerigoDaVida\VidaEternaSpell.cs" />
     <Compile Include="Spells\CosmosSolar\AceleracaoSpell.cs" />
     <Compile Include="Spells\CosmosSolar\ArremessoSpell.cs" />
     <Compile Include="Spells\CosmosSolar\AuraPsiquicaSpell.cs" />
@@ -14286,6 +14307,7 @@
     <Content Include="Items\Custom\[ReVisited]Monster Contract Dealer &amp; Monster Contract\ReadMe.txt" />
     <Content Include="Items\Custom\[ReVisited]Monster Contract Dealer &amp; Monster Contract\SecondReadMe.txt" />
     <Content Include="Mobiles\Custom\WesternOrcs\WesternOrc Readme.txt" />
+    <Content Include="Output\Scripts.CS.dll" />
     <Content Include="Services\LootGeneration\RunicReforging\ReadMe.txt" />
     <Content Include="Services\New Magincia\ReadMe.txt" />
     <Content Include="Services\Revamped Dungeons\DespiseRevamped\Read Me.txt" />
@@ -14314,6 +14336,10 @@
     <None Include="Items\Custom\LogTavernInn.mlt" />
     <None Include="Items\Custom\OutdoorLogBlacksmith.mlt" />
     <None Include="Items\Custom\shards novos\uoadventure\precisa rever\Lights\BaseLight.cs.bak" />
+    <None Include="obj\Debug\Scripts.csproj.AssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\Scripts.csproj.AssemblyReference.cache" />
+    <None Include="Output\Scripts.CS.hash" />
     <None Include="Services\TreasureMaps\desktop.ini" />
   </ItemGroup>
   <ItemGroup>
@@ -14322,6 +14348,7 @@
     <Folder Include="Items\Addons\Food Extras\HarvestSystem\Crop harvest\vines ground\" />
     <Folder Include="Items\Custom\Misc\" />
     <Folder Include="Items\Custom\shards novos\age of valor\CursedPirate\Items\Artifacts\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.targets" />
   <ProjectExtensions>

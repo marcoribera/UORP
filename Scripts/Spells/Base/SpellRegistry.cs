@@ -163,8 +163,8 @@ namespace Server.Spells
             "Bruxo", //Skill Feiticaria //Maldições e invocações demonios
             "Paladino", //Skill Ordem //Magias de cura menores, buffs fortes de combate para si, em especial contra criaturas malignas
             "Algoz", //Skill Ordem //Magias de dreno menores, buffs fortes de combate para si, em especial contra criaturas benignas
-            "ClerigoBom", //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
-            "ClerigoMal", //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
+            "ClerigoDaVida", //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
+            "ClerigoDosMortos", //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
             "Mago", //Skill Arcanismo //Ataques mágicos diretos, magias de deslocamento, diversas magias utilitárias como telecinese, arrombar, etc
             "Metamorfo", //Skill Arcanismo //Os mais diversos tipo de Metamorfose e buffs para si
             "Druida", //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais

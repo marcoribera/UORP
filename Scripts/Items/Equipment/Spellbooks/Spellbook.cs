@@ -38,8 +38,8 @@ namespace Server.Items
         Paladino, //Skill Ordem //Magias de cura menores, buffs fortes de combate para si, em especial contra criaturas malignas
         Logos, //Skill Arcanismo //Magias de conexão com a energia que envolve o mundo
         Algoz, //Skill Ordem //Magias de dreno menores, buffs fortes de combate para si, em especial contra criaturas benignas
-        ClerigoBom, //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
-        ClerigoMal, //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
+        ClerigoDaVida, //Skill Necromancia //Os mais diversos tipos de magia de cura, buffs de proteção, invocações celestiais, criação de alimentos e purificação
+        ClerigoDosMortos, //Skill Necromancia //Os mais diversos tipos de magia de dreno, debuffs debilitantes, invocações mortos vivos e envenenamentos
         Mago, //Skill Arcanismo //Ataques mágicos diretos, magias de deslocamento, diversas magias utilitárias como telecinese, arrombar, etc
         Metamorfo, //Skill Arcanismo //Os mais diversos tipo de Metamorfose e buffs para si
         Druida, //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais
@@ -47,7 +47,7 @@ namespace Server.Items
         Bardo, //Skill Caos //buffs e debuffs, invocações festivas
         Trapaceiro, //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
         CosmosSolar, // Kitah solar
-           CosmosLunar // Kitah Lunar
+        CosmosLunar // Kitah Lunar
     }
 
 	public enum BookQuality
@@ -497,6 +497,10 @@ namespace Server.Items
             {
                 return SpellbookType.Misticismo;
             }
+            else if (spellID >= 900 && spellID < 949)  //Espaço livre usado para novas magias da skill Clerigoda Vida
+            {
+                return SpellbookType.ClerigoDaVida;
+            }
             return SpellbookType.Invalid;
 		}
 
@@ -577,6 +581,10 @@ namespace Server.Items
         public static Spellbook FindCosmosSolar(Mobile from)
         {
             return Find(from, -1, SpellbookType.CosmosSolar);
+        }
+        public static Spellbook FindClerigoDaVida(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.ClerigoDaVida);
         }
 
         public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
@@ -1471,10 +1479,10 @@ namespace Server.Items
                     type = SpellbookType.Algoz;
                     break;
                 case 15:
-                    type = SpellbookType.ClerigoBom;
+                    type = SpellbookType.ClerigoDaVida;
                     break;
                 case 16:
-                    type = SpellbookType.ClerigoMal;
+                    type = SpellbookType.ClerigoDosMortos;
                     break;
                 case 17:
                     type = SpellbookType.Mago;

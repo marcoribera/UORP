@@ -132,7 +132,7 @@ namespace Server.Spells.Algoz
                 {
                     if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                     {
-                        int value = (int)(this.Caster.Skills[SkillName.Arcanismo].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
+                        int value = (int)(this.Caster.Skills[SkillName.Ordem].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
                         value /= 2;
 
                         if (value < 0)
