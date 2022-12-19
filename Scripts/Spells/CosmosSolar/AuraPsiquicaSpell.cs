@@ -9,7 +9,7 @@ namespace Server.Spells.CosmosSolar
 	{
 
         private static readonly SpellInfo m_Info = new SpellInfo(
-           "Aceleração", "Psychica  Aureola",
+           "Aura Psiquica", "Psychica  Aureola",
            236,
            0,
            Reagent.Bloodmoss,

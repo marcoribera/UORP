@@ -429,26 +429,26 @@ namespace Server.Items
 
         public static SpellbookType GetTypeForSpell(int spellID)
 		{
-			if (spellID >= 0 && spellID < 64)
-			{
-				return SpellbookType.Regular;
-			}
+            if (spellID >= 0 && spellID < 64)
+            {
+                return SpellbookType.Regular;
+            }
             else if (spellID >= 70 && spellID < 88) //Magias de Algoz (18)
             {
                 return SpellbookType.Algoz;
             }
             else if (spellID >= 100 && spellID < 117)
-			{
-				return SpellbookType.Necromancer;
-			}
+            {
+                return SpellbookType.Necromancer;
+            }
             else if (spellID >= 120 && spellID < 199) //Espaço livre usado para novas magias da skill Necromancia
             {
                 return SpellbookType.Necromancia;
             }
             else if (spellID >= 200 && spellID < 210)
-			{
-				return SpellbookType.Paladin;
-			}
+            {
+                return SpellbookType.Paladin;
+            }
             else if (spellID >= 220 && spellID < 299) //Espaço livre usado para novas magias da skill Ordem
             {
                 return SpellbookType.Ordem;
@@ -458,29 +458,29 @@ namespace Server.Items
                 return SpellbookType.Caos;
             }
             else if (spellID >= 400 && spellID < 406)
-			{
-				return SpellbookType.Samurai;
-			}
+            {
+                return SpellbookType.Samurai;
+            }
             else if (spellID >= 420 && spellID < 499)  //Espaço livre usado para novas magias da skill Feiticaria
             {
                 return SpellbookType.Feiticaria;
             }
             else if (spellID >= 500 && spellID < 508)
-			{
-				return SpellbookType.Ninja;
-			}
+            {
+                return SpellbookType.Ninja;
+            }
             else if (spellID >= 520 && spellID < 599)  //Espaço livre usado para novas magias da skill Arcanismo
             {
                 return SpellbookType.Arcanismo;
             }
             else if (spellID >= 600 && spellID < 617)
-			{
-				return SpellbookType.Arcanist;
-			}
+            {
+                return SpellbookType.Arcanist;
+            }
             else if (spellID >= 677 && spellID < 693)
-			{
-				return SpellbookType.Mystic;
-			}
+            {
+                return SpellbookType.Mystic;
+            }
             else if (spellID >= 700 && spellID < 746)
             {
                 return SpellbookType.SkillMasteries;
@@ -489,9 +489,17 @@ namespace Server.Items
             {
                 return SpellbookType.CosmosSolar;
             }
+
+            else if (spellID >= 771 && spellID < 790) //Espaço livre usado para novas magias da skill Cosmos Lunar
+            {
+                {
+                    return SpellbookType.CosmosLunar;
+                }
+            }
+
             else if (spellID >= 800 && spellID < 819) //Espaço livre usado para novas magias da skill Paladino
             {
-                return SpellbookType.Paladino; 
+                return SpellbookType.Paladino;
             }
             else if (spellID >= 820 && spellID < 899)  //Espaço livre usado para novas magias da skill Misticismo
             {
@@ -582,6 +590,14 @@ namespace Server.Items
         {
             return Find(from, -1, SpellbookType.CosmosSolar);
         }
+
+
+        public static Spellbook FindCosmosLunar(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.CosmosLunar);
+
+        }
+
         public static Spellbook FindClerigoDaVida(Mobile from)
         {
             return Find(from, -1, SpellbookType.ClerigoDaVida);
@@ -1504,6 +1520,9 @@ namespace Server.Items
                     break;
                 case 23:
                     type = SpellbookType.CosmosSolar;
+                    break;
+                case 24:
+                    type = SpellbookType.CosmosLunar;
                     break;
             }
 

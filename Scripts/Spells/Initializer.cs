@@ -259,11 +259,21 @@ namespace Server.Spells
             Register(752, typeof(CosmosSolar.MaoCosmicaSpell));
             Register(753, typeof(CosmosSolar.MiragemSpell));
             Register(754, typeof(CosmosSolar.AuraPsiquicaSpell));
-         
-            Register(756, typeof(CosmosSolar.ToqueCalmanteSpell));
-            Register(757, typeof(CosmosSolar.CampoDeExtaseSpell));
-            Register(758, typeof(CosmosSolar.ArremessoSpell));
-            
+            Register(755, typeof(CosmosSolar.ToqueCalmanteSpell));
+            Register(756, typeof(CosmosSolar.CampoDeExtaseSpell));
+            Register(757, typeof(CosmosSolar.ArremessoSpell));
+
+
+            // Magia de Cosmos Lunar
+            Register(771, typeof(CosmosLunar.ApertoDaMorteSpell));
+            Register(772, typeof(CosmosLunar.CeleridadeSpell));
+            Register(773, typeof(CosmosLunar.DrenarVidaSpell));
+            Register(774, typeof(CosmosLunar.ExplosaoPsiquicaSpell));
+            Register(775, typeof(CosmosLunar.IlusaoSpell));
+            Register(776, typeof(CosmosLunar.LancamentoSpell));
+            Register(777, typeof(CosmosLunar.RaioSpell));
+            Register(778, typeof(CosmosLunar.RedirecionarSpell));
+
 
 
             // MAGIAS DA SKILL FEITICARIA (MagiasFeiticaria)

@@ -16,7 +16,7 @@ using Server.Spells.Ninjitsu;
 using Server.Spells.Paladino;
 using Server.Spells.CosmosSolar;
 using Server.Spells.ClerigoDaVida;
-
+using Server.Spells.CosmosLunar;
 using Server.Spells.Seventh;
 using Server.Spells.Fourth;
 using Server.Targeting;

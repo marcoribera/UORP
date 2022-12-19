@@ -15,6 +15,7 @@ using Server.Spells.Second;
 using Server.Spells.Third;
 using Server.Spells.Fourth;
 using Server.Spells.CosmosSolar;
+using Server.Spells.CosmosLunar;
 using Server.Spells.ClerigoDaVida;
 using Server.Spells.Spellweaving;
 using Server.Targeting;
