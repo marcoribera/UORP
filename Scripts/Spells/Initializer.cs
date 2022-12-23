@@ -298,7 +298,7 @@ namespace Server.Spells
             Register(816, typeof(Paladino.EspiritoBenignoSpell));
 
 
-            // CLERIGO BOM
+            // CLERIGO DA VIDA
             Register(900, typeof(ClerigoDaVida.AlimentoDaVidaSpell));
             Register(901, typeof(ClerigoDaVida.ElevarAgilidadeSpell));
             Register(902, typeof(ClerigoDaVida.ElevarForcaSpell));
@@ -318,6 +318,31 @@ namespace Server.Spells
             Register(916, typeof(ClerigoDaVida.RemoverMaldicaoSpell));
             Register(917, typeof(ClerigoDaVida.ReviverSpell));
             Register(918, typeof(ClerigoDaVida.VidaEternaSpell));
+
+            // CLERIGO DOS MORTOS
+
+            Register(950, typeof(ClerigoDosMortos.AbrirFeridasSpell));
+            Register(951, typeof(ClerigoDosMortos.AlimentoDaMorteSpell));
+            Register(952, typeof(ClerigoDosMortos.CampoVenenosoSpell));
+            Register(953, typeof(ClerigoDosMortos.DrenarAgilidadeSpell));
+            Register(954, typeof(ClerigoDosMortos.DrenarEssenciaSpell));
+            Register(955, typeof(ClerigoDosMortos.DrenarForcaSpell));
+            Register(956, typeof(ClerigoDosMortos.DrenarInteligenciaSpell));
+            Register(957, typeof(ClerigoDosMortos.DrenarManaSpell));
+            Register(958, typeof(ClerigoDosMortos.DrenarQuintessenciaSpell));
+            Register(959, typeof(ClerigoDosMortos.EntorpecerSpell));
+            Register(960, typeof(ClerigoDosMortos.EnvenenarMenteSpell));
+            Register(961, typeof(ClerigoDosMortos.EnvenenarSpell));
+            Register(962, typeof(ClerigoDosMortos.ErguerCadaverSpell));
+            Register(963, typeof(ClerigoDosMortos.EscurecerVistaSpell));
+            Register(964, typeof(ClerigoDosMortos.FogoDaMorteSpell));
+            Register(965, typeof(ClerigoDosMortos.PactoDeSangueSpell));
+            Register(966, typeof(ClerigoDosMortos.ProtecaoDasTrevasSpell));
+            Register(967, typeof(ClerigoDosMortos.RitualLichSpell));
+            Register(968, typeof(ClerigoDosMortos.SonolenciaSpell));
+
+
+
 
 
 

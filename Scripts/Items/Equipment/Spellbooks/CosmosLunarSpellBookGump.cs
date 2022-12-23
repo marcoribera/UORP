@@ -38,7 +38,7 @@ namespace Server.Gumps
             AddButton(91, 50, 2235, 2235, PriorPage, GumpButtonType.Reply, 0);
             AddButton(362, 50, 2236, 2236, NextPage, GumpButtonType.Reply, 0);
 
-            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Cosmos Lunar</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Lunar</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
 
             if (page == 1)
             {

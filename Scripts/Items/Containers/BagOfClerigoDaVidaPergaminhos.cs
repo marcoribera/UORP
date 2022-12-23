@@ -2,16 +2,16 @@ using System;
 
 namespace Server.Items
 {
-    public class BagOfClerigoBomPergaminhos : Bag
+    public class BagOfClerigoDaVidaPergaminhos : Bag
     {
         [Constructable]
-        public BagOfClerigoBomPergaminhos()
+        public BagOfClerigoDaVidaPergaminhos()
             : this(1)
         {
         }
 
         [Constructable]
-        public BagOfClerigoBomPergaminhos(int amount)
+        public BagOfClerigoDaVidaPergaminhos(int amount)
         {
             this.DropItem(new AlimentoDaVidaScroll(amount));
             this.DropItem(new ElevarAgilidadeScroll(amount));
@@ -39,7 +39,7 @@ namespace Server.Items
 
         }
 
-        public BagOfClerigoBomPergaminhos(Serial serial)
+        public BagOfClerigoDaVidaPergaminhos(Serial serial)
             : base(serial)
         {
         }

@@ -17,6 +17,7 @@ using Server.Spells.Fourth;
 using Server.Spells.CosmosSolar;
 using Server.Spells.CosmosLunar;
 using Server.Spells.ClerigoDaVida;
+using Server.Spells.ClerigoDosMortos;
 using Server.Spells.Spellweaving;
 using Server.Targeting;
 using Server.Spells.SkillMasteries;

@@ -505,12 +505,18 @@ namespace Server.Items
             {
                 return SpellbookType.Misticismo;
             }
-            else if (spellID >= 900 && spellID < 949)  //Espaço livre usado para novas magias da skill Clerigoda Vida
+            else if (spellID >= 900 && spellID < 949)  //Espaço livre usado para novas magias da skill Clerigo da Vida
             {
                 return SpellbookType.ClerigoDaVida;
             }
+
+            else if (spellID >= 950 && spellID < 999)  //Espaço livre usado para novas magias da skill Clerigo dos Mortos
+            {
+                return SpellbookType.ClerigoDosMortos;
+            }
             return SpellbookType.Invalid;
-		}
+
+        }
 
 		public static Spellbook FindRegular(Mobile from)
 		{
@@ -602,7 +608,10 @@ namespace Server.Items
         {
             return Find(from, -1, SpellbookType.ClerigoDaVida);
         }
-
+        public static Spellbook FindClerigoDosMortos(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.ClerigoDosMortos);
+        }
         public static Spellbook Find(Mobile from, int spellID, SpellbookType type)
 		{
 			if (from == null)

@@ -14,8 +14,9 @@ namespace Server
         public const int NightLevel = 12;
         public const int DungeonLevel = 26;
         public const int JailLevel = 9;
+        public const int DarkCleric = 50;
 
-		private static int _LevelOverride = Int32.MinValue;
+        private static int _LevelOverride = Int32.MinValue;
 
         public static int LevelOverride
         {
