@@ -162,6 +162,8 @@ namespace Server.Spells
                     Register( 615, typeof( Spellweaving.ArcaneEmpowermentSpell ) );
                 }
 
+
+
                 if (Core.SA)
                 {
                     Register(677, typeof(Mysticism.NetherBoltSpell));
@@ -342,7 +344,17 @@ namespace Server.Spells
             Register(968, typeof(ClerigoDosMortos.SonolenciaSpell));
 
 
+            // ELEMENTARISTA
 
+            Register(620, typeof(Elementarista.AtaqueCongelanteSpell));
+            Register(621, typeof(Elementarista.AvalancheSpell));
+            Register(622, typeof(Elementarista.BolaDeGeloSpell));
+            Register(623, typeof(Elementarista.CampoGelidoSpell));
+            Register(624, typeof(Elementarista.TempestadeCongelanteSpell));
+            Register(625, typeof(Elementarista.CongelarSpell));
+            Register(626, typeof(Elementarista.MorteMassivaSpell));
+            Register(627, typeof(Elementarista.NuvemGasosaSpell));
+      
 
 
 

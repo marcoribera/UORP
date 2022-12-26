@@ -336,6 +336,25 @@
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\RemoverMaldicaoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\ReviverScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\VidaEternaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\AbrirFeridasScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\AlimentoDaMorteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\CampoVenenosoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarAgilidadeScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarEssenciaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarForcaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarInteligenciaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarManaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\DrenarQuintessenciaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\EntorpecerScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\EnvenenarMenteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\EnvenenarScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\ErguerCadaverScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\EscurecerVistaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\FogoDaMorteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\PactoDeSangueScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\ProtecaoDasTrevasScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\RitualLichScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosClerigoDosMortos\SonolenciaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosCosmosLunar\ApertoDaMorteScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosCosmosLunar\CeleridadeScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosCosmosLunar\DrenarVidaScroll.cs" />
@@ -352,6 +371,14 @@
     <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MaoCosmicaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosCosmosSolar\MiragemScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosCosmosSolar\ToqueCalmanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\AtaqueCongelanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\AvalancheScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\BolaDeGeloScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\CampoGelidoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\CongelarScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\MorteMassivaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\NuvemGasosaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosElementarista\TempestadeCongelanteScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\AgilidadeDoDevotoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\ArmaSagradaScroll.cs" />
@@ -2176,13 +2203,61 @@
     <Compile Include="Mobiles\Custom\Caveman\CavemanNeck.cs" />
     <Compile Include="Mobiles\Custom\Caveman\CavemanShirt.cs" />
     <Compile Include="Mobiles\Custom\Caveman\Flyswatter.cs" />
+    <Compile Include="Mobiles\Custom\Critters\TLSMiniAranha.cs" />
+    <Compile Include="Mobiles\Custom\Critters\TLSMiniBesouro.cs" />
+    <Compile Include="Mobiles\Custom\Critters\TLSMiniEscorpiao.cs" />
+    <Compile Include="Mobiles\Custom\Critters\TLSMiniLagarto.cs" />
+    <Compile Include="Mobiles\Custom\Critters\TLSMiniSapo.cs" />
+    <Compile Include="Mobiles\Custom\Demonios\TLSArqueDemonio.cs" />
+    <Compile Include="Mobiles\Custom\Demonios\TLSArqueDemonio2.cs" />
+    <Compile Include="Mobiles\Custom\Demonios\TLSDemonioDoCaos.cs" />
     <Compile Include="Mobiles\Custom\DruidaEnloquecido\DruidaEnlouquecido.cs" />
     <Compile Include="Mobiles\Custom\DruidaEnloquecido\DruidCloak.cs" />
     <Compile Include="Mobiles\Custom\DruidaEnloquecido\Lokisrags.cs" />
     <Compile Include="Mobiles\Custom\DruidaEnloquecido\RingOfTheDruid.cs" />
     <Compile Include="Mobiles\Custom\DruidaEnloquecido\RobeOfTheDruid.cs" />
+    <Compile Include="Mobiles\Custom\elementals\TLSElementalDeAcido.cs" />
+    <Compile Include="Mobiles\Custom\elementals\TLSElementalDeAgua.cs" />
+    <Compile Include="Mobiles\Custom\elementals\TLSElementalDeCristal.cs" />
+    <Compile Include="Mobiles\Custom\elementals\TLSElementalDeLava.cs" />
+    <Compile Include="Mobiles\Custom\elementals\TLSElementalDeTerra.cs" />
+    <Compile Include="Mobiles\Custom\goblins\TLSGoblinArqueiro.cs" />
+    <Compile Include="Mobiles\Custom\goblins\TLSGoblinArqueiro2.cs" />
+    <Compile Include="Mobiles\Custom\goblins\TLSGoblinMachado.cs" />
+    <Compile Include="Mobiles\Custom\goblins\TLSGoblinMachado2.cs" />
+    <Compile Include="Mobiles\Custom\goblins\TLSGoblinMontado.cs" />
     <Compile Include="Mobiles\Custom\Gollum Sméagol.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHCobra.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHCobra6Bracos.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHCobracabeca.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHCobracabeca2.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagarto.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagarto2.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagarto3.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagarto4.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagartoDeMachado.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagartoDePorrete.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagartoGrande.cs" />
+    <Compile Include="Mobiles\Custom\Homens-Repiteis\TLSHLagartoGrande2.cs" />
+    <Compile Include="Mobiles\Custom\MiniBosses\Anthony.cs" />
+    <Compile Include="Mobiles\Custom\MiniBosses\Carnage.cs" />
+    <Compile Include="Mobiles\Custom\MiniBosses\GolemMecanico.cs" />
+    <Compile Include="Mobiles\Custom\MiniBosses\Pedroso.cs" />
+    <Compile Include="Mobiles\Custom\MiniBosses\Teia.cs" />
     <Compile Include="Mobiles\Custom\Minion\Minion.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSAntilopeMagico.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSCavaloDeArmadura.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSCavaloDeFogo.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSDragaoSemAsa.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSGrifo.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSLoboDeArmadura.cs" />
+    <Compile Include="Mobiles\Custom\Montarias\TLSmamute.cs" />
+    <Compile Include="Mobiles\Custom\Orcs\TLSOrcArqueiro.cs" />
+    <Compile Include="Mobiles\Custom\Orcs\TLSOrcCacique.cs" />
+    <Compile Include="Mobiles\Custom\Orcs\TLSOrcCampeao.cs" />
+    <Compile Include="Mobiles\Custom\Orcs\TLSOrcGuerreiro.cs" />
+    <Compile Include="Mobiles\Custom\Orcs\TLSOrcPaje.cs" />
+    <Compile Include="Mobiles\Custom\Spell\GasCloud.cs" />
     <Compile Include="Mobiles\Custom\WesternOrcs\WesternOrcWarrior.cs" />
     <Compile Include="Mobiles\Custom\WesternOrcs\WesternWarg.cs" />
     <Compile Include="Mobiles\Custom\WesternOrcs\WesternWargRider.cs" />
@@ -13532,6 +13607,15 @@
     <Compile Include="Spells\Eighth\WaterElemental.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spells\Elementarista\AtaqueCongelanteSpell.cs" />
+    <Compile Include="Spells\Elementarista\AvalancheSpell.cs" />
+    <Compile Include="Spells\Elementarista\BolaDeGeloSpell.cs" />
+    <Compile Include="Spells\Elementarista\CampoDeGeloSpell.cs" />
+    <Compile Include="Spells\Elementarista\ChuvaDeGranizoSpell.cs" />
+    <Compile Include="Spells\Elementarista\CongelarSpell.cs" />
+    <Compile Include="Spells\Elementarista\ElementaristaSpell.cs" />
+    <Compile Include="Spells\Elementarista\MorteMassivaSpell.cs" />
+    <Compile Include="Spells\Elementarista\NuvemGasosaSpell.cs" />
     <Compile Include="Spells\Fifth\BladeSpirits.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -13777,6 +13861,9 @@
     <Compile Include="Spells\Reagent.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Spells\research pesquisa\ResearchBag.cs" />
+    <Compile Include="Spells\research pesquisa\ResearchFunctions.cs" />
+    <Compile Include="Spells\research pesquisa\ResearchSpell.cs" />
     <Compile Include="Spells\Second\Agility.cs">
       <SubType>Code</SubType>
     </Compile>

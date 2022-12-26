@@ -170,7 +170,8 @@ namespace Server.Spells
             "Druida", //Skill Misticismo //Magias de plantas, baseadas em clima e metamorfose em animais
             "Monge", //Skill Misticismo //Magias de projeção astral, curas para si (vida e veneno), buffs de combate para si
             "Bardo", //Skill Caos //buffs e debuffs, invocações festivas
-            "Trapaceiro" //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+            "Trapaceiro", //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
+            "Elementarista" //Skill Arcanismo magias de manipulação de elementos
 
         };
 

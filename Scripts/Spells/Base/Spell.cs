@@ -23,6 +23,7 @@ using Server.Targeting;
 using Server.Spells.SkillMasteries;
 using System.Reflection;
 using Server.Spells.Mysticism;
+using Server.Spells.Elementarista;
 using System.Linq;
 #endregion
 
@@ -716,8 +717,16 @@ namespace Server.Spells
 				m_Caster.SendLocalizedMessage(500641); // Your concentration is disturbed, thus ruining thy spell.
 			}
 		}
-
-		public virtual bool CheckCast()
+        public virtual bool CheckCast(Mobile caster)
+        {
+            if (caster.Blessed)
+            {
+                caster.SendMessage("You can't cast anything in this state.");
+                return false;
+            }
+            return true;
+        }
+        public virtual bool CheckCast()
 		{
             #region High Seas
             if (Server.Multis.BaseBoat.IsDriving(m_Caster) && m_Caster.AccessLevel == AccessLevel.Player)

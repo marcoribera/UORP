@@ -15,6 +15,7 @@ using Server.Spells.Necromancy;
 using Server.Spells.Ninjitsu;
 using Server.Spells.Paladino;
 using Server.Spells.CosmosSolar;
+using Server.Spells.Elementarista;
 using Server.Spells.ClerigoDaVida;
 using Server.Spells.ClerigoDosMortos;
 using Server.Spells.CosmosLunar;

@@ -47,7 +47,8 @@ namespace Server.Items
         Bardo, //Skill Caos //buffs e debuffs, invocações festivas
         Trapaceiro, //Skill Ninjitsu //Distração, buffs para si para as habilidades ladinas ou distrações (Debuffs para percepção dos outros)
         CosmosSolar, // Kitah solar
-        CosmosLunar // Kitah Lunar
+        CosmosLunar, // Kitah Lunar
+        Elementarista // magias para controle dos elementos
     }
 
 	public enum BookQuality
@@ -477,6 +478,13 @@ namespace Server.Items
             {
                 return SpellbookType.Arcanist;
             }
+
+            else if (spellID >= 620 && spellID < 660) // //Espaço livre usado para novas magias da skill Elementarista
+            {
+                return SpellbookType.Elementarista;
+            }
+
+
             else if (spellID >= 677 && spellID < 693)
             {
                 return SpellbookType.Mystic;
@@ -1532,6 +1540,9 @@ namespace Server.Items
                     break;
                 case 24:
                     type = SpellbookType.CosmosLunar;
+                    break;
+                case 25:
+                    type = SpellbookType.Elementarista;
                     break;
             }
 
