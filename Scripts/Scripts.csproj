@@ -380,6 +380,26 @@
     <Compile Include="Items\Consumables\PergaminhosElementarista\NuvemGasosaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosElementarista\TempestadeCongelanteScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosFeiticarias\PergaminhoOlhosDaCoruja.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\AtaqueElementalScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\CorrerNoVentoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\DisciplinaMentalScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\EsferaDeKiScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\FerimentoInternoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\GolpeAscendenteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\GolpeAtordoanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\GolpesFortesScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\GolpesVelozesScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\InvestidaAterradoraScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\MenteVelozScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\MetabolizarFerimentoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\MetabolizarVenenoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\PalmaExplosivaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\RigidezAprimoradaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\SaltoAprimoradoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\SocoDoKiScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\SocoTectonicoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\SocoVulcanicoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosMonge\SuperacaoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\AgilidadeDoDevotoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\ArmaSagradaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosPaladino\BanimentoCelestialScroll.cs" />
@@ -13696,6 +13716,27 @@
     </Compile>
     <Compile Include="Spells\MagiasFeiticaria\MagiaFeiticaria.cs" />
     <Compile Include="Spells\MagiasFeiticaria\Primeiro\OlhosDaCoruja.cs" />
+    <Compile Include="Spells\Monge\AtaqueElementalSpell.cs" />
+    <Compile Include="Spells\Monge\CorrerNoVentoSpell.cs" />
+    <Compile Include="Spells\Monge\DisciplinaMentalSpell.cs" />
+    <Compile Include="Spells\Monge\EsferaDeKiSpell.cs" />
+    <Compile Include="Spells\Monge\FerimentoInternoSpell.cs" />
+    <Compile Include="Spells\Monge\GolpeAscendenteSpell.cs" />
+    <Compile Include="Spells\Monge\GolpeAtordoanteSpell.cs" />
+    <Compile Include="Spells\Monge\GolpesFortesSpell.cs" />
+    <Compile Include="Spells\Monge\GolpesVelozesSpell.cs" />
+    <Compile Include="Spells\Monge\InvestidaAterradoraSpell.cs" />
+    <Compile Include="Spells\Monge\MenteVelozSpell.cs" />
+    <Compile Include="Spells\Monge\MetabolizarFerimentoSpell.cs" />
+    <Compile Include="Spells\Monge\MetabolizarVenenoSpell.cs" />
+    <Compile Include="Spells\Monge\MongeSpell.cs" />
+    <Compile Include="Spells\Monge\PalmaExplosivaSpell.cs" />
+    <Compile Include="Spells\Monge\RigidezAprimoradaSpell.cs" />
+    <Compile Include="Spells\Monge\SaltoAprimoradoSpell.cs" />
+    <Compile Include="Spells\Monge\SocoDoKiSpell.cs" />
+    <Compile Include="Spells\Monge\SocoTectonicoSpell.cs" />
+    <Compile Include="Spells\Monge\SocoVulcanicoSpell.cs" />
+    <Compile Include="Spells\Monge\SuperacaoSpell.cs" />
     <Compile Include="Spells\Mysticism\MysticSpell.cs">
       <SubType>Code</SubType>
     </Compile>

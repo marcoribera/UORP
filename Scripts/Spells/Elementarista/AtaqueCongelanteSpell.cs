@@ -12,8 +12,8 @@ namespace Server.Spells.Elementarista
            "Ataque Congelante", "Frigore Impetum",
            245,
            9042,
-           Reagent.Nightshade,
-           Reagent.SpidersSilk);
+           Reagent.SulfurousAsh,
+           Reagent.PenaETinteiro);
 
 
         public AtaqueCongelanteSpell(Mobile caster, Item scroll)

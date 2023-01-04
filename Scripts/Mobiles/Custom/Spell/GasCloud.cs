@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "a strange mist" )]
+	[CorpseName( "Uma névoa estranha" )]
 	public class GasCloud : BaseCreature
 	{
 		public override bool DeleteCorpseOnDeath { get { return true; } }
@@ -32,7 +32,7 @@ namespace Server.Mobiles
 
 			Name = "a poison cloud";
 			Body = 273;
-			Hue = 0xB45;
+			//Hue = 0xB45;
 			BaseSoundID = 655;
 
 			SetDamageType( ResistanceType.Poison, 100 );

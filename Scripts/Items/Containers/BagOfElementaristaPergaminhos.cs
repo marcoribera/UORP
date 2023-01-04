@@ -17,7 +17,7 @@ namespace Server.Items
             this.DropItem(new AvalancheScroll(amount));
             this.DropItem(new BolaDeGeloScroll(amount));
             this.DropItem(new CampoGelidoScroll(amount));
-            this.DropItem(new TempestadeCongelanteScroll(amount));
+            this.DropItem(new TempestadeGelidaScroll(amount));
             this.DropItem(new CongelarScroll(amount));
             this.DropItem(new MorteMassivaScroll(amount));
             this.DropItem(new NuvemGasosaScroll(amount));

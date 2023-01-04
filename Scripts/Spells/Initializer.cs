@@ -350,13 +350,33 @@ namespace Server.Spells
             Register(621, typeof(Elementarista.AvalancheSpell));
             Register(622, typeof(Elementarista.BolaDeGeloSpell));
             Register(623, typeof(Elementarista.CampoGelidoSpell));
-            Register(624, typeof(Elementarista.TempestadeCongelanteSpell));
+            Register(624, typeof(Elementarista.TempestadeGelidaSpell));
             Register(625, typeof(Elementarista.CongelarSpell));
             Register(626, typeof(Elementarista.MorteMassivaSpell));
             Register(627, typeof(Elementarista.NuvemGasosaSpell));
-      
 
 
+            // MONGE
+            Register(860, typeof(Monge.AtaqueElementalSpell));
+            Register(861, typeof(Monge.CorrerNoVentoSpell));
+            Register(862, typeof(Monge.DisciplinaMentalSpell));
+            Register(863, typeof(Monge.EsferaDeKiSpell));
+            Register(864, typeof(Monge.FerimentoInternoSpell));
+            Register(865, typeof(Monge.GolpeAscendenteSpell));
+            Register(866, typeof(Monge.GolpeAtordoanteSpell));
+            Register(867, typeof(Monge.GolpesFortesSpell));
+            Register(868, typeof(Monge.GolpesVelozesSpell));
+            Register(869, typeof(Monge.InvestidaAterradoraSpell));
+            Register(870, typeof(Monge.MenteVelozSpell));
+            Register(871, typeof(Monge.MetabolizarFerimentoSpell));
+            Register(872, typeof(Monge.MetabolizarVenenoSpell));
+            Register(873, typeof(Monge.PalmaExplosivaSpell));
+            Register(874, typeof(Monge.RigidezAprimoradaSpell));
+            Register(875, typeof(Monge.SaltoAprimoradoSpell));
+            Register(876, typeof(Monge.SocoDoKiSpell));
+            Register(877, typeof(Monge.SocoTectonicoSpell));
+            Register(878, typeof(Monge.SocoVulcanicoSpell));
+            Register(879, typeof(Monge.SuperacaoSpell));
 
 
             // First circle

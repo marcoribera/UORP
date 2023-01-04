@@ -18,8 +18,8 @@ namespace Server.Spells.Elementarista
 
 
        
-         Reagent.Nightshade,
-         Reagent.SpidersSilk);
+         Reagent.DragonBlood,
+         Reagent.PenaETinteiro);
 
 
         public MorteMassivaSpell(Mobile caster, Item scroll)

@@ -22,6 +22,8 @@ using Server.Spells.Ninjitsu;
 using Server.Spells.Sixth;
 using Server.Spells.Spellweaving;
 using Server.Spells.SkillMasteries;
+using Server.Spells.Monge;
+
 #endregion
 
 namespace Server.Items
@@ -404,8 +406,13 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public ConsecratedWeaponContext ConsecratedContext { get; set; }
 
+
+
         [CommandProperty(AccessLevel.GameMaster)]
         public ArmaSagradaContext ArmaSagradaContext { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public AtaqueElementalContext AtaqueElementalContext { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DesafioProfanoContext DesafioProfanoContext { get; set; }

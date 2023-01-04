@@ -11,8 +11,8 @@ namespace Server.Spells.Elementarista
           "Bola de Gelo", "Glacies Esfera",
           236,
           9031,
-          Reagent.Nightshade,
-          Reagent.SpidersSilk);
+          Reagent.Vela,
+          Reagent.Incenso);
 
 
         public BolaDeGeloSpell(Mobile caster, Item scroll)

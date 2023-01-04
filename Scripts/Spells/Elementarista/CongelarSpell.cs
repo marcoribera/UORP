@@ -15,8 +15,8 @@ namespace Server.Spells.Elementarista
          236,
          9031,
 
-         Reagent.Nightshade,
-         Reagent.SpidersSilk);
+         Reagent.Vela,
+         Reagent.SulfurousAsh);
         public int CirclePower = 1;
 
 
@@ -89,7 +89,7 @@ namespace Server.Spells.Elementarista
 					if ( damage > 80 ){ damage = 80.0; }
 					if ( damage < 1 ){ damage = 1.0; }
 
-				source.MovingParticles( m, 0x28EF, 5, 0, false, false, 0xB77 , 0, 3600, 0, 0, 0 );
+				source.MovingParticles( m, 0x1FBB, 3, 1, false, false, 1152, 0, 3600, 0, 0, 0 );
 				source.PlaySound( 0x1E5 );
 
 				SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );

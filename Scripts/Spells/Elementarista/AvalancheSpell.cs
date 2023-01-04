@@ -14,8 +14,9 @@ namespace Server.Spells.Elementarista
           "Avalanche", "Lapsus Glaciem",
           233,
           9042,
-          Reagent.Nightshade,
-          Reagent.SpidersSilk);
+          Reagent.Vela,
+          Reagent.Incenso,
+          Reagent.PenaETinteiro);
 
 
         public AvalancheSpell(Mobile caster, Item scroll)

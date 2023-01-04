@@ -509,10 +509,15 @@ namespace Server.Items
             {
                 return SpellbookType.Paladino;
             }
-            else if (spellID >= 820 && spellID < 899)  //Espaço livre usado para novas magias da skill Misticismo
+            else if (spellID >= 820 && spellID < 859)  //Espaço livre usado para novas magias da skill Misticismo
             {
                 return SpellbookType.Misticismo;
             }
+            else if (spellID >= 860 && spellID < 880)  //Espaço livre usado para novas magias da skill Misticismo
+            {
+                return SpellbookType.Monge;
+            }
+
             else if (spellID >= 900 && spellID < 949)  //Espaço livre usado para novas magias da skill Clerigo da Vida
             {
                 return SpellbookType.ClerigoDaVida;
@@ -611,6 +616,13 @@ namespace Server.Items
             return Find(from, -1, SpellbookType.CosmosLunar);
 
         }
+
+        public static Spellbook FindMonge(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Monge);
+
+        }
+
 
         public static Spellbook FindClerigoDaVida(Mobile from)
         {

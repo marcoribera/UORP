@@ -19,6 +19,7 @@ using Server.Spells.Elementarista;
 using Server.Spells.ClerigoDaVida;
 using Server.Spells.ClerigoDosMortos;
 using Server.Spells.CosmosLunar;
+using Server.Spells.Monge;
 using Server.Spells.Seventh;
 using Server.Spells.Fourth;
 using Server.Targeting;

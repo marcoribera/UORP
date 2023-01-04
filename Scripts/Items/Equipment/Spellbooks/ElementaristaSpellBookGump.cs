@@ -77,7 +77,7 @@ namespace Server.Gumps
                                 SpellName = "Campo Gélido";
                                 break;
                             case 624:
-                                SpellName = "Tempestade Congelante";
+                                SpellName = "Tempestade Gélida";
                                 break;
                            case 625:
                                 SpellName = "Congelar";
@@ -112,7 +112,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 620, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Ataque Congelante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Danifica um inimigo com uma coluna de cristais de gelo .</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Frigore Impetum</I><BR>Skill: 67<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Nox Crystal, Pena e Tinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Frigore Impetum</I><BR>Skill: 67<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: SulfurousAsh, PenaETinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -126,7 +126,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 621, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Avalanche</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Causa dano aos inimigos próximos com queda de gelo e neve que causam dano. </BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Lapsus Glaciem</I><BR>Skill: 70<BR>Mana: 42<BR>Eficiência: 100%<BR>Reagentes: Vela, Bat Wing.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Lapsus Glaciem</I><BR>Skill: 70<BR>Mana: 42<BR>Eficiência: 100%<BR>Reagentes: Vela, Incenso, PenaETinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -155,7 +155,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 623, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Campo Gélido</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma parede de gelo que pode causar.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychicae Fracor</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 100%<BR>Reagentes: Bloodmoss, Grave Dust.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Psychicae Fracor</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 100%<BR>Reagentes: Bloodmoss, SpidersSilk.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -167,9 +167,9 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 624))
                 {
                     AddButton(143, 76, 2242, 2242, 624, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Tempestade Congelante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Tempestade Gélida</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma tempestade de gelo ao redor do inimigo, .</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Torpore Tempestate</I><BR>Skill: 55<BR>Mana: 28<BR>Eficiência: 100%<BR>Reagentes: Incenso, Daemon Blood.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Torpore Tempestate</I><BR>Skill: 55<BR>Mana: 28<BR>Eficiência: 100%<BR>Reagentes: Incenso, PenaETinteiro.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -212,7 +212,7 @@ namespace Server.Gumps
                     AddButton(143, 76, 2242, 2242, 627, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Nuvem Gasosa</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Cria uma nuvem gasosa de névoa venenosa que consumirá os inimigos próximos.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Rursus Directum</I><BR>Skill: 45<BR>Mana: 13<BR>Eficiência: 60%<BR>Reagentes: Nox Crystal, Vela.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Rursus Directum</I><BR>Skill: 45<BR>Mana: 13<BR>Eficiência: 60%<BR>Reagentes: DragonBlood, Vela, SpiderSilk.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
                 {
@@ -234,7 +234,7 @@ namespace Server.Gumps
                 if (page > 9) { page = 1; }
                 from.SendGump(new ElementaristaSpellbookGump(from, m_Book, page));
             }
-            else if (info.ButtonID > 620)
+            else if (info.ButtonID > 619)
             {
                 switch (info.ButtonID)
                 {
@@ -251,7 +251,7 @@ namespace Server.Gumps
                         new CampoGelidoSpell(from, null).Cast();
                         break;
                     case 624:
-                        new TempestadeCongelanteSpell(from, null).Cast();
+                        new TempestadeGelidaSpell(from, null).Cast();
                         break;
                     case 625:
                         new CongelarSpell(from, null).Cast();

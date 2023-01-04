@@ -11,7 +11,8 @@ namespace Server.Spells.Elementarista
          "Nuvem Gasosa", "Pneuma Nubes",
          260,
          9032,
-         Reagent.Nightshade,
+         Reagent.DragonBlood,
+         Reagent.Vela,
          Reagent.SpidersSilk);
 
 

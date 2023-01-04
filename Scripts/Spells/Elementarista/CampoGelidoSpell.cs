@@ -18,7 +18,7 @@ namespace Server.Spells.Elementarista
          236,
          9031,
 
-         Reagent.Nightshade,
+         Reagent.Bloodmoss,
          Reagent.SpidersSilk);
 
 

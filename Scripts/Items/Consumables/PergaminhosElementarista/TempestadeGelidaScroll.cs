@@ -2,25 +2,25 @@ using System;
 
 namespace Server.Items
 {
-    public class TempestadeCongelanteScroll : SpellScroll
+    public class TempestadeGelidaScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public TempestadeCongelanteScroll()
+        public TempestadeGelidaScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public TempestadeCongelanteScroll(int amount)
+        public TempestadeGelidaScroll(int amount)
             : base(624, 0x1F30, amount)
         {
-            Name = "Tempestade Congelante";
+            Name = "Tempestade Gélida";
             Movable = true;
             Hue = 6;
         }
 
-        public TempestadeCongelanteScroll(Serial serial)
+        public TempestadeGelidaScroll(Serial serial)
             : base(serial)
         {
            

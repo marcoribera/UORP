@@ -5,21 +5,21 @@ using Server.Mobiles;
 
 namespace Server.Spells.Elementarista
 {
-	public class TempestadeCongelanteSpell : ElementaristaSpell
+	public class TempestadeGelidaSpell : ElementaristaSpell
     {
 
 
 
         private static readonly SpellInfo m_Info = new SpellInfo(
-         "Tempestade Congelante", "Torpore Tempestate",
+         "Tempestade Gélida", "Torpore Tempestate",
          230,
          9041,
 
-         Reagent.Nightshade,
-         Reagent.SpidersSilk);
+         Reagent.Incenso,
+         Reagent.PenaETinteiro);
 
 
-        public TempestadeCongelanteSpell(Mobile caster, Item scroll)
+        public TempestadeGelidaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -128,9 +128,9 @@ namespace Server.Spells.Elementarista
 
 		private class InternalTarget : Target
 		{
-			private TempestadeCongelanteSpell m_Owner;
+			private TempestadeGelidaSpell m_Owner;
 
-			public InternalTarget(TempestadeCongelanteSpell owner ): base( Core.ML ? 10 : 12, false, TargetFlags.Harmful )
+			public InternalTarget(TempestadeGelidaSpell owner ): base( Core.ML ? 10 : 12, false, TargetFlags.Harmful )
 			{
 				m_Owner = owner;
 			}
