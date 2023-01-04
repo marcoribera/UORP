@@ -47,7 +47,7 @@ namespace Server.Spells.Algoz
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Cunning, 1075843, length, m, percentage.ToString()));
 
-                    m.FixedParticles(0x3779, 10, 15, 5011, 31, 3, EffectLayer.Head); //é pra ser um vermelho 31
+                    m.FixedParticles(0x3779, 10, 15, 5011, SpellEffectHue, 3, EffectLayer.Head); //é pra ser um vermelho 31
                     m.PlaySound(0x1EB);
                 }
             }

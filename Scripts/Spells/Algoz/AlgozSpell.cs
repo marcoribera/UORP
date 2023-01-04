@@ -8,6 +8,7 @@ namespace Server.Spells.Algoz
         //                                            Circulo:  1  2  3   4   5   6   7   8   9   10   11
         private static readonly int[] m_ManaTable = new int[] { 4, 6, 9, 13, 19, 28, 42, 63, 94, 141, 211};
         private const double ChanceOffset = 20.0, ChanceLength = 120.0 / 10.0; //originalmente era: ChanceOffset = 20.0, ChanceLength = 100.0 /7.0
+        protected const int SpellEffectHue = 1070;
         public AlgozSpell(Mobile caster, Item scroll, SpellInfo info)
             : base(caster, scroll, info)
         {
