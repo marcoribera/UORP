@@ -1,4 +1,5 @@
 using System;
+using System.Web.UI.WebControls;
 using Server.Targeting;
 
 namespace Server.Spells.Monge
@@ -34,18 +35,51 @@ namespace Server.Spells.Monge
             }
         }
 
-        public override void OnCast()
+
+      /*  public static void EndCunningEffect(Mobile m)  //primeiro preciso remover o bonus
         {
-            this.Caster.Target = new InternalTarget(this);
+            if (m_Table.Contains(m))   // preciso achar o m.table
+            {
+                StatusBonus[] status = (StatusBonus[])m_Table[m];
+
+                if (status != null)
+                {
+                    for (int i = 0; i < status.Length; ++i)
+                        m.RemoveStatusBonus(status[i]);
+                }
+
+                m_Table.Remove(m);
+                BuffInfo.RemoveBuff(m, BuffIcon.Cunning);
+            }
         }
 
-        public void Target(Mobile m)
+
+        public override bool CheckCast()   // preciso adicionar um check para dizer se a magia já está em efeito
         {
-            if (!this.Caster.CanSee(m))
+            if (Core.AOS)
+                return true;
+
+            if (this.Caster.newInt > 0) //não sei como declarar a variavel que vai dizer que a magia já está em efeito
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
+                this.Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
+                return false;
             }
-            else if (this.CheckBSequence(m))
+            else if (!this.Caster.CanBeginAction(typeof(DefensiveSpell)))
+            {
+                this.Caster.SendLocalizedMessage(1005385); // The spell will not adhere to you at this time.
+                return false;
+            }
+
+            return true;
+        }*/
+
+
+
+        public override void OnCast()
+        {
+            Mobile m = this.Caster;
+       
+            if (this.CheckBSequence(m))
             {
                 int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
                 int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
@@ -71,27 +105,5 @@ namespace Server.Spells.Monge
             this.FinishSequence();
         }
 
-        private class InternalTarget : Target
-        {
-            private readonly MenteVelozSpell m_Owner;
-            public InternalTarget(MenteVelozSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
-        }
     }
 }

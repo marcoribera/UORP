@@ -13,7 +13,7 @@ using Server.Spells.SkillMasteries;
 namespace Server.Spells.Monge
 {
     //public class InvestidaAterradoraSpell : NinjaMove observar se os requisitos dos moves precisam ser adicionados em mongespell.cs
-    public class InvestidaAterradoraSpell : MongeSpell
+    public class InvestidaFatalSpell : MongeSpell
     {
 
         private static readonly SpellInfo m_Info = new SpellInfo(
@@ -24,7 +24,7 @@ namespace Server.Spells.Monge
 
         
         private static readonly Hashtable m_Table = new Hashtable();
-        public InvestidaAterradoraSpell(Mobile caster, Item scroll)
+        public InvestidaFatalSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }

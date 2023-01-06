@@ -366,12 +366,12 @@ namespace Server.Spells
             Register(866, typeof(Monge.GolpeAtordoanteSpell));
             Register(867, typeof(Monge.GolpesFortesSpell));
             Register(868, typeof(Monge.GolpesVelozesSpell));
-            Register(869, typeof(Monge.InvestidaAterradoraSpell));
+            Register(869, typeof(Monge.InvestidaFatalSpell));
             Register(870, typeof(Monge.MenteVelozSpell));
-            Register(871, typeof(Monge.MetabolizarFerimentoSpell));
-            Register(872, typeof(Monge.MetabolizarVenenoSpell));
+            Register(871, typeof(Monge.MetabolizarFeridaSpell));
+            Register(872, typeof(Monge.SuprimirVenenoSpell));
             Register(873, typeof(Monge.PalmaExplosivaSpell));
-            Register(874, typeof(Monge.RigidezAprimoradaSpell));
+            Register(874, typeof(Monge.RigidezPerfeitaSpell));
             Register(875, typeof(Monge.SaltoAprimoradoSpell));
             Register(876, typeof(Monge.SocoDoKiSpell));
             Register(877, typeof(Monge.SocoTectonicoSpell));

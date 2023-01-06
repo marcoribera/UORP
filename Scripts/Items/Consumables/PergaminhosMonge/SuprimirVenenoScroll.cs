@@ -2,33 +2,33 @@ using System;
 
 namespace Server.Items
 {
-    public class GolpesVelozesScroll : SpellScroll
+    public class SuprimirVenenoScroll : SpellScroll
     {
         [Constructable]
-        public GolpesVelozesScroll()
+        public SuprimirVenenoScroll()
             : this(1)
         {
         }
 
         [Constructable]
-        public GolpesVelozesScroll(int amount)
-            : base(868, 0x1F33, amount)
+        public SuprimirVenenoScroll(int amount)
+            : base(872, 0x1F33, amount)
         {
             Hue = 47;
+
         }
 
-        public GolpesVelozesScroll(Serial ser)
+        public SuprimirVenenoScroll(Serial ser)
             : base(ser)
         {
         }
-
         public override int LabelNumber  //TODO: Adicionar os nomes dos novos itens no cliloc
         {
             get
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 868; //Criar entrada no CLILOC
+                    return 2000000 + 872; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

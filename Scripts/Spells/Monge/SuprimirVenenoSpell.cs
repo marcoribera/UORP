@@ -3,7 +3,7 @@ using Server.Targeting;
 
 namespace Server.Spells.Monge
 {
-    public class MetabolizarVenenoSpell : MongeSpell
+    public class SuprimirVenenoSpell : MongeSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Metabolizar Veneno", "Venenum Expellere",
@@ -16,7 +16,7 @@ namespace Server.Spells.Monge
 
         public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
 
-        public MetabolizarVenenoSpell(Mobile caster, Item scroll)
+        public SuprimirVenenoSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -119,8 +119,8 @@ namespace Server.Spells.Monge
 
         private class InternalTarget : Target
         {
-            private readonly MetabolizarVenenoSpell m_Owner;
-            public InternalTarget(MetabolizarVenenoSpell owner)
+            private readonly SuprimirVenenoSpell m_Owner;
+            public InternalTarget(SuprimirVenenoSpell owner)
                 : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
             {
                 this.m_Owner = owner;

@@ -5,10 +5,10 @@ using Server.Targeting;
 
 namespace Server.Spells.Monge
 {
-    public class MetabolizarFerimentoSpell : MongeSpell
+    public class MetabolizarFeridaSpell : MongeSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Metabolizar Ferimento", "Expellere Injuria",
+            "Metabolizar Ferida", "Expellere Injuria",
             224,
             9061,
             Reagent.Garlic,
@@ -17,7 +17,7 @@ namespace Server.Spells.Monge
 
         public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
 
-        public MetabolizarFerimentoSpell(Mobile caster, Item scroll)
+        public MetabolizarFeridaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -96,8 +96,8 @@ namespace Server.Spells.Monge
 
         public class InternalTarget : Target
         {
-            private readonly MetabolizarFerimentoSpell m_Owner;
-            public InternalTarget(MetabolizarFerimentoSpell owner)
+            private readonly MetabolizarFeridaSpell m_Owner;
+            public InternalTarget(MetabolizarFeridaSpell owner)
                 : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
             {
                 this.m_Owner = owner;

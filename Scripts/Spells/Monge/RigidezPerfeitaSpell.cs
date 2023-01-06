@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Server.Spells.Monge
 {
-    public class RigidezAprimoradaSpell : MongeSpell
+    public class RigidezPerfeitaSpell : MongeSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Rigidez aprimorada", "Optimum Rigoris",
@@ -32,7 +32,7 @@ namespace Server.Spells.Monge
             }
         }
         private static readonly Hashtable m_Table = new Hashtable();
-        public RigidezAprimoradaSpell(Mobile caster, Item scroll)
+        public RigidezPerfeitaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
         }
@@ -145,7 +145,7 @@ namespace Server.Spells.Monge
                 {
                     if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                     {
-                        int value = (int)(this.Caster.Skills[SkillName.Arcanismo].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
+                        int value = (int)(this.Caster.Skills[SkillName.Misticismo].Value + this.Caster.Skills[SkillName.Erudicao].Value); 
                         value /= 2;
 
                         if (value < 0)

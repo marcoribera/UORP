@@ -54,7 +54,7 @@ namespace Server.Gumps
 
                 int MagiaInicialID = book.BookOffset;  //ID da primeira magia do livro
                 int AcabaContagem = MagiaInicialID + TotalMagias;  //ID da ultima magia do livro
-                int UltimoPaginaUm = MagiaInicialID + 10; //Posição da magia do meio da livro
+                int UltimoPaginaUm = MagiaInicialID + 9; //Posição da magia do meio da livro
                 int temp = 0;
                 string SpellName = "";
 
@@ -92,22 +92,22 @@ namespace Server.Gumps
                                 SpellName = "Golpes Velozes";
                                 break;
                             case 869:
-                                SpellName = "Investida Aterradora";
+                                SpellName = "Investida Fatal";
                                 break;
                             case 870:
                                 SpellName = "Mente Veloz";
                                 break;
                             case 871:
-                                SpellName = "Metabolizar Ferimentos";
+                                SpellName = "Metabolizar Ferida";
                                 break;
                             case 872:
-                                SpellName = "Metabolizar Veneno";
+                                SpellName = "Suprimir Veneno";
                                 break;
                             case 873:
                                 SpellName = "Palma Explosiva";
                                 break;
                             case 874:
-                                SpellName = "Rigidez Aprimorada";
+                                SpellName = "Rigidez Perfeita";
                                 break;
                             case 875:
                                 SpellName = "Salto Aprimorado";
@@ -261,7 +261,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 868))
                 {
                     AddButton(143, 76, 2242, 2242, 868, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Golpes Velozes/CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Golpes Velozes</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Concentra KI na musculatura proporcionando aumento da sua agilidade.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Celeriter Impetus</I><BR>Skill: 20<BR>Mana: 4<BR>Eficiência: 60%<BR>Reagentes: Blood Moss, Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -275,7 +275,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 869))
                 {
                     AddButton(143, 76, 2242, 2242, 869, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Investida Aterradora</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Investida Fatal</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>Você corre até o alvo, investindo com uma velocidade extraordinária.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Terribili Impetus</I><BR>Skill: 80<BR>Mana: 63<BR>Eficiência: 100%<BR>Reagentes: Nenhum.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -303,7 +303,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 871))
                 {
                     AddButton(143, 76, 2242, 2242, 871, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Metabolizar Ferimento</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Metabolizar Ferida</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Você consegue fechar ferimentos internos leves.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Expellere Injuria</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 60%<BR>Reagentes:Nenhum</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -317,7 +317,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 872))
                 {
                     AddButton(143, 76, 2242, 2242, 872, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Metabolizar Veneno</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Suprimir Veneno</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Tenta metabolizar o veneno com seu Ki, mas desgasta seu corpo no processo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Venenum Expellere</I><BR>Skill: 50<BR>Mana: 13<BR>Eficiência: 60%<BR>Reagentes: Garlic, Ginseng.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -345,7 +345,7 @@ namespace Server.Gumps
                 if (this.HasSpell(from, 874))
                 {
                     AddButton(143, 76, 2242, 2242, 874, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Rigidez Aprimorada</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Rigidez Perfeita</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Você consegue deixar seus musculos rigidos, criando assim um armadura no seu corpo.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Optimum Rigoris</I><BR>Skill: 20<BR>Mana: 13<BR>Eficiência: 60%<BR>Reagentes:Nenhum.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
@@ -388,7 +388,7 @@ namespace Server.Gumps
                 {
                     AddButton(143, 76, 2242, 2242, 877, GumpButtonType.Reply, 0);
                     AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Soco Tectônico</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Você consegue usar seu Ki para criar um terremoto, deixando todos os seus inimigos lentos ao redor.</BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Você consegue usar seu Ki para criar um terremoto, lentificando todos ao redor.</BASEFONT></BODY>", (bool)false, (bool)false);
                     AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Tectonicas Impetus</I><BR>Skill: 120<BR>Mana: 141<BR>Eficiência: 100%<BR>Reagentes: Duas Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
                 }
                 else
@@ -472,22 +472,22 @@ namespace Server.Gumps
                         new GolpesVelozesSpell(from, null).Cast();
                         break;
                     case 869:
-                        new InvestidaAterradoraSpell(from, null).Cast();
+                        new InvestidaFatalSpell(from, null).Cast();
                         break;
                     case 870:
                         new MenteVelozSpell(from, null).Cast();
                         break;
                     case 871:
-                        new MetabolizarFerimentoSpell(from, null).Cast();
+                        new MetabolizarFeridaSpell(from, null).Cast();
                         break;
                     case 872:
-                        new MetabolizarVenenoSpell(from, null).Cast();
+                        new SuprimirVenenoSpell(from, null).Cast();
                         break;
                     case 873:
                         new PalmaExplosivaSpell(from, null).Cast();
                         break;
                     case 874:
-                        new RigidezAprimoradaSpell(from, null).Cast();
+                        new RigidezPerfeitaSpell(from, null).Cast();
                         break;
                     case 875:
                         new SaltoAprimoradoSpell(from, null).Cast();

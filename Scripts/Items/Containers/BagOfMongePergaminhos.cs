@@ -22,12 +22,12 @@ namespace Server.Items
             this.DropItem(new GolpeAtordoanteScroll(amount));
             this.DropItem(new GolpesFortesScroll(amount));
             this.DropItem(new GolpesVelozesScroll(amount));
-            this.DropItem(new InvestidaAterradoraScroll(amount));
+            this.DropItem(new InvestidaFatalScroll(amount));
             this.DropItem(new MenteVelozScroll(amount));
-            this.DropItem(new MetabolizarFerimentoScroll(amount));
-            this.DropItem(new MetabolizarVenenoScroll(amount));
+            this.DropItem(new MetabolizarFeridaScroll(amount));
+            this.DropItem(new SuprimirVenenoScroll(amount));
             this.DropItem(new PalmaExplosivaScroll(amount));
-            this.DropItem(new RigidezAprimoradaScroll(amount));
+            this.DropItem(new RigidezPerfeitaScroll(amount));
             this.DropItem(new SaltoAprimoradoScroll(amount));
             this.DropItem(new SocoDoKiScroll(amount));
             this.DropItem(new SocoTectonicoScroll(amount));

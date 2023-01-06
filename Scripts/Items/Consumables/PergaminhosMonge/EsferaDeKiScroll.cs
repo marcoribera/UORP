@@ -14,8 +14,32 @@ namespace Server.Items
         public EsferaDeKiScroll(int amount)
             : base(863, 0x1F33, amount)
         {
+            Hue = 47;
         }
-
+        public override int LabelNumber  //TODO: Adicionar os nomes dos novos itens no cliloc
+        {
+            get
+            {
+                if (m_Identified)
+                {
+                    return 2000000 + 863; //Criar entrada no CLILOC
+                    /*
+                    if (ItemID < 0x4000)
+                    {
+                        return 1020000 + ItemID;
+                    }
+                    else
+                    {
+                        return 1078872 + ItemID;
+                    }
+                    */
+                }
+                else
+                {
+                    return 1038000; // Não Identificado
+                }
+            }
+        }
         public EsferaDeKiScroll(Serial ser)
             : base(ser)
         {

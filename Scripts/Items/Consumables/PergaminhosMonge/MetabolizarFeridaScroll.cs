@@ -2,22 +2,23 @@ using System;
 
 namespace Server.Items
 {
-    public class GolpesVelozesScroll : SpellScroll
+    public class MetabolizarFeridaScroll : SpellScroll
     {
         [Constructable]
-        public GolpesVelozesScroll()
+        public MetabolizarFeridaScroll()
             : this(1)
         {
         }
 
         [Constructable]
-        public GolpesVelozesScroll(int amount)
-            : base(868, 0x1F33, amount)
+        public MetabolizarFeridaScroll(int amount)
+            : base(871, 0x1F33, amount)
         {
             Hue = 47;
+
         }
 
-        public GolpesVelozesScroll(Serial ser)
+        public MetabolizarFeridaScroll(Serial ser)
             : base(ser)
         {
         }
@@ -28,7 +29,7 @@ namespace Server.Items
             {
                 if (m_Identified)
                 {
-                    return 2000000 + 868; //Criar entrada no CLILOC
+                    return 2000000 + 871; //Criar entrada no CLILOC
                     /*
                     if (ItemID < 0x4000)
                     {

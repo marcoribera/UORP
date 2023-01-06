@@ -10,7 +10,7 @@ namespace Server.Items
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
             Name = "Livro do Técnicas do Monge";
-            Hue = 2972;
+            Hue = 47;
         }
 
         [Constructable]
@@ -18,13 +18,13 @@ namespace Server.Items
             : base(content, 0x0E3B)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
-            Hue = 2972;
+            Hue = 47;
         }
 
         [Constructable]
         public MongeSpellbook(ulong content, Mobile gifted) : base(content, 0x0E3B)
         {
-            Hue = 2972;
+            Hue = 47;
         }
         public MongeSpellbook(Serial serial)
             : base(serial)
@@ -60,7 +60,7 @@ namespace Server.Items
         {
             get
             {
-                return SpellbookType.Elementarista;
+                return SpellbookType.Monge;
             }
         }
         public override int BookOffset
@@ -107,7 +107,7 @@ namespace Server.Items
         }
     }
 
-    public class CompleteMongeSpellbook : ElementaristaSpellbook
+    public class CompleteMongeSpellbook : MongeSpellbook
     {
         [Constructable]
         public CompleteMongeSpellbook()
@@ -115,7 +115,7 @@ namespace Server.Items
             : base((ulong)0xFFFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
         {
             Name = "Livro de Técnicas do Monge Completo";
-            Hue = 2972;
+            Hue = 47;
         }
 
         public CompleteMongeSpellbook(Serial serial)

@@ -13636,6 +13636,7 @@
     <Compile Include="Spells\Elementarista\ElementaristaSpell.cs" />
     <Compile Include="Spells\Elementarista\MorteMassivaSpell.cs" />
     <Compile Include="Spells\Elementarista\NuvemGasosaSpell.cs" />
+    <Compile Include="Spells\Elementarista\TempestadeGelidaSpell.cs" />
     <Compile Include="Spells\Fifth\BladeSpirits.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -13726,17 +13727,22 @@
     <Compile Include="Spells\Monge\GolpesFortesSpell.cs" />
     <Compile Include="Spells\Monge\GolpesVelozesSpell.cs" />
     <Compile Include="Spells\Monge\InvestidaAterradoraSpell.cs" />
+    <Compile Include="Spells\Monge\InvestidaFatalSpell.cs" />
     <Compile Include="Spells\Monge\MenteVelozSpell.cs" />
+    <Compile Include="Spells\Monge\MetabolizarFeridaSpell.cs" />
     <Compile Include="Spells\Monge\MetabolizarFerimentoSpell.cs" />
     <Compile Include="Spells\Monge\MetabolizarVenenoSpell.cs" />
+    <Compile Include="Spells\Monge\MongeMove.cs" />
     <Compile Include="Spells\Monge\MongeSpell.cs" />
     <Compile Include="Spells\Monge\PalmaExplosivaSpell.cs" />
     <Compile Include="Spells\Monge\RigidezAprimoradaSpell.cs" />
+    <Compile Include="Spells\Monge\RigidezPerfeitaSpell.cs" />
     <Compile Include="Spells\Monge\SaltoAprimoradoSpell.cs" />
     <Compile Include="Spells\Monge\SocoDoKiSpell.cs" />
     <Compile Include="Spells\Monge\SocoTectonicoSpell.cs" />
     <Compile Include="Spells\Monge\SocoVulcanicoSpell.cs" />
     <Compile Include="Spells\Monge\SuperacaoSpell.cs" />
+    <Compile Include="Spells\Monge\SuprimirVenenoSpell.cs" />
     <Compile Include="Spells\Mysticism\MysticSpell.cs">
       <SubType>Code</SubType>
     </Compile>
