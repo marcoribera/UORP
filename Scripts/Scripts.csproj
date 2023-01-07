@@ -13461,6 +13461,7 @@
     <Compile Include="Spells\Algoz\Embasbacar.cs" />
     <Compile Include="Spells\Algoz\Enfraquecer.cs" />
     <Compile Include="Spells\Algoz\ForcaDoAcolito.cs" />
+    <Compile Include="Spells\Algoz\AlgozTransforma.cs" />
     <Compile Include="Spells\Base\DisturbType.cs">
       <SubType>Code</SubType>
     </Compile>

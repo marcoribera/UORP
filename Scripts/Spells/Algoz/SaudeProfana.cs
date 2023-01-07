@@ -22,7 +22,7 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return SpellCircle.Fifth;
+                return SpellCircle.Sixth;
             }
         }
         public static void EndArmor(Mobile m)
@@ -85,11 +85,11 @@ namespace Server.Spells.Algoz
 
                         mods = new ResistanceMod[5]
                         {
-                            new ResistanceMod(ResistanceType.Physical, 15 + (int)(targ.Skills[SkillName.Erudicao].Value / 20)),
-                            new ResistanceMod(ResistanceType.Fire, -5),
-                            new ResistanceMod(ResistanceType.Cold, -5),
-                            new ResistanceMod(ResistanceType.Poison, -5),
-                            new ResistanceMod(ResistanceType.Energy, -5)
+                            new ResistanceMod(ResistanceType.Physical, 6 * EficienciaMagica(Caster)),
+                            new ResistanceMod(ResistanceType.Fire, 6 * EficienciaMagica(Caster)),
+                            new ResistanceMod(ResistanceType.Cold, -6 * EficienciaMagica(Caster)),
+                            new ResistanceMod(ResistanceType.Poison, -6 * EficienciaMagica(Caster)),
+                            new ResistanceMod(ResistanceType.Energy, -6 * EficienciaMagica(Caster))
                         };
 
                         m_Table[targ] = mods;
@@ -105,7 +105,7 @@ namespace Server.Spells.Algoz
                     else
                     {
                         targ.PlaySound(0x1ED);
-                        targ.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+                        targ.FixedParticles(0x376A, 9, 32, 5008, SpellEffectHue, 3, EffectLayer.Waist);
 
                         m_Table.Remove(targ);
 
@@ -142,7 +142,7 @@ namespace Server.Spells.Algoz
 
                         this.Caster.MeleeDamageAbsorb = value;
 
-                        this.Caster.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+                        this.Caster.FixedParticles(0x376A, 9, 32, 5008, SpellEffectHue, 3, EffectLayer.Waist);
                         this.Caster.PlaySound(0x1F2);
                     }
                     else

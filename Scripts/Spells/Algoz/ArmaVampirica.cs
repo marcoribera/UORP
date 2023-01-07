@@ -13,6 +13,7 @@ namespace Server.Spells.Algoz
             Reagent.PigIron);
 
         private static readonly Dictionary<Mobile, ExpireTimer> m_Table = new Dictionary<Mobile, ExpireTimer>();
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
 
         public ArmaVampiricaSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -58,7 +59,7 @@ namespace Server.Spells.Algoz
                 Caster.FixedParticles(0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255);
                 new SoundEffectTimer(Caster).Start();
 
-                TimeSpan duration = TimeSpan.FromSeconds((Caster.Skills[SkillName.PoderMagico].Value / 3.4) + 1.0);
+                TimeSpan duration = TimeSpan.FromSeconds(EficienciaMagica(Caster) * (Caster.Skills[SkillName.PoderMagico].Value / 3.4) + 1.0);
 
                 ExpireTimer t = null;
 
