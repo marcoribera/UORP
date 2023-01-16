@@ -6,7 +6,7 @@ using Server.Spells.Necromancy;
 
 namespace Server.Spells.Algoz
 {
-    public class EspiritoMalignoSpell : TransformationSpell
+    public class EspiritoMalignoSpell : AlgozTransforma
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Espirito Maligno", "Espiritus Malus",
@@ -19,25 +19,21 @@ namespace Server.Spells.Algoz
         {
         }
 
+        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
+
+        public override SpellCircle Circle
+        {
+            get
+            {
+                return SpellCircle.Eleventh;
+            }
+        }
+
         public override TimeSpan CastDelayBase
         {
             get
             {
-                return TimeSpan.FromSeconds(2.25);
-            }
-        }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 20.0;
-            }
-        }
-        public override int RequiredMana
-        {
-            get
-            {
-                return 17;
+                return TimeSpan.FromSeconds(5.0);
             }
         }
        
@@ -45,49 +41,51 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return this.Caster.Female ? 747 : 748;
+                return this.Caster.Female ? 747 : 748; // TODO: Escolher animação da forma
             }
         }
         public override int Hue
         {
             get
             {
-                return this.Caster.Female ? 0 : 0x4001;
+                return this.Caster.Female ? 0 : 0x4001; // TODO: Escolher cor da forma
             }
         }
+
+        //TODO: DEFINIR QUAIS OS BONUS E REDUTORES DESSA FORMA EM ESPECÍFICO
         public override int PhysResistOffset
         {
             get
             {
-                return +15;
+                return +50;
             }
         }
         public override int FireResistOffset
         {
             get
             {
-                return -5;
+                return +100;
             }
         }
         public override int ColdResistOffset
         {
             get
             {
-                return 0;
+                return +100;
             }
         }
         public override int PoisResistOffset
         {
             get
             {
-                return 0;
+                return +100;
             }
         }
         public override int NrgyResistOffset
         {
             get
             {
-                return -5;
+                return -100;
             }
         }
         public override void DoEffect(Mobile m)
@@ -96,7 +94,7 @@ namespace Server.Spells.Algoz
                 ((PlayerMobile)m).IgnoreMobiles = true;
 
             m.PlaySound(0x17F);
-            m.FixedParticles(0x374A, 1, 15, 9902, 1108, 4, EffectLayer.Waist);
+            m.FixedParticles(0x374A, 1, 15, 9902, SpellEffectHue, 4, EffectLayer.Waist);
 
             int manadrain = (int)(m.Skills.PoderMagico.Value / 5);
 

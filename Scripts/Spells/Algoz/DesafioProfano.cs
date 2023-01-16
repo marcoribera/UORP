@@ -63,8 +63,7 @@ namespace Server.Spells.Algoz
             {
                 PlayEffects();
 
-                // TODO: validate formula
-                var seconds = 1;// ComputePowerValue(1);
+                var seconds = (int)(EficienciaMagica(Caster) * (1 + (int)Circle) * (1 + Caster.Skills.PoderMagico.Value / 10));  //TODO: A´primorar fórmula;
                 Utility.FixMinMax(ref seconds, 67, 228);
 
                 var delay = TimeSpan.FromSeconds(seconds);
@@ -85,9 +84,8 @@ namespace Server.Spells.Algoz
         {
             Caster.PlaySound(0x0F5);
             Caster.PlaySound(0x1ED);
-
-            Caster.FixedParticles(0x375A, 1, 30, 9966, 33, 2, EffectLayer.Head);
-            Caster.FixedParticles(0x37B9, 1, 30, 9502, 43, 3, EffectLayer.Head);
+            Caster.FixedParticles(0x375A, 1, 30, 9966, SpellEffectHue, 2, EffectLayer.Head);
+            Caster.FixedParticles(0x37B9, 1, 30, 9502, SpellEffectHue, 3, EffectLayer.Head);
         }
 
         private static readonly Dictionary<Mobile, DesafioProfanoContext> m_Table = new Dictionary<Mobile, DesafioProfanoContext>();

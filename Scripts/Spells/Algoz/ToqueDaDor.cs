@@ -67,13 +67,9 @@ namespace Server.Spells.Algoz
 
                     double damage = 0;
 
-                    if (Core.AOS)
+                    if (mob != null)
                     {
-                        damage = GetNewAosDamage(17, 1, 5, m);
-                    }
-                    else if (mob != null)
-                    {
-                        damage = Utility.Random(1, 15);
+                        damage = EfeitoValorAbsoluto_int(Caster, Circle); //Formula para efeitos
 
                         if (this.CheckResisted(mob))
                         {
@@ -85,24 +81,22 @@ namespace Server.Spells.Algoz
                         damage *= this.GetDamageScalar(mob);
                     }
 
-                    damage *= EficienciaMagica(this.Caster); //Aplica o multiplicador de eficiência da magia
-
                     if (Core.AOS)
                     {
                         if (mob != null)
                         {
-                            mob.FixedParticles(0x374A, 10, 30, 5013, 31, 2, EffectLayer.Waist); //31 é pra ser um vermelho
+                            mob.FixedParticles(0x374A, 10, 30, 5013, SpellEffectHue, 2, EffectLayer.Waist);
                             mob.PlaySound(0x0FC);
                         }
                         else
                         {
-                            Effects.SendLocationParticles(m, 0x374A, 10, 30, 31, 2, 5013, 0);
+                            Effects.SendLocationParticles(m, 0x374A, 10, 30, SpellEffectHue, 2, 5013, 0);
                             Effects.PlaySound(m.Location, m.Map, 0x0FC);
                         }
                     }
                     else if (mob != null)
                     {
-                        mob.FixedParticles(0x374A, 10, 15, 5013, 31, 2, EffectLayer.Waist); //31 é pra ser um vermelho
+                        mob.FixedParticles(0x374A, 10, 15, 5013, SpellEffectHue, 2, EffectLayer.Waist);
                         mob.PlaySound(0x1F1);
                     }
 

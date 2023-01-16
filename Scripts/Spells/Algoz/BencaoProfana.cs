@@ -61,28 +61,19 @@ namespace Server.Spells.Algoz
 
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
+            Mobile m = this.Caster;
 
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
+            if (this.CheckBSequence(m))
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (this.CheckBSequence(m))
-            {
-                SpellHelper.Turn(this.Caster, m);
-
                 int oldStr = SpellHelper.GetBuffOffset(m, StatType.Str);
                 int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
                 int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
 
-                int newStr = SpellHelper.GetOffset(this,Caster, m, StatType.Str, false, true);
-                int newDex = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, false, true);
-                int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
+                int newStr = SpellHelper.GetOffset(this, Caster, m, StatType.Str, false, true);
+                int newDex = SpellHelper.GetOffset(this, Caster, m, StatType.Dex, false, true);
+                int newInt = SpellHelper.GetOffset(this, Caster, m, StatType.Int, false, true);
 
-                if ((newStr < oldStr && newDex < oldDex && newInt < oldInt) || 
+                if ((newStr < oldStr && newDex < oldDex && newInt < oldInt) ||
                     (newStr == 0 && newDex == 0 && newInt == 0))
                 {
                     DoHurtFizzle();
@@ -93,7 +84,7 @@ namespace Server.Spells.Algoz
                     SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Dex);
                     SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Int);
 
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
+                    int percentage = (int)(SpellHelper.GetOffsetScalar(this, this.Caster, m, false) * 100);
                     TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
                     string args = String.Format("{0}\t{1}\t{2}", percentage, percentage, percentage);
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Bless, 1075847, 1075848, length, m, args.ToString()));
@@ -106,29 +97,6 @@ namespace Server.Spells.Algoz
             }
 
             this.FinishSequence();
-        }
-
-        private class InternalTarget : Target
-        {
-            private readonly BencaoProfanaSpell m_Owner;
-            public InternalTarget(BencaoProfanaSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
         }
 
         private class InternalTimer : Timer

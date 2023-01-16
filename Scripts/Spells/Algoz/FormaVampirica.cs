@@ -12,7 +12,7 @@ using Server.Spells.Necromancy;
 
 namespace Server.Spells.Algoz
 {
-    public class FormaVampiricaSpell : TransformationSpell
+    public class FormaVampiricaSpell : AlgozTransforma
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
             "Forma Vampirica", "Sanguis Corpus",
@@ -33,31 +33,20 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return TimeSpan.FromSeconds(2.25);
+                return TimeSpan.FromSeconds(5.0);
             }
         }
-        public override double RequiredSkill
+        public override SpellCircle Circle
         {
-            get
-            {
-                return 99.0;
-            }
-        }
-        /*public override SpellCircle Circle
-        {
+
+
             get
             {
                 return SpellCircle.Tenth;
             }
-        }*/
-        public override int RequiredMana
-        {
-            get
-            {
-                return 23;
-            }
         }
-        public override int Body
+
+        public override int Body // TODO: Escolher animação da forma
         {
             get
             {
@@ -69,20 +58,49 @@ namespace Server.Spells.Algoz
                 return Caster.Female ? Caster.Race.FemaleBody : Caster.Race.MaleBody;
             }
         }
-        public override int Hue
+        public override int Hue // TODO: Escolher cor da forma
         {
             get
             {
                 return 0x847E;
             }
         }
+        public override int PhysResistOffset
+        {
+            get
+            {
+                return +30;
+            }
+        }
         public override int FireResistOffset
         {
             get
             {
-                return -25;
+                return -200;
             }
         }
+        public override int ColdResistOffset
+        {
+            get
+            {
+                return +50;
+            }
+        }
+        public override int PoisResistOffset
+        {
+            get
+            {
+                return +100;
+            }
+        }
+        public override int NrgyResistOffset
+        {
+            get
+            {
+                return +50;
+            }
+        }
+        /*
         public override void GetCastSkills(out double min, out double max)
         {
             if (this.Caster.Skills[this.CastSkill].Value >= this.RequiredSkill)
@@ -95,11 +113,11 @@ namespace Server.Spells.Algoz
                 base.GetCastSkills(out min, out max);
             }
         }
-
+        */
         public override void DoEffect(Mobile m)
         {
-            Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x373A, 1, 17, 1108, 7, 9914, 0);
-            Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x376A, 1, 22, 67, 7, 9502, 0);
+            Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x373A, 1, 17, SpellEffectHue, 7, 9914, 0);
+            Effects.SendLocationParticles(EffectItem.Create(m.Location, m.Map, EffectItem.DefaultDuration), 0x376A, 1, 22, SpellEffectHue+1, 7, 9502, 0);  //SÃO MESMO DOIS EFEITOS SOBREPOSTOS. VER O PORQUE
             Effects.PlaySound(m.Location, m.Map, 0x4B1);
 
             BuffInfo.AddBuff(Caster, new BuffInfo(BuffIcon.VampiricEmbrace, 1028812, 1153768, String.Format("{0}\t{1}\t{2}\t{3}", "20", "15", "3", "25")));

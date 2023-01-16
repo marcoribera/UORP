@@ -27,7 +27,7 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return SpellCircle.Third;
+                return SpellCircle.Eighth;
             }
         }
         
@@ -49,8 +49,8 @@ namespace Server.Spells.Algoz
             {
                 Caster.PlaySound(0x20F);
                 Caster.PlaySound(Caster.Female ? 0x338 : 0x44A);
-                Caster.FixedParticles(0x376A, 1, 31, 9961, 1160, 0, EffectLayer.Waist);
-                Caster.FixedParticles(0x37C4, 1, 31, 9502, 43, 2, EffectLayer.Waist);
+                Caster.FixedParticles(0x376A, 1, 31, 9961, SpellEffectHue, 0, EffectLayer.Waist);
+                Caster.FixedParticles(0x37C4, 1, 31, 9502, SpellEffectHue+1 , 2, EffectLayer.Waist); //SÃO MESMO DOIS EFEITOS SOBREPOSTOS. VER O PORQUE
 
                 Caster.Stam = Caster.StamMax;
                 Timer t;

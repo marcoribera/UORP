@@ -38,7 +38,7 @@ namespace Server.Spells.Algoz
         {
             get
             {
-                return SpellCircle.Eleventh;
+                return SpellCircle.Seventh;
             }
         }
        
@@ -62,7 +62,7 @@ namespace Server.Spells.Algoz
                 {
                     Effects.PlaySound(this.Caster.Location, map, 0x1FB);
                     Effects.PlaySound(this.Caster.Location, map, 0x10B);
-                    Effects.SendLocationParticles(EffectItem.Create(this.Caster.Location, map, EffectItem.DefaultDuration), 0x37CC, 1, 40, 97, 3, 9917, 0);
+                    Effects.SendLocationParticles(EffectItem.Create(this.Caster.Location, map, EffectItem.DefaultDuration), 0x37CC, 1, 40, SpellEffectHue, 3, 9917, 0);
 
                     foreach (var id in AcquireIndirectTargets(Caster.Location, Core.ML ? 4 : 5))
                     {
@@ -72,11 +72,11 @@ namespace Server.Spells.Algoz
 
                         if (m != null)
                         {
-                            m.FixedParticles(0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255);
+                            m.FixedParticles(0x374A, 1, 15, 9502, SpellEffectHue, 3, (EffectLayer)255);
                         }
                         else
                         {
-                            Effects.SendLocationParticles(id, 0x374A, 1, 30, 97, 3, 9502, 0);
+                            Effects.SendLocationParticles(id, 0x374A, 1, 30, SpellEffectHue, 3, 9502, 0);
                         }
 
                         double damage = Utility.RandomMinMax(30, 35);
