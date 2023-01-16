@@ -9,7 +9,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
             this.Name = "a nature's fury";
-            this.Body = 0x33;
+            this.Body = 0;
             this.Hue = 0x4001;
 
             this.SetStr(150);

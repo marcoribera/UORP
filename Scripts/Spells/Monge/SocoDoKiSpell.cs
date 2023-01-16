@@ -1,4 +1,8 @@
+// coded by ßåяя¥ 2.0
 using System;
+using System.Collections;
+using Server.Network;
+using Server.Items;
 using Server.Targeting;
 
 namespace Server.Spells.Monge
@@ -11,8 +15,8 @@ namespace Server.Spells.Monge
             9041
             );
 
-
         public override int EficienciaMagica(Mobile caster) { return 4; } //Servirá para calcular o modificador na eficiência das magias
+
 
         public SocoDoKiSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -34,106 +38,86 @@ namespace Server.Spells.Monge
                 return SpellCircle.Sixth;
             }
         }
-        public override bool DelayedDamageStacking
-        {
-            get
-            {
-                return !Core.AOS;
-            }
-        }
-        public override bool DelayedDamage
-        {
-            get
-            {
-                return true;
-            }
-        }
-        public override Type[] DelayDamageFamily { get { return new Type[] { typeof(Server.Spells.Mysticism.NetherBoltSpell) }; } }
+
+
+        public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(0.5); } }
+
+        public override bool BlocksMovement { get { return false; } }
+
+
+       
+
         public override void OnCast()
         {
-            Caster.Target = new InternalTarget(this);
-        }
+            BaseWeapon weapon = Caster.Weapon as BaseWeapon; // precisa fazer nao usar arma
 
-        public void Target(IDamageable d)
-        {
-            if (!Caster.CanSee(d))
+            if (weapon == null || weapon is Fists)
             {
-                Caster.SendLocalizedMessage(500237); // Target can not be seen.
+                Caster.SendLocalizedMessage(501078); // You must be holding a weapon.
             }
-            else if (CheckHSequence(d))
+            else if (CheckSequence())
             {
-                IDamageable source = Caster;
-                IDamageable target = d;
+                /* Temporarily enchants the weapon the caster is currently wielding.
+				 * The type of damage the weapon inflicts when hitting a target will
+				 * be converted to the target's worst Resistance type.
+				 * Duration of the effect is affected by the caster's Karma and lasts for 3 to 11 seconds.
+				 */
 
-                SpellHelper.Turn(Caster, d);
+                int itemID, soundID;
 
-                if (Core.SA && HasDelayContext(d))
+                switch (weapon.Skill)
                 {
-                    DoHurtFizzle();
-                    return;
+                    case SkillName.Briga: itemID = 0xFB4; soundID = 0x232; break;
+                    default: itemID = 0xF5F; soundID = 0x56; break;
                 }
 
-                if (SpellHelper.CheckReflect((int)Circle, ref source, ref target))
-                {
-                    Timer.DelayCall(TimeSpan.FromSeconds(.5), () =>
-                    {
-                        source.MovingParticles(target, 0x36E4, 5, 0, false, true, 3043, 4043, 0x211);
-                        source.PlaySound(0x1E5);
-                    });
-                }
+                Caster.PlaySound(0x20C);
+                Caster.PlaySound(soundID);
+                Caster.FixedParticles(0x3779, 1, 30, 9964, 3, 3, EffectLayer.Waist);
+                IEntity from = new Entity(Serial.Zero, new Point3D(Caster.X, Caster.Y, Caster.Z), Caster.Map);
 
-                double damage = 0;
-				
-                if (Core.AOS)
-                {
-                    damage = GetNewAosDamage(10, 1, 4, d);
-                }
-                else if (target is Mobile)
-                {
-                    damage = Utility.Random(4, 4);
+                IEntity to = new Entity(Serial.Zero, new Point3D(Caster.X, Caster.Y, Caster.Z + 50), Caster.Map);
+                Effects.SendMovingParticles(from, to, itemID, 1, 0, false, false, 33, 3, 9501, 1, 0, EffectLayer.Head, 0x100);
 
-                    if (CheckResisted((Mobile)target))
-                    {
-                        damage *= 0.75;
+                double seconds = Caster.Skills[SkillName.Misticismo].Value;
 
-                        ((Mobile)target).SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
-                    }
+                TimeSpan duration = TimeSpan.FromSeconds(seconds);
 
-                    damage *= GetDamageScalar((Mobile)target);
-                }
+                Timer t = (Timer)m_Table[weapon];
 
-                if (damage > 0)
-                {
-                    Caster.MovingParticles(d, 0x36E4, 5, 0, false, false, 3006, 0, 0);
-                    Caster.PlaySound(0x1E5);
+                if (t != null)
+                    t.Stop();
 
-                    SpellHelper.Damage(this, target, damage, 0, 100, 0, 0, 0);
-                }
+                weapon.Consecrated = true;
+
+
+               
+
+                m_Table[weapon] = t = new ExpireTimer(weapon, duration);
+
+                t.Start();
             }
 
             FinishSequence();
         }
 
-        private class InternalTarget : Target
+        private static Hashtable m_Table = new Hashtable();
+
+        private class ExpireTimer : Timer
         {
-            private readonly SocoDoKiSpell m_Owner;
-            public InternalTarget(SocoDoKiSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
+            private BaseWeapon m_Weapon;
+
+            public ExpireTimer(BaseWeapon weapon, TimeSpan delay) : base(delay)
             {
-                m_Owner = owner;
+                m_Weapon = weapon;
+                Priority = TimerPriority.FiftyMS;
             }
 
-            protected override void OnTarget(Mobile from, object o)
+            protected override void OnTick()
             {
-                if (o is IDamageable)
-                {
-                    m_Owner.Target((IDamageable)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                m_Owner.FinishSequence();
+                m_Weapon.Consecrated = false;
+                Effects.PlaySound(m_Weapon.GetWorldLocation(), m_Weapon.Map, 0x1F8);
+                m_Table.Remove(this);
             }
         }
     }

@@ -39,32 +39,9 @@ namespace Server.Spells.Monge
 
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
+            Mobile m = this.Caster;
 
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
-            {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (m.IsDeadBondedPet)
-            {
-                this.Caster.SendLocalizedMessage(1060177); // You cannot heal a creature that is already dead!
-            }
-            else if (m is BaseCreature && ((BaseCreature)m).IsAnimatedDead)
-            {
-                this.Caster.SendLocalizedMessage(1061654); // You cannot heal that which is not alive.
-            }
-            else if (m is IRepairableMobile)
-            {
-                this.Caster.LocalOverheadMessage(MessageType.Regular, 0x3B2, 500951); // You cannot heal that.
-            }
-            else if (m.Poisoned || Server.Items.MortalStrike.IsWounded(m))
-            {
-                this.Caster.LocalOverheadMessage(MessageType.Regular, 0x22, (this.Caster == m) ? 1005000 : 1010398);
-            }
-            else if (this.CheckBSequence(m))
+            if (this.CheckBSequence(m))
             {
                 SpellHelper.Turn(this.Caster, m);
 
@@ -94,27 +71,6 @@ namespace Server.Spells.Monge
             this.FinishSequence();
         }
 
-        public class InternalTarget : Target
-        {
-            private readonly MetabolizarFeridaSpell m_Owner;
-            public InternalTarget(MetabolizarFeridaSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
-        }
+       
     }
 }

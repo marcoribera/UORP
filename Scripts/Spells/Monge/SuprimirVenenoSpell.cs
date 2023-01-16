@@ -45,23 +45,18 @@ namespace Server.Spells.Monge
 
       
 
-        public override void OnCast()
-        {
-            this.Caster.Target = new InternalTarget(this);
-        }
+      
 
         public override bool CheckDisturb(DisturbType type, bool firstCircle, bool resistable)
         {
             return true;
         }
 
-        public void Target(Mobile m)
+        public override void OnCast()
         {
-            if (!m.Poisoned)
-            {
-                this.Caster.SendLocalizedMessage(1060176); // That creature is not poisoned!
-            }
-            else if (this.CheckBSequence(m))
+            Mobile m = this.Caster;
+
+            if (this.CheckBSequence(m))
             {
                 SpellHelper.Turn(this.Caster, m);
 
@@ -117,25 +112,6 @@ namespace Server.Spells.Monge
             this.FinishSequence();
         }
 
-        private class InternalTarget : Target
-        {
-            private readonly SuprimirVenenoSpell m_Owner;
-            public InternalTarget(SuprimirVenenoSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                    this.m_Owner.Target((Mobile)o);
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
-        }
+       
     }
 }

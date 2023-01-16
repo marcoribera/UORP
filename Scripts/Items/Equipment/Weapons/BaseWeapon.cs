@@ -180,6 +180,8 @@ namespace Server.Items
         private bool _VvVItem;
         private Mobile _Owner;
         private string _OwnerName;
+        private bool m_Consecrated; // Is this weapon blessed via Consecrate Weapon paladin ability? Temporary; not serialized.
+
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsVvVItem
@@ -455,8 +457,14 @@ namespace Server.Items
 				InvalidateProperties();
 			}
 		}
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Consecrated
+        {
+            get { return m_Consecrated; }
+            set { m_Consecrated = value; }
+        }
 
-		[CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.GameMaster)]
 		public int MaxHitPoints
 		{
 			get { return m_MaxHits; }
@@ -2452,6 +2460,7 @@ namespace Server.Items
 		private bool m_InDoubleStrike;
         private bool m_ProcessingMultipleHits;
 
+
 		public bool InDoubleStrike 
         {
             get { return m_InDoubleStrike; }
@@ -2542,6 +2551,7 @@ namespace Server.Items
                     ConsecratedContext != null &&
                     ConsecratedContext.Owner == attacker &&
                     ConsecratedContext.ConsecrateProcChance >= Utility.Random(100))
+                    
                 {
                     phys = damageable.PhysicalResistance;
                     fire = damageable.FireResistance;
@@ -6917,7 +6927,9 @@ namespace Server.Items
 			}
 		}
 
-		public bool SetEquipped { get { return m_SetEquipped; } set { m_SetEquipped = value; } }
+      
+
+        public bool SetEquipped { get { return m_SetEquipped; } set { m_SetEquipped = value; } }
 
 		public bool LastEquipped { get { return m_LastEquipped; } set { m_LastEquipped = value; } }
 
