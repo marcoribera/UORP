@@ -1182,10 +1182,14 @@
     <Compile Include="Items\Equipment\Spellbooks\CosmosLunarSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\CosmosSolarSpellBook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\CosmosSolarSpellBookGump.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\ElementaristaSpellBook.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\ElementaristaSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ExemploSpellbook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ExemploSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\LivroFeiticaria.cs" />
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellbook .cs" />
+    <Compile Include="Items\Equipment\Spellbooks\MongeSpellBook.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\MongeSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellbook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\PaladinoSpellBookGump.cs" />
     <Compile Include="Mobiles\Custom\ARVORE\AshTree.cs" />
@@ -13631,8 +13635,7 @@
     <Compile Include="Spells\Elementarista\AtaqueCongelanteSpell.cs" />
     <Compile Include="Spells\Elementarista\AvalancheSpell.cs" />
     <Compile Include="Spells\Elementarista\BolaDeGeloSpell.cs" />
-    <Compile Include="Spells\Elementarista\CampoDeGeloSpell.cs" />
-    <Compile Include="Spells\Elementarista\ChuvaDeGranizoSpell.cs" />
+    <Compile Include="Spells\Elementarista\CampoGelidoSpell.cs" />
     <Compile Include="Spells\Elementarista\CongelarSpell.cs" />
     <Compile Include="Spells\Elementarista\ElementaristaSpell.cs" />
     <Compile Include="Spells\Elementarista\MorteMassivaSpell.cs" />

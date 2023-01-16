@@ -10,7 +10,7 @@ namespace Server.Items
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
             Name = "Livro do Exemplo";
-            Hue = 1719;
+            Hue = 1725;
         }
 
         [Constructable]
@@ -67,14 +67,14 @@ namespace Server.Items
         {
             get
             {
-                return 800;
+                return 70;
             }
         }
         public override int BookCount
         {
             get
             {
-                return 17;
+                return 18;
             }
         }
 
@@ -85,7 +85,7 @@ namespace Server.Items
             {
                 from.SendSound(0x55);
                 from.CloseGump(typeof(ExemploSpellbookGump));
-                from.SendGump(new ExemploSpellbookGump(from, this, 1));
+                from.SendGump(new ExemploSpellbookGump(from, this, this.PaginaAtual));
             }
             else from.SendLocalizedMessage(500207); // The spellbook must be in your backpack (and not in a container within) to open.
         }

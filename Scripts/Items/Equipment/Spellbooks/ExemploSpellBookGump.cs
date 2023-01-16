@@ -1,52 +1,81 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Misc;
 using Server.Network;
 using Server.Spells;
-using Server.Spells.Paladino;
+using System.Collections.Generic;
 using Server.Prompts;
+using Server.Spells.Algoz;
 
 namespace Server.Gumps
 { //TODO: Achar o fundo certo do GUMP e ajustar a aparência
     public class ExemploSpellbookGump : Gump
     {
-        private static Dictionary<int, string> NomesMagias = new Dictionary<int, string>()
-            {
-                               {1,"aaaaaaaaaaaaaaaa"},
-                               {2,"eeeeeeeeeeeeeeee"},
-                               {3,"iiiiiiiiiiiiiiii"},
-                               {4,"oooooooooooooooo"},
-                               {5,"uuuuuuuuuuuuuuuu"}
-            };
-        private static Dictionary<int, string> DescricaoMagias = new Dictionary<int, string>()
-            {
-                               {1,"bbbbbb bbbbbb bbbbbb bbbbbb bbbbbb "},
-                               {2,"cccccc cccccc cccccc cccccc cccccc "},
-                               {3,"dddddd dddddd dddddd dddddd dddddd "},
-                               {4,"ffffff ffffff ffffff ffffff ffffff "},
-                               {5,"gggggg gggggg gggggg gggggg gggggg "}
-            };
-        private static Dictionary<int, string> Detalhes = new Dictionary<int, string>()
-            {
-                               {1,"hhhhhh hhhhhh hhhhhh hhhhhh hhhhhh "},
-                               {2,"jjjjjj jjjjjj jjjjjj jjjjjj jjjjjj "},
-                               {3,"kkkkkk kkkkkk kkkkkk kkkkkk kkkkkk "},
-                               {4,"llllll llllll llllll llllll llllll "},
-                               {5,"mmmmmm mmmmmm mmmmmm mmmmmm mmmmmm "}
-            };
-        private static Dictionary<int, int> FiguraMagias = new Dictionary<int, int>()
-            {
-                               {1,2242},
-                               {2,2242},
-                               {3,2242},
-                               {4,2242},
-                               {5,2242},
-                               {6,2242}
-            };
         private ExemploSpellbook m_Book;
+
+        private static Dictionary<int, string[]> PrimeiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {70, new string[5]{ "1Embasbacar", "2242", "2242", "  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.", "Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 70<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }}
+        };
+        private static Dictionary<int, string[]> SegundoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "2Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "3Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
+        private static Dictionary<int, string[]> TerceiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {70, new string[5]{ "4Embasbacar", "2242", "2242", "  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.", "Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }}
+        };
+        private static Dictionary<int, string[]> QuartoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "5Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "6Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
+        private static Dictionary<int, string[]> QuintoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {70, new string[5]{ "7Embasbacar", "2242", "2242", "  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.", "Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }}
+        };
+        private static Dictionary<int, string[]> SextoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "8Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "9Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
+        private static Dictionary<int, string[]> SetimoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {70, new string[5]{ "10Embasbacar", "2242", "2242", "  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.", "Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }}
+        };
+        private static Dictionary<int, string[]> OitavoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "11Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "12Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
+        private static Dictionary<int, string[]> NonoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {70, new string[5]{ "13Embasbacar", "2242", "2242", "  Gera um impulso de medo que atrapalha o raciocínio de seu alvo.", "Mantra: <I>Intelis Cort</I><BR>Skill: 10<BR>Mana: 4<BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }}
+        };
+        private static Dictionary<int, string[]> DecimoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "14Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "15Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
+        private static Dictionary<int, string[]> DecimoPrimeiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
+        {
+            // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
+            {71, new string[5]{ "16Intelecto do Acólito", "2242", "2242", "  Sua convicção o deixa mais perspicaz.", "Mantra: <I>Intelis Sup</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Nightshade." } },
+            {72, new string[5]{ "17Enfraquecer", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I>Forcis Cort</I><BR>Skill: 20<BR>Mana: 6<BR><B>Reagentes:</B><BR>  Garlic</B><BR>  Nightshade." } }
+        };
 
         public bool HasSpell(Mobile from, int spellID)
         {
@@ -62,445 +91,392 @@ namespace Server.Gumps
             this.Dragable = true;
             this.Resizable = false;
 
-            
-
             AddPage(0);
             AddImage(41, 42, 11009);
 
             int PriorPage = page - 1;
-            if (PriorPage < 1) { PriorPage = 18; }
-            int NextPage = page + 1;
-
-            AddButton(91, 50, 2235, 2235, PriorPage, GumpButtonType.Reply, 0);
-            AddButton(362, 50, 2236, 2236, NextPage, GumpButtonType.Reply, 0);
-
-            AddHtml(91, 52, 153, 31, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>Exemplo</CENTER></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-
-            if (page == 1)
+            if (PriorPage < 1)
             {
-                int TotalMagias = book.BookCount; //Numero máximo de magias do livro
+                PriorPage = 6;
+            }
 
-                //int MagiasNoLivro = book.SpellCount; //Numero atual de magias do livro
+            int NextPage = page + 1;  //TODO: Criar uma maneira de voltar pra página com as magias do circulo
 
-                int nHTMLx = 111;
-                int nHTMLy = 81;
-                
-                int nBUTTONx = 94;
-                int nBUTTONy = 82;
+            //NOME DO LIVRO
 
-                int MagiaInicialID = book.BookOffset;  //ID da primeira magia do livro
-                int AcabaContagem = MagiaInicialID + TotalMagias ;  //ID da ultima magia do livro
-                int UltimoPaginaUm = MagiaInicialID + 8; //Posição da magia do meio da livro
-                int temp = 0;
-                string SpellName = "";
+            int TotalMagias = book.BookCount; //Numero máximo de magias do livro
 
-                for (int i = MagiaInicialID; i < AcabaContagem; i++)
-                {
-                    if (this.HasSpell(from, i))
+            //int MagiasNoLivro = book.SpellCount; //Numero atual de magias do livro
+
+            int nHTMLx = 128;
+            int nHTMLy = 81;
+
+            int nBUTTONx = 94;
+            int nBUTTONy = 82;
+
+            int temp = 0;
+            switch (page)
+            {
+                case 1:
+                    AddButton(91, 50, 2235, 2235, 6, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 2, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>1º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>2º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in PrimeiroCirculo)
                     {
-                        switch (i)
+                        if (this.HasSpell(from, magia.Key))
                         {
-                            case 800:
-                                SpellName = "Toque cicatrizante";
-                                break;
-                            case 801:
-                                SpellName = "Intelecto do Devoto";
-                                break;
-                            case 802:
-                                SpellName = "Agilidade do Devoto";
-                                break;
-                            case 803:
-                                SpellName = "Toque curativo";
-                                break;
-                            case 804:
-                                SpellName = "Banimento Sagrado";
-                                break;
-                            case 805:
-                                SpellName = "Furia Sagrada";
-                                break;
-                            case 806:
-                                SpellName = "Força do Devoto";
-                                break;
-                            case 807:
-                                SpellName = "Arma Sagrada";
-                                break;
-                            case 808:
-                                SpellName = "Benção Sagrada";
-                                break;
-                            case 809:
-                                SpellName = "Toque regenarador";
-                                break;
-                            case 810:
-                                SpellName = "Desafio Sagrado";
-                                break;
-                            case 811:
-                                SpellName = "Emanação pura";
-                                break;
-                            case 812:
-                                SpellName = "Banimento Celestial";
-                                break;
-                            case 813:
-                                SpellName = "Sacrificio Santo";
-                                break;
-                            case 814:
-                                SpellName = "Saude Divina";
-                                break;
-                            case 815:
-                                SpellName = "Halo divino";
-                                break;
-                            case 816:
-                                SpellName = "Espirito benigno";
-                                break;
-                            
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx+15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
                         }
-                        AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111><BIG>" + SpellName + "</BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                        AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30008, i, GumpButtonType.Reply, 0);
-                        temp += 16; //representa o quãp pra baixo no gump está a magia
                     }
-                    if (i == UltimoPaginaUm)
+
+                    nHTMLx = 284;
+                    nHTMLy = 81;
+                    nBUTTONx = 250;
+                    nBUTTONy = 82;
+                    temp = 0;
+
+                    foreach (var magia in SegundoCirculo)
                     {
-                        nHTMLx = 267;
-                        nHTMLy = 81;
-                        nBUTTONx = 250;
-                        nBUTTONy = 82;
-                        temp = 0;
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
                     }
-                }
-            }
+                    break;
+                case 2:
+                    AddButton(91, 50, 2235, 2235, 1, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 3, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>3º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>4º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in TerceiroCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
 
-            else if (page == 2)
-            {
-                if (this.HasSpell(from, 800))
-                {
-                    AddButton(143, 76, 2242, 2242, 800, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque cicatrizante</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  cura ferimentos superficiais com o toque.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanita Tact</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Ginseng, Spiders' Silk.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 3)
-            {
-                if (this.HasSpell(from, 801))
-                {
-                    AddButton(143, 76, 2242, 2242, 801, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Intelecto do Devoto</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais perspicaz.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Intelec Devot</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Mandrake Root, Nightshade.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 4)
-            {
-                if (this.HasSpell(from, 802))
-                {
-                    AddButton(143, 76, 2242, 2242, 802, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Agilidade do Devoto</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais ágil.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Devot Agilitas</I><BR>Skill: 20<BR>Mana: 6<BR>Eficiência: 20%<BR>Reagentes: Blood Moss, Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 5)
-            {
-                if (this.HasSpell(from, 803))
-                {
-                    AddButton(143, 76, 2242, 2242, 803, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque Curativo</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  cura ferimentos leves com o toque.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanitat Tact</I><BR>Skill: 30<BR>Mana: 9<BR>Eficiência: 20%<BR>Reagentes: Garlic, Ginseng, Spiders' Silk.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-       
-            else if (page == 6)
-            {
-                if (this.HasSpell(from, 804))
-                {
-                    AddButton(143, 76, 2242, 2242, 804, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Sagrado</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Tenta banir criaturas malignas.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanct Exili</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Garlic, Ginseng, Spiders' Silk.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 7)
-            {
-                if (this.HasSpell(from, 805))
-                {
-                    AddButton(143, 76, 2242, 2242, 805, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Furia Sagrada</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Melhora seu ataque e dano as custas de sua defesa.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanctus Furor</I><BR>Skill: 40<BR>Mana: 13<BR>Eficiência: 20%<BR>Reagentes: Inexistente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 8)
-            {
-                if (this.HasSpell(from, 806))
-                {
-                    AddButton(143, 76, 2242, 2242, 806, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Força do Devoto</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua convicção o deixa mais forte.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Devotee Forti</I><BR>Skill: 50<BR>Mana: 19<BR>Eficiência: 100%<BR>Reagentes: Blood Moss, Mandrake Root.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 9)
-            {
-                if (this.HasSpell(from, 807))
-                {
-                    AddButton(143, 76, 2242, 2242, 807, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Arma Sagrada</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Imbui sua arma com poder sagrado fazendo-a ter chance de causar todo seu dano contra a menor resistência do oponente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanct Arm</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Inexistente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 10)
-            {
-                if (this.HasSpell(from, 808))
-                {
-                    AddButton(143, 76, 2242, 2242, 808, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Benção Sagrada</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> Sua convicção melhora todos os seus atributos.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Benedictio Sanc</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Mandrake Root, Garlic.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 11)
-            {
-                if (this.HasSpell(from, 809))
-                {
-                    AddButton(143, 76, 2242, 2242, 809, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Toque regenarador</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Cura ferimentos moderados com o toque.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Regenerans Tact</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Ginseng, Spiders' Silk.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 12)
-            {
-                if (this.HasSpell(from, 810))
-                {
-                    AddButton(143, 76, 2242, 2242, 810, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Desafio Sagrado</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Torna-se mais poderoso conta um tipo de inimigo especifico, mas enfraquecido contra os demais.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sanctus Provoca</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Inexistente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 13)
-            {
-                if (this.HasSpell(from, 811))
-                {
-                    AddButton(143, 76, 2242, 2242, 811, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Emanação pura</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Um facho de luz pura emana por todo teu corpo e atinge seu inimigo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Pura Emanat</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Inexistente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 14)
-            {
-                if (this.HasSpell(from, 812))
-                {
-                    AddButton(143, 76, 2242, 2242, 812, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Banimento Celestial</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  As ordens dadas pelo Exemplo fazem as criaturas conjuradas voltarem para seus planos de origem.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Coelestis Exsil</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Mandrake Root, Sulfurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
+                    nHTMLx = 284;
+                    nHTMLy = 81;
+                    nBUTTONx = 250;
+                    nBUTTONy = 82;
+                    temp = 0;
 
-            else if (page == 15)
-            {
-                if (this.HasSpell(from, 813))
-                {
-                    AddButton(143, 76, 2242, 2242, 813, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Sacrificio Santo</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> O Exemplo realiza o sacrificio final em nome de seus aliados.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Sacrificium Sanct</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Inexistente.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 16)
-            {
-                if (this.HasSpell(from, 814))
-                {
-                    AddButton(143, 76, 2242, 2242, 814, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Saude Divina</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Sua constituicao se fortalece, reduzindo o poder dos venenos e dos danos a sua fortitude.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Divina Sanit</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Garlic, Spiders' Silk, Sulphurous Ash.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 17)
-            {
-                if (this.HasSpell(from, 815))
-                {
-                    AddButton(143, 76, 2242, 2242, 815, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Halo divino</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111> A presenca divina é evocada e sentida através de uma luz quente que encobre o alvo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Divina Aureo</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Grave Dust, Nox Crystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-            }
-            else if (page == 18)
-            {
-                if (this.HasSpell(from, 816))
-                {
-                    AddButton(143, 76, 2242, 2242, 816, GumpButtonType.Reply, 0);
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Espirito benigno</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>  Um aliado do plano espiritual é invocado para auxiliar o Exemplo.</BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 82, 145, 160, @"<BODY><BASEFONT Color=#111111>Mantra: <I>Benignus Spirit</I><BR>Skill: 10<BR>Mana: 4<BR>Eficiência: 20%<BR>Reagentes: Nox Crystal, Pig Iron.</BASEFONT></BODY>", (bool)false, (bool)false);
-                }
-                else
-                {
-                    AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
-                }
+                    foreach (var magia in QuartoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+                    break;
+                case 3:
+                    AddButton(91, 50, 2235, 2235, 2, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 4, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>5º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>6º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in QuintoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
 
-                
+                    nHTMLx = 284;
+                    nHTMLy = 81;
+                    nBUTTONx = 250;
+                    nBUTTONy = 82;
+                    temp = 0;
+
+                    foreach (var magia in SextoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+                    break;
+                case 4:
+                    AddButton(91, 50, 2235, 2235, 3, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 5, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>7º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>9º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in SetimoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+
+                    nHTMLx = 284;
+                    nHTMLy = 81;
+                    nBUTTONx = 250;
+                    nBUTTONy = 82;
+                    temp = 0;
+
+                    foreach (var magia in OitavoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+                    break;
+                case 5:
+                    AddButton(91, 50, 2235, 2235, 4, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 6, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>9º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>10º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in NonoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+
+                    nHTMLx = 284;
+                    nHTMLy = 81;
+                    nBUTTONx = 250;
+                    nBUTTONy = 82;
+                    temp = 0;
+
+                    foreach (var magia in DecimoCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+                    break;
+                case 6:
+                    AddButton(91, 50, 2235, 2235, 5, GumpButtonType.Reply, 0);
+                    AddButton(362, 50, 2236, 2236, 1, GumpButtonType.Reply, 0);
+                    AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>11º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    //AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>12º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    foreach (var magia in DecimoPrimeiroCirculo)
+                    {
+                        if (this.HasSpell(from, magia.Key))
+                        {
+                            AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            temp += 16; //representa o quão pra baixo no gump está a magia
+                        }
+                    }
+                    break;
+                default:
+                    int MagiaParaDetalhar = book.BookOffset + page - 7;
+                    if (this.HasSpell(from, MagiaParaDetalhar))
+                    {
+                        int circulo = (int)(SpellRegistry.NewSpell(MagiaParaDetalhar, from, null).Circle);
+                        Dictionary<int, string[]> CirculoDaMagiaDetalhada;
+
+                        switch (circulo)
+                        {
+                            case 0:
+                                CirculoDaMagiaDetalhada = PrimeiroCirculo;
+                                AddButton(91, 50, 2235, 2235, 1, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 1, GumpButtonType.Reply, 0);
+                                break;
+                            case 1:
+                                CirculoDaMagiaDetalhada = SegundoCirculo;
+                                AddButton(91, 50, 2235, 2235, 1, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 1, GumpButtonType.Reply, 0);
+                                break;
+                            case 2:
+                                CirculoDaMagiaDetalhada = TerceiroCirculo;
+                                AddButton(91, 50, 2235, 2235, 2, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 2, GumpButtonType.Reply, 0);
+                                break;
+                            case 3:
+                                CirculoDaMagiaDetalhada = QuartoCirculo;
+                                AddButton(91, 50, 2235, 2235, 2, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 2, GumpButtonType.Reply, 0);
+                                break;
+                            case 4:
+                                CirculoDaMagiaDetalhada = QuintoCirculo;
+                                AddButton(91, 50, 2235, 2235, 3, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 3, GumpButtonType.Reply, 0);
+                                break;
+                            case 5:
+                                CirculoDaMagiaDetalhada = SextoCirculo;
+                                AddButton(91, 50, 2235, 2235, 3, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 3, GumpButtonType.Reply, 0);
+                                break;
+                            case 6:
+                                CirculoDaMagiaDetalhada = SetimoCirculo;
+                                AddButton(91, 50, 2235, 2235, 4, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 4, GumpButtonType.Reply, 0);
+                                break;
+                            case 7:
+                                CirculoDaMagiaDetalhada = OitavoCirculo;
+                                AddButton(91, 50, 2235, 2235, 4, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 4, GumpButtonType.Reply, 0);
+                                break;
+                            case 8:
+                                CirculoDaMagiaDetalhada = NonoCirculo;
+                                AddButton(91, 50, 2235, 2235, 5, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 5, GumpButtonType.Reply, 0);
+                                break;
+                            case 9:
+                                CirculoDaMagiaDetalhada = DecimoCirculo;
+                                AddButton(91, 50, 2235, 2235, 5, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 5, GumpButtonType.Reply, 0);
+                                break;
+                            case 10:
+                                CirculoDaMagiaDetalhada = DecimoPrimeiroCirculo;
+                                AddButton(91, 50, 2235, 2235, 6, GumpButtonType.Reply, 0);
+                                AddButton(362, 50, 2236, 2236, 6, GumpButtonType.Reply, 0);
+                                break;
+                            default:
+                                return;
+                        }
+                        string[] detalhes;
+                        if (CirculoDaMagiaDetalhada.TryGetValue(MagiaParaDetalhar, out detalhes))
+                        {
+                            AddButton(143, 76, Int16.Parse(detalhes[1]), Int16.Parse(detalhes[2]), MagiaParaDetalhar, GumpButtonType.Reply, 0);
+                            AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>" + detalhes[0] + "</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>"+ detalhes[3] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                            AddHtml(250, 70, 145, 160, @"<BODY><BASEFONT Color=#111111>" + detalhes[4] + "</BASEFONT></BODY>", (bool)false, (bool)false);
+                        }
+                    }
+                    else
+                    {
+                        AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                    }
+                    break;
             }
         }
 
         public override void OnResponse(NetState state, RelayInfo info)
         {
             Mobile from = state.Mobile;
-
-            if (info.ButtonID < 800 && info.ButtonID > 0)
+            //Console.WriteLine("Botao apertado: " + info.ButtonID);
+            if (info.ButtonID > 0 && info.ButtonID < 7)
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
-                if (page < 1) { page = 18; }
-                if (page > 18) { page = 1; }
+                if (page < 1) { page = 6; }
+                if (page > 6) { page = 1; }
+                //Console.WriteLine("Passa pagina de circulo: " + page);
+                m_Book.PaginaAtual = page;
                 from.SendGump(new ExemploSpellbookGump(from, m_Book, page));
             }
-            else if (info.ButtonID > 799)
+            else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
             {
+                int paginaCirculo = 0;
+                Spell magia = null;
                 switch (info.ButtonID)
                 {
-                    case 800:
-                        new ToqueCicatrizanteSpell(from, null).Cast();
+                    case 70:
+                        magia = new EmbasbacarSpell(from, null);
                         break;
-                    case 801:
-                        new IntelectoDoDevotoSpell(from, null).Cast();
+                    case 71:
+                        magia = new IntelectoDoAcolitoSpell(from, null);
                         break;
-                    case 802:
-                        new AgilidadeDoDevotoSpell(from, null).Cast();
+                    case 72:
+                        magia = new EnfraquecerSpell(from, null);
                         break;
-                    case 803:
-                        new ToqueCurativoSpell(from, null).Cast();
+                    case 73:
+                        magia = new ForcaDoAcolitoSpell(from, null);
                         break;
-                    case 804:
-                        new BanimentoSagradoSpell(from, null).Cast();
+                    case 74:
+                        magia = new AtrapalharSpell(from, null);
                         break;
-                    case 805:
-                        new FuriaSagradaSpell(from, null).Cast();
+                    case 75:
+                        magia = new AgilidadeDoAcolitoSpell(from, null);
                         break;
-                    case 806:
-                        new ForcaDoDevotoSpell(from, null).Cast();
+                    case 76:
+                        magia = new ToqueDaDorSpell(from, null);
                         break;
-                    case 807:
-                        new ArmaSagradaSpell(from, null).Cast();
+                    case 77:
+                        magia = new BanimentoProfanoSpell(from, null);
                         break;
-                    case 808:
-                        new BencaoSagradaSpell(from, null).Cast();
+                    case 78:
+                        magia = new ArmaVampiricaSpell(from, null);
                         break;
-                    case 809:
-                        new ToqueRegeneradorSpell(from, null).Cast();
+                    case 79:
+                        magia = new BanirDemonioSpell(from, null);
                         break;
-                    case 810:
-                        new DesafioSagradoSpell(from, null).Cast();
+                    case 80:
+                        magia = new BencaoProfanaSpell(from, null);
                         break;
-                    case 811:
-                        new EmanacaoPuraSpell(from, null).Cast();
+                    case 81:
+                        magia = new DesafioProfanoSpell(from, null);
                         break;
-                    case 812:
-                        new BanimentoCelestialSpell(from, null).Cast();
+                    case 82:
+                        magia = new EspiritoMalignoSpell(from, null);
                         break;
-                    case 813:
-                        new SacrificioSantoSpell(from, null).Cast();
+                    case 83:
+                        magia = new FormaVampiricaSpell(from, null);
                         break;
-                    case 814:
-                        new SaudeDivinaSpell(from, null).Cast();
+                    case 84:
+                        magia = new FuriaProfanaSpell(from, null);
                         break;
-                    case 815:
-                        new HaloDivinoSpell(from, null).Cast();
+                    case 85:
+                        magia = new HaloProfanoSpell(from, null);
                         break;
-                    case 816:
-                        new EspiritoBenignoSpell(from, null).Cast();
+                    case 86:
+                        magia = new PeleCadavericaSpell(from, null);
                         break;
-                       
+                    case 87:
+                        magia = new SaudeProfanaSpell(from, null);
+                        break;
                     default:
                         break;
                 }
-                
-                /*
-				else if ( info.ButtonID == 751 ){ new DemonicTouchSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 752 ){ new DevilPactSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 753 ){ new GrimReaperSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 754 ){ new HagHandSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 755 ){ new HellfireSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 756 ){ new LucifersBoltSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 757 ){ new OrbOfOrcusSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 758 ){ new ShieldOfHateSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 759 ){ new SoulReaperSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 760 ){ new StrengthOfSteelSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 761 ){ new StrikeSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 762 ){ new SuccubusSkinSpell( from, null ).Cast(); }
-				else if ( info.ButtonID == 763 ){ new WrathSpell( from, null ).Cast(); }
-                */
-                from.SendGump(new ExemploSpellbookGump(from, m_Book, 1));
+
+                if (magia != null)
+                {
+                    paginaCirculo = 1 + ((int)magia.Circle) / 2;
+                    magia.Cast();
+                }
+                //Console.WriteLine("Casta e tenta abrir a pagina " + paginaCirculo);
+                m_Book.PaginaAtual = paginaCirculo;
+                from.SendGump(new ExemploSpellbookGump(from, m_Book, paginaCirculo));
+
             }
+            else if(info.ButtonID >= 100 + m_Book.BookOffset && info.ButtonID < (100 + m_Book.BookOffset + m_Book.BookCount))
+            {
+                //Console.WriteLine("Tenta abrir a pagina de detalhes "+ (info.ButtonID - 100 + 7));
+                m_Book.PaginaAtual = info.ButtonID - 100 - m_Book.BookOffset + 7;
+                from.SendGump(new ExemploSpellbookGump(from, m_Book, m_Book.PaginaAtual));
+            }
+            return;
         }
     }
 }

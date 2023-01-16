@@ -98,6 +98,8 @@ namespace Server.Items
 			1 // 1 property   : 1/4 : 25%
 		};
 
+        public int PaginaAtual; 
+
         #region Factions
         private FactionItem m_FactionState;
 
@@ -127,17 +129,18 @@ namespace Server.Items
 		[Constructable]
 		public Spellbook()
 			: this((ulong)0)
-		{ }
+		{ PaginaAtual = 1; }
 
 		[Constructable]
 		public Spellbook(ulong content)
 			: this(content, 0xEFA)
-		{ }
+		{ PaginaAtual = 1; }
 
 		public Spellbook(ulong content, int itemID)
 			: base(itemID)
 		{
-			m_AosAttributes = new AosAttributes(this);
+            PaginaAtual = 1;
+            m_AosAttributes = new AosAttributes(this);
 			m_AosSkillBonuses = new AosSkillBonuses(this);
             m_NegativeAttributes = new NegativeAttributes(this);
 
@@ -150,7 +153,7 @@ namespace Server.Items
 
 		public Spellbook(Serial serial)
 			: base(serial)
-		{ }
+		{ PaginaAtual = 1; }
 
 		[CommandProperty(AccessLevel.GameMaster)]
 		public string EngravedText
@@ -1218,7 +1221,7 @@ namespace Server.Items
 		{
 			base.Serialize(writer);
 
-			writer.Write(6); // version
+			writer.Write(7); // version
 
             m_NegativeAttributes.Serialize(writer);
 
@@ -1253,6 +1256,9 @@ namespace Server.Items
 
 			switch (version)
 			{
+                case 7:
+                    PaginaAtual = 1;
+                    goto case 6;
                 case 6:
                     {
                         m_NegativeAttributes = new NegativeAttributes(this, reader);
