@@ -97,7 +97,7 @@ namespace Server.Gumps
             return (m_Book.HasSpell(spellID));
         }
 
-        public BardoSpellBookGump(Mobile from, BardoSpellBook book, int page) : base(100, 100)
+        public BardoSpellbookGump(Mobile from, BardoSpellbook book, int page) : base(100, 100)
         {
             m_Book = book;
 
@@ -409,7 +409,7 @@ namespace Server.Gumps
             if (page > 6) { page = 1; }
             //Console.WriteLine("Passa pagina de circulo: " + page);
             m_Book.PaginaAtual = page;
-            from.SendGump(new ExemploSpellbookGump(from, m_Book, page));
+            from.SendGump(new BardoSpellbookGump(from, m_Book, page));
         }
         else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
         {
@@ -513,7 +513,7 @@ namespace Server.Gumps
                 }
                 //Console.WriteLine("Casta e tenta abrir a pagina " + paginaCirculo);
                 m_Book.PaginaAtual = paginaCirculo;
-                from.SendGump(new ExemploSpellbookGump(from, m_Book, paginaCirculo));
+                from.SendGump(new BardoSpellbookGump(from, m_Book, paginaCirculo));
 
             
         }
@@ -521,7 +521,7 @@ namespace Server.Gumps
         {
             //Console.WriteLine("Tenta abrir a pagina de detalhes "+ (info.ButtonID - 100 + 7));
             m_Book.PaginaAtual = info.ButtonID - 100 - m_Book.BookOffset + 7;
-            from.SendGump(new ExemploSpellbookGump(from, m_Book, m_Book.PaginaAtual));
+            from.SendGump(new BardoSpellbookGump(from, m_Book, m_Book.PaginaAtual));
         }
             return;
       }

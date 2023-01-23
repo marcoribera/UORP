@@ -3,10 +3,10 @@ using Server.Gumps;
 
 namespace Server.Items
 {
-    public class BardoSpellBook : Spellbook
+    public class BardoSpellbook : Spellbook
     {
         [Constructable]
-        public BardoSpellBook()
+        public BardoSpellbook()
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
             Name = "Livro Canções do Bardo";
@@ -14,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public BardoSpellBook(ulong content)
+        public BardoSpellbook(ulong content)
             : base(content, 0x2252)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
@@ -22,11 +22,11 @@ namespace Server.Items
         }
 
         [Constructable]
-        public BardoSpellBook(ulong content, Mobile gifted) : base(content, 0xA92F)
+        public BardoSpellbook(ulong content, Mobile gifted) : base(content, 0xA92F)
         {
             Hue = 59;
         }
-        public BardoSpellBook(Serial serial)
+        public BardoSpellbook(Serial serial)
             : base(serial)
         {
         }

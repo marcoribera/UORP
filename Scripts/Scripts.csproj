@@ -1174,6 +1174,8 @@
     <Compile Include="Items\Custom\[ReVisited]Monster Contract Dealer &amp; Monster Contract\MonsterContractDealer.cs" />
     <Compile Include="Items\Custom\[ServUO.com]-SmallVendorBuilding1Addon.cs" />
     <Compile Include="Items\Equipment\Spellbooks\AlgozSpellBookGump.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\BardoSpellBook.cs" />
+    <Compile Include="Items\Equipment\Spellbooks\BardoSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ClerigoDaVidaSpellBook.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ClerigoDaVidaSpellBookGump.cs" />
     <Compile Include="Items\Equipment\Spellbooks\ClerigoDosMortosSpellBook.cs" />
