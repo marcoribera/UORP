@@ -1,25 +1,80 @@
 using System;
+using Server;
+using System.Collections;
+using System.Collections.Generic;
+using Server.Misc;
 using Server.Items;
+using Server.Network;
+using Server.Commands;
+using Server.Commands.Generic;
+using Server.Mobiles;
+using Server.Accounting;
+using Server.Regions;
+using System.Threading;
 
-
-namespace Server.Spells.ClerigoDosMortos
+namespace Server.Misc
 {
-    public abstract class ClerigoDosMortosSpell : Spell
+    class BardFunctions
+    {
+        public static void UseBardInstrument(Item instrument, bool succeed, Mobile singer)
+        {
+            if (instrument == null)
+                return;
+
+            if (instrument is BaseInstrument) { } else { return; }
+
+            if (singer == null)
+                return;
+
+            BaseInstrument harp = (BaseInstrument)instrument;
+
+            if (succeed == true)
+            {
+                singer.PlaySound(harp.SuccessSound);
+            }
+            else
+            {
+                singer.PlaySound(harp.FailureSound);
+            }
+
+            if (harp.UsesRemaining > 1)
+            {
+                harp.UsesRemaining--;
+            }
+            else
+            {
+                if (singer != null)
+                    singer.SendLocalizedMessage(502079); // The instrument played its last tune.
+                instrument.Delete();
+            }
+        }
+    }
+}
+
+namespace Server.Spells.Bardo
+{
+    public abstract class BardoSpell : Spell
     {
         //                                            Circulo:  1  2  3   4   5   6   7   8   9   10   11
         private static readonly int[] m_ManaTable = new int[] { 4, 6, 9, 13, 19, 28, 42, 63, 94, 141, 211 };
         private const double ChanceOffset = 20.0, ChanceLength = 120.0 / 10.0; //originalmente era: ChanceOffset = 20.0, ChanceLength = 100.0 /7.0
-        public ClerigoDosMortosSpell(Mobile caster, Item scroll, SpellInfo info)
+        protected const int SpellEffectHue = 1070;
+
+        public BardoSpell(Mobile caster, Item scroll, SpellInfo info)
             : base(caster, scroll, info)
         {
         }
 
+        public static int MusicSkill(Mobile m)
+        {
+            return (int)(m.Skills[SkillName.Tocar].Value + m.Skills[SkillName.Provocacao].Value + m.Skills[SkillName.Caos].Value);
+        }
 
         public override SkillName CastSkill
         {
             get
             {
-                return SkillName.Necromancia;
+                return SkillName.Caos;
             }
         }
         public override SkillName DamageSkill
@@ -41,9 +96,8 @@ namespace Server.Spells.ClerigoDosMortos
         public abstract double RequiredSkill { get; }
 
 
+
         public abstract SpellCircle Circle { get; }
-
-
 
         public override TimeSpan CastDelayBase
         {
@@ -52,6 +106,7 @@ namespace Server.Spells.ClerigoDosMortos
                 return TimeSpan.FromMilliseconds(((4 + (int)Circle) * CastDelaySecondsPerTick) * 1000);
             }
         }
+
         public override bool ConsumeReagents()
         {
             if (base.ConsumeReagents())
@@ -102,16 +157,16 @@ namespace Server.Spells.ClerigoDosMortos
             return (n >= Utility.RandomDouble());
         }
 
-        public static double GetClerigoDosMortosDamage(Mobile from)
+
+        public override void DoFizzle()
         {
-            int karma = from.Karma;
-            if (karma < 1) { karma = 0; }
-            if (karma > 15000) { karma = 15000; }
-
-            double hate = karma / 120; // MAX 125
-            hate = hate + from.Skills[SkillName.Cortante].Value + from.Skills[SkillName.Cortante].Value; // MAX 375
-
-            return hate;
+            Caster.LocalOverheadMessage(MessageType.Regular, 0x3B2, 1115710); // The song fizzles.
+                                                                              // 1115737 You feel invigorated by the bard's spellsong
+                                                                              // 1115758 The bard's song fills you with resilience
+                                                                              // 1115759 The bard's song fills you with invincible
+                                                                              // 1115774 You halt your spellsong
+                                                                              // 1115938 Your spellsong has finished
+                                                                              // 1149722 Your spellsong has ended
         }
 
         public virtual double GetResistPercentForCircle(Mobile target, SpellCircle circle)
@@ -140,3 +195,5 @@ namespace Server.Spells.ClerigoDosMortos
         }
     }
 }
+
+

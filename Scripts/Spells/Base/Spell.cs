@@ -25,6 +25,8 @@ using System.Reflection;
 using Server.Spells.Mysticism;
 using Server.Spells.Elementarista;
 using Server.Spells.Monge;
+using Server.Spells.Bardo;
+
 
 using System.Linq;
 #endregion

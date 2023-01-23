@@ -453,9 +453,13 @@ namespace Server.Items
             {
                 return SpellbookType.Paladin;
             }
-            else if (spellID >= 220 && spellID < 299) //Espaço livre usado para novas magias da skill Ordem
+            else if (spellID >= 220 && spellID < 250) //Espaço livre usado para novas magias da skill Ordem
             {
                 return SpellbookType.Ordem;
+            }
+            else if (spellID >= 260 && spellID < 300) //Espaço livre usado para novas magias da skill Bardo
+            {
+                return SpellbookType.Bardo;
             }
             else if (spellID >= 320 && spellID < 399)  //Espaço livre usado para novas magias da skill Caos
             {
@@ -562,9 +566,17 @@ namespace Server.Items
 		public static Spellbook FindArcanist(Mobile from)
 		{
 			return Find(from, -1, SpellbookType.Arcanist);
-		}
+        }
 
-        public static Spellbook FindMystic(Mobile from)
+        public static Spellbook FindBardo(Mobile from)
+        {
+            return Find(from, -1, SpellbookType.Bardo);
+        }
+
+
+
+      
+    public static Spellbook FindMystic(Mobile from)
         {
             return Find(from, -1, SpellbookType.Mystic);
         }
@@ -1562,6 +1574,7 @@ namespace Server.Items
                 case 25:
                     type = SpellbookType.Elementarista;
                     break;
+
             }
 
 			Spellbook book = Find(from, -1, type);

@@ -1,34 +1,40 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Server;
+
 using Server.Targeting;
 using Server.Multis;
 using Server.Regions;
 using Server.Mobiles;
-using Server.Spells.Mysticism;
 
-
-namespace Server.Spells.Monge
+namespace Server.Spells.Bardo
 {
-    public class SocoTectonicoSpell : MongeSpell
+    public class MusicaArdenteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Soco Vulcânico", "Tectonicas Impetus",
-            233,
-            9012,
-            false,
-            Reagent.SulfurousAsh,
-            Reagent.SulfurousAsh,
-            Reagent.SulfurousAsh,
-            Reagent.SulfurousAsh,
-            Reagent.SulfurousAsh);
+            "Música Ardente", "Acho que o clima está esquentando. *pisca*",
+            -1,
+            false);
 
-        public SocoTectonicoSpell(Mobile caster, Item scroll)
-        : base(caster, scroll, m_Info)
+        public MusicaArdenteSpell(Mobile caster, Item scroll)
+            : base(caster, scroll, m_Info)
         {
+        }
+        public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
+         public override SpellCircle Circle
+        {
+            get
+            {
+                return SpellCircle.Eleventh;
+            }
+        }
+
+        public override double RequiredSkill
+        {
+            get
+            {
+                return 110.0;
+            }
         }
 
         public override TimeSpan CastDelayBase
@@ -38,55 +44,11 @@ namespace Server.Spells.Monge
                 return TimeSpan.FromSeconds(2.5);
             }
         }
-        public override double RequiredSkill
-        {
-            get
-            {
-                return 120.0;
-            }
-        }
-        public override SpellCircle Circle
-        {
-            get
-            {
-                return SpellCircle.Eleventh;
-            }
-        }
-
-        public override int EficienciaMagica(Mobile caster) { return 4; } //Servirá para calcular o modificador na eficiência das magias
-
-
-
-
-
+        
         public override void OnCast()
         {
             Caster.Target = new InternalTarget(this);
         }
-
-        public class InternalTarget : Target
-        {
-            private readonly SocoTectonicoSpell m_Owner;
-            public InternalTarget(SocoTectonicoSpell owner)
-                : base(12, true, TargetFlags.None)
-            {
-                m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile m, object o)
-            {
-                if (o is IPoint3D)
-                {
-                    m_Owner.Target(new Point3D((IPoint3D)o));
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile m)
-            {
-                m_Owner.FinishSequence();
-            }
-        }
-
 
         public void Target(Point3D p)
         {
@@ -94,51 +56,34 @@ namespace Server.Spells.Monge
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-
-            else if (SpellHelper.CheckTown(p, Caster) && CheckSequence())
+            else if (CheckSequence())
             {
-                Map map = Caster.Map;
-                if (map == null)
-                    return;
-                foreach (var m in AcquireIndirectTargets(p, 3).OfType<Mobile>())
+                int level = GetFocusLevel(Caster);
+                double skill = Caster.Skills[CastSkill].Value;
+
+                int tiles = 5 + level;
+                int damage = 10 + (int)Math.Max(1, (skill / 24)) + level;
+                int duration = (int)Math.Max(1, skill / 24) + level; 
+				
+                for (int x = p.X - tiles; x <= p.X + tiles; x += tiles)
                 {
-                    double skill = Caster.Skills[CastSkill].Value;
-
-                    int tiles = 3;
-                    double  duration = (int)Math.Max(1, skill / 10);
-                    int duration2 = (int)Math.Max(1, skill / 10);
-
-                    duration -= GetResistSkill(m) / 10;
-
-                    for (int x = p.X - tiles; x <= p.X + tiles; x += tiles)
-                    {
-                        for (int y = p.Y - tiles; y <= p.Y + tiles; y += tiles)
-                        {
-                            if (p.X == x && p.Y == y)
-                                continue;
-
-                            Point3D p3d = new Point3D(x, y, Caster.Map.GetAverageZ(x, y));
-
-                            if (CanFitFire(p3d, Caster))
-                                new FireItem(duration2).MoveToWorld(p3d, Caster.Map);
-                        }
-                    }
-
-                    if (duration > 0)
-                    {
-                        Caster.DoHarmful(m);
-
-                        SleepSpell.DoSleep(Caster, m, TimeSpan.FromSeconds(duration));
+                    for (int y = p.Y - tiles; y <= p.Y + tiles; y += tiles)
+                    { 
+                        if (p.X == x && p.Y == y)
+                            continue;
+							
+                        Point3D p3d = new Point3D(x, y, Caster.Map.GetAverageZ(x, y));
+					
+                        if (CanFitFire(p3d, Caster))
+                            new FireItem(duration).MoveToWorld(p3d, Caster.Map);
                     }
                 }
-
-                
-
+				
                 Effects.PlaySound(p, Caster.Map, 0x5CF);
-               // NegativeAttributes.OnCombatAction(Caster);
 
-              //  new InternalTimer(this, Caster, p, tiles, duration).Start();
+                NegativeAttributes.OnCombatAction(Caster);
 
+                new InternalTimer(this, Caster, p, damage, tiles, duration).Start();
             }
 
             FinishSequence();
@@ -150,7 +95,7 @@ namespace Server.Spells.Monge
                 return false;
             if (BaseHouse.FindHouseAt(p, caster.Map, 20) != null)
                 return false;
-            foreach (RegionRect r in caster.Map.GetSector(p).RegionRects)
+            foreach(RegionRect r in caster.Map.GetSector(p).RegionRects)
             {
                 if (!r.Contains(p))
                     continue;
@@ -177,7 +122,28 @@ namespace Server.Spells.Monge
             ColUtility.Free(mobiles);
         }
 
-       
+        public class InternalTarget : Target
+        {
+            private readonly MusicaArdenteSpell m_Owner;
+            public InternalTarget(MusicaArdenteSpell owner)
+                : base(12, true, TargetFlags.None)
+            {
+                m_Owner = owner;
+            }
+
+            protected override void OnTarget(Mobile m, object o)
+            {
+                if (o is IPoint3D)
+                {
+                    m_Owner.Target(new Point3D((IPoint3D)o));
+                }
+            }
+
+            protected override void OnTargetFinish(Mobile m)
+            {
+                m_Owner.FinishSequence();
+            }
+        }
 
         public class InternalTimer : Timer
         {
@@ -202,10 +168,10 @@ namespace Server.Spells.Monge
             }
 
             protected override void OnTick()
-            {
+            { 
                 if (m_Owner == null || m_Map == null || m_Map == Map.Internal)
                     return;
-
+					
                 m_LifeSpan -= 1;
                 var targets = GetTargets().Where(m => BaseHouse.FindHouseAt(m.Location, m.Map, 20) == null).ToList();
                 int count = targets.Count;
@@ -229,7 +195,7 @@ namespace Server.Spells.Monge
                         damage /= Math.Min(3, count);
 
                     AOS.Damage(m, m_Owner, damage, 0, 100, 0, 0, 0, 0, 0, DamageType.SpellAOE);
-                    SocoTectonicoSpell.Table[m] = Core.TickCount + 1000;
+                    MusicaArdenteSpell.Table[m] = Core.TickCount + 1000;
                 }
 
                 ColUtility.Free(targets);
@@ -237,16 +203,16 @@ namespace Server.Spells.Monge
 
             private IEnumerable<Mobile> GetTargets()
             {
-                SocoTectonicoSpell.DefragTable();
+                MusicaArdenteSpell.DefragTable();
 
                 return m_Spell.AcquireIndirectTargets(m_Location, m_Range).OfType<Mobile>().Where(m => !m_Table.ContainsKey(m));
-            }
+            }			
         }
 
         public class FireItem : Item
-        {
+        { 
             public FireItem(int duration)
-                : base(Utility.RandomBool() ? 0x08E1 : 0x08E7)
+                : base(Utility.RandomBool() ? 0x398C : 0x3996)
             {
                 Movable = false;
                 Timer.DelayCall(TimeSpan.FromSeconds(duration), new TimerCallback(Delete));
@@ -275,4 +241,3 @@ namespace Server.Spells.Monge
         }
     }
 }
-
