@@ -8,6 +8,7 @@ using Server.Spells;
 using System.Collections.Generic;
 using Server.Prompts;
 using Server.Spells.Bardo;
+using Server.Targeting;
 
 namespace Server.Gumps
 { //TODO: Achar o fundo certo do GUMP e ajustar a aparência
@@ -130,6 +131,7 @@ namespace Server.Gumps
             int nBUTTONy = 82;
 
             int temp = 0;
+
             switch (page)
             {
                 case 1:
@@ -400,111 +402,125 @@ namespace Server.Gumps
         public override void OnResponse(NetState state, RelayInfo info)
         {
             Mobile from = state.Mobile;
-        //Console.WriteLine("Botao apertado: " + info.ButtonID);
-        if (info.ButtonID > 0 && info.ButtonID < 7)
-        {
-            from.SendSound(0x55);
-            int page = info.ButtonID;
-            if (page < 1) { page = 6; }
-            if (page > 6) { page = 1; }
-            //Console.WriteLine("Passa pagina de circulo: " + page);
-            m_Book.PaginaAtual = page;
-            from.SendGump(new BardoSpellbookGump(from, m_Book, page));
-        }
-        else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
-        {
-            int paginaCirculo = 0;
-            Spell magia = null;
-             switch (info.ButtonID)
-                { 
+            //Console.WriteLine("Botao apertado: " + info.ButtonID);
+
+            if (info.ButtonID == 99)
+            {
+                from.SendMessage("Click your instrument of bardic choice.");
+                from.Target = new InternalTarget(m_Book);
+            }
+            else if (info.ButtonID > 0 && info.ButtonID < 7)
+            {
+                from.SendSound(0x55);
+                int page = info.ButtonID;
+                if (page < 1) { page = 6; }
+                if (page > 6) { page = 1; }
+                //Console.WriteLine("Passa pagina de circulo: " + page);
+                m_Book.PaginaAtual = page;
+                from.SendGump(new BardoSpellbookGump(from, m_Book, page));
+            }
+            else if (m_Book.Instrument != null && !(from.InRange(m_Book.Instrument.GetWorldLocation(), 1)))
+            {
+                from.SendMessage("Your chosen instrument must be in your pack!");
+            }
+            else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
+            {
+                int paginaCirculo = 0;
+                Spell magia = null;
+                from.SendMessage("You need an instrument to play that song!");
+                from.SendMessage("Select your instrument of bardic choice.");
+                from.Target = new InternalTarget(m_Book);
+
+                switch (info.ButtonID)
+                {
 
                     case 260:
-                    magia = new AnularAprimoramentoSpell(from, null);
-                    break;
-                case 261:
-                    magia = new AtaqueSonicoSpell(from, null);
-                    break;
-                case 262:
-                    magia = new BaloesExplosivosSpell(from, null);
-                    break;
-                case 263:
-                    magia = new CancaoDeNinarSpell(from, null);
-                    break;
-                case 264:
-                    magia = new CoelhoNoChapeuSpell(from, null);
-                    break;
-                case 265:
-                    magia = new EncantarCriaturaSpell(from, null);
-                    break;
-                case 266:
-                    magia = new GarrafaDeAguaSpell(from, null);
-                    break;
-                case 267:
-                    magia = new HilarioSpell(from, null);
-                    break;
-                case 268:
-                    magia = new InsultosSpell(from, null);
-                    break;
-                case 269:
-                    magia = new PalhacosSpell(from, null);
-                    break;
-                case 270:
-                    magia = new PoderDaFlorSpell(from, null);
-                    break;
-                case 271:
-                    magia = new PoteDeCobrasSpell(from, null);
-                    break;
-                case 272:
-                    magia = new PresentesSurpresaSpell(from, null);
-                    break;
-                case 273:
-                    magia = new SaltandoPorAiSpell(from, null);
-                    break;
-                case 274:
-                    magia = new MusicaArdenteSpell(from, null);
-                    break;
-                case 275:
-                    magia = new SomAgonizanteSpell(from, null);
-                    break;
-                case 276:
-                    magia = new SomDaAgilidadeSpell(from, null);
-                    break;
-                case 277:
-                    magia = new SomDaBurradaSpell(from, null);
-                    break;
-                case 278:
-                    magia = new SomDaForcaSpell(from, null);
-                    break;
-                case 279:
-                    magia = new SomDaFraquezaSpell(from, null);
-                    break;
-                case 280:
-                    magia = new SomDaInteligenciaSpell(from, null);
-                    break;
-                case 281:
-                    magia = new SomDaLerdezaSpell(from, null);
-                    break;
-                case 282:
-                    magia = new SomDaMelhoriaSpell(from, null);
-                    break;
-                case 283:
-                    magia = new SomDebilitanteSpell(from, null);
-                    break;
-                case 284:
-                    magia = new SomDeFestaSpell(from, null);
-                    break;
-                case 285:
-                    magia = new SomDoFocoSpell(from, null);
-                    break;
-                case 286:
-                    magia = new SomFascinanteSpell(from, null);
-                    break;
-                case 287:
-                    magia = new SomFatiganteSpell(from, null);
-                    break;
-                default:
-                    break;
-             }
+                        magia = new AnularAprimoramentoSpell(from, null);
+                        break;
+                    case 261:
+                        magia = new AtaqueSonicoSpell(from, null);
+                        break;
+                    case 262:
+                        magia = new BaloesExplosivosSpell(from, null);
+                        break;
+                    case 263:
+                        magia = new CancaoDeNinarSpell(from, null);
+                        break;
+                    case 264:
+                        magia = new CoelhoNoChapeuSpell(from, null);
+                        break;
+                    case 265:
+                        magia = new EncantarCriaturaSpell(from, null);
+                        break;
+                    case 266:
+                        magia = new GarrafaDeAguaSpell(from, null);
+                        break;
+                    case 267:
+                        magia = new HilarioSpell(from, null);
+                        break;
+                    case 268:
+                        magia = new InsultosSpell(from, null);
+                        break;
+                    case 269:
+                        magia = new PalhacosSpell(from, null);
+                        break;
+                    case 270:
+                        magia = new PoderDaFlorSpell(from, null);
+                        break;
+                    case 271:
+                        magia = new PoteDeCobrasSpell(from, null);
+                        break;
+                    case 272:
+                        magia = new PresentesSurpresaSpell(from, null);
+                        break;
+                    case 273:
+                        magia = new SaltandoPorAiSpell(from, null);
+                        break;
+                    case 274:
+                        magia = new MusicaArdenteSpell(from, null);
+                        break;
+                    case 275:
+                        magia = new SomAgonizanteSpell(from, null);
+                        break;
+                    case 276:
+                        magia = new SomDaAgilidadeSpell(from, null);
+                        break;
+                    case 277:
+                        magia = new SomDaBurradaSpell(from, null);
+                        break;
+                    case 278:
+                        magia = new SomDaForcaSpell(from, null);
+                        break;
+                    case 279:
+                        magia = new SomDaFraquezaSpell(from, null);
+                        break;
+                    case 280:
+                        magia = new SomDaInteligenciaSpell(from, null);
+                        break;
+                    case 281:
+                        magia = new SomDaLerdezaSpell(from, null);
+                        break;
+                    case 282:
+                        magia = new SomDaMelhoriaSpell(from, null);
+                        break;
+                    case 283:
+                        magia = new SomDebilitanteSpell(from, null);
+                        break;
+                    case 284:
+                        magia = new SomDeFestaSpell(from, null);
+                        break;
+                    case 285:
+                        magia = new SomDoFocoSpell(from, null);
+                        break;
+                    case 286:
+                        magia = new SomFascinanteSpell(from, null);
+                        break;
+                    case 287:
+                        magia = new SomFatiganteSpell(from, null);
+                        break;
+                    default:
+                        break;
+                }
 
                 if (magia != null)
                 {
@@ -515,15 +531,41 @@ namespace Server.Gumps
                 m_Book.PaginaAtual = paginaCirculo;
                 from.SendGump(new BardoSpellbookGump(from, m_Book, paginaCirculo));
 
-            
-        }
-        else if (info.ButtonID >= 100 + m_Book.BookOffset && info.ButtonID < (100 + m_Book.BookOffset + m_Book.BookCount))
-        {
-            //Console.WriteLine("Tenta abrir a pagina de detalhes "+ (info.ButtonID - 100 + 7));
-            m_Book.PaginaAtual = info.ButtonID - 100 - m_Book.BookOffset + 7;
-            from.SendGump(new BardoSpellbookGump(from, m_Book, m_Book.PaginaAtual));
-        }
+
+            }
+            else if (info.ButtonID >= 100 + m_Book.BookOffset && info.ButtonID < (100 + m_Book.BookOffset + m_Book.BookCount))
+            {
+                //Console.WriteLine("Tenta abrir a pagina de detalhes "+ (info.ButtonID - 100 + 7));
+                m_Book.PaginaAtual = info.ButtonID - 100 - m_Book.BookOffset + 7;
+                from.SendGump(new BardoSpellbookGump(from, m_Book, m_Book.PaginaAtual));
+            }
             return;
-      }
+        }
+
+
+
+            private class InternalTarget : Target
+        {
+            private BardoSpellbook Book;
+
+            public InternalTarget(BardoSpellbook book) : base(1, false, TargetFlags.None)
+            {
+                Book = book;
+            }
+
+            protected override void OnTarget(Mobile from, object target)
+            {
+                if (target is BaseInstrument)
+                {
+                    Book.Instrument = (BaseInstrument)target;
+                    from.SendMessage("You set your instrument to play for these songs.");
+                }
+                else
+                {
+                    from.SendMessage("That is not an instrument you can play!");
+                }
+            }
+        }
     }
-}
+   }
+

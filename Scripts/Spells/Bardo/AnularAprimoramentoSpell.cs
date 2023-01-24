@@ -16,6 +16,8 @@ using Server.Network;
 using Server.Gumps;
 using Server.Spells;
 using Server.Misc;
+
+
 //using Server.OneTime.Events;
 
 namespace Server.Spells.Bardo
@@ -56,7 +58,7 @@ namespace Server.Spells.Bardo
         {
             Caster.Target = new InternalTarget(this);
 
-            BardFunctions.UseBardInstrument(SongBook.Instrument, sings, Caster);
+      //      BardFunctions.UseBardInstrument(BardoSpellbook.Instrument, sings, Caster);
         }
 
         public override double RequiredSkill
@@ -299,7 +301,7 @@ namespace Server.Spells.Bardo
 
             protected override void OnTick()
             {
-                PurgeMagicSpell.RemoveImmunity(m_Mobile);
+                AnularAprimoramentoSpell.RemoveImmunity(m_Mobile);
             }
         }
 

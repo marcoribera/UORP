@@ -77,10 +77,10 @@ namespace Server.Spells.Bardo
             }
             else if (this.CheckSequence())
             {
-                int level = GetFocusLevel(this.Caster);
+                
                 double skill = this.Caster.Skills[this.CastSkill].Value;
 
-                double chance = (skill / 150.0) + (level / 50.0);
+                double chance = (skill / 150.0) + (skill / 20) / (50.0);
 
                 if (chance > Utility.RandomDouble())
                 {

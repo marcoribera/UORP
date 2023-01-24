@@ -77,18 +77,18 @@ namespace Server.Spells.Bardo
 				Caster.PlaySound( Caster.Female ? 780 : 1051 );
 				Caster.Say( "*aplaude*" );
 
-				new Clown( Caster ).MoveToWorld( Caster.Location, Caster.Map );
+				new Palhaco( Caster ).MoveToWorld( Caster.Location, Caster.Map );
 
 				int qty = 0;
 
-				if ( Caster.Skills[SkillName.Begging].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
-				if ( Caster.Skills[SkillName.EvalInt].Value >= Utility.RandomMinMax( 1, 100 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.PoderMagico].Value >= Utility.RandomMinMax( 1, 100 ) ){ qty++; }
 
 				if ( qty > ( ( Caster.FollowersMax - Caster.Followers - 1 ) ) )
 					qty = Caster.FollowersMax - Caster.Followers;
 
-				if ( qty > 0 ){ new Clown( Caster ).MoveToWorld( Caster.Location, Caster.Map ); }
-				if ( qty > 1 ){ new Clown( Caster ).MoveToWorld( Caster.Location, Caster.Map ); }
+				if ( qty > 0 ){ new Palhaco( Caster ).MoveToWorld( Caster.Location, Caster.Map ); }
+				if ( qty > 1 ){ new Palhaco( Caster ).MoveToWorld( Caster.Location, Caster.Map ); }
 			}
 
 			FinishSequence();
@@ -98,11 +98,11 @@ namespace Server.Spells.Bardo
 
 namespace Server.Mobiles
 {
-	public class PalhacosSpell : BaseCreature
+	public class Palhaco : BaseCreature
 	{
 		private Mobile m_Caster;
 
-		public PalhacosSpell( Mobile caster ) : base( AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4 )
+		public Palhaco( Mobile caster ) : base( AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4 )
 		{
 			m_Caster = caster;
 
@@ -142,7 +142,7 @@ namespace Server.Mobiles
 			ControlOrder = OrderType.Follow;
 			ControlTarget = caster;
 
-			TimeSpan duration = TimeSpan.FromSeconds( 30 + caster.Skills.EvalInt.Fixed / 40 );
+			TimeSpan duration = TimeSpan.FromSeconds( 30 + caster.Skills.PoderMagico.Fixed / 40 );
 
 			new UnsummonTimer( caster, this, duration ).Start();
 			SummonEnd = DateTime.UtcNow + duration;
@@ -196,7 +196,7 @@ namespace Server.Mobiles
 		public override bool IsDispellable { get { return false; } }
 		public override bool Commandable { get { return false; } }
 
-		public PalhacosSpell( Serial serial ) : base( serial )
+		public Palhaco( Serial serial ) : base( serial )
 		{
 		}
 
@@ -226,7 +226,7 @@ namespace Server.Mobiles
 {
 	public class ClownAI : BaseAI
 	{
-		public ClownAI(PalhacosSpell m ) : base ( m )
+		public ClownAI(Palhaco m ) : base ( m )
 		{
 			m.CurrentSpeed = m.ActiveSpeed;
 		}

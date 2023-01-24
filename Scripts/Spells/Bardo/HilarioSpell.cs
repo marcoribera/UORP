@@ -66,7 +66,7 @@ namespace Server.Spells.Bardo
 				DoReaction( m );
 				HarmfulSpell( m );
 
-				int TotalRange = Server.Spells.Jester.JesterSpell.Buff( Caster, "range" );
+				int TotalRange = Server.Spells.Bardo.BardoSpell.Buff( Caster, "range" );
 
 				List<Mobile> targets = new List<Mobile>();
 
@@ -105,11 +105,10 @@ namespace Server.Spells.Bardo
 		{
 			double duration;
 
-			int secs = (int)( caster.Skills[SkillName.EvalInt].Value + ( ( caster.Skills[SkillName.EvalInt].Value + caster.Skills[SkillName.Begging].Value ) / 8 ) );
+			int secs = (int)( caster.Skills[SkillName.PoderMagico].Value + ( ( caster.Skills[SkillName.PoderMagico].Value + caster.Skills[SkillName.Carisma].Value ) / 8 ) );
 
 			int level = 0;
-				if ( m is BaseCreature ){ level = Server.Misc.IntelligentAction.GetCreatureLevel( m ); }
-				else if ( m is PlayerMobile ){ level = Server.Misc.GetPlayerInfo.GetPlayerLevel( m ); }
+				
 
 			secs = secs - level;
 

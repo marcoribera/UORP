@@ -76,10 +76,10 @@ namespace Server.Spells.Bardo
 
 				int qty = 0;
 
-				if ( Caster.Skills[SkillName.Begging].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
-				if ( Caster.Skills[SkillName.Begging].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
-				if ( Caster.Skills[SkillName.EvalInt].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
-				if ( Caster.Skills[SkillName.EvalInt].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.PoderMagico].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.PoderMagico].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
 
 				if ( qty > ( ( Caster.FollowersMax - Caster.Followers - 1 ) ) )
 					qty = Caster.FollowersMax - Caster.Followers;

@@ -4,6 +4,7 @@ using System.Linq;
 
 using Server;
 using Server.Targeting;
+using Server.Spells.Mysticism;
 
 namespace Server.Spells.Bardo
 {

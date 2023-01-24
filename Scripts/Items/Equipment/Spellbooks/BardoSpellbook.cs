@@ -12,7 +12,7 @@ namespace Server.Items
             Name = "Livro Canções do Bardo";
             Hue = 59;
         }
-
+        public BaseInstrument Instrument;
         [Constructable]
         public BardoSpellbook(ulong content)
             : base(content, 0x2252)
@@ -122,19 +122,37 @@ namespace Server.Items
             : base(serial)
         {
         }
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (from.InRange(GetWorldLocation(), 1))
+            {
+                from.CloseGump(typeof(BardoSpellbook));
+                from.SendGump(new BardoSpellbookGump(from, this, 1));
+            }
+        }
+       
 
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-
+            base.Serialize(writer);
+            
+            writer.Write((Item)Instrument);
             writer.WriteEncodedInt(0); // version
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
-
             int version = reader.ReadEncodedInt();
+            switch (version)
+            {
+                case 0:
+                    {
+                        Instrument = reader.ReadItem() as BaseInstrument;
+                        break;
+                    }
+            }
         }
     }
 }

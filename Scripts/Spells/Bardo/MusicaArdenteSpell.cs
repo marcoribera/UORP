@@ -58,12 +58,12 @@ namespace Server.Spells.Bardo
             }
             else if (CheckSequence())
             {
-                int level = GetFocusLevel(Caster);
+                
                 double skill = Caster.Skills[CastSkill].Value;
 
-                int tiles = 5 + level;
-                int damage = 10 + (int)Math.Max(1, (skill / 24)) + level;
-                int duration = (int)Math.Max(1, skill / 24) + level; 
+                int tiles = 5 + (int)(skill/4);
+                int damage = 10 + (int)Math.Max(1, (skill / 18));
+                int duration = (int)Math.Max(1, skill / 18) ; 
 				
                 for (int x = p.X - tiles; x <= p.X + tiles; x += tiles)
                 {

@@ -10,13 +10,17 @@ namespace Server.Spells.Bardo
 {
 	public class InsultosSpell : BardoSpell
     {
-		private static SpellInfo m_Info = new SpellInfo(
-				"Insultos",
-				-1,
-				0
-			);
+	
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 2.0 ); } }
+
+        private static SpellInfo m_Info = new SpellInfo(
+            "Insultos", "você sabia...",
+            -1,
+            0
+        );
+
+
+        public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 2.0 ); } }
         public override SpellCircle Circle
         {
             get
@@ -68,8 +72,8 @@ namespace Server.Spells.Bardo
 			}
 			else if ( CheckHSequence( m ) )
 			{
-				int TotalLoss = Server.Spells.Jester.JesterSpell.Buff( Caster, "range" )+1;
-				int TotalTime = (int)(Server.Spells.Jester.JesterSpell.Buff( Caster, "time" )/2)+1;
+				int TotalLoss = Server.Spells.Bardo.BardoSpell.Buff( Caster, "range" )+1;
+				int TotalTime = (int)(Server.Spells.Bardo.BardoSpell.Buff( Caster, "time" )/2)+1;
 
 				Timer t = new InternalTimer( m, TotalLoss, TotalTime );
 

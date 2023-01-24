@@ -60,12 +60,12 @@ namespace Server.Spells.Bardo
 			}
 			else if ( CheckHSequence( m ) )
 			{
-				int damage = 1 + (int)( (Caster.Skills[SkillName.Begging].Value / 5) + (Caster.Skills[SkillName.EvalInt].Value / 3) );
+				int damage = 1 + (int)( (Caster.Skills[SkillName.Carisma].Value / 5) + (Caster.Skills[SkillName.PoderMagico].Value / 3) );
 				Caster.MovingParticles( m, 0x3818, 7, 0, false, false, 0x84B, 0, 0 );
 				Caster.PlaySound( 0x025 );
 				Effects.SendLocationEffect( m.Location, m.Map, 0x23B2, 20 );
 
-				if ( Caster.Skills[SkillName.Begging].Value >= Utility.RandomMinMax( 50, 300 ) && m != null )
+				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 50, 300 ) && m != null )
 				{
 					int goo = 0;
 
