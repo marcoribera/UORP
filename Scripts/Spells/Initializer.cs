@@ -380,7 +380,7 @@ namespace Server.Spells
 
 
             // BARDO
-            Register(260, typeof(Bardo.AnularAprimoramentoSpell));
+            Register(260, typeof(Bardo.AnularBencaosSpell));
             Register(261, typeof(Bardo.AtaqueSonicoSpell));
             Register(262, typeof(Bardo.BaloesExplosivosSpell));
             Register(263, typeof(Bardo.CancaoDeNinarSpell));

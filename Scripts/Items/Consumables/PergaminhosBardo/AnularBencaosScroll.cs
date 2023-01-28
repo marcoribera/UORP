@@ -2,26 +2,26 @@ using System;
 
 namespace Server.Items
 {
-    public class AnularAprimoramentoScroll : SpellScroll
+    public class AnularBencaosScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public AnularAprimoramentoScroll()
+        public AnularBencaosScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public AnularAprimoramentoScroll(int amount)
-            : base(260, 0x1F30, amount)
+        public AnularBencaosScroll(int amount)
+            : base(260, 0x14F0, amount)
         {
-            Name = "Anular Aprimoramento";
+            Name = "Anular Bençãos";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 
-        public AnularAprimoramentoScroll(Serial serial)
+        public AnularBencaosScroll(Serial serial)
             : base(serial)
         {
            

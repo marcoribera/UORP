@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public SomDaFraquezaScroll(int amount)
-            : base(279, 0x1F30, amount)
+            : base(279, 0x14F0, amount)
         {
             Name = "Som da Fraqueza";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public EncantarCriaturaScroll(int amount)
-            : base(265, 0x1F30, amount)
+            : base(265, 0x14F0, amount)
         {
             Name = "Encantar Criatura";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

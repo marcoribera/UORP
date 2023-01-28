@@ -2,17 +2,20 @@ using System;
 
 namespace Server.Items
 {
-    public class Lute : BaseInstrument
+    public class LuteNova : BaseInstrument
     {
         [Constructable]
-        public Lute()
-            : base(0xEB3, 0x4C, 0x4D)
+        public LuteNova()
+            : base(0xCA58)
         {
+            this.Name = "lute";
             this.Weight = 5.0;
-            this.Name = "<BASEFONT COLOR=#A335EE>Lute</font>";
+           //this.Layer = Layer.FirstValid;
+
+
         }
 
-        public Lute(Serial serial)
+        public LuteNova(Serial serial)
             : base(serial)
         {
         }

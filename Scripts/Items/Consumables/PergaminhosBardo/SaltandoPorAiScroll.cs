@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public SaltandoPorAiScroll(int amount)
-            : base(273, 0x1F30, amount)
+            : base(273, 0x14F0, amount)
         {
             Name = "Saltando por aí";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

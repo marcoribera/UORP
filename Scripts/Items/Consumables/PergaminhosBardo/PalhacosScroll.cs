@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public PalhacosScroll(int amount)
-            : base(269, 0x1F30, amount)
+            : base(269, 0x14F0, amount)
         {
             Name = "Palhaços";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

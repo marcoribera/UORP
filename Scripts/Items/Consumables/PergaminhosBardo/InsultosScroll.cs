@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public InsultosScroll(int amount)
-            : base(268, 0x1F30, amount)
+            : base(268, 0x14F0, amount)
         {
             Name = "Insultos";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

@@ -10,7 +10,7 @@ namespace Server.Items
             : this((ulong)0) //O os bits do numero hexadecimal utilizado no lugar desse 0 (zero) representam os 0 e 1 de ter ou não cada uma das magias do livro.
         {
             Name = "Livro Canções do Bardo";
-            Hue = 59;
+            Hue = 61;
         }
         public BaseInstrument Instrument;
         [Constructable]
@@ -18,13 +18,13 @@ namespace Server.Items
             : base(content, 0x2252)
         {
             this.Layer = (Core.ML ? Layer.OneHanded : Layer.Invalid);
-            Hue = 59;
+            Hue = 61;
         }
 
         [Constructable]
         public BardoSpellbook(ulong content, Mobile gifted) : base(content, 0xA92F)
         {
-            Hue = 59;
+            Hue = 61;
         }
         public BardoSpellbook(Serial serial)
             : base(serial)
@@ -115,44 +115,38 @@ namespace Server.Items
             : base((ulong)0x1FFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
         {
             Name = "Livro do Bardo Completo";
-            Hue = 59;
+            Hue = 61;
         }
 
         public CompleteBardoSpellbook(Serial serial)
             : base(serial)
         {
         }
-        public override void OnDoubleClick(Mobile from)
-        {
-            if (from.InRange(GetWorldLocation(), 1))
-            {
-                from.CloseGump(typeof(BardoSpellbook));
-                from.SendGump(new BardoSpellbookGump(from, this, 1));
-            }
-        }
-       
+
 
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            base.Serialize(writer);
-            
-            writer.Write((Item)Instrument);
+
             writer.WriteEncodedInt(0); // version
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
+
             int version = reader.ReadEncodedInt();
-            switch (version)
-            {
-                case 0:
-                    {
-                        Instrument = reader.ReadItem() as BaseInstrument;
-                        break;
-                    }
-            }
         }
     }
 }
+
+/*
+public override void OnDoubleClick(Mobile from)
+{
+    if (from.InRange(GetWorldLocation(), 1))
+    {
+        from.CloseGump(typeof(BardoSpellbook));
+        from.SendGump(new BardoSpellbookGump(from, this, 1));
+    }
+}
+*/

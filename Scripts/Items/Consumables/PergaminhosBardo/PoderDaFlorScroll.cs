@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public PoderDaFlorScroll(int amount)
-            : base(270, 0x1F30, amount)
+            : base(270, 0x14F0, amount)
         {
             Name = "Poder da Flor";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

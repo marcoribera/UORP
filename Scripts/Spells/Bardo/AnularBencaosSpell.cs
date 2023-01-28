@@ -37,18 +37,18 @@ namespace Server.Spells.Bardo
         Bless
     }
 
-    public class AnularAprimoramentoSpell : BardoSpell
+    public class AnularBencaosSpell : BardoSpell
     {
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(5); } }
 
 
         private static SpellInfo m_Info = new SpellInfo(
-                "Anular Aprimoramento", "Parece que o jogo virou, não é mesmo? ",
+                "Anular Bençãos", "Parece que o jogo virou, não é mesmo? ",
                 230,
                 9022
             );
 
-        public AnularAprimoramentoSpell(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
+        public AnularBencaosSpell(Mobile caster, Item scroll) : base(caster, scroll, m_Info)
         {
             ExpiryMessage = "O efeito da música parece ter acabado";
         }
@@ -301,7 +301,7 @@ namespace Server.Spells.Bardo
 
             protected override void OnTick()
             {
-                AnularAprimoramentoSpell.RemoveImmunity(m_Mobile);
+                AnularBencaosSpell.RemoveImmunity(m_Mobile);
             }
         }
 
@@ -325,20 +325,20 @@ namespace Server.Spells.Bardo
 
             protected override void OnTick()
             {
-                AnularAprimoramentoSpell.RemoveCurse(m_Mobile, m_Caster);
+                AnularBencaosSpell.RemoveCurse(m_Mobile, m_Caster);
             }
         }
 
         public class InternalTarget : Target
         {
-            public AnularAprimoramentoSpell Owner { get; set; }
+            public AnularBencaosSpell Owner { get; set; }
 
-            public InternalTarget(AnularAprimoramentoSpell owner)
+            public InternalTarget(AnularBencaosSpell owner)
                 : this(owner, false)
             {
             }
 
-            public InternalTarget(AnularAprimoramentoSpell owner, bool allowland)
+            public InternalTarget(AnularBencaosSpell owner, bool allowland)
                 : base(12, allowland, TargetFlags.Harmful)
             {
                 Owner = owner;

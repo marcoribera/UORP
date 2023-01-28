@@ -254,6 +254,7 @@
       <rect x="2200" y="1110" width="50" height="50" />
       <rect x="2200" y="1160" width="86" height="86" />
       <go x="2275" y="1210" z="0" />
+		<guards disabled="true" />
       <music name="Cove" />
     </region>
     <region type="TownRegion" priority="50" name="Britain">
@@ -263,12 +264,14 @@
       <rect x="1385" y="1777" width="31" height="130" />
       <rect x="1093" y="1538" width="292" height="369" />
       <go x="1495" y="1629" z="10" />
+		<guards disabled="true" />
       <music name="Britain1" />
       <zrange min="0" />
       <region priority="50" name="Blackthorn Castle">
         <rect x="1500" y="1408" width="46" height="90" />
         <go x="1523" y="1443" z="15" />
         <entrance x="1523" y="1504" />
+		  <guards disabled="true" />
         <music name="LBCastle" />
       </region>
       <region>
@@ -375,12 +378,14 @@
       <rect x="1078" y="3588" width="124" height="121" />
       <rect x="1224" y="3592" width="309" height="473" />
       <go x="1383" y="3815" z="0" />
+		<guards disabled="true" />
       <music name="Jhelom" />
       <region type="TownRegion" name="Jhelom">
         <rect x="1303" y="3670" width="189" height="225" />
         <rect x="1338" y="3895" width="74" height="28" />
         <rect x="1383" y="3951" width="109" height="94" />
         <go x="1383" y="3815" z="0" />
+		  <guards disabled="true" />
         <music name="Jhelom" />
         <zrange min="-20" />
         <region>
@@ -400,6 +405,7 @@
       <rect x="2567" y="585" width="61" height="61" />
       <rect x="2499" y="627" width="68" height="63" />
       <go x="2466" y="544" z="0" />
+		<guards disabled="true" />
       <music name="Minoc" />
       <region>
         <rect x="2457" y="397" width="40" height="8" />
@@ -418,6 +424,7 @@
       <rect x="3761" y="2555" width="7" height="144" zmax="50" />
       <rect x="3695" y="2699" width="66" height="13" />
       <go x="3650" y="2519" z="0" />
+		<guards disabled="true" />
       <music name="Ocllo" />
       <region>
         <rect x="3664" y="2608" width="16" height="16" />
@@ -434,6 +441,7 @@
       <rect x="1796" y="2696" width="20" height="67" zmin="0" />
       <rect x="1800" y="2796" width="16" height="52" zmin="0" />
       <go x="1867" y="2780" z="0" />
+		<guards disabled="true" />
       <music name="Trinsic" />
       <region>
         <rect x="1834" y="2728" width="22" height="16" />
@@ -443,6 +451,7 @@
         <rect x="1923" y="2786" width="12" height="22" />
         <rect x="1935" y="2786" width="7" height="14" />
         <logoutDelay active="false" />
+		  <guards disabled="true" />
       </region>
     </region>
     <region type="TownRegion" priority="50" name="Vesper">
@@ -451,6 +460,7 @@
       <rect x="2734" y="944" width="82" height="4" />
       <rect x="2728" y="948" width="88" height="53" />
       <go x="2899" y="676" z="0" />
+		<guards disabled="true" />
       <music name="Vesper" />
       <region>
         <rect x="2952" y="864" width="16" height="32" />
@@ -460,6 +470,7 @@
         <rect x="2892" y="901" width="16" height="19" />
         <rect x="2908" y="904" width="8" height="8" />
         <logoutDelay active="false" />
+		  
       </region>
     </region>
     <region type="TownRegion" priority="50" name="Yew">
@@ -470,6 +481,7 @@
       <rect x="657" y="806" width="17" height="28" />
       <rect x="718" y="874" width="38" height="22" />
       <go x="546" y="992" z="0" />
+		<guards disabled="true" />
       <music name="Yew" />
       <zrange min="0" max="39" />
       <region>
@@ -531,6 +543,7 @@
       <rect x="5252" y="178" width="20" height="5" />
       <rect x="5252" y="183" width="10" height="10" />
       <go x="5223" y="190" z="5" />
+		<guards disabled="true" />
       <music name="Wind" />
       <region>
         <rect x="5159" y="15" width="25" height="9" />
@@ -546,6 +559,7 @@
     <region type="TownRegion" priority="50" name="Serpent's Hold">
       <rect x="2868" y="3324" width="205" height="195" />
       <go x="3010" y="3371" z="15" />
+		<guards disabled="true" />
       <music name="Serpents" />
       <zrange min="0" />
       <region>
@@ -559,6 +573,7 @@
     <region type="TownRegion" priority="50" name="Skara Brae">
       <rect x="538" y="2107" width="150" height="190" />
       <go x="632" y="2233" z="0" />
+		<guards disabled="true" />
       <music name="Skarabra" />
       <region>
         <rect x="600" y="2232" width="16" height="24" />
@@ -572,6 +587,7 @@
     <region type="TownRegion" priority="50" name="Nujel'm">
       <rect x="3475" y="1000" width="360" height="435" />
       <go x="3732" y="1279" z="0" />
+		<guards disabled="true" />
       <music name="Nujelm" />
       <zrange min="0" />
       <region>
@@ -618,6 +634,7 @@
       <rect x="4405" y="1451" width="23" height="23" />
       <rect x="4483" y="1468" width="21" height="13" />
       <go x="4442" y="1172" z="0" />
+		<guards disabled="true" />
       <music name="Moonglow" />
       <zrange min="0" />
       <region>
@@ -639,6 +656,7 @@
 		<rect x="3652" y="2094" width="160" height="180" />
 		<rect x="3649" y="2256" width="54" height="47" />
 		<go x="3714" y="2220" z="20" />
+		<guards disabled="true" />
 		<music name="Magincia" />
 		<region>
 			<rect x="3687" y="2246" width="12" height="16" />

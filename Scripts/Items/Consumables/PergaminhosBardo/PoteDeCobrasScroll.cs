@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public PoteDeCobrasScroll(int amount)
-            : base(271, 0x1F30, amount)
+            : base(271, 0x14F0, amount)
         {
             Name = "Pote de Cobras";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

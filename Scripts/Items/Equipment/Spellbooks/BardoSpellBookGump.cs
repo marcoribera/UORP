@@ -30,7 +30,7 @@ namespace Server.Gumps
         private static Dictionary<int, string[]> SegundoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de segundo circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {260, new string[5]{ "Anular Aprimoramento", "2242", "2242", "A Música faz o alvo perder o foco.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 260<BR><BR><B>Reagentes:</B><BR>  " } },
+            {260, new string[5]{ "Anular Bençãos", "2242", "2242", "A Música faz o alvo perder o foco.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 260<BR><BR><B>Reagentes:</B><BR>  " } },
             {276, new string[5]{ "Som da Agilidade", "2242", "2242", " A música deixa seu alvo mais ágil.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 276<BR><BR><B>Reagentes:</B><BR>  " } },
             {281, new string[5]{ "Som da Lerdeza", "2242", "2242", " A música deixa seu alvo mais lerdo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 281<BR><BR><B>Reagentes:</B><BR>  " } },
             {266, new string[5]{ "Garrafa de Agua", "2242", "2242", "  Joga um jato de agua no rosto do alvo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 266<BR><BR><B>Reagentes:</B><BR>  Fertile Dirt</B><BR>  Garlic." } },
@@ -56,7 +56,7 @@ namespace Server.Gumps
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
             {282, new string[5]{ "Som da Melhoria", "2242", "2242", " A música melhora todos os atributos de seus alvos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 282<BR><BR><B>Reagentes:</B><BR>  Garlic<BR>  " }},
             {287, new string[5]{ "Som Fatigante", "2242", "2242", " A música debilita seus oponentes em varios aspectos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 287<BR><BR><B>Reagentes:</B><BR>  Garlic<BR>  " }},
-            {273, new string[5]{ "SaltandoPorAi", "2242", "2242", "  Possibilita que o bardo se esconda.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 273<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Black Pearl, Blood Moss." }},
+            {273, new string[5]{ "Saltando por aí", "2242", "2242", "  Possibilita que o bardo se esconda.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 273<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Black Pearl, Blood Moss." }},
             {269, new string[5]{ "Palhacos", "2242", "2242", "  Chama alguns palhaços aliados .", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 269<BR><BR><B>Reagentes:</B><BR>  Black Pearl<BR>  Garlic, Blood Moss." }},
            
 
@@ -237,7 +237,7 @@ namespace Server.Gumps
                     AddButton(91, 50, 2235, 2235, 3, GumpButtonType.Reply, 0);
                     AddButton(362, 50, 2236, 2236, 5, GumpButtonType.Reply, 0);
                     AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>7º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
-                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>9º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+                    AddHtml(250, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>8º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
                     foreach (var magia in SetimoCirculo)
                     {
                         if (this.HasSpell(from, magia.Key))
@@ -403,13 +403,7 @@ namespace Server.Gumps
         {
             Mobile from = state.Mobile;
             //Console.WriteLine("Botao apertado: " + info.ButtonID);
-
-            if (info.ButtonID == 99)
-            {
-                from.SendMessage("Click your instrument of bardic choice.");
-                from.Target = new InternalTarget(m_Book);
-            }
-            else if (info.ButtonID > 0 && info.ButtonID < 7)
+            if (info.ButtonID > 0 && info.ButtonID < 7)
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
@@ -419,23 +413,16 @@ namespace Server.Gumps
                 m_Book.PaginaAtual = page;
                 from.SendGump(new BardoSpellbookGump(from, m_Book, page));
             }
-            else if (m_Book.Instrument != null && !(from.InRange(m_Book.Instrument.GetWorldLocation(), 1)))
-            {
-                from.SendMessage("Your chosen instrument must be in your pack!");
-            }
             else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
             {
                 int paginaCirculo = 0;
                 Spell magia = null;
-                from.SendMessage("You need an instrument to play that song!");
-                from.SendMessage("Select your instrument of bardic choice.");
-                from.Target = new InternalTarget(m_Book);
 
                 switch (info.ButtonID)
                 {
 
                     case 260:
-                        magia = new AnularAprimoramentoSpell(from, null);
+                        magia = new AnularBencaosSpell(from, null);
                         break;
                     case 261:
                         magia = new AtaqueSonicoSpell(from, null);
@@ -543,7 +530,7 @@ namespace Server.Gumps
         }
 
 
-
+/*
             private class InternalTarget : Target
         {
             private BardoSpellbook Book;
@@ -565,7 +552,37 @@ namespace Server.Gumps
                     from.SendMessage("That is not an instrument you can play!");
                 }
             }
-        }
+        }*/
     }
    }
 
+
+
+
+/*if (info.ButtonID == 99)
+            {
+                from.SendMessage("Click your instrument of bardic choice.");
+                from.Target = new InternalTarget(m_Book);
+            }
+            else if (info.ButtonID > 0 && info.ButtonID < 7)
+            {
+                from.SendSound(0x55);
+                int page = info.ButtonID;
+                if (page < 1) { page = 6; }
+                if (page > 6) { page = 1; }
+                //Console.WriteLine("Passa pagina de circulo: " + page);
+                m_Book.PaginaAtual = page;
+                from.SendGump(new BardoSpellbookGump(from, m_Book, page));
+            }
+            else if (m_Book.Instrument != null && !(from.InRange(m_Book.Instrument.GetWorldLocation(), 1)))
+            {
+                from.SendMessage("Your chosen instrument must be in your pack!");
+            }
+            else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
+            {
+                int paginaCirculo = 0;
+                Spell magia = null;
+                from.SendMessage("You need an instrument to play that song!");
+                from.SendMessage("Select your instrument of bardic choice.");
+                from.Target = new InternalTarget(m_Book);
+*/

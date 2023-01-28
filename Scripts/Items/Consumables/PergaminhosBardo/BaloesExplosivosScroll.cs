@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public BaloesExplosivosScroll(int amount)
-            : base(262, 0x1F30, amount)
+            : base(262, 0x14F0, amount)
         {
             Name = "Balões Explosivos";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

@@ -13,7 +13,7 @@ namespace Server.Items
         [Constructable]
         public BagOfBardoPergaminhos(int amount)
         {
-            this.DropItem(new AnularAprimoramentoScroll(amount));
+            this.DropItem(new AnularBencaosScroll(amount));
             this.DropItem(new AtaqueSonicoScroll(amount));
             this.DropItem(new BaloesExplosivosScroll(amount));
             this.DropItem(new CancaoDeNinarScroll(amount));

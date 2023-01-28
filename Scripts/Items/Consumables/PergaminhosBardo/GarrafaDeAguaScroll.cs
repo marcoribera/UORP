@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public GarrafaDeAguaScroll(int amount)
-            : base(266, 0x1F30, amount)
+            : base(266, 0x14F0, amount)
         {
             Name = "Garrafa de Àgua";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public HilarioScroll(int amount)
-            : base(267, 0x1F30, amount)
+            : base(267, 0x14F0, amount)
         {
             Name = "Hilário";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public AtaqueSonicoScroll(int amount)
-            : base(261, 0x1F30, amount)
+            : base(261, 0x14F0, amount)
         {
             Name = "Ataque Sônico";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 

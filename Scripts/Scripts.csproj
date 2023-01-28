@@ -309,6 +309,9 @@
     <Compile Include="Items\Addons\MailboxSouthAddon.cs" />
     <Compile Include="Items\Addons\PotteryWheelAddon.cs" />
     <Compile Include="Items\Addons\RuinCastle2Addon.cs" />
+    <Compile Include="Items\Consumables\Nova pasta\BaseLiquid.cs" />
+    <Compile Include="Items\Consumables\Nova pasta\Jar.cs" />
+    <Compile Include="Items\Consumables\Nova pasta\MonsterSplatter.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\AtrapalharScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EnfraquecerScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\ForcaDoAcolitoScroll .cs" />
@@ -317,6 +320,34 @@
     <Compile Include="Items\Consumables\PergaminhosAlgoz\ToqueDaDorScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\IntelectoDoAcolitoScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosAlgoz\EmbasbacarScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\AnularBencaosScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\AtaqueSonicoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\BaloesExplosivosScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\CancaoDeNinarScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\CoelhoNoChapeuScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\EncantarCriaturaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\GarrafaDeAguaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\HilarioScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\InsultosScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\MusicaArdenteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\PalhacosScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\PoderDaFlorScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\PoteDeCobrasScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\PresentesSurpresaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SaltandoPorAiScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomAgonizanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaAgilidadeScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaBurradaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaForcaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaFraquezaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaInteligenciaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaLerdezaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDaMelhoriaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDebilitanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDeFestaScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomDoFocoScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomFascinanteScroll.cs" />
+    <Compile Include="Items\Consumables\PergaminhosBardo\SomFatiganteScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\AlimentoDaVidaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\AscencaoCompletaScroll.cs" />
     <Compile Include="Items\Consumables\PergaminhosClerigoDaVida\AuraPurificadoraScroll.cs" />
@@ -13473,6 +13504,7 @@
     <Compile Include="Spells\Bardo\BaloesExplosivosSpell.cs" />
     <Compile Include="Spells\Bardo\BardoSpell.cs" />
     <Compile Include="Spells\Bardo\CancaoDeNinarSpell.cs" />
+    <Compile Include="Spells\Bardo\Chuckles.cs" />
     <Compile Include="Spells\Bardo\CoelhoNoChapeuSpell.cs" />
     <Compile Include="Spells\Bardo\EncantarCriaturaSpell.cs" />
     <Compile Include="Spells\Bardo\GarrafaDeAguaSpell.cs" />
@@ -13483,6 +13515,7 @@
     <Compile Include="Spells\Bardo\PoderDaFlorSpell.cs" />
     <Compile Include="Spells\Bardo\PoteDeCobrasSpell.cs" />
     <Compile Include="Spells\Bardo\PresentesSurpresaSpell.cs" />
+    <Compile Include="Spells\Bardo\RandomThings.cs" />
     <Compile Include="Spells\Bardo\SaltandoPorAiSpell.cs" />
     <Compile Include="Spells\Bardo\SomAgonizanteSpell.cs" />
     <Compile Include="Spells\Bardo\SomDaAgilidadeSpell.cs" />
@@ -13497,6 +13530,8 @@
     <Compile Include="Spells\Bardo\SomDoFocoSpell.cs" />
     <Compile Include="Spells\Bardo\SomFascinanteSpell.cs" />
     <Compile Include="Spells\Bardo\SomFatiganteSpell.cs" />
+    <Compile Include="Spells\Bardo\SummonedJoke.cs" />
+    <Compile Include="Spells\Bardo\SummonedPrank.cs" />
     <Compile Include="Spells\Base\DisturbType.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -14272,6 +14307,7 @@
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style1.jpg" />
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style2.jpg" />
     <Content Include="Custom\Addons Cittadini\Stargate System v3\Images\style3.jpg" />
+    <Content Include="Custom\customattacks.xml" />
     <Content Include="Items\Addons\custom\tent\README.txt" />
     <Content Include="Items\Addons\Food Extras\MilkandCheese\Milk and Cheese Readme.txt" />
     <Content Include="Items\custom2\WoodCrafting2.0\readme.txt" />

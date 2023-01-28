@@ -13,11 +13,11 @@ namespace Server.Items
 
         [Constructable]
         public CancaoDeNinarScroll(int amount)
-            : base(263, 0x1F30, amount)
+            : base(263, 0x14F0, amount)
         {
             Name = "Canção de Ninar";
             Movable = true;
-            Hue = 1719;
+            Hue = 61;
 
         }
 
