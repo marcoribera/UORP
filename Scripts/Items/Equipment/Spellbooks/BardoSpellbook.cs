@@ -112,7 +112,7 @@ namespace Server.Items
         [Constructable]
         public CompleteBardoSpellbook()
             //: base((ulong)0x1FFFF)
-            : base((ulong)0x1FFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
+            : base((ulong)0xFFFFFFF) //aqui é um numero Hexadecimal cujos bits representam se tem ou não uma magia
         {
             Name = "Livro do Bardo Completo";
             Hue = 61;

@@ -145,7 +145,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx+15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx+15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -162,7 +162,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -178,7 +178,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -195,7 +195,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -211,7 +211,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -228,7 +228,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -244,7 +244,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -261,7 +261,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -277,7 +277,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -294,7 +294,7 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
@@ -310,16 +310,19 @@ namespace Server.Gumps
                         {
                             AddHtml(nHTMLx, nHTMLy + temp, 182, 26, @"<BODY><BASEFONT Color=#111111>" + magia.Value[0] + "</BASEFONT></BODY>", (bool)false, (bool)false);
                             AddButton(nBUTTONx, nBUTTONy + temp, 30008, 30009, magia.Key, GumpButtonType.Reply, 0);
-                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 100 + magia.Key, GumpButtonType.Reply, 0);
+                            AddButton(nBUTTONx + 15, nBUTTONy + temp, 4033, 4033, 107 + magia.Key, GumpButtonType.Reply, 0);
                             temp += 16; //representa o quão pra baixo no gump está a magia
                         }
                     }
                     break;
                 default:
-                    int MagiaParaDetalhar = book.BookOffset + page - 7;
+                    int MagiaParaDetalhar = page - 107;
+                    //Console.WriteLine("Tenta detalhar a magia " + MagiaParaDetalhar);
                     if (this.HasSpell(from, MagiaParaDetalhar))
                     {
-                        int circulo = (int)(SpellRegistry.NewSpell(MagiaParaDetalhar, from, null).Circle);
+                        //Console.WriteLine("Tem a magia no livro");
+                        int circulo = (int)((SpellRegistry.NewSpell(MagiaParaDetalhar, from, null) as BardoSpell).Circle);
+                        //Console.WriteLine("Circulo:" + circulo);
                         Dictionary<int, string[]> CirculoDaMagiaDetalhada;
 
                         switch (circulo)
@@ -385,6 +388,7 @@ namespace Server.Gumps
                         string[] detalhes;
                         if (CirculoDaMagiaDetalhada.TryGetValue(MagiaParaDetalhar, out detalhes))
                         {
+                            //Console.WriteLine("Consegue detalhar a magia " + MagiaParaDetalhar);
                             AddButton(143, 76, Int16.Parse(detalhes[1]), Int16.Parse(detalhes[2]), MagiaParaDetalhar, GumpButtonType.Reply, 0);
                             AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>" + detalhes[0] + "</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
                             AddHtml(93, 156, 145, 80, @"<BODY><BASEFONT Color=#111111>"+ detalhes[3] + "</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -394,6 +398,8 @@ namespace Server.Gumps
                     else
                     {
                         AddHtml(100, 120, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><B><CENTER>Em Branco</CENTER></B></BIG></BASEFONT></BODY>", (bool)false, (bool)false);
+                        AddButton(91, 50, 2235, 2235, 1, GumpButtonType.Reply, 0);
+                        AddButton(362, 50, 2236, 2236, 6, GumpButtonType.Reply, 0);
                     }
                     break;
             }
@@ -407,15 +413,13 @@ namespace Server.Gumps
             {
                 from.SendSound(0x55);
                 int page = info.ButtonID;
-                if (page < 1) { page = 6; }
-                if (page > 6) { page = 1; }
                 //Console.WriteLine("Passa pagina de circulo: " + page);
                 m_Book.PaginaAtual = page;
                 from.SendGump(new BardoSpellbookGump(from, m_Book, page));
             }
             else if (info.ButtonID >= m_Book.BookOffset && info.ButtonID <= (m_Book.BookOffset + m_Book.BookCount))
             {
-                int paginaCirculo = 0;
+                int paginaCirculo = 1;
                 Spell magia = null;
 
                 switch (info.ButtonID)
@@ -511,7 +515,9 @@ namespace Server.Gumps
 
                 if (magia != null)
                 {
-                    paginaCirculo = 1 + ((int)magia.Circle) / 2;
+                    //Console.WriteLine("magia.Circle = " + (int)magia.Circle);
+                    paginaCirculo = 1 + ((int)(magia as BardoSpell).Circle) / 2;
+                    //Console.WriteLine("Calcula o circulo da magia: " + paginaCirculo);
                     magia.Cast();
                 }
                 //Console.WriteLine("Casta e tenta abrir a pagina " + paginaCirculo);
@@ -520,10 +526,10 @@ namespace Server.Gumps
 
 
             }
-            else if (info.ButtonID >= 100 + m_Book.BookOffset && info.ButtonID < (100 + m_Book.BookOffset + m_Book.BookCount))
+            else if (info.ButtonID >= 107 + m_Book.BookOffset && info.ButtonID < (107 + m_Book.BookOffset + m_Book.BookCount))
             {
-                //Console.WriteLine("Tenta abrir a pagina de detalhes "+ (info.ButtonID - 100 + 7));
-                m_Book.PaginaAtual = info.ButtonID - 100 - m_Book.BookOffset + 7;
+                //Console.WriteLine("Tenta abrir a pagina: "+ info.ButtonID+ ". ID da Magia: "+ (info.ButtonID-107));
+                m_Book.PaginaAtual = info.ButtonID;
                 from.SendGump(new BardoSpellbookGump(from, m_Book, m_Book.PaginaAtual));
             }
             return;
@@ -570,7 +576,7 @@ namespace Server.Gumps
                 int page = info.ButtonID;
                 if (page < 1) { page = 6; }
                 if (page > 6) { page = 1; }
-                //Console.WriteLine("Passa pagina de circulo: " + page);
+                ////Console.WriteLine("Passa pagina de circulo: " + page);
                 m_Book.PaginaAtual = page;
                 from.SendGump(new BardoSpellbookGump(from, m_Book, page));
             }
