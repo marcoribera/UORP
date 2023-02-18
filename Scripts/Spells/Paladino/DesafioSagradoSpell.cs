@@ -64,7 +64,7 @@ namespace Server.Spells.Paladino
                 PlayEffects();
 
                 // TODO: validate formula
-                var seconds = 1;// ComputePowerValue(1);
+                var seconds = EfeitoValorAbsoluto_int(Caster,Circle);
                 Utility.FixMinMax(ref seconds, 67, 228);
 
                 var delay = TimeSpan.FromSeconds(seconds);

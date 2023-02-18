@@ -408,8 +408,6 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public ConsecratedWeaponContext ConsecratedContext { get; set; }
 
-
-
         [CommandProperty(AccessLevel.GameMaster)]
         public ArmaSagradaContext ArmaSagradaContext { get; set; }
 
@@ -2547,40 +2545,68 @@ namespace Server.Items
             {
                 GetDamageTypes(attacker, out phys, out fire, out cold, out pois, out nrgy, out chaos, out direct);
 
-                if (!OnslaughtSpell.HasOnslaught(attacker, defender) &&
-                    ConsecratedContext != null &&
+                if (!OnslaughtSpell.HasOnslaught(attacker, defender))
+                {
+                    if (ConsecratedContext != null &&
                     ConsecratedContext.Owner == attacker &&
                     ConsecratedContext.ConsecrateProcChance >= Utility.Random(100))
-                    
-                {
-                    phys = damageable.PhysicalResistance;
-                    fire = damageable.FireResistance;
-                    cold = damageable.ColdResistance;
-                    pois = damageable.PoisonResistance;
-                    nrgy = damageable.EnergyResistance;
 
-                    int low = phys, type = 0;
-
-                    if (fire < low) { low = fire; type = 1; }
-                    if (cold < low) { low = cold; type = 2; }
-                    if (pois < low) { low = pois; type = 3; }
-                    if (nrgy < low) { low = nrgy; type = 4; }
-
-                    phys = fire = cold = pois = nrgy = chaos = direct = 0;
-
-                    if (type == 0) phys = 100;
-                    else if (type == 1) fire = 100;
-                    else if (type == 2) cold = 100;
-                    else if (type == 3) pois = 100;
-                    else if (type == 4) nrgy = 100;
-                }
-                else if (Core.ML && ranged)
-                {
-                    IRangeDamage rangeDamage = attacker.FindItemOnLayer(Layer.Cloak) as IRangeDamage;
-
-                    if (rangeDamage != null)
                     {
-                        rangeDamage.AlterRangedDamage(ref phys, ref fire, ref cold, ref pois, ref nrgy, ref chaos, ref direct);
+                        phys = damageable.PhysicalResistance;
+                        fire = damageable.FireResistance;
+                        cold = damageable.ColdResistance;
+                        pois = damageable.PoisonResistance;
+                        nrgy = damageable.EnergyResistance;
+
+                        int low = phys, type = 0;
+
+                        if (fire < low) { low = fire; type = 1; }
+                        if (cold < low) { low = cold; type = 2; }
+                        if (pois < low) { low = pois; type = 3; }
+                        if (nrgy < low) { low = nrgy; type = 4; }
+
+                        phys = fire = cold = pois = nrgy = chaos = direct = 0;
+
+                        if (type == 0) phys = 100;
+                        else if (type == 1) fire = 100;
+                        else if (type == 2) cold = 100;
+                        else if (type == 3) pois = 100;
+                        else if (type == 4) nrgy = 100;
+                    }
+                    else if (ArmaSagradaContext != null &&
+                        ArmaSagradaContext.Owner == attacker &&
+                        ArmaSagradaContext.ConsecrateProcChance >= Utility.Random(100))
+
+                    {
+                        phys = damageable.PhysicalResistance;
+                        fire = damageable.FireResistance;
+                        cold = damageable.ColdResistance;
+                        pois = damageable.PoisonResistance;
+                        nrgy = damageable.EnergyResistance;
+
+                        int low = phys, type = 0;
+
+                        if (fire < low) { low = fire; type = 1; }
+                        if (cold < low) { low = cold; type = 2; }
+                        if (pois < low) { low = pois; type = 3; }
+                        if (nrgy < low) { low = nrgy; type = 4; }
+
+                        phys = fire = cold = pois = nrgy = chaos = direct = 0;
+
+                        if (type == 0) phys = 100;
+                        else if (type == 1) fire = 100;
+                        else if (type == 2) cold = 100;
+                        else if (type == 3) pois = 100;
+                        else if (type == 4) nrgy = 100;
+                    }
+                    else if (Core.ML && ranged)
+                    {
+                        IRangeDamage rangeDamage = attacker.FindItemOnLayer(Layer.Cloak) as IRangeDamage;
+
+                        if (rangeDamage != null)
+                        {
+                            rangeDamage.AlterRangedDamage(ref phys, ref fire, ref cold, ref pois, ref nrgy, ref chaos, ref direct);
+                        }
                     }
                 }
             }
@@ -2688,6 +2714,11 @@ namespace Server.Items
             if (ConsecratedContext != null && ConsecratedContext.Owner == attacker)
             {
                 percentageBonus += ConsecratedContext.ConsecrateDamageBonus;
+            }
+
+            if (ArmaSagradaContext != null && ArmaSagradaContext.Owner == attacker)
+            {
+                percentageBonus += ArmaSagradaContext.ConsecrateDamageBonus;
             }
 
             percentageBonus += (int)(damageBonus * 100) - 100;

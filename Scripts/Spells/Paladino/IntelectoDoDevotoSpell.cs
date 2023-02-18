@@ -1,5 +1,7 @@
 using System;
 using Server.Targeting;
+using System.Collections.Generic;
+using Server.Mobiles;
 
 namespace Server.Spells.Paladino
 {
@@ -30,63 +32,100 @@ namespace Server.Spells.Paladino
         
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
-        
-        
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
+            List<Mobile> targets = new List<Mobile>();
+
+            Map map = this.Caster.Map;
+
+            if (this.CheckSequence())
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (this.CheckBSequence(m))
-            {
-                int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
-                int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
-
-                if (newInt < oldInt || newInt == 0)
+                if (map != null)
                 {
-                    DoHurtFizzle();
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 4);
+
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = false;
+
+                                if (Caster.Party == null) //Fora de party afeta todos os players na área
+                                {
+                                    valido = true;
+                                }
+                                else if (m.Party == Caster.Party) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Party é um alvo válido
+                                }
+
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Guild é um alvo válido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                            else
+                            {
+                                targets.Add(m as Mobile); //Em buffs inclue o próprio conjurador
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = false;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = true;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
+
+                    eable.Free();
                 }
-                else
+                for (int i = 0; i < targets.Count; ++i)
                 {
-                    SpellHelper.Turn(this.Caster, m);
+                    Mobile m = targets[i];
+                    int oldInt = SpellHelper.GetBuffOffset(m, StatType.Int);
+                    int newInt = SpellHelper.GetOffset(this, Caster, m, StatType.Int, false, true);
 
-                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Int);
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
-                    TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
-                    BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Cunning, 1075843, length, m, percentage.ToString()));
+                    if (newInt < oldInt || newInt == 0)
+                    {
+                        DoHurtFizzle();
+                    }
+                    else
+                    {
+                        SpellHelper.Turn(this.Caster, m);
 
-                    m.FixedParticles(0x375A, 10, 15, 5011, EffectLayer.Head);
-                    m.PlaySound(0x1EB);
+                        SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Int);
+                        int percentage = (int)(SpellHelper.GetOffsetScalar(this, this.Caster, m, false) * 100);
+                        TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
+                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Cunning, 1075843, length, m, percentage.ToString()));
+
+                        m.FixedParticles(0x375A, 10, 15, 5011, SpellEffectHue, 3, EffectLayer.Head);
+                        m.PlaySound(0x1EB);
+                    }
                 }
             }
-
             this.FinishSequence();
-        }
-
-        private class InternalTarget : Target
-        {
-            private readonly IntelectoDoDevotoSpell m_Owner;
-            public InternalTarget(IntelectoDoDevotoSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
         }
     }
 }

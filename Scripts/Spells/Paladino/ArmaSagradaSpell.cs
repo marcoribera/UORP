@@ -15,7 +15,7 @@ namespace Server.Spells.Paladino
              Reagent.Incenso,
             Reagent.Vela);
 
-        public override int EficienciaMagica(Mobile caster) { return 1; } //Servirá para calcular o modificador na eficiência das magias
+        public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
 
         private static Dictionary<Mobile, ArmaSagradaContext> m_Table = new Dictionary<Mobile, ArmaSagradaContext>();
 
@@ -24,13 +24,6 @@ namespace Server.Spells.Paladino
         {
         }
 
-        public override TimeSpan CastDelayBase
-        {
-            get
-            {
-                return TimeSpan.FromSeconds(0.5);
-            }
-        }
         public override SpellCircle Circle
         {
             get
@@ -38,16 +31,6 @@ namespace Server.Spells.Paladino
                 return SpellCircle.Fourth;
             }
         }
-             
-
-        public override bool ConsumeReagents()
-        {
-            if (base.ConsumeReagents())
-                return true;
-            else
-                return false;
-        }
-
         public override bool BlocksMovement
         {
             get
@@ -55,6 +38,7 @@ namespace Server.Spells.Paladino
                 return false;
             }
         }
+
         public override void OnCast()
         {
             BaseWeapon weapon = this.Caster.Weapon as BaseWeapon;
@@ -72,14 +56,16 @@ namespace Server.Spells.Paladino
                 */
                 int itemID, soundID;
 
-                switch ( weapon.Skill )
+                switch ( weapon.DefSkill )
                 {
                     case SkillName.Contusivo:
+                    case SkillName.Cortante:
+                    case SkillName.Perfurante:
                         itemID = 0xFB4;
                         soundID = 0x232;
                         break;
                     case SkillName.Atirar:
-                        itemID = 0x13B1;
+                        itemID = 0x2D2A;
                         soundID = 0x145;
                         break;
                     default:
@@ -90,16 +76,18 @@ namespace Server.Spells.Paladino
 
                 this.Caster.PlaySound(0x20C);
                 this.Caster.PlaySound(soundID);
-                this.Caster.FixedParticles(0x3779, 1, 30, 9964, 3, 3, EffectLayer.Waist);
+                this.Caster.FixedParticles(0x3779, 1, 30, 9964, SpellEffectHue, 3, EffectLayer.Waist);
 
                 IEntity from = new Entity(Serial.Zero, new Point3D(this.Caster.X, this.Caster.Y, this.Caster.Z), this.Caster.Map);
                 IEntity to = new Entity(Serial.Zero, new Point3D(this.Caster.X, this.Caster.Y, this.Caster.Z + 50), this.Caster.Map);
                 Effects.SendMovingParticles(from, to, itemID, 1, 0, false, false, 33, 3, 9501, 1, 0, EffectLayer.Head, 0x100);
 
-                double seconds = 10;// this.ComputePowerValue(20);
+                double seconds;
+
+                seconds = 5 + (Caster.Skills.PoderMagico.Value / 10);
 
                 // TODO: Should caps be applied?
-
+                /*
                 int pkarma = this.Caster.Karma;
 
                 if (pkarma > 5000)
@@ -116,6 +104,7 @@ namespace Server.Spells.Paladino
                     seconds = 6.0;
                 else
                     seconds = 5.0;
+                */
 
                 TimeSpan duration = TimeSpan.FromSeconds(seconds);
                 ArmaSagradaContext context;
@@ -134,7 +123,7 @@ namespace Server.Spells.Paladino
                 }
                 else
                 {
-                    context = new ArmaSagradaContext(Caster, weapon);
+                    context = new ArmaSagradaContext(Caster, weapon, new ArmaSagradaSpell(Caster,null));
                 }
 
                 weapon.ArmaSagradaContext = context;
@@ -173,6 +162,8 @@ namespace Server.Spells.Paladino
 
         public Timer Timer { get; set; }
 
+        public Spell MagiaOrigem { get; set; }
+
         public int ConsecrateProcChance
         {
             get
@@ -190,29 +181,23 @@ namespace Server.Spells.Paladino
         {
             get
             {
-                if (Core.SA)
-                {
-                    double value = Owner.Skills.Ordem.Value;
-
-                    if (value >= 90)
-                    {
-                        return (int)Math.Truncate((value - 90) / 2);
-                    }
-                }
-
-                return 0;
+                int valor;
+                valor = (int)Math.Truncate(MagiaOrigem.EfeitoValorRelativo(Owner, MagiaOrigem.Circle, 0.0));
+                Console.WriteLine("Dano Sagrado da arma: " + valor);
+                return valor;
             }
         }
 
-        public ArmaSagradaContext(Mobile owner, BaseWeapon weapon)
+        public ArmaSagradaContext(Mobile owner, BaseWeapon weapon,Spell magia)
         {
             Owner = owner;
             Weapon = weapon;
+            MagiaOrigem = magia;
         }
 
         public void Expire()
         {
-            Weapon.ConsecratedContext = null;
+            Weapon.ArmaSagradaContext = null;
 
             Effects.PlaySound(Weapon.GetWorldLocation(), Weapon.Map, 0x1F8);
 
