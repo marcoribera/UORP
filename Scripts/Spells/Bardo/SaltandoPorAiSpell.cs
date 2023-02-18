@@ -10,7 +10,7 @@ namespace Server.Spells.Bardo
 	public class SaltandoPorAiSpell : BardoSpell
     {
 		private static SpellInfo m_Info = new SpellInfo(
-                "Saltando Por Aí", "Ai minhas roupas no varal.",
+                "Saltando Por Aí", "Vou embora. Adeus!",
 				-1,
 				0
 			);
@@ -22,6 +22,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Fifth;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

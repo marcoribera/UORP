@@ -1,12 +1,14 @@
 using System;
 using Server.Targeting;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomDaForcaSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som da Força", "É impressão minha ou você está mais musculoso",
+            "Som da Força", "Uau, que musculoso!",
             212,
             9061);
         public SomDaForcaSpell(Mobile caster, Item scroll)
@@ -34,6 +36,30 @@ namespace Server.Spells.Bardo
         public override void OnCast()
         {
             this.Caster.Target = new InternalTarget(this);
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public void Target(Mobile m)

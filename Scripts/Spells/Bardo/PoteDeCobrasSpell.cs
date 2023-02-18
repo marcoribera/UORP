@@ -10,7 +10,7 @@ namespace Server.Spells.Bardo
 	public class PoteDeCobrasSpell : BardoSpell
     {
 		private static SpellInfo m_Info = new SpellInfo(
-                "Pote de Cobras", "Pega na minha cobra.",
+                "Pote de Cobras", "Pega aqui na minha cobra!",
 				-1,
 				0
 			);
@@ -30,6 +30,30 @@ namespace Server.Spells.Bardo
             {
                 return 10.0;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public PoteDeCobrasSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )

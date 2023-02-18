@@ -43,7 +43,7 @@ namespace Server.Spells.Bardo
 
 
         private static SpellInfo m_Info = new SpellInfo(
-                "Anular Bençãos", "Parece que o jogo virou, não é mesmo? ",
+                "Anular Bençãos", "Parece que o jogo virou, hein?",
                 230,
                 9022
             );
@@ -53,6 +53,31 @@ namespace Server.Spells.Bardo
             ExpiryMessage = "O efeito da música parece ter acabado";
         }
         public override int EficienciaMagica(Mobile caster) { return 5; } //Servirá para calcular o modificador na eficiência das magias
+
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
 
         public override void OnCast()
         {

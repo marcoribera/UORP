@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using Server.Engines.PartySystem;
 using Server.Targeting;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomDoFocoSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som do Foco", "Prestem atenção!",
+            "Som do Foco", "Observem melhor!",
             Core.AOS ? 239 : 215,
             9011);
         public SomDoFocoSpell(Mobile caster, Item scroll)
@@ -22,6 +24,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Sixth;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

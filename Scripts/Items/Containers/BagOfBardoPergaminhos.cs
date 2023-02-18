@@ -15,7 +15,7 @@ namespace Server.Items
         {
             this.DropItem(new AnularBencaosScroll(amount));
             this.DropItem(new AtaqueSonicoScroll(amount));
-            this.DropItem(new BaloesExplosivosScroll(amount));
+            this.DropItem(new IlusaoExplosivaScroll(amount));
             this.DropItem(new CancaoDeNinarScroll(amount));
             this.DropItem(new CoelhoNoChapeuScroll(amount));
             this.DropItem(new EncantarCriaturaScroll(amount));
@@ -25,7 +25,6 @@ namespace Server.Items
             this.DropItem(new PalhacosScroll(amount));
             this.DropItem(new PoderDaFlorScroll(amount));
             this.DropItem(new PoteDeCobrasScroll(amount));
-            this.DropItem(new PresentesSurpresaScroll(amount));
             this.DropItem(new SaltandoPorAiScroll(amount));
             this.DropItem(new MusicaArdenteScroll(amount));
             this.DropItem(new SomAgonizanteScroll(amount));

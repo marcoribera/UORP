@@ -6,13 +6,14 @@ using Server.Regions;
 using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
+using Ultima;
 
 namespace Server.Spells.Bardo
 {
 	public class GarrafaDeAguaSpell : BardoSpell
     {
 		private static SpellInfo m_Info = new SpellInfo(
-				"Garrafa de Água", "Bebeu água? Tá com sede??",
+				"Garrafa de Água", "Se molhou??",
 				-1,
 				0
 			);
@@ -25,6 +26,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Second;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill
@@ -60,12 +85,14 @@ namespace Server.Spells.Bardo
 			}
 			else if ( CheckHSequence( m ) )
 			{
-				int damage = 1 + (int)( (Caster.Skills[SkillName.Carisma].Value / 5) + (Caster.Skills[SkillName.PoderMagico].Value / 3) );
-				Caster.MovingParticles( m, 0x3818, 7, 0, false, false, 0x84B, 0, 0 );
-				Caster.PlaySound( 0x025 );
-				Effects.SendLocationEffect( m.Location, m.Map, 0x23B2, 20 );
+				int damage = 1 + (int)( (Caster.Skills[SkillName.Caos].Value / 5) + (Caster.Skills[SkillName.PoderMagico].Value / 3) );
+				//Caster.MovingParticles( m, 0x377C, 7, 0, false, false, 0x84B, 0, 0 );  /// testando as particulas. coloquei animação de agua
+                Effects.SendTargetParticles(m, 0x377C, 10, 20, 296, 0, 0x84B, EffectLayer.Head, 0);
+                Caster.PlaySound( 0x025 );
+				//Effects.SendLocationEffect( m.Location, m.Map, 0x122A, 20 );
+                Effects.SendLocationEffect(m.Location, m.Map, 0x122A, 20, 296, 0);
 
-				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 50, 300 ) && m != null )
+                if ( Caster.Skills[SkillName.Caos].Value >= Utility.RandomMinMax( 50, 300 ) && m != null )
 				{
 					int goo = 0;
 

@@ -1,12 +1,16 @@
 using System;
 using Server.Targeting;
+using Server.Network;
+using Server.Regions;
+using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Spells.Bardo
 {
     public class AtaqueSonicoSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Ataque sônico", "O som tá muito alto?",
+            "Ataque sônico", "O som ficou muito alto?",
             218,
             Core.AOS ? 9002 : 9032,
             Reagent.BlackPearl,
@@ -28,6 +32,32 @@ namespace Server.Spells.Bardo
                 return SpellCircle.Eighth;
             }
         }
+
+        public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
+
         public override double RequiredSkill
         {
             get

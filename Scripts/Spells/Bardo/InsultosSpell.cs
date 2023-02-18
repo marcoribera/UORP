@@ -14,7 +14,7 @@ namespace Server.Spells.Bardo
 
 
         private static SpellInfo m_Info = new SpellInfo(
-            "Insultos", "você sabia...",
+            "Insultos", "",
             -1,
             0
         );
@@ -27,6 +27,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Second;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill
@@ -106,17 +130,17 @@ namespace Server.Spells.Bardo
 			{
 				case 1: str = "Um goblin com uma mão pregada em uma árvore seria uma ameaça maior do que você"; break;
 				case 2: str = "Um gato molhado é mais forte do que você!"; break;
-				case 3: str = "A magia da amizade animal era a única maneira de seus pais conseguirem que os filhotes brincassem com você!"; break;
-				case 4: str = "Você é o cruzamento de um orc com um porco? Ah, claro que não, algumas coisas nem um porco faria!"; break;
-				case 5: str = "Você é sempre estúpido ou está fazendo um esforço especial hoje!"; break;
+				case 3: str = "A magia da amizade animal era a única maneira de seus pais conseguirem que os filhotes da casa brincassem com você, sem medo!"; break;
+				case 4: str = "Você é o cruzamento de um orc com um porco? Ah, claro que não, algumas coisas que você faz, nem um porco faria!"; break;
+				case 5: str = "Você é sempre estúpido ou hoje você está fazendo um esforço especial!"; break;
 				case 6: str = "Olhando para você, agora eu sei o que você ganha quando raspa o fundo do barril!"; break;
 				case 7: str = "Pelos deuses você é feio! Aposto que seu pai se arrepende de ter conhecido sua mãe!"; break;
 				case 8: str = "Você poderia chamar seu marido? Eu não gosto de brigar com mulheres feias!"; break;
 				case 9: str = "Sua mãe tem que lançar um feitiço de escuridão para te alimentar!"; break;
-				case 10: str = "Didn't I hear that you were tougher than this?"; break;
-				case 11: str = "Você mora num chiqueiro? Bem, é melhor você voltar antes que o fazendeiro saiba que você sumiu!"; break;
+				case 10: str = "Eu tinha ouvido que você era mais forte do que isso?"; break;
+				case 11: str = "Você mora num chiqueiro?Volta logo, antes que o fazendeiro perceba que você sumiu!"; break;
 				case 12: str = "Você se parece com algo que vi no chão do estábulo!"; break;
-				case 13: str = "Você já viu uma pilha de esterco? Então talvez se olhe no espelho!"; break;
+				case 13: str = "Você já viu uma pilha de esterco? Não? Então talvez é melhor você se olhar no espelho!"; break;
 				case 14: str = "Mesmo ghouls não tocariam em algo tão nojento quanto você!"; break;
 				case 15: str = "Ei, você já foi confundido com um verme de carcaça?"; break;
                 case 16: str = "Ei, seu monte de esterco cheio de varíola, aposto que nem mesmo um vampiro faminto chegaria perto de você!"; break;
@@ -132,8 +156,8 @@ namespace Server.Spells.Bardo
                 case 26: str = "Gostaria de ainda ter aquele feitiço de cegueira, assim não teria que aguentar mais a sua cara!"; break;
                 case 27: str = "Gostaria de contar para sua mãe sobre sua morte, mas não falo goblin!"; break;
                 case 28: str = "Eu tentaria insultar seu pai, mas você provavelmente foi confundido com um orc e foi deserdado!"; break;
-                case 29: str = "Eu sacaria minha espada, mas não gostaria de te deixar com ciúmes!"; break;
-                case 30: str = "Eu insultaria seus pais, mas você provavelmente não sabe quem eles são!"; break;
+                case 29: str = "Eu sacaria minha espada, mas não gostaria de assustar ela com a sua feiura!"; break;
+                case 30: str = "Eu insultaria seus pais, mas você provavelmente nem sabe quem são eles!"; break;
                 case 31: str = "Eu gostaria de deixar você com um pensamento...mas não sei se você entenderia!"; break;
                 case 32: str = "Gostaria de ver as coisas do seu ponto de vista, mas não consigo ser tão burro assim!"; break;
                 case 33: str = "Eu diria que você é um oponente digno, mas uma vez lutei contra um coelho empunhando um dente-de-leão!"; break;
@@ -167,7 +191,7 @@ namespace Server.Spells.Bardo
                 case 61: str = "Quando os deuses estavam distribuindo rostos feios, você era o primeiro da fila?"; break;
                 case 62: str = "Espera, espera, só preciso perguntar, o que você... ah, esquece, você é feio demais!"; break;
                 case 63: str = "Bem, meu tempo de não te levar a sério está chegando ao meio!"; break;
-                case 64: str = "Bem...eu encontrei pães mais crocantes!"; break;
+                case 64: str = "Bem...eu já encontrei pães mais crocantes!"; break;
                 case 65: str = "Você já foi atingido por um elemental de ácido ou sempre pareceu um bife comido pela metade?"; break;
                 case 66: str = "O que cheira pior do que um goblin? Ah sim, você!"; break;
                 case 67: str = "Que cheiro é esse? Achei que armas de sopro deveriam sair da sua boca!"; break;

@@ -8,7 +8,7 @@ namespace Server.Items
         public LuteNova()
             : base(0xCA58)
         {
-            this.Name = "lute";
+            this.Name = "violao";
             this.Weight = 5.0;
            //this.Layer = Layer.FirstValid;
 

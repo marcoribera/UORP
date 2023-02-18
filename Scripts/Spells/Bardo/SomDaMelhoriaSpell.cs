@@ -1,13 +1,16 @@
 using System;
 using Server.Targeting;
 using System.Collections.Generic;
+using Server.Items;
+using System.IO;
+using Server;
 
 namespace Server.Spells.Bardo
 {
     public class SomDaMelhoriaSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som Da Melhoria", "Te fiz uma pessoa melhor",
+            "Som Da Melhoria", "Te fiz uma pessoa melhor!",
             203,
             9061);
 
@@ -20,8 +23,22 @@ namespace Server.Spells.Bardo
 
         public override int EficienciaMagica(Mobile caster) { return 5; } //Servirá para calcular o modificador na eficiência das magias
 
+
+        public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+            return base.CheckCast();
+        }
+
         public static void AddBless(Mobile m, TimeSpan duration)
         {
+            
             if (_Table == null)
                 _Table = new Dictionary<Mobile, InternalTimer>();
 
@@ -65,10 +82,25 @@ namespace Server.Spells.Bardo
             }
         }
 
+        private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
+
         public override void OnCast()
         {
             this.Caster.Target = new InternalTarget(this);
+
+            
         }
+
+        
+
 
         public void Target(Mobile m)
         {
@@ -153,5 +185,34 @@ namespace Server.Spells.Bardo
                 SomDaMelhoriaSpell.RemoveBless(Mobile);
             }
         }
+
+
+
+        
+       /* private void Serialize()
+        {
+            // Save the used musical instrument
+            BaseInstrument instrument = GetInstrument();
+            if (instrument != null)
+            {
+                // Serialize the instrument to be saved in the player's profile
+                Caster.Serialize(instrument);
+            }
+        }
+
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+
+            // Deserialize the musical instrument
+            BaseInstrument instrument = reader.ReadItem() as BaseInstrument;
+            if (instrument != null)
+            {
+                // Add the deserialized instrument to the player's backpack
+                AddItem(instrument);
+            }
+        }*/
     }
 }

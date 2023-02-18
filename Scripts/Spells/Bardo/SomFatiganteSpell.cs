@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using Server.Targeting;
 using Server.Spells.First;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomFatiganteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som Fatigante", "Estou revelando quem você realmente é: Um fraco!",
+            "Som Fatigante", "Estou revelando a sua fraqueza!",
             227,
             9031);
 
@@ -34,6 +36,31 @@ namespace Server.Spells.Bardo
             {
                 return 50.0;
             }
+        }
+
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public static void AddEffect(Mobile m, TimeSpan duration, int strOffset, int dexOffset, int intOffset)

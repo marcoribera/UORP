@@ -382,7 +382,7 @@ namespace Server.Spells
             // BARDO
             Register(260, typeof(Bardo.AnularBencaosSpell));
             Register(261, typeof(Bardo.AtaqueSonicoSpell));
-            Register(262, typeof(Bardo.BaloesExplosivosSpell));
+            Register(262, typeof(Bardo.IlusaoExplosivaSpell));
             Register(263, typeof(Bardo.CancaoDeNinarSpell));
             Register(264, typeof(Bardo.CoelhoNoChapeuSpell));
             Register(265, typeof(Bardo.EncantarCriaturaSpell));
@@ -392,22 +392,21 @@ namespace Server.Spells
             Register(269, typeof(Bardo.PalhacosSpell));
             Register(270, typeof(Bardo.PoderDaFlorSpell));
             Register(271, typeof(Bardo.PoteDeCobrasSpell));
-            Register(272, typeof(Bardo.PresentesSurpresaSpell));
-            Register(273, typeof(Bardo.SaltandoPorAiSpell));
-            Register(274, typeof(Bardo.MusicaArdenteSpell));
-            Register(275, typeof(Bardo.SomAgonizanteSpell));
-            Register(276, typeof(Bardo.SomDaAgilidadeSpell));
-            Register(277, typeof(Bardo.SomDaBurradaSpell));
-            Register(278, typeof(Bardo.SomDaForcaSpell));
-            Register(279, typeof(Bardo.SomDaFraquezaSpell));
-            Register(280, typeof(Bardo.SomDaInteligenciaSpell));
-            Register(281, typeof(Bardo.SomDaLerdezaSpell));
-            Register(282, typeof(Bardo.SomDaMelhoriaSpell));
-            Register(283, typeof(Bardo.SomDebilitanteSpell));
-            Register(284, typeof(Bardo.SomDeFestaSpell));
-            Register(285, typeof(Bardo.SomDoFocoSpell));
-            Register(286, typeof(Bardo.SomFascinanteSpell));
-            Register(287, typeof(Bardo.SomFatiganteSpell));
+        Register(272, typeof(Bardo.SaltandoPorAiSpell));
+            Register(273, typeof(Bardo.MusicaArdenteSpell));
+            Register(274, typeof(Bardo.SomAgonizanteSpell));
+            Register(275, typeof(Bardo.SomDaAgilidadeSpell));
+            Register(276, typeof(Bardo.SomDaBurradaSpell));
+            Register(277, typeof(Bardo.SomDaForcaSpell));
+            Register(278, typeof(Bardo.SomDaFraquezaSpell));
+            Register(279, typeof(Bardo.SomDaInteligenciaSpell));
+            Register(280, typeof(Bardo.SomDaLerdezaSpell));
+            Register(281, typeof(Bardo.SomDaMelhoriaSpell));
+            Register(282, typeof(Bardo.SomDebilitanteSpell));
+            Register(283, typeof(Bardo.SomDeFestaSpell));
+            Register(284, typeof(Bardo.SomDoFocoSpell));
+            Register(285, typeof(Bardo.SomFascinanteSpell));
+            Register(286, typeof(Bardo.SomFatiganteSpell));
 
             
                 

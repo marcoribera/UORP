@@ -134,12 +134,12 @@ namespace Server.Mobiles
 						poisDamage = 0;
 						nrgyDamage = 20;
 
-						Effects.SendLocationEffect( m.Location, m.Map, 0x3822, 60, 10, 0, 0 );
+						Effects.SendLocationEffect( m.Location, m.Map, 0x36CB, 60, 10, 0, 0 );
 						m.PlaySound( 0x307 );
 					}
 					else
 					{
-						Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x3728, 8, 20, 0, 0, 5042, 0 );
+						Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x36CB, 8, 20, 0, 0, 5042, 0 );
 						m.PlaySound( 0x664 );
 					}
 					AOS.Damage( m, from, from.RawStr, physDamage, fireDamage, coldDamage, poisDamage, nrgyDamage );

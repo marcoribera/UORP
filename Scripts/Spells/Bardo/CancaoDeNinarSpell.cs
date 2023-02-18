@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Server.Network;
+using Server.Regions;
+using Server.Items;
+using Server.Mobiles;
 using Server;
 using Server.Targeting;
 using Server.Spells.Mysticism;
@@ -12,7 +15,7 @@ namespace Server.Spells.Bardo
     {
 
         private static SpellInfo m_Info = new SpellInfo(
-                "Canção de ninar", "Dorme filhinhos do meu coração...",
+                "Canção de ninar", "Durmam meus filhinhos...",
                 230,
                 9022
             );
@@ -28,6 +31,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Tenth;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

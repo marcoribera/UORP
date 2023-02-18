@@ -19,10 +19,10 @@ namespace Server.Gumps
         private static Dictionary<int, string[]> PrimeiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de primeiro circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {284, new string[5]{ "Som de Festa", "2242", "2242", "  Enche uma garrafa com uma bebida alcoolica simples.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 284<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Garlic, Mandrake Root." }},
-            {280, new string[5]{ "Som da Inteligencia", "2242", "2242", " A música deixa seu alvo mais perspicaz.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 280<BR><BR><B>Reagentes:</B><BR> " }},
-            {277, new string[5]{ "Som da Burrada", "2242", "2242", "  A música deixa seu alvo embasbacado.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 277<BR><BR><B>Reagentes:</B><BR>  " }},
-            {279, new string[5]{ "Som da Fraqueza", "2242", "2242", " A música deixa seu alvo enfraquecido.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 279<BR><BR><B>Reagentes:</B><BR> " }},
+            {283, new string[5]{ "Som de Festa", "2242", "2242", "  Enche uma garrafa com uma bebida alcoolica simples.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 284<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Garlic, Mandrake Root." }},
+            {279, new string[5]{ "Som da Inteligencia", "2242", "2242", " A música deixa seu alvo mais perspicaz.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 280<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente" }},
+            {276, new string[5]{ "Som da Burrada", "2242", "2242", "  A música deixa seu alvo embasbacado.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 277<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente  " }},
+            {278, new string[5]{ "Som da Fraqueza", "2242", "2242", " A música deixa seu alvo enfraquecido.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 279<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente" }},
             {271, new string[5]{ "Pote de Cobras", "2242", "2242", "  Cria um pote com cobras agressivas.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 271<BR><BR><B>Reagentes:</B><BR>  Mandrake Root <BR>  Nightshade." }},
             {264, new string[5]{ "Coelho no Chapéu", "2242", "2242", "  Tira um coelho mágico do chapeu.", "Mantra: <I></I><BR>Skill: 10<BR>Mana: 4<BR>Atalho: .m 264<BR><BR><B>Reagentes:</B><BR>  Sulfurous Ash<BR>  Nightshade." }},
 
@@ -30,47 +30,46 @@ namespace Server.Gumps
         private static Dictionary<int, string[]> SegundoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de segundo circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {260, new string[5]{ "Anular Bençãos", "2242", "2242", "A Música faz o alvo perder o foco.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 260<BR><BR><B>Reagentes:</B><BR>  " } },
-            {276, new string[5]{ "Som da Agilidade", "2242", "2242", " A música deixa seu alvo mais ágil.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 276<BR><BR><B>Reagentes:</B><BR>  " } },
-            {281, new string[5]{ "Som da Lerdeza", "2242", "2242", " A música deixa seu alvo mais lerdo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 281<BR><BR><B>Reagentes:</B><BR>  " } },
+            {260, new string[5]{ "Anular Bençãos", "2242", "2242", "A Música faz o alvo perder o foco.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 260<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " } },
+            {275, new string[5]{ "Som da Agilidade", "2242", "2242", " A música deixa seu alvo mais ágil.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 276<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente  " } },
+            {280, new string[5]{ "Som da Lerdeza", "2242", "2242", " A música deixa seu alvo mais lerdo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 281<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " } },
             {266, new string[5]{ "Garrafa de Agua", "2242", "2242", "  Joga um jato de agua no rosto do alvo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 266<BR><BR><B>Reagentes:</B><BR>  Fertile Dirt</B><BR>  Garlic." } },
             {268, new string[5]{ "Insultos", "2242", "2242", "  Faz diversos insultos ao alvo.", "Mantra: <I></I><BR>Skill: 20<BR>Mana: 6<BR>Atalho: .m 268<BR><BR><B>Reagentes:</B><BR>  Black Pearl </B><BR>  Spiders' Silk." } },
         };
         private static Dictionary<int, string[]> TerceiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de terceiro circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {278, new string[5]{ "Som da Força", "2242", "2242", "  A música deixa seu alvo mais forteA música deixa seu alvo mais forte.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 278<BR><BR><B>Reagentes:</B><BR>  " }},
+            {277, new string[5]{ "Som da Força", "2242", "2242", "  A música deixa seu alvo mais forte.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 278<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " }},
             {270, new string[5]{ "Poder da Flor", "2242", "2242", "  Uma flor cheirosa e perigosa é criada.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 270<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Nightshade." }},
-            {267, new string[5]{ "Hilário", "2242", "2242", " Faz o alvo ficar descontrolado.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 287<BR><BR><B>Reagentes:</B><BR> Blood Moss <BR>  Spiders' Silk." }},
-            {272, new string[5]{ "Presentes Surpesa", "2242", "2242", "  cria um presente surpresa.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 272<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Spiders' Silk." }},
-        };
+            {267, new string[5]{ "Hilário", "2242", "2242", " Faz o alvo ficar descontrolado.", "Mantra: <I></I><BR>Skill: 30<BR>Mana: 9<BR>Atalho: .m 287<BR><BR><B>Reagentes:</B><BR> Blood Moss <BR> Spiders' Silk." }},
+                    };
 
         private static Dictionary<int, string[]> QuartoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de quarto circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
             {265, new string[5]{ "Encantar Criatura", "2242", "2242", "  Encanta um alvo como se fosse um animal de estimação.", "Mantra: <I></I><BR>Skill: 40<BR>Mana: 13<BR>Atalho: .m 265<BR><BR><B>Reagentes:</B><BR>  Mandrake Root</B><BR>  Garlic, Spiders' Silk." } },
-            {262, new string[5]{ "Balões Explosivos", "2242", "2242", "  O medo deixa seu oponente enfraquecido.", "Mantra: <I></I><BR>Skill: 40<BR>Mana: 13<BR>Atalho: .m 262<BR><BR><B>Reagentes:</B><BR>  Sulfurous Ash </B><BR>  Spiders' Silk, Ginseng." } },
+            {262, new string[5]{ "Ilusão Explosiva", "2242", "2242", "  Uma ilusão de um peru é criada e ataca o inimigo.", "Mantra: <I></I><BR>Skill: 40<BR>Mana: 13<BR>Atalho: .m 262<BR><BR><B>Reagentes:</B><BR>  Sulfurous Ash </B><BR>  Spiders' Silk, Ginseng." } },
         };
             private static Dictionary<int, string[]> QuintoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de quinto circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {282, new string[5]{ "Som da Melhoria", "2242", "2242", " A música melhora todos os atributos de seus alvos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 282<BR><BR><B>Reagentes:</B><BR>  Garlic<BR>  " }},
-            {287, new string[5]{ "Som Fatigante", "2242", "2242", " A música debilita seus oponentes em varios aspectos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 287<BR><BR><B>Reagentes:</B><BR>  Garlic<BR>  " }},
-            {273, new string[5]{ "Saltando por aí", "2242", "2242", "  Possibilita que o bardo se esconda.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 273<BR><BR><B>Reagentes:</B><BR>  Ginseng<BR>  Black Pearl, Blood Moss." }},
-            {269, new string[5]{ "Palhacos", "2242", "2242", "  Chama alguns palhaços aliados .", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 269<BR><BR><B>Reagentes:</B><BR>  Black Pearl<BR>  Garlic, Blood Moss." }},
+            {281, new string[5]{ "Som da Melhoria", "2242", "2242", " A música melhora todos os atributos de seus alvos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 282<BR><BR><B>Reagentes:</B><BR>  Garlic </B><BR> Mandrake Root " }},
+            {286, new string[5]{ "Som Fatigante", "2242", "2242", " A música debilita seus oponentes em varios aspectos.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 287<BR><BR><B>Reagentes:</B><BR>  Garlic<B/><BR> Spiders' Silk    " }},
+            {272, new string[5]{ "Saltando por aí", "2242", "2242", "  Possibilita que o bardo se esconda.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 273<BR><BR><B>Reagentes:</B><BR>  Ginseng</B><BR>  Black Pearl<BR> Blood Moss." }},
+            {269, new string[5]{ "Palhacos", "2242", "2242", "  Chama alguns palhaços aliados.", "Mantra: <I></I><BR>Skill: 50<BR>Mana: 19<BR>Atalho: .m 269<BR><BR><B>Reagentes:</B><BR>  Black Pearl<BR>  Garlic, Blood Moss." }},
            
 
         };
         private static Dictionary<int, string[]> SextoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de sexto circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {285, new string[5]{ "Som do Foco", "2242", "2242", " O alvo fica mais resistente a danos mágicos, evitando distrações.", "Mantra: <I></I><BR>Skill: 60<BR>Mana: 28<BR>Atalho: .m 285<BR><BR><B>Reagentes:</B><BR>  " } },
-            {286, new string[5]{ "Som Fascinante", "2242", "2242", " O som enfeitiça o alvo.", "Mantra: <I></I><BR>Skill: 60<BR>Mana: 28<BR>Atalho: .m 286<BR><BR><B>Reagentes:</B><BR>  " } },
+            {284, new string[5]{ "Som do Foco", "2242", "2242", " O alvo fica mais resistente a danos mágicos, evitando distrações.", "Mantra: <I></I><BR>Skill: 60<BR>Mana: 28<BR>Atalho: .m 285<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " } },
+            {285, new string[5]{ "Som Fascinante", "2242", "2242", " O som enfeitiça o alvo.", "Mantra: <I></I><BR>Skill: 60<BR>Mana: 28<BR>Atalho: .m 286<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " } },
         };
         private static Dictionary<int, string[]> SetimoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de setimo circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {283, new string[5]{ "Som debilitante ", "2242", "2242", "  A música debilita seus oponentes em varios aspectos.", "Mantra: <I></I><BR>Skill: 70<BR>Mana: 42<BR>Atalho: .m 283<BR><BR><B>Reagentes:</B><BR>  " }},
+            {282, new string[5]{ "Som debilitante ", "2242", "2242", "  A música debilita seus oponentes em varios aspectos.", "Mantra: <I></I><BR>Skill: 70<BR>Mana: 42<BR>Atalho: .m 283<BR><BR><B>Reagentes:</B><BR>Essa canção não utiliza reagente  " }},
         };
         private static Dictionary<int, string[]> OitavoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de oitavo circulo
         {
@@ -80,17 +79,17 @@ namespace Server.Gumps
         private static Dictionary<int, string[]> NonoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de nono circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {275, new string[5]{ "Som Agonizante", "2242", "2242", "  O som da música incomoda o alvo, deixando-o agonizante.", "Mantra: <I></I><BR>Skill: 80<BR>Mana: 94<BR>Atalho: .m 275<BR><BR><B>Reagentes:</B><BR>  " }},
+            {274, new string[5]{ "Som Agonizante", "2242", "2242", "  O som da música incomoda o alvo, deixando-o agonizante.", "Mantra: <I></I><BR>Skill: 80<BR>Mana: 94<BR>Atalho: .m 275<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente " }},
         };
         private static Dictionary<int, string[]> DecimoCirculo = new Dictionary<int, string[]>() //Detalhes das magias de decimo circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {263, new string[5]{ "Canção de ninar", "2242", "2242", " A música deixa todos sonolentos.", "Mantra: <I></I><BR>Skill: 110<BR>Mana: 141<BR>Atalho: .m 263<BR><BR><B>Reagentes:</B><BR> " } },
+            {263, new string[5]{ "Canção de ninar", "2242", "2242", " A música deixa todos sonolentos.", "Mantra: <I></I><BR>Skill: 110<BR>Mana: 141<BR>Atalho: .m 263<BR><BR><B>Reagentes:</B><BR>Essa canção não utiliza reagente " } },
              };
         private static Dictionary<int, string[]> DecimoPrimeiroCirculo = new Dictionary<int, string[]>() //Detalhes das magias de decimo primeiro circulo
         {
             // {ID da magia, Nome da magia, ID do icone da magia, ID do icone da magia pressionado, Descrição da magia, Detalhes da Magia
-            {274, new string[5]{ "Musica Ardente", "2242", "2242", "  A Música provoca fogo nos arredores.", "Mantra: <I></I><BR>Skill: 110<BR>Mana: 211<BR>Atalho: .m 274<BR><BR><B>Reagentes:</B><BR> " } },
+            {273, new string[5]{ "Musica Ardente", "2242", "2242", "  A Música provoca fogo nos arredores.", "Mantra: <I></I><BR>Skill: 110<BR>Mana: 211<BR>Atalho: .m 274<BR><BR><B>Reagentes:</B><BR> Essa canção não utiliza reagente" } },
         };
 
         public bool HasSpell(Mobile from, int spellID)
@@ -432,7 +431,7 @@ namespace Server.Gumps
                         magia = new AtaqueSonicoSpell(from, null);
                         break;
                     case 262:
-                        magia = new BaloesExplosivosSpell(from, null);
+                        magia = new IlusaoExplosivaSpell(from, null);
                         break;
                     case 263:
                         magia = new CancaoDeNinarSpell(from, null);
@@ -461,52 +460,50 @@ namespace Server.Gumps
                     case 271:
                         magia = new PoteDeCobrasSpell(from, null);
                         break;
+                    break;
                     case 272:
-                        magia = new PresentesSurpresaSpell(from, null);
-                        break;
-                    case 273:
                         magia = new SaltandoPorAiSpell(from, null);
                         break;
-                    case 274:
+                    case 273:
                         magia = new MusicaArdenteSpell(from, null);
                         break;
-                    case 275:
+                    case 274:
                         magia = new SomAgonizanteSpell(from, null);
                         break;
-                    case 276:
+                    case 275:
                         magia = new SomDaAgilidadeSpell(from, null);
                         break;
-                    case 277:
+                    case 276:
                         magia = new SomDaBurradaSpell(from, null);
                         break;
-                    case 278:
+                    case 277:
                         magia = new SomDaForcaSpell(from, null);
                         break;
-                    case 279:
+                    case 278:
                         magia = new SomDaFraquezaSpell(from, null);
                         break;
-                    case 280:
+                    case 279:
                         magia = new SomDaInteligenciaSpell(from, null);
                         break;
-                    case 281:
+                    case 280:
                         magia = new SomDaLerdezaSpell(from, null);
                         break;
-                    case 282:
+                    case 281:
                         magia = new SomDaMelhoriaSpell(from, null);
                         break;
-                    case 283:
+                    case 282:
                         magia = new SomDebilitanteSpell(from, null);
                         break;
-                    case 284:
+                    case 283:
                         magia = new SomDeFestaSpell(from, null);
                         break;
-                    case 285:
+                    case 284:
                         magia = new SomDoFocoSpell(from, null);
                         break;
-                    case 286:
+                    case 285:
                         magia = new SomFascinanteSpell(from, null);
                         break;
-                    case 287:
+                    case 286:
                         magia = new SomFatiganteSpell(from, null);
                         break;
                     default:

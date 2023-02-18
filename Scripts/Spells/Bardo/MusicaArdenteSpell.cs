@@ -7,12 +7,18 @@ using Server.Multis;
 using Server.Regions;
 using Server.Mobiles;
 
+using Server.Network;
+using Server.Items;
+
+
+
+
 namespace Server.Spells.Bardo
 {
     public class MusicaArdenteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Música Ardente", "Acho que o clima está esquentando. *pisca*",
+            "Música Ardente", "Acho que o clima  esquentou. *pisca*",
             -1,
             false);
 
@@ -27,6 +33,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Eleventh;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

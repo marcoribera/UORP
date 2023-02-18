@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-
+using Server.Network;
+using Server.Items;
 using Server;
 using Server.Targeting;
 using Server.Spells.SkillMasteries;
@@ -10,7 +11,7 @@ namespace Server.Spells.Bardo
     public class SomAgonizanteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som Agonizante", "Você está dizendo que minha música é ruim?",
+            "Som Agonizante", "O que?! Meu som lhe parece ruim?",
             203,
             9031);
 
@@ -35,6 +36,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Ninth;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

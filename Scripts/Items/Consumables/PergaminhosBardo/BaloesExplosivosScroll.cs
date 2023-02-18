@@ -2,26 +2,26 @@ using System;
 
 namespace Server.Items
 {
-    public class BaloesExplosivosScroll : SpellScroll
+    public class IlusaoExplosivaScroll : SpellScroll
     { //Encontrar um Gráfico diferente pra o scroll de Algoz
         [Constructable]
-        public BaloesExplosivosScroll()
+        public IlusaoExplosivaScroll()
             : this(1)
         {
             
         }
 
         [Constructable]
-        public BaloesExplosivosScroll(int amount)
+        public IlusaoExplosivaScroll(int amount)
             : base(262, 0x14F0, amount)
         {
-            Name = "Balões Explosivos";
+            Name = "Ilusão Explosiva";
             Movable = true;
             Hue = 61;
 
         }
 
-        public BaloesExplosivosScroll(Serial serial)
+        public IlusaoExplosivaScroll(Serial serial)
             : base(serial)
         {
            

@@ -132,9 +132,9 @@ namespace Server.Spells.Sixth
             int oldDex = SpellHelper.GetCurseOffset(m, StatType.Dex);
             int oldInt = SpellHelper.GetCurseOffset(m, StatType.Int);
 
-            int newStr = SpellHelper.GetOffset(null, caster, m, StatType.Str, true, true);
-            int newDex = SpellHelper.GetOffset(null, caster, m, StatType.Dex, true, true);
-            int newInt = SpellHelper.GetOffset(null, caster, m, StatType.Int, true, true);
+            int newStr = SpellHelper.GetOffset(this, caster, m, StatType.Str, true, true);
+            int newDex = SpellHelper.GetOffset(this, caster, m, StatType.Dex, true, true);
+            int newInt = SpellHelper.GetOffset(this, caster, m, StatType.Int, true, true);
 
             if ((-newStr > oldStr && -newDex > oldDex && -newInt > oldInt) ||
                 (newStr == 0 && newDex == 0 && newInt == 0))

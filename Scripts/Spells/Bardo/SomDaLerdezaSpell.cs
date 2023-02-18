@@ -1,13 +1,15 @@
 using System;
 using Server.Targeting;
 using System.Collections.Generic;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomDaLerdezaSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som da Lerdeza", "Está se sentindo cansado?",
+            "Som da Lerdeza", "Tu ficou cansado?",
             212,
             9031);
         public SomDaLerdezaSpell(Mobile caster, Item scroll)
@@ -22,6 +24,32 @@ namespace Server.Spells.Bardo
             return m_Table.ContainsKey(m);
         }
         public override int EficienciaMagica(Mobile caster) { return 5; } //Servirá para calcular o modificador na eficiência das magias
+
+        public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
+
 
         public static void RemoveEffects(Mobile m, bool removeMod = true)
         {

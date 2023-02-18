@@ -1,12 +1,14 @@
 using System;
 using Server.Targeting;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomDaInteligenciaSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som da Inteligência", "Você tá entendendo agora?",
+            "Som da Inteligência", "Consegue entender agora?",
             212,
             9061
            );
@@ -21,6 +23,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.First;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

@@ -21,7 +21,7 @@ namespace Server.Items
 			Movable = false;
 			owner = source;
 			Name = "splatter";
-			ItemID = Utility.RandomList( 0x122A, 0x122A, 0x122A, 0x122B, 0x122D, 0x122E, 0x263B, 0x263C, 0x263D, 0x263E, 0x263F, 0x2640 );
+			ItemID = Utility.RandomList( 0x122A, 0x122A, 0x122A, 0x122B, 0x122D, 0x122E );
 			ItemRemovalTimer thisTimer = new ItemRemovalTimer( this ); 
 			thisTimer.Start(); 
 		}

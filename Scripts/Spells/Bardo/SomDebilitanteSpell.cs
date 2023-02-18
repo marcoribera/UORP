@@ -1,7 +1,16 @@
+/*using System;
+using System.Collections.Generic;
+using System.Linq;
+using Server.Network;
+using Server.Items;
+using Server.Targeting;
+using Server.Spells.Fourth;
+using Server.Spells.First;*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Server.Items;
 using Server.Targeting;
 using Server.Spells.Fourth;
 using Server.Spells.First;
@@ -12,10 +21,14 @@ namespace Server.Spells.Bardo
     public class SomDebilitanteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som Deblitante", "Vocês são um bando de molengas",
+            "Som Deblitante", "Parem de ser um bando de molengas",
             218,
             9031,
-            false); // o que é false?
+            false,
+            Reagent.Garlic,
+            Reagent.Nightshade,
+            Reagent.MandrakeRoot,
+            Reagent.SulfurousAsh); // o que é false?
 
         private static readonly Dictionary<Mobile, Timer> m_UnderEffect = new Dictionary<Mobile, Timer>();
         public SomDebilitanteSpell(Mobile caster, Item scroll)
@@ -29,6 +42,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Seventh;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill
@@ -138,9 +175,9 @@ namespace Server.Spells.Bardo
             int oldDex = SpellHelper.GetCurseOffset(m, StatType.Dex);
             int oldInt = SpellHelper.GetCurseOffset(m, StatType.Int);
 
-            int newStr = SpellHelper.GetOffset(null, caster, m, StatType.Str, true, true);
-            int newDex = SpellHelper.GetOffset(null, caster, m, StatType.Dex, true, true);
-            int newInt = SpellHelper.GetOffset(null, caster, m, StatType.Int, true, true);
+            int newStr = SpellHelper.GetOffset(this, caster, m, StatType.Str, true, true);
+            int newDex = SpellHelper.GetOffset(this, caster, m, StatType.Dex, true, true);
+            int newInt = SpellHelper.GetOffset(this, caster, m, StatType.Int, true, true);
 
             if ((-newStr > oldStr && -newDex > oldDex && -newInt > oldInt) ||
                 (newStr == 0 && newDex == 0 && newInt == 0))

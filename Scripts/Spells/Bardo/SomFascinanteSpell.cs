@@ -2,13 +2,15 @@ using System;
 using Server.Mobiles;
 using Server.Spells.Chivalry;
 using Server.Targeting;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomFascinanteSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som Fascinante", "Vocês são uma platéia maravilhosa!",
+            "Som Fascinante", "Que grupo de pessoas maravilhoso!",
             218,
             9012);
         public SomFascinanteSpell(Mobile caster, Item scroll)
@@ -22,6 +24,31 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Sixth;
             }
+        }
+
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill

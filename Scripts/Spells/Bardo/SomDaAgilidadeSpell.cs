@@ -1,12 +1,13 @@
 using System;
 using Server.Targeting;
-
+using Server.Network;
+using Server.Items;
 namespace Server.Spells.Bardo
 {
     public class SomDaAgilidadeSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som da Agilidade", "Vamos ligeiro. Agora!",
+            "Som da Agilidade", "Vamos, ligeiro. Agora!",
             212,
             9061);
         public SomDaAgilidadeSpell(Mobile caster, Item scroll)
@@ -66,6 +67,30 @@ namespace Server.Spells.Bardo
             }
 
             this.FinishSequence();
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         private class InternalTarget : Target

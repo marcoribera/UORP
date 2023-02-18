@@ -15,7 +15,7 @@ namespace Server.Spells.Bardo
 	public class PalhacosSpell : BardoSpell
     {
 		private static SpellInfo m_Info = new SpellInfo(
-				"Palhaços", "Tá na hora do espetáculo!",
+				"Palhaços", "Que comece o show!",
 				-1,
 				0
 			);
@@ -27,6 +27,30 @@ namespace Server.Spells.Bardo
             {
                 return SpellCircle.Fifth;
             }
+        }
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
         public override double RequiredSkill
@@ -81,7 +105,7 @@ namespace Server.Spells.Bardo
 
 				int qty = 0;
 
-				if ( Caster.Skills[SkillName.Carisma].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
+				if ( Caster.Skills[SkillName.Caos].Value >= Utility.RandomMinMax( 1, 200 ) ){ qty++; }
 				if ( Caster.Skills[SkillName.PoderMagico].Value >= Utility.RandomMinMax( 1, 100 ) ){ qty++; }
 
 				if ( qty > ( ( Caster.FollowersMax - Caster.Followers - 1 ) ) )
@@ -102,7 +126,7 @@ namespace Server.Mobiles
 	{
 		private Mobile m_Caster;
 
-		public Palhaco( Mobile caster ) : base( AIType.AI_Melee, FightMode.None, 10, 1, 0.2, 0.4 )
+		public Palhaco( Mobile caster ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
 		{
 			m_Caster = caster;
 
@@ -111,13 +135,18 @@ namespace Server.Mobiles
 			Hue = caster.Hue;
 			Female = caster.Female;
 
-			Name = caster.Name;
+			Name = "Bobo da Corte";
 			NameHue = caster.NameHue;
 
 			Title = caster.Title;
 			Kills = caster.Kills;
+            AddItem(new FancyShirt(Utility.RandomGreenHue()));
+            AddItem(new LongPants(Utility.RandomYellowHue()));
+            AddItem(new JesterHat(Utility.RandomPinkHue()));
+            AddItem(new Cloak(Utility.RandomPinkHue()));
+            AddItem(new Sandals());
 
-			HairItemID = caster.HairItemID;
+            HairItemID = caster.HairItemID;
 			HairHue = caster.HairHue;
 
 			FacialHairItemID = caster.FacialHairItemID;
@@ -129,12 +158,12 @@ namespace Server.Mobiles
 				Skills[i].Cap = caster.Skills[i].Cap;
 			}
 
-			for( int i = 0; i < caster.Items.Count; i++ )
+		/*	for( int i = 0; i < caster.Items.Count; i++ )
 			{
 				AddItem( ClownItem( caster.Items[i] ) );
-			}
+			}*/
 
-			Warmode = true;
+			Warmode = false;
 
 			Summoned = true;
 			SummonMaster = caster;
@@ -142,35 +171,59 @@ namespace Server.Mobiles
 			ControlOrder = OrderType.Follow;
 			ControlTarget = caster;
 
-			TimeSpan duration = TimeSpan.FromSeconds( 30 + caster.Skills.PoderMagico.Fixed / 40 );
+            int min = 60;
+            int max = (int)(Server.Spells.CosmosSolar.CosmosSolarSpell.GetCosmosSolarDamage(m_Caster));
+            if (max < min) { max = min; }
 
-			new UnsummonTimer( caster, this, duration ).Start();
-			SummonEnd = DateTime.UtcNow + duration;
+            int hits = Utility.RandomMinMax(min, max);
 
-			MirrorImage.AddClone( m_Caster );
-		}
+            SetHits(hits);
 
-		protected override BaseAI ForcedAI { get { return new ClownAI( this ); } }
+            SetDamage(1, 1);
 
-		public override bool IsHumanInTown() { return false; }
+            SetDamageType(ResistanceType.Physical, 100);
+            SetResistance(ResistanceType.Physical, 20, 40);
+            SetResistance(ResistanceType.Fire, 20, 40);
+            SetResistance(ResistanceType.Cold, 20, 40);
+            SetResistance(ResistanceType.Poison, 20, 40);
 
-		private Item ClownItem( Item item )
-		{
-			Item newItem = new Item( item.ItemID );
-			newItem.Hue = item.Hue;
-			newItem.Layer = item.Layer;
+            Fame = 0;
+            Karma = 0;
 
-			return newItem;
-		}
+            VirtualArmor = 1;
 
-		public override void OnDamage( int amount, Mobile from, bool willKill )
-		{
-			Delete();
-		}
+            ControlSlots = 3;
 
-		public override bool DeleteCorpseOnDeath { get { return true; } }
+            TimeSpan duration = TimeSpan.FromSeconds(Server.Spells.CosmosSolar.CosmosSolarSpell.GetCosmosSolarDamage(m_Caster) / 2);
 
-		public override void OnDelete()
+            new UnsummonTimer(caster, this, duration).Start();
+            SummonEnd = DateTime.UtcNow + duration;
+
+            MirrorImage.AddClone(m_Caster);
+        }
+
+        //protected override BaseAI ForcedAI { get { return new ClownAI( this ); } }
+
+        public override bool IsHumanInTown() { return false; }
+
+        public override void OnGaveMeleeAttack(Mobile defender)
+        {
+            base.OnGaveMeleeAttack(defender);
+            if (m_Caster != null) { m_Caster.DoHarmful(defender); }
+        }
+
+     /*   private Item MiragemCosmicaItem(Item item)
+        {
+            Item newItem = new Item(item.ItemID);
+            newItem.Hue = item.Hue;
+            newItem.Layer = item.Layer;
+
+            return newItem;
+        }
+     */
+        public override bool DeleteCorpseOnDeath { get { return true; } }
+
+        public override void OnDelete()
 		{
 			switch ( Utility.Random( 6 ))
 			{
@@ -224,8 +277,10 @@ namespace Server.Mobiles
 
 namespace Server.Mobiles
 {
-	public class ClownAI : BaseAI
-	{
+	public class ClownAI : MeleeAI
+
+
+    {
 		public ClownAI(Palhaco m ) : base ( m )
 		{
 			m.CurrentSpeed = m.ActiveSpeed;

@@ -13500,6 +13500,7 @@
     <Compile Include="Spells\Algoz\ForcaDoAcolito.cs" />
     <Compile Include="Spells\Algoz\AlgozTransforma.cs" />
     <Compile Include="Spells\Bardo\AnularAprimoramentoSpell.cs" />
+    <Compile Include="Spells\Bardo\AnularBencaosSpell.cs" />
     <Compile Include="Spells\Bardo\AtaqueSonicoSpell.cs" />
     <Compile Include="Spells\Bardo\BaloesExplosivosSpell.cs" />
     <Compile Include="Spells\Bardo\BardoSpell.cs" />
@@ -13509,6 +13510,7 @@
     <Compile Include="Spells\Bardo\EncantarCriaturaSpell.cs" />
     <Compile Include="Spells\Bardo\GarrafaDeAguaSpell.cs" />
     <Compile Include="Spells\Bardo\HilarioSpell.cs" />
+    <Compile Include="Spells\Bardo\IlusaoExplosivaSpell.cs" />
     <Compile Include="Spells\Bardo\InsultosSpell.cs" />
     <Compile Include="Spells\Bardo\MusicaArdenteSpell.cs" />
     <Compile Include="Spells\Bardo\PalhacosSpell.cs" />

@@ -7,10 +7,10 @@ using Server.Mobiles;
 
 namespace Server.Spells.Bardo
 {
-	public class BaloesExplosivosSpell : BardoSpell
+	public class IlusaoExplosivaSpell : BardoSpell
     {
 		private static SpellInfo m_Info = new SpellInfo(
-                "Balões Explosivos", "Segura esse balãozinho pra mim!",
+                "Ilusão Explosiva", "Vou fazer um bichinho, quer ver?",
 				-1,
 				0
 			);
@@ -18,7 +18,7 @@ namespace Server.Spells.Bardo
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3.0 ); } }
 	
 
-		public BaloesExplosivosSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public IlusaoExplosivaSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
         public override int EficienciaMagica(Mobile caster) { return 3; } //Servirá para calcular o modificador na eficiência das magias
@@ -30,6 +30,31 @@ namespace Server.Spells.Bardo
                 return SpellCircle.Fourth;
             }
         }
+		public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
+
         public override double RequiredSkill
         {
             get
@@ -45,7 +70,7 @@ namespace Server.Spells.Bardo
 
 			if( (Caster.Followers + 3) > Caster.FollowersMax )
 			{
-				Caster.SendMessage("Você tem muitos seguidores para encher um balão.");
+				Caster.SendMessage("Você tem muitos seguidores para invocar mais uma ilusão.");
 				return false;
 			}
 
@@ -60,9 +85,9 @@ namespace Server.Spells.Bardo
 
 			if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
-				string FoolName = "um balão";
-				int FoolHue = Utility.RandomList( 0xB3D, 0xB3E, 0xB3F, 0xB40, 0xAD1, 0x9A2, 0x94C, 0x916, 0x947, 0x92E, 0x88E, 0x855 );
-				int FoolBody = 1026;
+				string FoolName = "Uma Ilusão";
+				int FoolHue = Utility.RandomList( 0 );
+				int FoolBody = Utility.RandomList(21, 23, 25, 27, 29, 81, 88, 127, 167,201, 203, 207, 208, 209, 217, 237);
 				int FoolFroze = 0;
 
 				Caster.Hidden = true;

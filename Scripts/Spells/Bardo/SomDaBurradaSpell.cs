@@ -1,13 +1,15 @@
 using System;
 using Server.Targeting;
 using System.Collections.Generic;
+using Server.Network;
+using Server.Items;
 
 namespace Server.Spells.Bardo
 {
     public class SomDaBurradaSpell : BardoSpell
     {
         private static readonly SpellInfo m_Info = new SpellInfo(
-            "Som da Burrada", "Como é se sentir tapado?",
+            "Som da Burrada", "Tu sempre foi tapado assim?",
             212,
             9031
             );
@@ -53,6 +55,30 @@ namespace Server.Spells.Bardo
             }
         }
 
+public override bool CheckCast()
+        {
+            // Check for a musical instrument in the player's backpack
+            if (!CheckInstrument())
+            {
+                Caster.SendMessage("Você precisa ter um instrumento musical na sua mochila para canalizar essa magia.");
+                return false;
+            }
+
+
+            return base.CheckCast();
+        }
+
+
+ private bool CheckInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
+        }
+
+
+        private BaseInstrument GetInstrument()
+        {
+            return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
+        }
         public override double RequiredSkill
         {
             get
