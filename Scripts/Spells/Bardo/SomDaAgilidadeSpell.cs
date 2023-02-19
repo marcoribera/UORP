@@ -2,6 +2,9 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using System.Collections.Generic;
+using Server.Mobiles;
+
 namespace Server.Spells.Bardo
 {
     public class SomDaAgilidadeSpell : BardoSpell
@@ -24,7 +27,6 @@ namespace Server.Spells.Bardo
                 return SpellCircle.Second;
             }
         }
-
         public override double RequiredSkill
         {
             get
@@ -32,37 +34,95 @@ namespace Server.Spells.Bardo
                 return 20.0;
             }
         }
+
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
+            List<Mobile> targets = new List<Mobile>();
 
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
-            {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (this.CheckBSequence(m))
-            {
-                int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
-                int newDex = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, false, true);
+            Map map = this.Caster.Map;
 
-                if (newDex < oldDex || newDex == 0)
+            if (this.CheckSequence())
+            {
+                if (map != null)
                 {
-                    DoHurtFizzle();
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 10);
+
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = false;
+
+                                if (Caster.Party == null) //Fora de party afeta todos os players na área
+                                {
+                                    valido = true;
+                                }
+                                else if (m.Party == Caster.Party) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Party é um alvo válido
+                                }
+
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Guild é um alvo válido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                            else
+                            {
+                                targets.Add(m as Mobile); //Em buffs inclue o próprio conjurador
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = false;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = true;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
+
+                    eable.Free();
                 }
-                else
+                for (int i = 0; i < targets.Count; ++i)
                 {
-                    SpellHelper.Turn(this.Caster, m);
+                    Mobile m = targets[i];
+                    int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
+                    int newDex = SpellHelper.GetOffset(this, Caster, m, StatType.Dex, false, true);
 
-                    SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Dex);
-                    int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, false) * 100);
-                    TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
-                    BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Agility, 1075841, length, m, percentage.ToString()));
+                    if (newDex >= oldDex && newDex != 0)
+                    {
+                        //SpellHelper.Turn(this.Caster, m);
 
-                    m.FixedParticles(0x375A, 10, 15, 5010, EffectLayer.Waist);
-                    m.PlaySound(0x1e7);
+                        SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Dex);
+                        int percentage = (int)(SpellHelper.GetOffsetScalar(this, this.Caster, m, false) * 100);
+                        TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
+                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.Agility, 1075841, length, m, percentage.ToString()));
+                        m.FixedParticles(0x375A, 10, 15, 5010, SpellEffectHue, 3, EffectLayer.Waist);
+                        m.PlaySound(0x1e7);
+                    }
                 }
             }
 
@@ -93,27 +153,5 @@ public override bool CheckCast()
             return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
-        private class InternalTarget : Target
-        {
-            private readonly SomDaAgilidadeSpell m_Owner;
-            public InternalTarget(SomDaAgilidadeSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
-        }
     }
 }
