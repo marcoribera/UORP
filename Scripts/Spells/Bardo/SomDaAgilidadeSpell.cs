@@ -88,11 +88,16 @@ namespace Server.Spells.Bardo
                                 {
                                     valido = true;
                                 }
+                               
                                 if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
                                 {
                                     valido = true;
                                 }
                                 if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Party == null) && (criatura.GetMaster() != null)) //se a criatura não estiver em party com o conjurador, e seu mestre não for o caster
                                 {
                                     valido = true;
                                 }

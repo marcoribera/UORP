@@ -4,6 +4,7 @@ using Server.Spells.Chivalry;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using System.Collections.Generic;
 
 namespace Server.Spells.Bardo
 {
@@ -26,7 +27,7 @@ namespace Server.Spells.Bardo
             }
         }
 
-public override bool CheckCast()
+        public override bool CheckCast()
         {
             // Check for a musical instrument in the player's backpack
             if (!CheckInstrument())
@@ -40,7 +41,7 @@ public override bool CheckCast()
         }
 
 
- private bool CheckInstrument()
+        private bool CheckInstrument()
         {
             return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) != null;
         }
@@ -62,86 +63,115 @@ public override bool CheckCast()
 
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
-
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
+            if (this.CheckSequence())
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (Core.AOS && (m.Frozen || m.Paralyzed || (m.Spell != null && m.Spell.IsCasting && !(m.Spell is PaladinSpell))))
-            {
-                this.Caster.SendLocalizedMessage(1061923); // The target is already frozen.
-            }
-            else if (this.CheckHSequence(m))
-            {
-                SpellHelper.Turn(this.Caster, m);
+                List<Mobile> targets = new List<Mobile>();
 
-                SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
+                Map map = this.Caster.Map;
 
-                double duration;
-				
-                if (Core.AOS)
+                if (map != null)
                 {
-                    int secs = (int)((this.GetDamageSkill(this.Caster) / 10) - (this.GetResistSkill(m) / 10));
-					
-                    if (!Core.SE)
-                        secs += 2;
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 10);
 
-                    if (!m.Player)
-                        secs *= 3;
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = true;
+                                if ((Caster.Party != null) && (m.Party == Caster.Party)) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Party é um alvo inválido
+                                }
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Guild é um alvo inválido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = true;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party == null) && (criatura.GetMaster() != null)) //se a criatura não estiver em party com o conjurador, e seu mestre não for o caster
+                                {
+                                    valido = false;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
 
-                    if (secs < 0)
-                        secs = 0;
+                    eable.Free();
 
-                    duration = secs;
+                    for (int i = 0; i < targets.Count; ++i)
+                    {
+                        Mobile m = targets[i];
+                        double duration;
+
+                        if (Core.AOS)
+                        {
+                            int secs = (int)((this.GetDamageSkill(this.Caster) / 10) - (this.GetResistSkill(m) / 10));
+
+                            if (!Core.SE)
+                                secs += 2;
+
+                            if (!m.Player)
+                                secs *= 3;
+
+                            if (secs < 0)
+                                secs = 0;
+
+                            duration = secs;
+                        }
+                        else
+                        {
+                            // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
+                            duration = 7.0 + (this.Caster.Skills[SkillName.Caos].Value * 0.2);
+
+                            if (this.CheckResisted(m))
+                                duration *= 0.75;
+                        }
+
+                        if (m is PlagueBeastLord)
+                        {
+                            ((PlagueBeastLord)m).OnParalyzed(this.Caster);
+                            duration = 120;
+                        }
+
+                        m.Paralyze(TimeSpan.FromSeconds(duration));
+
+                        m.PlaySound(0x204);
+                        m.FixedEffect(0x376A, 6, 1);
+
+                        this.HarmfulSpell(m);
+                    }
+
+                    this.FinishSequence();
                 }
-                else
-                {
-                    // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
-                    duration = 7.0 + (this.Caster.Skills[SkillName.Arcanismo].Value * 0.2);
 
-                    if (this.CheckResisted(m))
-                        duration *= 0.75;
-                }
-
-                if (m is PlagueBeastLord)
-                {
-                    ((PlagueBeastLord)m).OnParalyzed(this.Caster);
-                    duration = 120;
-                }
-
-                m.Paralyze(TimeSpan.FromSeconds(duration));
-
-                m.PlaySound(0x204);
-                m.FixedEffect(0x376A, 6, 1);
-
-                this.HarmfulSpell(m);
-            }
-
-            this.FinishSequence();
-        }
-
-        public class InternalTarget : Target
-        {
-            private readonly SomFascinanteSpell m_Owner;
-            public InternalTarget(SomFascinanteSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                    this.m_Owner.Target((Mobile)o);
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
             }
         }
     }

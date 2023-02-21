@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Server.Items;
 using System.IO;
 using Server;
+using Server.Mobiles;
 
 namespace Server.Spells.Bardo
 {
@@ -92,25 +93,87 @@ namespace Server.Spells.Bardo
             return Caster.Backpack.FindItemByType(typeof(BaseInstrument)) as BaseInstrument;
         }
 
-        public override void OnCast()
-        {
-            this.Caster.Target = new InternalTarget(this);
-
-            
-        }
-
         
 
-
-        public void Target(Mobile m)
+        public override void OnCast()
         {
-            if (!this.Caster.CanSee(m))
+            List<Mobile> targets = new List<Mobile>();
+
+            Map map = this.Caster.Map;
+
+            if (this.CheckSequence())
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (this.CheckBSequence(m))
-            {
-                SpellHelper.Turn(this.Caster, m);
+                if (map != null)
+                {
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 10);
+
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = false;
+
+                                if (Caster.Party == null) //Fora de party afeta todos os players na área
+                                {
+                                    valido = true;
+                                }
+                                else if (m.Party == Caster.Party) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Party é um alvo válido
+                                }
+
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = true; //Se forem da mesma Guild é um alvo válido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                            else
+                            {
+                                targets.Add(m as Mobile); //Em buffs inclue o próprio conjurador
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = false;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = true;
+                                }
+
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = true;
+                                }
+                                if ((Caster.Party == null) && (criatura.GetMaster() != null)) //se a criatura não estiver em party com o conjurador, e seu mestre não for o caster
+                                {
+                                    valido = true;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
+
+                    eable.Free();
+                }
+                for (int i = 0; i < targets.Count; ++i)
+                {
+                    Mobile m = targets[i];
 
                 int oldStr = SpellHelper.GetBuffOffset(m, StatType.Str);
                 int oldDex = SpellHelper.GetBuffOffset(m, StatType.Dex);
@@ -120,13 +183,9 @@ namespace Server.Spells.Bardo
                 int newDex = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, false, true);
                 int newInt = SpellHelper.GetOffset(this,Caster, m, StatType.Int, false, true);
 
-                if ((newStr < oldStr && newDex < oldDex && newInt < oldInt) || 
-                    (newStr == 0 && newDex == 0 && newInt == 0))
-                {
-                    DoHurtFizzle();
-                }
-                else
-                {
+                if ((newStr >= oldStr && newDex >= oldDex && newInt >= oldInt) || 
+                    (newStr != 0 && newDex != 0 && newInt != 0))
+
                     SpellHelper.AddStatBonus(this, this.Caster, m, false, StatType.Str);
                     SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Dex);
                     SpellHelper.AddStatBonus(this, this.Caster, m, true, StatType.Int);
@@ -146,29 +205,7 @@ namespace Server.Spells.Bardo
             this.FinishSequence();
         }
 
-        private class InternalTarget : Target
-        {
-            private readonly SomDaMelhoriaSpell m_Owner;
-            public InternalTarget(SomDaMelhoriaSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Beneficial)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
-        }
-
+  
         private class InternalTimer : Timer
         {
             public Mobile Mobile { get; set; }

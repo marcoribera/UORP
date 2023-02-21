@@ -3,6 +3,7 @@ using Server.Targeting;
 using System.Collections.Generic;
 using Server.Network;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Spells.Bardo
 {
@@ -88,46 +89,104 @@ namespace Server.Spells.Bardo
         }
         public override void OnCast()
         {
-            this.Caster.Target = new InternalTarget(this);
-        }
-
-        public void Target(Mobile m)
-        {
-            if (!this.Caster.CanSee(m))
+            if (this.CheckSequence())
             {
-                this.Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (this.CheckHSequence(m))
-            {
-                SpellHelper.Turn(this.Caster, m);
-                SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
+                List<Mobile> targets = new List<Mobile>();
 
-                if (Mysticism.StoneFormSpell.CheckImmunity(m))
+                Map map = this.Caster.Map;
+
+                if (map != null)
+                {
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 10);
+
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = true;
+                                if ((Caster.Party != null) && (m.Party == Caster.Party)) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Party é um alvo inválido
+                                }
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Guild é um alvo inválido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = true;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party == null) && (criatura.GetMaster() != null)) //se a criatura não estiver em party com o conjurador, e seu mestre não for o caster
+                                {
+                                    valido = false;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
+
+                    eable.Free();
+                }
+                int oldOffset;
+                int newOffset;
+
+                for (int i = 0; i < targets.Count; ++i)
+                {
+                    Mobile m = targets[i];
+
+                    if (CheckHSequence(m))
+
+                        SpellHelper.Turn(Caster, m);
+                    SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+
+                    if (Mysticism.StoneFormSpell.CheckImmunity(m))
                 {
                     Caster.SendLocalizedMessage(1080192); // Your target resists your ability reduction magic.
                     return;
                 }
 
-                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Dex);
-                int newOffset = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, true, false);
+               oldOffset = SpellHelper.GetCurseOffset(m, StatType.Dex);
+               newOffset = SpellHelper.GetOffset(this,Caster, m, StatType.Dex, true, false);
 
-                if (-newOffset > oldOffset || newOffset == 0)
-                {
-                    DoHurtFizzle();
-                }
-                else
-                {
                     if (m.Spell != null)
                         m.Spell.OnCasterHurt();
 
                     m.Paralyzed = false;
 
-                    m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head);
+                    m.FixedParticles(0x3779, 10, 15, 5011, SpellEffectHue, 3, EffectLayer.Head);
                     m.PlaySound(0x1DF);
 
                     HarmfulSpell(m);
 
-                    if (-newOffset < oldOffset)
+
+                    if (!(-newOffset > oldOffset || newOffset == 0))
+                    {
+                        if (-newOffset < oldOffset)
                     {
                         SpellHelper.AddStatCurse(this, this.Caster, m, StatType.Dex, false, newOffset);
 
@@ -149,27 +208,7 @@ namespace Server.Spells.Bardo
             this.FinishSequence();
         }
 
-        private class InternalTarget : Target
-        {
-            private readonly SomDaLerdezaSpell m_Owner;
-            public InternalTarget(SomDaLerdezaSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
-            {
-                this.m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    this.m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                this.m_Owner.FinishSequence();
-            }
+       
         }
     }
 }

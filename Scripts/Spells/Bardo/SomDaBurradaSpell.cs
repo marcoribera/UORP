@@ -3,6 +3,7 @@ using Server.Targeting;
 using System.Collections.Generic;
 using Server.Network;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Spells.Bardo
 {
@@ -88,88 +89,114 @@ public override bool CheckCast()
         }
         public override void OnCast()
         {
-            Caster.Target = new InternalTarget(this);
-        }
-
-        public void Target(Mobile m)
-        {
-            if (!Caster.CanSee(m))
+            if (this.CheckSequence())
             {
-                Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (CheckHSequence(m))
-            {
-                SpellHelper.Turn(Caster, m);
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                List<Mobile> targets = new List<Mobile>();
 
-                if (Mysticism.StoneFormSpell.CheckImmunity(m))
+                Map map = this.Caster.Map;
+
+                if (map != null)
                 {
-                    Caster.SendLocalizedMessage(1080192); // Your target resists your ability reduction magic.
-                    return;
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), 10);
+
+                    foreach (Mobile m in eable)
+                    {
+                        if (m is PlayerMobile) //Se o char alvo é de player
+                        {
+                            if (m != Caster) //mas não é o conjurador
+                            {
+                                bool valido = true;
+                                if ((Caster.Party != null) && (m.Party == Caster.Party)) // verifica se o conjurador tá numa Party e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Party é um alvo inválido
+                                }
+                                if ((Caster.Guild != null) && (m.Guild == Caster.Guild)) // verifica se o conjurador tá numa Guild e se ela é a mesma do alvo
+                                {
+                                    valido = false; //Se forem da mesma Guild é um alvo inválido
+                                }
+                                if (valido) //se for um alvo válido adiciona na lista
+                                {
+                                    targets.Add(m as Mobile); //é um alvo válido.
+                                }
+                            }
+                        }
+                        if (m is BaseCreature)
+                        {
+                            BaseCreature criatura = m as BaseCreature;
+                            bool valido = true;
+                            if (criatura.GetMaster() != null)
+                            {
+                                if (criatura.GetMaster() == Caster)
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party != null) && (criatura.GetMaster().Party == Caster.Party))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Guild != null) && (criatura.GetMaster().Guild == Caster.Guild))
+                                {
+                                    valido = false;
+                                }
+                                if ((Caster.Party == null) && (criatura.GetMaster() != null)) //se a criatura não estiver em party com o conjurador, e seu mestre não for o caster
+                                {
+                                    valido = false;
+                                }
+                            }
+                            if (valido) //se for um alvo válido adiciona na lista
+                            {
+                                targets.Add(m as Mobile); //é um alvo válido.
+                            }
+                        }
+                    }
+
+                    eable.Free();
                 }
 
-                int oldOffset = SpellHelper.GetCurseOffset(m, StatType.Int);
-                int newOffset = SpellHelper.GetOffset(this,Caster, m, StatType.Int, true, false);
+                int oldOffset;
+                int newOffset;
 
-                if (-newOffset > oldOffset || newOffset == 0)
+                for (int i = 0; i < targets.Count; ++i)
                 {
-                    DoHurtFizzle();
-                }
-                else
-                {
+                    Mobile m = targets[i];
+
+                    oldOffset = SpellHelper.GetCurseOffset(m, StatType.Int);
+                    newOffset = SpellHelper.GetOffset(this, Caster, m, StatType.Int, true, false);
+
+
                     if (m.Spell != null)
                         m.Spell.OnCasterHurt();
 
                     m.Paralyzed = false;
 
-                    m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head);
+                    m.FixedParticles(0x3779, 10, 15, 5011, SpellEffectHue, 3, EffectLayer.Head);
                     m.PlaySound(0x1DF);
 
                     HarmfulSpell(m);
 
-                    if (-newOffset < oldOffset)
+                    if (!(-newOffset > oldOffset || newOffset == 0))
                     {
-                        SpellHelper.AddStatCurse(this, this.Caster, m, StatType.Int, false, newOffset);
-
-                        int percentage = (int)(SpellHelper.GetOffsetScalar(this,this.Caster, m, true) * 100);
-                        TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
-                        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.FeebleMind, 1075833, length, m, percentage.ToString()));
-
-                        if (m_Table.ContainsKey(m))
-                            m_Table[m].Stop();
-
-                        m_Table[m] = Timer.DelayCall(length, () =>
+                        if (-newOffset < oldOffset)
                         {
-                            RemoveEffects(m);
-                        });
+                            SpellHelper.AddStatCurse(this, this.Caster, m, StatType.Int, false, newOffset);
+
+                            int percentage = (int)(SpellHelper.GetOffsetScalar(this, this.Caster, m, true) * 100);
+                            TimeSpan length = SpellHelper.GetDuration(this.Caster, m);
+                            BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.FeebleMind, 1075833, length, m, percentage.ToString())); //TODO: Criar Cliloc com as descrição do debuff
+
+                            if (m_Table.ContainsKey(m))
+                                m_Table[m].Stop();
+
+                            m_Table[m] = Timer.DelayCall(length, () =>
+                            {
+                                RemoveEffects(m);
+                            });
+                        }
                     }
                 }
             }
 
-            FinishSequence();
-        }
-
-        private class InternalTarget : Target
-        {
-            private readonly SomDaBurradaSpell m_Owner;
-            public InternalTarget(SomDaBurradaSpell owner)
-                : base(Core.ML ? 10 : 12, false, TargetFlags.Harmful)
-            {
-                m_Owner = owner;
-            }
-
-            protected override void OnTarget(Mobile from, object o)
-            {
-                if (o is Mobile)
-                {
-                    m_Owner.Target((Mobile)o);
-                }
-            }
-
-            protected override void OnTargetFinish(Mobile from)
-            {
-                m_Owner.FinishSequence();
-            }
+            this.FinishSequence();
         }
     }
 }
