@@ -27,14 +27,6 @@ namespace Server.Commands
         {
             PlayerMobile player = e.Mobile as PlayerMobile; //Personagem que chamou o comando
 
-            foreach (Skill skill in player.Skills)
-            {
-                skill.Cap = 120.0;
-            }
-            player.SendMessage("Caps das skills ajustados para 120.");
-
-
-            /*
             if (e.ArgString == "")
             {
                 ClasseGump gump = new ClasseGump(player);
@@ -47,7 +39,7 @@ namespace Server.Commands
                 player.SendGump(gump);
                 return;
             }
-            */
+
         }
 
         private class ClasseGump : Gump
@@ -68,9 +60,11 @@ namespace Server.Commands
                 else if (player.ClasseIntermediariaID == 0) //Se ainda não possuiu segunda classe
                 {
                     OpcoesClasse = ClassDef.GetClassesByTier(TierClasse.ClasseIntermediaria);
+
+
                     if(player.ClasseAbandonavel == TierClasse.ClasseBasica)
                     {
-                        textoAbandonarClasse = String.Format("Abandonar caminho do {0} (Essa opção diminui os Cap de skill ganhos com a classe)", ClassDef.GetClasse(player.ClasseBasicaID).Nome);
+                        textoAbandonarClasse = String.Format("<BIG><B>Abandonar caminho do {0}</B></BIG><BR> Seus Cap de skill voltam aos da classe anterior.", ClassDef.GetClasse(player.ClasseBasicaID).Nome);
                     }
                 }
                 else if (player.ClasseAvancadaID == 0) //Se ainda não possuiu terceira classe
@@ -78,7 +72,7 @@ namespace Server.Commands
                     OpcoesClasse = ClassDef.GetClassesByTier(TierClasse.ClasseAvancada);
                     if (player.ClasseAbandonavel == TierClasse.ClasseIntermediaria)
                     {
-                        textoAbandonarClasse = String.Format("Abandonar caminho do {0} (Essa opção diminui os Cap de skill ganhos com a classe)", ClassDef.GetClasse(player.ClasseIntermediariaID).Nome);
+                        textoAbandonarClasse = String.Format("<BIG><B>Abandonar caminho do {0}</B></BIG><BR> Seus Cap de skill voltam aos da classe anterior.", ClassDef.GetClasse(player.ClasseIntermediariaID).Nome);
                     }
                 }
                 else if (player.ClasseLendariaID == 0) //Se ainda não possuiu quarta classe
@@ -86,14 +80,14 @@ namespace Server.Commands
                     OpcoesClasse = ClassDef.GetClassesByTier(TierClasse.ClasseLendaria);
                     if (player.ClasseAbandonavel == TierClasse.ClasseAvancada)
                     {
-                        textoAbandonarClasse = String.Format("Abandonar caminho do {0} (Essa opção diminui os Cap de skill ganhos com a classe)", ClassDef.GetClasse(player.ClasseAvancadaID).Nome);
+                        textoAbandonarClasse = String.Format("<BIG><B>Abandonar caminho do {0}</B></BIG><BR> Seus Cap de skill voltam aos da classe anterior.", ClassDef.GetClasse(player.ClasseAvancadaID).Nome);
                     }
                 }
                 else
                 {
                     if (player.ClasseAbandonavel == TierClasse.ClasseLendaria)
                     {
-                        textoAbandonarClasse = String.Format("Abandonar caminho do {0} (Essa opção diminui os Cap de skill ganhos com a classe)", ClassDef.GetClasse(player.ClasseLendariaID).Nome);
+                        textoAbandonarClasse = String.Format("<BIG><B>Abandonar caminho do {0}</B></BIG><BR> Seus Cap de skill voltam aos da classe anterior.", ClassDef.GetClasse(player.ClasseLendariaID).Nome);
                     }
                 }
 
@@ -101,8 +95,11 @@ namespace Server.Commands
                 AddPage(0);
                 AddImage(0, 0, 30236); //500x600
 
-                int SLbaseX = 160; //Posição 'x' base do label do Idioma
-                int SLbaseY = 59; //Posição 'y' base do label do Idioma
+                //Ajustar o titulo da tela pra esse HTML
+                //AddHtml(100, 52, 132, 40, @"<BODY><BASEFONT Color=#111111><BIG><CENTER>3º Circulo</CENTER></BASEFONT></BODY>", (bool)false, (bool)false);
+
+                int SLbaseX = 163; //Posição 'x' base do label do Idioma
+                int SLbaseY = 52; //Posição 'y' base do label do Idioma
                 int SBbaseX = 125; //Posição 'x' base do button do Idioma
                 int SBbaseY = 50; //Posição 'y' base do button do Idioma
 
@@ -111,14 +108,19 @@ namespace Server.Commands
                 //Monta o gump com a lista de classes por tier
                 foreach (ClassePersonagem classe in OpcoesClasse)
                 {
-                    AddButton(SBbaseX, SBbaseY + (50 * linhaCount), 2151, 2154, 100 + classe.ID, GumpButtonType.Reply, 0);
-                    AddLabel(SLbaseX, SLbaseY + (50 * linhaCount), 1153, String.Format("{0}: {1}", classe.Nome, classe.Desc));
+                    AddButton(SBbaseX, SBbaseY + (20 * linhaCount), 30008, 30009, 100 + classe.ID, GumpButtonType.Reply, 0);
+                    AddButton(SBbaseX+20, SBbaseY + (20 * linhaCount), 4033, 4033, 9999 + classe.ID, GumpButtonType.Reply, 0); //acima de 9999 é botão de abrir informações
+                    AddLabel(SLbaseX, SLbaseY + (20 * linhaCount), 1153, String.Format("{0}: {1}", classe.Nome, classe.Desc));
                     linhaCount++;
                 }
                 if(textoAbandonarClasse != "")
                 {
-                    AddButton(SBbaseX, SBbaseY + (50 * linhaCount), 2151, 2154, 50, GumpButtonType.Reply, 0);
-                    AddLabel(SLbaseX, SLbaseY + (50 * linhaCount), 1152, textoAbandonarClasse); //Ver se a cor prestou
+                    AddButton(SBbaseX-30, SBbaseY + (20 * linhaCount)+20, 2151, 2154, 50, GumpButtonType.Reply, 0);
+                    AddHtml(SLbaseX-30, SLbaseY + (20 * linhaCount)+20, 350, 100, textoAbandonarClasse, (bool)false, (bool)false);
+                }
+                else if(player.ClasseBasicaID != 0)
+                {
+                    AddHtml(SLbaseX-30, SLbaseY + (20 * linhaCount) + 20, 350, 100, "Não é mais possível voltar à classe de Tier anterior a essa.", (bool)false, (bool)false);
                 }
             }
 

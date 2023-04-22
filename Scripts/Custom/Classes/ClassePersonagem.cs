@@ -71,7 +71,7 @@ namespace Server.Custom.Classes
                         }
                         player.ClasseBasicaID = ID; //Define a classe do personagem
                         player.ClasseAbandonavel = TierClasse.ClasseBasica;
-                        player.SendMessage(String.Format("Agora você é um membro da classe {0}, Paranbéns!", this.Nome));
+                        player.SendMessage(String.Format("Agora você é um membro da classe {0}, Parabéns!", this.Nome));
                         classeAplicada = true;
                     }
                     else
