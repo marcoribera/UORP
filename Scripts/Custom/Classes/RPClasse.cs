@@ -18,6 +18,7 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
+            CommandSystem.Register("RPClasseReset", AccessLevel.GameMaster, RPClasseReset_OnCommand);
             CommandSystem.Register("RPClasse", AccessLevel.Player, RPClasse_OnCommand);
         }
 
@@ -31,6 +32,27 @@ namespace Server.Commands
             {
                 ClasseGump gump = new ClasseGump(player);
                 player.SendGump(gump);
+                return;
+            }
+            else //Colocar algo aqui caso passe a existir alguma opção desse comando com os parâmetros
+            {
+                ClasseGump gump = new ClasseGump(player);
+                player.SendGump(gump);
+                return;
+            }
+
+        }
+
+        [Usage("RPClasseReset")]
+        [Description("Zera as classes de todos os Tier do personagem alvo.")]
+        private static void RPClasseReset_OnCommand(CommandEventArgs e)
+        {
+            
+            PlayerMobile player = e.Mobile as PlayerMobile; //Personagem que chamou o comando
+
+            if (e.ArgString == "")
+            {
+                e.Mobile.Target = new ZeraTarget();
                 return;
             }
             else //Colocar algo aqui caso passe a existir alguma opção desse comando com os parâmetros
@@ -110,7 +132,7 @@ namespace Server.Commands
                 {
                     AddButton(SBbaseX, SBbaseY + (20 * linhaCount), 30008, 30009, 100 + classe.ID, GumpButtonType.Reply, 0);
                     AddButton(SBbaseX+20, SBbaseY + (20 * linhaCount), 4033, 4033, 9999 + classe.ID, GumpButtonType.Reply, 0); //acima de 9999 é botão de abrir informações
-                    AddLabel(SLbaseX, SLbaseY + (20 * linhaCount), 1153, String.Format("{0}: {1}", classe.Nome, classe.Desc));
+                    AddLabel(SLbaseX, SLbaseY + (20 * linhaCount), 1153, classe.Nome);
                     linhaCount++;
                 }
                 if(textoAbandonarClasse != "")
@@ -152,11 +174,44 @@ namespace Server.Commands
                             return;
                     }
                 }
-                else
+                else if(info.ButtonID < 9999)
                 {
                     int classeID = info.ButtonID - 100;
                     ClassDef.GetClasse(classeID).AplicaClasse(player);
                     return;
+                }
+                else
+                {
+                    int classeID = info.ButtonID - 9999;
+
+                    ClassePersonagem atual = ClassDef.GetClasse(classeID); //Acha a classe sobre a qual se quer informações
+                    player.SendGump(new BasicInfoGump(atual.DetalhesClasse(),"DETALHES DE CLASSE", 300, 750));
+                    player.SendGump(new ClasseGump(player));
+                    player.SendMessage(13, atual.DetalhesClasse());
+                }
+            }
+        }
+        public class ZeraTarget : Target
+        {
+            public ZeraTarget() : base(-1, false, TargetFlags.None)
+            {
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                if (targeted is PlayerMobile)
+                {
+                    PlayerMobile alvo = targeted as PlayerMobile;
+                    var skillcap = Config.Get("PlayerCaps.SkillCap", 1000.0d) / 10;
+
+                    for (var i = 0; i < Enum.GetNames(typeof(SkillName)).Length; ++i)
+                        alvo.Skills[i].Cap = skillcap;
+
+                    alvo.ClasseAbandonavelID = TierClasse.SemClasse;
+                    alvo.ClasseBasicaID = 0;
+                    alvo.ClasseIntermediariaID = 0;
+                    alvo.ClasseAvancadaID = 0;
+                    alvo.ClasseLendariaID = 0;
                 }
             }
         }
