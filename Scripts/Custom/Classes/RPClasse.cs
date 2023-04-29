@@ -57,8 +57,7 @@ namespace Server.Commands
             }
             else //Colocar algo aqui caso passe a existir alguma opção desse comando com os parâmetros
             {
-                ClasseGump gump = new ClasseGump(player);
-                player.SendGump(gump);
+                e.Mobile.Target = new ZeraTarget();
                 return;
             }
 
