@@ -45,6 +45,7 @@ using Server.Engines.SphynxFortune;
 using Server.Engines.VendorSearching;
 using Server.Targeting;
 using Server.Custom.Classes;
+using Server.Custom.FichaRP;
 
 using RankDefinition = Server.Guilds.RankDefinition;
 using Server.Engines.Fellowship;
@@ -233,6 +234,7 @@ namespace Server.Mobiles
         private int m_Profession;
 
         public int ClasseBasicaID, ClasseIntermediariaID, ClasseAvancadaID, ClasseLendariaID;
+        public DadosFichaRP FichaRP;
         public TierClasse ClasseAbandonavelID;
 
         public FurtivoTimer m_FurtivoTimer;
@@ -376,6 +378,8 @@ namespace Server.Mobiles
 
         #region Getters & Setters
 
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string TemFichaRP{ get { return FichaRP == null ? "Não Criada" : "Ficha Existente"; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string ClasseBasica { get { return ClasseBasicaID == 0 ? "Nenhuma" : ClassDef.GetClasse(ClasseBasicaID).Nome; }}
 
@@ -4595,6 +4599,8 @@ namespace Server.Mobiles
 			m_GuildRank = RankDefinition.Lowest;
 
 			m_ChampionTitles = new ChampionTitleInfo();
+
+            FichaRP = new DadosFichaRP(); //Inicializa a fichaRP
 		}
 
 		public override bool MutateSpeech(List<Mobile> hears, ref string text, ref object context)
@@ -4770,7 +4776,8 @@ namespace Server.Mobiles
 
 			m_VisList = new List<Mobile>();
 			m_AntiMacroTable = new Hashtable();
-		}
+            FichaRP = new DadosFichaRP(); //Inicializa a fichaRP
+        }
 
 		public List<Mobile> VisibilityList { get { return m_VisList; } }
 
@@ -4886,6 +4893,9 @@ namespace Server.Mobiles
 
 			switch (version)
 			{
+                case 42:
+                    FichaRP.Deserialize(reader);
+                    goto case 41;
                 case 41:
                     ClasseBasicaID = reader.ReadInt();
                     ClasseIntermediariaID = reader.ReadInt();
@@ -5359,8 +5369,9 @@ namespace Server.Mobiles
 
 			base.Serialize(writer);
 
-			writer.Write(41); // version
+			writer.Write(42); // version
 
+            FichaRP.Serialize(writer);
             writer.Write((int)ClasseBasicaID);
             writer.Write((int)ClasseIntermediariaID);
             writer.Write((int)ClasseAvancadaID);

@@ -300,6 +300,8 @@
     <Compile Include="Custom\CharacterCreationRP\ClassSelection.cs" />
     <Compile Include="Custom\CharacterCreationRP\FinishChar.cs" />
     <Compile Include="Custom\CharacterCreationRP\RaceSelection.cs" />
+    <Compile Include="Custom\FichaRP\DadosFichaRP.cs" />
+    <Compile Include="Custom\FichaRP\RPFicha.cs" />
     <Compile Include="Custom\HairGrowth with FacialHairGrowth\FacialHairGrowth.cs" />
     <Compile Include="Custom\HairGrowth with FacialHairGrowth\HairGrowth.cs" />
     <Compile Include="Custom\Hunger\HitsDecay.cs" />
