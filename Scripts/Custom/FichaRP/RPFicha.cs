@@ -74,28 +74,36 @@ namespace Server.Commands
                 this.Dragable = true;
                 this.Resizable = false;
                 this.AddPage(0);
-                this.AddImage(678, 158, 1596);
-                this.AddImage(678, 300, 1597);
-                this.AddImage(678, 438, 1599);
-                this.AddButton(853, 301, 5575, 5576, (int)Buttons.BotaoAparenciaGump, GumpButtonType.Reply, 0);
-                this.AddButton(724, 406, 5587, 5588, (int)Buttons.BotaoPersonalidadeGump, GumpButtonType.Reply, 0);
-                this.AddButton(855, 405, 5569, 5570, (int)Buttons.BotaoObjetivosGump, GumpButtonType.Reply, 0);
-                this.AddButton(980, 403, 5581, 5582, (int)Buttons.BotaoFeedbackStaffGump, GumpButtonType.Reply, 0);
-                this.AddImage(820, 365, 1589);
-                this.AddImage(943, 469, 1589);
+                this.AddImage(678, 158, 1596); //Topo da imagem de fundo
+                this.AddImage(678, 300, 1597); //Meio da imagem de fundo
+                this.AddImage(678, 438, 1599); //Baixo da imagem de fundo
+                this.AddButton(720, 301, 5555, 5556, (int)Buttons.BotaoBackgroundGump, GumpButtonType.Reply, 0); //Bigorna - Representa como o char foi forjado
+                this.AddButton(853, 301, 5557, 5558, (int)Buttons.BotaoMemoriasMarcantesGump, GumpButtonType.Reply, 0); // Fenix - Representa algo dificil de esquecer
+                this.AddButton(980, 301, 5575, 5576, (int)Buttons.BotaoAparenciaGump, GumpButtonType.Reply, 0); // Perfil - Representa a aparência
+                this.AddButton(720, 406, 5581, 5582, (int)Buttons.BotaoPersonalidadeGump, GumpButtonType.Reply, 0); // Engrenagem - Representa a maquinação da cabeça
+                this.AddButton(853, 405, 5587, 5588, (int)Buttons.BotaoObjetivosGump, GumpButtonType.Reply, 0); //Elmo - Representa a resolução para alcançar objetivos
+                this.AddButton(980, 403, 5583, 5584, (int)Buttons.BotaoFeedbackStaffGump, GumpButtonType.Reply, 0); //Balança - Representa uma avaliação justa
+                this.AddImage(691, 365, 1589);
+                this.AddImage(818, 365, 1589);
+                this.AddImage(945, 365, 1589);
+                this.AddImage(691, 470, 1589);
                 this.AddImage(818, 470, 1589);
-                this.AddImage(694, 470, 1589);
-                this.AddBackground(843, 236, 104, 24, 9300);
-                this.AddHtml(856, 238, 125, 26, @"Ficha RP", (bool)false, (bool)false);
-                this.AddHtml(861, 368, 151, 26, @"Aparencia", (bool)false, (bool)false);
-                this.AddHtml(713, 473, 151, 26, @"Personalidade", (bool)false, (bool)false);
-                this.AddHtml(837, 475, 151, 26, @"Objetivos", (bool)false, (bool)false);
-                this.AddHtml(968, 473, 151, 26, @"Feedback", (bool)false, (bool)false);
+                this.AddImage(945, 469, 1589);
+                //this.AddBackground(843, 236, 104, 24, 9300);
+                this.AddHtml(843, 238, 104, 26, @"<CENTER><BIG><B>Ficha RP</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddHtml(695, 368, 125, 26, @"<CENTER>Background</CENTER>", (bool)false, (bool)false);
+                this.AddHtml(820, 368, 125, 26, @"<CENTER>Memorias Marcantes</CENTER>", (bool)false, (bool)false);
+                this.AddHtml(945, 368, 125, 26, @"<CENTER>Aparência</CENTER>", (bool)false, (bool)false);
+                this.AddHtml(695, 473, 125, 26, @"<CENTER>Personalidade</CENTER>", (bool)false, (bool)false);
+                this.AddHtml(820, 473, 125, 26, @"<CENTER>Objetivos</CENTER>", (bool)false, (bool)false);
+                this.AddHtml(945, 473, 125, 26, @"<CENTER>Feedback</CENTER>", (bool)false, (bool)false);
             }
 
             public enum Buttons
             {
                 Nada,
+                BotaoBackgroundGump,
+                BotaoMemoriasMarcantesGump,
                 BotaoAparenciaGump,
                 BotaoPersonalidadeGump,
                 BotaoObjetivosGump,
@@ -121,10 +129,18 @@ namespace Server.Commands
                 {
                     from.SendGump(new FeedbackStaffGump(sender.Mobile as PlayerMobile, this.m));
                 }
+                else if (info.ButtonID == (int)Buttons.BotaoBackgroundGump)
+                {
+                    from.SendGump(new BackgroundGump(this.m));
+                }
+                else if (info.ButtonID == (int)Buttons.BotaoMemoriasMarcantesGump)
+                {
+                    from.SendGump(new MemoriasMarcantesGump(this.m));
+                }
             }
         }
 
-        public class AparenciaGump : Server.Gumps.Gump
+        public class AparenciaGump : Gump
         {
             public PlayerMobile m;
             public AparenciaGump(PlayerMobile from) : base(0, 0)
@@ -138,16 +154,23 @@ namespace Server.Commands
                 this.AddPage(0);
                 this.AddImage(353, 179, 1596);
                 this.AddImage(353, 321, 1597);
-                this.AddImage(353, 603, 1599);
-                this.AddImage(513, 193, 1589);
-                this.AddHtml(551, 197, 151, 26, @"Aparência", (bool)false, (bool)false);
-                this.AddBackground(390, 227, 344, 26, 9300);
-                this.AddBackground(390, 259, 344, 26, 9300);
                 this.AddImage(353, 463, 1598);
-                this.AddBackground(391, 294, 344, 406, 9300);
-                this.AddTextEntry(397, 300, 330, 395, 0, (int)Buttons2.AparenciaRosto, ficha.AparenciaRosto == "" ? @"Descreva a aparencia do rosto do seu personagem." : ficha.AparenciaRosto);
-                this.AddTextEntry(394, 230, 331, 20, 0, (int)Buttons2.AparenciaCorpo, ficha.AparenciaCorpo == "" ? @"Descreva a aparencia do corpo do seu personagem." : ficha.AparenciaCorpo);
-                this.AddTextEntry(397, 263, 331, 20, 0, (int)Buttons2.AparenciaMarcas, ficha.AparenciaMarcas == "" ? @"Descreva marcas ou outras peculiaridades da aparência do seu personagem." : ficha.AparenciaMarcas);
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Aparência</CENTER>", (bool)false, (bool)false);
+
+                this.AddBackground(390, 247, 344, 130, 9300);
+                this.AddBackground(390, 397, 344, 130, 9300);
+                this.AddBackground(390, 547, 344, 130, 9300);
+
+                this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Aparência do Rosto</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Aparência do Corpo</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddHtml(390, 527, 346, 26, @"<CENTER><BIG><B>Outros traços Marcantes</B></BIG></CENTER>", (bool)false, (bool)false);
+
+                this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons2.AparenciaRosto, ficha.AparenciaRosto == "" ? @"Descreva a aparencia do rosto do seu personagem." : ficha.AparenciaRosto);
+                this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons2.AparenciaCorpo, ficha.AparenciaCorpo == "" ? @"Descreva a aparencia do corpo do seu personagem." : ficha.AparenciaCorpo);
+                this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons2.AparenciaMarcas, ficha.AparenciaMarcas == "" ? @"Descreva marcas ou outras peculiaridades da aparência do seu personagem." : ficha.AparenciaMarcas);
             }
 
             public enum Buttons2
@@ -181,16 +204,23 @@ namespace Server.Commands
                 this.AddPage(0);
                 this.AddImage(353, 179, 1596);
                 this.AddImage(353, 321, 1597);
-                this.AddImage(353, 603, 1599);
-                this.AddImage(513, 193, 1589);
-                this.AddHtml(551, 197, 151, 26, @"Personalidade", (bool)false, (bool)false);
-                this.AddBackground(390, 227, 344, 26, 9300);
-                this.AddBackground(390, 259, 344, 26, 9300);
                 this.AddImage(353, 463, 1598);
-                this.AddBackground(391, 294, 344, 406, 9300);
-                this.AddTextEntry(397, 300, 330, 395, 0, (int)Buttons3.PersonalidadePositivo, ficha.PersonalidadePositivo == "" ? @"Descreva traços positivos da personalidade da personagem." : ficha.PersonalidadePositivo);
-                this.AddTextEntry(394, 230, 331, 20, 0, (int)Buttons3.PersonalidadeNegativo, ficha.PersonalidadeNegativo == "" ? @"Descreva traços negativos da personalidade da personagem." : ficha.PersonalidadeNegativo);
-                this.AddTextEntry(397, 263, 331, 20, 0, (int)Buttons3.PersonalidadeOutros, ficha.PersonalidadeOutros == "" ? @"Descreva outros traços da personalidade da personagem que julgar importantes." : ficha.PersonalidadeOutros);
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Personalidade</CENTER>", (bool)false, (bool)false);
+
+                this.AddBackground(390, 247, 344, 130, 9300);
+                this.AddBackground(390, 397, 344, 130, 9300);
+                this.AddBackground(390, 547, 344, 130, 9300);
+
+                this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Traços de Personalidade Positivos</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Traços de Personalidade Negativos</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddHtml(390, 527, 346, 26, @"<CENTER><BIG><B>Outros Traços de Personalidade</B></BIG></CENTER>", (bool)false, (bool)false);
+
+                this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons3.PersonalidadePositivo, ficha.PersonalidadePositivo == "" ? @"Descreva traços positivos da personalidade da personagem." : ficha.PersonalidadePositivo);
+                this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons3.PersonalidadeNegativo, ficha.PersonalidadeNegativo == "" ? @"Descreva traços negativos da personalidade da personagem." : ficha.PersonalidadeNegativo);
+                this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons3.PersonalidadeOutros, ficha.PersonalidadeOutros == "" ? @"Descreva outros traços da personalidade da personagem que julgar importantes." : ficha.PersonalidadeOutros);
             }
 
             public enum Buttons3
@@ -209,6 +239,89 @@ namespace Server.Commands
                 this.m.SendMessage(78, "Personalidade atualizada!");
             }
         }
+        public class BackgroundGump : Gump
+        {
+            public PlayerMobile m;
+            public BackgroundGump(PlayerMobile m) : base(0, 0)
+            {
+                this.m = m;
+                var ficha = this.m.FichaRP;
+                this.Closable = true;
+                this.Disposable = true;
+                this.Dragable = true;
+                this.Resizable = false;
+                this.AddPage(0);
+                this.AddImage(353, 179, 1596);
+                this.AddImage(353, 321, 1597);
+                this.AddImage(353, 463, 1598);
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Background</CENTER>", (bool)false, (bool)false);
+
+                this.AddBackground(390, 247, 344, 130, 9300);
+                this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Parágrafo</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddTextEntry(397, 250, 330, 126, 0, 0, @"Escreva um novo parágrafo de seu Background.");
+
+                this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Background Completo</B></BIG></CENTER>", (bool)false, (bool)false);
+                this.AddBackground(390, 397, 344, 290, 9300);
+                this.AddHtml(397, 398, 335, 288, (ficha.BackgroundHistorico == "" && ficha.Background == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Objetivos</BASEFONT>" : "<BASEFONT COLOR=#000000>" + ficha.BackgroundHistorico + "<BR>" + ficha.Background + "</BASEFONT>", false, true);
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                var ficha = this.m.FichaRP;
+                string texto = info.GetTextEntry(0).Text;
+                if (texto != "" && texto != "Escreva um novo parágrafo de seu Background.")
+                {
+                    ficha.BackgroundHistorico = ficha.BackgroundHistorico + "<BR>" + ficha.Background;
+                    ficha.Background = info.GetTextEntry(0).Text;
+                    this.m.SendMessage(78, "Novo parágrafo do Background adicionado!");
+                }
+                sender.Mobile.SendGump(new FichaRPGump(this.m));
+            }
+        }
+
+        public class MemoriasMarcantesGump : Gump
+        {
+            public PlayerMobile m;
+            public MemoriasMarcantesGump(PlayerMobile m) : base(0, 0)
+            {
+                this.m = m;
+                var ficha = this.m.FichaRP;
+                this.Closable = true;
+                this.Disposable = true;
+                this.Dragable = true;
+                this.Resizable = false;
+                this.AddPage(0);
+                this.AddImage(353, 179, 1596);
+                this.AddImage(353, 321, 1597);
+                this.AddImage(353, 603, 1599);
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(540, 197, 151, 26, @"Memórias Marcantes", (bool)false, (bool)false);
+                this.AddImage(353, 463, 1598);
+                this.AddBackground(393, 230, 344, 433, 9300);
+                this.AddTextEntry(400, 237, 330, 420, 0, 0, @"Escreva uma Memória Marcante que seu personagem vivenciou in-game");
+                this.AddHtml(400, 437, 830, 120, (ficha.MemoriasMarcantesHistorico == "" && ficha.MemoriasMarcantes == "") ? @"Sem memórias registradas ainda." : ficha.MemoriasMarcantesHistorico + "<BR>" + ficha.MemoriasMarcantes, false, false);
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                var ficha = this.m.FichaRP;
+                string texto = info.GetTextEntry(0).Text;
+                if (texto != "" && texto != "Escreva uma Memória Marcante que seu personagem vivenciou in-game")
+                {
+                    if (ficha.MemoriasMarcantes != "")
+                    {
+                        ficha.MemoriasMarcantesHistorico = ficha.MemoriasMarcantesHistorico + "<BR>" + ficha.MemoriasMarcantes;
+                    }
+                    ficha.ObjetivosAtual = info.GetTextEntry(0).Text;
+                    this.m.SendMessage(78, "Nova Memória Marcante registrada!");
+                }
+                sender.Mobile.SendGump(new FichaRPGump(this.m));
+            }
+        }
+
         public class ObjetivosGump : Gump
         {
             public PlayerMobile m;

@@ -8,6 +8,10 @@ namespace Server.Custom.FichaRP
 {
     public class DadosFichaRP
     {
+        public string Background;
+        public string BackgroundHistorico;
+        public string MemoriasMarcantes;
+        public string MemoriasMarcantesHistorico;
         public string AparenciaRosto;
         public string AparenciaCorpo;
         public string AparenciaMarcas;
@@ -18,9 +22,13 @@ namespace Server.Custom.FichaRP
         public string ObjetivosHistorico;
         public string FeedbackStaff;
         public string FeedbackStaffHistorico;
-
+        
         public DadosFichaRP()
         {
+            Background = "";
+            BackgroundHistorico = "";
+            MemoriasMarcantes = "";
+            MemoriasMarcantesHistorico = "";
             AparenciaRosto = "";
             AparenciaCorpo = "";
             AparenciaMarcas = "";
@@ -35,7 +43,11 @@ namespace Server.Custom.FichaRP
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(0);
+            writer.Write(1);
+            writer.Write(Background);
+            writer.Write(BackgroundHistorico);
+            writer.Write(MemoriasMarcantes);
+            writer.Write(MemoriasMarcantesHistorico);
             writer.Write(AparenciaRosto);
             writer.Write(AparenciaCorpo);
             writer.Write(AparenciaMarcas);
@@ -54,6 +66,12 @@ namespace Server.Custom.FichaRP
             int version = reader.ReadInt();
             switch (version)
             {
+                case 1:
+                    Background = reader.ReadString();
+                    BackgroundHistorico = reader.ReadString();
+                    MemoriasMarcantes = reader.ReadString();
+                    MemoriasMarcantesHistorico = reader.ReadString();
+                    goto case 0;
                 case 0:
                     AparenciaRosto = reader.ReadString();
                     AparenciaCorpo = reader.ReadString();
