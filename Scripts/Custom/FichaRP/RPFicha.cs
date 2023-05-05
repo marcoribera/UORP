@@ -16,6 +16,7 @@ namespace Server.Commands
         public static void Initialize()
         {
             CommandSystem.Register("RPFicha", AccessLevel.Player, EditarFichaRP);
+            CommandSystem.Register("FichaRP", AccessLevel.Player, EditarFichaRP);
             CommandSystem.Register("RPAvaliar", AccessLevel.Counselor, AvaliarFichaRP);
         }
 
@@ -29,13 +30,13 @@ namespace Server.Commands
 
             if (e.ArgString == "")
             {
-                FichaRPGump gump = new FichaRPGump(player);
+                FichaRPGump gump = new FichaRPGump(player, player);
                 player.SendGump(gump);
                 return;
             }
             else //Colocar algo aqui caso passe a existir alguma opção desse comando com os parâmetros
             {
-                FichaRPGump gump = new FichaRPGump(player);
+                FichaRPGump gump = new FichaRPGump(player, player);
                 player.SendGump(gump);
                 return;
             }
@@ -64,10 +65,11 @@ namespace Server.Commands
 
         public class FichaRPGump : Gump
         {
-            public PlayerMobile m;
+            public PlayerMobile m, viewer;
 
-            public FichaRPGump(PlayerMobile m) : base(0, 0)
+            public FichaRPGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
+                this.viewer = viewer;
                 this.m = m;
                 this.Closable = true;
                 this.Disposable = true;
@@ -115,37 +117,38 @@ namespace Server.Commands
                 var from = sender.Mobile;
                 if (info.ButtonID == (int)Buttons.BotaoAparenciaGump)
                 {
-                    from.SendGump(new AparenciaGump(this.m));
+                    from.SendGump(new AparenciaGump(this.viewer, this.m));
                 }
                 else if (info.ButtonID == (int)Buttons.BotaoPersonalidadeGump)
                 {
-                    from.SendGump(new PersonalidadeGump(this.m));
+                    from.SendGump(new PersonalidadeGump(this.viewer, this.m));
                 }
                 else if (info.ButtonID == (int)Buttons.BotaoObjetivosGump)
                 {
-                    from.SendGump(new ObjetivosGump(this.m));
+                    from.SendGump(new ObjetivosGump(this.viewer, this.m));
                 }
                 else if (info.ButtonID == (int)Buttons.BotaoFeedbackStaffGump)
                 {
-                    from.SendGump(new FeedbackStaffGump(sender.Mobile as PlayerMobile, this.m));
+                    from.SendGump(new FeedbackStaffGump(this.viewer, this.m));
                 }
                 else if (info.ButtonID == (int)Buttons.BotaoBackgroundGump)
                 {
-                    from.SendGump(new BackgroundGump(this.m));
+                    from.SendGump(new BackgroundGump(this.viewer, this.m));
                 }
                 else if (info.ButtonID == (int)Buttons.BotaoMemoriasMarcantesGump)
                 {
-                    from.SendGump(new MemoriasMarcantesGump(this.m));
+                    from.SendGump(new MemoriasMarcantesGump(this.viewer, this.m));
                 }
             }
         }
 
         public class AparenciaGump : Gump
         {
-            public PlayerMobile m;
-            public AparenciaGump(PlayerMobile from) : base(0, 0)
+            public PlayerMobile m, viewer;
+            public AparenciaGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
-                this.m = from;
+                this.viewer = viewer;
+                this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
                 this.Disposable = true;
@@ -168,9 +171,18 @@ namespace Server.Commands
                 this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Aparência do Corpo</B></BIG></CENTER>", (bool)false, (bool)false);
                 this.AddHtml(390, 527, 346, 26, @"<CENTER><BIG><B>Outros traços Marcantes</B></BIG></CENTER>", (bool)false, (bool)false);
 
-                this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons2.AparenciaRosto, ficha.AparenciaRosto == "" ? @"Descreva a aparencia do rosto do seu personagem." : ficha.AparenciaRosto);
-                this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons2.AparenciaCorpo, ficha.AparenciaCorpo == "" ? @"Descreva a aparencia do corpo do seu personagem." : ficha.AparenciaCorpo);
-                this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons2.AparenciaMarcas, ficha.AparenciaMarcas == "" ? @"Descreva marcas ou outras peculiaridades da aparência do seu personagem." : ficha.AparenciaMarcas);
+                if (m == viewer)
+                {
+                    this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons2.AparenciaRosto, ficha.AparenciaRosto == "" ? @"Descreva a aparencia do rosto do seu personagem." : ficha.AparenciaRosto);
+                    this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons2.AparenciaCorpo, ficha.AparenciaCorpo == "" ? @"Descreva a aparencia do corpo do seu personagem." : ficha.AparenciaCorpo);
+                    this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons2.AparenciaMarcas, ficha.AparenciaMarcas == "" ? @"Descreva marcas ou outras peculiaridades da aparência do seu personagem." : ficha.AparenciaMarcas);
+                }
+                else
+                {
+                    this.AddHtml(397, 250, 330, 126, ficha.AparenciaRosto == "" ? @"Em branco." : ficha.AparenciaRosto, (bool)false, (bool)false);
+                    this.AddHtml(397, 400, 330, 126, ficha.AparenciaCorpo == "" ? @"Em branco." : ficha.AparenciaCorpo, (bool)false, (bool)false);
+                    this.AddHtml(397, 550, 330, 126, ficha.AparenciaMarcas == "" ? @"Em branco." : ficha.AparenciaMarcas, (bool)false, (bool)false);
+                }
             }
 
             public enum Buttons2
@@ -182,20 +194,24 @@ namespace Server.Commands
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                m.FichaRP.AparenciaRosto = info.GetTextEntry((int)Buttons2.AparenciaRosto).Text;
-                m.FichaRP.AparenciaCorpo = info.GetTextEntry((int)Buttons2.AparenciaCorpo).Text;
-                m.FichaRP.AparenciaMarcas = info.GetTextEntry((int)Buttons2.AparenciaMarcas).Text;
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
-                this.m.SendMessage(78, "Aparencia atualizada!");
+                if (viewer == m)
+                {
+                    m.FichaRP.AparenciaRosto = info.GetTextEntry((int)Buttons2.AparenciaRosto).Text;
+                    m.FichaRP.AparenciaCorpo = info.GetTextEntry((int)Buttons2.AparenciaCorpo).Text;
+                    m.FichaRP.AparenciaMarcas = info.GetTextEntry((int)Buttons2.AparenciaMarcas).Text;
+                    this.m.SendMessage(78, "Aparencia atualizada!");
+                }
+                sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
             }
         }
 
         public class PersonalidadeGump : Gump
         {
-            public PlayerMobile m;
-            public PersonalidadeGump(PlayerMobile from) : base(0, 0)
+            public PlayerMobile m, viewer;
+            public PersonalidadeGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
-                this.m = from;
+                this.viewer = viewer;
+                this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
                 this.Disposable = true;
@@ -218,9 +234,18 @@ namespace Server.Commands
                 this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Traços de Personalidade Negativos</B></BIG></CENTER>", (bool)false, (bool)false);
                 this.AddHtml(390, 527, 346, 26, @"<CENTER><BIG><B>Outros Traços de Personalidade</B></BIG></CENTER>", (bool)false, (bool)false);
 
-                this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons3.PersonalidadePositivo, ficha.PersonalidadePositivo == "" ? @"Descreva traços positivos da personalidade da personagem." : ficha.PersonalidadePositivo);
-                this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons3.PersonalidadeNegativo, ficha.PersonalidadeNegativo == "" ? @"Descreva traços negativos da personalidade da personagem." : ficha.PersonalidadeNegativo);
-                this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons3.PersonalidadeOutros, ficha.PersonalidadeOutros == "" ? @"Descreva outros traços da personalidade da personagem que julgar importantes." : ficha.PersonalidadeOutros);
+                if (m == viewer)
+                {
+                    this.AddTextEntry(397, 250, 330, 126, 0, (int)Buttons3.PersonalidadePositivo, ficha.PersonalidadePositivo == "" ? @"Descreva traços positivos da personalidade da personagem." : ficha.PersonalidadePositivo);
+                    this.AddTextEntry(397, 400, 330, 126, 0, (int)Buttons3.PersonalidadeNegativo, ficha.PersonalidadeNegativo == "" ? @"Descreva traços negativos da personalidade da personagem." : ficha.PersonalidadeNegativo);
+                    this.AddTextEntry(397, 550, 330, 126, 0, (int)Buttons3.PersonalidadeOutros, ficha.PersonalidadeOutros == "" ? @"Descreva outros traços da personalidade da personagem que julgar importantes." : ficha.PersonalidadeOutros);
+                }
+                else
+                {
+                    this.AddHtml(397, 250, 330, 126, ficha.PersonalidadePositivo == "" ? @"Em branco." : ficha.PersonalidadePositivo, (bool)false, (bool)false);
+                    this.AddHtml(397, 400, 330, 126, ficha.PersonalidadeNegativo == "" ? @"Em branco." : ficha.PersonalidadeNegativo, (bool)false, (bool)false);
+                    this.AddHtml(397, 550, 330, 126, ficha.PersonalidadeOutros == "" ? @"Em branco." : ficha.PersonalidadeOutros, (bool)false, (bool)false);
+                }
             }
 
             public enum Buttons3
@@ -232,18 +257,22 @@ namespace Server.Commands
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                m.FichaRP.PersonalidadePositivo = info.GetTextEntry((int)Buttons3.PersonalidadePositivo).Text;
-                m.FichaRP.PersonalidadeNegativo = info.GetTextEntry((int)Buttons3.PersonalidadeNegativo).Text;
-                m.FichaRP.PersonalidadeOutros = info.GetTextEntry((int)Buttons3.PersonalidadeOutros).Text;
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
-                this.m.SendMessage(78, "Personalidade atualizada!");
+                if (viewer == m)
+                {
+                    m.FichaRP.PersonalidadePositivo = info.GetTextEntry((int)Buttons3.PersonalidadePositivo).Text;
+                    m.FichaRP.PersonalidadeNegativo = info.GetTextEntry((int)Buttons3.PersonalidadeNegativo).Text;
+                    m.FichaRP.PersonalidadeOutros = info.GetTextEntry((int)Buttons3.PersonalidadeOutros).Text;
+                    this.m.SendMessage(78, "Personalidade atualizada!");
+                }
+                sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
             }
         }
         public class BackgroundGump : Gump
         {
-            public PlayerMobile m;
-            public BackgroundGump(PlayerMobile m) : base(0, 0)
+            public PlayerMobile m, viewer;
+            public BackgroundGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
+                this.viewer = viewer;
                 this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
@@ -258,35 +287,81 @@ namespace Server.Commands
 
                 this.AddImage(513, 193, 1589);
                 this.AddHtml(520, 195, 112, 26, @"<CENTER>Background</CENTER>", (bool)false, (bool)false);
+                if (m == viewer)
+                {
+                    this.AddBackground(390, 247, 344, 130, 9300);
+                    this.AddButton(733, 247, 5402, 5402, (int)Buttons4.Adicionar, GumpButtonType.Reply, 0); //Botão para adicionar
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Parágrafo</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddTextEntry(397, 250, 330, 126, 0, 0, @"");
 
-                this.AddBackground(390, 247, 344, 130, 9300);
-                this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Parágrafo</B></BIG></CENTER>", (bool)false, (bool)false);
-                this.AddTextEntry(397, 250, 330, 126, 0, 0, @"Escreva um novo parágrafo de seu Background.");
+                    this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Background Completo</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddBackground(390, 397, 344, 290, 9300);
+                    this.AddButton(733, 397, 5401, 5401, (int)Buttons4.Remover, GumpButtonType.Reply, 0); //Botão para remover a ultima inserção
+                    this.AddHtml(397, 398, 335, 288, (ficha.BackgroundHistorico == "" && ficha.Background == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Objetivos</BASEFONT>" : "<BASEFONT COLOR=#000000>" + ficha.BackgroundHistorico + "<BR>" + ficha.Background + "</BASEFONT>", false, true);
+                }
+                else
+                {
+                    this.AddBackground(390, 247, 344, 434, 9300);
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Background Completo</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddHtml(397, 248, 335, 432, (ficha.BackgroundHistorico == "" && ficha.Background == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Objetivos</BASEFONT>" : "<BASEFONT COLOR=#000000>" + ficha.BackgroundHistorico + "<BR>" + ficha.Background + "</BASEFONT>", false, true);
+                }
+            }
 
-                this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Background Completo</B></BIG></CENTER>", (bool)false, (bool)false);
-                this.AddBackground(390, 397, 344, 290, 9300);
-                this.AddHtml(397, 398, 335, 288, (ficha.BackgroundHistorico == "" && ficha.Background == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Objetivos</BASEFONT>" : "<BASEFONT COLOR=#000000>" + ficha.BackgroundHistorico + "<BR>" + ficha.Background + "</BASEFONT>", false, true);
+            public enum Buttons4
+            {
+                Nada,
+                Adicionar,
+                Remover
             }
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                var ficha = this.m.FichaRP;
-                string texto = info.GetTextEntry(0).Text;
-                if (texto != "" && texto != "Escreva um novo parágrafo de seu Background.")
+                if (info.ButtonID == (int)Buttons4.Adicionar)
                 {
-                    ficha.BackgroundHistorico = ficha.BackgroundHistorico + "<BR>" + ficha.Background;
-                    ficha.Background = info.GetTextEntry(0).Text;
-                    this.m.SendMessage(78, "Novo parágrafo do Background adicionado!");
+                    var ficha = this.m.FichaRP;
+                    string texto = info.GetTextEntry(0).Text;
+                    if (texto != "")
+                    {
+                        if (ficha.Background != "")
+                        {
+                            ficha.BackgroundHistorico = ficha.BackgroundHistorico + "<BR>" + ficha.Background;
+                        }
+                        ficha.Background = info.GetTextEntry(0).Text;
+                        this.m.SendMessage(78, "Novo parágrafo do Background adicionado!");
+                    }
+                    else
+                    {
+                        this.m.SendMessage(33, "Erro ao inserir. Escreva algo no campo de texto e tente novamente.");
+                    }
+                    sender.Mobile.SendGump(new BackgroundGump(this.viewer, this.m));
                 }
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
+                else if (info.ButtonID == (int)Buttons4.Remover)
+                {
+                    var ficha = this.m.FichaRP;
+                    if (ficha.Background != "")
+                    {
+                        ficha.Background = "";
+                        this.m.SendMessage(78, "Removido o ultimo registro!");
+                    }
+                    else
+                    {
+                        this.m.SendMessage(33, "Apenas o último registro inserido pode ser removido!");
+                    }
+                    sender.Mobile.SendGump(new BackgroundGump(this.viewer, this.m));
+                }
+                else
+                {
+                    sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
+                }
             }
         }
 
         public class MemoriasMarcantesGump : Gump
         {
-            public PlayerMobile m;
-            public MemoriasMarcantesGump(PlayerMobile m) : base(0, 0)
+            public PlayerMobile m, viewer;
+            public MemoriasMarcantesGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
+                this.viewer = viewer;
                 this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
@@ -296,37 +371,88 @@ namespace Server.Commands
                 this.AddPage(0);
                 this.AddImage(353, 179, 1596);
                 this.AddImage(353, 321, 1597);
-                this.AddImage(353, 603, 1599);
-                this.AddImage(513, 193, 1589);
-                this.AddHtml(540, 197, 151, 26, @"Memórias Marcantes", (bool)false, (bool)false);
                 this.AddImage(353, 463, 1598);
-                this.AddBackground(393, 230, 344, 433, 9300);
-                this.AddTextEntry(400, 237, 330, 420, 0, 0, @"Escreva uma Memória Marcante que seu personagem vivenciou in-game");
-                this.AddHtml(400, 437, 830, 120, (ficha.MemoriasMarcantesHistorico == "" && ficha.MemoriasMarcantes == "") ? @"Sem memórias registradas ainda." : ficha.MemoriasMarcantesHistorico + "<BR>" + ficha.MemoriasMarcantes, false, false);
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Memorias Marcantes</CENTER>", (bool)false, (bool)false);
+
+                if (m == viewer)
+                {
+                    this.AddBackground(390, 247, 344, 130, 9300);
+                    this.AddButton(733, 247, 5402, 5402, (int)Buttons5.Adicionar, GumpButtonType.Reply, 0); //Botão para adicionar
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Parágrafo</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddTextEntry(397, 250, 330, 126, 0, 0, @"");
+
+                    this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Todas as Memórias</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddBackground(390, 397, 344, 290, 9300);
+                    this.AddButton(733, 397, 5401, 5401, (int)Buttons5.Remover, GumpButtonType.Reply, 0); //Botão para remover a ultima inserção
+                    this.AddHtml(397, 398, 335, 288, (ficha.MemoriasMarcantesHistorico == "" && ficha.MemoriasMarcantes == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Memórias Marcantes.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.MemoriasMarcantes + "<BR>" + ficha.MemoriasMarcantesHistorico + "</BASEFONT>", false, true);
+                }
+                else
+                {
+                    this.AddBackground(390, 247, 344, 434, 9300);
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Todas as Memórias</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddHtml(397, 248, 335, 432, (ficha.MemoriasMarcantesHistorico == "" && ficha.MemoriasMarcantes == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Memórias Marcantes.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.MemoriasMarcantes + "<BR>" + ficha.MemoriasMarcantesHistorico + "</BASEFONT>", false, true);
+                }
+            }
+
+            public enum Buttons5
+            {
+                Nada,
+                Adicionar,
+                Remover
             }
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                var ficha = this.m.FichaRP;
-                string texto = info.GetTextEntry(0).Text;
-                if (texto != "" && texto != "Escreva uma Memória Marcante que seu personagem vivenciou in-game")
+                if (info.ButtonID == (int)Buttons5.Adicionar)
                 {
+                    var ficha = this.m.FichaRP;
+                    string texto = info.GetTextEntry(0).Text;
+                    if (texto != "")
+                    {
+                        if (ficha.MemoriasMarcantes != "")
+                        {
+                            ficha.MemoriasMarcantesHistorico = ficha.MemoriasMarcantes + "<BR>" + ficha.MemoriasMarcantesHistorico;
+                        }
+
+                        ficha.MemoriasMarcantes = @"<B>[" + DateTimeOffset.Now.ToString("g") + "]</B> " + info.GetTextEntry(0).Text;
+                        this.m.SendMessage(78, "Nova Memória Marcante registrada!");
+                    }
+                    else
+                    {
+                        this.m.SendMessage(33, "Erro ao inserir. Escreva algo no campo de texto e tente novamente.");
+                    }
+                    sender.Mobile.SendGump(new MemoriasMarcantesGump(this.viewer, this.m));
+                }
+                else if (info.ButtonID == (int)Buttons5.Remover)
+                {
+                    var ficha = this.m.FichaRP;
                     if (ficha.MemoriasMarcantes != "")
                     {
-                        ficha.MemoriasMarcantesHistorico = ficha.MemoriasMarcantesHistorico + "<BR>" + ficha.MemoriasMarcantes;
+                        ficha.MemoriasMarcantes = "";
+                        this.m.SendMessage(78, "Removido o ultimo registro!");
                     }
-                    ficha.ObjetivosAtual = info.GetTextEntry(0).Text;
-                    this.m.SendMessage(78, "Nova Memória Marcante registrada!");
+                    else
+                    {
+                        this.m.SendMessage(33, "Apenas o último registro inserido pode ser removido!");
+                    }
+                    sender.Mobile.SendGump(new MemoriasMarcantesGump(this.viewer, this.m));
                 }
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
+                else
+                {
+                    sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
+                }
             }
         }
 
         public class ObjetivosGump : Gump
         {
-            public PlayerMobile m;
-            public ObjetivosGump(PlayerMobile m) : base(0, 0)
+            public PlayerMobile m, viewer;
+            public ObjetivosGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
+                this.viewer = viewer;
                 this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
@@ -336,37 +462,87 @@ namespace Server.Commands
                 this.AddPage(0);
                 this.AddImage(353, 179, 1596);
                 this.AddImage(353, 321, 1597);
-                this.AddImage(353, 603, 1599);
-                this.AddImage(513, 193, 1589);
-                this.AddHtml(540, 197, 151, 26, @"Objetivos", (bool)false, (bool)false);
                 this.AddImage(353, 463, 1598);
-                this.AddBackground(393, 230, 344, 433, 9300);
-                this.AddTextEntry(400, 237, 330, 420, 0, 0, @"Descreva o próximo objetivo do personagem");
-                this.AddHtml(400, 437, 830, 120, (ficha.ObjetivosHistorico == "" && ficha.ObjetivosAtual == "") ? @"Sem registros de Objetivos" : ficha.ObjetivosAtual + "<BR>" + ficha.ObjetivosHistorico, false, false);
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Objetivos</CENTER>", (bool)false, (bool)false);
+                if (m == viewer)
+                {
+                    this.AddBackground(390, 247, 344, 130, 9300);
+                    this.AddButton(733, 247, 5402, 5402, (int)Buttons6.Adicionar, GumpButtonType.Reply, 0); //Botão para adicionar
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Objetivo</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddTextEntry(397, 250, 330, 126, 0, 0, @"");
+
+                    this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Histórico de Objetivos</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddBackground(390, 397, 344, 290, 9300);
+                    this.AddButton(733, 397, 5401, 5401, (int)Buttons6.Remover, GumpButtonType.Reply, 0); //Botão para remover a ultima inserção
+                    this.AddHtml(397, 398, 335, 288, (ficha.ObjetivosHistorico == "" && ficha.ObjetivosAtual == "") ? @"<BASEFONT COLOR=#000000>Sem Objetivos registrados.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.ObjetivosAtual + "<BR>" + ficha.ObjetivosHistorico + "</BASEFONT>", false, true);
+                }
+                else
+                {
+                    this.AddBackground(390, 247, 344, 434, 9300);
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>istórico de Objetivos</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddHtml(397, 248, 335, 432, (ficha.ObjetivosHistorico == "" && ficha.ObjetivosAtual == "") ? @"<BASEFONT COLOR=#000000>Sem Objetivos registrados.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.ObjetivosAtual + "<BR>" + ficha.ObjetivosHistorico + "</BASEFONT>", false, true);
+                }
+            }
+
+            public enum Buttons6
+            {
+                Nada,
+                Adicionar,
+                Remover
             }
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                var ficha = this.m.FichaRP;
-                string texto = info.GetTextEntry(0).Text;
-                if (texto != "" && texto != "Descreva o próximo objetivo do personagem")
+                if (info.ButtonID == (int)Buttons6.Adicionar)
                 {
+                    var ficha = this.m.FichaRP;
+                    string texto = info.GetTextEntry(0).Text;
+                    if (texto != "")
+                    {
+                        if (ficha.ObjetivosAtual != "")
+                        {
+                            ficha.ObjetivosHistorico = ficha.ObjetivosAtual + "<BR>" + ficha.ObjetivosHistorico;
+                        }
+
+                        ficha.ObjetivosAtual = @"<B>[" + DateTimeOffset.Now.ToString("g") + "]</B> " + info.GetTextEntry(0).Text;
+                        this.m.SendMessage(78, "Novo Objetivo registrado!");
+                    }
+                    else
+                    {
+                        this.m.SendMessage(33, "Erro ao inserir. Escreva algo no campo de texto e tente novamente.");
+                    }
+                    sender.Mobile.SendGump(new ObjetivosGump(this.viewer, this.m));
+                }
+                else if (info.ButtonID == (int)Buttons6.Remover)
+                {
+                    var ficha = this.m.FichaRP;
                     if (ficha.ObjetivosAtual != "")
                     {
-                        ficha.ObjetivosHistorico = ficha.ObjetivosAtual + "<BR>" + ficha.ObjetivosHistorico;
+                        ficha.ObjetivosAtual = "";
+                        this.m.SendMessage(78, "Removido o ultimo registro!");
                     }
-                    ficha.ObjetivosAtual = info.GetTextEntry(0).Text;
-                    this.m.SendMessage(78, "Novo objetivo registrado!");
+                    else
+                    {
+                        this.m.SendMessage(33, "Apenas o último registro inserido pode ser removido!");
+                    }
+                    sender.Mobile.SendGump(new ObjetivosGump(this.viewer, this.m));
                 }
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
+                else
+                {
+                    sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
+                }
             }
         }
 
         public class FeedbackStaffGump : Gump
         {
-            public PlayerMobile m;
+            public PlayerMobile m, viewer;
             public FeedbackStaffGump(PlayerMobile viewer, PlayerMobile m) : base(0, 0)
             {
+                this.viewer = viewer;
                 this.m = m;
                 var ficha = this.m.FichaRP;
                 this.Closable = true;
@@ -376,39 +552,80 @@ namespace Server.Commands
                 this.AddPage(0);
                 this.AddImage(353, 179, 1596);
                 this.AddImage(353, 321, 1597);
-                this.AddImage(353, 603, 1599);
-                this.AddImage(513, 193, 1589);
-                this.AddHtml(540, 197, 151, 26, @"Feedback Staff", (bool)false, (bool)false);
                 this.AddImage(353, 463, 1598);
-                this.AddBackground(394, 230, 344, 464, 9300);
-                if (viewer.AccessLevel >= AccessLevel.Counselor)
+                this.AddImage(353, 603, 1599);
+
+                this.AddImage(513, 193, 1589);
+                this.AddHtml(520, 195, 112, 26, @"<CENTER>Feedback</CENTER>", (bool)false, (bool)false);
+
+                if (viewer!= m)
                 {
-                    this.AddTextEntry(400, 237, 330, 420, 0, 0, @"Escreva um feedback sobre o personagem");
-                    this.AddHtml(400, 437, 830, 120, (ficha.FeedbackStaff == "" && ficha.FeedbackStaffHistorico == "") ? @"Nenhum feedback da staff ainda" : (ficha.FeedbackStaff + "<BR>" + ficha.FeedbackStaffHistorico), false, true);
+                    this.AddBackground(390, 247, 344, 130, 9300);
+                    this.AddButton(733, 247, 5402, 5402, (int)Buttons7.Adicionar, GumpButtonType.Reply, 0); //Botão para adicionar
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Adicionar Feedback</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddTextEntry(397, 250, 330, 126, 0, 0, @"");
+
+                    this.AddHtml(390, 377, 346, 26, @"<CENTER><BIG><B>Histórico de Feedback</B></BIG></CENTER>", (bool)false, (bool)false);
+                    this.AddBackground(390, 397, 344, 290, 9300);
+                    this.AddButton(733, 397, 5401, 5401, (int)Buttons7.Remover, GumpButtonType.Reply, 0); //Botão para remover a ultima inserção
+                    this.AddHtml(397, 398, 335, 288, (ficha.FeedbackStaffHistorico == "" && ficha.FeedbackStaff == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Feedback da Staff.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.FeedbackStaff + "<BR>" + ficha.FeedbackStaffHistorico + "</BASEFONT>", false, true);
                 }
                 else
                 {
-                    this.AddHtml(400, 237, 830, 120, (ficha.FeedbackStaff == "" && ficha.FeedbackStaffHistorico == "") ? @"Nenhum feedback da staff ainda" : (ficha.FeedbackStaff + "<BR>" + ficha.FeedbackStaffHistorico), false, true);
+                    this.AddBackground(390, 247, 344, 434, 9300);
+                    this.AddHtml(390, 227, 346, 26, @"<CENTER><BIG><B>Histórico de Feedback</B></BIG></CENTER>", (bool)false, (bool)false); 
+                    this.AddHtml(397, 248, 335, 432, (ficha.FeedbackStaffHistorico == "" && ficha.FeedbackStaff == "") ? @"<BASEFONT COLOR=#000000>Sem registros de Feedback da Staff.</BASEFONT>" : @"<BASEFONT COLOR=#000000>" + ficha.FeedbackStaff + "<BR>" + ficha.FeedbackStaffHistorico + "</BASEFONT>", false, true);
                 }
+            }
+
+            public enum Buttons7
+            {
+                Nada,
+                Adicionar,
+                Remover
             }
 
             public override void OnResponse(NetState sender, RelayInfo info)
             {
-                var ficha = this.m.FichaRP;
-                if (sender.Mobile.AccessLevel >= AccessLevel.Counselor)
+                if (info.ButtonID == (int)Buttons7.Adicionar)
                 {
+                    var ficha = this.m.FichaRP;
                     string texto = info.GetTextEntry(0).Text;
-                    if (texto != "" && texto != "Escreva um feedback sobre o personagem")
+                    if (texto != "")
                     {
                         if (ficha.FeedbackStaff != "")
                         {
                             ficha.FeedbackStaffHistorico = ficha.FeedbackStaff + "<BR>" + ficha.FeedbackStaffHistorico;
                         }
-                        ficha.FeedbackStaff = texto;
-                        this.m.SendMessage(78, "Você recebeu um novo feedback da Staff!");
+
+                        ficha.FeedbackStaff = @"<B>[" + DateTimeOffset.Now.ToString("g") + "] [" + viewer.Account.Username + "]</B><BR>" + info.GetTextEntry(0).Text;
+                        this.m.SendMessage(78, "Novo Feedback da Staff registrado!");
+                        this.viewer.SendMessage(78, "Seu feedback foi registrado!");
                     }
+                    else
+                    {
+                        this.m.SendMessage(33, "Erro ao inserir. Escreva algo no campo de texto e tente novamente.");
+                    }
+                    sender.Mobile.SendGump(new FeedbackStaffGump(this.viewer, this.m));
                 }
-                sender.Mobile.SendGump(new FichaRPGump(this.m));
+                else if (info.ButtonID == (int)Buttons7.Remover)
+                {
+                    var ficha = this.m.FichaRP;
+                    if (ficha.FeedbackStaff != "")
+                    {
+                        ficha.FeedbackStaff = "";
+                        this.m.SendMessage(78, "Removido o ultimo registro!");
+                    }
+                    else
+                    {
+                        this.m.SendMessage(33, "Apenas o último registro inserido pode ser removido!");
+                    }
+                    sender.Mobile.SendGump(new FeedbackStaffGump(this.viewer, this.m));
+                }
+                else
+                {
+                    sender.Mobile.SendGump(new FichaRPGump(this.viewer, this.m));
+                }
             }
         }
 
@@ -422,8 +639,8 @@ namespace Server.Commands
             {
                 if (targeted is PlayerMobile)
                 {
-                    PlayerMobile alvo = targeted as PlayerMobile;
-                    
+
+                    from.SendGump(new FichaRPGump(from as PlayerMobile, targeted as PlayerMobile));
                 }
             }
         }
