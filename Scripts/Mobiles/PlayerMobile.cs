@@ -4246,7 +4246,8 @@ namespace Server.Mobiles
             }
 
             //Início do decremento de Desmaio e teletransportes
-            MoveToWorld(new Point3D(4861, 3581, 0), Map.Felucca); //Sala dos Mortos
+            //MoveToWorld(new Point3D(4861, 3581, 0), Map.Felucca); //Sala dos Mortos
+            MoveToWorld(new Point3D(6293, 2408, 0), Map.Felucca); //Sala dos Mortos
             //SetLocation(new Point3D(4861, 3581, 0), true); //Sala dos mortos em mapa antigo
             Random perdaDesmaio = new Random();
             double perda = 0.5 + perdaDesmaio.NextDouble();
