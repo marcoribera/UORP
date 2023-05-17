@@ -289,19 +289,24 @@ namespace Server.Misc
             {
                 ((PlayerMobile)newChar).KnowEorin = true;
                 ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Eorin;
-                newChar.MoveToWorld(new Point3D(635, 832, -61), Map.Ilshenar);
+                //newChar.MoveToWorld(new Point3D(635, 832, -61), Map.Ilshenar);
+                newChar.MoveToWorld(new Point3D(3680, 2522, 0), Map.Felucca);
+
             }
             else if (newChar.Race == Race.Elf)
             {
                 ((PlayerMobile)newChar).KnowAvlitir = true;
                 ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Avlitir;
-                newChar.MoveToWorld(new Point3D(1267, 962, -27), Map.Ilshenar);
+                //newChar.MoveToWorld(new Point3D(1267, 962, -27), Map.Ilshenar);
+                newChar.MoveToWorld(new Point3D(3680, 2522, 0), Map.Felucca);
             }
             else if (newChar.Race == Race.Gargoyle)
             {
                 ((PlayerMobile)newChar).KnowCelirus = true;
                 ((PlayerMobile)newChar).LanguageSpeaking = SpeechType.Celirus;
-                newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Felucca); //Fora da área do pré alfa
+                //newChar.MoveToWorld(new Point3D(1472, 1490, -28), Map.Felucca); //Fora da área do pré alfa
+                newChar.MoveToWorld(new Point3D(3680, 2522, 0), Map.Felucca);
+
             }
             Utility.PushColor(ConsoleColor.Green);
 			Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
