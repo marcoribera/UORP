@@ -1119,7 +1119,7 @@ namespace Server.Gumps
                                             break;
                                         }
 
-                                        m_House.Public = false;
+                                        m_House.Public = true;
 
                                         m_House.ChangeLocks(from);
 

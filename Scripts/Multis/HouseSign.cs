@@ -26,7 +26,7 @@ namespace Server.Multis
         public string GetName()
         {
             if (Name == null)
-                return "An Unnamed House";
+                return "Casa";
 
             return Name;
         }
@@ -53,14 +53,14 @@ namespace Server.Multis
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+      /*  [CommandProperty(AccessLevel.GameMaster)]
         public Mobile OriginalOwner
         {
             get
             {
                 return m_OrgOwner;
             }
-        }
+        }*/
 
         public override void OnAfterDelete()
         {
@@ -102,7 +102,7 @@ namespace Server.Multis
 
             if (m_Owner != null)
             {
-                list.Add(m_Owner.Public ? 1061641 : 1061642); // This House is Open to the Public : This is a Private Home
+               // list.Add(m_Owner.Public ? 1061641 : 1061642); // This House is Open to the Public : This is a Private Home
 
                 m_GettingProperties = true;
                 DecayLevel level = m_Owner.DecayLevel;
@@ -122,7 +122,7 @@ namespace Server.Multis
             }
         }
 
-        public override void OnSingleClick(Mobile from)
+      /*  public override void OnSingleClick(Mobile from)
         {
             if (m_Owner != null && BaseHouse.DecayEnabled && m_Owner.DecayPeriod != TimeSpan.Zero)
             {
@@ -157,7 +157,7 @@ namespace Server.Multis
             }
 
             base.OnSingleClick(from);
-        }
+        }*/ 
 
         public void ShowSign(Mobile m)
         {
@@ -174,11 +174,11 @@ namespace Server.Multis
                 }
             }
 
-            if (m_Owner.IsAosRules)
+           /* if (m_Owner.IsAosRules)
             {
                 m.SendGump(new HouseGumpAOS(HouseGumpPageAOS.Information, m, m_Owner));
             }
-            else
+            else*/
             {
                 m.SendGump(new HouseGump(m, m_Owner));
             }

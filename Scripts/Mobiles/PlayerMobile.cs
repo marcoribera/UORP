@@ -2448,11 +2448,11 @@ namespace Server.Mobiles
 
             if (from == this)
 			{
-                if (Core.HS && Alive)
+              /*  if (Core.HS && Alive)
                 {
                     list.Add(new SearchVendors(this));
                 }
-
+*/
                 BaseHouse house = BaseHouse.FindHouseAt(this);
 
                 if (house != null)
@@ -2463,7 +2463,7 @@ namespace Server.Mobiles
 					}
 				}
 
-                if (Core.SA)
+               /* if (Core.SA)
                 {
                     list.Add(new TitlesMenuEntry(this));
 				}
@@ -2472,9 +2472,9 @@ namespace Server.Mobiles
                 {
                     list.Add(new Engines.Points.LoyaltyRating(this));
                 }
-
+*/
                 list.Add(new OpenBackpackEntry(this));
-
+/*
                 if (Alive && InsuranceEnabled)
                 {
                     if (Core.SA)
@@ -2496,6 +2496,7 @@ namespace Server.Mobiles
                         }
                     }
                 }
+
                 else if (Siege.SiegeShard)
                 {
                     list.Add(new CallbackEntry(3006168, SiegeBlessItem));
@@ -2533,7 +2534,7 @@ namespace Server.Mobiles
 				{
 					list.Add(new CallbackEntry(RefuseTrades ? 1154112 : 1154113, ToggleTrades)); // Allow Trades / Refuse Trades				
 				}
-
+*/
 				if (m_JusticeProtectors.Count > 0)
 				{
 					list.Add(new CallbackEntry(6157, CancelProtection));

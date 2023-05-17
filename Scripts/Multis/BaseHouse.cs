@@ -331,7 +331,7 @@ namespace Server.Multis
             }
         }
 
-        private bool m_Public;
+ private bool m_Public = true;
 
         private HouseRegion m_Region;
         private TrashBarrel m_Trash;
@@ -1213,7 +1213,7 @@ namespace Server.Multis
 
             bool lockedDown = LockDowns.ContainsKey(item);
 
-            // lockdown owner can access it
+           /* // lockdown owner can access it
             if (lockedDown && CheckLockdownOwnership(from, item))
                 return true;
 
@@ -1237,7 +1237,7 @@ namespace Server.Multis
 
                 return false;
             }
-
+*/
             return true;
         }
 
@@ -1256,13 +1256,13 @@ namespace Server.Multis
         {
             typeof(TenthAnniversarySculpture), typeof(RewardBrazier), typeof(VendorRentalContract), typeof(Dyes), typeof(DyeTub),
             typeof(BaseInstrument), typeof(Clock), typeof(TreasureMap), typeof(RecallRune), typeof(Dices), typeof(BaseBoard),
-            typeof(Runebook)
+            typeof(Runebook), typeof(PotionKeg)
         };
 
-        private Type[] _AccessibleToFriends =
-        {
-            typeof(PotionKeg)
-        };
+      //  private Type[] _AccessibleToFriends =
+        //{
+            
+       // };
 
         public virtual bool IsInside(Point3D p, int height)
         {
@@ -3613,7 +3613,7 @@ namespace Server.Multis
         {
             get
             {
-                return m_Public;
+                return m_Public = true;
             }
             set
             {

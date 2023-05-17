@@ -306,7 +306,7 @@ namespace Server.Regions
                 else if (isOwner)
                 {
                     from.CloseGump(typeof(ConfirmHouseResize));
-                    from.CloseGump(typeof(HouseGumpAOS));
+                    from.CloseGump(typeof(HouseGump));
                     from.SendGump(new ConfirmHouseResize(from, House));	
                 }
                 else
@@ -318,7 +318,7 @@ namespace Server.Regions
             if (!House.IsInside(from) || !House.IsActive)
                 return;
 
-            else if (e.HasKeyword(0x33)) // remove thyself
+            else if (e.HasKeyword(212)) // remove thyself
             {
                 if (isFriend)
                 {
@@ -330,7 +330,7 @@ namespace Server.Regions
                     from.SendLocalizedMessage(502094); // You must be in your house to do this.
                 }
             }
-            else if (e.HasKeyword(0x34)) // I ban thee
+            else if (e.HasKeyword(212)) // I ban thee
             {
                 if (!isFriend)
                 {
@@ -370,7 +370,7 @@ namespace Server.Regions
                     from.SendLocalizedMessage(502094); // You must be in your house to do this. 
                 }
             }
-            else if (e.HasKeyword(0x25)) // I wish to secure this
+            else if (e.HasKeyword(212)) // I wish to secure this
             {
                 if (isCoOwner)
                 {
@@ -382,7 +382,7 @@ namespace Server.Regions
                     from.SendLocalizedMessage(502094); // You must be in your house to do this. 
                 }
             }
-            else if (e.HasKeyword(0x26)) // I wish to unsecure this
+            else if (e.HasKeyword(212)) // I wish to unsecure this
             {
                 if (isOwner)
                 {
@@ -394,7 +394,7 @@ namespace Server.Regions
                     from.SendLocalizedMessage(502094); // You must be in your house to do this. 
                 }
             }
-            else if (e.HasKeyword(0x27)) // I wish to place a strongbox
+            else if (e.HasKeyword(212)) // I wish to place a strongbox
             {
                 if (isOwner)
                 {
@@ -413,7 +413,7 @@ namespace Server.Regions
                     from.SendLocalizedMessage(502094); // You must be in your house to do this. 
                 }
             }
-            else if (e.HasKeyword(0x28)) // trash barrel
+            else if (e.HasKeyword(212)) // trash barrel
             {
                 if (isCoOwner)
                 {
